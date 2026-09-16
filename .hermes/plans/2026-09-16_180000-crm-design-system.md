@@ -70,15 +70,15 @@ Bottom tab (5 glyphs, single active dot, no labels); map card with clustered cou
 
 Encode behaviors, not just looks.
 
-### Task 9: Funnel interaction states
+### Task 9: Funnel interaction states ✓ done
 
 Seven states from ref-04 (Initial Load → Scroll Down elastic → Top/Middle/Bottom/Closed→Retained auto-scroll + card expand). Rule: selecting a funnel segment always expands that stage's metric card. Spec: `design-system/docs/phase-4-patterns.md`.
 
-### Task 10: Transient vs temporal doctrine
+### Task 10: Transient vs temporal doctrine ✓ done
 
 From ref-05: Activities are transient, Goals are temporal, Funnel is transient by default with temporal trends. Timeline slider (Y/Q/M/W/D + As of Now) highlights value at point; timeframe sliding reshapes the funnel. Spec: same MD, § Time.
 
-### Task 11: Reports list-pattern matrices
+### Task 11: Reports list-pattern matrices ✓ done
 
 Blob (activity dots) vs Goals (bars) across Day/Week/Month/Quarter/Year from ref-06; list-pattern state chips (Business/Performance/Productivity). Spec: same MD, § Reports.
 
@@ -88,15 +88,15 @@ Blob (activity dots) vs Goals (bars) across Day/Week/Month/Quarter/Year from ref
 
 *Tags: Design System, Motion*
 
-### Task 12: Motion posture + 3D rewards
+### Task 12: Motion posture + 3D rewards ✓ done
 
 Elastic funnel scroll, timeline scrub, tilt-depth funnel cards (ref-09); single Spline gem recolored per category via hue-rotate filters (already in guardrails §4 — keep, don't duplicate); `Rock Solid Goals` capsule ceremony copy (`+Rs 4lakh / Closed Beyond Your Target`, ref-08). Spec: `design-system/docs/phase-5-motion-gamification.md`.
 
-### Task 13: Moodboard direction tokens
+### Task 13: Moodboard direction tokens ✓ done
 
 Frosted-glass orbs, pink/purple/blue gradient spheres, `Bubble / Stand Out / Break Layout` editorial voice (ref-10, ref-11); iridescent-cube brand surface + `Only CRM stack you need / data in here don't lie` ALPHA voice (ref-12). Constraint: decoration lives in brand/mood surfaces only — never inside Operate/Monitor screens. Spec: same MD, § Mood.
 
-### Task 14: Living-system loop (references registry)
+### Task 14: Living-system loop (references registry) ✓ done
 
 Append-only intake: drop new refs into `design-system/references/` as `ref-NN-slug.png`, log in `REGISTRY.md` (subject, phases touched, supersedes?), then open a dated polish pass against the affected phase MD + `DESIGN.md` (bump version, re-lint). Never edit a phase MD's locked decisions without a new registry row. Spec: `design-system/references/REGISTRY.md`.
 
