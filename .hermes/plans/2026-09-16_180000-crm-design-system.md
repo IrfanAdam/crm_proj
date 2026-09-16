@@ -26,7 +26,7 @@ Encode colors, Inter type scale, rounded, spacing, and 8 components with `{token
 one contrast warning triaged as AA-large pass (goal-bar 4.14:1, large/bold
 values only; body text uses the 700 step). Spec: `DESIGN.md` itself.
 
-*Shipped in pending · Tasks 1–3 · phase-1.*
+*Shipped in 8eeebc5 · Tasks 1–3 · phase-1.*
 
 ## Phase 2 — Hierarchy & Layout {#phase-2}
 
