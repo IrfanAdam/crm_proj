@@ -145,7 +145,7 @@ quiet: hairlines carry elevation, one blue carries action, gems carry ceremony.
 
 ## Colors
 
-- **Primary (#222222):** headlines, card titles, body ink. (Token gap: needs a primitive slot — see docs/phase-1.)
+- **Primary (#222222):** headlines, card titles, body ink. (Housed as `--primitive-ink` — see docs/phase-1.)
 - **Secondary (#525252):** supporting copy, timestamps.
 - **Tertiary Sapphire (#218aea):** the SOLE action hue — CTAs, links, active states, funnel body, recenter control. Never used decoratively.
 - **Neutral (#FAFAFA):** canvas; cards stay pure white.
@@ -162,7 +162,8 @@ muted text steps down to secondary, never to a decorative hue.
 
 Screen order is law: title + avatar → KPI strip → hero visual → delta line →
 filter chips → cards → 5-item bottom tab. 4px base grid; 16px card padding;
-16–24px card radii; full-pill chips and bars.
+16–24px card radii; full-pill chips and bars. Breakpoints hold raw px:
+≤767px base (section 24, radius 16), ≥768px (section 32, radius 20–24).
 
 ## Elevation & Depth
 

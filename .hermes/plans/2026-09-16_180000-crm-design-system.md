@@ -34,11 +34,11 @@ values only; body text uses the 700 step). Spec: `DESIGN.md` itself.
 
 Derive the app shell order from ref-01/02/03/09.
 
-### Task 4: Screen hierarchy doctrine
+### Task 4: Screen hierarchy doctrine ✓ done
 
 Canonical order: page title (32/bold, left) + avatar (right) → KPI strip (`4/32 closed +2%`) → hero visual (bar chart / map / 3D funnel) → delta line (`+32 than yesterday`) → filter chips → content cards → bottom tab bar (5 items). Every screen must follow it; deviations need a note. Spec: `design-system/docs/phase-2-hierarchy-layout.md`.
 
-### Task 5: Type + spacing + shape scales
+### Task 5: Type + spacing + shape scales ✓ done
 
 Inter only; title 32 / card title 20 / body 16 / meta 12–14; 4px base grid; radii: cards 16–24, chips full-pill, goal bars full-pill; hairline borders, no decorative shadows on UI cards (elevation = hairline + surface step). Spec: same MD, § Scales.
 

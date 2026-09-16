@@ -20,15 +20,23 @@ Witnesses: `../references/ref-01-opportunities.png`, `ref-02-reports.png`,
 - **Monitor** (Funnel, Reports): user watches state change — density and
   glanceable KPI strips, no centered hero + feature cards.
 
-## Scales
+## Scales (locked to `tokens.css`, 2026-09-16)
 
-- Type (Inter only): 32 title / 20 card title / 16 body / 14 meta / 12 micro.
-- Spacing: 4px base grid; card padding 16; section rhythm 24–32.
-- Radii: cards 16–24, chips/bars/tabs full-pill.
-- Elevation: hairline border + surface step. No card shadows.
+- Type (Inter only): 32 title (`--font-size-3xl`) / 20 card title
+  (`--font-size-xl`) / 16 body (`--font-size-md`) / 14 meta
+  (`--font-size-sm`) / 12 micro (`--font-size-xs`). `--font-size-lg`
+  (18) and `--font-size-2xl` (24) are reserved, not hierarchy steps.
+- Spacing: 4px base grid; card padding 16 (`--spacing-4`); section
+  rhythm 24–32 (`--spacing-6`–`--spacing-8`).
+- Radii: cards 16–24 (`--radius-lg/xl/2xl`), chips/bars/tabs
+  full-pill (`--radius-full`).
+- Elevation: hairline border + surface step. No card shadows
+  (`--shadow-*` reserved for funnel/gem depth only).
 
 ## Guardrails
 
 - A screen missing any of steps 1–7 (or reordering them) needs a written note.
 - Muted text steps down the neutral ramp — never a decorative hue.
-- `@media` breakpoints keep raw px (tokens invalid there); document the mapping.
+- `@media` breakpoints keep raw px (tokens invalid there). Mapping:
+  ≤767px base → card padding 16 / section 24 / radius 16;
+  ≥768px → section 32 / radius 20–24. Card padding stays 16.
