@@ -1,11 +1,27 @@
 {
-  "generated": "2026-09-16T14:50:02.926Z",
+  "generated": "2026-09-16T14:52:23.617Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md"
   ],
   "commits": [
+    {
+      "sha": "2c3f3a6",
+      "full": "2c3f3a6a4f22ffdf7c2b0b0ecd2f39fe074aadcf",
+      "date": "2026-09-16",
+      "subject": "Phase 12: motion & gamification — motion tokens + ElasticScroll/TiltCard (reduced-motion) + GemReward hue-rotate (4 categories, single Spline)",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-12"
+    },
+    {
+      "sha": "7f5a89b",
+      "full": "7f5a89b79292ce57d516089329cd1eda5b315332",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest + Shipped 420e370",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-11"
+    },
     {
       "sha": "420e370",
       "full": "420e3706ca3590dbca4d843c0f24679ee691dfa7",

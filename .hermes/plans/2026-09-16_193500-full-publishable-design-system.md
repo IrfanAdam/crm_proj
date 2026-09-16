@@ -157,7 +157,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Motion*
 
-*Shipped in pending · Tasks 28–29 · phase-12.*
+*Shipped in 2c3f3a6 · Tasks 28–29 · phase-12.*
 
 ### Task 28: Motion tokens + elastic/tilt primitives ✓ done
 
