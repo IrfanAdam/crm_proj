@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T15:08:13.282Z",
+  "generated": "2026-09-16T15:11:32.133Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,22 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "719eddd",
+      "full": "719eddd1d49aa9755625ba9e2b281edc940c7fb4",
+      "date": "2026-09-16",
+      "subject": "docs(ds): Evo gallery foundations 50-900 + signal live + phase docs (parity re-verified)",
+      "plan": "2026-09-16_203500-ds-polish.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "24fde48",
+      "full": "24fde48d3f0d84a6776b4df7cef6acf2da47d257",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest + Shipped 3d3f5be",
+      "plan": "2026-09-16_203500-ds-polish.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "3d3f5be",
       "full": "3d3f5bed0fabf1943371d7cc9625502a12de2272",
