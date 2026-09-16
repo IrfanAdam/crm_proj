@@ -97,13 +97,15 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component, Layout*
 
-### Task 22: Tabs, breadcrumbs, pagination, accordion, bottom-tab
+*Shipped in pending · Tasks 22–23 · phase-9.*
+
+### Task 22: Tabs, breadcrumbs, pagination, accordion, bottom-tab ✓ done
 
 **Objective:** P3 bottom-tab (5 glyphs, single dot) rebuilt as a configured `TabBar`; generic tabs/breadcrumbs/pagination/accordion for reports depth.
 **Files:** Create `src/components/{Tabs,Breadcrumbs,Pagination,Accordion,TabBar}/*`.
 **Verify:** Roving-tabindex keyboard nav tests; ref-01 shell assembles from atoms.
 
-### Task 23: Modal, drawer, popover, tooltip, menu, toast
+### Task 23: Modal, drawer, popover, tooltip, menu, toast ✓ done
 
 **Objective:** One overlay behavior module (focus trap, escape, layering) serving all six; achievement modal (P5) becomes a `Modal` consumer.
 **Files:** Create `src/components/overlays/*` + shared overlay behavior script.

@@ -17,32 +17,20 @@
 <link rel="stylesheet" href="src/components/Radio/radio.css"/>
 <link rel="stylesheet" href="src/components/Switch/switch.css"/>
 <link rel="stylesheet" href="src/components/Slider/slider.css"/>
-<style>
-*{box-sizing:border-box;margin:0}body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary)}
-.wrap{max-width:none;width:100%;margin:0 auto;padding:24px}h1{font-size:var(--font-size-3xl);font-weight:700;letter-spacing:-.01em}.meta{color:var(--text-secondary);font-size:var(--font-size-sm)}
-.grid{display:grid;grid-template-columns:220px 1fr;gap:var(--spacing-6);margin-top:16px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.tabs{position:sticky;top:24px;align-self:start;display:flex;flex-direction:column;gap:4px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-2)}
-.tab{width:100%;text-align:left;background:transparent;border:none;padding:var(--spacing-2) var(--spacing-3);border-radius:var(--radius-md);font-size:var(--font-size-sm);font-weight:500;color:var(--text-secondary);cursor:pointer}
-.tab--active{background:var(--bg-interactive);color:var(--text-primary)}
-.frame{width:100%;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-.pad{padding:var(--spacing-4)} .row{display:flex;gap:var(--spacing-2);flex-wrap:wrap;align-items:center}
-h3{font-size:var(--font-size-sm);font-weight:600;color:var(--text-muted);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.04em}h3:first-child{margin-top:0}
-a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
-[hidden]{display:none!important}
-</style>
+<link rel="stylesheet" href="src/components/Tabs/tabs.css"/>
+<link rel="stylesheet" href="src/components/Breadcrumbs/breadcrumbs.css"/>
+<link rel="stylesheet" href="src/components/Pagination/pagination.css"/>
+<link rel="stylesheet" href="src/components/Accordion/accordion.css"/>
+<link rel="stylesheet" href="src/components/TabBar/tabbar.css"/>
+<link rel="stylesheet" href="src/components/Overlay/overlay.css"/>
+<link rel="stylesheet" href="gallery.css"/>
 </head>
 <body>
 <div class="wrap">
 <h1>ALPHA CRM <span class="meta">— DS Gallery · Desktop</span></h1>
 <p class="meta" style="margin:6px 0 0">Desktop DS (this page) hosts <b>mobile-frame prototypes</b> (390px) — DS stays desktop, app is mobile · <a href="preview.html">tokens</a> · <a href="DESIGN.md">spec</a></p>
 <div class="grid">
-<nav class="tabs" aria-label="DS sections">
-<button class="tab tab--active" data-tab="actions">Actions — Button</button>
-<button class="tab" data-tab="identity">Identity — Chip / Badge / Pill / Avatar / Icon</button>
-<button class="tab" data-tab="text">Form — Text / Select / Search</button>
-<button class="tab" data-tab="choice">Choice — Checkbox / Radio / Switch / Slider</button>
-</nav>
+<nav class="tabs" aria-label="DS sections"><button class="tab tab--active" data-tab="actions">Actions</button><button class="tab" data-tab="identity">Identity</button><button class="tab" data-tab="text">Form</button><button class="tab" data-tab="choice">Choice</button><button class="tab" data-tab="nav">Navigation</button><button class="tab" data-tab="overlays">Overlays</button></nav>
 <div id="stage">
 <div class="frame" data-panel="actions"><div class="pad">
 <h3>Button — primary / secondary / ghost / destructive</h3>
@@ -81,18 +69,23 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 <div><span class="field__label">Timeline slider (P4)</span><input type="range" class="slider" min="0" max="100" value="45" aria-label="timeline"/><div style="margin-top:var(--spacing-2)"><input type="range" class="slider slider--segments" min="0" max="100" value="60" aria-label="segmented"/></div><span class="meta">Respects prefers-reduced-motion</span></div>
 </div>
 </div></div>
+<div class="frame" data-panel="nav" hidden><div class="pad"><h3>Tabs — roving tabindex</h3><div class="tabs" role="tablist"><button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true">Opportunities</button><button class="tab__trigger" role="tab">Reports</button><button class="tab__trigger" role="tab">Funnel</button></div><div class="tab__panel">Opportunities content — P3 cards</div><h3>Breadcrumbs</h3><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#">Home</a><span class="breadcrumbs__sep">/</span><a href="#">Reports</a><span class="breadcrumbs__sep">/</span><span class="breadcrumbs__current">Q2</span></nav><h3>Pagination</h3><div class="pagination"><button class="pagination__btn" aria-label="Prev">‹</button><button class="pagination__btn pagination__btn--active">1</button><button class="pagination__btn">2</button><span class="pagination__ellipsis">…</span><button class="pagination__btn">8</button><button class="pagination__btn" aria-label="Next">›</button></div><h3>Accordion</h3><div class="accordion"><div class="accordion__item accordion__item--open"><button class="accordion__trigger" aria-expanded="true">Revenue <svg class="icon accordion__icon"><use href="src/components/Icon/sprite.svg#i-chevron"/></svg></button><div class="accordion__panel">Revenue metrics per ref-06</div></div><div class="accordion__item"><button class="accordion__trigger" aria-expanded="false">Activity <svg class="icon accordion__icon"><use href="src/components/Icon/sprite.svg#i-chevron"/></svg></button><div class="accordion__panel" hidden>Activity dots</div></div></div><h3>TabBar — 5 glyphs, single dot</h3><div class="tabbar" role="tablist"><button class="tabbar__item tabbar__item--active"><span class="tabbar__dot"></span><svg class="icon"><use href="src/components/Icon/sprite.svg#i-search"/></svg>Search</button><button class="tabbar__item"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-check"/></svg>Done</button><button class="tabbar__item"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-plus"/></svg>Add</button><button class="tabbar__item"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-calendar"/></svg>Cal</button><button class="tabbar__item"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-user"/></svg>You</button></div></div></div>
+<div class="frame" data-panel="overlays" hidden><div class="pad">
+<h3>Overlays — shared focus-trap, esc, layering</h3>
+<div class="row"><button class="btn btn--primary" data-overlay-target="demo-modal">Modal</button><button class="btn btn--secondary" data-overlay-target="demo-drawer">Drawer</button><button class="btn btn--ghost" data-overlay-target="demo-menu">Menu</button><button class="btn btn--ghost" id="tip-btn" aria-describedby="tip-1">Tooltip</button><button class="btn btn--ghost" data-overlay-target="demo-pop">Popover</button><button class="btn btn--secondary" data-overlay-target="demo-toast">Toast</button></div>
+<div id="demo-modal" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="overlay__content"><div class="overlay__header"><h3 id="modal-title" class="overlay__title">Achievement unlocked</h3><button class="overlay__close" data-overlay-close aria-label="Close">✕</button></div><p class="meta">Rock Solid Goals — single Spline gem hue-rotate. Mood quarantined.</p><div class="row" style="margin-top:12px"><button class="btn btn--primary" data-overlay-close>Continue</button></div></div></div>
+<div id="demo-drawer" class="drawer" hidden role="dialog" aria-modal="true" aria-label="Filters"><div style="padding:var(--spacing-4)"><div class="row" style="justify-content:space-between"><strong>Filters</strong><button class="overlay__close" data-overlay-close>✕</button></div><p class="meta" style="margin-top:8px">Drawer — filter chips inside</p></div></div>
+<div id="demo-pop" class="popover" hidden role="dialog" aria-label="Popover"><p class="meta">Popover — re-center · <button class="btn btn--primary btn--sm" data-overlay-close>Got it</button></p></div>
+<div id="demo-menu" class="menu" hidden role="menu"><button class="menu__item" role="menuitem">View profile</button><button class="menu__item" role="menuitem">Share</button><button class="menu__item" role="menuitem" data-overlay-close>Close</button></div>
+<div id="tip-1" class="tooltip" role="tooltip" hidden>Tooltip — accessible name required</div>
+<div id="demo-toast" class="toast" hidden role="status" aria-live="polite">Saved — toast</div>
+</div></div>
 </div>
 </div>
 </div>
-<p class="meta" style="text-align:center;margin-top:16px">Desktop DS · Left tabs switch sections · Each panel prototypes in 390px mobile frame · <a href="http://127.0.0.1:5201/gallery.html">gallery.html</a></p>
+<p class="meta" style="text-align:center;margin-top:16px">Desktop DS · Left tabs switch sections · Each panel prototypes full-width · <a href="http://127.0.0.1:5201/gallery.html">gallery.html</a> · Phases 7–9</p>
 <script src="src/components/Button/button.js"></script>
-<script>
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('tab--active'));
-  b.classList.add('tab--active');
-  const t=b.dataset.tab;
-  document.querySelectorAll('[data-panel]').forEach(p=>p.hidden = p.dataset.panel!==t);
-}));
-</script>
+<script type="module" src="src/components/Overlay/overlay.js"></script>
+<script>document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('tab--active'));b.classList.add('tab--active');document.querySelectorAll('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==b.dataset.tab)}));document.querySelectorAll('.accordion__trigger').forEach(b=>b.addEventListener('click',()=>{const it=b.closest('.accordion__item');const o=it.classList.toggle('accordion__item--open');b.setAttribute('aria-expanded',o);it.querySelector('.accordion__panel').hidden=!o}));const tip=document.getElementById('tip-1'),btn=document.getElementById('tip-btn');if(btn){btn.addEventListener('mouseenter',()=>{tip.hidden=false;tip.classList.add('tooltip--visible')});btn.addEventListener('mouseleave',()=>{tip.hidden=true;tip.classList.remove('tooltip--visible')})}</script>
 </body>
 </html>

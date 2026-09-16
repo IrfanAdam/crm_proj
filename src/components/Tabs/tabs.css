@@ -1,0 +1,6 @@
+.tabs{display:flex;gap:var(--spacing-2);border-bottom:1px solid var(--border-thin);overflow-x:auto}
+.tab__trigger{padding:var(--spacing-2) var(--spacing-3);background:transparent;border:none;border-bottom:2px solid transparent;font-family:var(--font-family-sans);font-size:var(--font-size-sm);font-weight:500;color:var(--text-muted);cursor:pointer;white-space:nowrap;transition:var(--transition-fast)}
+.tab__trigger:hover{color:var(--text-primary)}
+.tab__trigger--active{color:var(--text-primary);border-bottom-color:var(--primitive-sapphire-ui-500)}
+.tab__trigger:focus-visible{outline:2px solid var(--primitive-sapphire-ui-400);outline-offset:2px}
+.tab__panel{padding:var(--spacing-4)} .tab__panel[hidden]{display:none}

@@ -1,0 +1,7 @@
+.tabbar{display:flex;justify-content:space-around;align-items:center;height:56px;background:var(--bg-surface);border-top:1px solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden}
+.tabbar__item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;padding:var(--spacing-2);position:relative;font-size:10px;font-weight:500}
+.tabbar__item .icon{width:20px;height:20px}
+.tabbar__item--active{color:var(--primitive-sapphire-ui-500)}
+.tabbar__dot{position:absolute;top:6px;width:6px;height:6px;background:var(--primitive-sapphire-ui-500);border-radius:var(--radius-full);display:none}
+.tabbar__item--active .tabbar__dot{display:block}
+.tabbar__item:focus-visible{outline:2px solid var(--primitive-sapphire-ui-400);outline-offset:-2px}

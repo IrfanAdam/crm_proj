@@ -1,0 +1,5 @@
+.breadcrumbs{display:flex;align-items:center;gap:var(--spacing-2);flex-wrap:wrap;font-size:var(--font-size-sm);color:var(--text-muted)}
+.breadcrumbs a{color:var(--text-secondary);text-decoration:none}
+.breadcrumbs a:hover{color:var(--text-primary);text-decoration:underline}
+.breadcrumbs__current{color:var(--text-primary);font-weight:500}
+.breadcrumbs__sep{color:var(--text-muted);user-select:none}
