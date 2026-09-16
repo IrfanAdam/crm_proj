@@ -100,4 +100,4 @@ Frosted-glass orbs, pink/purple/blue gradient spheres, `Bubble / Stand Out / Bre
 
 Append-only intake: drop new refs into `design-system/references/` as `ref-NN-slug.png`, log in `REGISTRY.md` (subject, phases touched, supersedes?), then open a dated polish pass against the affected phase MD + `DESIGN.md` (bump version, re-lint). Never edit a phase MD's locked decisions without a new registry row. Spec: `design-system/references/REGISTRY.md`.
 
-*Shipped in pending · Tasks 12–14 · phase-5.*
+*Shipped in 698a536 · Tasks 12–14 · phase-5.*
