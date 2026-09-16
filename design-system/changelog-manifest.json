@@ -1,0 +1,59 @@
+{
+  "generated": "2026-09-16T13:53:24.576Z",
+  "continuation": "20260909_145218_9888b1",
+  "plans": [
+    "2026-09-16_180000-crm-design-system.md",
+    "2026-09-16_193500-full-publishable-design-system.md"
+  ],
+  "commits": [
+    {
+      "sha": "31f35d7",
+      "full": "31f35d71957bc591d7e57cb5b82211bfdf41b43c",
+      "date": "2026-09-16",
+      "subject": "Phase 6: token pipeline hardening — DTCG source, generated CSS, themes, gates",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-6"
+    },
+    {
+      "sha": "698a536",
+      "full": "698a53662d32465a5c1eedb012681792ece8d0a6",
+      "date": "2026-09-16",
+      "subject": "Phases 4+5: lock funnel states, transient/temporal, reports, motion, gems, mood to tokens",
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "#phase-4"
+    },
+    {
+      "sha": "f0175f5",
+      "full": "f0175f56b3f9731b99399af05542e9d28d13da09",
+      "date": "2026-09-16",
+      "subject": "Phase 3: lock chips/pills/bars/cards/nav to tokens, add status-pill-new",
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "#phase-3"
+    },
+    {
+      "sha": "8eb6000",
+      "full": "8eb6000d6deab9fe19d957e0c118a8628006ff04",
+      "date": "2026-09-16",
+      "subject": "Phase 2: lock type/spacing/radii to tokens, add breakpoint mapping",
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "#phase-2"
+    },
+    {
+      "sha": "8eeebc5",
+      "full": "8eeebc5726039bc4591337cbebd7829c55c0b798",
+      "date": "2026-09-16",
+      "subject": "Phase 1: house ink/dim primitives, zero raw hex, lint gate green",
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "#phase-1"
+    },
+    {
+      "sha": "9891f1d",
+      "full": "9891f1d5441ce5bcc6d56a12f79410574f27f558",
+      "date": "2026-09-16",
+      "subject": "Fresh CRM design system exercise: plan, DESIGN.md, phase docs, references",
+      "plan": null,
+      "anchor": null
+    }
+  ],
+  "wip": []
+}

@@ -29,7 +29,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Design System, Tooling*
 
-*Shipped in pending · Tasks 15–17 · phase-6.*
+*Shipped in 31f35d7 · Tasks 15–17 · phase-6.*
 
 ### Task 15: DTCG token source + generated CSS ✓ done
 
