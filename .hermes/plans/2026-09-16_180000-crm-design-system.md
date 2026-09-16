@@ -62,7 +62,7 @@ Opportunity card anatomy (org logo → name → product → stage + chance + val
 
 Bottom tab (5 glyphs, single active dot, no labels); map card with clustered count badges + `3 prospects nearby →` pill + recenter control. Witness: ref-01. Spec: same MD, § Navigation.
 
-*Shipped in pending · Tasks 6–8 · phase-3.*
+*Shipped in f0175f5 · Tasks 6–8 · phase-3.*
 
 ## Phase 4 — Patterns & System Logic {#phase-4}
 
