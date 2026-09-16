@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ALPHA CRM — Gallery Phase 7</title>
+<link rel="stylesheet" href="design-system/tokens.css"/>
+<link rel="stylesheet" href="src/components/Button/button.css"/>
+<link rel="stylesheet" href="src/components/Chip/chip.css"/>
+<link rel="stylesheet" href="src/components/Badge/badge.css"/>
+<link rel="stylesheet" href="src/components/StatusPill/status-pill.css"/>
+<link rel="stylesheet" href="src/components/Avatar/avatar.css"/>
+<link rel="stylesheet" href="src/components/Icon/icon.css"/>
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary);padding:24px}
+h1{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);letter-spacing:-.01em}h2{font-size:var(--font-size-xl);font-weight:700;margin:20px 0 10px}h3{font-size:var(--font-size-sm);font-weight:600;color:var(--text-muted);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.meta{color:var(--text-secondary);font-size:var(--font-size-sm)}.frame{width:min(390px,100%);margin:0 auto;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+.pad{padding:var(--spacing-4)} .row{display:flex;gap:var(--spacing-2);flex-wrap:wrap;align-items:center}
+a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
+</style>
+</head>
+<body>
+<h1>ALPHA CRM <span class="meta">— Gallery · Phase 7 atoms</span></h1>
+<p class="meta" style="margin:6px 0 16px">Tokens via <code>design-system/tokens.css</code> · Sapphire is sole action hue · <a href="preview.html">preview.html</a> · <a href="DESIGN.md">DESIGN.md</a></p>
+<div class="frame"><div class="pad">
+<h3>Button — primary / secondary / ghost / destructive</h3>
+<div class="row"><button class="btn btn--primary">Primary</button><button class="btn btn--secondary">Secondary</button><button class="btn btn--ghost"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-chevron"/></svg> Ghost</button><button class="btn btn--destructive">Destructive</button></div>
+<h3>Sizes + states</h3>
+<div class="row"><button class="btn btn--primary btn--sm">Small</button><button class="btn btn--primary btn--md">Medium</button><button class="btn btn--primary btn--lg">Large</button><button class="btn btn--primary" disabled>Disabled</button><button class="btn btn--primary" data-loading>Loading (tap)</button><a href="#" class="btn btn--primary">Link button</a><button class="btn btn--primary"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-plus"/></svg> Icon</button></div>
+<h3>Focus ring — tab to see 2px Sapphire outline</h3>
+<h3>Chips — filter (tap to toggle active)</h3>
+<div class="row"><button class="chip chip--active" data-toggle>Value range</button><button class="chip" data-toggle>Stages</button><button class="chip" data-toggle>Economic 4 <span class="chip__count">4</span></button><button class="chip" disabled>Disabled</button></div>
+<h3>Badges — count</h3>
+<div class="row"><span class="badge">3</span><span class="badge badge--neutral">12</span><span class="badge badge--success">9</span><span class="badge badge--warning">!</span><span class="badge badge--danger">!</span></div>
+<h3>Status pills — P3 witnesses</h3>
+<div class="row"><span class="status-pill status-pill--accepted">Accepted</span><span class="status-pill status-pill--progress">In Progress</span><span class="status-pill status-pill--review">Review</span><span class="status-pill status-pill--new">New</span><span class="status-pill status-pill--warning">Caution</span></div>
+<h3>Avatar + stack</h3>
+<div class="row"><span class="avatar">OA</span><span class="avatar"><img src="https://i.pravatar.cc/80?img=5" alt="avatar"/></span><span class="avatar avatar--lg avatar--online">AJ</span><span class="avatar-stack"><span class="avatar">OA</span><span class="avatar" style="background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700)">+2</span><span class="avatar">MK</span></span></div>
+<h3>Icons — single-stroke 1.5px</h3>
+<div class="row" style="color:var(--text-secondary)"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-search"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-check"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-x"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-mail"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-phone"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-calendar"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-map"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-user"/></svg><span class="meta"> 16px · currentColor · 1.5px</span></div>
+</div></div>
+<div class="frame" data-theme="dark" style="margin-top:16px;background:var(--bg-primary)"><div class="pad"><h3 style="color:var(--text-primary)">Dark proof — same atoms on dark wrapper</h3><div class="row"><button class="btn btn--primary">Primary</button><button class="btn btn--secondary">Secondary</button><span class="status-pill status-pill--accepted">Accepted</span><span class="badge">3</span></div></div></div>
+<p class="meta" style="margin-top:16px">Keyboard: Tab/Shift+Tab · Focus ring 2px Sapphire · P3 pixel-equivalent witnesses · Phase 7 Tasks 18–19 · Sapphire-action law enforced via token refs only</p>
+<script src="src/components/Button/button.js"></script>
+</body>
+</html>

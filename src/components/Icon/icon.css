@@ -1,0 +1,5 @@
+.icon{width:16px;height:16px;display:inline-block;vertical-align:middle;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 16px}
+.icon--sm{width:14px;height:14px}
+.icon--md{width:16px;height:16px}
+.icon--lg{width:20px;height:20px}
+.icon--xl{width:24px;height:24px}

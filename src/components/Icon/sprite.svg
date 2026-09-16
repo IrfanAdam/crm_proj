@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></symbol>
+<symbol id="i-check" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></symbol>
+<symbol id="i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4L4 12"/></symbol>
+<symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4"/><path d="M10 10l3 3"/></symbol>
+<symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></symbol>
+<symbol id="i-mail" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 4l6 5 6-5"/></symbol>
+<symbol id="i-phone" viewBox="0 0 16 16"><path d="M5 2h5l1 2-2 2 2 4 2-1 2 1v3l-2 1c-3 0-7-4-7-7L6 2z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></symbol>
+<symbol id="i-map" viewBox="0 0 16 16"><path d="M2 12l4-2 4 2 4-2V2l-4 2-4-2-4 2z"/><path d="M6 2v8M10 4v8"/></symbol>
+<symbol id="i-user" viewBox="0 0 16 16"><circle cx="8" cy="5" r="3"/><path d="M3 13c0-3 2-5 5-5s5 2 5 5"/></symbol>
+</svg>
