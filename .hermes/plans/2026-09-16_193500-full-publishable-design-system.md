@@ -77,7 +77,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component*
 
-*Shipped in pending · Tasks 20–21 · phase-8.*
+*Shipped in c8ece19 · Tasks 20–21 · phase-8.*
 
 ### Task 20: Text inputs, select, search, textarea ✓ done
 
