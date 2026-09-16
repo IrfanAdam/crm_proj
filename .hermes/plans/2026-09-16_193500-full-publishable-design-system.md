@@ -177,19 +177,21 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Design System, Tooling*
 
-### Task 30: Gallery docs + per-component contract
+*Shipped in pending · Tasks 30–32 · phase-13.*
+
+### Task 30: Gallery docs + per-component contract ✓ done
 
 **Objective:** Prototype gallery (mobile-frame demo pages extending the `preview.html` approach) with usage, do/don't, witness ref, and a11y notes for every component; changelog Miller columns resolve per phase.
 **Files:** Create `prototype/gallery/*` per-component frame demos + `*.md` contract docs.
 **Verify:** Every component has frame demo + contract; token lint + build green.
 
-### Task 31: Full a11y + responsive audit
+### Task 31: Full a11y + responsive audit ✓ done
 
 **Objective:** WCAG 2.2 AA pass: keyboard map, focus order, names/roles, color-independence (status never color-alone), 360px→desktop raw-px breakpoints.
 **Files:** Create `tests/a11y/*`, `docs/a11y-statement.md`.
 **Verify:** axe suite 0 violations; manual keyboard walkthrough logged per template.
 
-### Task 32: Version + release-ready handoff
+### Task 32: Version + release-ready handoff ✓ done
 
 **Objective:** `DESIGN.md` alpha→beta bump + re-lint; release handoff bundle (tokens artifact, gallery, semver-style changelog, migration notes, Figma parity checklist, contribution + registry governance docs). npm/framework packaging explicitly out of scope until the framework is chosen.
 **Files:** Modify `DESIGN.md`; Create `CHANGELOG.md`, `CONTRIBUTING.md`, `docs/figma-parity.md`.

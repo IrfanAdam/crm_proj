@@ -1,5 +1,5 @@
 ---
-version: alpha
+version: beta
 name: ALPHA CRM
 description: Field-sales CRM — light-first, typography-driven Operate/Monitor surfaces with a single Sapphire action hue, gem-category gamification, and transient-vs-temporal data logic.
 colors:
