@@ -55,7 +55,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component*
 
-*Shipped in pending · Tasks 18–19 · phase-7.*
+*Shipped in 4e83670 · Tasks 18–19 · phase-7.*
 
 ### Task 18: Button family + link + icon-button ✓ done
 
