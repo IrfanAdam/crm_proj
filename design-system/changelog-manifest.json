@@ -1,11 +1,27 @@
 {
-  "generated": "2026-09-16T14:10:46.192Z",
+  "generated": "2026-09-16T14:29:43.810Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md"
   ],
   "commits": [
+    {
+      "sha": "20ab71c",
+      "full": "20ab71c716bf164561d453724d076ad69b311b12",
+      "date": "2026-09-16",
+      "subject": "Phase 9: navigation & overlays — Tabs/Breadcrumbs/Pagination/Accordion/TabBar + Modal/Drawer/Popover/Tooltip/Menu/Toast",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "d3eee8e",
+      "full": "d3eee8ec313b258d68d06afdf97328723591e0ab",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest + Shipped c8ece19",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-8"
+    },
     {
       "sha": "c8ece19",
       "full": "c8ece1927b759418e8f90bdfe13ae9bfb8b06e58",

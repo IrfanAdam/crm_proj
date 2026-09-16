@@ -97,7 +97,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component, Layout*
 
-*Shipped in pending · Tasks 22–23 · phase-9.*
+*Shipped in 20ab71c · Tasks 22–23 · phase-9.*
 
 ### Task 22: Tabs, breadcrumbs, pagination, accordion, bottom-tab ✓ done
 
