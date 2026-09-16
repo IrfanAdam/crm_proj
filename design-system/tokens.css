@@ -190,6 +190,10 @@
   /* Functional accents */
   --primitive-green-accent: var(--primitive-green-300);
   --primitive-orange-accent: var(--primitive-orange-400);
+
+  /* Ink primitives (fixed text steps with no ramp slot) */
+  --primitive-ink: #222222;
+  --primitive-dim: #737373;
 }
 
 /* ========================================== */
@@ -216,10 +220,10 @@
   --border-accent: var(--primitive-gray-900);
 
   /* Typography */
-  --text-primary: #222222;
+  --text-primary: var(--primitive-ink);
   --text-secondary: var(--primitive-gray-700);
   --text-muted: var(--primitive-gray-300);
-  --text-dim: #737373;
+  --text-dim: var(--primitive-dim);
   --text-accent: var(--primitive-gray-900);
 
   /* Functional Accents */

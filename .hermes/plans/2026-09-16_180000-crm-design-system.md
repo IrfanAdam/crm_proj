@@ -12,15 +12,15 @@
 
 Lock the single-source token space from ref-07 (color ramps board).
 
-### Task 1: Audit `tokens.css` against ref-07 ramps
+### Task 1: Audit `tokens.css` against ref-07 ramps ✓ done
 
 Map every ramp in `ref-07-tokens-color-ramps.png` (Citrine/Topaz golds, Red Beryl/Ruby reds-pinks, Amethyst purples, Neutrals, Orange/Red/Green messaging, Sapphire UI + Sapphire gamification) to Tier-1 primitives. Record gaps: raw leaks `--text-primary: #222222` and `--text-dim: #737373` have no primitive slot. Spec: `design-system/docs/phase-1-foundations-tokens.md`.
 
-### Task 2: Semantic mapping (light-first, dark wrapper)
+### Task 2: Semantic mapping (light-first, dark wrapper) ✓ done
 
 Confirm Tier-2 roles (`--bg-primary/surface`, `--text-primary/secondary/muted`, `--border-thin/medium`, `--color-accent-*`, `--shadow-*`) resolve per ref-01/02/03 light screens and ref-11 dark cards. Rule: Sapphire `#218aea` is the ONLY action hue; gamification gems never color UI chrome. Spec: same MD, § Semantic.
 
-### Task 3: Author + lint `DESIGN.md`
+### Task 3: Author + lint `DESIGN.md` ✓ done
 
 Encode colors, Inter type scale, rounded, spacing, and 8 components with `{token}` references. Gate: `npx -y @google/design.md lint DESIGN.md` — zero errors, zero orphans;
 one contrast warning triaged as AA-large pass (goal-bar 4.14:1, large/bold

@@ -15,10 +15,11 @@ Witness: `../references/ref-07-tokens-color-ramps.png` (ramp board),
 | Amethyst 100–700 (`#f7eeff`→`#27004d`) | purples | goal bars, Amethyst gem |
 | Orange / Red / Green 100–700 | messaging | status pills, deltas |
 
-## Audit gaps (fix before lock)
+## Audit gaps (fixed, locked 2026-09-16)
 
-1. `--text-primary: #222222` and `--text-dim: #737373` are raw hex with no
-   primitive slot — house them (or nearest ramp step) before calling Tier 1 complete.
+1. ~~`--text-primary: #222222` and `--text-dim: #737373` raw hex~~ → housed as
+   `--primitive-ink` / `--primitive-dim`; Tier 2 now consumes via `var()`.
+   Zero raw hex outside `tokens.css` (verified via grep).
 2. `rgba()` washes (`--bg-surface-glass`, `--border-medium/thick`, shadows)
    live in `tokens.css`, which is correct — raw color is only forbidden
    *outside* it. No action.
