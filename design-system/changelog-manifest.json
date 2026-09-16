@@ -1,11 +1,27 @@
 {
-  "generated": "2026-09-16T14:52:23.617Z",
+  "generated": "2026-09-16T14:56:21.291Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md"
   ],
   "commits": [
+    {
+      "sha": "806c527",
+      "full": "806c527c9dc27019e50c22d56e27f26b85e77d02",
+      "date": "2026-09-16",
+      "subject": "Phase 13: docs, a11y audit, handoff — gallery contracts (12 md) + a11y WCAG 2.2 AA (audit + statement) + DESIGN beta + CHANGELOG/CONTRIBUTING/figma parity",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-13"
+    },
+    {
+      "sha": "2267a3a",
+      "full": "2267a3aef5999a5fd0b233080ee332382b0403a4",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest + Shipped 2c3f3a6",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-12"
+    },
     {
       "sha": "2c3f3a6",
       "full": "2c3f3a6a4f22ffdf7c2b0b0ecd2f39fe074aadcf",

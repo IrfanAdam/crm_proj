@@ -177,7 +177,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Design System, Tooling*
 
-*Shipped in pending · Tasks 30–32 · phase-13.*
+*Shipped in 806c527 · Tasks 30–32 · phase-13.*
 
 ### Task 30: Gallery docs + per-component contract ✓ done
 
