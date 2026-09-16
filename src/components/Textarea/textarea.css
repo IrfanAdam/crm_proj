@@ -1,0 +1,2 @@
+.textarea{width:100%}
+/* textarea uses .field__input as textarea element — see TextInput/text-input.css for base + textarea.field__input variant */

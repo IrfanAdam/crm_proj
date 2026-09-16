@@ -77,13 +77,15 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component*
 
-### Task 20: Text inputs, select, search, textarea
+*Shipped in pending · Tasks 20–21 · phase-8.*
+
+### Task 20: Text inputs, select, search, textarea ✓ done
 
 **Objective:** Label/help/error anatomy, prefix/suffix slots, full-pill vs rounded variants per P2 shape law.
 **Files:** Create `src/components/{TextInput,Select,Search,Textarea}/*`.
 **Verify:** Screen-reader label association tests; error + disabled + focus stories.
 
-### Task 21: Checkbox, radio, switch, slider
+### Task 21: Checkbox, radio, switch, slider ✓ done
 
 **Objective:** Boolean/choice controls sharing one focus-ring + motion token; timeline slider bars (P4) built on slider atom.
 **Files:** Create `src/components/{Checkbox,Radio,Switch,Slider}/*`.

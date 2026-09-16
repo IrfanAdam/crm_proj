@@ -1,0 +1,6 @@
+.select{position:relative}
+.select__input{width:100%;height:44px;padding:0 36px 0 var(--spacing-3);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm);color:var(--text-primary);-webkit-appearance:none;appearance:none;cursor:pointer;transition:var(--transition-fast)}
+.select__input:focus{outline:none;border-color:var(--primitive-sapphire-ui-400);box-shadow:0 0 0 3px var(--primitive-sapphire-ui-100)}
+.select__input:disabled{opacity:.5;cursor:not-allowed}
+.select__chevron{position:absolute;right:var(--spacing-3);top:50%;transform:translateY(-50%);pointer-events:none;color:var(--text-muted);width:16px;height:16px}
+.select--error .select__input{border-color:var(--primitive-red-400)}

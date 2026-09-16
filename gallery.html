@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ALPHA CRM — Gallery Phase 7</title>
+<title>ALPHA CRM — Gallery Phases 7–8</title>
 <link rel="stylesheet" href="design-system/tokens.css"/>
 <link rel="stylesheet" href="src/components/Button/button.css"/>
 <link rel="stylesheet" href="src/components/Chip/chip.css"/>
@@ -10,6 +10,13 @@
 <link rel="stylesheet" href="src/components/StatusPill/status-pill.css"/>
 <link rel="stylesheet" href="src/components/Avatar/avatar.css"/>
 <link rel="stylesheet" href="src/components/Icon/icon.css"/>
+<link rel="stylesheet" href="src/components/TextInput/text-input.css"/>
+<link rel="stylesheet" href="src/components/Select/select.css"/>
+<link rel="stylesheet" href="src/components/Search/search.css"/>
+<link rel="stylesheet" href="src/components/Checkbox/checkbox.css"/>
+<link rel="stylesheet" href="src/components/Radio/radio.css"/>
+<link rel="stylesheet" href="src/components/Switch/switch.css"/>
+<link rel="stylesheet" href="src/components/Slider/slider.css"/>
 <style>
 *{box-sizing:border-box;margin:0}body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary);padding:24px}
 h1{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);letter-spacing:-.01em}h2{font-size:var(--font-size-xl);font-weight:700;margin:20px 0 10px}h3{font-size:var(--font-size-sm);font-weight:600;color:var(--text-muted);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.04em}
@@ -19,7 +26,7 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 </style>
 </head>
 <body>
-<h1>ALPHA CRM <span class="meta">— Gallery · Phase 7 atoms</span></h1>
+<h1>ALPHA CRM <span class="meta">— Gallery · Phases 7–8</span></h1>
 <p class="meta" style="margin:6px 0 16px">Tokens via <code>design-system/tokens.css</code> · Sapphire is sole action hue · <a href="preview.html">preview.html</a> · <a href="DESIGN.md">DESIGN.md</a></p>
 <div class="frame"><div class="pad">
 <h3>Button — primary / secondary / ghost / destructive</h3>
@@ -37,9 +44,27 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 <div class="row"><span class="avatar">OA</span><span class="avatar"><img src="https://i.pravatar.cc/80?img=5" alt="avatar"/></span><span class="avatar avatar--lg avatar--online">AJ</span><span class="avatar-stack"><span class="avatar">OA</span><span class="avatar" style="background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700)">+2</span><span class="avatar">MK</span></span></div>
 <h3>Icons — single-stroke 1.5px</h3>
 <div class="row" style="color:var(--text-secondary)"><svg class="icon"><use href="src/components/Icon/sprite.svg#i-search"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-check"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-x"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-mail"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-phone"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-calendar"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-map"/></svg><svg class="icon"><use href="src/components/Icon/sprite.svg#i-user"/></svg><span class="meta"> 16px · currentColor · 1.5px</span></div>
+<h3>Form — text / search / select / textarea</h3>
+<div style="display:flex;flex-direction:column;gap:var(--spacing-3)">
+<label class="field"><span class="field__label">Opportunity name</span><span class="field__wrap"><input class="field__input" placeholder="e.g. Acme Corp"/><span class="field__suffix"><svg class="icon icon--sm"><use href="src/components/Icon/sprite.svg#i-x"/></svg></span></span><span class="field__help">Shown on opportunity card</span></label>
+<label class="field"><span class="field__label">Amount — error + prefix/suffix</span><span class="field__wrap"><span class="field__prefix">₹</span><input class="field__input field__input--error field__input--with-prefix" value="12,000"/><span class="field__suffix">L</span></span><span class="field__error">Enter a valid amount</span></label>
+<div class="field"><span class="field__label">Stage</span><div class="select"><select class="select__input" aria-label="Stage"><option>Prospecting</option><option>Qualification</option><option>Proposal</option></select><svg class="select__chevron icon"><use href="src/components/Icon/sprite.svg#i-chevron"/></svg></div></div>
+<div class="field"><span class="field__label">Search — pill variant</span><label class="search"><svg class="icon search__icon"><use href="src/components/Icon/sprite.svg#i-search"/></svg><input class="search__input" placeholder="Search opportunities"/><button class="search__clear" aria-label="Clear"><svg class="icon icon--sm"><use href="src/components/Icon/sprite.svg#i-x"/></svg></button></label></div>
+<label class="field"><span class="field__label">Notes</span><textarea class="field__input" rows="3" placeholder="Add context — full-pill search vs 12px inputs per P2"></textarea><span class="field__help">Full-pill vs rounded per P2 shape law</span></label>
+<label class="field"><span class="field__label">Disabled</span><input class="field__input" placeholder="Disabled" disabled/></label>
+</div>
+<h3>Choice — checkbox / radio / switch / slider</h3>
+<div style="display:flex;flex-direction:column;gap:var(--spacing-3)">
+<label class="check"><input type="checkbox" checked/><span class="check__box"><svg class="check__icon icon"><use href="src/components/Icon/sprite.svg#i-check"/></svg></span> Remember stage filter</label>
+<label class="check"><input type="checkbox"/><span class="check__box"><svg class="check__icon icon"><use href="src/components/Icon/sprite.svg#i-check"/></svg></span> Include closed</label>
+<div style="display:flex;gap:var(--spacing-4)"><label class="radio"><input type="radio" name="r1" checked/><span class="radio__dot"></span> Day</label><label class="radio"><input type="radio" name="r1"/><span class="radio__dot"></span> Week</label><label class="radio"><input type="radio" name="r1"/><span class="radio__dot"></span> Month</label></div>
+<label class="switch"><input type="checkbox" checked/><span class="switch__track"><span class="switch__thumb"></span></span> Notify on close</label>
+<label class="switch"><input type="checkbox"/><span class="switch__track"><span class="switch__thumb"></span></span> Dark preview</label>
+<div><span class="field__label">Timeline slider (P4)</span><input type="range" class="slider" min="0" max="100" value="45" aria-label="timeline"/><div style="margin-top:var(--spacing-2)"><input type="range" class="slider slider--segments" min="0" max="100" value="60" aria-label="segmented"/></div><span class="meta">Shared focus-ring + motion token — respects prefers-reduced-motion</span></div>
+</div>
 </div></div>
 <div class="frame" data-theme="dark" style="margin-top:16px;background:var(--bg-primary)"><div class="pad"><h3 style="color:var(--text-primary)">Dark proof — same atoms on dark wrapper</h3><div class="row"><button class="btn btn--primary">Primary</button><button class="btn btn--secondary">Secondary</button><span class="status-pill status-pill--accepted">Accepted</span><span class="badge">3</span></div></div></div>
-<p class="meta" style="margin-top:16px">Keyboard: Tab/Shift+Tab · Focus ring 2px Sapphire · P3 pixel-equivalent witnesses · Phase 7 Tasks 18–19 · Sapphire-action law enforced via token refs only</p>
+<p class="meta" style="margin-top:16px">Keyboard: Tab/Shift+Tab · Focus ring 2px Sapphire · P3 pixel-equivalent witnesses · Phases 7–8 · Sapphire-action law enforced via token refs only</p>
 <script src="src/components/Button/button.js"></script>
 </body>
 </html>

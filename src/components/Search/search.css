@@ -1,0 +1,6 @@
+.search{position:relative;display:flex;align-items:center}
+.search__input{width:100%;height:44px;padding:0 var(--spacing-3) 0 36px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);font-size:var(--font-size-sm);color:var(--text-primary);transition:var(--transition-fast)}
+.search__input::placeholder{color:var(--text-muted)}
+.search__input:focus{outline:none;border-color:var(--primitive-sapphire-ui-400);box-shadow:0 0 0 3px var(--primitive-sapphire-ui-100)}
+.search__icon{position:absolute;left:var(--spacing-3);color:var(--text-muted);pointer-events:none}
+.search__clear{position:absolute;right:var(--spacing-2);width:24px;height:24px;border:none;background:var(--bg-interactive);border-radius:var(--radius-full);display:inline-flex;align-items:center;justify-content:center;color:var(--text-muted);cursor:pointer}
