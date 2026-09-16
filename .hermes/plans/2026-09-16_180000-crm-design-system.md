@@ -50,15 +50,15 @@ Inter only; title 32 / card title 20 / body 16 / meta 12–14; 4px base grid; ra
 
 Build each atom from its reference witness.
 
-### Task 6: Chips, pills, bars
+### Task 6: Chips, pills, bars ✓ done
 
 Filter chips (`Value range`, `Stages`, `Economic 4`), status pills (`ACCEPTED` green / `IN PROGRESS` blue / `REVIEW` blue / `NEW`), goal bars (purple pill, `23 Wed` left + `72%` right, `1.4x` gem variant), timeline slider bars. Witnesses: ref-01, ref-02, ref-06, ref-11. Spec: `design-system/docs/phase-3-components.md`.
 
-### Task 7: Cards (opportunity, funnel, profile)
+### Task 7: Cards (opportunity, funnel, profile) ✓ done
 
 Opportunity card anatomy (org logo → name → product → stage + chance + value → segmented progress → contacts → last-contact/distance → mail/calendar/phone actions); funnel summary card (funnel glyph + `Last Refreshed` + pipelines/demographics + CR/RR/CSAT/NPS strip); profile card (Olivia Jein pattern: avatar, score, projects, return, skill rows). Witnesses: ref-01, ref-02, ref-03, ref-11. Spec: same MD, § Cards.
 
-### Task 8: Navigation + map prospect pill
+### Task 8: Navigation + map prospect pill ✓ done
 
 Bottom tab (5 glyphs, single active dot, no labels); map card with clustered count badges + `3 prospects nearby →` pill + recenter control. Witness: ref-01. Spec: same MD, § Navigation.
 

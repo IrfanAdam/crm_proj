@@ -79,6 +79,11 @@ components:
     textColor: "#FFFFFF"
     rounded: "{rounded.pill}"
     padding: 8px
+  status-pill-new:
+    backgroundColor: "{colors.primary}"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.pill}"
+    padding: 8px
   caution-chip:
     backgroundColor: "{colors.warning}"
     textColor: "{colors.primary}"
