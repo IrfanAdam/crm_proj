@@ -42,7 +42,7 @@ Canonical order: page title (32/bold, left) + avatar (right) → KPI strip (`4/3
 
 Inter only; title 32 / card title 20 / body 16 / meta 12–14; 4px base grid; radii: cards 16–24, chips full-pill, goal bars full-pill; hairline borders, no decorative shadows on UI cards (elevation = hairline + surface step). Spec: same MD, § Scales.
 
-*Shipped in pending · Tasks 4–5 · phase-2.*
+*Shipped in 8eb6000 · Tasks 4–5 · phase-2.*
 
 ## Phase 3 — Components {#phase-3}
 
