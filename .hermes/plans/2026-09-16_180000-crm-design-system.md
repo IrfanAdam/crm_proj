@@ -82,7 +82,7 @@ From ref-05: Activities are transient, Goals are temporal, Funnel is transient b
 
 Blob (activity dots) vs Goals (bars) across Day/Week/Month/Quarter/Year from ref-06; list-pattern state chips (Business/Performance/Productivity). Spec: same MD, § Reports.
 
-*Shipped in pending · Tasks 9–11 · phase-4.*
+*Shipped in 698a536 · Tasks 9–11 · phase-4.*
 
 ## Phase 5 — Motion, Gamification & Polish Loop {#phase-5}
 
