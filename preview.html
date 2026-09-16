@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ALPHA CRM — Design System Preview</title>
+<link rel="stylesheet" href="design-system/tokens.css"/>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary);padding:32px;max-width:1100px;margin:0 auto}
+h1{font-size:var(--font-size-3xl);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+h2{font-size:var(--font-size-xl);font-weight:700;margin:32px 0 12px}
+h3{font-size:var(--font-size-md);font-weight:600;margin:20px 0 8px}
+.meta{color:var(--text-secondary);font-size:var(--font-size-sm)}
+.card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-4);margin:12px 0}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-full);padding:6px 12px;font-size:var(--font-size-sm);font-weight:500;border:1px solid var(--border-thin)}
+.swatch{width:100%;height:48px;border-radius:var(--radius-md);border:1px solid var(--border-thin)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.btn{background:var(--primitive-sapphire-ui-500);color:var(--primitive-gray-white);border:none;border-radius:var(--radius-md);padding:12px 20px;font-weight:600;cursor:pointer}
+.bar{height:28px;border-radius:var(--radius-full);background:var(--primitive-amethyst-400);color:var(--primitive-gray-white);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:var(--font-size-sm);font-weight:600}
+.bar-gem{background:var(--primitive-amethyst-700)}
+a{color:var(--primitive-sapphire-ui-400)}
+code{font-size:12px;background:var(--primitive-neutral-light-300);padding:2px 6px;border-radius:4px}
+</style>
+</head>
+<body>
+<h1>ALPHA CRM <span class="meta">— light-first, Operate / Monitor</span></h1>
+<p class="meta" style="margin:8px 0 20px">Preview reads live from <code>design-system/tokens.css</code> + <code>DESIGN.md</code>. Phases 1–5 shipped (tokens → hierarchy → components → patterns → motion).</p>
+
+<h2>Colors (Tier 1 primitives)</h2>
+<div class="grid">
+  <div><div class="swatch" style="background:var(--primitive-neutral-light-200)"></div><div class="meta">neutral-light-200 #fafafa</div></div>
+  <div><div class="swatch" style="background:var(--primitive-gray-white)"></div><div class="meta">surface #fff</div></div>
+  <div><div class="swatch" style="background:var(--primitive-ink)"></div><div class="meta">ink #222222</div></div>
+  <div><div class="swatch" style="background:var(--primitive-sapphire-ui-400)"></div><div class="meta">sapphire 400 #218aea</div></div>
+  <div><div class="swatch" style="background:var(--primitive-citrine-400)"></div><div class="meta">citrine 400 #ffb01e</div></div>
+  <div><div class="swatch" style="background:var(--primitive-red-beryl-400)"></div><div class="meta">red-beryl 400 #ea005e</div></div>
+  <div><div class="swatch" style="background:var(--primitive-amethyst-400)"></div><div class="meta">amethyst 400 #a54cff</div></div>
+  <div><div class="swatch" style="background:var(--primitive-green-300)"></div><div class="meta">success #18d824</div></div>
+</div>
+
+<h2>Typography & Spacing</h2>
+<div class="card"><div style="font-size:var(--font-size-3xl);font-weight:700">Title 32 / bold (3xl)</div><div style="font-size:var(--font-size-xl);font-weight:700">Card title 20 / bold (xl)</div><div style="font-size:var(--font-size-md)">Body 16 / regular (md)</div><div style="font-size:var(--font-size-sm);color:var(--text-secondary)">Meta 14 / medium (sm)</div><div style="font-size:var(--font-size-xs);color:var(--text-muted)">Micro 12 (xs) — 4px grid: spacing-4=16 pad, spacing-6=24, spacing-8=32</div></div>
+
+<h2>Components</h2>
+<div class="card"><button class="btn">button-primary — Sapphire 500</button> <span class="pill" style="background:var(--bg-surface)">filter-chip — neutral / ink</span> <span class="pill" style="background:var(--primitive-green-300);color:var(--primitive-ink)">ACCEPTED</span> <span class="pill" style="background:var(--primitive-sapphire-ui-500);color:var(--primitive-gray-white)">IN PROGRESS</span> <span class="pill" style="background:var(--primitive-neutral-dark-600);color:var(--primitive-gray-white)">NEW</span></div>
+<div class="bar" style="margin:12px 0"><span>23 Wed</span><span>72%</span></div>
+<div class="bar bar-gem" style="margin:12px 0"><span>23 Wed — goal-bar-gem (700)</span><span>1.4x ◇</span></div>
+<div class="card"><strong>Opportunity card</strong> <span class="meta">— radius 16 / hairline / white on #fafafa</span><br><span class="meta">org logo → Org Name (20/bold) → Product (muted) → stage / 73% chance (red-beryl) / Rs 3.2L (sapphire) → 5-seg progress → contacts → last contact / distance → actions</span></div>
+<div class="card"><strong>Funnel summary</strong> <span class="meta">— glyph sapphire-100/500 + Last Refreshed + Pipelines/Demographies + CR/RR/CSAT/NPS strip</span></div>
+
+<h2>Hierarchy (law)</h2>
+<ol class="meta" style="padding-left:20px;line-height:1.8">
+  <li>Title 32/bold + avatar — KPI strip (4/32 closed +2%) — hero (bar/map/3D funnel) — delta line — filter chips — cards — bottom tab (5 glyphs, dot)</li>
+  <li>Operate vs Monitor — flat hairline cards, no shadows; depth only in funnel/gems</li>
+</ol>
+
+<h2>Patterns & Motion</h2>
+<div class="meta">Funnel 7 states (elastic spring → card expand) · Activities transient / Goals temporal / Funnel transient+trends · Blob dots vs dark pill bars · Transitions: fast 150 / normal 250 / spring 400 — honors <code>prefers-reduced-motion</code> · Single Spline gem recolored via hue-rotate · Mood orbs/iridescent cubes brand-only</div>
+
+<h2>Docs</h2>
+<ul class="meta" style="padding-left:20px;line-height:1.8">
+  <li><a href="DESIGN.md">DESIGN.md</a> — lint: <code>npx -y @google/design.md lint DESIGN.md</code> (0 errors)</li>
+  <li><a href="design-system/docs/phase-1-foundations-tokens.md">phase-1 foundations</a> · <a href="design-system/docs/phase-2-hierarchy-layout.md">phase-2 hierarchy</a> · <a href="design-system/docs/phase-3-components.md">phase-3 components</a> · <a href="design-system/docs/phase-4-patterns.md">phase-4 patterns</a> · <a href="design-system/docs/phase-5-motion-gamification.md">phase-5 motion</a></li>
+  <li><a href="design-system/tokens.css">tokens.css</a> — Tier 1→2 (+ references)</li>
+  <li><a href="design-system/references/">references</a> + <a href="design-system/references/REGISTRY.md">REGISTRY.md</a></li>
+</ul>
+
+<p class="meta" style="margin-top:32px;border-top:1px solid var(--border-thin);padding-top:12px">Served locally from <code>crm_proj</code> — close with Ctrl+C in terminal.</p>
+</body>
+</html>
