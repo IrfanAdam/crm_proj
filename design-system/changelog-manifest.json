@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T15:13:01.130Z",
+  "generated": "2026-09-16T15:22:37.541Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,14 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "1c3a820",
+      "full": "1c3a8209879881640ff1e3f9bd71785f2e8a8a3f",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest + Shipped 1c8bd7b",
+      "plan": "2026-09-16_203500-ds-polish.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "3b728a0",
       "full": "3b728a0446a97fcd201e4c9a4a244cce13feae19",
