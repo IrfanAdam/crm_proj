@@ -1,0 +1,7 @@
+.funnel-card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-4);display:flex;gap:var(--spacing-4);align-items:center}
+.funnel-card__glyph{width:48px;height:48px;background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-500);display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-lg);flex:0 0 48px}
+.funnel-card__body{flex:1}
+.funnel-card__title{font-size:var(--font-size-md);font-weight:700;color:var(--text-primary)}
+.funnel-card__meta{font-size:var(--font-size-xs);color:var(--text-muted)}
+.funnel-card__metrics{display:flex;gap:var(--spacing-2);margin-top:var(--spacing-2);flex-wrap:wrap}
+.funnel-card__metric{font-size:var(--font-size-xs);padding:4px var(--spacing-2);background:var(--bg-interactive);border-radius:var(--radius-full)}

@@ -1,0 +1,7 @@
+.list-row{display:flex;align-items:center;gap:var(--spacing-3);padding:var(--spacing-3);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-md);transition:var(--transition-fast)}
+.list-row:hover{background:var(--bg-interactive-hover)}
+.list-row__logo{width:32px;height:32px;border-radius:var(--radius-sm);background:var(--bg-interactive);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:var(--font-size-xs);flex:0 0 32px}
+.list-row__main{flex:1;min-width:0}
+.list-row__name{font-size:var(--font-size-sm);font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-row__meta{font-size:var(--font-size-xs);color:var(--text-muted)}
+.list-row__end{display:flex;flex-direction:column;align-items:flex-end;gap:2px}

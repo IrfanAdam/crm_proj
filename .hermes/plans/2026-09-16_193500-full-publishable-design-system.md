@@ -117,13 +117,15 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component*
 
-### Task 24: Table, list rows, KPI stat, timeline
+*Shipped in pending · Tasks 24–25 · phase-10.*
+
+### Task 24: Table, list rows, KPI stat, timeline ✓ done
 
 **Objective:** Sortable table, opportunity/contact rows, KPI strip stat (`4/32 closed +2%`), activity timeline dots (blob reports).
 **Files:** Create `src/components/{Table,ListRow,KpiStat,Timeline}/*`.
 **Verify:** Table keyboard sort + `aria-sort`; KPI matches ref-01 values from markup attributes alone.
 
-### Task 25: Card family + data-viz atoms
+### Task 25: Card family + data-viz atoms ✓ done
 
 **Objective:** Opportunity/funnel/profile cards (P3 anatomy) as composed components; funnel glyph, goal bar (+`1.4x` gem variant), bar/sparkline with gem-hue-only fills.
 **Files:** Create `src/components/{OpportunityCard,FunnelCard,ProfileCard,GoalBar,FunnelGlyph,Sparkline}/*`.

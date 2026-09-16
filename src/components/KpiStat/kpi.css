@@ -1,0 +1,5 @@
+.kpi{display:inline-flex;align-items:baseline;gap:var(--spacing-2);font-family:var(--font-family-sans)}
+.kpi__value{font-size:var(--font-size-xl);font-weight:700;color:var(--text-primary);line-height:1}
+.kpi__total{font-size:var(--font-size-sm);color:var(--text-muted)}
+.kpi__delta{display:inline-flex;align-items:center;gap:2px;font-size:var(--font-size-xs);font-weight:600;color:var(--primitive-green-300);background:var(--primitive-green-100);padding:2px var(--spacing-2);border-radius:var(--radius-full)}
+.kpi__delta--down{color:var(--primitive-red-500);background:var(--primitive-red-100)}
