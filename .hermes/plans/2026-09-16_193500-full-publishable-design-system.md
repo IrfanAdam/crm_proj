@@ -157,13 +157,15 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Motion*
 
-### Task 28: Motion tokens + elastic/tilt primitives
+*Shipped in pending · Tasks 28–29 · phase-12.*
+
+### Task 28: Motion tokens + elastic/tilt primitives ✓ done
 
 **Objective:** Duration/easing/spring scale in tokens; `ElasticScroll` + `TiltCard` (ref-09) honoring `prefers-reduced-motion`.
 **Files:** Create `tokens/motion.json`, `src/motion/*`.
 **Verify:** Reduced-motion demo shows instant states; motion values come only from tokens.
 
-### Task 29: Gem reward component + ceremony copy
+### Task 29: Gem reward component + ceremony copy ✓ done
 
 **Objective:** Single-Spline-iframe `GemReward` with `category` → hue-rotate API (guardrails §4), capsule stand, Rock Solid Goals copy slots; mood quarantine re-attested (never inside Operate/Monitor).
 **Files:** Create `src/components/GemReward/*`.

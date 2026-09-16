@@ -1,0 +1,6 @@
+.tilt-card{transform-style:preserve-3d;transition:transform var(--transition-spring);will-change:transform;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-4)}
+.tilt-card:hover{transform:perspective(600px) rotateX(4deg) rotateY(-4deg)}
+@media(prefers-reduced-motion:reduce){.tilt-card{transition:none}.tilt-card:hover{transform:none}}
+.tilt-card__shine{position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent);opacity:0;transition:opacity var(--transition-fast);pointer-events:none}
+.tilt-card:hover .tilt-card__shine{opacity:1}
+@media(prefers-reduced-motion:reduce){.tilt-card__shine{transition:none}}

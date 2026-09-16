@@ -1,7 +1,7 @@
 import fs from 'fs'; import {fileURLToPath} from 'url'; import {dirname,join} from 'path';
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 const j=p=>JSON.parse(fs.readFileSync(join(root,p),'utf8'));
-const p=j('tokens/primitives.json'), L=j('tokens/semantic-light.json'), D=j('tokens/semantic-dark.json');
+const p=j('tokens/primitives.json'), L=j('tokens/semantic-light.json'), D=j('tokens/semantic-dark.json'); let motion=null; try{motion=j('tokens/motion.json')}catch{}
 const g=(pre,obj)=>Object.entries(obj).map(([k,v])=>`--${pre}-${k}:${v};`).join(' ');
 const ag=p['aliases-gray'], as=p['aliases-sapphire'], agm=p['aliases-gem'];
 const font=`--font-family-sans:${p.font['family-sans']}; `+g('font-size',{xs:p.font.xs,sm:p.font.sm,md:p.font.md,lg:p.font.lg,xl:p.font.xl,'2xl':p.font['2xl'],'3xl':p.font['3xl']})+' '+g('font-weight',{regular:p.font.regular,medium:p.font.medium,semibold:p.font.semibold,bold:p.font.bold})+' '+g('font-leading',{tight:p.font['leading-tight'],snug:p.font['leading-snug'],normal:p.font['leading-normal'],relaxed:p.font['leading-relaxed']})+' '+g('font-tracking',{tight:p.font['tracking-tight'],normal:p.font['tracking-normal'],wide:p.font['tracking-wide']});
@@ -15,6 +15,7 @@ out+=` ${g('icon-size',p.iconSize)}\n`;
 out+=` ${g('opacity',p.opacity)}\n`;
 out+=` ${g('transition',p.transition)}\n`;
 out+=` ${g('shadow',p.shadow)}\n`;
+if(motion){ out+=` ${g('motion-duration',motion.duration)}\n`; out+=` ${g('motion-easing',motion.easing)}\n`; out+=` ${g('motion-spring',motion.spring)}\n`; out+=` ${g('motion-translate',motion.translate)}\n`; }
 out+=` ${g('primitive-neutral-light',p['neutral-light'])} ${g('primitive-neutral-dark',p['neutral-dark'])}\n`;
 out+=` --primitive-gray-white:${ag.white}; ${Object.entries({50:ag['50'],100:ag['100'],200:ag['200'],300:ag['300'],550:ag['550'],700:ag['700'],800:ag['800'],900:ag['900']}).map(([k,v])=>`--primitive-gray-${k}:${v};`).join(' ')} --primitive-gray-black:${ag.black};\n`;
 out+=` ${g('primitive-sapphire-ui',p['sapphire-ui'])} ${g('primitive-sapphire-gamification',p['sapphire-gamification'])}\n`;
