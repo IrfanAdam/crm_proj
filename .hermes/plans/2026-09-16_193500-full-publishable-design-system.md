@@ -117,7 +117,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Component*
 
-*Shipped in pending · Tasks 24–25 · phase-10.*
+*Shipped in 74f4c16 · Tasks 24–25 · phase-10.*
 
 ### Task 24: Table, list rows, KPI stat, timeline ✓ done
 
