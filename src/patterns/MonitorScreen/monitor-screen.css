@@ -1,0 +1,7 @@
+.monitor-screen{display:flex;flex-direction:column;gap:var(--spacing-4);padding:var(--spacing-4);background:var(--bg-primary)}
+.monitor-screen__header{display:flex;align-items:center;justify-content:space-between}
+.monitor-screen__title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold)}
+.monitor-screen__funnel{height:160px;background:linear-gradient(180deg,var(--primitive-sapphire-ui-100),var(--primitive-sapphire-ui-300));border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;color:var(--primitive-sapphire-ui-700);font-weight:700}
+.monitor-screen__metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--spacing-3)}
+.monitor-screen__metric{padding:var(--spacing-3);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)}
+.monitor-screen__timeline{display:flex;gap:4px;align-items:end;height:40px}

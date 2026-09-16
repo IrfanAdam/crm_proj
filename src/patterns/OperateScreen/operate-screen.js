@@ -1,0 +1,4 @@
+export function renderOperate({title="Opportunities", avatar="OA", kpi="4/32 closed +2%", chips=[], cards=[]}={}){
+ if(!title||!kpi) console.warn('[OperateScreen] P2 order violation: title→kpi→hero→delta→chips→cards→tab required');
+ return `<div class="operate-screen"><div class="operate-screen__header"><span class="operate-screen__title">${title}</span><span class="avatar">${avatar}</span></div><div class="operate-screen__kpi"><span class="kpi__value">${kpi.split('/')[0]}</span><span class="kpi__total">/${kpi.split('/')[1]}</span></div><div class="operate-screen__hero">Bar chart / Map / 3D funnel</div><div class="operate-screen__delta">+32 than yesterday</div><div class="operate-screen__chips">${chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div><div class="operate-screen__cards">${cards.join('')}</div><div class="operate-screen__tabbar"><div class="tabbar"><span class="tabbar__item--active">Operate</span></div></div></div>`;
+}

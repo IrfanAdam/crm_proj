@@ -1,0 +1,3 @@
+export function renderMonitor({title="Funnel", metrics=[], onSegment}={}){
+ return `<div class="monitor-screen"><div class="monitor-screen__header"><span class="monitor-screen__title">${title}</span><span class="avatar">AL</span></div><div class="monitor-screen__funnel" onclick="(${onSegment?.toString()||'()=>{}'})()">Tilt 3D Funnel — click segment expands card</div><div class="monitor-screen__metrics">${metrics.map(m=>`<div class="monitor-screen__metric"><strong>${m.value}</strong> ${m.label}</div>`).join('')}</div><div class="monitor-screen__timeline">${['Y','Q','M','W','D'].map(t=>`<button class="chip">${t}</button>`).join('')}<span class="chip chip--active">Now</span></div></div>`;
+}

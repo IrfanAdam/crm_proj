@@ -137,13 +137,15 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Design System, Layout*
 
-### Task 26: Operate/Monitor templates + funnel state machine
+*Shipped in pending · Tasks 26–27 · phase-11.*
+
+### Task 26: Operate/Monitor templates + funnel state machine ✓ done
 
 **Objective:** Screen template enforcing P2 order law; P4's 7 funnel states as a coded state machine (segment select → card expand guaranteed by construction).
 **Files:** Create `src/patterns/{OperateScreen,MonitorScreen}/*`, `src/logic/funnel-machine.*`.
 **Verify:** State-machine unit tests cover all 7 states; template rejects out-of-order sections in dev warning.
 
-### Task 27: Transient/temporal hooks + reports matrices
+### Task 27: Transient/temporal hooks + reports matrices ✓ done
 
 **Objective:** `transient`/`temporal` data modules encoding P4 doctrine; blob-vs-Goals Day→Year matrices as a configured `ReportsMatrix` demo.
 **Files:** Create `src/logic/{transient,temporal}.*`, `src/patterns/ReportsMatrix/*`.
