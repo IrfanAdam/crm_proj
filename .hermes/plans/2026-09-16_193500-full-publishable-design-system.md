@@ -1,8 +1,8 @@
 **Goal:** Grow the locked CRM foundation (Phases 1–5) into a full mobile-frame prototype of an industry-level design system — versioned tokens, complete component library, patterns, motion, gallery docs, a11y gates — built in framework-agnostic HTML/CSS/JS so a framework binding can come later, without breaking any locked decision.
 
-**Architecture:** Current plan stays the background guardrail (frozen Phases 1–5 + `DESIGN.md` alpha + three-tier `tokens.css` + references registry). New work is additive layers on top: DTCG token source → build-generated CSS → vanilla markup + scoped CSS + small behavior scripts per component, all demoed in a mobile frame → prototype gallery docs → release-ready handoff. No locked MD is edited except via a registry-row polish pass.
+**Architecture:** Current plan stays the background guardrail (frozen Phases 1–5 + `DESIGN.md` alpha + three-tier `tokens.css` + references registry). New work is additive layers on top: DTCG token source → build-generated CSS → vanilla markup + scoped CSS + small behavior scripts per component → **desktop DS gallery** that **hosts mobile-frame prototypes** (390px device frame, 44px tap target) → prototype gallery docs → release-ready handoff. No locked MD is edited except via a registry-row polish pass.
 
-**Tech Stack:** Mobile-frame HTML/CSS/JS prototype (framework-agnostic — framework decision deferred by owner), W3C DTCG token JSON + Style Dictionary build (CSS vars output), ARIA-correct vanilla markup, `npx @google/design.md` spec lint, axe a11y gates.
+**Tech Stack:** Desktop DS gallery + mobile-frame prototypes (390px, framework-agnostic — framework decision deferred by owner), W3C DTCG token JSON + Style Dictionary build (CSS vars output), ARIA-correct vanilla markup, `npx @google/design.md` spec lint, axe a11y gates.
 
 **Tags:** Design System, Component, Tooling
 
@@ -22,6 +22,8 @@ The current plan `.hermes/plans/2026-09-16_180000-crm-design-system.md` Phases 1
 Anything below that contradicts the above loses. Gaps the new plan must close: no `src/` or `package.json` yet, `tokens.css` hand-edited, no dark/high-contrast themes, ~15 components vs the ~40+ a publishable system needs, no docs site, no package/versioning story.
 
 **Framework: deferred by owner.** This is a mobile-frame prototype — every component task below produces vanilla markup + scoped CSS + small behavior scripts demoed in a mobile frame (extending the existing `preview.html` approach). No React, no Web Components, no Storybook, no npm packaging until the owner picks a framework; a later binding phase will port the proven markup/states to it.
+
+> **Course correction 2026-09-16 — DS vs prototype format:** DS gallery/docs stay **desktop** (full-width page, nav, code props). Every component/pattern below is **prototyped only inside a 390px mobile frame** (device chrome, safe-area, 44px min tap) to match the final mobile app. No component is designed as desktop UI. This clarifies the earlier “mobile-frame prototype” wording — the frame is the prototype, not the DS chrome. Phase 7 was corrected to a desktop wrapper + mobile frame with dark proof before Phase 8.
 
 ---
 
