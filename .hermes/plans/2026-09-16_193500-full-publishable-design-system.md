@@ -137,7 +137,7 @@ Anything below that contradicts the above loses. Gaps the new plan must close: n
 
 *Tags: Design System, Layout*
 
-*Shipped in pending · Tasks 26–27 · phase-11.*
+*Shipped in 420e370 · Tasks 26–27 · phase-11.*
 
 ### Task 26: Operate/Monitor templates + funnel state machine ✓ done
 
