@@ -1,7 +1,7 @@
 {
   "$meta": {
-    "tier": "Tier 1 primitives \u2014 DTCG source, edit here, never design-system/tokens.css",
-    "version": "1.0"
+    "tier": "Tier 1 primitives — DTCG source, edit here, never design-system/tokens.css",
+    "version": "1.1"
   },
   "font": {
     "family-sans": "'Inter', system-ui, -apple-system, sans-serif",
@@ -54,96 +54,124 @@
     "spring": "400ms cubic-bezier(0.25, 1, 0.5, 1)"
   },
   "neutral-light": {
+    "50": "#ffffff",
     "100": "rgba(255, 255, 255, 0.88)",
     "200": "#fafafa",
     "300": "#f5f5f5",
     "400": "#e0e0e0",
     "500": "#cccccc",
     "600": "#b8b8b8",
-    "700": "#a3a3a3"
+    "700": "#a3a3a3",
+    "800": "#8a8a8a",
+    "900": "#737373"
   },
   "neutral-dark": {
+    "50": "#a3a3a3",
     "100": "#8f8f8f",
     "200": "#7a7a7a",
     "300": "#666666",
     "400": "#525252",
     "500": "#3d3d3d",
     "600": "#292929",
-    "700": "#141414"
+    "700": "#141414",
+    "800": "#0f0f0f",
+    "900": "#080808"
   },
   "sapphire-ui": {
-    "base": "#218aea",
+    "50": "#f5f9ff",
     "100": "#ebf5fe",
     "200": "#c1e0fd",
     "300": "#7cbefb",
     "400": "#218aea",
     "500": "#1666af",
     "600": "#0b4377",
-    "700": "#032443"
+    "700": "#032443",
+    "800": "#021a30",
+    "900": "#011020"
   },
   "sapphire-gamification": {
-    "base": "#218aea",
+    "50": "#f5f9ff",
     "100": "#ebf5fe",
     "200": "#c1e0fd",
     "300": "#7cbefb",
     "400": "#218aea",
     "500": "#1666af",
     "600": "#0b4377",
-    "700": "#032443"
+    "700": "#032443",
+    "800": "#021a30",
+    "900": "#011020"
   },
   "citrine": {
+    "50": "#fff8e6",
     "100": "#fff1d6",
     "200": "#ffe0a3",
     "300": "#ffc752",
     "400": "#ffb01e",
     "500": "#9d6a00",
     "600": "#704a00",
-    "700": "#452c00"
+    "700": "#452c00",
+    "800": "#2e1e00",
+    "900": "#1a1100"
   },
   "red-beryl": {
+    "50": "#fff0f4",
     "100": "#ffe2eb",
     "200": "#ffaac5",
     "300": "#ff85ab",
     "400": "#ea005e",
     "500": "#a80035",
     "600": "#6b0022",
-    "700": "#330010"
+    "700": "#330010",
+    "800": "#1f000a",
+    "900": "#0f0005"
   },
   "amethyst": {
+    "50": "#fcf5ff",
     "100": "#f7eeff",
     "200": "#debeff",
     "300": "#c48aff",
     "400": "#a54cff",
     "500": "#6e00db",
     "600": "#490091",
-    "700": "#27004d"
+    "700": "#27004d",
+    "800": "#190033",
+    "900": "#0f001f"
   },
   "orange": {
+    "50": "#fef0e6",
     "100": "#fac69e",
     "200": "#f8ac72",
     "300": "#f69246",
     "400": "#f57f26",
     "500": "#e0660a",
     "600": "#c85b09",
-    "700": "#ab4e08"
+    "700": "#ab4e08",
+    "800": "#8a3d06",
+    "900": "#6b2f05"
   },
   "red": {
+    "50": "#ffebeb",
     "100": "#ff7a7a",
     "200": "#ff5c5c",
     "300": "#ff3d3d",
     "400": "#ff1f1f",
     "500": "#e00000",
     "600": "#c20000",
-    "700": "#a30000"
+    "700": "#a30000",
+    "800": "#7a0000",
+    "900": "#5c0000"
   },
   "green": {
+    "50": "#f2fff3",
     "100": "#7ef186",
     "200": "#3eea49",
     "300": "#18d824",
     "400": "#15be20",
     "500": "#12a11b",
     "600": "#0f8a17",
-    "700": "#0c6a12"
+    "700": "#0c6a12",
+    "800": "#0a4f0e",
+    "900": "#06360a"
   },
   "ink": "#222222",
   "dim": "#737373",
@@ -151,7 +179,7 @@
   "black": "#000000",
   "aliases-gray": {
     "white": "#ffffff",
-    "50": "var(--primitive-neutral-light-200)",
+    "50": "var(--primitive-neutral-light-50)",
     "100": "var(--primitive-neutral-light-400)",
     "200": "var(--primitive-neutral-light-500)",
     "300": "var(--primitive-neutral-dark-100)",
@@ -162,7 +190,7 @@
     "black": "#000000"
   },
   "aliases-sapphire": {
-    "50": "var(--primitive-sapphire-ui-100)",
+    "50": "var(--primitive-sapphire-ui-50)",
     "100": "var(--primitive-sapphire-ui-100)",
     "200": "var(--primitive-sapphire-ui-200)",
     "300": "var(--primitive-sapphire-ui-300)",
@@ -170,10 +198,11 @@
     "500": "var(--primitive-sapphire-ui-500)",
     "600": "var(--primitive-sapphire-ui-600)",
     "700": "var(--primitive-sapphire-ui-700)",
-    "900": "var(--primitive-sapphire-ui-700)"
+    "800": "var(--primitive-sapphire-ui-800)",
+    "900": "var(--primitive-sapphire-ui-900)"
   },
   "aliases-gem": {
-    "topaz-50": "var(--primitive-citrine-100)",
+    "topaz-50": "var(--primitive-citrine-50)",
     "topaz-100": "var(--primitive-citrine-200)",
     "topaz-300": "var(--primitive-citrine-300)",
     "topaz-500": "var(--primitive-citrine-400)",
@@ -185,11 +214,16 @@
     "ruby-500": "var(--primitive-red-beryl-500)",
     "ruby-600": "var(--primitive-red-beryl-600)",
     "ruby-700": "var(--primitive-red-beryl-700)",
-    "ruby-900": "var(--primitive-red-beryl-700)",
-    "amethyst-50": "var(--primitive-amethyst-100)",
-    "amethyst-900": "var(--primitive-amethyst-700)",
+    "ruby-900": "var(--primitive-red-beryl-900)",
+    "amethyst-50": "var(--primitive-amethyst-50)",
+    "amethyst-900": "var(--primitive-amethyst-900)",
     "green-accent": "var(--primitive-green-300)",
     "orange-accent": "var(--primitive-orange-400)"
+  },
+  "signal": {
+    "default": "var(--primitive-sapphire-ui-500)",
+    "amber": "var(--primitive-citrine-500)",
+    "teal": "var(--primitive-green-500)"
   },
   "borderWidth": {
     "hairline": "1px",
