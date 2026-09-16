@@ -1,11 +1,27 @@
 {
-  "generated": "2026-09-16T14:40:46.766Z",
+  "generated": "2026-09-16T14:47:04.116Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md"
   ],
   "commits": [
+    {
+      "sha": "4ffe113",
+      "full": "4ffe113a7fe7bc41dc608d2280d631932896f824",
+      "date": "2026-09-16",
+      "subject": "foundations: exhaustive tokens + sidebar Foundations/Components — add leading/tracking, spacing 0/10/16, border/z/icon/opacity/shadow primitives + focus semantic; gallery now FOUNDATIONS (Color/Typography/Spacing/Radius/Shadow/Motion/Iconography) → COMPONENTS (8 tabs)",
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "7a0656b",
+      "full": "7a0656b1e7ebbade1337bb1c48f4111dc3d138f0",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest + Shipped 74f4c16",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "74f4c16",
       "full": "74f4c16db0fb49ad6d6b8f4ab1899a18cd1adc89",
