@@ -1,0 +1,84 @@
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary);min-height:100vh}
+/* — floating pills (no header bar) — */
+.float-tabs{position:fixed;top:16px;left:16px;z-index:var(--z-index-sticky)}
+.float-tabs .shell-tabs{display:inline-flex;gap:6px;padding:4px;background:var(--bg-surface-glass);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--border-thin);border-radius:var(--radius-full);box-shadow:var(--shadow-md)}
+.pill-tab{appearance:none;border:none;cursor:pointer;padding:7px 16px;border-radius:var(--radius-full);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:1;color:var(--text-secondary);background:transparent;transition:background var(--transition-fast),color var(--transition-fast),box-shadow var(--transition-fast)}
+.pill-tab[aria-selected="true"]{background:var(--primitive-neutral-dark-700);color:var(--primitive-gray-white);box-shadow:var(--shadow-sm)}
+.pill-tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+/* — stage — */
+.stage{max-width:1200px;margin:0 auto;padding:var(--spacing-8) var(--spacing-6) var(--spacing-12);display:flex;flex-direction:column;align-items:center;gap:var(--spacing-6)}
+.stage--split{padding-top:76px}
+.stage__side{max-width:520px;display:flex;flex-direction:column;gap:var(--spacing-3)}
+.stage__hint{font-size:var(--font-size-xs);color:var(--text-muted);text-align:left;line-height:1.6}
+.side-link{font-size:var(--font-size-xs);font-weight:600;color:var(--primitive-sapphire-ui-500);text-decoration:none}
+.stage__side .device-meta{justify-content:flex-start;text-align:left;line-height:1.6;display:flex;flex-wrap:wrap;gap:6px;width:100%;box-sizing:border-box;border-radius:var(--radius-lg);padding:10px 12px;align-items:center;align-content:flex-start}
+.stage__main{display:flex;flex-direction:column;align-items:center;gap:var(--spacing-4);min-width:0}
+@media(min-width:1024px){
+.stage--split{display:grid;grid-template-columns:230px minmax(0,1fr);gap:var(--spacing-8);align-items:start;max-width:1080px}
+.stage__side{position:sticky;top:76px}
+}
+.device-meta{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:11px;line-height:1;color:var(--text-muted);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:8px 12px}
+.device-meta b{font-weight:600;color:var(--text-secondary)}
+.device-meta__dot{width:3px;height:3px;border-radius:50%;background:var(--border-thin);display:inline-block}
+/* — device frame — iPhone 15 · 393×852 pt · 1179×2556 px @3× · 19.5:9 · 6.1" — locked 1× */
+.device{
+  box-sizing:content-box;
+  width:393px;
+  max-width:calc(100vw - 32px - 20px);
+  aspect-ratio:393 / 852;
+  height:auto;
+  background:var(--bg-surface);border:10px solid #0f0f0f;border-radius:54px;corner-shape:squircle;-webkit-corner-shape:squircle;box-shadow:0 24px 64px rgba(15,16,21,.18),0 4px 16px rgba(15,16,21,.12),var(--shadow-lg);overflow:hidden;display:flex;flex-direction:column;position:relative
+}
+@media(max-width:440px){.device{border-width:8px;border-radius:44px;corner-shape:squircle;-webkit-corner-shape:squircle;max-width:calc(100vw - 16px - 16px)}}
+/* status bar + appbar — transparent chrome: content scrolls behind, the top edge material blurs it */
+/* NOTE: keep wrapper ids unstyled transparent so React roots add no bands */
+#glass-appbar{position:absolute;top:54px;left:0;right:0;z-index:6;background:transparent;border:none;padding:0}
+#glass-bottom{background:transparent;border:none;padding:0}
+.status{height:54px;position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:flex-start;justify-content:space-between;padding:14px 28px 0;background:transparent}
+.status__time{font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary);width:54px}
+.status__island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:92px;height:28px;background:#000;border-radius:var(--radius-full)}
+.status__right{display:flex;align-items:center;gap:6px;width:68px;justify-content:flex-end}
+.status__right svg{width:18px;height:11px;display:block}
+.status__battery{width:24px;height:12px;border:1px solid var(--text-primary);border-radius:4px;position:relative;display:inline-flex;align-items:center;padding:1px;opacity:.9}
+.status__battery::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:4px;background:var(--text-primary);border-radius:0 2px 2px 0}
+.status__battery-fill{width:68%;height:100%;background:var(--text-primary);border-radius:2px}
+/* app chrome inside device — transparent over the scroll (glass comes from the edge material) */
+.app-bar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--spacing-2) 0 var(--spacing-4);background:transparent}
+.app-bar__title{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);letter-spacing:-.01em}
+.app-bar__right{display:flex;align-items:center;gap:8px}
+.avatar{width:28px;height:28px;border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+/* scrollable content — full viewport top to bottom; both edges dissolve via blur, nothing fades or slices */
+.device__content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;background:var(--bg-primary);-webkit-overflow-scrolling:touch;padding-top:98px;padding-bottom:72px}
+/* app surface: never select text or start a native image/text drag inside the screen —
+   a dock drag in Safari otherwise selects the feed behind the glass and kills the gesture */
+.device,.device *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.device img{-webkit-user-drag:none;user-drag:none}
+.device .tabbar,.device .tabbar *{cursor:grab}
+.device__content::-webkit-scrollbar{width:0}
+.pad{padding:var(--spacing-4)}
+.kpi-row{display:flex;gap:var(--spacing-3)}
+.kpi{flex:1;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-3)}
+.kpi__label{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.kpi__value{font-size:var(--font-size-xl);font-weight:700;margin-top:4px}
+.kpi__delta{font-size:var(--font-size-xs);color:var(--signal-teal);margin-top:2px}
+.card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-4)}
+.meta{font-size:var(--font-size-xs);color:var(--text-muted)}
+.empty{border:1px dashed var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8) var(--spacing-4);text-align:center;color:var(--text-muted)}
+/* bottom system — floating liquid-glass dock (material lives in src/glass/dock-lens.css) */
+.home-indicator-wrap{height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;z-index:6}
+.home-indicator{width:134px;height:5px;background:#000;border-radius:var(--radius-full)}
+/* bottom edge material — native progressive blur: stacked backdrop layers, radius rises toward the edge.
+   height = dock top (frame bottom − 30 − 56) → frame bottom; layers only paint from their fade-in stop down. */
+.device__edge{position:absolute;left:0;right:0;bottom:0;height:86px;z-index:4;pointer-events:none}
+.device__edge>span{position:absolute;inset:0;display:block;backdrop-filter:blur(var(--b));-webkit-backdrop-filter:blur(var(--b));-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z))}
+/* top edge material — same stack mirrored: strongest at the screen top, dissolving ~10px past the app bar
+   (band = screen top → 108px; content starts at 98px + pad, so nothing at rest is ever touched) */
+.device__edge--top{top:0;bottom:auto;height:108px;background:linear-gradient(to bottom,color-mix(in srgb, var(--bg-surface) 58%, transparent) 0%,color-mix(in srgb, var(--bg-surface) 52%, transparent) 55%,transparent 100%)}
+.device__edge--top>span{-webkit-mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z))}
+/* arch panel */
+.arch{max-width:720px;width:100%;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8);text-align:left}
+.arch h2{font-size:var(--font-size-xl);font-weight:700}
+.arch p{font-size:var(--font-size-sm);color:var(--text-secondary);margin-top:8px;line-height:1.6}
+.arch ul{margin:12px 0 0 18px;font-size:var(--font-size-sm);color:var(--text-secondary);line-height:1.8}
+[hidden]{display:none!important}

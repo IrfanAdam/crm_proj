@@ -1,0 +1,81 @@
+/* Liquid-glass dock — prototype material.
+   Paint order: lens (refracted live copy) → tint → specular rim → track/capsule/icons.
+   The DS TabBar stays untouched; only `.device`-scoped overrides live here. */
+.device .tabbar{
+  position:absolute;left:16px;right:16px;bottom:30px;z-index:5;height:56px;
+  padding:0;gap:0;justify-content:flex-start;overflow:visible;
+  background:transparent;border:none;border-radius:var(--radius-full);
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  box-shadow:0 0 0 .5px color-mix(in srgb,var(--primitive-ink) 16%,transparent),0 1px 2px rgba(15,16,21,.06),0 12px 28px -8px rgba(15,16,21,.22),0 4px 10px -4px rgba(15,16,21,.10);
+}
+/* lens box bleeds past the dock so the rim can pull in content from just
+   outside the shape; the dock clips the result back to the capsule outline */
+.device .docklens{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none}
+.device .docklens__lens{position:absolute;inset:-26px}
+.device .docklens__copy{position:absolute;left:0;top:0;will-change:transform}
+.device .docklens__defs{position:absolute;width:0;height:0;pointer-events:none}
+/* glass body: cool tint + inner bloom (bright top lip, dark bottom lip = thickness) */
+.device .tabbar__tint{
+  position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:
+    linear-gradient(180deg,color-mix(in srgb,var(--bg-surface) 22%,transparent),color-mix(in srgb,var(--bg-surface) 8%,transparent)),
+    linear-gradient(180deg,color-mix(in srgb,var(--primitive-sapphire-ui-100) 12%,transparent),color-mix(in srgb,var(--primitive-sapphire-ui-100) 5%,transparent));
+  box-shadow:inset 0 1px 0 color-mix(in srgb,white 85%,transparent),inset 0 -2px 2px -1px color-mix(in srgb,var(--primitive-ink) 16%,transparent),inset 0 -14px 18px -16px rgba(15,16,21,.55),inset 0 12px 18px -18px color-mix(in srgb,white 75%,transparent);
+}
+/* specular rim: 1px ring, brightest on the top-left arc, a hint of dark bottom-right */
+.device .tabbar__rim{
+  position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:conic-gradient(from 200deg,rgba(255,255,255,1),rgba(255,255,255,.75) 12%,rgba(255,255,255,.22) 34%,rgba(15,16,21,.12) 52%,rgba(255,255,255,.55) 72%,rgba(255,255,255,1) 88%,rgba(255,255,255,1));
+  -webkit-mask:linear-gradient(rgba(0,0,0,1) 0 0) content-box,linear-gradient(rgba(0,0,0,1) 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(rgba(0,0,0,1) 0 0) content-box,linear-gradient(rgba(0,0,0,1) 0 0);mask-composite:exclude;
+}
+.device .tabbar__track{position:absolute;inset:4px;touch-action:none;cursor:grab}
+.device .tabbar__capsule{position:absolute;top:0;bottom:0;left:0;width:20%;padding:0 1px;box-sizing:border-box;pointer-events:none;will-change:transform;transition:transform 520ms cubic-bezier(0.34,1.22,0.64,1)}
+/* the pill is glass, not paint: content reads through it, brightened and blurred */
+.device .tabbar__capsule-glass{
+  position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:var(--radius-full);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--bg-surface) 56%,transparent),color-mix(in srgb,var(--bg-surface) 34%,transparent));
+  -webkit-backdrop-filter:blur(5px) saturate(200%) brightness(1.045);backdrop-filter:blur(5px) saturate(200%) brightness(1.045);
+  /* no outer shadow at rest — drop shadow only while pressed or in motion */
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.98),inset 0 -2px 2px -1px color-mix(in srgb,var(--primitive-ink) 12%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--signal) 10%,transparent);
+  transition:box-shadow 220ms ease,background 220ms ease;
+}
+.device .tabbar__capsule-glass::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity 180ms ease;
+  background:linear-gradient(100deg,transparent 8%,rgba(255,255,255,.9) 32%,rgba(255,255,255,.22) 52%,transparent 72%);
+  transform:translateX(calc(var(--sweep,0) * 26px));
+}
+/* MOVING — the pill's glass thickens, lightens and sheens with velocity */
+.device .tabbar__capsule[data-glass="press"] .tabbar__capsule-glass,
+.device .tabbar__capsule[data-glass="live"] .tabbar__capsule-glass{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--bg-surface) 74%,transparent),color-mix(in srgb,var(--bg-surface) 48%,transparent));
+  -webkit-backdrop-filter:blur(13px) saturate(240%) brightness(1.08);backdrop-filter:blur(13px) saturate(240%) brightness(1.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,1),inset 0 -2px 2px -1px color-mix(in srgb,var(--primitive-ink) 16%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--signal) 18%,transparent),0 3px 6px -1px rgba(15,16,21,.12),0 14px 26px -12px rgba(15,16,21,.34);
+}
+.device .tabbar__capsule[data-glass="live"] .tabbar__capsule-glass::after{opacity:1}
+/* ── "slices" material path (WebKit/Safari) ──────────────────────────────────
+   No SVG filter: the bevel is cut from the live copy with transform + mask layers
+   (DockSlices.jsx), plus a live backdrop-filter frost where the engine has it.
+   Nothing here depends on a filter reference resolving. */
+.device .tabbar[data-engine="slices"]{
+  background:transparent;
+  -webkit-backdrop-filter:blur(11px) saturate(175%) brightness(1.01);
+  backdrop-filter:blur(11px) saturate(175%) brightness(1.01);
+}
+.device .docklens__slice{position:absolute;inset:0;pointer-events:none}
+.device .docklens__slice>.docklens__copy{will-change:transform}
+/* the bar's frost lives on the material, not only on the dock: the copies carry the feed
+   content, so a plain backdrop-filter underneath them is covered up and the dock reads as
+   a sharp pane (only the capsule, which has no copy over it, looked like glass). Filtering
+   the material frosts the whole surface — the same role OPTICS.frost plays in the lens path. */
+.device .tabbar[data-engine="slices"] .docklens__lens{
+  -webkit-filter:blur(0.9px) saturate(1.5) brightness(1.03);
+  filter:blur(0.9px) saturate(1.5) brightness(1.03);
+}
+.device .tabbar__nav{position:relative;z-index:1;display:flex;width:100%;height:100%}
+.device .tabbar__item{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;font-weight:600;letter-spacing:.01em;color:var(--text-dim);background:transparent;border:none;cursor:pointer;padding:0;border-radius:var(--radius-lg);transition:color 160ms ease}
+.device .tabbar__item[aria-current="page"]{color:var(--signal)}
+/* while the capsule is in flight, the tab it is over lights up and the old one fades */
+.device .tabbar__capsule[data-glass="live"] ~ .tabbar__nav .tabbar__item[aria-current="page"]:not([data-hot]){color:var(--text-dim)}
+.device .tabbar__item[data-hot]{color:var(--signal)}
+.device .tabbar__item .icon{width:20px;height:20px;display:grid;place-items:center;font-size:15px;line-height:1}

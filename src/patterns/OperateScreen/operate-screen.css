@@ -6,4 +6,4 @@
 .operate-screen__delta{font-size:var(--font-size-sm);color:var(--primitive-green-300)}
 .operate-screen__chips{display:flex;gap:var(--spacing-2);flex-wrap:wrap}
 .operate-screen__cards{display:flex;flex-direction:column;gap:var(--spacing-3)}
-.operate-screen__tabbar{position:sticky;bottom:0;background:var(--bg-surface);border-top:1px solid var(--border-thin)}
+.operate-screen__tabbar{position:sticky;bottom:var(--spacing-2);margin:0 var(--spacing-2) var(--spacing-2);background:var(--bg-surface-glass);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--border-thin);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg)}

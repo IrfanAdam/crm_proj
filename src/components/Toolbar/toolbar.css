@@ -1,0 +1,22 @@
+/* Toolbar — liquid glass · DS token only · app-bar + floating pills */
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;
+  height:44px;padding:0 var(--spacing-4);
+  background:var(--bg-surface-glass);
+  backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  border-bottom:1px solid var(--border-thin);
+}
+.toolbar--floating{
+  border:1px solid var(--border-thin);
+  border-radius:var(--radius-full);
+  box-shadow:var(--shadow-md);
+  padding:4px;
+  height:auto;
+  background:var(--bg-surface-glass);
+  backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+@media (forced-colors:active){
+  .toolbar{background:Canvas;border-color:CanvasText;backdrop-filter:none}
+}
