@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T15:30:25.247Z",
+  "generated": "2026-09-17T11:37:04.414Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,30 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "55ae4d8",
+      "full": "55ae4d826f4d43bda83d435d7603685a049b8109",
+      "date": "2026-09-17",
+      "subject": "feat(glass): liquid-glass dock prototype (app.html, bottom dock, lens) + glass tabbar/toolbar",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "62d33ba",
+      "full": "62d33bad7a97a197af7320589515ae09961f7e10",
+      "date": "2026-09-17",
+      "subject": "ds: glass token group (blur blur-sm saturate) + build-tokens emission",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "cc51bdf",
+      "full": "cc51bdff47f5c9f4ddbea3cb1e622d41a54965c6",
+      "date": "2026-09-16",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": "2026-09-16_203500-ds-polish.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "bf8d8d1",
       "full": "bf8d8d11bdfea2413d33b8cf901205d9be3bfc88",
