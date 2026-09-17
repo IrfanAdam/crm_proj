@@ -15,6 +15,7 @@ out+=` ${g('icon-size',p.iconSize)}\n`;
 out+=` ${g('opacity',p.opacity)}\n`;
 out+=` ${g('transition',p.transition)}\n`;
 out+=` ${g('shadow',p.shadow)}\n`;
+out+=` ${g('glass',p.glass)}\n`;
 if(motion){ out+=` ${g('motion-duration',motion.duration)}\n`; out+=` ${g('motion-easing',motion.easing)}\n`; out+=` ${g('motion-spring',motion.spring)}\n`; out+=` ${g('motion-translate',motion.translate)}\n`; }
 out+=` ${g('primitive-neutral-light',p['neutral-light'])} ${g('primitive-neutral-dark',p['neutral-dark'])}\n`;
 out+=` --primitive-gray-white:${ag.white}; ${Object.entries({50:ag['50'],100:ag['100'],200:ag['200'],300:ag['300'],550:ag['550'],700:ag['700'],800:ag['800'],900:ag['900']}).map(([k,v])=>`--primitive-gray-${k}:${v};`).join(' ')} --primitive-gray-black:${ag.black};\n`;
