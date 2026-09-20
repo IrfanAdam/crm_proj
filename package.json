@@ -5,7 +5,7 @@
   "description": "ALPHA CRM design system — DTCG token source + generated CSS + gates",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-tokens.mjs",
+    "build": "node scripts/build-tokens.mjs && vite build",
     "lint:tokens": "node scripts/lint-tokens.mjs",
     "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs",
     "ds:track": "node scripts/ds-track.mjs",

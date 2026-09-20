@@ -16,8 +16,9 @@ function exit() {
   u.searchParams.delete(KEY);
   history.replaceState(null, '', u.pathname + u.search + u.hash);
 }
-/* 3-finger tap-and-hold reveals the floating exit pill (auto-hides). */
-let holdTimer = 0, hideTimer = 0, startXY = null;
+/* 3-finger tap-and-hold reveals the floating exit pill (auto-hides).
+   A quick 3-finger double-tap does the same — no motionless hold needed. */
+let holdTimer = 0, hideTimer = 0, startXY = null, lastTriple = 0;
 function showExit() {
   holdTimer = 0;
   document.body.classList.add('show-exit');
@@ -26,6 +27,9 @@ function showExit() {
 }
 window.addEventListener('touchstart', (e) => {
   if (!document.body.classList.contains('app-fullscreen') || e.touches.length !== 3) return;
+  const now = performance.now();
+  if (now - lastTriple < 350) { lastTriple = 0; clearTimeout(holdTimer); holdTimer = 0; showExit(); return; }
+  lastTriple = now;
   const t = e.touches[0];
   startXY = [t.clientX, t.clientY];
   clearTimeout(holdTimer);

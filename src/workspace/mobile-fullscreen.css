@@ -10,7 +10,7 @@
   .ws-launcher{display:flex}
   .ws-card--zoom{display:none}
 }
-body.app-fullscreen{overflow:hidden}
+body.app-fullscreen{overflow:hidden;touch-action:pan-x pan-y}
 body.app-fullscreen .workspace{display:block;max-width:none;margin:0;padding:0;min-height:100dvh}
 body.app-fullscreen .ws-controls{display:none}
 body.app-fullscreen .ws-main{display:flex}
