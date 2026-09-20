@@ -29,8 +29,8 @@ body.app-fullscreen .device__screen .device__edge{display:block;border-radius:0}
 body.app-fullscreen #glass-appbar{top:0;padding-top:env(safe-area-inset-top)}
 body.app-fullscreen .device__content{padding-top:calc(env(safe-area-inset-top, 0px) + 12px);padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 72px)}
 body.app-fullscreen #glass-bottom{padding-bottom:0}
-body.app-fullscreen .device .tabbar{bottom:calc(env(safe-area-inset-bottom, 0px) + 8px)}
-body.app-fullscreen .device .fab-gem{bottom:calc(env(safe-area-inset-bottom, 0px) + 8px)}
+body.app-fullscreen .device .tabbar{bottom:max(16px, calc(env(safe-area-inset-bottom, 0px) + 8px))}
+body.app-fullscreen .device .fab-gem{bottom:max(16px, calc(env(safe-area-inset-bottom, 0px) + 8px))}
 #exit-fullscreen{position:fixed;z-index:60;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);min-width:44px;height:32px;padding:0 14px;border-radius:var(--radius-full);border:1px solid var(--border-thin);background:var(--bg-surface-glass);color:var(--text-secondary);font-size:12px;font-weight:700;cursor:pointer;display:none}
 body.app-fullscreen.show-exit #exit-fullscreen{display:grid;place-items:center}
 #exit-fullscreen:focus-visible{outline:none;box-shadow:var(--focus-ring)}

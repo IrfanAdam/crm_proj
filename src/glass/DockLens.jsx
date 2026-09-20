@@ -91,6 +91,7 @@ export default function DockLens({ source = "#app-content" }) {
       window.removeEventListener("resize", queue);
       ro.disconnect();
       if (frame.current) cancelAnimationFrame(frame.current);
+      frame.current = 0; // a cancelled frame must not read as "scheduled" — or scroll tracking dies
     };
   }, [source, gen]);
   return (

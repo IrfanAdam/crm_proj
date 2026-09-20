@@ -112,6 +112,7 @@ export default function DockSlices({ source = "#app-content" }) {
       clearTimeout(settleT);
       ro.disconnect(); ro2.disconnect();
       if (frame.current) cancelAnimationFrame(frame.current);
+      frame.current = 0; // same guard as DockLens: a cancelled frame must not read as "scheduled"
     };
   }, [source]);
 
