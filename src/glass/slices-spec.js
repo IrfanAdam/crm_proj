@@ -12,20 +12,32 @@ export const profile = (u) => (Math.sin(Math.PI * u) * (1 - 0.5 * u)) / 0.79;
 
 // the rounded end reaches deeper than the straight rim: it is a quarter-arc of ~radius
 const CAP = 30;
-const Y = (band, u, span) => ({ axis: "y", band, u, span });
-const X = (band, u, span) => ({ axis: "x", band, u, span });
+const Y = (band, u, span, fringe) => ({ axis: "y", band, u, span, fringe });
+const X = (band, u, span, fringe) => ({ axis: "x", band, u, span, fringe });
+
+// Faked chromatic fringe: zero extra clones — the outer rim band skews warm
+// (red lags outward) and the inner band skews cool (blue leads inward), so the
+// feathered bands blend into an RGB split exactly where dispersion would show.
+const FR = {
+  WARM: "saturate(1.45) hue-rotate(-14deg)",
+  COOL: "saturate(1.45) hue-rotate(14deg)",
+};
 
 export const SLICES = [
-  Y("top", 0.16, 13), Y("top", 0.46, 15), Y("top", 0.80, 17),
-  Y("bottom", 0.16, 13), Y("bottom", 0.46, 15), Y("bottom", 0.80, 17),
-  X("left", 0.30, 20), X("left", 0.74, 24),
-  X("right", 0.30, 20), X("right", 0.74, 24),
+  Y("top", 0.10, 9, FR.WARM), Y("top", 0.30, 10), Y("top", 0.55, 11), Y("top", 0.85, 12, FR.COOL),
+  Y("bottom", 0.10, 9, FR.WARM), Y("bottom", 0.30, 10), Y("bottom", 0.55, 11), Y("bottom", 0.85, 12, FR.COOL),
+  X("left", 0.25, 16, FR.WARM), X("left", 0.60, 20), X("left", 0.85, 24, FR.COOL),
+  X("right", 0.25, 16, FR.WARM), X("right", 0.60, 20), X("right", 0.85, 24, FR.COOL),
 ];
 
 // signed displacement (px) of a slice's copy: outward at its own rim, so the world just
-// outside the shape is pulled in and compressed along the edge
+// outside the shape is pulled in and compressed along the edge.
+// WebKit path has no SDF scale factor — PULL is direct px. iOS rims squeeze ~4–6px
+// at the contour (the reference tab bar visibly smears backdrop text under its top
+// edge); the Chromium SDF path gets the same punch via OPTICS.pull × scale.
+const PULL = 7;
 export const offsetFor = (s) => {
-  const d = profile(s.u) * OPTICS.strength;
+  const d = profile(s.u) * PULL;
   return s.band === "top" || s.band === "left" ? d : -d;
 };
 
@@ -44,6 +56,7 @@ export const maskFor = (s) => {
   const mid = s.u * (s.axis === "x" ? CAP : OPTICS.band);
   const a = o + Math.max(0, mid - s.span / 2), b = o + mid + s.span / 2;
   const dir = { top: "to bottom", bottom: "to top", left: "to right", right: "to left" }[s.band];
-  const g = `linear-gradient(${dir},transparent ${(a - 2).toFixed(1)}px,rgba(0,0,0,.94) ${(a + 4).toFixed(1)}px,rgba(0,0,0,.94) ${(b - 4).toFixed(1)}px,transparent ${b.toFixed(1)}px)`;
+  // softer feather — 14px fade, 0.95 peak — hides hard band stepping that read as horizontal seam on WebKit
+  const g = `linear-gradient(${dir},transparent ${(a - 6).toFixed(1)}px,rgba(0,0,0,.95) ${(a + 8).toFixed(1)}px,rgba(0,0,0,.95) ${(b - 8).toFixed(1)}px,transparent ${b.toFixed(1)}px)`;
   return { maskImage: g, WebkitMaskImage: g };
 };

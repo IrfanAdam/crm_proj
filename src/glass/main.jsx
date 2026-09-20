@@ -1,12 +1,9 @@
 import { createRoot } from "react-dom/client";
-import { TopPills, DeviceAppBar } from "./GlassBars.jsx";
+import { TopPills } from "./GlassBars.jsx";
 import BottomDock from "./BottomDock.jsx";
 
 const top = document.getElementById("glass-top");
 if (top) createRoot(top).render(<TopPills />);
-
-const appbar = document.getElementById("glass-appbar");
-if (appbar) createRoot(appbar).render(<DeviceAppBar />);
 
 const bottom = document.getElementById("glass-bottom");
 if (bottom) createRoot(bottom).render(<BottomDock />);

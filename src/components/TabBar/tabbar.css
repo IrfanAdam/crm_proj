@@ -1,26 +1,30 @@
-/* TabBar — liquid glass · DS token only */
+/* TabBar — liquid glass · icon-only (Phosphor) · DS token only — neutral glass with real frost */
 .tabbar{
   display:flex;align-items:center;justify-content:space-around;
   height:60px;padding:0 var(--spacing-2);gap:var(--spacing-1);
-  background:var(--bg-surface-glass);
-  backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  border:1px solid var(--border-thin);
+  background:color-mix(in srgb,var(--bg-surface) 38%,transparent);
+  backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  border:1px solid color-mix(in srgb, white 24%, transparent);
   border-radius:var(--radius-2xl);
-  box-shadow:var(--shadow-lg);
+  box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42);
   overflow:hidden;
 }
+/* track holds capsule + nav — matches dock-lens.css proportions */
+.tabbar__track{position:relative;flex:1;display:flex;align-items:center;touch-action:none;cursor:grab}
+.tabbar__nav{display:flex;flex:1;align-items:center;justify-content:space-around;position:relative;z-index:1}
 .tabbar__item{
-  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
-  background:transparent;border:none;color:var(--text-muted);
-  cursor:pointer;padding:var(--spacing-2);position:relative;
-  font-size:10px;font-weight:500;
+  flex:1;display:flex;align-items:center;justify-content:center;
+  background:transparent;border:none;color:var(--primitive-neutral-dark-600);
+  cursor:pointer;padding:0;position:relative;
+  height:44px;min-width:44px;
   border-radius:var(--radius-lg);
-  transition:background var(--transition-fast),color var(--transition-fast);
+  transition:color var(--transition-fast);
 }
-.tabbar__item .icon{width:20px;height:20px}
-.tabbar__item--active{color:var(--signal);background:var(--bg-interactive)}
+.tabbar__item .icon{width:22px;height:22px}
+.tabbar__item--active{color:var(--signal)}
 .tabbar__item[aria-current="page"]{color:var(--signal)}
+.tabbar__item[data-hot]{color:var(--signal)}
 .tabbar__dot{
   position:absolute;top:6px;width:6px;height:6px;
   background:var(--signal);border-radius:var(--radius-full);display:none

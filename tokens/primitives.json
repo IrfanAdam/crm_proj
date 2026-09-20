@@ -1,6 +1,6 @@
 {
   "$meta": {
-    "tier": "Tier 1 primitives — DTCG source, edit here, never design-system/tokens.css",
+    "tier": "Tier 1 primitives \u2014 DTCG source, edit here, never design-system/tokens.css",
     "version": "1.1"
   },
   "font": {
@@ -257,8 +257,8 @@
     "lg": "0 12px 28px rgba(15, 16, 21, 0.08)"
   },
   "glass": {
-    "blur": "20px",
-    "blur-sm": "12px",
-    "saturate": "180%"
+    "blur": "12px",
+    "blur-sm": "8px",
+    "saturate": "135%"
   }
 }

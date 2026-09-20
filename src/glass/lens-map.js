@@ -4,19 +4,21 @@
    Slide is outward and strongest at the rim, so the rim compresses the world
    just outside the dock — the "thick glass edge" of liquid glass. */
 export function makeLensMap({ w, h, inset = 0, radius = 28, band = 20, pull = 1 }) {
-  const iw = Math.max(2, Math.round(w));
-  const ih = Math.max(2, Math.round(h));
+  const dpr = Math.min(2, (typeof window !== "undefined" && window.devicePixelRatio) || 1);
+  const iw = Math.max(2, Math.round(w * dpr));
+  const ih = Math.max(2, Math.round(h * dpr));
   const canvas = document.createElement("canvas");
   canvas.width = iw;
   canvas.height = ih;
   const ctx = canvas.getContext("2d");
   const img = ctx.createImageData(iw, ih);
   const px = img.data;
-  const cx = w / 2;
-  const cy = h / 2;
-  const r = Math.max(0, Math.min(radius, Math.min((w - 2 * inset) / 2, (h - 2 * inset) / 2)));
-  const ax = (w - 2 * inset) / 2 - r;
-  const ay = (h - 2 * inset) / 2 - r;
+  const W = w * dpr, H = h * dpr, IN = inset * dpr, RD = radius * dpr, BD = band * dpr;
+  const cx = W / 2;
+  const cy = H / 2;
+  const r = Math.max(0, Math.min(RD, Math.min((W - 2 * IN) / 2, (H - 2 * IN) / 2)));
+  const ax = (W - 2 * IN) / 2 - r;
+  const ay = (H - 2 * IN) / 2 - r;
   const sdf = (x, y) => {
     const dx = Math.abs(x - cx) - ax;
     const dy = Math.abs(y - cy) - ay;
@@ -26,12 +28,12 @@ export function makeLensMap({ w, h, inset = 0, radius = 28, band = 20, pull = 1 
     for (let x = 0; x < iw; x++) {
       const i = (y * iw + x) * 4;
       const s = sdf(x + 0.5, y + 0.5);
-      const u = Math.min(1, Math.max(0, -s) / band);      // 0 at the rim → 1 at band depth
+      const u = Math.min(1, Math.max(0, -s) / BD);      // 0 at the rim → 1 at band depth
       // Bell profile: zero AT the rim (so the mapping stays continuous with the
       // unglassed content just outside — no doubled seam), strongest ~40% in
       // where the "glass" is thickest, zero again at the band depth.
       const m = s < 0 && u > 0 && u < 1 ? (Math.sin(Math.PI * u) * (1 - 0.5 * u)) / 0.79 : 0;
-      const e = 0.75;
+      const e = 0.75 * dpr;
       const gx = sdf(x + e, y) - sdf(x - e, y);
       const gy = sdf(x, y + e) - sdf(x, y - e);
       const gl = Math.hypot(gx, gy) || 1;

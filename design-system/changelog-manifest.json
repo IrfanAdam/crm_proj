@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T11:37:04.414Z",
+  "generated": "2026-09-18T09:35:03.428Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,14 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "e36642e",
+      "full": "e36642e16554944b5d7ae65684e635027cb89ffc",
+      "date": "2026-09-17",
+      "subject": "chore(ds): track refresh — manifest [wip: glass dock]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "55ae4d8",
       "full": "55ae4d826f4d43bda83d435d7603685a049b8109",
@@ -264,5 +272,14 @@
       "anchor": null
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/components/Icon/icon.css",
+    "M src/components/TabBar/tabbar.css",
+    "M src/glass/BottomDock.jsx",
+    "M src/glass/GlassBars.jsx",
+    "M src/glass/dock-lens.css",
+    "M src/glass/lens-map.js",
+    "M src/glass/slices-spec.js",
+    "?? src/components/Icon/Icon.jsx"
+  ]
 }

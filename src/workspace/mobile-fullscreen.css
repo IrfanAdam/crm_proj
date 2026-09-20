@@ -1,0 +1,38 @@
+/* mobile launcher + app-fullscreen — tiny mobile optimization for app.html.
+   Mobile (<=900px): workspace shows the left panel (launcher) only; the
+   heavy canvas/device frame is hidden until the user taps Open. Fullscreen
+   (body.app-fullscreen): prototype renders as a plain responsive page —
+   no bezel, frame, edges, fake status bar, or canvas chrome. */
+.ws-launcher{display:none}
+#exit-fullscreen{display:none}
+@media(max-width:900px){
+  .ws-main{display:none}
+  .ws-launcher{display:flex}
+  .ws-card--zoom{display:none}
+}
+body.app-fullscreen{overflow:hidden}
+body.app-fullscreen .workspace{display:block;max-width:none;margin:0;padding:0;min-height:100dvh}
+body.app-fullscreen .ws-controls{display:none}
+body.app-fullscreen .ws-main{display:flex}
+body.app-fullscreen #panel-prototype{display:flex;flex:1;min-height:100dvh}
+body.app-fullscreen .ws-canvas{min-height:100dvh;border:none;border-radius:0;background:var(--bg-primary)}
+body.app-fullscreen .ws-canvas__viewport{display:block;min-height:100dvh;padding:0;background:var(--bg-primary)}
+body.app-fullscreen .ws-canvas__scaler{width:100%;height:auto;position:static;transition:none;min-width:0}
+body.app-fullscreen .ws-canvas__scaler .device{position:static;width:100%;max-width:100%;min-width:0;height:100dvh;aspect-ratio:auto;border:none;border-radius:0;box-shadow:none;transform:none}
+body.app-fullscreen .ws-canvas,body.app-fullscreen .ws-canvas__viewport,body.app-fullscreen .device__screen,body.app-fullscreen .device__content{min-width:0}
+body.app-fullscreen .device__content{overflow-x:hidden}
+body.app-fullscreen .device__screen{border-radius:0}
+body.app-fullscreen .device__frame,body.app-fullscreen .status,body.app-fullscreen .home-indicator-wrap{display:none}
+/* fullscreen progressive blur — same layer stack as the frame, but full-bleed
+   and square (no bezel radius); top tints behind the appbar, bottom under the dock */
+body.app-fullscreen .device__screen .device__edge{display:block;border-radius:0}
+body.app-fullscreen #glass-appbar{top:0;padding-top:env(safe-area-inset-top)}
+body.app-fullscreen .device__content{padding-top:calc(env(safe-area-inset-top, 0px) + 12px);padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 72px)}
+body.app-fullscreen #glass-bottom{padding-bottom:0}
+body.app-fullscreen .device .tabbar{bottom:calc(env(safe-area-inset-bottom, 0px) + 8px)}
+body.app-fullscreen .device .fab-gem{bottom:calc(env(safe-area-inset-bottom, 0px) + 8px)}
+#exit-fullscreen{position:fixed;z-index:60;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);min-width:44px;height:32px;padding:0 14px;border-radius:var(--radius-full);border:1px solid var(--border-thin);background:var(--bg-surface-glass);color:var(--text-secondary);font-size:12px;font-weight:700;cursor:pointer;display:none}
+body.app-fullscreen.show-exit #exit-fullscreen{display:grid;place-items:center}
+#exit-fullscreen:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.ws-launcher__open{padding:10px 12px;border-radius:var(--radius-full);border:none;background:var(--primitive-neutral-dark-700);color:var(--primitive-gray-white);font-size:var(--font-size-sm);font-weight:700;cursor:pointer}
+.ws-launcher__open:active{transform:scale(.98)}

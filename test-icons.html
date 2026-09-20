@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Icon weight test</title>
+<script type="importmap">{"imports":{"react":"/node_modules/react/index.js"}}</script>
+<style>body{font-family:Inter;padding:24px;background:#fafafa;color:#222} .row{display:flex;gap:24px;align-items:center;margin:16px 0} .icon-box{display:flex;flex-direction:column;align-items:center;gap:6px} .label{font-size:12px;color:#525252}</style>
+</head><body>
+<h2>Phosphor weight test — House / ChartBar / Users / Handshake / Buildings</h2>
+<p class="label">If fill works you should see solid vs outline difference. App dock uses: selected=fill (#1666af), unselected=regular (#525252)</p>
+<div id="root"></div>
+<script type="module">
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { House, ChartBar, Users, Handshake, Buildings } from '@phosphor-icons/react';
+const icons = [
+  {Comp: House, name:'House'},
+  {Comp: ChartBar, name:'ChartBar'},
+  {Comp: Users, name:'Users'},
+  {Comp: Handshake, name:'Handshake'},
+  {Comp: Buildings, name:'Buildings'},
+];
+function Test(){
+  return React.createElement('div', null,
+    React.createElement('div', {className:'row'},
+      ...icons.map(({Comp,name}) => React.createElement('div', {className:'icon-box', key:name+'-r'},
+        React.createElement(Comp, {weight:'regular', size:28, color:'#525252'}),
+        React.createElement('span', {className:'label'}, name+' regular')
+      ))
+    ),
+    React.createElement('div', {className:'row'},
+      ...icons.map(({Comp,name}) => React.createElement('div', {className:'icon-box', key:name+'-f'},
+        React.createElement(Comp, {weight:'fill', size:28, color:'#1666af'}),
+        React.createElement('span', {className:'label'}, name+' fill')
+      ))
+    ),
+    React.createElement('div', {className:'row', style:{marginTop:'24px', padding:'16px', background:'white', borderRadius:'16px', border:'1px solid #e0e0e0'}},
+      React.createElement('span', {className:'label'}, 'Dock simulation: '),
+      ...icons.map(({Comp,name},i) => {
+        const active = i===0;
+        return React.createElement('div', {className:'icon-box', key:'dock-'+name, style:{opacity: active?1:0.9}},
+          React.createElement(Comp, {weight: active?'fill':'regular', size:22, color: active?'#1666af':'#525252'}),
+          React.createElement('span', {className:'label', style:{color: active?'#1666af':'#525252'}}, name+(active?' ●':'' ))
+        )
+      })
+    )
+  )
+}
+createRoot(document.getElementById('root')).render(React.createElement(Test));
+</script>
+</body></html>

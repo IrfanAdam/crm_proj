@@ -20,11 +20,24 @@ export default function DockLens({ source = "#app-content" }) {
   const [armed, setArmed] = useState(false);
   const id = "dl" + uid + gen;
 
+  const getZoom = () => {
+    // Effective visual scale: the copy lives inside the device tree, so rect
+    // deltas only need un-scaling while the device is actually transformed.
+    // In app-fullscreen the frame transform is gone (transform:none) while the
+    // --zoom var is still set — using it would offset the copy (mobile bug).
+    const d = document.getElementById('device');
+    if (!d || getComputedStyle(d).transform === 'none') return 1;
+    const s = document.getElementById('canvas-scaler');
+    const v = s ? parseFloat(getComputedStyle(s).getPropertyValue('--zoom')) : 1;
+    return Number.isFinite(v) && v > 0 ? v : 1;
+  };
+
   const place = () => {
     const copy = copyRef.current, lens = lensRef.current, src = document.querySelector(source);
     if (!copy || !lens || !src) return;
+    const z = getZoom();
     const c = src.getBoundingClientRect(), l = lens.getBoundingClientRect();
-    base.current = { l: c.left - l.left, t: c.top - l.top, w: c.width };
+    base.current = { l: (c.left - l.left) / z, t: (c.top - l.top) / z, w: c.width / z };
     copy.style.left = `${base.current.l}px`;
     copy.style.top = `${base.current.t}px`;
     copy.style.width = `${base.current.w}px`;
@@ -34,9 +47,10 @@ export default function DockLens({ source = "#app-content" }) {
     const host = hostRef.current;
     if (!host) return;
     const measure = () => {
+      const z = getZoom();
       const r = host.getBoundingClientRect();
-      const w = Math.round(r.width) + OPTICS.bleed * 2;
-      const h = Math.round(r.height) + OPTICS.bleed * 2;
+      const w = Math.round(r.width / z) + OPTICS.bleed * 2;
+      const h = Math.round(r.height / z) + OPTICS.bleed * 2;
       setBox((p) => (p.w === w && p.h === h ? p : { w, h }));
       place();
     };

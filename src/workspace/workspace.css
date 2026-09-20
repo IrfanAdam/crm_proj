@@ -1,0 +1,45 @@
+/* workspace — left controls + right full-height canvas */
+.workspace{max-width:1440px;margin:0 auto;padding:16px 16px 24px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start;min-height:100vh}
+@media(max-width:900px){.workspace{grid-template-columns:1fr;padding-top:16px}.ws-controls{position:static}}
+.ws-controls{position:sticky;top:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.ws-tabs{display:flex;justify-content:center}
+.ws-tabs .shell-tabs{width:100%;justify-content:center}
+#ws-proto-stack,#ws-arch-stack{display:flex;flex-direction:column;gap:12px}
+#ws-proto-stack[hidden],#ws-arch-stack[hidden]{display:none !important}
+.ws-main{min-width:0;display:flex;flex-direction:column;align-self:stretch}
+#panel-prototype,#panel-architecture{display:flex;flex-direction:column;flex:1;min-width:0;align-self:stretch}
+#panel-prototype[hidden],#panel-architecture[hidden]{display:none !important}
+.ws-card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:14px;display:flex;flex-direction:column;gap:10px}
+.ws-card--muted{background:var(--bg-primary)}
+.ws-card__title{font-size:var(--font-size-sm);font-weight:700;letter-spacing:-.01em}
+.ws-card__desc{font-size:var(--font-size-xs);color:var(--text-muted);line-height:1.5}
+.ws-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.ws-select{appearance:none;width:100%;padding:8px 10px;border:1px solid var(--border-thin);border-radius:var(--radius-md);background:var(--bg-surface);font-size:var(--font-size-xs);font-weight:600;color:var(--text-primary)}
+.ws-select:focus{outline:none;box-shadow:var(--focus-ring)}
+.ws-row{display:flex;align-items:center;gap:8px}
+.ws-row--between{justify-content:space-between}
+.ws-value{font-size:var(--font-size-xs);font-weight:700;color:var(--text-secondary);min-width:42px;text-align:right}
+.ws-zoombar{display:flex;align-items:center;gap:8px}
+.ws-zoombar input[type=range]{flex:1;accent-color:var(--primitive-neutral-dark-700);height:4px}
+.ws-icon-btn{width:28px;height:28px;border-radius:var(--radius-full);border:1px solid var(--border-thin);background:var(--bg-surface);display:grid;place-items:center;font-size:14px;font-weight:700;cursor:pointer}
+.ws-icon-btn:active{background:var(--bg-interactive)}
+.ws-actions{display:flex;gap:8px}
+.ws-btn{flex:1;padding:7px 10px;border-radius:var(--radius-full);border:1px solid var(--border-thin);background:var(--bg-surface);font-size:11px;font-weight:700;cursor:pointer}
+.ws-btn:active{background:var(--bg-interactive)}
+.ws-hint{font-size:11px;color:var(--text-muted);line-height:1.4}
+/* canvas — full height from top (no 76px header gap) */
+.ws-canvas{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;min-height:calc(100vh - 32px);min-width:0}
+.ws-canvas__toolbar{display:none !important} /* removed redundant top bar — device specs live in left #device-meta only */
+.ws-canvas__label{display:none !important}
+.ws-canvas__hint{display:none !important}
+.ws-canvas__spacer{flex:1}
+.ws-canvas__viewport{flex:1;min-height:620px;overflow:auto;background:
+  radial-gradient(circle at 1px 1px, rgba(15,16,21,.07) 1px, transparent 0) 0 0/20px 20px,
+  var(--bg-primary);display:grid;place-items:center;padding:40px;position:relative}
+.ws-canvas__scaler{position:relative;flex-shrink:0;--device-w:393px;--device-h:852px;--display-r:55px;--bezel-w:10px;--bezel-r:65px;--zoom:1;width:calc(var(--device-w) * var(--zoom));height:calc(var(--device-h) * var(--zoom));transition:width .18s ease,height .18s ease}
+.ws-canvas__scaler .device{position:absolute;left:0;top:0;width:var(--device-w);height:var(--device-h);max-width:none;aspect-ratio:auto;transform:scale(var(--zoom));transform-origin:0 0;will-change:transform;transition:transform .18s ease}
+.ws-canvas--dragging{cursor:grabbing}
+.ws-canvas--dragging .ws-canvas__viewport{cursor:grabbing}
+.ws-canvas--arch{display:grid;place-items:center;padding:24px;min-height:calc(100vh - 32px)}
+.ws-canvas--arch .arch{max-width:720px;width:100%}
+@media(max-width:900px){.ws-canvas,.ws-canvas--arch{min-height:620px}.ws-canvas__viewport{min-height:560px;padding:24px}}

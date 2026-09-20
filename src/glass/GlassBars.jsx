@@ -1,21 +1,63 @@
 import { Glass } from "@samasante/liquid-glass";
 import { useState, useEffect } from "react";
 
-const TOP_OPTICS = { frost: 4, dispersion: 0.042, strength: 0.09, depth: 0.38, curvature: 0.32, saturate: 1.04, brightness: -0.02, specular: 0.12, sheen: 0.07, glow: 0.03, bend: 0.34 };
+// Clear crystal glass — tiny frost, strong refraction
+// frost 2 = just a veil (not milky like 6-10), dispersion/bend/depth do the liquid work
+const TOP_OPTICS = {
+  frost: 2.2,
+  dispersion: 0.22,
+  strength: 0.05,
+  depth: 0.52,
+  curvature: 0.36,
+  bend: 0.42,
+  bendWidth: 0.16,
+  saturate: 1.08,
+  brightness: 0.01,
+  specular: 0.72,
+  sheen: 0.24,
+  sheenWidth: 2.8,
+  sheenFalloff: 1.5,
+  sheenAngle: 38,
+  glow: 0.08,
+  glowSpread: 0.9,
+  glowFalloff: 0.55,
+};
 
 export function TopPills() {
   const [active, setActive] = useState(() => (location.hash === "#architecture" ? "architecture" : "prototype"));
   useEffect(() => {
     const panels = { prototype: document.getElementById("panel-prototype"), architecture: document.getElementById("panel-architecture") };
     Object.entries(panels).forEach(([k, el]) => { if (el) el.hidden = k !== active; });
-    document.querySelectorAll(".pill-tab").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === active)));
+    const leftProto = document.getElementById("ws-proto-stack");
+    const leftArch = document.getElementById("ws-arch-stack");
+    if (leftProto) leftProto.hidden = active !== "prototype";
+    if (leftArch) leftArch.hidden = active !== "architecture";
+    document.querySelectorAll(".pill-tab").forEach((b) => {
+      const on = b.dataset.tab === active;
+      b.setAttribute("aria-selected", String(on));
+      if (on) {
+        b.setAttribute("data-transit", "true");
+        setTimeout(() => b.removeAttribute("data-transit"), 280);
+      } else b.removeAttribute("data-transit");
+    });
     history.replaceState(null, "", `#${active}`);
   }, [active]);
   return (
-    <Glass radius={9999} optics={TOP_OPTICS} style={{ background: "color-mix(in srgb, var(--bg-surface) 10%, transparent)", borderRadius: 9999, padding: 4, border: "1px solid color-mix(in srgb, white 28%, transparent)", boxShadow: "0 4px 18px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.52)" }}>
-      <div className="shell-tabs" role="tablist" aria-label="Sections" style={{ display: "inline-flex", gap: 6 }}>
-        <button className="pill-tab" role="tab" data-tab="prototype" aria-selected={active === "prototype"} onClick={() => setActive("prototype")}>Prototype</button>
-        <button className="pill-tab" role="tab" data-tab="architecture" aria-selected={active === "architecture"} onClick={() => setActive("architecture")}>Architecture</button>
+    <Glass
+      radius={9999}
+      optics={TOP_OPTICS}
+      style={{
+        background: "color-mix(in srgb, var(--bg-surface) 38%, transparent)",
+        borderRadius: 9999,
+        padding: 4,
+        border: "1px solid color-mix(in srgb, white 34%, transparent)",
+        boxShadow: "0 8px 28px rgba(15,16,21,0.10), 0 1px 2px rgba(15,16,21,0.06)",
+        width: "100%",
+      }}
+    >
+      <div className="shell-tabs" role="tablist" aria-label="Sections" style={{ display: "inline-flex", gap: 6, width: "100%", justifyContent: "center" }}>
+        <button className="pill-tab" role="tab" data-tab="prototype" aria-selected={active === "prototype"} onClick={() => setActive("prototype")} style={{ flex: 1 }}>Prototype</button>
+        <button className="pill-tab" role="tab" data-tab="architecture" aria-selected={active === "architecture"} onClick={() => setActive("architecture")} style={{ flex: 1 }}>Architecture</button>
       </div>
     </Glass>
   );
@@ -30,4 +72,3 @@ export function DeviceAppBar() {
     </div>
   );
 }
-

@@ -1,33 +1,95 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#fafafa"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<link rel="manifest" href="/manifest.webmanifest"/><link rel="apple-touch-icon" href="/icons/icon-192.png"/>
 <title>ALPHA CRM — Prototype</title>
-<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="app.css"/>
+<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 </head><body>
-<div class="float-tabs"><div id="glass-top"></div></div>
-<div id="panel-prototype" role="tabpanel" aria-labelledby="tab-prototype"><main class="stage stage--split">
-<aside class="stage__side"><p class="stage__hint">Center frame = the app (portable architecture — same markup/styles port to any framework). Native chrome is shell-only, not DS logic.</p><a class="side-link" href="gallery.html">DS Gallery →</a><div class="device-meta" aria-label="Device specs"><b>iPhone 15</b> <span class="device-meta__dot"></span> 393 × 852 pt <span class="device-meta__dot"></span> 1179 × 2556 px @3× <span class="device-meta__dot"></span> 460 ppi <span class="device-meta__dot"></span> 19.5:9 <span class="device-meta__dot"></span> 6.1″ Super Retina XDR <span class="device-meta__dot"></span> Dynamic Island</div></aside>
-<div class="stage__main"><div class="device" role="region" aria-label="iPhone 15 prototype — 393×852 pt, 1179×2556 px at 3×, 6.1 inch">
-<div class="status" aria-hidden="true"><span class="status__time">9:41</span><span class="status__island" title="Dynamic Island"></span><span class="status__right"><svg viewBox="0 0 18 11" fill="none" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="10" y="2" width="3" height="9" rx="1" fill="currentColor"/><rect x="15" y="0" width="3" height="11" rx="1" fill="currentColor" opacity=".35"/></svg><svg viewBox="0 0 16 11" fill="none" aria-hidden="true" style="width:15px"><path d="M1 4.5C3.5 2 12.5 2 15 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M3.5 6.8C5.5 5 10.5 5 12.5 6.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="9" r="1.2" fill="currentColor"/></svg><span class="status__battery"><span class="status__battery-fill"></span></span></span></div>
-<div id="glass-appbar"></div>
-<div class="device__edge device__edge--top" aria-hidden="true"><span style="--b:2px;--a:0%;--z:12%"></span><span style="--b:5px;--a:0%;--z:24%"></span><span style="--b:10px;--a:0%;--z:36%"></span><span style="--b:16px;--a:0%;--z:48%"></span><span style="--b:24px;--a:0%;--z:60%"></span></div>
-<div class="device__content" id="app-content"><div class="pad" style="display:flex;flex-direction:column;gap:12px">
-<div style="height:132px;border-radius:16px;background:linear-gradient(135deg,var(--primitive-sapphire-ui-300) 0%,var(--primitive-amethyst-400) 48%,var(--primitive-red-beryl-400) 100%);position:relative;overflow:hidden;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;color:white"><div style="position:absolute;inset:-22px;background:radial-gradient(ellipse at 28% 18%,rgba(255,255,255,0.52),transparent 58%),radial-gradient(ellipse at 82% 78%,rgba(255,224,163,0.55),transparent 56%),radial-gradient(ellipse at 58% 42%,rgba(124,190,251,0.35),transparent 65%)"></div><span style="position:relative;font-size:10px;letter-spacing:0.07em;opacity:0.92">FUNNEL • COVERAGE • 64 ACTIVITIES</span><span style="position:relative;font-size:22px;font-weight:800;letter-spacing:-0.02em">64% → 32 won</span><span style="position:relative;font-size:11px;opacity:0.9">Scroll — content refracts behind the dock</span></div>
-<div class="kpi-row"><div class="kpi"><div class="kpi__label">Closed</div><div class="kpi__value">4 / 32</div><div class="kpi__delta">+2% vs yesterday</div></div><div class="kpi"><div class="kpi__label">In progress</div><div class="kpi__value">12</div><div class="kpi__delta" style="color:var(--text-muted)">3 due today</div></div></div>
-<div style="display:flex;flex-direction:column;gap:8px"><div style="height:30px;border-radius:9999px;background:linear-gradient(90deg,var(--primitive-sapphire-ui-100),var(--primitive-sapphire-ui-400));display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:12px;font-weight:700"><span>23 Wed</span><span>72%</span></div><div style="height:30px;border-radius:9999px;background:var(--primitive-amethyst-700);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:12px;font-weight:700"><span>Q3 Target</span><span>1.4x ◇</span></div><div style="height:8px;border-radius:9999px;background:var(--bg-interactive);overflow:hidden;display:flex"><span style="flex:2;background:var(--primitive-citrine-400)"></span><span style="flex:3;background:var(--primitive-amethyst-400)"></span><span style="flex:1;background:var(--primitive-red-beryl-400)"></span></div></div>
-<div class="card" style="border-left:3px solid var(--signal)"><div class="meta" style="font-weight:600;letter-spacing:.04em;text-transform:uppercase">Opportunity • SAP HANA</div><div style="margin-top:6px;font-weight:700">Acme Corp — Enterprise</div><div class="meta" style="margin-top:3px">Proposal · 73% · ₹3.2L · 2.1 km</div><div style="margin-top:10px;height:6px;background:var(--bg-interactive);border-radius:9999px;overflow:hidden;display:flex"><span style="flex:3;background:var(--signal)"></span><span style="flex:2;background:var(--border-thin)"></span></div></div>
-<div class="card" style="border-left:3px solid var(--primitive-citrine-400)"><div class="meta" style="font-weight:600;letter-spacing:.04em;text-transform:uppercase">Leads • Fintech</div><div style="margin-top:6px;font-weight:700">PayLeap — Series B</div><div class="meta" style="margin-top:3px">Qualification · 42% · ₹1.8L · 0.8 km</div><div style="margin-top:8px;display:flex;gap:6px"><span style="font-size:10px;padding:4px 8px;border-radius:9999px;background:var(--primitive-citrine-100);color:var(--primitive-citrine-700);font-weight:600">Hot</span><span style="font-size:10px;padding:4px 8px;border-radius:9999px;background:var(--bg-interactive);font-weight:500">Call tomorrow</span></div></div>
-<div class="card" style="border-left:3px solid var(--primitive-red-beryl-400)"><div class="meta" style="font-weight:600;letter-spacing:.04em;text-transform:uppercase">Risk • Healthcare</div><div style="margin-top:6px;font-weight:700">Nimai Hospitals — Renewal</div><div class="meta" style="margin-top:3px">Negotiation · 61% · ₹4.1L · 5.3 km</div></div>
-<div class="card" style="border-left:3px solid var(--primitive-amethyst-400)"><div class="meta" style="font-weight:600;letter-spacing:.04em;text-transform:uppercase">Upsell • Retail</div><div style="margin-top:6px;font-weight:700">KiranaOne — 12 stores</div><div class="meta" style="margin-top:3px">Prospecting · 28% · ₹0.9L</div></div>
-<div style="height:118px;border-radius:16px;overflow:hidden;position:relative;background:var(--primitive-sapphire-ui-100);border:1px solid var(--border-thin)"><img src="https://picsum.photos/seed/alpha-crm-map/600/260" alt="map" style="width:100%;height:100%;object-fit:cover;opacity:0.92"/><span style="position:absolute;left:10px;bottom:10px;background:rgba(20,20,20,0.72);backdrop-filter:blur(8px);color:white;padding:6px 10px;border-radius:9999px;font-size:11px;font-weight:600">3 prospects nearby →</span><span style="position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--signal);display:grid;place-items:center;color:white;font-size:14px">◎</span></div>
-<div class="card"><div class="meta" style="font-weight:600;letter-spacing:.04em;text-transform:uppercase">Today’s timeline</div><div style="margin-top:10px;display:flex;gap:10px;align-items:center"><span style="width:30px;height:30px;border-radius:50%;background:var(--primitive-green-300);display:grid;place-items:center;font-size:14px">✓</span><span style="flex:1"><span style="font-weight:600;font-size:13px">Call with Acme — 10:30</span><span class="meta" style="display:block">Confirmed • 2.1 km away</span></span><span style="font-size:10px;padding:4px 8px;border-radius:9999px;background:var(--bg-interactive)">30m</span></div></div>
-<div style="height:84px;border-radius:16px;background:linear-gradient(90deg,var(--primitive-amethyst-50),var(--primitive-amethyst-200) 55%,var(--primitive-amethyst-300));border:1px solid var(--border-thin);padding:12px;display:flex;align-items:center;justify-content:space-between"><div><div class="meta" style="font-weight:600">GOAL • PRODUCTIVITY</div><div style="font-weight:800;margin-top:2px">12 demos made</div><div class="meta">of 20 • +3 vs goal</div></div><span style="width:56px;height:56px;border-radius:50%;background:var(--primitive-amethyst-500);display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 8px 20px rgba(165,76,255,0.35)">◆</span></div>
-<div class="meta" style="text-align:center;padding:6px 0 2px">Scroll to the very bottom — the dock sits below the feed, and the last card clears it.</div>
-</div></div>
-<div id="glass-bottom"></div>
-<div class="device__edge" aria-hidden="true"><span style="--b:1.2px;--a:0%;--z:20%"></span><span style="--b:2.4px;--a:18%;--z:40%"></span><span style="--b:4.5px;--a:38%;--z:60%"></span><span style="--b:8px;--a:58%;--z:80%"></span><span style="--b:14px;--a:78%;--z:100%"></span></div>
-<div class="home-indicator-wrap" aria-hidden="true"><span class="home-indicator"></span></div>
-</div></div>
-</main></div>
-<div id="panel-architecture" role="tabpanel" aria-labelledby="tab-architecture" hidden><main class="stage"><div class="arch"><h2>Architecture — coming next</h2><p>Portable app shell designed to move to any framework with zero redesign. Current shell is vanilla HTML/CSS/JS + React islands so the DS stays framework-agnostic.</p><ul><li><b>Tokens:</b> <code>tokens/*.json</code> → <code>design-system/tokens.css</code> (DTCG, <code>npm run build</code>) — single source, no raw hex</li><li><b>Glass:</b> <code>@samasante/liquid-glass</code> <code>&lt;Glass&gt;</code> wraps DS chrome — <code>style.background</code> is <code>color-mix(var(--bg-surface), transparent)</code> + <code>optics:{frost,dispersion,strength,depth,curvature,saturate}</code> — live DOM refraction in Chrome, frost+tint elsewhere</li><li><b>Components:</b> <code>src/components/*</code> — each ≤100 lines, <code>var(--token)</code> only, 44px tap, focus-ring</li><li><b>Patterns:</b> <code>src/patterns/*</code> + <code>src/logic/*</code> (funnel machine, transient/temporal)</li><li><b>Prototype:</b> <code>app.html</code> + <code>app.css</code> + <code>src/glass/*</code> — 393×852 iPhone 15 frame (19.5:9, 460ppi); app content is DS composition inside <code>.device__content</code></li></ul><p class="meta" style="margin-top:16px">Platform-specific tuning (blur strength, sheen, glow) can be done per OS later via <code>optics</code> — geometry stays 393×852.</p></div></main></div>
+<div class="workspace">
+  <aside class="ws-controls" aria-label="Canvas controls">
+    <div id="glass-top" class="ws-tabs"></div>
+    <div id="ws-proto-stack">
+      <div class="ws-card ws-launcher">
+        <h3 class="ws-card__title">Prototype</h3>
+        <p class="ws-card__desc">Live app, fullscreen — no device frame. Fastest way to test and share.</p>
+        <button id="open-fullscreen" class="ws-launcher__open">Open prototype</button>
+      </div>
+      <div class="ws-card">
+        <h3 class="ws-card__title">Prototype canvas</h3>
+        <p class="ws-card__desc">Right canvas = the app. Device-accurate squircle (true 55pt) — zoom is lens-only, layout stays at 1× points.</p>
+        <label class="ws-label" for="device-select">Device</label>
+        <select id="device-select" class="ws-select" aria-label="Device size">
+          <option value="iphone15" selected>iPhone 15 — 393×852 · 6.1″</option>
+          <option value="iphone15pm">iPhone 15 Pro Max — 430×932 · 6.7″</option>
+          <option value="iphone16pro">iPhone 16 Pro — 402×874 · 6.3″</option>
+          <option value="pixel8">Pixel 8 — 412×915 · 6.2″</option>
+        </select>
+        <div id="device-meta" class="device-meta" aria-live="polite" style="justify-content:flex-start;text-align:left;line-height:1.6;display:flex;flex-wrap:wrap;gap:6px;width:100%;box-sizing:border-box;border-radius:var(--radius-lg);padding:10px 12px;align-items:center;align-content:flex-start"></div>
+      </div>
+      <div class="ws-card ws-card--zoom">
+        <div class="ws-row ws-row--between">
+          <label class="ws-label" style="margin:0" for="zoom-slider">Zoom</label>
+          <span id="zoom-value" class="ws-value">80%</span>
+        </div>
+        <div class="ws-zoombar">
+          <button id="zoom-out" class="ws-icon-btn" aria-label="Zoom out">−</button>
+          <input id="zoom-slider" type="range" min="50" max="200" value="80" step="5" aria-label="Zoom"/>
+          <button id="zoom-in" class="ws-icon-btn" aria-label="Zoom in">+</button>
+        </div>
+        <div class="ws-actions">
+          <button id="zoom-fit" class="ws-btn">Fit</button>
+          <button id="zoom-reset" class="ws-btn">100%</button>
+        </div>
+        <p class="ws-hint">Ctrl/Cmd + scroll to zoom · drag empty canvas to pan · F to fit · +/- to step</p>
+      </div>
+      <div class="ws-card ws-card--muted">
+        <p class="stage__hint">Center frame = the app (portable architecture — same markup/styles port to any framework). Native chrome is shell-only, not DS logic.</p>
+        <a class="side-link" href="gallery.html">DS Gallery →</a>
+      </div>
+    </div>
+    <div id="ws-arch-stack" hidden>
+      <div class="ws-card">
+        <h3 class="ws-card__title">Architecture</h3>
+        <p class="ws-card__desc">Portable shell — same markup/styles port to any framework. Tokens are single-source, Glass islands wrap chrome.</p>
+        <a class="side-link" href="gallery.html">DS Gallery →</a>
+      </div>
+      <div class="ws-card ws-card--muted">
+        <p class="stage__hint">Right panel is the full-height architecture doc — edge-to-edge from the top, no header gap.</p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ws-main">
+    <div id="panel-prototype" role="tabpanel" aria-labelledby="tab-prototype">
+      <section class="ws-canvas" aria-label="Device canvas">
+        <div id="canvas-viewport" class="ws-canvas__viewport">
+          <div id="canvas-scaler" class="ws-canvas__scaler" style="--device-w:393px;--device-h:852px;--display-r:55px;--bezel-w:10px;--bezel-r:65px;--zoom:0.8">
+            <div id="device" class="device" role="region" aria-label="iPhone 15 prototype — 393×852 pt, 1179×2556 px at 3×, 6.1 inch">
+              <div class="device__screen">
+                <div class="status" aria-hidden="true"><span class="status__time">9:41</span><span class="status__island" title="Dynamic Island"></span><span class="status__right"><svg viewBox="0 0 18 11" fill="none" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="10" y="2" width="3" height="9" rx="1" fill="currentColor"/><rect x="15" y="0" width="3" height="11" rx="1" fill="currentColor" opacity=".35"/></svg><svg viewBox="0 0 16 11" fill="none" aria-hidden="true" style="width:15px"><path d="M1 4.5C3.5 2 12.5 2 15 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M3.5 6.8C5.5 5 10.5 5 12.5 6.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="9" r="1.2" fill="currentColor"/></svg><span class="status__battery"><span class="status__battery-fill"></span></span></span></div>
+                <div id="glass-appbar"></div>
+                <div class="device__edge device__edge--top" aria-hidden="true"><span style="--b:1.5px;--a:12%;--z:20%"></span><span style="--b:3px;--a:18%;--z:32%"></span><span style="--b:6px;--a:26%;--z:44%"></span><span style="--b:10px;--a:34%;--z:56%"></span><span style="--b:14px;--a:44%;--z:66%"></span></div>
+                <div class="device__content" id="app-content"><div class="pad"><div id="opps-home"></div></div></div>
+                <div id="glass-bottom"></div>
+                <div class="device__edge" aria-hidden="true"><span style="--b:1px;--a:16%;--z:32%"></span><span style="--b:2px;--a:30%;--z:48%"></span><span style="--b:3.6px;--a:44%;--z:64%"></span><span style="--b:5.2px;--a:60%;--z:82%"></span><span style="--b:7px;--a:76%;--z:100%"></span></div>
+                <div class="home-indicator-wrap" aria-hidden="true"><span class="home-indicator"></span></div>
+              </div>
+              <div class="device__frame" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="panel-architecture" role="tabpanel" aria-labelledby="tab-architecture" hidden>
+      <section class="ws-canvas ws-canvas--arch" aria-label="Architecture">
+        <div class="arch"><h2>Architecture — coming next</h2><p>Portable app shell designed to move to any framework with zero redesign. Current shell is vanilla HTML/CSS/JS + React islands so the DS stays framework-agnostic.</p><ul><li><b>Tokens:</b> <code>tokens/*.json</code> → <code>design-system/tokens.css</code> (DTCG, <code>npm run build</code>) — single source, no raw hex</li><li><b>Glass:</b> <code>@samasante/liquid-glass</code> <code>&lt;Glass&gt;</code> wraps DS chrome — <code>style.background</code> is <code>color-mix(var(--bg-surface), transparent)</code> + <code>optics:{frost,dispersion,strength,depth,curvature,saturate}</code> — live DOM refraction in Chrome, frost+tint elsewhere</li><li><b>Components:</b> <code>src/components/*</code> — each ≤100 lines, <code>var(--token)</code> only, 44px tap, focus-ring</li><li><b>Patterns:</b> <code>src/patterns/*</code> + <code>src/logic/*</code> (funnel machine, transient/temporal)</li><li><b>Prototype:</b> <code>app.html</code> + <code>app.css</code> + <code>src/workspace/*</code> — 393×852 iPhone 15 frame (55pt squircle, 65pt bezel) — zoomable canvas <code>.ws-canvas__scaler --zoom</code> with device switcher</li></ul><p class="meta" style="margin-top:16px">Platform-specific tuning (blur strength, sheen, glow) can be done per OS later via <code>optics</code> — geometry stays at points × scale.</p></div>
+      </section>
+    </div>
+  </div>
+</div>
+<button id="exit-fullscreen" aria-label="Back to workspace">✕ Exit</button>
+<script type="module" src="/src/patterns/OppsHome/opps-home.js"></script>
+<script type="module" src="/src/workspace/mobile-fullscreen.js"></script>
 <script type="module" src="/src/glass/main.jsx"></script>
+<script type="module" src="/src/workspace/canvas.js"></script>
 </body></html>
