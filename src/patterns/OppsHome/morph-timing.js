@@ -26,6 +26,7 @@ export const CLOSE = [[0, 1, null], [1, 0, bez(.3, .7, .3, 1)]];
 // `layer` doubles as the map's warm-up: the sheet's tile layer is faded in while the window is
 // still inside the widget's rect, so a not-yet-decoded tile set can never show as a flash
 // card holds at 0 while the pill ghost covers its rect, then cross-fades as the ghost does
+// (open only: on close the ghost carries the card clone, so sheet-morph holds card at 0)
 export const FADE = { open: { card: [.84, .98], x: [.5, .9], scrim: [0, .45], layer: [0, .18] }, close: { card: [.3, .05], x: [.25, 0], scrim: [.75, 0] } };
 export function walk(stops, p) {
   for (let i = 1; i < stops.length; i++) {

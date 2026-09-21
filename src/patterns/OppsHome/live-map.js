@@ -4,6 +4,7 @@ import "./leaflet-global.js";
 import "leaflet-rotate";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { getScale } from "../../logic/time-scale.js";
 // Mumbai home — zoomed out to city level (was street-level dummy grid)
 export const HOME = [19.0759, 72.8777];
 export const ZOOM = 12;
@@ -34,10 +35,17 @@ const meIcon = L.divIcon({
   iconAnchor: [14, 14],
 });
 // — the coverage radius breathes: opacity rides the radius while the CSS keeps the colour —
+let breathAcc = 0;
+let breathLast = T0;
 function breathe(circle, host) {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const step = (now) => {
-    const k = K_MIN + (1 - K_MIN) * (0.5 - 0.5 * Math.cos(((now - T0) / PULSE_MS) * Math.PI * 2));
+    // — two maps share one clock: only the first step per frame advances it —
+    if (now !== breathLast) {
+      breathAcc += Math.max(0, now - breathLast) * getScale();
+      breathLast = now;
+    }
+    const k = K_MIN + (1 - K_MIN) * (0.5 - 0.5 * Math.cos((breathAcc / PULSE_MS) * Math.PI * 2));
     if (host.isConnected && !host.closest("[hidden]")) {
       const m = 0.35 + 0.65 * ((k - K_MIN) / (1 - K_MIN));
       circle.setRadius(HOTSPOT_M * k);

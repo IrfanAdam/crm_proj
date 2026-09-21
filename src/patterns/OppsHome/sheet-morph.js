@@ -4,6 +4,7 @@
    the tile layer keeps its own size and stays centred on HOME, so the morph starts on the
    widget's own map and lands back on it — no squashed copy, no matched-scale maths. */
 import { CLOSE, FADE, OPEN, clamp01, walk } from "./morph-timing.js";
+import { getScale } from "../../logic/time-scale.js";
 export const MARGIN = 18;   // tile-layer bleed past the screen — covers the settle overshoot
 export const OPEN_MS = 460;
 export const CLOSE_MS = 320;
@@ -42,7 +43,8 @@ export function morph(parts, rect, dir, done, instant) {
     const edge = Math.sin(Math.PI * clamp01(p));
     win.style.setProperty("--win-ring", (edge * 0.55).toFixed(3));
     win.style.setProperty("--win-sh", (edge * 0.28).toFixed(3));
-    const rawC = alpha("card", p);
+    const rawC = open ? alpha("card", p) : 0;   // close holds the card at 0: the ghost
+    // carries an identical card clone, so any real-card opacity doubles it (c_006 in audit)
     // — easeOutCubic for card so it rides the window's settle, not linear —
     const ce = rawC >= 1 ? 1 : rawC <= 0 ? 0 : 1 - Math.pow(1 - rawC, 3);
     const bx = alpha("x", p);
@@ -63,7 +65,7 @@ export function morph(parts, rect, dir, done, instant) {
   const ms = open ? OPEN_MS : CLOSE_MS;
   let raf = 0;
   const step = (now) => {
-    const p = clamp01((now - t0) / ms);
+    const p = clamp01((now - t0) / (ms / getScale()));
     paint(p);
     if (p < 1) {
       raf = requestAnimationFrame(step);

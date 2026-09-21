@@ -2,7 +2,7 @@
 // Export map: sheetHTML · initSheet · openSheet
 import { createLiveMap, RING_MS } from "./live-map.js";
 import { fitLayer, morph } from "./sheet-morph.js";
-import { flyAvatars, flyPill, flyPillBack } from "./map-flights.js";
+import { flyPill, flyPillBack } from "./map-flights.js";
 import { PINS, PROSPECTS, relRect } from "./nearby-map.js";
 let openFn = null;
 let sheetApi = null;
@@ -63,7 +63,6 @@ function open() {
   if (feed) feed.style.overflow = "hidden";
   placeClose(p.sheet, screen);
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduced) flyAvatars(screen, p.sheet);
   if (!reduced) flyPill(screen, p.sheet);
   morph(p, rect, 1, () => { placeClose(p.sheet, screen); p.x.focus({ preventScroll: true }); }, reduced);
 }

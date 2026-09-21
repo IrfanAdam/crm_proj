@@ -4,7 +4,6 @@
 .map-sheet[hidden]{display:none}
 .map-sheet__scrim{position:absolute;inset:0;background:rgba(15,16,21,.28)}
 .map-sheet__panel{position:absolute;inset:0;overflow:hidden}
-.map-sheet__flight{position:absolute;z-index:1300;border-radius:var(--radius-full);object-fit:cover;pointer-events:none;will-change:transform,opacity}
 /* the morph is a window, not a scale: .map-sheet__win is clipped to the widget's rect and grows
    to the screen while the tile layer keeps its own size, centred on HOME (see sheet-morph.js) */
 .map-sheet__win{position:absolute;overflow:hidden}
