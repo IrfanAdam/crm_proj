@@ -42,12 +42,14 @@ export function morph(parts, rect, dir, done, instant) {
     const edge = Math.sin(Math.PI * clamp01(p));
     win.style.setProperty("--win-ring", (edge * 0.55).toFixed(3));
     win.style.setProperty("--win-sh", (edge * 0.28).toFixed(3));
-    const c = alpha("card", p);
+    const rawC = alpha("card", p);
+    // — easeOutCubic for card so it rides the window's settle, not linear —
+    const ce = rawC >= 1 ? 1 : rawC <= 0 ? 0 : 1 - Math.pow(1 - rawC, 3);
     const bx = alpha("x", p);
     layer.style.opacity = lf ? clamp01((p - lf[0]) / (lf[1] - lf[0])).toFixed(3) : "1";
     scrim.style.opacity = alpha("scrim", p).toFixed(3);
-    card.style.opacity = c.toFixed(3);
-    card.style.transform = `translateY(${((1 - c) * 24).toFixed(2)}px)`;
+    card.style.opacity = ce.toFixed(3);
+    card.style.transform = `translateY(${((1 - ce) * 12).toFixed(2)}px)`;
     x.style.opacity = bx.toFixed(3);
     x.style.pointerEvents = bx > 0.2 ? "" : "none";
   };

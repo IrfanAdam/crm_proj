@@ -50,7 +50,7 @@ function drive(screen, pill, card, dir, ms) {
     g.style.borderRadius = `${L(rp, rc).toFixed(2)}px`;
     pw.style.opacity = (1 - clamp01(t / 0.35)).toFixed(3);
     cw.style.opacity = clamp01((t - 0.55) / 0.35).toFixed(3);
-    if (dir > 0) g.style.opacity = (1 - clamp01((t - 0.85) / 0.15)).toFixed(3);
+    if (dir > 0) g.style.opacity = (1 - clamp01((t - 0.84) / 0.14)).toFixed(3);
     if (p01 < 1) requestAnimationFrame(step);
     else g.remove();
   };
