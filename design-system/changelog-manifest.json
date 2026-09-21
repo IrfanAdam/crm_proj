@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T11:23:15.958Z",
+  "generated": "2026-09-21T11:23:22.251Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,14 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "c4236b6",
+      "full": "c4236b686c5dd15fe7df1068c6d21d6724e578be",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [live map morph + flights]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "82cb183",
       "full": "82cb183dd8223a8bef82f1a06b59a52b87656b85",
