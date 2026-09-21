@@ -78,8 +78,10 @@ export function flyAvatars(screen, sheet) {
   const blobs = [...sheet.querySelectorAll(".map-sheet__blob")];
   const plan = imgs.map((im, i) => ({ im, b: blobs[i], a: blobs[i] && relRect(im, screen), c: blobs[i] && relRect(blobs[i], screen) })).filter((p) => p.b);
   plan.forEach(({ im, b, a, c }, i) => {
-    // — the pop ends exactly as its clone lands (flight 560 + i*60), so the swap is seamless —
-    b.animate([{ opacity: 0, transform: "scale(.4)" }, { opacity: 1, transform: "scale(1)" }], { duration: 240, delay: 320 + i * 60, fill: "backwards" });
+    // — blobs stay hidden until their clone is ~90ms from landing, then pop with overshoot;
+    //   old 320+ i*60 started 240ms early → double avatars mid-flight —
+    b.animate([{ opacity: 0, transform: "scale(.3)" }, { opacity: 1, transform: "scale(1.08)" }, { opacity: 1, transform: "scale(1)" }],
+      { duration: 200, delay: 470 + i * 60, fill: "both", easing: "cubic-bezier(.34,1.56,.64,1)" });
     const cl = document.createElement("img");
     cl.src = im.src;
     cl.alt = "";
