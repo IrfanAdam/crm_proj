@@ -2,8 +2,8 @@
 // Export map: flyAvatars · flyPill · flyPillBack
 import { relRect } from "./nearby-map.js";
 import { CLOSE, OPEN, walk, clamp01 } from "./morph-timing.js";
-import { OPEN_MS, CLOSE_MS } from "./sheet-morph.js";
-const FLY = "cubic-bezier(.4,0,.2,1)";
+import { CLOSE_MS, OPEN_MS } from "./sheet-morph.js";
+export { flyAvatars } from "./avatar-flights.js";
 /* The pill ⇄ card hand-off morphs one ghost box pill-box ⇄ card-box in layout px — never */
 /* transform scale (scale stretches faces/label: the old slop) — inner layers cross-fade. */
 function drive(screen, pill, card, dir, ms) {
@@ -70,30 +70,4 @@ export function flyPillBack(screen, sheet) {
   const card = sheet.querySelector(".map-sheet__card");
   if (!pill || !card) return;
   drive(screen, pill, card, -1, CLOSE_MS);
-}
-// — avatar continuity: the pill's faces fly into the sheet's blobs — all rects are read
-//   before any clone is written, so setup costs one layout pass (no mid-flight thrash) —
-export function flyAvatars(screen, sheet) {
-  const imgs = [...document.querySelectorAll("#nearby-open .avatar img")];
-  const blobs = [...sheet.querySelectorAll(".map-sheet__blob")];
-  const plan = imgs.map((im, i) => ({ im, b: blobs[i], a: blobs[i] && relRect(im, screen), c: blobs[i] && relRect(blobs[i], screen) })).filter((p) => p.b);
-  plan.forEach(({ im, b, a, c }, i) => {
-    // — blobs stay hidden until their clone is ~90ms from landing, then pop with overshoot;
-    //   old 320+ i*60 started 240ms early → double avatars mid-flight —
-    b.animate([{ opacity: 0, transform: "scale(.3)" }, { opacity: 1, transform: "scale(1.08)" }, { opacity: 1, transform: "scale(1)" }],
-      { duration: 200, delay: 470 + i * 60, fill: "both", easing: "cubic-bezier(.34,1.56,.64,1)" });
-    const cl = document.createElement("img");
-    cl.src = im.src;
-    cl.alt = "";
-    cl.className = "map-sheet__flight";
-    Object.assign(cl.style, { left: `${a.l}px`, top: `${a.t}px`, width: `${a.w}px`, height: `${a.h}px` });
-    screen.appendChild(cl);
-    const dx = c.l - a.l + (c.w - a.w) / 2;
-    const dy = c.t - a.t + (c.h - a.h) / 2;
-    const to = `translate(${dx}px,${dy}px) scale(${c.w / a.w})`;
-    const flight = cl.animate([{ transform: "translate(0,0) scale(1)", opacity: 1 },
-      { transform: `translate(${dx / 2}px,${dy / 2 - 36}px) scale(1.35)`, opacity: 1, offset: 0.55 },
-      { transform: to, opacity: 1 }], { duration: 560, delay: i * 60, easing: FLY, fill: "both" });
-    flight.finished.then(() => cl.remove()).catch(() => cl.remove());
-  });
 }
