@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T11:33:03.038Z",
+  "generated": "2026-09-21T11:43:55.439Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,22 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "6c418db",
+      "full": "6c418dbf49a6a12390dabc8310f857236958cdea",
+      "date": "2026-09-21",
+      "subject": "fix(map): seamless avatar landing — blob scales up in place, clone crossfades, pill hidden on close",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "d905e1e",
+      "full": "d905e1ed4482305db5663a0429b4fde7518097e4",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [card handoff]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "bcb8788",
       "full": "bcb8788ff99aa05686513cbd31997946b9883f3d",
