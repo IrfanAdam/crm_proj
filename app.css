@@ -41,9 +41,9 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 @media(max-width:440px){.device{--bezel-w:8px;--display-r:46px;--bezel-r:54px;max-width:calc(100vw - 16px - 16px)}.device__screen{border-radius:var(--display-r)}.device__frame{inset:calc(-1 * var(--bezel-w));border-width:var(--bezel-w);border-radius:var(--bezel-r)}.device__edge{border-radius:0 0 var(--display-r) var(--display-r)}.device__edge--top{border-radius:var(--display-r) var(--display-r) 0 0}}
 /* status bar + appbar — transparent chrome: content scrolls behind, the top edge material blurs it */
 /* NOTE: keep wrapper ids unstyled transparent so React roots add no bands */
-#glass-appbar{position:absolute;top:54px;left:0;right:0;z-index:6;background:transparent;border:none;padding:0}
+#glass-appbar{position:absolute;top:54px;left:0;right:0;z-index:9;background:transparent;border:none;padding:0}
 #glass-bottom{background:transparent;border:none;padding:0}
-.status{height:54px;position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:flex-start;justify-content:space-between;padding:14px 28px 0;background:transparent}
+.status{height:54px;position:absolute;top:0;left:0;right:0;z-index:9;display:flex;align-items:flex-start;justify-content:space-between;padding:14px 28px 0;background:transparent}
 .status__time{font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary);width:54px}
 .status__island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:92px;height:28px;background:#000;border-radius:var(--radius-full)}
 .status__right{display:flex;align-items:center;gap:6px;width:68px;justify-content:flex-end}
@@ -74,7 +74,7 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 .meta{font-size:var(--font-size-xs);color:var(--text-muted)}
 .empty{border:1px dashed var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8) var(--spacing-4);text-align:center;color:var(--text-muted)}
 /* bottom system — floating liquid-glass dock (material lives in src/glass/dock-lens.css) */
-.home-indicator-wrap{height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;z-index:6}
+.home-indicator-wrap{height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;z-index:9}
 .home-indicator{width:134px;height:5px;background:#000;border-radius:var(--radius-full)}
 /* bottom edge material — native progressive blur: stacked backdrop layers, radius rises toward the edge.
    height = dock top (frame bottom − 30 − 56) → frame bottom; layers only paint from their fade-in stop down. */

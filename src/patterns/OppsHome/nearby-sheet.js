@@ -1,7 +1,9 @@
-/* ADAM/PAGE — src/patterns/OppsHome/nearby-sheet.js · sheet + matched morph */
+/* ADAM/PAGE — src/patterns/OppsHome/nearby-sheet.js · sheet + matched morph (live tiles) */
 // Export map: sheetHTML · initSheet · openSheet
-import { wirePan } from "./map-pan.js";
-import { PROSPECTS, gridSVG, pinsHTML, relRect, flyAvatars, flyPill } from "./nearby-map.js";
+import { createLiveMap, RING_MS } from "./live-map.js";
+import { fitLayer, morph } from "./sheet-morph.js";
+import { flyAvatars, flyPill, flyPillBack } from "./map-flights.js";
+import { PINS, PROSPECTS, relRect } from "./nearby-map.js";
 let openFn = null;
 let sheetApi = null;
 let inlineApi = null;
@@ -14,19 +16,30 @@ export function sheetHTML() {
   return `<div class="map-sheet" id="nearby-sheet" hidden>`
     + `<div class="map-sheet__scrim" data-close></div>`
     + `<section class="map-sheet__panel" role="dialog" aria-modal="true" aria-label="Prospects nearby">`
-    + `<div class="map-sheet__map" id="sheet-map"><div class="map-sheet__view" id="sheet-view">${gridSVG("sh-g")}${pinsHTML()}</div>`
-    + `<button class="opps__nav map-sheet__recenter" id="sheet-reset" type="button" aria-label="Recenter map">➤</button></div>`
+    + `<div class="map-sheet__win" id="sheet-win"><div class="map-sheet__map" id="sheet-map">`
+    + `<div class="map-sheet__view" id="sheet-view"><div class="map-sheet__tiles" id="sheet-tiles"></div></div></div></div>`
     + `<button class="map-sheet__close" id="sheet-close" type="button" aria-label="Close map">✕</button>`
     + `<div class="map-sheet__card"><span class="map-sheet__handle"></span>`
     + `<div class="map-sheet__head"><span><b>3 prospects nearby</b><i>Within 12km · updated now</i></span></div>`
     + `<div class="map-sheet__list">${rows}</div></div></section></div>`;
 }
+function parts() {
+  const sheet = document.getElementById("nearby-sheet");
+  return { sheet, screen: document.querySelector(".device__screen"), win: sheet.querySelector(".map-sheet__win"),
+    layer: sheet.querySelector("#sheet-map"), scrim: sheet.querySelector(".map-sheet__scrim"),
+    card: sheet.querySelector(".map-sheet__card"), x: sheet.querySelector("#sheet-close") };
+}
+// — the widget's inner box in screen px (the 1px border and its radius come off the box) —
 function fromState() {
+  const box = document.getElementById("nearby-map");
   const screen = document.querySelector(".device__screen");
-  const m = relRect(document.getElementById("nearby-map"), screen);
-  const sx = m.w / screen.clientWidth;
-  const sy = m.h / screen.clientHeight;
-  return { screen, m, sx, sy, from: `translate(${m.l}px,${m.t}px) scale(${sx},${sy})` };
+  box.style.transition = "none"; box.removeAttribute("data-pressed");
+  const m = relRect(box, screen);
+  box.style.transition = "";
+  const cs = getComputedStyle(box);
+  const bw = parseFloat(cs.borderTopWidth) || 0;
+  const rect = { l: m.l + bw, t: m.t + bw, w: m.w - bw * 2, h: m.h - bw * 2, r: (parseFloat(cs.borderTopLeftRadius) || 0) - bw };
+  return { screen, rect };
 }
 function placeClose(sheet, screen) {
   const big = document.querySelector(".opps__avatar");
@@ -36,50 +49,34 @@ function placeClose(sheet, screen) {
   Object.assign(c.style, { left: `${r.l}px`, top: `${r.t}px`, width: `${r.w}px`, height: `${r.h}px` });
 }
 function open() {
-  const sheet = document.getElementById("nearby-sheet");
-  if (!sheet || !sheet.hidden) return;
+  const p = parts();
+  if (!p.sheet || !p.sheet.hidden) return;
   const feed = document.getElementById("app-content");
-  sheet.hidden = false;
+  const { screen, rect } = fromState();
+  p.sheet.hidden = false;
+  fitLayer(screen, p.layer);
+  // — unhidden layer went 0×0 → screen-sized: invalidate before set, or the view lands off-centre —
+  if (sheetApi) sheetApi.map.invalidateSize();
+  // — ring phase rides the wall clock; re-anchor at unhide so the blip resumes in phase —
+  p.layer.style.setProperty("--me-delay", `-${Math.round(performance.now() % RING_MS)}ms`);
   if (sheetApi && inlineApi) sheetApi.set(inlineApi.get());
   if (feed) feed.style.overflow = "hidden";
-  const { screen, m, sx, sy, from } = fromState();
-  placeClose(sheet, screen);
-  const panel = sheet.querySelector(".map-sheet__panel");
-  const done = [];
-  panel.style.transformOrigin = "0 0";
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const scrim = sheet.querySelector(".map-sheet__scrim");
-    const card = sheet.querySelector(".map-sheet__card");
-    const dip = `translate(${m.l}px,${m.t + 18}px) scale(${sx * 0.97},${sy * 0.97})`;
-    const anim = panel.animate([{ transform: from, borderRadius: "14px", easing: "cubic-bezier(.5,0,.8,.4)" },
-      { transform: dip, borderRadius: "14px", offset: 0.28, easing: "cubic-bezier(.2,.9,.25,1)" },
-      { transform: "none", borderRadius: "0px" }], { duration: 460 });
-    done.push(anim.finished);
-    done.push(scrim.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 280 }).finished);
-    done.push(card.animate([{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }], { duration: 340, delay: 100, fill: "backwards" }).finished);
-    flyAvatars(screen, sheet);
-    flyPill(screen, sheet);
-  }
-  const closeBtn = sheet.querySelector("#sheet-close");
-  Promise.allSettled(done).then(() => { placeClose(sheet, screen); closeBtn?.focus({ preventScroll: true }); });
+  placeClose(p.sheet, screen);
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduced) flyAvatars(screen, p.sheet);
+  if (!reduced) flyPill(screen, p.sheet);
+  morph(p, rect, 1, () => { placeClose(p.sheet, screen); p.x.focus({ preventScroll: true }); }, reduced);
 }
 function close() {
-  const sheet = document.getElementById("nearby-sheet");
-  if (!sheet || sheet.hidden) return;
-  if (sheetApi && inlineApi) inlineApi.set(sheetApi.get());
+  const p = parts();
+  if (!p.sheet || p.sheet.hidden) return;
   const feed = document.getElementById("app-content");
   const openBtn = document.getElementById("nearby-open");
-  const finish = () => { sheet.hidden = true; if (feed) feed.style.overflow = ""; openBtn?.focus({ preventScroll: true }); };
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { finish(); return; }
-  const { from } = fromState();
-  const panel = sheet.querySelector(".map-sheet__panel");
-  const scrim = sheet.querySelector(".map-sheet__scrim");
-  const card = sheet.querySelector(".map-sheet__card");
-  panel.style.transformOrigin = "0 0";
-  const done = [panel.animate([{ transform: "none" }, { transform: from }], { duration: 260, easing: "cubic-bezier(.5,0,.8,.4)" }).finished];
-  done.push(scrim.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220 }).finished);
-  done.push(card.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(16px)" }], { duration: 220 }).finished);
-  Promise.allSettled(done).then(finish);
+  const { screen, rect } = fromState();
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finish = () => { p.sheet.hidden = true; if (feed) feed.style.overflow = ""; openBtn?.focus({ preventScroll: true }); };
+  if (!reduced) flyPillBack(screen, p.sheet);
+  morph(p, rect, -1, finish, reduced);
 }
 export function initSheet(api) {
   inlineApi = api;
@@ -90,9 +87,13 @@ export function initSheet(api) {
   openFn = open;
   if (sheet.dataset.wired) return;
   sheet.dataset.wired = "1";
-  sheetApi = wirePan(sheet.querySelector("#sheet-map"), sheet.querySelector("#sheet-view"), { x: 0, y: 0, z: 0.85, min: 0.6, max: 3 });
+  sheetApi = createLiveMap(sheet.querySelector("#sheet-tiles"), PINS, {});
+  /* while the sheet is open its view is the source of truth, so the widget underneath is
+     already at the landed view when the morph closes — no tile reload during the reveal */
+  const sync = () => { if (inlineApi) inlineApi.set(sheetApi.get()); };
+  sheetApi.map.on("moveend", sync);
+  sheetApi.map.on("zoomend", sync);
   sheet.querySelector("#sheet-close")?.addEventListener("click", close);
   sheet.querySelector("[data-close]")?.addEventListener("click", close);
-  sheet.querySelector("#sheet-reset")?.addEventListener("click", () => sheetApi.reset());
   sheet.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
 }

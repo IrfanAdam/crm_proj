@@ -21,6 +21,8 @@
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
     "@samasante/liquid-glass": "^0.1.1",
+    "leaflet": "^1.9.4",
+    "leaflet-rotate": "^0.2.8",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   }

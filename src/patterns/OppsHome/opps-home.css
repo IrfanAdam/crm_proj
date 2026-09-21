@@ -27,26 +27,54 @@
 .opps__dot{width:7px;height:7px;border-radius:var(--radius-full);background:var(--primitive-amethyst-500)}
 .opps__delta{text-align:center;font-size:var(--font-size-xs);color:var(--text-muted)}
 .opps__delta b{color:var(--text-secondary);font-weight:var(--font-weight-semibold)}
-.opps__map{position:relative;height:210px;border-radius:var(--radius-xl);overflow:hidden;background:var(--primitive-sapphire-ui-50);border:1px solid var(--border-thin);touch-action:pan-y;cursor:grab}
+.opps__map{position:relative;z-index:0;height:210px;border-radius:var(--radius-xl);overflow:hidden;background:var(--primitive-sapphire-ui-50);border:1px solid var(--border-thin);touch-action:pan-y;cursor:grab}
 .opps__map:active{cursor:grabbing}
-.opps__map-view{position:absolute;left:50%;top:50%;width:250%;height:250%;transition:transform var(--transition-spring)}
-.opps__map-view--live{transition:none}
-.opps__map-view svg{width:100%;height:100%;display:block}
+.opps__map{transition:transform .16s ease-out}
+.opps__map[data-pressed="true"]{transform:scale(.965)}
+/* the map's own layers (panes 200-1000, 3D-transformed tiles/pins) live in their own
+   stacking context BELOW the overlays — they can never re-order over the pill */
+.opps__map-view{position:absolute;inset:0;z-index:1}
+.opps__tiles{position:absolute;inset:0;overflow:hidden;background:var(--primitive-sapphire-ui-50);font:inherit;touch-action:pan-y}
+.opps__leafpin,.opps__me-wrap{background:none;border:none}
+/* blip = blue heading arrow: the wrapper stays bare so the arrow carries the whole mark
+   (leaflet-rotate already counter-rotates its norotatePane, which keeps this and the pin
+   badges upright while the tiles turn) */
+.opps__me{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px}
+.opps__me-arrow{display:block;width:26px;height:26px;fill:var(--primitive-sapphire-ui-500);stroke:var(--primitive-gray-white);stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(0 1px 3px rgba(15,16,21,.45))}
+.opps__me::after{content:"";position:absolute;inset:0;border-radius:var(--radius-full);border:2px solid var(--primitive-sapphire-ui-400);animation:opps-me 1.8s ease-out infinite;animation-delay:var(--me-delay,0ms)}
+@keyframes opps-me{from{transform:scale(.7);opacity:.9}to{transform:scale(1.6);opacity:0}}
+/* hotspot radius around my position (Leaflet circle, overlay pane sits under the pins) */
+.opps__hotspot{fill:color-mix(in srgb, var(--primitive-sapphire-ui-300) 30%, transparent);stroke:color-mix(in srgb, var(--primitive-sapphire-ui-400) 55%, transparent);stroke-width:1}
+.opps__pin--static{position:static}
 .opps__pin{position:absolute;width:30px;height:30px;border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-400);color:var(--primitive-gray-white);font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px var(--primitive-sapphire-ui-200)}
-.opps__nearby{position:absolute;left:50%;top:12px;transform:translateX(-50%);cursor:pointer;font:inherit;display:inline-flex;align-items:center;gap:var(--spacing-2);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:6px 8px 6px 6px;font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--text-primary);box-shadow:var(--shadow-md);white-space:nowrap}
+/* the blip rides above every pin: zIndexOffset alone does not hold once the panes are
+   rotated (the icons carry no inline z-index, so DOM order would put the pins on top) */
+.leaflet-marker-pane .opps__me-wrap{z-index:1200}
+/* overlays sit on their own composited layer (translateZ) so the map's re-rasterising
+   tiles/pins/pulse animation cannot invalidate them — Safari drops a plain abspos
+   sibling's layer and it flickers in/out while the map recomposites */
+.opps__nearby{position:absolute;z-index:1100;left:50%;top:12px;transform:translateX(-50%) translateZ(0);will-change:transform;cursor:pointer;font:inherit;display:inline-flex;align-items:center;gap:var(--spacing-2);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:6px 8px 6px 6px;font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--text-primary);box-shadow:var(--shadow-md);white-space:nowrap}
+/* facepile — DS avatar-stack (components/Avatar): faces overlap by the DS −8px, and the
+   pill's own gap spaces the stack from the label, never between the faces */
 .opps__nearby .avatar{width:24px;height:24px;border:2px solid var(--bg-surface);margin-left:-8px}
 .opps__nearby .avatar:first-child{margin-left:0}
-.opps__nav{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface);border:1px solid var(--primitive-sapphire-ui-400);color:var(--primitive-sapphire-ui-500);font-size:18px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.opps__nearby .avatar--count{display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700)}
+.opps__nearby:focus{outline:none}
+.opps__nearby:focus-visible{box-shadow:var(--focus-ring)}
+/* count bubble: a flat pale disc loses edge contrast, so at an equal 24px box it reads
+   ~5% smaller than a photo face — oversize the box 2px (22px disc vs 20px face) to match
+   optically; the morph's hand-off clone carries these same classes, so both render alike */
+.opps__nearby .avatar.avatar--count{width:26px;height:26px}
 .opps__filters{display:flex;gap:var(--spacing-2);overflow-x:auto;margin:0 calc(var(--spacing-4) * -1);padding:2px var(--spacing-4);scroll-padding:0 var(--spacing-4);scrollbar-width:none}
 .opps__filters::-webkit-scrollbar{display:none}
 .opps__tune{flex:0 0 auto;width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface);border:1px solid var(--border-thin);color:var(--text-primary);font-size:20px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .opps__chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:var(--spacing-2);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:0 16px;height:44px;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--text-primary);cursor:pointer}
 .opps__chip--hot{border:2px solid var(--primitive-neutral-dark-700);font-weight:var(--font-weight-bold)}
-.opps__chip:focus-visible,.opps__tune:focus-visible,.opps__nav:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.opps__chip:focus-visible,.opps__tune:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .opps__flame{color:var(--primitive-red-beryl-400);font-size:18px}
 .opps__mini-stack{display:inline-flex}
 .opps__mini-stack i{width:22px;height:22px;border-radius:var(--radius-full);border:2px solid var(--bg-surface);margin-left:-8px;background:var(--bg-interactive);overflow:hidden;display:inline-block}
 .opps__mini-stack i:first-child{margin-left:0}
 .opps__mini-stack img{width:100%;height:100%;object-fit:cover}
 .opps__list{display:flex;flex-direction:column;gap:var(--spacing-3)}
-@media (prefers-reduced-motion:reduce){.opps__bars i{transition:none}}
+@media (prefers-reduced-motion:reduce){.opps__bars i{transition:none}.opps__me::after{animation:none}}
