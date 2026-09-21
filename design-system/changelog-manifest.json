@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T11:23:22.251Z",
+  "generated": "2026-09-21T11:25:09.545Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,22 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "2e452a7",
+      "full": "2e452a72f13a808ae069c4ad19aab4a872504ad5",
+      "date": "2026-09-21",
+      "subject": "fix(map): delay blob pop until clone landing",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "29173ee",
+      "full": "29173ee94ead0ebe79f760225d9d7939b037736c",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [live map morph + flights] (include c4236b6)",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "c4236b6",
       "full": "c4236b686c5dd15fe7df1068c6d21d6724e578be",
