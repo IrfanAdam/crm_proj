@@ -1,12 +1,13 @@
 /* ADAM/PAGE — src/patterns/OppsHome/map-flights.js · widget ↔ sheet element continuity */
-// Export map: flyAvatars · flyPill · flyPillBack
+// Export map: flyAvatars · cancelFlights · flyPill · flyPillBack
 import { relRect } from "./nearby-map.js";
 import { CLOSE, OPEN, walk, clamp01 } from "./morph-timing.js";
 import { CLOSE_MS, OPEN_MS } from "./sheet-morph.js";
-export { flyAvatars } from "./avatar-flights.js";
+import { cancelFlights } from "./avatar-flights.js";
+export { flyAvatars, cancelFlights } from "./avatar-flights.js";
 /* The pill ⇄ card hand-off morphs one ghost box pill-box ⇄ card-box in layout px — never */
 /* transform scale (scale stretches faces/label: the old slop) — inner layers cross-fade. */
-function drive(screen, pill, card, dir, ms) {
+function drive(screen, pill, card, dir, ms, done) {
   const p = relRect(pill, screen);
   const ct = card.style.transform;
   card.style.transform = "none";
@@ -22,6 +23,8 @@ function drive(screen, pill, card, dir, ms) {
   pl.removeAttribute("id");
   pl.tabIndex = -1;
   pl.style.cssText = "position:static;transform:none;margin:auto";
+  // — the clone must show faces: open hides the live pill's avatars for the flights —
+  pl.querySelectorAll(".avatar").forEach((av) => { av.style.opacity = ""; });
   const pw = document.createElement("div");
   pw.style.cssText = "position:absolute;inset:0;display:flex;align-items:center;justify-content:center";
   pw.appendChild(pl);
@@ -52,7 +55,7 @@ function drive(screen, pill, card, dir, ms) {
     cw.style.opacity = clamp01((t - 0.55) / 0.35).toFixed(3);
     if (dir > 0) g.style.opacity = (1 - clamp01((t - 0.84) / 0.14)).toFixed(3);
     if (p01 < 1) requestAnimationFrame(step);
-    else g.remove();
+    else { g.remove(); if (done) done(); }
   };
   requestAnimationFrame(step);
 }
@@ -69,5 +72,9 @@ export function flyPillBack(screen, sheet) {
   const pill = document.getElementById("nearby-open");
   const card = sheet.querySelector(".map-sheet__card");
   if (!pill || !card) return;
-  drive(screen, pill, card, -1, CLOSE_MS);
+  // — quick close mid-flight: clones gone, blobs plain, pill faces back for the clone —
+  cancelFlights(screen);
+  // — real pill hides: ghost + pill never double in the last frame —
+  pill.style.opacity = "0";
+  drive(screen, pill, card, -1, CLOSE_MS, () => { pill.style.opacity = ""; });
 }
