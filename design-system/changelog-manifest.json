@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T11:43:55.439Z",
+  "generated": "2026-09-21T11:52:50.811Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,22 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "be88022",
+      "full": "be88022bf7a8963dbcd61e11889c7d4dcaebe4d8",
+      "date": "2026-09-21",
+      "subject": "polish(map): softer landing spring, count dissolves in place, buffered last-blob reveal",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "7471df4",
+      "full": "7471df444a9f3b3c3da6945cb6b56eae86de785c",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [avatar landing crossfade]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "6c418db",
       "full": "6c418dbf49a6a12390dabc8310f857236958cdea",
