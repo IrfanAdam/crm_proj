@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DockLens from "./DockLens.jsx";
 import DockSlices from "./DockSlices.jsx";
 import { ENGINE } from "./engine.js";
@@ -15,10 +15,11 @@ const ITEMS = [
    pointer-events:none so drag never loses the gesture); the capsule is a glass
    pill that swells on press, squashes with drag velocity, and snaps on release. */
 export default function BottomDock() {
-  const [page, setPage] = useState("Home");
+  const [page, setPage] = useState("Opps");
   const trackRef = useRef(null), startX = useRef(0), startIdx = useRef(0), lastX = useRef(0), lastT = useRef(0);
   const [dragX, setDragX] = useState(0), [dragging, setDragging] = useState(false), [pressed, setPressed] = useState(false), [vel, setVel] = useState(0);
   const idx = Math.max(0, ITEMS.findIndex((i) => i.id === page));
+  useEffect(() => { window.dispatchEvent(new CustomEvent("app-tab", { detail: page })); }, [page]);
   // visual tab width (accounts for canvas --zoom scale); offsetWidth is layout and breaks at 80%
   const tabW = () => {
     const r = trackRef.current?.getBoundingClientRect();

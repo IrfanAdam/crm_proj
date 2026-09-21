@@ -70,25 +70,30 @@ export default function DockLens({ source = "#app-content" }) {
   useLayoutEffect(() => {
     const copy = copyRef.current, lens = lensRef.current, src = document.querySelector(source);
     if (!copy || !lens || !src) return;
-    copy.textContent = "";
-    const node = src.cloneNode(true);
-    node.removeAttribute("id");
-    node.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
-    node.setAttribute("aria-hidden", "true");
-    node.inert = true;
-    copy.appendChild(node);
-    place();
+    const rebuild = () => {
+      copy.textContent = "";
+      const node = src.cloneNode(true);
+      node.removeAttribute("id");
+      node.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
+      node.setAttribute("aria-hidden", "true");
+      node.inert = true;
+      copy.appendChild(node);
+      place();
+    };
+    rebuild();
     setArmed(true);      // filter is only switched on once the copy exists (WebKit)
     const slide = () => { frame.current = 0; copy.style.transform = `translateY(${-src.scrollTop}px)`; };
     const queue = () => { if (!frame.current) frame.current = requestAnimationFrame(slide); };
     src.addEventListener("scroll", queue, { passive: true });
     window.addEventListener("resize", queue);
+    window.addEventListener("app-tab", rebuild);
     const ro = new ResizeObserver(queue);
     ro.observe(src);
     return () => {
       setArmed(false);
       src.removeEventListener("scroll", queue);
       window.removeEventListener("resize", queue);
+      window.removeEventListener("app-tab", rebuild);
       ro.disconnect();
       if (frame.current) cancelAnimationFrame(frame.current);
       frame.current = 0; // a cancelled frame must not read as "scheduled" — or scroll tracking dies

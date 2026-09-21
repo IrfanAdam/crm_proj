@@ -83,6 +83,12 @@ export default function DockSlices({ source = "#app-content" }) {
     };
     copies.current = [build(null), ...SLICES.map(build)];
     place();
+    const rebuild = () => {
+      lens.textContent = "";
+      copies.current = [build(null), ...SLICES.map(build)];
+      place();
+    };
+    window.addEventListener("app-tab", rebuild);
     const queue = () => { if (!frame.current) frame.current = requestAnimationFrame(slide); };
     // base geometry depends on layout + canvas zoom: re-place (which re-slides),
     // and re-place once more after the .18s zoom scale transition settles, when
@@ -103,6 +109,7 @@ export default function DockSlices({ source = "#app-content" }) {
     const ro2 = new ResizeObserver(queuePlace);
     ro2.observe(hostRef.current || lens);
     return () => {
+      window.removeEventListener("app-tab", rebuild);
       src.removeEventListener("scroll", queue);
       window.removeEventListener("resize", queuePlace);
       window.removeEventListener("scroll", queue);
