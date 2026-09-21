@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T11:30:03.813Z",
+  "generated": "2026-09-21T11:33:03.038Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,22 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "bcb8788",
+      "full": "bcb8788ff99aa05686513cbd31997946b9883f3d",
+      "date": "2026-09-21",
+      "subject": "fix(map): smooth card handoff — aligned ghost/card windows, easeOutCubic, 12px lift",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "3292c9b",
+      "full": "3292c9b16ee1b23c43faaf4239a3fae9d79e99a4",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [avatar smoothing]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "95847c1",
       "full": "95847c1c55b3c41d0d14e1cdf71df96a5c7882d3",
