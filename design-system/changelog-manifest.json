@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T11:29:43.016Z",
+  "generated": "2026-09-21T11:30:03.813Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,14 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "95847c1",
+      "full": "95847c1c55b3c41d0d14e1cdf71df96a5c7882d3",
+      "date": "2026-09-21",
+      "subject": "fix(map): smooth avatar flights — proportional arc, per-segment spring + interrupt clean-up",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "fde04f8",
       "full": "fde04f8630c13e2b9740e8515e9c8ccc28935d7b",
@@ -368,8 +376,5 @@
       "anchor": null
     }
   ],
-  "wip": [
-    "M src/patterns/OppsHome/map-flights.js",
-    "?? src/patterns/OppsHome/avatar-flights.js"
-  ]
+  "wip": []
 }
