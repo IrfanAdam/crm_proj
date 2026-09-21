@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18T09:35:03.428Z",
+  "generated": "2026-09-21T07:21:55.019Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,54 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "8ee8c82",
+      "full": "8ee8c82f4cfef60cd480768c5fddb0be8dd17363",
+      "date": "2026-09-21",
+      "subject": "Workspace device groups + sheet CSS wiring",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "2d0b9fd",
+      "full": "2d0b9fd06ad399450c05f0440f4822ee36b51c94",
+      "date": "2026-09-21",
+      "subject": "Dock follows tab switches, defaults to Opps",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "8abe292",
+      "full": "8abe2920504e3b4023635ba1d34468c1823ada24",
+      "date": "2026-09-21",
+      "subject": "Opps nearby map: fullscreen sheet morph with avatar continuity",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "ecd77fd",
+      "full": "ecd77fd1258f2852d430242ce0a97a6342cf8875",
+      "date": "2026-09-20",
+      "subject": "Glass scroll-tracking fix (lens frame-flag reset), fullscreen dock safe margin",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "55143f9",
+      "full": "55143f96a8b38707f1d6281dc649413af299e672",
+      "date": "2026-09-20",
+      "subject": "Vercel prod fix: vite build to dist, PWA via public/, exit gesture hardening",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "8d28635",
+      "full": "8d2863594d773a23cd2ad59091a5c5071afca4f6",
+      "date": "2026-09-20",
+      "subject": "Mobile fullscreen prototype, PWA install, Vercel static config",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "e36642e",
       "full": "e36642e16554944b5d7ae65684e635027cb89ffc",
@@ -272,14 +320,5 @@
       "anchor": null
     }
   ],
-  "wip": [
-    "M src/components/Icon/icon.css",
-    "M src/components/TabBar/tabbar.css",
-    "M src/glass/BottomDock.jsx",
-    "M src/glass/GlassBars.jsx",
-    "M src/glass/dock-lens.css",
-    "M src/glass/lens-map.js",
-    "M src/glass/slices-spec.js",
-    "?? src/components/Icon/Icon.jsx"
-  ]
+  "wip": []
 }
