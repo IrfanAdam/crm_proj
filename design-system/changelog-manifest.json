@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T07:21:55.019Z",
+  "generated": "2026-09-21T11:23:15.958Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,6 +7,22 @@
     "2026-09-16_203500-ds-polish.md"
   ],
   "commits": [
+    {
+      "sha": "82cb183",
+      "full": "82cb183dd8223a8bef82f1a06b59a52b87656b85",
+      "date": "2026-09-21",
+      "subject": "feat(map): live tiles, window morph, concentric card + avatar flights",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "de9cce4",
+      "full": "de9cce43b8459fe4661793918dabcdb7cf31e5fe",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [map sheet, dock bridge, device groups]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "8ee8c82",
       "full": "8ee8c82f4cfef60cd480768c5fddb0be8dd17363",
