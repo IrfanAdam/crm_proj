@@ -1,0 +1,85 @@
+graph TD
+  subgraph shell
+    workspace_canvas[canvas.js]
+    workspace_devices[devices.js]
+    workspace_mobile-fullscreen[mobile-fullscreen.js]
+    workspace_slowmo[slowmo.js]
+  end
+  subgraph device
+  end
+  subgraph os
+  end
+  subgraph glass
+    glass_BottomDock[BottomDock.jsx]
+    glass_DockLens[DockLens.jsx]
+    glass_DockSlices[DockSlices.jsx]
+    glass_GlassBars[GlassBars.jsx]
+    glass_engine[engine.js]
+    glass_lens-filter[lens-filter.jsx]
+    glass_lens-map[lens-map.js]
+    glass_main[main.jsx]
+    glass_slices-spec[slices-spec.js]
+  end
+  subgraph patterns
+    patterns_MonitorScreen_monitor-screen[monitor-screen.js]
+    patterns_OperateScreen_operate-screen[operate-screen.js]
+    patterns_OppsHome_face-handoff[face-handoff.js]
+    patterns_OppsHome_leaflet-global[leaflet-global.js]
+    patterns_OppsHome_live-map[live-map.js]
+    patterns_OppsHome_map-flights[map-flights.js]
+    patterns_OppsHome_map-pan[map-pan.js]
+    patterns_OppsHome_morph-timing[morph-timing.js]
+    patterns_OppsHome_nearby-map[nearby-map.js]
+    patterns_OppsHome_nearby-sheet[nearby-sheet.js]
+    patterns_OppsHome_opps-home[opps-home.js]
+    patterns_OppsHome_pill-expand[pill-expand.js]
+    patterns_OppsHome_sheet-morph[sheet-morph.js]
+    patterns_ReportsMatrix_reports-matrix[reports-matrix.js]
+  end
+  subgraph logic
+    logic_funnel-machine[funnel-machine.js]
+    logic_temporal[temporal.js]
+    logic_time-scale[time-scale.js]
+    logic_transient[transient.js]
+  end
+  subgraph components
+    components_Button_button[button.js]
+    components_GemReward_gem-reward[gem-reward.js]
+    components_Icon_Icon[Icon.jsx]
+    components_Overlay_overlay[overlay.js]
+  end
+  subgraph motion
+    motion_elastic-scroll[elastic-scroll.js]
+    motion_tilt-card[tilt-card.js]
+  end
+  glass_BottomDock --> glass_DockLens
+  glass_BottomDock --> glass_DockSlices
+  glass_BottomDock --> glass_engine
+  glass_BottomDock --> components_Icon_Icon
+  glass_DockLens --> glass_lens-map
+  glass_DockLens --> glass_lens-filter
+  glass_DockSlices --> glass_slices-spec
+  glass_main --> glass_GlassBars
+  glass_main --> glass_BottomDock
+  glass_slices-spec --> glass_lens-filter
+  patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_face-handoff --> patterns_OppsHome_morph-timing
+  patterns_OppsHome_live-map --> patterns_OppsHome_leaflet-global
+  patterns_OppsHome_live-map --> logic_time-scale
+  patterns_OppsHome_map-flights --> patterns_OppsHome_sheet-morph
+  patterns_OppsHome_map-flights --> patterns_OppsHome_pill-expand
+  patterns_OppsHome_nearby-map --> patterns_OppsHome_live-map
+  patterns_OppsHome_nearby-sheet --> patterns_OppsHome_live-map
+  patterns_OppsHome_nearby-sheet --> patterns_OppsHome_sheet-morph
+  patterns_OppsHome_nearby-sheet --> patterns_OppsHome_map-flights
+  patterns_OppsHome_nearby-sheet --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-sheet
+  patterns_OppsHome_pill-expand --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_pill-expand --> patterns_OppsHome_morph-timing
+  patterns_OppsHome_pill-expand --> patterns_OppsHome_face-handoff
+  patterns_OppsHome_pill-expand --> logic_time-scale
+  patterns_OppsHome_sheet-morph --> patterns_OppsHome_morph-timing
+  patterns_OppsHome_sheet-morph --> logic_time-scale
+  workspace_canvas --> workspace_devices
+  workspace_slowmo --> logic_time-scale
