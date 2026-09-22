@@ -2,44 +2,45 @@
 <!-- Fragment, not a page: fetched into gallery.html #stage on load. Tokens only, no raw hex. -->
 <div class="frame" data-panel="language"><div class="pad">
 <p class="ch-kicker">Chapter 1 · Visual language</p>
-<p class="ch-hero">Paper carries the work. Glass is chrome. Ceremony is a reward.</p>
-<p class="meta ch-lede">Five laws with reject power. If a screen breaks them, the screen is wrong — never the law. Everything in Chapters 2–5 is this chapter, tokenized.</p>
+<p class="ch-hero">Ceramic holds the work. Aluminium frames it. Gems celebrate it.</p>
+<p class="meta ch-lede">Three materials, five laws, three screen recipes. Every law below can reject a screen — if a screen breaks one, the screen is wrong.</p>
 <h3>The five laws</h3>
-<div class="ch-laws">
-<div class="ch-law"><span class="ch-num">01 · Ground</span><p><b>Paper carries the work.</b> Cards, lists, KPIs live on paper with a hairline — never glass, never gems.</p><p class="ch-reject"><b>Reject</b> — a Spline gem or glass blur on an opportunity card.</p></div>
-<div class="ch-law"><span class="ch-num">02 · Hue</span><p><b>Sapphire acts. Amethyst measures. Red-beryl scores. Citrine warns.</b> Nothing else is a hue.</p><p class="ch-reject"><b>Reject</b> — a decorative teal chip count instead of <code>var(--role-action)</code>.</p></div>
-<div class="ch-law"><span class="ch-num">03 · Type</span><p><b>Type is weight and size.</b> Muted steps down the neutral ramp — never a decorative hue for hierarchy.</p><p class="ch-reject"><b>Reject</b> — coloring a timestamp amethyst to make it “secondary”.</p></div>
-<div class="ch-law"><span class="ch-num">04 · Depth</span><p><b>Hairline elevates in-flow UI.</b> Shadow is for depth viz and controls floating on imagery only.</p><p class="ch-reject"><b>Reject</b> — giving a KPI pill <code>var(--shadow-sm)</code> instead of a hairline.</p></div>
-<div class="ch-law"><span class="ch-num">05 · Motion</span><p><b>Motion explains state.</b> Ceremony may boast. The feed may not.</p><p class="ch-reject"><b>Reject</b> — a looping gem shimmer on the opportunities feed.</p></div>
-</div>
-<h3>Registers — where each material is legal</h3>
+<ol class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Ground — ceramic holds the work.</b> Cards, lists, KPIs are glazed ceramic: matte, hairline seams, never a shadow.</p><p class="ch-reject"><b>Reject</b> — a glass blur or a gem on an opportunity card.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Hue — the signal light decides.</b> Sapphire is the device's LED: primary action, selected tab, chip count. Amethyst measures, red-beryl scores, citrine warns distance.</p><p class="ch-reject"><b>Reject</b> — a decorative teal for a count.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Type — every screen opens with the same display title.</b> Big, 32, bold — then card title 20, body 16, meta 14, micro 12. Size 24 is reserved, never a title.</p><p class="ch-reject"><b>Reject</b> — a 24px title, or an amethyst timestamp faking hierarchy.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Depth — seams, not shadows.</b> In-flow UI elevates with a 1px hairline. Shadow is reserved for depth viz and controls floating on imagery.</p><p class="ch-reject"><b>Reject</b> — a shadow on the KPI pill.</p></div></li>
+<li class="ch-law"><span class="ch-num">05</span><div><p><b>Motion — motion explains a state change.</b> The feed states; only celebration boasts.</p><p class="ch-reject"><b>Reject</b> — a looping shimmer on the feed.</p></div></li>
+</ol>
+<h3>Materials — what each surface is made of</h3>
 <div class="ch-regs">
-<div class="ch-reg"><b>Paper</b><p>Content surface — <code>--bg-surface</code> on <code>--bg-primary</code>, hairline, quiet lists. Witness ref-01, 02, 03, 09.</p></div>
-<div class="ch-reg"><b>Glass chrome</b><p>Dock, top blur, sheet scrim — never a card. Witness prototype dock; supersedes the ref-01 flat tab.</p></div>
-<div class="ch-reg"><b>Ceremony</b><p>Brand reward — one gem, capsule copy, orbs. Witness ref-08, 10, 11, 12.</p></div>
-<div class="ch-reg"><b>Data-mark</b><p>Diamond marker on peaked bars. A measure accent — never a gem.</p></div>
+<div class="ch-reg"><span class="ch-swatch ch-swatch-ceramic"></span><div><b>Ceramic — content surfaces</b><p>Cards, lists, KPIs. Matte glazed white, quiet. Witness ref-01, 02, 03, 09.</p></div></div>
+<div class="ch-reg"><span class="ch-swatch ch-swatch-alu"></span><div><b>Aluminium — the device frame</b><p>Dock, rails, machined edges. Brushed, precise, new-age. Witness prototype dock; supersedes the ref-01 flat tab.</p></div></div>
+<div class="ch-reg"><span class="ch-swatch ch-swatch-gem"></span><div><b>Gems — celebration, kept in its box</b><p>Rock Solid Goals (sapphire, ref-08) · Golden Streak (citrine) · Focus Master (amethyst) · Momentum (red beryl). Never in the feed.</p></div></div>
+<div class="ch-reg"><span class="ch-swatch">◆</span><div><b>Peak marker — a diamond blink, not a gemstone</b><p>Sits on peaked bars. A measure accent, never a gem.</p></div></div>
 </div>
-<h3>Roles, not ramps</h3>
+<h3>Roles — where the light goes</h3>
+<p class="meta">Sapphire is the device's LED, not a paint color. It lights only where action is.</p>
 <table class="ch-roles"><thead><tr><th></th><th>Role</th><th>Alias</th><th>Job</th></tr></thead><tbody>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-action);border-radius:var(--radius-sm)"></span></td><td>action</td><td><code>var(--signal)</code></td><td>Primary button, selected tab icon, chip count</td></tr>
+<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-action);border-radius:var(--radius-sm)"></span></td><td>action</td><td><code>var(--signal)</code></td><td>The signal light — primary button, selected tab, chip count</td></tr>
 <tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-measure);border-radius:var(--radius-sm)"></span></td><td>measure</td><td><code>amethyst-400</code></td><td>Funnel fill, delta +32, goal progress</td></tr>
 <tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-measure-soft);border:1px solid var(--border-thin);border-radius:var(--radius-sm)"></span></td><td>soft</td><td><code>amethyst-200</code></td><td>Funnel wash under the 400 core</td></tr>
 <tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-measure-strong);border-radius:var(--radius-sm)"></span></td><td>strong</td><td><code>amethyst-500</code></td><td>Emphasized measure, peak diamond marker</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-score);border-radius:var(--radius-sm)"></span></td><td>score</td><td><code>red-beryl-400</code></td><td>Chance %, score glyph, momentum gem</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-warn);border-radius:var(--radius-sm)"></span></td><td>warn</td><td><code>citrine-700</code></td><td>Distance 23km, caution chip, golden-streak gem</td></tr>
+<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-score);border-radius:var(--radius-sm)"></span></td><td>score</td><td><code>red-beryl-400</code></td><td>Chance %, score glyph, Momentum stone</td></tr>
+<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-warn);border-radius:var(--radius-sm)"></span></td><td>warn</td><td><code>citrine-700</code></td><td>Distance 23km, caution chip, Golden Streak stone</td></tr>
 <tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-mark);border-radius:var(--radius-sm)"></span></td><td>mark</td><td><code>amethyst-500</code></td><td>Map arrow shadow pair, peak marker</td></tr>
 </tbody></table>
-<h3>Composition — the order laws</h3>
+<h3>Screen recipes — the build order</h3>
 <div class="ch-flows">
-<div class="ch-flow"><p class="ch-flowname">Operate</p><ol><li>Title 32 + avatar</li><li>KPI strip — 4/32 closed</li><li>Hero visual</li><li>Delta line</li><li>Chips, hot gets 2px ink</li><li>Cards, hairline, no shadow</li><li>Glass dock, 3 tabs</li></ol></div>
-<div class="ch-flow"><p class="ch-flowname">Monitor</p><ol><li>Title 32 + avatar</li><li>Funnel hero, 7 states</li><li>Metrics — 32%, 4.9</li><li>Timeline chips + Now</li></ol></div>
-<div class="ch-flow"><p class="ch-flowname">Reports</p><ol><li>Title 32</li><li>Matrix tabs M/Q/Y</li><li>Blob-vs-Goals grid</li><li>Business chips</li></ol></div>
+<div class="ch-flow"><p class="ch-flowname">Operate</p><ol><li>Display title + avatar</li><li>KPI strip — 4/32 closed</li><li>Hero visual</li><li>Delta line</li><li>Chips, hot gets 2px ink</li><li>Ceramic cards, hairline</li><li>Aluminium dock, 3 tabs</li></ol></div>
+<div class="ch-flow"><p class="ch-flowname">Monitor</p><ol><li>Display title + avatar</li><li>Funnel hero, 7 states</li><li>Metrics — 32%, 4.9</li><li>Timeline chips + Now</li></ol></div>
+<div class="ch-flow"><p class="ch-flowname">Reports</p><ol><li>Display title</li><li>Matrix tabs M/Q/Y</li><li>Blob-vs-Goals grid</li><li>Business chips</li></ol></div>
 </div>
 <p class="meta" style="margin-top:8px">A missing step needs a PR note. Home and Leads omit only via the one empty state — never by dropping the title.</p>
 <h3>Voice</h3>
 <div class="ch-voice">
 <div><p class="ch-flowname">Product · chrome only</p><p class="meta" style="margin-top:6px">Numeric and specific — <code>4/32 closed</code> · <code>last contact 2d</code> · <code>23km away</code>. Never boasts.</p></div>
-<div><p class="ch-flowname">Ceremony · reward only</p><p class="meta" style="margin-top:6px">Short and boastful — <code>Rock Solid Goals</code> · <code>data in here don't lie</code>. Never informs.</p></div>
+<div><p class="ch-flowname">Celebration · reward only</p><p class="meta" style="margin-top:6px">Short and boastful — <code>Rock Solid Goals</code> · <code>data in here don't lie</code>. Never informs.</p></div>
 </div>
-<p class="ch-quar"><b>Quarantine</b> — ceremony lives on the Gems tab; this chapter embeds no Spline. Spec source: <a href="design-system/docs/visual-language.md">visual-language.md</a>.</p>
+<p class="ch-quar"><b>Only here, never there</b> — gems live on the Gems tab and the reward moment, nowhere else. This chapter embeds no Spline. Spec source: <a href="design-system/docs/visual-language.md">visual-language.md</a>.</p>
 </div></div>

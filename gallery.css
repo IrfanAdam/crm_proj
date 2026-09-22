@@ -13,15 +13,20 @@ h3{font-size:var(--font-size-sm);font-weight:600;color:var(--text-muted);margin:
 a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 [hidden]{display:none!important}
 .ch-kicker{font-size:var(--font-size-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
-.ch-hero{font-size:var(--font-size-3xl);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-top:var(--spacing-2);max-width:24ch}
+.ch-hero{font-size:var(--font-size-3xl);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-top:var(--spacing-2);max-width:26ch}
 .ch-lede{margin-top:var(--spacing-2);max-width:62ch}
-.ch-laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--spacing-3);margin-top:var(--spacing-3)}
-.ch-law{border:1px solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-3);background:var(--bg-primary)}
-.ch-num{display:block;font-size:var(--font-size-xs);font-weight:700;letter-spacing:.08em;color:var(--text-muted)}
-.ch-law p{font-size:var(--font-size-sm);margin-top:var(--spacing-2)}
+.ch-laws{list-style:none;margin-top:var(--spacing-2)}
+.ch-law{display:grid;grid-template-columns:48px 1fr;gap:var(--spacing-3);padding:var(--spacing-3) 0;border-bottom:1px solid var(--border-thin)}
+.ch-law:last-child{border-bottom:none}
+.ch-num{font-size:var(--font-size-xs);font-weight:700;letter-spacing:.08em;color:var(--text-muted);padding-top:var(--spacing-1)}
+.ch-law p{font-size:var(--font-size-sm)}
 .ch-reject{margin-top:var(--spacing-2);padding-left:var(--spacing-2);border-left:2px solid var(--border-accent);color:var(--text-secondary);font-size:var(--font-size-sm)}
-.ch-regs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--spacing-3);margin-top:var(--spacing-2)}
-.ch-reg{border-top:1px solid var(--border-thin);padding-top:var(--spacing-2)}
+.ch-regs{margin-top:var(--spacing-2)}
+.ch-reg{display:flex;gap:var(--spacing-3);align-items:flex-start;padding:var(--spacing-3) 0;border-bottom:1px solid var(--border-thin)}
+.ch-reg:last-child{border-bottom:none}
+.ch-swatch{flex:none;width:44px;height:44px;border-radius:var(--radius-md);border:1px solid var(--border-thin);display:flex;align-items:center;justify-content:center;color:var(--role-measure);font-size:20px;background:var(--bg-surface)}
+.ch-swatch-alu{background:repeating-linear-gradient(135deg,var(--bg-interactive) 0 2px,var(--bg-surface) 2px 5px)}
+.ch-swatch-gem{background:linear-gradient(135deg,var(--primitive-amethyst-300),var(--primitive-red-beryl-300))}
 .ch-reg b{display:block;font-size:var(--font-size-sm)}
 .ch-reg p{font-size:var(--font-size-sm);color:var(--text-secondary);margin-top:2px}
 .ch-roles{width:100%;margin-top:var(--spacing-2);border-collapse:collapse;font-size:var(--font-size-sm)}
@@ -29,11 +34,11 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .ch-roles td{padding:var(--spacing-2);border-bottom:1px solid var(--border-thin);vertical-align:middle}
 .ch-roles code{font-size:var(--font-size-xs)}
 .ch-flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--spacing-3);margin-top:var(--spacing-2)}
-.ch-flow{border:1px solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-3)}
+.ch-flow{border-top:1px solid var(--border-thin);padding:var(--spacing-3) 0}
 .ch-flowname{font-size:var(--font-size-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
 .ch-flow ol{list-style:none;margin-top:var(--spacing-2);counter-reset:step}
 .ch-flow li{counter-increment:step;font-size:var(--font-size-sm);padding:var(--spacing-1) 0 var(--spacing-1) var(--spacing-6);position:relative}
 .ch-flow li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;font-size:var(--font-size-xs);font-weight:700;color:var(--text-muted)}
 .ch-voice{display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-3);margin-top:var(--spacing-2)}
-.ch-voice>div{border:1px solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-3)}
+.ch-voice>div{border-top:1px solid var(--border-thin);padding:var(--spacing-3) 0}
 .ch-quar{margin-top:var(--spacing-3);padding:var(--spacing-3);border:1px dashed var(--border-thick);border-radius:var(--radius-md);font-size:var(--font-size-sm);color:var(--text-secondary)}
