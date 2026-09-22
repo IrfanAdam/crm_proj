@@ -6,3 +6,5 @@
 .chip:disabled{opacity:.5;cursor:not-allowed}
 .chip:focus-visible{outline:2px solid var(--primitive-sapphire-ui-400);outline-offset:2px}
 .chip__count{font-size:var(--font-size-xs);opacity:.7}
+.chip--hot{border-width:2px;border-color:var(--border-accent);font-weight:var(--font-weight-bold)}
+.chip--faces{padding:0 12px 0 8px;height:44px}
