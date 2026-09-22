@@ -11,6 +11,7 @@
 - **Patterns/Layouts:** `src/patterns/{OperateScreen,MonitorScreen,ReportsMatrix}` + `src/logic/funnel-machine.js` (7 states initial→elastic→top→middle→bottom→closed→retained) + `transient.js`/`temporal.js` (Activities transient, Goals temporal, blob vs Goals D/W/M/Q/Y). Layout law: title(32/bold)+avatar → KPI `4/32` → hero → delta `+32` → chips → cards → 5-item tab.
 - **Gallery (proof):** `gallery.html` 88 lines desktop DS hosting 390px frames (Color 10×28px swatches `var(--primitive-*-50→900)` + `signal` live, Typography/Spacing/Radius/Shadow/Motion/Iconography + 8 component groups + 3 patterns + Motion/Gems), `prototype/gallery/*.md` contracts (usage·anatomy·do/don’t·witness·a11y·tokens).
 - **States/Conventions:** Sapphire `#1666af` sole action (via `--signal`), gems never chrome; status pills solid fill + label (never color-alone); hairline elevation; one Spline gem → hue-rotate per category; `forced-colors:active` → `CanvasText`.
+- **Visual language:** `design-system/docs/visual-language.md` (2026-09-22) — paper carries the work, glass carries chrome, ceremony carries reward. It defines five rejectable principles, registers with witnesses (ref-01–12), Operate composition order (title → KPI → hero → delta → chips → cards → dock), product vs ceremony voice, and supersessions (3-tab glass dock; glass on chrome only). Screens compose via roles; do not re-introduce a decorative hue hierarchy or card shadow for in-flow UI.
 
 ## Implementation hierarchy (obey in order)
 

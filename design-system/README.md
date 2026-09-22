@@ -11,6 +11,7 @@
 - `design-system/docs/phase-5-motion-gamification.md`: motion, gems, mood constraint.
 - `design-system/references/` + `REGISTRY.md`: append-only intake + polish loop.
 - `.hermes/plans/2026-09-16_180000-crm-design-system.md`: phased plan with task→MD trace.
+- `design-system/docs/visual-language.md`: paper / glass / ceremony — principles, registers, composition law (2026-09-22).
 
 Polish over time: add ref → registry row → dated pass on the touched phase MD
 + `DESIGN.md` → re-lint. See `references/REGISTRY.md` § Intake workflow.
