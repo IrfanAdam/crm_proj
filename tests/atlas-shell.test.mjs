@@ -8,9 +8,9 @@ const ok = (name, cond) => {
 };
 const html = readFileSync('index.html', 'utf8');
 ok('atlas nav mount with tree role', html.includes('id="atlas-nav"') && html.includes('role="tree"'));
-ok('atlas canvas mount with img role', html.includes('id="atlas-canvas"') && html.includes('role="img"'));
+ok('atlas single content container', html.includes('id="atlas-canvas"') && !html.includes('id="atlas-detail"'));
 for (const lens of ['logic', 'components', 'ia', 'truth']) ok(`atlas nav offers ${lens} lens`, html.includes(`data-lens="${lens}"`));
-ok('atlas detail mount', html.includes('id="atlas-detail"'));
+ok('atlas has no separate detail card', !html.includes('atlas-detail'));
 ok('atlas composer script linked', html.includes('src/arch/atlas.js'));
 ok('atlas nav lives in left arch stack', html.indexOf('id="atlas-nav"') > html.indexOf('id="ws-arch-stack"') && html.indexOf('id="atlas-nav"') < html.indexOf('id="panel-architecture"'));
 const panel = html.slice(html.indexOf('id="panel-architecture"'));

@@ -1,17 +1,10 @@
 /* ADAM/STYLE — src/arch/atlas.css · atlas layout shell [plan:2026-09-22_082844-arch-atlas.md#phase-2] */
-/* — Exports: .atlas grid, nav, canvas, detail layout — */
+/* — Exports: nav, canvas, selection layout — */
 /* — Section — panel override — */
 .ws-canvas--arch {
   place-items: start center;
 }
-/* — Section — atlas column (canvas + detail) — */
-.atlas {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  width: 100%;
-  max-width: 1100px;
-}
+/* — Section — the one content container — */
 /* — Section — lens nav — */
 .atlas__nav {
   display: flex;
@@ -47,32 +40,27 @@
   outline: 2px solid var(--signal);
   outline-offset: 2px;
 }
-/* — Section — canvas + detail — */
+/* — Section — canvas content (page + inline selection, no nested cards) — */
 .atlas__canvas {
   background: var(--bg-surface);
   border: 1px solid var(--border-thin);
   border-radius: var(--radius-lg);
   min-height: 480px;
   overflow: auto;
+  width: 100%;
+  max-width: 1100px;
 }
 .atlas__canvas svg {
   display: block;
   width: 100%;
   height: auto;
 }
-.atlas__detail {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-thin);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-4);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-}
-.atlas__detail h3 {
-  font-size: var(--font-size-md);
-  color: var(--text-primary);
-  margin: 0 0 4px;
-}
+.atlas__page{padding:var(--spacing-8);max-width:720px}
+.atlas__page h3{font-size:var(--font-size-md);color:var(--text-primary);margin:0 0 4px}
+.atlas__page p,.atlas__page ul{font-size:var(--font-size-sm);color:var(--text-secondary);line-height:1.7}
+.atlas__page ul{margin:12px 0 0 18px}
+.atlas__sel{border-top:1px solid var(--border-thin);margin:var(--spacing-4) var(--spacing-8);padding-top:var(--spacing-4);font-size:var(--font-size-sm);color:var(--text-secondary)}
+.atlas__sel h3{font-size:var(--font-size-md);color:var(--text-primary);margin:0 0 4px}
 /* — Section — staleness badge — */
 .atlas-node[data-stale="true"]{stroke:var(--signal);stroke-dasharray:6 4}
 .atlas-stale{font-size:11px;font-weight:700;fill:var(--signal)}

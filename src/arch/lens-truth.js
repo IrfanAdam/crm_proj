@@ -1,5 +1,5 @@
 /* ADAM/SHARED — src/arch/lens-truth.js · code-truth lens page [plan:2026-09-22_082844-arch-atlas.md#phase-4] */
-// — Exports: renderTruth, detailTruth —
+// — Exports: renderTruth —
 const INTRO = 'Extract-only refactor: each layer owns its modules behind documented contracts; geometry flows one way from src/workspace/devices.js.';
 const LAYERS = [
   ['Mounts', 'index.html', 'stylesheet links + #device #os-status #os-edges #app-content only'],
@@ -17,13 +17,9 @@ const NOTE = 'Platform-specific tuning (blur strength, sheen, glow) can be done 
 function esc(s) {
   return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
-// — Section — truth page (right-panel content) —
+// — Section — truth page (borderless; the canvas is the only card) —
 export function renderTruth() {
   const items = LAYERS.map(([k, src, d]) => `<li><b>${esc(k)}:</b> <code>${esc(src)}</code> — ${esc(d)}</li>`).join('');
   const flows = FLOWS.map(([t, href]) => `<a href="${esc(href)}">${esc(t)}</a>`).join(' · ');
-  return `<div class="arch"><h3>Layered prototype — code truth</h3><p>${esc(INTRO)}</p><ul>${items}<li><b>Rules:</b> ${esc(RULES)}</li><li><b>Flows:</b> ${flows}</li></ul><p class="meta" style="margin-top:16px">${esc(NOTE)}</p></div>`;
-}
-// — Section — truth detail —
-export function detailTruth() {
-  return '<h3>Code Truth</h3><p>Layer contracts live in the canvas — Mounts through DS, plus Rules and Flows.</p><p>Source: <code>src/arch/lens-truth.js:1</code></p>';
+  return `<div class="atlas__page"><h3>Layered prototype — code truth</h3><p>${esc(INTRO)}</p><ul>${items}<li><b>Rules:</b> ${esc(RULES)}</li><li><b>Flows:</b> ${flows}</li></ul><p>${esc(NOTE)}</p></div>`;
 }
