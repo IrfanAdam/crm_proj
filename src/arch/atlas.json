@@ -1,0 +1,413 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-22T08:33:42.656Z",
+    "resolution": "L1",
+    "lenses": [
+      "logic",
+      "components",
+      "ia"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "app",
+      "lens": "ia",
+      "title": "ALPHA App",
+      "source": "index.html",
+      "detail": "shell frame: header, game-layout, footer"
+    },
+    {
+      "id": "component:Accordion",
+      "lens": "components",
+      "title": "Accordion",
+      "source": "src/components/Accordion",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Avatar",
+      "lens": "components",
+      "title": "Avatar",
+      "source": "src/components/Avatar",
+      "detail": "6 referencing lines in patterns"
+    },
+    {
+      "id": "component:Badge",
+      "lens": "components",
+      "title": "Badge",
+      "source": "src/components/Badge",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Breadcrumbs",
+      "lens": "components",
+      "title": "Breadcrumbs",
+      "source": "src/components/Breadcrumbs",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Button",
+      "lens": "components",
+      "title": "Button",
+      "source": "src/components/Button",
+      "detail": "4 referencing lines in patterns"
+    },
+    {
+      "id": "component:Checkbox",
+      "lens": "components",
+      "title": "Checkbox",
+      "source": "src/components/Checkbox",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Chip",
+      "lens": "components",
+      "title": "Chip",
+      "source": "src/components/Chip",
+      "detail": "6 referencing lines in patterns"
+    },
+    {
+      "id": "component:FunnelCard",
+      "lens": "components",
+      "title": "FunnelCard",
+      "source": "src/components/FunnelCard",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:FunnelGlyph",
+      "lens": "components",
+      "title": "FunnelGlyph",
+      "source": "src/components/FunnelGlyph",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:GemReward",
+      "lens": "components",
+      "title": "GemReward",
+      "source": "src/components/GemReward",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:GoalBar",
+      "lens": "components",
+      "title": "GoalBar",
+      "source": "src/components/GoalBar",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Icon",
+      "lens": "components",
+      "title": "Icon",
+      "source": "src/components/Icon",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:KpiStat",
+      "lens": "components",
+      "title": "KpiStat",
+      "source": "src/components/KpiStat",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:ListRow",
+      "lens": "components",
+      "title": "ListRow",
+      "source": "src/components/ListRow",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:OpportunityCard",
+      "lens": "components",
+      "title": "OpportunityCard",
+      "source": "src/components/OpportunityCard",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Overlay",
+      "lens": "components",
+      "title": "Overlay",
+      "source": "src/components/Overlay",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Pagination",
+      "lens": "components",
+      "title": "Pagination",
+      "source": "src/components/Pagination",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:ProfileCard",
+      "lens": "components",
+      "title": "ProfileCard",
+      "source": "src/components/ProfileCard",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Radio",
+      "lens": "components",
+      "title": "Radio",
+      "source": "src/components/Radio",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Search",
+      "lens": "components",
+      "title": "Search",
+      "source": "src/components/Search",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Select",
+      "lens": "components",
+      "title": "Select",
+      "source": "src/components/Select",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Slider",
+      "lens": "components",
+      "title": "Slider",
+      "source": "src/components/Slider",
+      "detail": "1 referencing lines in patterns"
+    },
+    {
+      "id": "component:Sparkline",
+      "lens": "components",
+      "title": "Sparkline",
+      "source": "src/components/Sparkline",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:StatusPill",
+      "lens": "components",
+      "title": "StatusPill",
+      "source": "src/components/StatusPill",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Switch",
+      "lens": "components",
+      "title": "Switch",
+      "source": "src/components/Switch",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:TabBar",
+      "lens": "components",
+      "title": "TabBar",
+      "source": "src/components/TabBar",
+      "detail": "1 referencing lines in patterns"
+    },
+    {
+      "id": "component:Table",
+      "lens": "components",
+      "title": "Table",
+      "source": "src/components/Table",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Tabs",
+      "lens": "components",
+      "title": "Tabs",
+      "source": "src/components/Tabs",
+      "detail": "1 referencing lines in patterns"
+    },
+    {
+      "id": "component:Textarea",
+      "lens": "components",
+      "title": "Textarea",
+      "source": "src/components/Textarea",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:TextInput",
+      "lens": "components",
+      "title": "TextInput",
+      "source": "src/components/TextInput",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "component:Timeline",
+      "lens": "components",
+      "title": "Timeline",
+      "source": "src/components/Timeline",
+      "detail": "1 referencing lines in patterns"
+    },
+    {
+      "id": "component:Toolbar",
+      "lens": "components",
+      "title": "Toolbar",
+      "source": "src/components/Toolbar",
+      "detail": "0 referencing lines in patterns"
+    },
+    {
+      "id": "logic:funnel-machine",
+      "lens": "logic",
+      "title": "Funnel Machine",
+      "source": "src/logic/funnel-machine.js",
+      "detail": "FUNNEL_STATES, createFunnelMachine"
+    },
+    {
+      "id": "logic:temporal",
+      "lens": "logic",
+      "title": "Temporal",
+      "source": "src/logic/temporal.js",
+      "detail": "temporal, isTemporal, sliceTemporal"
+    },
+    {
+      "id": "logic:time-scale",
+      "lens": "logic",
+      "title": "Time Scale",
+      "source": "src/logic/time-scale.js",
+      "detail": "getScale, resync, setScale, scaled, track, later"
+    },
+    {
+      "id": "logic:transient",
+      "lens": "logic",
+      "title": "Transient",
+      "source": "src/logic/transient.js",
+      "detail": "transient, isTransient, filterTransient"
+    },
+    {
+      "id": "screen:MonitorScreen",
+      "lens": "ia",
+      "title": "MonitorScreen",
+      "source": "src/patterns/MonitorScreen",
+      "detail": "pattern screen; mount(page) branch"
+    },
+    {
+      "id": "screen:OperateScreen",
+      "lens": "ia",
+      "title": "OperateScreen",
+      "source": "src/patterns/OperateScreen",
+      "detail": "pattern screen; mount(page) branch"
+    },
+    {
+      "id": "screen:OppsHome",
+      "lens": "ia",
+      "title": "OppsHome",
+      "source": "src/patterns/OppsHome",
+      "detail": "pattern screen; mount(page) branch"
+    },
+    {
+      "id": "screen:ReportsMatrix",
+      "lens": "ia",
+      "title": "ReportsMatrix",
+      "source": "src/patterns/ReportsMatrix",
+      "detail": "pattern screen; mount(page) branch"
+    },
+    {
+      "id": "tab:Home",
+      "lens": "ia",
+      "title": "Home Tab",
+      "source": "src/glass/BottomDock.jsx",
+      "detail": "dock tab; bridges via app-tab event"
+    },
+    {
+      "id": "tab:Leads",
+      "lens": "ia",
+      "title": "Leads Tab",
+      "source": "src/glass/BottomDock.jsx",
+      "detail": "dock tab; bridges via app-tab event"
+    },
+    {
+      "id": "tab:Opps",
+      "lens": "ia",
+      "title": "Opps Tab",
+      "source": "src/glass/BottomDock.jsx",
+      "detail": "dock tab; bridges via app-tab event"
+    }
+  ],
+  "edges": [
+    {
+      "from": "app",
+      "to": "tab:Home",
+      "kind": "contains",
+      "label": "contains"
+    },
+    {
+      "from": "app",
+      "to": "tab:Leads",
+      "kind": "contains",
+      "label": "contains"
+    },
+    {
+      "from": "app",
+      "to": "tab:Opps",
+      "kind": "contains",
+      "label": "contains"
+    },
+    {
+      "from": "logic:funnel-machine",
+      "to": "screen:OppsHome",
+      "kind": "governs",
+      "label": "Operate surface: funnel states drive card status"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:Avatar",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:Chip",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:FunnelCard",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:GemReward",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:KpiStat",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:OpportunityCard",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:TabBar",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "screen:OppsHome",
+      "to": "component:Timeline",
+      "kind": "composes",
+      "label": "composes"
+    },
+    {
+      "from": "tab:Home",
+      "to": "screen:OppsHome",
+      "kind": "contains",
+      "label": "empty placeholder"
+    },
+    {
+      "from": "tab:Leads",
+      "to": "screen:OppsHome",
+      "kind": "contains",
+      "label": "empty placeholder"
+    },
+    {
+      "from": "tab:Opps",
+      "to": "screen:OppsHome",
+      "kind": "contains",
+      "label": "full screen"
+    }
+  ]
+}
