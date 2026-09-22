@@ -30,5 +30,9 @@
   "2026-09-23_002500-design-system-consolidation.md": {
     "title": "Design system — ground-up build, tokens to pages",
     "purpose": "ground-up DS"
+  },
+  "2026-09-23_003000-exhaustive-visual-language.md": {
+    "title": "Exhaustive visual language — eBay-bar spec (hidden subset)",
+    "purpose": "language spec"
   }
 }

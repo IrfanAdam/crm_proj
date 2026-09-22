@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T17:38:17.943Z",
+  "generated": "2026-09-22T19:46:01.274Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -8,9 +8,75 @@
     "2026-09-22_082844-arch-atlas.md",
     "2026-09-22_122850-museum-refactor.md",
     "2026-09-22_155000-architecture-mechanics.md",
-    "2026-09-22_190645-visual-language.md"
+    "2026-09-22_190645-visual-language.md",
+    "2026-09-23_002500-design-system-consolidation.md",
+    "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "3e75875",
+      "full": "3e758751a17cb4101945adf06d6509556c84b721",
+      "date": "2026-09-23",
+      "subject": "feat(ds): Chapter 1 goes thematic — values, materials, day-loop; detail moves to tabs",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "1549a21",
+      "full": "1549a2170714f00442500761d92eaaf0008e4c26",
+      "date": "2026-09-23",
+      "subject": "feat(ds): recipes say what each piece is — plain-English build order",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "d2b1ebf",
+      "full": "d2b1ebf92b1d89b3efad27e3ccb2e560bdd435b7",
+      "date": "2026-09-23",
+      "subject": "feat(ds): ceramic/aluminium/gems story — decluttered chapter, plain words",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "66f8054",
+      "full": "66f805419ccdeee5b83f8186d25cc418a61585de",
+      "date": "2026-09-23",
+      "subject": "feat(ds): fold Chapter 1 into gallery Language tab, drop standalone page",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "d200d90",
+      "full": "d200d90723be96ad21d0c928acb199bf9eccad5f",
+      "date": "2026-09-23",
+      "subject": "feat(ds): gallery opens on Chapter 1 in chapter order",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "cafb0ed",
+      "full": "cafb0ede4e7c0971a68b5741132d2250cdf5ffa3",
+      "date": "2026-09-23",
+      "subject": "docs(ds): build DS Chapter 1 — the language",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "7e521d5",
+      "full": "7e521d5b9ea1729506fed80405c6450164121ec7",
+      "date": "2026-09-23",
+      "subject": "docs(ds): name the ground-up DS build plan",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "5ff5102",
+      "full": "5ff5102a46415a8f3a1baf2cc0c7f42d46b8b443",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track visual-language close",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-5}"
+    },
     {
       "sha": "df6223c",
       "full": "df6223c7bb09a9b622538c39b7a0605dc2c2f5d1",
@@ -1038,6 +1104,7 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
+    "M src/ds/changelog-names.json",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
