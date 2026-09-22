@@ -3,6 +3,10 @@
 > Witnesses: ref-01 through ref-12 (see REGISTRY.md). Prototype: `src/patterns/OppsHome/opps-home.js`.
 > Rendered for humans in the gallery `Language` tab (`public/language-panel.html`); this file is the spec source.
 
+## The idea (from the SEP Notion: Redefine, 2023–24)
+
+Businesses grow when their people hit goals — so the whole goal-management system is by design meant to enable the professional to have **high output**. Tracking becomes momentum: gamified goals, the app nudging the next step (high-traffic areas, next follows, warm leads), a reward when the work lands. UI principles from the same source: minimalism, spacing, a **fresh, friendly visual language**, and one **strong dazzling element** (the gems). The day moves Alert → Progress → Study → Planning → Sales → Review.
+
 ## Principles (reject what breaks them)
 
 1. **Ceramic holds the work. Aluminium frames it. Gems celebrate it.**

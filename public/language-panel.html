@@ -1,47 +1,29 @@
 <!-- ADAM/DS — public/language-panel.html · DS Chapter 1 panel fragment [plan:2026-09-23_002500-design-system-consolidation.md#phase-1] -->
-<!-- Fragment, not a page: fetched into gallery.html #stage on load. Tokens only, no raw hex. -->
+<!-- Fragment, not a page: fetched into gallery.html #stage on load. Theme and values only — tokens live in Foundations, recipes in Patterns. -->
 <div class="frame" data-panel="language"><div class="pad">
 <p class="ch-kicker">Chapter 1 · Visual language</p>
-<p class="ch-hero">Ceramic holds the work. Aluminium frames it. Gems celebrate it.</p>
-<p class="meta ch-lede">Three materials, five laws, three screen recipes. Every law below can reject a screen — if a screen breaks one, the screen is wrong.</p>
-<h3>The five laws</h3>
+<p class="ch-hero">High output, by design.</p>
+<p class="meta ch-lede">Businesses grow when their people hit goals. So the system turns tracking into momentum — gamified goals, a nudge toward the next step, and a reward when the work lands. Everything on this page is that idea, made visible.</p>
+<h3>What it values</h3>
 <ol class="ch-laws">
-<li class="ch-law"><span class="ch-num">01</span><div><p><b>Ground — ceramic holds the work.</b> Cards, lists, KPIs are glazed ceramic: matte, hairline seams, never a shadow.</p><p class="ch-reject"><b>Reject</b> — a glass blur or a gem on an opportunity card.</p></div></li>
-<li class="ch-law"><span class="ch-num">02</span><div><p><b>Hue — the signal light decides.</b> Sapphire is the device's LED: primary action, selected tab, chip count. Amethyst measures, red-beryl scores, citrine warns distance.</p><p class="ch-reject"><b>Reject</b> — a decorative teal for a count.</p></div></li>
-<li class="ch-law"><span class="ch-num">03</span><div><p><b>Type — every screen opens with the same display title.</b> Big, 32, bold — then card title 20, body 16, meta 14, micro 12. Size 24 is reserved, never a title.</p><p class="ch-reject"><b>Reject</b> — a 24px title, or an amethyst timestamp faking hierarchy.</p></div></li>
-<li class="ch-law"><span class="ch-num">04</span><div><p><b>Depth — seams, not shadows.</b> In-flow UI elevates with a 1px hairline. Shadow is reserved for depth viz and controls floating on imagery.</p><p class="ch-reject"><b>Reject</b> — a shadow on the KPI pill.</p></div></li>
-<li class="ch-law"><span class="ch-num">05</span><div><p><b>Motion — motion explains a state change.</b> The feed states; only celebration boasts.</p><p class="ch-reject"><b>Reject</b> — a looping shimmer on the feed.</p></div></li>
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Tangible and transparent.</b> Every number traces back to real work — 4/32 closed, 23km away, last contact 2d. Nothing decorative, nothing vague.</p><p class="ch-reject"><b>Reject</b> — a dashboard that shouts.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Fresh and friendly.</b> Minimal, spaced, quiet surfaces — the tool feels like a colleague, not a ledger.</p><p class="ch-reject"><b>Reject</b> — density that reads as surveillance.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Celebration is earned.</b> Rock Solid Goals, Golden Streak, Focus Master, Momentum — gems appear only where a win happened, never as decoration.</p><p class="ch-reject"><b>Reject</b> — a gem on an opportunity card.</p></div></li>
 </ol>
-<h3>Materials — what each surface is made of</h3>
+<h3>What it's made of</h3>
 <div class="ch-regs">
-<div class="ch-reg"><span class="ch-swatch ch-swatch-ceramic"></span><div><b>Ceramic — content surfaces</b><p>Cards, lists, KPIs. Matte glazed white, quiet. Witness ref-01, 02, 03, 09.</p></div></div>
-<div class="ch-reg"><span class="ch-swatch ch-swatch-alu"></span><div><b>Aluminium — the device frame</b><p>Dock, rails, machined edges. Brushed, precise, new-age. Witness prototype dock; supersedes the ref-01 flat tab.</p></div></div>
-<div class="ch-reg"><span class="ch-swatch ch-swatch-gem"></span><div><b>Gems — celebration, kept in its box</b><p>Rock Solid Goals (sapphire, ref-08) · Golden Streak (citrine) · Focus Master (amethyst) · Momentum (red beryl). Never in the feed.</p></div></div>
-<div class="ch-reg"><span class="ch-swatch">◆</span><div><b>Peak marker — a diamond blink, not a gemstone</b><p>Sits on peaked bars. A measure accent, never a gem.</p></div></div>
+<div class="ch-reg"><span class="ch-swatch ch-swatch-ceramic"></span><div><b>Ceramic — the quiet work surface</b><p>Cards, lists, KPIs. Matte, calm, built for long days.</p></div></div>
+<div class="ch-reg"><span class="ch-swatch ch-swatch-alu"></span><div><b>Aluminium — the precise frame</b><p>Dock, rails, machined edges. The new-age device holding it all.</p></div></div>
+<div class="ch-reg"><span class="ch-swatch ch-swatch-gem"></span><div><b>Gems — the reward</b><p>Sapphire, citrine, amethyst, red beryl. Kept in their box until someone wins.</p></div></div>
 </div>
-<h3>Roles — where the light goes</h3>
-<p class="meta">Sapphire is the device's LED, not a paint color. It lights only where action is.</p>
-<table class="ch-roles"><thead><tr><th></th><th>Role</th><th>Alias</th><th>Job</th></tr></thead><tbody>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-action);border-radius:var(--radius-sm)"></span></td><td>action</td><td><code>var(--signal)</code></td><td>The signal light — primary button, selected tab, chip count</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-measure);border-radius:var(--radius-sm)"></span></td><td>measure</td><td><code>amethyst-400</code></td><td>Funnel fill, delta +32, goal progress</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-measure-soft);border:1px solid var(--border-thin);border-radius:var(--radius-sm)"></span></td><td>soft</td><td><code>amethyst-200</code></td><td>Funnel wash under the 400 core</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-measure-strong);border-radius:var(--radius-sm)"></span></td><td>strong</td><td><code>amethyst-500</code></td><td>Emphasized measure, peak diamond marker</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-score);border-radius:var(--radius-sm)"></span></td><td>score</td><td><code>red-beryl-400</code></td><td>Chance %, score glyph, Momentum stone</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-warn);border-radius:var(--radius-sm)"></span></td><td>warn</td><td><code>citrine-700</code></td><td>Distance 23km, caution chip, Golden Streak stone</td></tr>
-<tr><td><span style="display:inline-block;width:20px;height:20px;background:var(--role-mark);border-radius:var(--radius-sm)"></span></td><td>mark</td><td><code>amethyst-500</code></td><td>Map arrow shadow pair, peak marker</td></tr>
-</tbody></table>
-<h3>Screen recipes — the build order</h3>
-<p class="meta">Three screens, one grammar. Each step below names the piece, then says what it is.</p>
+<h3>How a day moves through it</h3>
 <div class="ch-flows">
-<div class="ch-flow"><p class="ch-flowname">Operate · the everyday screen — your pipeline at a glance</p><ol><li><b>Display title + avatar</b><span>The screen's name in big type, your face at right for presence.</span></li><li><b>KPI strip — 4/32 closed</b><span>The scoreboard: where the number stands, one glance.</span></li><li><b>Hero visual</b><span>One big picture of the territory: map or funnel.</span></li><li><b>Delta line</b><span>What moved since yesterday: +32.</span></li><li><b>Chips, hot gets 2px ink</b><span>Filters. The active filter carries a 2px ink underline.</span></li><li><b>Ceramic cards, hairline</b><span>The deals themselves — matte cards, hairline seams, no shadow.</span></li><li><b>Aluminium dock, 3 tabs</b><span>The device frame at the bottom: Home, Leads, Opportunities.</span></li></ol></div>
-<div class="ch-flow"><p class="ch-flowname">Monitor · the funnel readout — where every deal stands</p><ol><li><b>Display title + avatar</b><span>Same opening, same title, every screen.</span></li><li><b>Funnel hero, 7 states</b><span>The 3D funnel, from first touch to retained — tap a stage, the card expands.</span></li><li><b>Metrics — 32%, 4.9</b><span>Conversion and NPS, side by side.</span></li><li><b>Timeline chips + Now</b><span>Y/Q/M/W/D slices plus Now — switching reshapes the funnel.</span></li></ol></div>
-<div class="ch-flow"><p class="ch-flowname">Reports · the review — patterns over time</p><ol><li><b>Display title</b><span>Same opening, no avatar — this screen is about the numbers.</span></li><li><b>Matrix tabs M/Q/Y</b><span>Time slices: month, quarter, year.</span></li><li><b>Blob-vs-Goals grid</b><span>Activity dots against goal bars — effort vs target.</span></li><li><b>Business chips</b><span>The lens: Business or Performance.</span></li></ol></div>
+<div class="ch-flow"><p class="ch-flowname">Alert → Progress → Study → Planning → Sales → Review</p><ol><li><b>Alert</b><span>The day opens itself — nudges, not a blank screen.</span></li><li><b>Progress</b><span>Where the numbers stand, one glance.</span></li><li><b>Study</b><span>Drill into the funnel, see what moved.</span></li><li><b>Planning</b><span>The next steps suggest themselves.</span></li><li><b>Sales</b><span>The work happens out in the world.</span></li><li><b>Review</b><span>Come back, see what the work did, celebrate.</span></li></ol></div>
 </div>
-<p class="meta" style="margin-top:8px">A missing step needs a PR note. Home and Leads omit only via the one empty state — never by dropping the title.</p>
-<h3>Voice</h3>
+<h3>How it speaks</h3>
 <div class="ch-voice">
-<div><p class="ch-flowname">Product · chrome only</p><p class="meta" style="margin-top:6px">Numeric and specific — <code>4/32 closed</code> · <code>last contact 2d</code> · <code>23km away</code>. Never boasts.</p></div>
-<div><p class="ch-flowname">Celebration · reward only</p><p class="meta" style="margin-top:6px">Short and boastful — <code>Rock Solid Goals</code> · <code>data in here don't lie</code>. Never informs.</p></div>
+<div><p class="ch-flowname">Product · states</p><p class="meta" style="margin-top:6px">Numeric and specific — <code>4/32 closed</code> · <code>23km away</code>. Never boasts.</p></div>
+<div><p class="ch-flowname">Celebration · boasts</p><p class="meta" style="margin-top:6px">Short and proud — <code>Rock Solid Goals</code> · <code>data in here don't lie</code>. Never informs.</p></div>
 </div>
-<p class="ch-quar"><b>Only here, never there</b> — gems live on the Gems tab and the reward moment, nowhere else. This chapter embeds no Spline. Spec source: <a href="design-system/docs/visual-language.md">visual-language.md</a>.</p>
+<p class="ch-quar"><b>Where the detail lives</b> — tokens in Foundations · <code>Color</code> and <code>Typography</code>, build orders in Patterns · <code>Operate</code> <code>Monitor</code> <code>Reports</code>, celebration in <code>Gems</code>. Spec source: <a href="design-system/docs/visual-language.md">visual-language.md</a>.</p>
 </div></div>
