@@ -11,6 +11,8 @@ Every file under `src/` appears exactly once, with its target layer from the pla
 | `src/workspace/mobile-fullscreen.js` | 61 | — | `?app=fullscreen` view, clean |
 | `src/workspace/workspace.css` | 45 | — | Workspace chrome styles |
 | `src/workspace/mobile-fullscreen.css` | 38 | — | Fullscreen styles |
+| `src/shell/top-pills.jsx` | 45 | glass optics (moved) | Prototype/Architecture pills, shell scope (Phase 4) |
+| `src/shell/shell.css` | 6 | — | `.ws-tabs/.pill-tab` + dead `.float-tabs/.stage` removed (Phase 4) |
 | `index.html` | 99 | 5 script/link tags | AT BUDGET CEILING — mixes shell + device markup + OS status bar (Phase 2/3 target) |
 | `app.html` | 10 | — | Redirect shim to `/`, keep |
 | `app.css` | 97 | — | TANGLE: shell tabs + stage + device frame + OS chrome + edge materials + arch panel + DS duplicates (`.avatar` l.58, `.kpi` l.68–72, `.card` l.73, `.meta` l.74) |
@@ -61,7 +63,7 @@ Every file under `src/` appears exactly once, with its target layer from the pla
 | `src/patterns/OppsHome/sheet-morph.js` | 80 | `morph-timing`, `logic/time-scale` | Layout-box writes are intentional — whitelist in Phase 8 |
 | `src/patterns/OppsHome/opps-home.css` | 80 | — | Pattern-scoped, clean |
 | `src/patterns/OppsHome/opps-home.js` | 77 | `nearby-map`, `nearby-sheet` | `mount(page)` contract, clean |
-| `src/patterns/OppsHome/map-pan.js` | 62 | — | GRAPH-CONFIRMED ORPHAN (0 edges) — decide: wire or delete (Phase 7) |
+| `src/patterns/OppsHome/map-pan.js` | 62 | — | DELETED Phase 9: superseded by Leaflet, 0 importers |
 | `src/patterns/OppsHome/nearby-map.js` | 51 | `live-map` | Exports `PINS`, `PROSPECTS`, `relRect` — shared data hub |
 | `src/patterns/OppsHome/morph-timing.js` | 42 | — | Pure walk/clamp — logic-candidate, unit-test in Phase 7 |
 | `src/patterns/OppsHome/nearby-sheet.css` | 32 | — | Clean |
@@ -76,7 +78,7 @@ Every file under `src/` appears exactly once, with its target layer from the pla
 | File | Lines | Imports | Notes |
 | --- | --- | --- | --- |
 | `src/logic/time-scale.js` | 56 | — | `getScale`/`setScale` — imported by slowmo, sheet-morph, pill-expand, live-map |
-| `src/logic/funnel-machine.js` | 19 | — | GRAPH-CONFIRMED ORPHAN (0 edges) — decide: wire, test-fixture, or delete (Phase 7) |
+| `src/logic/funnel-machine.js` | 19 | — | KEPT Phase 9: tested pure-logic exemplar (see tests/funnel-machine.test.mjs); importer-free by design, graph orphan accepted |
 | `src/logic/temporal.js` | — | — | No importers found — decide in graph phase |
 | `src/logic/transient.js` | — | — | No importers found — decide in graph phase |
 
