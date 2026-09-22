@@ -67,3 +67,8 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .lab-spec b{font-size:var(--font-size-md);font-weight:600;line-height:1.1}
 .lab-spec span{font-size:var(--font-size-sm);font-weight:400}
 .lab-badge{display:inline-block;padding:6px 12px;border-radius:var(--radius-md);font-size:var(--font-size-sm);font-weight:700}
+.lab-grid{display:grid;grid-template-columns:240px 1fr;gap:var(--spacing-4);margin-top:8px;align-items:start}
+.lab-controls{display:flex;flex-direction:column}
+.lab-controls .select__input{width:100%}
+.lab-stage{border:1px solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-4);background:var(--bg-primary)}
+@media(max-width:700px){.lab-grid{grid-template-columns:1fr}}

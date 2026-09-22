@@ -18,29 +18,27 @@ const pxVerdict=r=>{
   if(r>=3)return 'AA-large';
   return 'FAIL';
 };
-const pxCls=r=>{
-  if(r>=4.5)return 'mx-ok';
-  if(r>=3)return 'mx-mid';
-  return 'mx-bad';
-};
-const pxGuide=r=>{
-  if(r>=4.5)return 'Safe for body text.';
-  if(r>=3)return 'Large text only — 18pt+, or 14pt+ bold.';
-  return 'Decorative only — never for text.';
-};
+const PX_CLS={AAA:'mx-ok',AA:'mx-ok','AA-large':'mx-mid',FAIL:'mx-bad'};
+const pxCls=r=>PX_CLS[pxVerdict(r)];
+const PX_GUIDE=['Decorative only — never for text.','Large text only — 18pt+.','Safe for body text.'];
+const pxGuide=r=>PX_GUIDE[(r>=3)+(r>=4.5)];
 const PAIR_FG=[
-  ['white','--primitive-gray-white'],['ink','--primitive-ink'],['action','--role-action'],
-  ['action-strong','--role-action-strong'],['measure','--role-measure'],['score','--role-score'],
-  ['score-strong','--role-score-strong'],['warn','--role-warn'],['warn-strong','--role-warn-strong'],
-  ['mark','--role-mark'],['mark-strong','--role-mark-strong'],['secondary','--text-secondary'],
-  ['muted','--text-muted'],['dim','--text-dim'],['accent','--text-accent'],
-  ['success','--color-accent-success'],['error','--color-accent-error']
+  ['action','--role-action','Action'],['action-strong','--role-action-strong','Action'],
+  ['measure','--role-measure','Measure'],['measure-strong','--role-measure-strong','Measure'],
+  ['score','--role-score','Score'],['score-strong','--role-score-strong','Score'],
+  ['warn','--role-warn','Warn'],['warn-strong','--role-warn-strong','Warn'],
+  ['mark','--role-mark','Mark'],['mark-strong','--role-mark-strong','Mark'],
+  ['secondary','--text-secondary','Text'],['muted','--text-muted','Text'],
+  ['dim','--text-dim','Text'],['accent','--text-accent','Text'],
+  ['white','--primitive-gray-white','Neutrals'],['ink','--primitive-ink','Neutrals'],
+  ['success','--color-accent-success','Feedback'],['error','--color-accent-error','Feedback']
 ];
 const PAIR_BG=[
-  ['canvas','--bg-primary'],['surface','--bg-surface'],['white','--primitive-gray-white'],
-  ['action','--role-action'],['ink','--primitive-ink'],['measure','--role-measure'],
-  ['measure-soft','--role-measure-soft'],['score','--role-score'],['score-soft','--role-score-soft'],
-  ['glass','--bg-surface-glass']
+  ['canvas','--bg-primary','Surfaces'],['surface','--bg-surface','Surfaces'],
+  ['white','--primitive-gray-white','Surfaces'],['glass','--bg-surface-glass','Surfaces'],
+  ['action','--role-action','Action'],['ink','--primitive-ink','Neutrals'],
+  ['measure','--role-measure','Measure'],['measure-soft','--role-measure-soft','Measure'],
+  ['score','--role-score','Score'],['score-soft','--role-score-soft','Score']
 ];
 const FG_BY=Object.fromEntries(PAIR_FG);
 const BG_BY=Object.fromEntries(PAIR_BG);

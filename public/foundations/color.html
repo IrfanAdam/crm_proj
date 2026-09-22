@@ -74,13 +74,24 @@
 <div class="row" style="margin-top:4px"><label class="meta"><input type="checkbox" data-matrix-aa/> AA passes only — dim the rest</label></div>
 <div class="mx-wrap" style="margin-top:4px"><div data-matrix><p class="meta">computing pairs…</p></div></div>
 <h3>Pairing lab — test every permissible pair</h3>
-<p class="meta">Pick a foreground and a background — or click the matrix. The lab computes the live ratio and verdict; only law-permitted colors are offered.</p>
+<p class="meta">Dropdowns on the left, preview on the right. Every option lists its live ratio — only pairs that pass are offered, so a fail never appears. Click the matrix for the full map, fails included.</p>
 <div data-lab>
-<div class="meta" style="margin-top:8px">Foreground</div>
-<div class="row" style="margin-top:4px" data-lab-fg></div>
-<div class="meta" style="margin-top:8px">Background</div>
-<div class="row" style="margin-top:4px" data-lab-bg></div>
-<div class="row" style="margin-top:8px;align-items:center"><span class="lab-spec" id="lab-spec"><b>Ag</b><span>Body 16px — safe only at AA and above</span></span><span class="lab-badge" data-lab-badge>…</span><span class="meta" data-lab-out>computing…</span><button class="chip" data-lab-swap>swap</button></div>
+<div class="lab-grid">
+<div class="lab-controls">
+<label class="meta" for="lab-fg-sel">Foreground</label>
+<select class="select__input" id="lab-fg-sel" data-lab-fg style="margin-top:4px"></select>
+<label class="meta" for="lab-bg-sel" style="margin-top:8px">Background</label>
+<select class="select__input" id="lab-bg-sel" data-lab-bg style="margin-top:4px"></select>
+<div class="row" style="margin-top:8px"><button class="chip" data-lab-swap>swap</button><button class="chip" data-lab-theme>dark preview</button></div>
+<label class="meta" for="lab-level-sel" style="margin-top:8px">Text size</label>
+<select class="select__input" id="lab-level-sel" data-lab-level style="margin-top:4px"><option value="4.5">AA — body text</option><option value="3">AA-large — large text</option></select>
+</div>
+<div class="lab-stage" data-lab-scope data-theme="light">
+<span class="lab-spec" id="lab-spec"><b>Ag</b><span>Body 16px — safe only at AA and above</span></span>
+<div class="row" style="margin-top:8px;align-items:center"><span class="lab-badge" data-lab-badge>…</span><span class="meta" data-lab-out>computing…</span></div>
+<p class="meta" style="margin-top:8px"><code data-lab-snippet>color:var(--role-action);background:var(--primitive-gray-white);</code> <button class="chip" data-lab-copy>copy</button></p>
+</div>
+</div>
 </div>
 <h3>Snippet — follows the lab</h3>
 <p class="meta"><code data-lab-snippet>color:var(--role-action);background:var(--primitive-gray-white);</code> <button class="chip" data-lab-copy>copy</button></p>

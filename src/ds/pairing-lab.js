@@ -1,24 +1,13 @@
-/* ADAM/DS — src/ds/pairing-lab.js · pairing lab picker */
-// [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · needs gallery.js px* globals.
+/* ADAM/DS — src/ds/pairing-lab.js · pairing explorer state + display */
+// [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · options via pairing-options.js.
 let labF='action';
 let labB='white';
-const pxChips=(sel,names,set)=>{
-  const host=document.querySelector(sel);
-  if(!host||host.dataset.done)return;
-  host.dataset.done='1';
-  names.forEach(n=>{
-    const c=document.createElement('button');
-    c.className='chip';
-    c.textContent=n;
-    c.dataset.n=n;
-    c.addEventListener('click',()=>set(n));
-    host.appendChild(c);
-  });
-};
-const pxMark=(sel,n)=>{
-  document.querySelectorAll(sel+' .chip').forEach(c=>{
-    c.classList.toggle('chip--active',c.dataset.n===n);
-  });
+let labLevel=4.5;
+let labProbe=null;
+const pxScopeResolve=t=>{
+  const v=t.startsWith('var(')?t.slice(4,-1):t;
+  labProbe.style.color='var('+v+')';
+  return getComputedStyle(labProbe).color;
 };
 const pxLabPaint=()=>{
   const spec=document.getElementById('lab-spec');
@@ -38,37 +27,37 @@ const pxLabPaint=()=>{
 const pxLabSet=(f,b)=>{
   if(f&&FG_BY[f])labF=f;
   if(b&&BG_BY[b])labB=b;
-  pxMark('[data-lab-fg]',labF);
-  pxMark('[data-lab-bg]',labB);
-  pxLabPaint();
+  if(!pxPass(labF,labB)){
+    const nb=pxFirstBg(labF);
+    if(nb)labB=nb;
+  }
+  pxLabSync();
 };
 const pxLabLoad=(f,b)=>{
-  pxLabSet(f,b);
+  if(FG_BY[f])labF=f;
+  if(BG_BY[b])labB=b;
+  pxLabSync();
   const lab=document.querySelector('[data-lab]');
   if(lab)lab.scrollIntoView({block:'nearest'});
 };
-const pxLabTools=()=>{
-  const sw=document.querySelector('[data-lab-swap]');
-  if(sw&&!sw.dataset.done){
-    sw.dataset.done='1';
-    sw.addEventListener('click',()=>{
-      if(FG_BY[labB]&&BG_BY[labF])pxLabSet(labB,labF);
-    });
-  }
-  const cp=document.querySelector('[data-lab-copy]');
-  if(cp&&!cp.dataset.done){
-    cp.dataset.done='1';
-    cp.addEventListener('click',()=>{
-      const sn=document.querySelector('[data-lab-snippet]');
-      if(sn&&navigator.clipboard)navigator.clipboard.writeText(sn.textContent);
-      cp.textContent='copied';
-      setTimeout(()=>{cp.textContent='copy';},1200);
-    });
-  }
-};
 const labWidgets=()=>{
-  pxChips('[data-lab-fg]',Object.keys(FG_BY),f=>pxLabSet(f,null));
-  pxChips('[data-lab-bg]',Object.keys(BG_BY),b=>pxLabSet(null,b));
+  const sc=document.querySelector('[data-lab-scope]');
+  if(!sc)return;
+  if(!labProbe){
+    labProbe=document.createElement('span');
+    labProbe.style.cssText='position:absolute;visibility:hidden';
+    sc.appendChild(labProbe);
+  }
+  const fg=document.querySelector('[data-lab-fg]');
+  if(fg&&!fg.dataset.done){
+    fg.dataset.done='1';
+    fg.addEventListener('change',()=>pxLabSet(fg.value,null));
+  }
+  const bg=document.querySelector('[data-lab-bg]');
+  if(bg&&!bg.dataset.done){
+    bg.dataset.done='1';
+    bg.addEventListener('change',()=>pxLabSet(null,bg.value));
+  }
   pxLabSet(labF,labB);
   pxLabTools();
 };
