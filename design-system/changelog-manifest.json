@@ -1,14 +1,31 @@
 {
-  "generated": "2026-09-22T10:05:21.622Z",
+  "generated": "2026-09-22T10:22:53.159Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md",
     "2026-09-16_203500-ds-polish.md",
     "2026-09-22_082844-arch-atlas.md",
-    "2026-09-22_122850-museum-refactor.md"
+    "2026-09-22_122850-museum-refactor.md",
+    "2026-09-22_155000-architecture-mechanics.md"
   ],
   "commits": [
+    {
+      "sha": "359be48",
+      "full": "359be48e263703cb8591819d0c126eb51c255f36",
+      "date": "2026-09-22",
+      "subject": "fix: prototype viewport top-anchors device so zoom never shifts layout",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "f78cffb",
+      "full": "f78cffb5a2a9d75a0eb79cd8d22e4d0c321d890b",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "889e064",
       "full": "889e064b2237dac858136a772462b2d9452f00e8",
