@@ -1,0 +1,1 @@
+{"lenses":["logic","components","ia"],"overrides":{"opportunity":{"governs":"src/logic/funnel-machine.js","note":"Operate surface: funnel states drive card status"}},"resolution":"L1"}
