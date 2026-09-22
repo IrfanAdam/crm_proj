@@ -8,6 +8,7 @@ graph TD
   subgraph device
   end
   subgraph os
+    os_status-bar[status-bar.js]
   end
   subgraph glass
     glass_BottomDock[BottomDock.jsx]
@@ -82,4 +83,5 @@ graph TD
   patterns_OppsHome_sheet-morph --> patterns_OppsHome_morph-timing
   patterns_OppsHome_sheet-morph --> logic_time-scale
   workspace_canvas --> workspace_devices
+  workspace_canvas --> os_status-bar
   workspace_slowmo --> logic_time-scale

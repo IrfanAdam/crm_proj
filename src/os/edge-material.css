@@ -1,0 +1,14 @@
+/* ADAM/OS — src/os/edge-material.css · top/bottom progressive-blur edge materials · moved verbatim from app.css Phase 2 Task 4 */
+/* bottom edge material — native progressive blur: stacked backdrop layers, radius rises toward the edge.
+   height = dock top (frame bottom − 30 − 56) → frame bottom; layers only paint from their fade-in stop down. */
+.device__edge{position:absolute;left:0;right:0;bottom:0;height:78px;z-index:4;pointer-events:none;isolation:isolate;contain:layout paint;border-radius:0 0 var(--display-r) var(--display-r);corner-shape:squircle;-webkit-corner-shape:squircle;overflow:hidden}
+.device__edge>span{position:absolute;inset:0;display:block;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:backdrop-filter;-webkit-backdrop-filter:blur(var(--b));backdrop-filter:blur(var(--b));-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z))}
+/* top edge material — native nav behavior on large-title screens (.device--large):
+   no blur at rest (content starts on safe-area margin, untouched); the material
+   fades in once scrolled and is then the ONLY backdrop — patterns add no own blur.
+   Other screens keep the always-on band (no .device--large). */
+.device__edge--top{top:0;bottom:auto;height:104px;border-radius:var(--display-r) var(--display-r) 0 0;corner-shape:squircle;-webkit-corner-shape:squircle;overflow:hidden;background:linear-gradient(to bottom,color-mix(in srgb, var(--bg-surface) 48%, transparent) 0%,color-mix(in srgb, var(--bg-surface) 40%, transparent) 48%,transparent 100%)}
+#device.device--large .device__edge--top{opacity:0;transition:opacity var(--transition-normal)}
+#device.device--large.device--scrolled .device__edge--top{opacity:1}
+@media (prefers-reduced-motion:reduce){#device.device--large .device__edge--top{transition:none}}
+.device__edge--top>span{-webkit-mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z))}

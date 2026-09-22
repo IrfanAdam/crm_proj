@@ -1,4 +1,5 @@
 import { DEVICES,DEVICE_CATS } from './devices.js';
+import { setNotch } from '../os/status-bar.js';
 const $=(s,r=document)=>r.querySelector(s);
 const scaler=$('#canvas-scaler'),viewport=$('#canvas-viewport'),device=$('#device');
 const select=$('#device-select'),metaBox=$('#device-meta');
@@ -33,16 +34,7 @@ function applyDevice(id){
  device.setAttribute('aria-label',`${d.name} prototype — ${d.w}×${d.h} pt, ${d.px}, ${d.diag}`);
  if(metaBox) metaBox.innerHTML=fmtMeta(d);
 
- const island=device.querySelector('.status__island');
- if(island){
-  if(d.notch==='none'){island.style.display='none';}
-  else{
-   island.style.display='';
-   if(d.notch==='hole'){island.style.width='16px';island.style.height='16px';island.style.borderRadius='50%';island.style.left='50%';}
-   else if(d.notch==='notch'){island.style.width='160px';island.style.height='24px';island.style.borderRadius='0 0 12px 12px';}
-   else{island.style.width='92px';island.style.height='28px';island.style.borderRadius='9999px';}
-  }
- }
+ setNotch(d.notch||'island');
 }
 function applyZoom(v,{animate=true}={}){
  zoom=Math.min(2,Math.max(0.5,Math.round(v*100)/100));

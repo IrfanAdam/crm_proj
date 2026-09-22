@@ -43,14 +43,7 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 /* NOTE: keep wrapper ids unstyled transparent so React roots add no bands */
 #glass-appbar{position:absolute;top:54px;left:0;right:0;z-index:9;background:transparent;border:none;padding:0}
 #glass-bottom{background:transparent;border:none;padding:0}
-.status{height:54px;position:absolute;top:0;left:0;right:0;z-index:9;display:flex;align-items:flex-start;justify-content:space-between;padding:14px 28px 0;background:transparent}
-.status__time{font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary);width:54px}
-.status__island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:92px;height:28px;background:#000;border-radius:var(--radius-full)}
-.status__right{display:flex;align-items:center;gap:6px;width:68px;justify-content:flex-end}
-.status__right svg{width:18px;height:11px;display:block}
-.status__battery{width:24px;height:12px;border:1px solid var(--text-primary);border-radius:4px;position:relative;display:inline-flex;align-items:center;padding:1px;opacity:.9}
-.status__battery::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:4px;background:var(--text-primary);border-radius:0 2px 2px 0}
-.status__battery-fill{width:68%;height:100%;background:var(--text-primary);border-radius:2px}
+/* OS: status bar lives in src/os/status-bar.css */
 /* app chrome inside device — transparent over the scroll (glass comes from the edge material) */
 .app-bar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--spacing-2) 0 var(--spacing-4);background:transparent}
 .app-bar__title{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);letter-spacing:-.01em}
@@ -73,22 +66,7 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 .card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-4)}
 .meta{font-size:var(--font-size-xs);color:var(--text-muted)}
 .empty{border:1px dashed var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8) var(--spacing-4);text-align:center;color:var(--text-muted)}
-/* bottom system — floating liquid-glass dock (material lives in src/glass/dock-lens.css) */
-.home-indicator-wrap{height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;z-index:9}
-.home-indicator{width:134px;height:5px;background:#000;border-radius:var(--radius-full)}
-/* bottom edge material — native progressive blur: stacked backdrop layers, radius rises toward the edge.
-   height = dock top (frame bottom − 30 − 56) → frame bottom; layers only paint from their fade-in stop down. */
-.device__edge{position:absolute;left:0;right:0;bottom:0;height:78px;z-index:4;pointer-events:none;isolation:isolate;contain:layout paint;border-radius:0 0 var(--display-r) var(--display-r);corner-shape:squircle;-webkit-corner-shape:squircle;overflow:hidden}
-.device__edge>span{position:absolute;inset:0;display:block;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:backdrop-filter;-webkit-backdrop-filter:blur(var(--b));backdrop-filter:blur(var(--b));-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z))}
-/* top edge material — native nav behavior on large-title screens (.device--large):
-   no blur at rest (content starts on safe-area margin, untouched); the material
-   fades in once scrolled and is then the ONLY backdrop — patterns add no own blur.
-   Other screens keep the always-on band (no .device--large). */
-.device__edge--top{top:0;bottom:auto;height:104px;border-radius:var(--display-r) var(--display-r) 0 0;corner-shape:squircle;-webkit-corner-shape:squircle;overflow:hidden;background:linear-gradient(to bottom,color-mix(in srgb, var(--bg-surface) 48%, transparent) 0%,color-mix(in srgb, var(--bg-surface) 40%, transparent) 48%,transparent 100%)}
-#device.device--large .device__edge--top{opacity:0;transition:opacity var(--transition-normal)}
-#device.device--large.device--scrolled .device__edge--top{opacity:1}
-@media (prefers-reduced-motion:reduce){#device.device--large .device__edge--top{transition:none}}
-.device__edge--top>span{-webkit-mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z))}
+/* OS: home indicator + edge materials live in src/os/ */
 /* arch panel */
 .arch{max-width:720px;width:100%;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8);text-align:left}
 .arch h2{font-size:var(--font-size-xl);font-weight:700}

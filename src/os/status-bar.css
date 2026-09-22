@@ -1,0 +1,13 @@
+/* ADAM/OS — src/os/status-bar.css · system status bar (time, notch, signal, battery) · moved verbatim from app.css Phase 2 Task 1 */
+.status{height:54px;position:absolute;top:0;left:0;right:0;z-index:9;display:flex;align-items:flex-start;justify-content:space-between;padding:14px 28px 0;background:transparent}
+.status__time{font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary);width:54px}
+.status__island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:92px;height:28px;background:#000;border-radius:var(--radius-full)}
+/* notch variants — driven by devices.js `notch` via setNotch(), never hardcoded markup */
+.status__island[data-notch="hole"]{width:16px;height:16px;border-radius:50%}
+.status__island[data-notch="notch"]{width:160px;height:24px;top:0;border-radius:0 0 12px 12px}
+.status__island[data-notch="none"]{display:none}
+.status__right{display:flex;align-items:center;gap:6px;width:68px;justify-content:flex-end}
+.status__right svg{width:18px;height:11px;display:block}
+.status__battery{width:24px;height:12px;border:1px solid var(--text-primary);border-radius:4px;position:relative;display:inline-flex;align-items:center;padding:1px;opacity:.9}
+.status__battery::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:4px;background:var(--text-primary);border-radius:0 2px 2px 0}
+.status__battery-fill{width:68%;height:100%;background:var(--text-primary);border-radius:2px}
