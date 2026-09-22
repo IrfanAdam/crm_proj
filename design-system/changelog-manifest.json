@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:04:29.738Z",
+  "generated": "2026-09-22T09:15:50.488Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "0fa9721",
+      "full": "0fa9721ecae53fc755da91f2b4901d4265464251",
+      "date": "2026-09-22",
+      "subject": "feat: atlas Phase 4 resolution ladder, staleness gate, presentation polish",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "945d2dc",
+      "full": "945d2dcd13f61b204cfca7bf644f834ee4db2939",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "23108ee",
       "full": "23108ee7ed1fd1236200bd5c9b65c1fdfe644794",
