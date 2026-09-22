@@ -1,7 +1,7 @@
 import { NODES, EDGES, KINDS, GROUPS } from './graph.js';
 import { fitTextSubtle, subtleFont } from './text.js';
 import { getRoute } from './route.js';
-export function token(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||getComputedStyle(document.documentElement).getPropertyValue('--stone-900').trim(); }
+import { token } from './tokens.js';
 export function kindColor(k){ return token(KINDS[k]?.color || '--stone-500'); }
 function isReduced(){ try{ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch{ return false; } }
 let _nodeMap=null, _nodesRef=null;
@@ -135,6 +135,7 @@ export function drawEdges(ctx,scale,hover,selected,hovEdge,selEdge){
   });
 }
 export function drawNodes(ctx,scale,hover,selected,selEdge){
+  const reduced=isReduced();
   const focus=selected||selEdge; const inc=new Set(); if(selected){ EDGES.forEach(e=>{ if(e.from===selected.id||e.to===selected.id){ inc.add(e.from); inc.add(e.to);} }); } if(selEdge){ inc.add(selEdge.from); inc.add(selEdge.to); }
   NODES.forEach(n=>{
     const act=n===hover||n===selected;

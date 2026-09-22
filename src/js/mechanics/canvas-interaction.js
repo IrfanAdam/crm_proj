@@ -10,6 +10,9 @@ export function attachCanvasInteraction(o){
   };
   const getBases=()=>bases||fallback;
   canvas.addEventListener('pointermove',e=>{
+    // stuck-drag guard: hover (no button held) must never pan/reorder —
+    // a missed pointerup/pointercancel leaves S.pan set with no capture
+    if(!e.buttons&&(S.dragGroup||S.dragNode||S.pan)){ S.dragGroup=null; S.dragNode=null; S.pan=null; }
     const p=world(e);
     if(S.dragGroup){ S.moved=true; const dx=p.x-S.dragGroup.offX, dy=p.y-S.dragGroup.offY; S.dragGroup.g.x=S.dragGroup.sx+dx; S.dragGroup.g.y=S.dragGroup.sy+dy; S.dragGroup.members.forEach(m=>{m.n.x=m.sx+dx; m.n.y=m.sy+dy;}); clearRouteCache(); draw(); return; }
     if(S.dragNode){ S.moved=true; reorderNode(S.dragNode,p.y); draw(); tip(S.dragNode); return; }
@@ -23,15 +26,19 @@ export function attachCanvasInteraction(o){
     S.downX=e.clientX; S.downY=e.clientY; S.moved=false;
     try{ canvas.focus({preventScroll:true}); }catch{ try{canvas.focus();}catch{} }
     const p=world(e), hg=hitGroup(p);
-    if(hg){ S.selected=null; S.selEdge=null; const members=NODES.filter(n=>n.group===hg.id).map(n=>({n,sx:n.x,sy:n.y})); S.dragGroup={g:hg,sx:hg.x,sy:hg.y,offX:p.x,offY:p.y,members}; canvas.setPointerCapture(e.pointerId); draw(); return; }
+    if(hg){ S.selected=null; S.selEdge=null; const members=NODES.filter(n=>n.group===hg.id).map(n=>({n,sx:n.x,sy:n.y})); S.dragGroup={g:hg,sx:hg.x,sy:hg.y,offX:p.x,offY:p.y,members}; try{canvas.setPointerCapture(e.pointerId);}catch{} draw(); return; }
     const h=hitNode(p);
-    if(h){ S.selected=h; S.selEdge=null; S.dragNode=h; canvas.setPointerCapture(e.pointerId); draw(); tip(h); try{ canvas.dispatchEvent(new CustomEvent('mechanics:select',{detail:{id:h.id}})); }catch{} return; }
-    S.pan={sx:e.clientX-S.ox,sy:e.clientY-S.oy}; canvas.setPointerCapture(e.pointerId);
+    if(h){ S.selected=h; S.selEdge=null; S.dragNode=h; try{canvas.setPointerCapture(e.pointerId);}catch{} draw(); tip(h); try{ canvas.dispatchEvent(new CustomEvent('mechanics:select',{detail:{id:h.id}})); }catch{} return; }
+    S.pan={sx:e.clientX-S.ox,sy:e.clientY-S.oy}; try{canvas.setPointerCapture(e.pointerId);}catch{}
   });
   canvas.addEventListener('pointerup',e=>{
     if(S.dragGroup&&S.dragGroup.g){ const movedGrp=Math.hypot(S.dragGroup.g.x-S.dragGroup.sx,S.dragGroup.g.y-S.dragGroup.sy); if(movedGrp<2){ S.selected=null; S.selEdge=null; } }
     S.dragNode=null; S.dragGroup=null; S.pan=null; try{canvas.releasePointerCapture(e.pointerId);}catch{} draw();
   });
+  // missed-release cleanup: trackpad gestures fire pointercancel, capture loss
+  // orphans drag state — without this every later hover keeps panning
+  function clearDrag(){ S.dragNode=null; S.dragGroup=null; S.pan=null; }
+  canvas.addEventListener('pointercancel',()=>{ clearDrag(); draw(); });
   canvas.addEventListener('dblclick',e=>{
     const p=world(e), hg=hitGroup(p); if(!hg) return;
     const mode=getMode(); const b=getBases()[mode]||{}; const base=b[hg.id]; if(!base) return;

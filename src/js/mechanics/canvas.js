@@ -1,5 +1,6 @@
 import { NODES, GROUPS, EDGES, getMode, setMode as setGraphMode, bases } from './graph.js';
-import { token, drawGroups, drawGrid, drawEdges, drawNodes, edgePath } from './render.js';
+import { drawGroups, drawGrid, drawEdges, drawNodes, edgePath } from './render.js';
+import { token } from './tokens.js';
 import { nodeTipHTML } from './popover.js';
 import { clearRouteCache } from './route.js';
 import { attachCanvasInteraction } from './canvas-interaction.js';
