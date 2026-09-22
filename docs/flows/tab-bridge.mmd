@@ -1,0 +1,11 @@
+%% tab-bridge.mmd — dock page → app-tab event → mount → engine rebuild
+%% All arrows cite the code that owns them.
+flowchart LR
+  tab["dock tap / drag<br/>track owns pointer<br/>BottomDock.jsx:18"] --> dispatch["dispatch app-tab detail=page<br/>BottomDock.jsx:22"]
+  dispatch --> mount["mount page<br/>opps-home.js:49"]
+  mount --> listener["app-tab listener<br/>opps-home.js:76"]
+  dispatch --> lens["DockLens rebuild<br/>DockLens.jsx:62"]
+  dispatch --> slices["DockSlices rebuild<br/>DockSlices.jsx:55"]
+  lens --> unmount1["removeEventListener<br/>DockLens.jsx:69"]
+  slices --> unmount2["removeEventListener<br/>DockSlices.jsx:76"]
+  mount --> default1["mount Opps on load<br/>opps-home.js:77"]

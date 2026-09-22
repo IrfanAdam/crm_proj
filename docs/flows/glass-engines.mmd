@@ -1,0 +1,13 @@
+%% glass-engines.mmd — engine.js decides lens or slices, both share helpers
+%% All arrows cite the code that owns them.
+flowchart TD
+  decide{"ENGINE<br/>engine.js:18"} --> |"?glass=lens<br/>or Chromium"| lens["DockLens.jsx<br/>SDF displacement lens<br/>engine.js:3-5"]
+  decide --> |"?glass=slices<br/>or Safari WebKit<br/>engine.js:10-11"| slices["DockSlices.jsx<br/>transform + mask layers<br/>engine.js:6-8"]
+  lens --> shared1["optics.js<br/>OPTICS + TOP_OPTICS + PULL"]
+  slices --> shared1
+  lens --> shared2["rect-zoom.js<br/>toLayout rect,zoom"]
+  slices --> shared2
+  lens --> copy["lens-copy.jsx<br/>copy placement"]
+  lens --> track["dock-track.jsx<br/>capsule + drag math"]
+  slices --> bands["slice-bands.jsx<br/>band clone rendering"]
+  slices --> track

@@ -1,0 +1,13 @@
+%% morph-pipeline.mmd — OppsHome map morph on one rAF clock
+%% All arrows cite the code that owns them.
+flowchart LR
+  tap["pill tap<br/>#nearby-open"] --> drive["driveExpand dir/ms<br/>pill-expand.js:24"]
+  drive --> ghost["ghost clone +<br/>buildFaces STAG .1 SPAN .6<br/>face-handoff.js:13"]
+  ghost --> |"s = openness 0→1<br/>pill-expand.js:23"| clock["one rAF clock<br/>ms / getScale<br/>pill-expand.js:84"]
+  clock --> HAND{"HAND swap .84<br/>pill-expand.js:11"}
+  HAND --> morph["morph parts/rect/dir<br/>sheet-morph.js:17"]
+  morph --> win["clip window grows<br/>widget rect → screen<br/>sheet-morph.js:32-42"]
+  morph --> fade["fade windows<br/>FADE.open / FADE.close<br/>morph-timing.js:30"]
+  fade --> walk["walk stops,p<br/>morph-timing.js:31"]
+  win --> settle["overshoot 1.022<br/>settles to 1<br/>morph-timing.js:23"]
+  fade --> card["card holds 0 open<br/>ghost carries clone<br/>sheet-morph.js:46"]
