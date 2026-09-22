@@ -1,0 +1,26 @@
+<p class="ch-kicker">Chapter 2 · Foundations · 07 Iconography</p>
+<h2 class="ch-hero">Regular walks. Fill is chosen.</h2>
+<p class="ch-lede meta">One set — Phosphor — two voices. Regular 1.5px is the resting state; fill plus Sapphire plus a dot marks the chosen one. The dock stays neutral glass: the icon carries the signal, never the background. Sizes step 12 to 32, and nothing else.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>One set only</b> — Phosphor Regular and Fill. No mixing with legacy sprite glyphs.</p><p class="ch-reject">Reject: a one-off custom SVG that "felt more precise" — the set is the voice.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Fill means chosen</b> — selected tab: fill glyph, signal color, dot above.</p><p class="ch-reject">Reject: fill without the dot, or color without fill — the selected state is all three.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Unselected is secondary, never dim</b> — <code>--text-secondary</code> keeps every glyph legible.</p><p class="ch-reject">Reject: dim or muted unselected icons — resting is not fading.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Sizes step 12 → 32</b> — <code>--icon-size-xs–xl</code>, nothing between.</p><p class="ch-reject">Reject: a 22px icon eyeballed into place — the dock uses lg, the reason is documented.</p></div></li>
+</ul>
+<h3>Token table</h3>
+<table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
+<tr><td><code>--icon-size-xs</code></td><td>12</td><td>inline glyphs, dots</td></tr>
+<tr><td><code>--icon-size-sm</code></td><td>16</td><td>list glyphs, search</td></tr>
+<tr><td><code>--icon-size-md</code></td><td>20</td><td>default — mail, rows</td></tr>
+<tr><td><code>--icon-size-lg</code></td><td>24</td><td>dock glyphs, phone</td></tr>
+<tr><td><code>--icon-size-xl</code></td><td>32</td><td>feature glyphs, calendar</td></tr>
+</tbody></table>
+<h3>Specimens — the two voices</h3>
+<div class="row" style="color:var(--text-secondary);align-items:center;gap:12px;margin-top:4px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-house" style="font-size:12px"></i><span class="meta">12 regular</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px;color:var(--signal)"><i class="ph-fill ph-house" style="font-size:12px"></i><span class="meta">12 fill</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-magnifying-glass" style="font-size:16px"></i><span class="meta">16</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-envelope" style="font-size:20px"></i><span class="meta">20</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-phone" style="font-size:24px"></i><span class="meta">24</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-calendar-blank" style="font-size:32px"></i><span class="meta">32</span></span></div>
+<div class="row" style="margin-top:12px;align-items:center;gap:8px"><span class="meta" style="font-weight:600">Dock 3 (icon-only):</span><span class="icon icon--lg" style="color:var(--signal)"><i class="ph-fill ph-house" style="font-size:22px"></i></span><span class="meta" style="color:var(--signal)">House fill</span><span class="icon icon--lg" style="color:var(--text-secondary)"><i class="ph ph-users" style="font-size:22px"></i></span><span class="meta">Users</span><span class="icon icon--lg" style="color:var(--text-secondary)"><i class="ph ph-handshake" style="font-size:22px"></i></span><span class="meta">Handshake</span></div>
+<h3>Contrast — glyphs carry meaning</h3>
+<p class="meta">Unselected <code>--text-secondary</code> on white 7.81 AA · selected <code>--signal</code> 5.91 AA — resting glyphs stay legible, chosen ones stay loud.</p>
+<h3>Snippet</h3>
+<p class="meta"><code>font-size:var(--icon-size-md);color:var(--text-secondary)</code> resting · fill + <code>--signal</code> + dot chosen</p>
+<h3>Related</h3>
+<p class="meta">Color — the signal and secondary tokens · Navigation — the 3-tab dock in situ · sprite.svg — deprecated, do not extend</p>
