@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:26:09.532Z",
+  "generated": "2026-09-22T09:32:25.503Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "9bae36b",
+      "full": "9bae36b976413980bd964500ff9fea61a2867a79",
+      "date": "2026-09-22",
+      "subject": "feat: atlas Code Truth becomes fourth lens tab rendering in canvas",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "1295b7d",
+      "full": "1295b7dfabcc34aad7679cae2abaf6c95311076f",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "170e1f0",
       "full": "170e1f0f8c4bd924f6fe544b3128a3130160dfcd",
