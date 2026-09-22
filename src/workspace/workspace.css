@@ -1,5 +1,5 @@
 /* workspace — left controls + right full-height canvas */
-.workspace{max-width:1440px;margin:0 auto;padding:16px 16px 24px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start;min-height:100vh}
+.workspace{max-width:1440px;margin:0 auto;padding:16px 16px 24px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start;min-height:100vh;min-height:100dvh}
 @media(max-width:900px){.workspace{grid-template-columns:1fr;padding-top:16px}.ws-controls{position:static}}
 .ws-controls{position:sticky;top:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .ws-tabs{display:flex;justify-content:center}
@@ -28,7 +28,7 @@
 .ws-btn:active{background:var(--bg-interactive)}
 .ws-hint{font-size:11px;color:var(--text-muted);line-height:1.4}
 /* canvas — full height from top (no 76px header gap) */
-.ws-canvas{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;min-height:calc(100vh - 32px);min-width:0}
+.ws-canvas{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;min-height:calc(100vh - 32px);min-height:calc(100dvh - 32px);min-width:0}
 .ws-canvas__toolbar{display:none !important} /* removed redundant top bar — device specs live in left #device-meta only */
 .ws-canvas__label{display:none !important}
 .ws-canvas__hint{display:none !important}
@@ -41,6 +41,6 @@
 .ws-canvas__scaler .device{position:absolute;left:0;top:0;width:var(--device-w);height:var(--device-h);max-width:none;aspect-ratio:auto;transform:scale(var(--zoom));transform-origin:0 0;will-change:transform;transition:transform .18s ease}
 .ws-canvas--dragging{cursor:grabbing}
 .ws-canvas--dragging .ws-canvas__viewport{cursor:grabbing}
-.ws-canvas--arch{display:grid;place-items:center;padding:24px;min-height:calc(100vh - 32px)}
+.ws-canvas--arch{display:grid;place-items:center;padding:24px;min-height:calc(100vh - 32px);min-height:calc(100dvh - 32px)}
 .ws-canvas--arch .arch{max-width:720px;width:100%}
 @media(max-width:900px){.ws-canvas,.ws-canvas--arch{min-height:620px}.ws-canvas__viewport{min-height:560px;padding:24px}}
