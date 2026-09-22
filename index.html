@@ -3,7 +3,7 @@
 <meta name="theme-color" content="#fafafa"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link rel="manifest" href="/manifest.webmanifest"/><link rel="icon" href="/icons/icon-192.png"/><link rel="apple-touch-icon" href="/icons/icon-192.png"/>
 <title>ALPHA CRM — Prototype</title>
-<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 </head><body>
 <div class="workspace">
   <aside class="ws-controls" aria-label="Canvas controls">
@@ -18,20 +18,7 @@
         <h3 class="ws-card__title">Prototype canvas</h3>
         <p class="ws-card__desc">Right canvas = the app. Device-accurate squircle (true 55pt) — zoom is lens-only, layout stays at 1× points.</p>
         <label class="ws-label" for="device-select">Device</label>
-        <select id="device-select" class="ws-select" aria-label="Device size">
-          <optgroup label="Mobile">
-            <option value="iphone15" selected>iPhone 15 — 393×852 · 6.1″</option>
-            <option value="iphone15pm">iPhone 15 Pro Max — 430×932 · 6.7″</option>
-            <option value="iphone16pro">iPhone 16 Pro — 402×874 · 6.3″</option>
-            <option value="pixel8">Pixel 8 — 412×915 · 6.2″</option>
-          </optgroup>
-          <optgroup label="Laptop">
-            <option value="macbook14">MacBook Air 14 — 1512×982</option>
-          </optgroup>
-          <optgroup label="Desktop">
-            <option value="desktop1440">Desktop — 1440×900</option>
-          </optgroup>
-        </select>
+        <select id="device-select" class="ws-select" aria-label="Device size"></select>
         <div id="device-meta" class="device-meta" aria-live="polite" style="justify-content:flex-start;text-align:left;line-height:1.6;display:flex;flex-wrap:wrap;gap:6px;width:100%;box-sizing:border-box;border-radius:var(--radius-lg);padding:10px 12px;align-items:center;align-content:flex-start"></div>
       </div>
       <div class="ws-card ws-card--zoom">
@@ -72,18 +59,7 @@
       <section class="ws-canvas" aria-label="Device canvas">
         <div id="canvas-viewport" class="ws-canvas__viewport">
           <div id="canvas-scaler" class="ws-canvas__scaler" style="--device-w:393px;--device-h:852px;--display-r:55px;--bezel-w:10px;--bezel-r:65px;--zoom:0.8">
-            <div id="device" class="device" role="region" aria-label="iPhone 15 prototype — 393×852 pt, 1179×2556 px at 3×, 6.1 inch">
-              <div class="device__screen">
-                <div id="os-status"></div>
-                <div id="glass-appbar"></div>
-                <div class="device__edge device__edge--top" aria-hidden="true"><span style="--b:1.5px;--a:12%;--z:20%"></span><span style="--b:3px;--a:18%;--z:32%"></span><span style="--b:6px;--a:26%;--z:44%"></span><span style="--b:10px;--a:34%;--z:56%"></span><span style="--b:14px;--a:44%;--z:66%"></span></div>
-                <div class="device__content" id="app-content"><div class="pad"><div id="opps-home"></div></div></div>
-                <div id="glass-bottom"></div>
-                <div class="device__edge" aria-hidden="true"><span style="--b:1px;--a:16%;--z:32%"></span><span style="--b:2px;--a:30%;--z:48%"></span><span style="--b:3.6px;--a:44%;--z:64%"></span><span style="--b:5.2px;--a:60%;--z:82%"></span><span style="--b:7px;--a:76%;--z:100%"></span></div>
-                <div class="home-indicator-wrap" aria-hidden="true"><span class="home-indicator"></span></div>
-              </div>
-              <div class="device__frame" aria-hidden="true"></div>
-            </div>
+            <div id="device" class="device" role="region" aria-label="iPhone 15 prototype — 393×852 pt, 1179×2556 px at 3×, 6.1 inch"></div>
           </div>
         </div>
       </section>
@@ -96,4 +72,4 @@
   </div>
 </div>
 <button id="exit-fullscreen" aria-label="Back to workspace">✕ Exit</button>
-<script type="module" src="./src/os/status-bar.js"></script><script type="module" src="./src/patterns/OppsHome/opps-home.js"></script><script type="module" src="./src/workspace/mobile-fullscreen.js"></script><script type="module" src="./src/glass/main.jsx"></script><script type="module" src="./src/workspace/canvas.js"></script><script type="module" src="./src/workspace/slowmo.js"></script></body></html>
+<script type="module" src="./src/os/status-bar.js"></script><script type="module" src="./src/workspace/canvas.js"></script><script type="module" src="./src/patterns/OppsHome/opps-home.js"></script><script type="module" src="./src/workspace/mobile-fullscreen.js"></script><script type="module" src="./src/glass/main.jsx"></script><script type="module" src="./src/workspace/slowmo.js"></script></body></html>

@@ -6,6 +6,7 @@ graph TD
     workspace_slowmo[slowmo.js]
   end
   subgraph device
+    device_frame[frame.js]
   end
   subgraph os
     os_status-bar[status-bar.js]
@@ -53,6 +54,7 @@ graph TD
     motion_elastic-scroll[elastic-scroll.js]
     motion_tilt-card[tilt-card.js]
   end
+  device_frame --> os_status-bar
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
   glass_BottomDock --> glass_engine
@@ -84,4 +86,5 @@ graph TD
   patterns_OppsHome_sheet-morph --> logic_time-scale
   workspace_canvas --> workspace_devices
   workspace_canvas --> os_status-bar
+  workspace_canvas --> device_frame
   workspace_slowmo --> logic_time-scale

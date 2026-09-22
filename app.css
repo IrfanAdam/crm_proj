@@ -24,21 +24,7 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 .device-meta{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:11px;line-height:1;color:var(--text-muted);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:8px 12px}
 .device-meta b{font-weight:600;color:var(--text-secondary)}
 .device-meta__dot{width:3px;height:3px;border-radius:50%;background:var(--border-thin);display:inline-block}
-/* — device frame — iPhone 15 · 393×852 pt · 1179×2556 px @3× · 19.5:9 · 6.1" — 55pt squircle (true 55pt display, 65pt bezel inc. 10pt frame) */
-.device{
-  box-sizing:content-box;
-  --display-r:55px;
-  --bezel-w:10px;
-  --bezel-r:65px;
-  width:393px;
-  max-width:calc(100vw - 32px - 20px);
-  aspect-ratio:393 / 852;
-  height:auto;
-  background:transparent;border:var(--bezel-w) solid transparent;border-radius:var(--bezel-r);corner-shape:squircle;-webkit-corner-shape:squircle;box-shadow:0 12px 32px rgba(15,16,21,.10),0 2px 8px rgba(15,16,21,.06);overflow:visible;display:flex;flex-direction:column;position:relative;isolation:isolate;transform:translateZ(0)
-}
-.device__screen{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:var(--display-r);corner-shape:squircle;-webkit-corner-shape:squircle;background:var(--bg-surface);position:relative;isolation:isolate;transform:translateZ(0)}
-.device__frame{position:absolute;inset:calc(-1 * var(--bezel-w));border:var(--bezel-w) solid #0f0f0f;border-radius:var(--bezel-r);corner-shape:squircle;-webkit-corner-shape:squircle;pointer-events:none;z-index:10}
-@media(max-width:440px){.device{--bezel-w:8px;--display-r:46px;--bezel-r:54px;max-width:calc(100vw - 16px - 16px)}.device__screen{border-radius:var(--display-r)}.device__frame{inset:calc(-1 * var(--bezel-w));border-width:var(--bezel-w);border-radius:var(--bezel-r)}.device__edge{border-radius:0 0 var(--display-r) var(--display-r)}.device__edge--top{border-radius:var(--display-r) var(--display-r) 0 0}}
+/* — device frame lives in src/device/frame.css — */
 /* status bar + appbar — transparent chrome: content scrolls behind, the top edge material blurs it */
 /* NOTE: keep wrapper ids unstyled transparent so React roots add no bands */
 #glass-appbar{position:absolute;top:54px;left:0;right:0;z-index:9;background:transparent;border:none;padding:0}

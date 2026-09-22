@@ -1,5 +1,6 @@
 import { DEVICES,DEVICE_CATS } from './devices.js';
 import { setNotch } from '../os/status-bar.js';
+import { buildFrame, frameVars } from '../device/frame.js';
 const $=(s,r=document)=>r.querySelector(s);
 const scaler=$('#canvas-scaler'),viewport=$('#canvas-viewport'),device=$('#device');
 const select=$('#device-select'),metaBox=$('#device-meta');
@@ -27,10 +28,8 @@ function buildSelect(){
 }
 function applyDevice(id){
  const d=DEVICES[id]||DEVICES.iphone15;current=id;
- const bezelW=d.bezel??10,bezelR=d.r+bezelW;
- scaler.style.setProperty('--device-w',d.w+'px');scaler.style.setProperty('--device-h',d.h+'px');
- scaler.style.setProperty('--display-r',d.r+'px');scaler.style.setProperty('--bezel-w',bezelW+'px');scaler.style.setProperty('--bezel-r',bezelR+'px');
- device.style.setProperty('--display-r',d.r+'px');device.style.setProperty('--bezel-w',bezelW+'px');device.style.setProperty('--bezel-r',bezelR+'px');
+ const v=frameVars(d);
+ for(const k of Object.keys(v)){scaler.style.setProperty(k,v[k]);device.style.setProperty(k,v[k]);}
  device.setAttribute('aria-label',`${d.name} prototype — ${d.w}×${d.h} pt, ${d.px}, ${d.diag}`);
  if(metaBox) metaBox.innerHTML=fmtMeta(d);
 
@@ -81,4 +80,4 @@ function bind(){
  window.addEventListener('resize',fitZoom);
 }
 buildSelect();
-applyDevice(current);applyZoom(0.8,{animate:false});bind();
+buildFrame();applyDevice(current);applyZoom(0.8,{animate:false});bind();
