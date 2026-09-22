@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T07:49:43.226Z",
+  "generated": "2026-09-22T07:49:43.386Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -8,6 +8,14 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "2bc8d71",
+      "full": "2bc8d71e1f996fdf520ef721abd858a9ccdddc9f",
+      "date": "2026-09-22",
+      "subject": "Phase 7: record ship SHAs in plan",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "8867a49",
       "full": "8867a4940be70b31455ecd7e793d17da23eee6b7",
