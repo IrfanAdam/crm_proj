@@ -1,12 +1,93 @@
 {
-  "generated": "2026-09-21T13:43:14.147Z",
+  "generated": "2026-09-22T07:39:26.664Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md",
-    "2026-09-16_203500-ds-polish.md"
+    "2026-09-16_203500-ds-polish.md",
+    "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "877fe0d",
+      "full": "877fe0d2fa01795e51413b0a9e31fdb52fcb1a2e",
+      "date": "2026-09-22",
+      "subject": "Phase 5: record ship SHAs in plan",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "63f6777",
+      "full": "63f6777ef1305b1f391a404222d34152ebdcada3",
+      "date": "2026-09-22",
+      "subject": "Phase 5 Task 3: lens-copy + dock-track splits, dead DeviceAppBar removal",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "1379724",
+      "full": "1379724d0b8b41796d915328f0a6e4497e4f6740",
+      "date": "2026-09-22",
+      "subject": "Phase 5 Task 2: DockSlices engine + slice-bands extraction (95/33 lines)",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "4c1d451",
+      "full": "4c1d4513b2ae38e84a60f83c79093390980f579b",
+      "date": "2026-09-22",
+      "subject": "Phase 5 Task 1: shared optics.js + rect-zoom.js, single getZoom/toLayout source",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "0680ddb",
+      "full": "0680ddb6bab76195de2fba4a38bd2f70d2f56d28",
+      "date": "2026-09-22",
+      "subject": "Phase 4 Task 2: shell.css extraction, dead stage/float-tabs removal",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "c1ea0f0",
+      "full": "c1ea0f0d8836dbabdd5f7286f6924a2531420acf",
+      "date": "2026-09-22",
+      "subject": "Phase 4 Task 1: TopPills to shell scope, drop dual clock writer",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "983f51b",
+      "full": "983f51bf9290e88521c69978d25e0c84c64e0590",
+      "date": "2026-09-22",
+      "subject": "Phase 3: device frame module (frameVars, buildFrame, mounts-only index)",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "6753512",
+      "full": "6753512088af6b61de0e19ec2e96df561b1bf890",
+      "date": "2026-09-22",
+      "subject": "Phase 2: OS layer extraction (status bar, notch, indicator, edges)",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "fbcb2c7",
+      "full": "fbcb2c78dfa05f845b4feb9af3fd97a25e18305a",
+      "date": "2026-09-22",
+      "subject": "Phase 1: module inventory, dependency graph, baselines",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "e851817",
+      "full": "e851817487ac8c554c5646219172868137c41074",
+      "date": "2026-09-21",
+      "subject": "chore(ds): track refresh — manifest [avatar flight character]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "43b05fa",
       "full": "43b05fac4731024d5bef2e4a90c0661538597eaa",
