@@ -1,0 +1,33 @@
+<p class="ch-kicker">Chapter 2 · Foundations · 01 Color</p>
+<h2 class="ch-hero">One hue acts. The rest celebrate.</h2>
+<p class="ch-lede meta">Every screen answers one question — what do I do next? Color answers it with a single hue: Sapphire. Citrine, red beryl, amethyst and green are gem hues: earned, celebratory, never structural. If two hues ever compete for one tap, the screen is wrong.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Sapphire is the sole action hue</b> — every tap, link and selected state.</p><p class="ch-reject">Reject: a second action hue anywhere — teal buttons beside sapphire ones.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Gems never do chrome</b> — rewards, streaks and scores only.</p><p class="ch-reject">Reject: an amethyst header, a citrine nav background, a ruby button.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Roles, not hues, in code</b> — components reference <code>--role-*</code>, never primitives.</p><p class="ch-reject">Reject: a component pointing at <code>--primitive-sapphire-ui-500</code> — the signal swap would silently break it.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Signal swap-slot</b> — <code>--signal</code> re-tints the whole app: default, amber, teal.</p><p class="ch-reject">Reject: an action hex hard-coded outside <code>tokens/</code>.</p></div></li>
+</ul>
+<h3>Token table</h3>
+<table class="ch-roles"><thead><tr><th>Token</th><th>Value</th><th>Where used</th></tr></thead><tbody>
+<tr><td><code>--signal</code></td><td>sapphire-ui-500 · #1666af</td><td>all action chrome</td></tr>
+<tr><td><code>--role-action</code></td><td><code>--signal</code></td><td>buttons, links, selected</td></tr>
+<tr><td><code>--role-action-soft</code></td><td>sapphire-ui-400 · #218aea</td><td>secondary emphasis</td></tr>
+<tr><td><code>--role-measure</code></td><td>amethyst-400 · #a54cff</td><td>progress, funnel</td></tr>
+<tr><td><code>--role-measure-soft</code></td><td>amethyst-200 · #debeff</td><td>measure backgrounds</td></tr>
+<tr><td><code>--role-measure-strong</code></td><td>amethyst-500 · #6e00db</td><td>measure emphasis</td></tr>
+<tr><td><code>--role-score</code></td><td>red-beryl-400 · #ea005e</td><td>scores, chance %</td></tr>
+<tr><td><code>--role-warn</code></td><td>citrine-700 · #452c00</td><td>warnings on light</td></tr>
+<tr><td><code>--role-mark</code></td><td>amethyst-500 · #6e00db</td><td>ceremony marks</td></tr>
+<tr><td><code>--text-primary / --bg-primary</code></td><td>ink · #222222 / neutral-light · #fafafa</td><td>canvas + prose</td></tr>
+</tbody></table>
+<h3>Ramps — 50–900, primitives only</h3>
+<div class="meta" style="margin-top:8px">Sapphire UI</div>
+<div class="row" style="margin-top:4px"><span style="width:28px;height:28px;background:var(--primitive-sapphire-ui-100);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-sapphire-ui-300);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-sapphire-ui-500);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-sapphire-ui-700);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-sapphire-ui-900);border-radius:var(--radius-sm)"></span><span class="meta">sole action ramp</span></div>
+<div class="meta" style="margin-top:8px">Citrine · Red Beryl · Amethyst — gem ramps, celebration only</div>
+<div class="row" style="margin-top:4px"><span style="width:28px;height:28px;background:var(--primitive-citrine-400);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-red-beryl-400);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-amethyst-400);border-radius:var(--radius-sm)"></span><span style="width:28px;height:28px;background:var(--primitive-green-300);border-radius:var(--radius-sm)"></span><span class="meta">400s = the celebration step</span></div>
+<h3>Contrast — pairs that carry text</h3>
+<div class="row" style="margin-top:4px"><span style="padding:6px 12px;background:var(--role-action);color:var(--primitive-gray-white);border-radius:var(--radius-md);font-size:var(--font-size-sm)">white on action 5.91 AA</span><span style="padding:6px 12px;background:var(--primitive-gray-white);color:var(--role-measure);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">measure on white 4.14 AA-large</span><span style="padding:6px 12px;background:var(--primitive-gray-white);color:var(--role-score);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">score on white 4.51 AA</span></div>
+<h3>Snippet</h3>
+<p class="meta"><code>color:var(--role-action);background:var(--bg-surface);border:1px solid var(--border-thin)</code></p>
+<h3>Related</h3>
+<p class="meta">Typography — type never carries hierarchy through color · Gems tab — the celebration system · Operate pattern — action order in situ</p>

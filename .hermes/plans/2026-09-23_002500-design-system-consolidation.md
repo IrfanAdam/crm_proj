@@ -231,6 +231,8 @@ only begin after this phase.*
 | 5 | Foundations documented | gallery Foundations frames show token table + contrast + snippet per foundation |
 | 6 | Lint foundation drift | `scripts/lint-tokens.mjs` fails raw paint/space/radius/motion in components/patterns |
 
+> **Course correction 2026-09-23:** Task 5's append-lines pass shipped (commits `93a8993`) but reads as meta-line soup — no layout, story, or structure; below industry-doc bar. Foundations are rebuilt as chapter-idiom articles (`public/foundations/*.html`, fetched into slim frame shells): kicker → hero → lede → laws + rejects → token table → specimens → contrast → snippet → related. Color first as exemplar; the other six follow on exemplar approval.
+
 ### Task 4: Build the token source ground-up
 **Objective:** The complete Layer 1. Intake the raw material (§0) into tokens; propose
 (not invent) anything missing.
