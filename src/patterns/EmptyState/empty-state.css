@@ -1,0 +1,16 @@
+/* ADAM/PATTERN — src/patterns/EmptyState/empty-state.css · quiet tabs */
+ /* Exports: .empty-state */
+ /* [plan:2026-09-22_190645-visual-language.md#phase-4] */
+
+.empty-state{
+  background:var(--bg-surface);border:1px solid var(--border-thin);
+  border-radius:var(--radius-lg);padding:var(--spacing-8) var(--spacing-4);
+  text-align:center
+}
+.empty-state__title{
+  font-size:var(--type-card);font-weight:var(--font-weight-bold);
+  color:var(--text-primary);margin:0 0 var(--spacing-2)
+}
+.empty-state__body{
+  font-size:var(--font-size-sm);color:var(--text-muted);margin:0
+}
