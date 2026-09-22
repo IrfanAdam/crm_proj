@@ -1,0 +1,25 @@
+<p class="ch-kicker">Chapter 2 · Foundations · 02 Typography</p>
+<h2 class="ch-hero">Type carries hierarchy. Never color.</h2>
+<p class="ch-lede meta">One family — Inter — five steps. A title is bigger and bolder, never bluer. When hierarchy rides on color, it dies in sunlight, in grayscale, and for every color-blind user. Size and weight are the only levers.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Five steps, fixed jobs</b> — title 32, card 20, body 16, meta 14, micro 12.</p><p class="ch-reject">Reject: a 24 or an 18 — steps exist so sizes never drift.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight pairs with step</b> — title and card bold, body regular, meta and micro medium.</p><p class="ch-reject">Reject: bold body copy, or a meta line shouting in semibold.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Muted steps to secondary only</b> — quieter means <code>--text-secondary</code>, never a lighter hue.</p><p class="ch-reject">Reject: gray-blue captions, faded-sapphire timestamps.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Roles, not sizes, in code</b> — components reference <code>--type-*</code>, never <code>--font-size-*</code> directly.</p><p class="ch-reject">Reject: a card title pointing at <code>--font-size-xl</code> — rename the scale and it orphans.</p></div></li>
+</ul>
+<h3>Token table</h3>
+<table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
+<tr><td><code>--type-title</code></td><td>32 / Bold / 1.15 / -0.01</td><td>screen titles (H1)</td></tr>
+<tr><td><code>--type-card</code></td><td>20 / Bold / 1.25</td><td>card + panel titles</td></tr>
+<tr><td><code>--type-body</code></td><td>16 / Regular / 1.5</td><td>prose, values, copy</td></tr>
+<tr><td><code>--type-meta</code></td><td>14 / Medium / 1.4</td><td>captions, statuses</td></tr>
+<tr><td><code>--type-micro</code></td><td>12 / Medium / 1.35</td><td>labels, eyebrows</td></tr>
+</tbody></table>
+<h3>Specimens — live scale</h3>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:4px"><span style="font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--font-tracking-tight)">Title 32 — Opportunities</span><span style="font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Card 20 — Acme Corp</span><span style="font-size:var(--font-size-md);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Body 16 — Proposal sent yesterday, worth Rs 3.2L at 73%.</span><span style="font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Meta 14 — Last contact 2d ago · 1.2km</span><span style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Micro 12 — OPERATE · MONITOR · REPORTS</span></div>
+<h3>Contrast — prose pairs</h3>
+<div class="row" style="margin-top:4px"><span style="padding:6px 12px;background:var(--bg-primary);color:var(--text-primary);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">ink on canvas 15.24 AAA</span><span style="padding:6px 12px;background:var(--bg-primary);color:var(--text-secondary);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">secondary on canvas 7.81 AA</span></div>
+<h3>Snippet</h3>
+<p class="meta"><code>font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight)</code></p>
+<h3>Related</h3>
+<p class="meta">Color — hierarchy never rides on hue · Spacing — the 4px grid prose breathes on · Cards — title/card/body in situ</p>
