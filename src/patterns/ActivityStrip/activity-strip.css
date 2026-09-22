@@ -1,0 +1,32 @@
+/* ADAM/PATTERN — src/patterns/ActivityStrip/activity-strip.css · data-mark strip */
+ /* Exports: .activity-strip, __bar, __gem, __dot */
+ /* [plan:2026-09-22_190645-visual-language.md#phase-3] */
+
+/* — Strip — */
+.activity-strip{
+  display:flex;gap:6px;overflow-x:auto;
+  margin:0 calc(var(--spacing-4) * -1);
+  padding:6px var(--spacing-4) 2px;
+  scroll-padding:0 var(--spacing-4);scrollbar-width:none
+}
+.activity-strip::-webkit-scrollbar{display:none}
+
+/* — Columns — */
+.activity-strip__bar{
+  flex:0 0 auto;width:14px;display:flex;
+  flex-direction:column;justify-content:flex-end;align-items:center
+}
+.activity-strip__gem-slot{height:18px;display:flex;align-items:flex-end;justify-content:center}
+.activity-strip__gem{width:14px;height:14px;color:var(--role-mark)}
+.activity-strip__bar i{
+  width:100%;height:var(--h);min-height:12px;
+  border-radius:var(--radius-full);background:var(--role-measure-soft)
+}
+.activity-strip__bar i.on{background:var(--role-measure-strong)}
+.activity-strip__dot-slot{height:12px;display:flex;align-items:flex-start;justify-content:center;padding-top:3px}
+.activity-strip__dot{width:7px;height:7px;border-radius:var(--radius-full);background:var(--role-mark)}
+
+/* — Reduced motion — */
+@media (prefers-reduced-motion:reduce){
+  .activity-strip i{transition:none}
+}
