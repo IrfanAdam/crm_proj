@@ -5,12 +5,13 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 5173, host: '0.0.0.0', open: false },
   appType: 'mpa',
-  // gallery.html + preview.html + app.html are entry pages
+  // index.html is the app entry (serves /); app.html is a redirect shim
   build: {
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
+        main: resolve(__dirname, 'index.html'),
         app: resolve(__dirname, 'app.html'),
         gallery: resolve(__dirname, 'gallery.html'),
         preview: resolve(__dirname, 'preview.html'),
