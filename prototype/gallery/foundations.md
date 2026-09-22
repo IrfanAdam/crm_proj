@@ -12,7 +12,7 @@
 
 **Tokens:** Tier1 `tokens/primitives.json` (50–900 + `signal`/`signal-amber`/`signal-teal`) + `tokens/motion.json` → `design-system/tokens.css` (27 lines) → Tier2 `semantic-light/dark` (`--color-accent-brand:var(--signal)`) + `themes/dark` + `themes/high-contrast` (`forced-colors`).
 
-**Language:** `language.html` — paper / glass / ceremony before the atoms (principles, role swatches, Operate order beside ref-01).
+**Language:** gallery `Language` tab — paper / glass / ceremony before the atoms (principles, role swatches, Operate order beside ref-01).
 
 ## Color demo — 10-step ramps
 

@@ -4,7 +4,7 @@ One order every layer follows. Doc → gallery tab → spec section.
 
 | # | Chapter | Doc | Gallery tabs |
 |---|---|---|---|
-| 1 | Language | `design-system/docs/visual-language.md` + `language.html` | Language |
+| 1 | Language | `design-system/docs/visual-language.md` (spec source; rendered in-gallery) | Language |
 | 2 | Foundations | `design-system/docs/phase-1-foundations-tokens.md` + `design-system/tokens.css` | Color · Typography · Spacing · Radius · Shadow · Motion · Iconography |
 | 3 | Components | `design-system/docs/phase-3-components.md` | Actions · Identity · Form (`text`) · Choice · Navigation (`nav`) · Overlays · Data · Cards |
 | 4 | Patterns + Pages | `design-system/docs/phase-4-patterns.md` + `design-system/docs/phase-2-hierarchy-layout.md` | Operate · Monitor · Reports |
