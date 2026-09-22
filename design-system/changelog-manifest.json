@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T12:57:48.055Z",
+  "generated": "2026-09-22T17:38:17.943Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -7,9 +7,138 @@
     "2026-09-16_203500-ds-polish.md",
     "2026-09-22_082844-arch-atlas.md",
     "2026-09-22_122850-museum-refactor.md",
-    "2026-09-22_155000-architecture-mechanics.md"
+    "2026-09-22_155000-architecture-mechanics.md",
+    "2026-09-22_190645-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "df6223c",
+      "full": "df6223c7bb09a9b622538c39b7a0605dc2c2f5d1",
+      "date": "2026-09-22",
+      "subject": "docs(ds): spec names the three registers",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-5}"
+    },
+    {
+      "sha": "bade53d",
+      "full": "bade53d991684ec664f48e0257b6b977c707f370",
+      "date": "2026-09-22",
+      "subject": "test(ds): assert prototype language invariants",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-5}"
+    },
+    {
+      "sha": "2dd6206",
+      "full": "2dd6206b4db9b7be221eeff22fc28eda05fbf817",
+      "date": "2026-09-22",
+      "subject": "feat(tooling): lint pattern CSS for raw color",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-5}"
+    },
+    {
+      "sha": "e3be7fd",
+      "full": "e3be7fd5b17846200a4259a80eaa313c99953934",
+      "date": "2026-09-22",
+      "subject": "fix(ds): gallery icon demo is Phosphor",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "3cbdf96",
+      "full": "3cbdf9642cdd6a87fd78bc60a5357602787353de",
+      "date": "2026-09-22",
+      "subject": "feat(ds): add the language page",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "ea90b33",
+      "full": "ea90b335182842b5b5cf3186fed90c2cd6eb98a2",
+      "date": "2026-09-22",
+      "subject": "feat(ds): one empty state for quiet tabs",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "82b4930",
+      "full": "82b49305fe43d8d13e48a6e9adb425e223eeee19",
+      "date": "2026-09-22",
+      "subject": "refactor(ds): extract the activity data-mark",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-3}"
+    },
+    {
+      "sha": "b349127",
+      "full": "b34912711a47d4e9ce010a7f64757a531730f5d2",
+      "date": "2026-09-22",
+      "subject": "refactor(ds): compose Opps screen from roles — title, chip, KPI",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-3}"
+    },
+    {
+      "sha": "92130ca",
+      "full": "92130ca8cc1722c651ce02c9110ba1cb13c0e4e3",
+      "date": "2026-09-22",
+      "subject": "test(ds): gate role contrast pairs",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "72c125f",
+      "full": "72c125f4f77ba8de973497221e9844cb95946518",
+      "date": "2026-09-22",
+      "subject": "feat(ds): name chrome material tokens",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "f502bbe",
+      "full": "f502bbef4c351f927c4d226228afd3d10323d350",
+      "date": "2026-09-22",
+      "subject": "feat(ds): add type roles",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "c08b80e",
+      "full": "c08b80ec26e899d9925773dba2a706934df43a2c",
+      "date": "2026-09-22",
+      "subject": "feat(ds): add color roles as aliases",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "b400ac0",
+      "full": "b400ac03109f2aad8dc85a4f4de114f6ec2b736a",
+      "date": "2026-09-22",
+      "subject": "docs(ds): record nav and glass supersessions",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "84a62d6",
+      "full": "84a62d6ed100044e3928288573a9aa73fda0bb2e",
+      "date": "2026-09-22",
+      "subject": "docs(ds): write the visual language",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "b0a2062",
+      "full": "b0a20625f6c9486bff5346d7e0ed42d252895ecb",
+      "date": "2026-09-22",
+      "subject": "docs(ds): name the visual-language plan",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "2c1aa0f",
+      "full": "2c1aa0f3399406e52ff4f0a4fbe1f8eac8486038",
+      "date": "2026-09-22",
+      "subject": "fix(mechanics): drawNodes missing reduced guard left nodes invisible",
+      "plan": "2026-09-22_155000-architecture-mechanics.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "5fd7790",
       "full": "5fd77905188a660ec664f63b67dcd124cc09b5bc",
@@ -900,6 +1029,15 @@
     }
   ],
   "wip": [
+    "D src/arch/atlas-selection.js",
+    "M src/arch/atlas-state.js",
+    "M src/arch/atlas.css",
+    "M src/arch/atlas.js",
+    "M src/arch/atlas.json",
+    "D src/arch/lens-decisions.js",
+    "D src/arch/lens-logic.js",
+    "D src/arch/lens-schema.js",
+    "M src/arch/lens-truth.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -907,6 +1045,8 @@
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
     "M src/js/mechanics/render.js",
-    "?? src/js/mechanics/tokens.js"
+    "M src/styles/mechanics.css",
+    "M src/workspace/workspace.css",
+    "M tests/atlas-shell.test.mjs"
   ]
 }
