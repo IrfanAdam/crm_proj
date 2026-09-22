@@ -4,10 +4,10 @@
 .ws-canvas--arch {
   place-items: start center;
 }
-/* — Section — atlas grid — */
+/* — Section — atlas column (canvas + detail) — */
 .atlas {
-  display: grid;
-  grid-template-columns: 220px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-4);
   width: 100%;
   max-width: 1100px;
@@ -46,12 +46,6 @@
   outline-offset: 2px;
 }
 /* — Section — canvas + detail — */
-.atlas__main {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  min-width: 0;
-}
 .atlas__canvas {
   background: var(--bg-surface);
   border: 1px solid var(--border-thin);
@@ -79,11 +73,7 @@
 }
 /* — Section — narrow viewport — */
 @media (max-width: 900px) {
-  .atlas {
-    grid-template-columns: 1fr;
-  }
   .atlas__nav {
     position: static;
-    flex-direction: row;
   }
 }

@@ -12,6 +12,9 @@ ok('atlas canvas mount with img role', html.includes('id="atlas-canvas"') && htm
 for (const lens of ['logic', 'components', 'ia']) ok(`atlas nav offers ${lens} lens`, html.includes(`data-lens="${lens}"`));
 ok('atlas detail mount', html.includes('id="atlas-detail"'));
 ok('atlas composer script linked', html.includes('src/arch/atlas.js'));
+ok('atlas nav lives in left arch stack', html.indexOf('id="atlas-nav"') > html.indexOf('id="ws-arch-stack"') && html.indexOf('id="atlas-nav"') < html.indexOf('id="panel-architecture"'));
+const panel = html.slice(html.indexOf('id="panel-architecture"'));
+ok('atlas canvas fills right panel', panel.includes('id="atlas-canvas"') && !panel.includes('data-lens='));
 if (fails) {
   console.error(`✗ atlas-shell — ${fails} fail`);
   process.exit(1);

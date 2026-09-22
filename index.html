@@ -43,6 +43,12 @@
       </div>
     </div>
     <div id="ws-arch-stack" hidden>
+      <nav id="atlas-nav" class="atlas__nav ws-card" role="tree" aria-label="Atlas lenses">
+        <h3 class="ws-card__title">Atlas lenses</h3>
+        <button type="button" role="treeitem" aria-selected="true" data-lens="logic">Product Logic</button>
+        <button type="button" role="treeitem" aria-selected="false" data-lens="components">Components</button>
+        <button type="button" role="treeitem" aria-selected="false" data-lens="ia">Information Arch</button>
+      </nav>
       <div class="ws-card">
         <h3 class="ws-card__title">Architecture</h3>
         <p class="ws-card__desc">Portable shell — same markup/styles port to any framework. Tokens are single-source, Glass islands wrap chrome.</p>
@@ -68,15 +74,8 @@
     <div id="panel-architecture" role="tabpanel" aria-labelledby="tab-architecture" hidden>
       <section class="ws-canvas ws-canvas--arch" aria-label="Architecture Atlas">
         <div class="atlas">
-          <nav id="atlas-nav" class="atlas__nav" role="tree" aria-label="Atlas lenses">
-            <button type="button" role="treeitem" aria-selected="true" data-lens="logic">Product Logic</button>
-            <button type="button" role="treeitem" aria-selected="false" data-lens="components">Components</button>
-            <button type="button" role="treeitem" aria-selected="false" data-lens="ia">Information Arch</button>
-          </nav>
-          <div class="atlas__main">
-            <div id="atlas-canvas" class="atlas__canvas" role="img" aria-label="Product essence graph"></div>
-            <aside id="atlas-detail" class="atlas__detail" aria-live="polite"><p>Pick a node to read its contract.</p></aside>
-          </div>
+          <div id="atlas-canvas" class="atlas__canvas" role="img" aria-label="Product essence graph"></div>
+          <aside id="atlas-detail" class="atlas__detail" aria-live="polite"><p>Pick a node to read its contract.</p></aside>
         </div>
         <details class="arch">
           <summary>Layered prototype — code truth</summary>
