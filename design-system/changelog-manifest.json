@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:15:50.488Z",
+  "generated": "2026-09-22T09:16:41.087Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "593aad2",
+      "full": "593aad28a98d66afdde75ef0ce9c5135000387e2",
+      "date": "2026-09-22",
+      "subject": "chore(atlas): restamp sources after A/B probe",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "be8a272",
+      "full": "be8a272f76bdbf3d2dad274a2715378110ea3bf2",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "0fa9721",
       "full": "0fa9721ecae53fc755da91f2b4901d4265464251",
