@@ -30,10 +30,9 @@ graph TD
     patterns_MonitorScreen_monitor-screen[monitor-screen.js]
     patterns_OperateScreen_operate-screen[operate-screen.js]
     patterns_OppsHome_face-handoff[face-handoff.js]
-    patterns_OppsHome_leaflet-global[leaflet-global.js]
+    patterns_OppsHome_leaflet-lazy[leaflet-lazy.js]
     patterns_OppsHome_live-map[live-map.js]
     patterns_OppsHome_map-flights[map-flights.js]
-    patterns_OppsHome_map-pan[map-pan.js]
     patterns_OppsHome_morph-timing[morph-timing.js]
     patterns_OppsHome_nearby-map[nearby-map.js]
     patterns_OppsHome_nearby-sheet[nearby-sheet.js]
@@ -82,7 +81,7 @@ graph TD
   glass_slices-spec --> glass_optics
   patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
   patterns_OppsHome_face-handoff --> patterns_OppsHome_morph-timing
-  patterns_OppsHome_live-map --> patterns_OppsHome_leaflet-global
+  patterns_OppsHome_live-map --> patterns_OppsHome_leaflet-lazy
   patterns_OppsHome_live-map --> logic_time-scale
   patterns_OppsHome_map-flights --> patterns_OppsHome_sheet-morph
   patterns_OppsHome_map-flights --> patterns_OppsHome_pill-expand

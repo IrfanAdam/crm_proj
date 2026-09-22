@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T07:55:24.754Z",
+  "generated": "2026-09-22T08:02:26.001Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -8,6 +8,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "cb8c595",
+      "full": "cb8c5952ad17507a1dfe2336d3d724d761a4b0be",
+      "date": "2026-09-22",
+      "subject": "Phase 9 Task 2: handoff checklist, inventory ledger closed, map-pan deleted",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "b5901a7",
+      "full": "b5901a7aebab8ccd8525fa5155e265081ebb23ed",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest [phase 8 perf pass]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "52a9b0d",
       "full": "52a9b0dc5df209b0fd3e6c5a0a6711895b5af234",
