@@ -1,8 +1,11 @@
 /* ADAM/STYLE — src/arch/atlas.css · atlas layout shell [plan:2026-09-22_082844-arch-atlas.md#phase-2] */
 /* — Exports: nav, canvas, selection layout — */
-/* — Section — panel override — */
+/* — Section — panel override (same dotted viewport as prototype) — */
 .ws-canvas--arch {
   place-items: start center;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(15,16,21,.07) 1px, transparent 0) 0 0/20px 20px,
+    var(--bg-primary);
 }
 /* — Section — the one content container — */
 /* — Section — lens nav — */

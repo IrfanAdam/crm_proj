@@ -1,4 +1,5 @@
 *{box-sizing:border-box;margin:0}
+html{scrollbar-gutter:stable}
 body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary);min-height:100vh}
 /* — tabs live in left panel (.ws-tabs — see src/shell/shell.css) — right panel is full-height from top — */
 .stage__hint{font-size:var(--font-size-xs);color:var(--text-muted);text-align:left;line-height:1.6}
