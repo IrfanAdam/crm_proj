@@ -35,16 +35,20 @@ Every file under `src/` appears exactly once, with its target layer from the pla
 
 | File | Lines | Imports | Notes |
 | --- | --- | --- | --- |
-| `src/glass/DockSlices.jsx` | 131 | `slices-spec.js` | OVER BUDGET — engine + band rendering mixed (Phase 5) |
-| `src/glass/DockLens.jsx` | 116 | `lens-map.js`, `lens-filter.jsx` | OVER BUDGET — placement + copy mixed (Phase 5) |
-| `src/glass/BottomDock.jsx` | 107 | `DockLens`, `DockSlices`, `engine.js`, `Icon` | OVER BUDGET — capsule + drag + engine switch (Phase 5) |
-| `src/glass/GlassBars.jsx` | 11 | — | Device-only scope now; `DeviceAppBar` zero importers — GRAPH-CONFIRMED dead, delete in Phase 5 (decisions/004) |
+| `src/glass/DockSlices.jsx` | 95 | `slices-spec.js`, `slice-bands.jsx`, `rect-zoom.js` | Engine only: mount/place/rebuild + listeners (Phase 5) |
+| `src/glass/DockLens.jsx` | 89 | `lens-map.js`, `lens-filter.jsx`, `lens-copy.jsx`, `optics.js`, `rect-zoom.js` | Material orchestration: measure/map/gen/remount (Phase 5) |
+| `src/glass/BottomDock.jsx` | 37 | `DockLens`, `DockSlices`, `dock-track.jsx`, `engine.js`, `Icon` | Tab state + engine switch + gem (Phase 5) |
+| `src/glass/dock-track.jsx` | 98 | `rect-zoom.js`, `Icon` | Track input: capsule width/drag/stretch/snap (Phase 5) |
+| `src/glass/lens-copy.jsx` | 31 | `rect-zoom.js` | `buildCopy` + `placeCopy` for the lens engine (Phase 5) |
+| `src/glass/slice-bands.jsx` | 33 | `slices-spec.js` | `buildCopies`: base + masked band clones (Phase 5) |
+| `src/glass/optics.js` | 48 | — | `OPTICS` + `TOP_OPTICS` + `PULL`, pure (Phase 5) |
+| `src/glass/rect-zoom.js` | 22 | — | `getZoom` + `toLayout`, pure (Phase 5) |
 | `src/glass/dock-lens.css` | 95 | — | Lens styles |
-| `src/glass/lens-filter.jsx` | 64 | — | Owns `OPTICS` (shared source — Phase 5) |
-| `src/glass/slices-spec.js` | 62 | `lens-filter.jsx` | `SLICES` + `PULL` doc-link; imports OPTICS across engines |
+| `src/glass/lens-filter.jsx` | 55 | `optics.js` | SVG filter chain, reads shared `OPTICS` (Phase 5) |
+| `src/glass/slices-spec.js` | 57 | `optics.js` | `SLICES` + profile/offset/transform/mask helpers (Phase 5) |
 | `src/glass/lens-map.js` | 48 | — | Grid probe map, pure |
 | `src/glass/engine.js` | 18 | — | `ENGINE` flag `lens`/`slices`, pure |
-| `src/glass/main.jsx` | 14 | `GlassBars.jsx`, `BottomDock.jsx` | Island roots, clean |
+| `src/glass/main.jsx` | 9 | `top-pills.jsx`, `BottomDock.jsx` | Island roots, clean |
 
 ## Patterns — app screens (`src/patterns/`)
 

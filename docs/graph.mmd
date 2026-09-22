@@ -15,8 +15,9 @@ graph TD
     glass_BottomDock[BottomDock.jsx]
     glass_DockLens[DockLens.jsx]
     glass_DockSlices[DockSlices.jsx]
-    glass_GlassBars[GlassBars.jsx]
+    glass_dock-track[dock-track.jsx]
     glass_engine[engine.js]
+    glass_lens-copy[lens-copy.jsx]
     glass_lens-filter[lens-filter.jsx]
     glass_lens-map[lens-map.js]
     glass_main[main.jsx]
@@ -60,16 +61,20 @@ graph TD
   device_frame --> os_status-bar
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
+  glass_BottomDock --> glass_dock-track
   glass_BottomDock --> glass_engine
-  glass_BottomDock --> glass_rect-zoom
   glass_BottomDock --> components_Icon_Icon
   glass_DockLens --> glass_lens-map
   glass_DockLens --> glass_lens-filter
+  glass_DockLens --> glass_lens-copy
   glass_DockLens --> glass_optics
   glass_DockLens --> glass_rect-zoom
   glass_DockSlices --> glass_slices-spec
   glass_DockSlices --> glass_slice-bands
   glass_DockSlices --> glass_rect-zoom
+  glass_dock-track --> glass_rect-zoom
+  glass_dock-track --> components_Icon_Icon
+  glass_lens-copy --> glass_rect-zoom
   glass_lens-filter --> glass_optics
   glass_main --> shell_top-pills
   glass_main --> glass_BottomDock

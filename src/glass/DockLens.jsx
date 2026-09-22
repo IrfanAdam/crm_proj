@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { makeLensMap } from "./lens-map.js";
 import { LensFilter } from "./lens-filter.jsx";
+import { buildCopy, placeCopy } from "./lens-copy.jsx";
 import { OPTICS } from "./optics.js";
-import { getZoom, toLayout } from "./rect-zoom.js";
+import { getZoom } from "./rect-zoom.js";
 
 /* The dock's material. A live copy of the screen content is parked inside the dock,
    clamped to its shape, and slid 1:1 with the scroll — then the SVG lens refracts it.
@@ -15,23 +16,12 @@ export default function DockLens({ source = "#app-content" }) {
   const lensRef = useRef(null);
   const copyRef = useRef(null);
   const frame = useRef(0);
-  const base = useRef({ l: 0, t: 0, w: 0 });
   const [box, setBox] = useState({ w: 0, h: 0 });
   const [map, setMap] = useState(null);
   const [gen, setGen] = useState(0);
   const [armed, setArmed] = useState(false);
   const id = "dl" + uid + gen;
 
-  const place = () => {
-    const copy = copyRef.current, lens = lensRef.current, src = document.querySelector(source);
-    if (!copy || !lens || !src) return;
-    const c = src.getBoundingClientRect(), l = lens.getBoundingClientRect();
-    base.current = toLayout({ l: c.left - l.left, t: c.top - l.top, w: c.width }, getZoom());
-    copy.style.left = `${base.current.l}px`;
-    copy.style.top = `${base.current.t}px`;
-    copy.style.width = `${base.current.w}px`;
-    copy.style.transform = `translateY(${-src.scrollTop}px)`;
-  };
   useLayoutEffect(() => {
     const host = hostRef.current;
     if (!host) return;
@@ -41,7 +31,7 @@ export default function DockLens({ source = "#app-content" }) {
       const w = Math.round(r.width / z) + OPTICS.bleed * 2;
       const h = Math.round(r.height / z) + OPTICS.bleed * 2;
       setBox((p) => (p.w === w && p.h === h ? p : { w, h }));
-      place();
+      placeCopy(copyRef.current, lensRef.current, document.querySelector(source));
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -60,14 +50,8 @@ export default function DockLens({ source = "#app-content" }) {
     const copy = copyRef.current, lens = lensRef.current, src = document.querySelector(source);
     if (!copy || !lens || !src) return;
     const rebuild = () => {
-      copy.textContent = "";
-      const node = src.cloneNode(true);
-      node.removeAttribute("id");
-      node.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
-      node.setAttribute("aria-hidden", "true");
-      node.inert = true;
-      copy.appendChild(node);
-      place();
+      buildCopy(copy, src);
+      placeCopy(copy, lens, src);
     };
     rebuild();
     setArmed(true);      // filter is only switched on once the copy exists (WebKit)

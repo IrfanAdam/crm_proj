@@ -13,9 +13,6 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 #glass-bottom{background:transparent;border:none;padding:0}
 /* OS: status bar lives in src/os/status-bar.css */
 /* app chrome inside device — transparent over the scroll (glass comes from the edge material) */
-.app-bar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--spacing-2) 0 var(--spacing-4);background:transparent}
-.app-bar__title{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);letter-spacing:-.01em}
-.app-bar__right{display:flex;align-items:center;gap:8px}
 .avatar{width:28px;height:28px;border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 /* scrollable content — full viewport top to bottom; both edges dissolve via blur, nothing fades or slices */
 .device__content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;background:var(--bg-primary);-webkit-overflow-scrolling:touch;padding-top:54px;padding-bottom:72px}
