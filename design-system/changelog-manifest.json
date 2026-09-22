@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:36:52.554Z",
+  "generated": "2026-09-22T09:50:22.094Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "2b33509",
+      "full": "2b33509eff53e8d99d006e041e2825de4db218b3",
+      "date": "2026-09-22",
+      "subject": "fix: atlas canvas borderless single panel, graph capped to design size",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "99ccfe2",
+      "full": "99ccfe225b3d66acf9c6abe8244136226205b22c",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "9ad213c",
       "full": "9ad213c399fd07bf13db7803883f2a3b1b995915",
