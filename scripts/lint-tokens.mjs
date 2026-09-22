@@ -3,7 +3,7 @@ const waived=new Set(['src/js/mechanics/render.js','scripts/generate-mechanics-g
 const exempt=f=>waived.has(f)||f.includes('design-system/tokens.css')||f.startsWith('tokens/')||f.includes('references/')||f.includes('.hermes/')||f.includes('node_modules/')||f.includes('dist/');
 let list=[]; try{list=execSync('git ls-files --cached --others --exclude-standard',{encoding:'utf8'}).trim().split('\n').filter(Boolean)}catch{ list=[]}
 let vio=[], long=[], patternVio=[];
-const PATTERN_RE=/^src\/(patterns|components)\/.*\.css$/;
+const PATTERN_RE=/^src\/(patterns|components|styles)\/.*\.css$/;
 const EXEMPT_DEVICE=/src\/(device|os|glass|workspace)\//;
 for(const f of list){
  if(!/\.(css|html|js|mjs)$/.test(f)) continue;
@@ -32,6 +32,9 @@ for(const f of list){
      if(hasHex||hasFunc){
        const m=ln.match(/#[0-9a-fA-F]{3,8}\b/)||ln.match(/\b(?:rgba|hsla)\(/);
        patternVio.push(`${f}:${i+1} ${m?m[0]:'rgba/hsla'} → var(--token)`);
+     }
+     if(/border-radius\s*:[^;{}]*\d+px/.test(ln)&&!ln.includes('var(--')){
+       patternVio.push(`${f}:${i+1} raw radius → var(--radius-*)`);
      }
    });
  }
