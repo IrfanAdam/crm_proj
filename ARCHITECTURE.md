@@ -16,6 +16,7 @@ change per phase — see `.hermes/plans/2026-09-22_122850-museum-refactor.md`.
 | `src/patterns/` | app screens, `mount(page)`, vanilla, no OS/device knowledge | os/device/shell |
 | `src/logic/` | pure state machines, zero DOM, unit-tested | DOM, always |
 | `src/components/` | DS single source (avatar/card/kpi/meta), gallery-proven | prototype |
+| `src/arch/` | atlas essence manifest + lenses (logic/components/ia), SVG render | device/os/glass |
 
 Rules: patterns → components/tokens only; glass → tokens + `app-tab` events;
 logic never touches DOM. Module graph: `docs/graph.mmd` (`node scripts/map-graph.mjs`).
@@ -31,6 +32,9 @@ logic never touches DOM. Module graph: `docs/graph.mmd` (`node scripts/map-graph
 - Motion: transform/opacity only, except whitelisted clip geometry (see Phase 8);
   every entry honors `prefers-reduced-motion`. Leaflet loads on first map mount.
 - Flows: `docs/flows/morph-pipeline.mmd`, `tab-bridge.mmd`, `glass-engines.mmd`.
+- Atlas: `scripts/generate-arch-atlas.mjs` scans logic/patterns/components into
+  `src/arch/atlas.json` (one model, three lens views); `lens-{logic,components,ia}.js`
+  render per-lens detail (states/governs, usage/gallery, path/contract).
 
 ## Add a device (1 line)
 

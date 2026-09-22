@@ -28,6 +28,29 @@ const lensCount = (l) => (a ? a.nodes.filter((n) => n.lens === l).length : 0);
 ok('atlas logic lens covers ≥3', lensCount('logic') >= 3);
 ok('atlas components lens covers ≥10', lensCount('components') >= 10);
 ok('atlas ia lens covers ≥5', lensCount('ia') >= 5);
+// — Section — Phase 3 depth lenses —
+const fm = a ? a.nodes.find((n) => n.id === 'logic:funnel-machine') : null;
+ok('logic funnel-machine carries 7 states', !!fm && Array.isArray(fm.states) && fm.states.length === 7);
+ok('logic governs opportunity-card', !!a && a.edges.some((e) => e.from === 'logic:funnel-machine' && e.to === 'component:OpportunityCard' && e.kind === 'governs'));
+const depth = (id, seen) => {
+  if (seen.has(id)) return 0;
+  seen.add(id);
+  const kids = a.edges.filter((e) => e.from === id && e.kind === 'contains').map((e) => e.to);
+  return 1 + Math.max(0, ...kids.map((k) => depth(k, new Set(seen))));
+};
+ok('ia tree depth ≥3', !!a && depth('app', new Set()) >= 3);
+ok('ia every node carries a contract', !!a && a.nodes.filter((n) => n.lens === 'ia').every((n) => (n.detail || '').length > 0));
+import { execSync } from 'node:child_process';
+for (const comp of ['Avatar', 'Chip', 'Button']) {
+  let truth = 0;
+  try {
+    const out = execSync(`grep -rin "${comp.toLowerCase()}" src/patterns/OppsHome/opps-home.js src/patterns/OperateScreen/operate-screen.js src/patterns/MonitorScreen/monitor-screen.js src/patterns/ReportsMatrix/reports-matrix.js 2>/dev/null | wc -l`, { encoding: 'utf8' });
+    truth = Number(out.trim());
+  } catch {}
+  const node = a ? a.nodes.find((n) => n.id === 'component:' + comp) : null;
+  const claimed = node ? Number(String(node.detail || '').match(/(\d+)/)?.[1]) : -1;
+  ok(`components ${comp} usage matches grep (${claimed})`, !!node && claimed >= 0 && Math.abs(claimed - truth) <= 4);
+}
 if (fails) {
   console.error(`✗ arch-atlas — ${fails} fail`);
   process.exit(1);

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-22T08:33:42.656Z",
+    "generatedAt": "2026-09-22T09:01:07.471Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -245,7 +245,16 @@
       "lens": "logic",
       "title": "Funnel Machine",
       "source": "src/logic/funnel-machine.js",
-      "detail": "FUNNEL_STATES, createFunnelMachine"
+      "detail": "7 states: initial→elastic→top→middle→bottom→closed→retained · transient vs temporal · app-tab bridge · src/logic/funnel-machine.js:1",
+      "states": [
+        "initial",
+        "elastic",
+        "top",
+        "middle",
+        "bottom",
+        "closed",
+        "retained"
+      ]
     },
     {
       "id": "logic:temporal",
@@ -336,6 +345,12 @@
       "to": "tab:Opps",
       "kind": "contains",
       "label": "contains"
+    },
+    {
+      "from": "logic:funnel-machine",
+      "to": "component:OpportunityCard",
+      "kind": "governs",
+      "label": "funnel states drive card status"
     },
     {
       "from": "logic:funnel-machine",

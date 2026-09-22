@@ -29,6 +29,14 @@ export function buildAtlas() {
   for (const t of ['Home', 'Leads', 'Opps']) { addE('app', 'tab:' + t, 'contains'); addE('tab:' + t, 'screen:OppsHome', 'contains', t === 'Opps' ? 'full screen' : 'empty placeholder'); }
   const gov = manual.overrides?.opportunity;
   if (gov) addE('logic:funnel-machine', 'screen:OppsHome', 'governs', gov.note || 'governs');
+  const fm = nodes.find((n) => n.id === 'logic:funnel-machine');
+  if (fm) {
+    const src = fs.readFileSync(join(root, 'src/logic/funnel-machine.js'), 'utf8');
+    const want = ['initial', 'elastic', 'top', 'middle', 'bottom', 'closed', 'retained'];
+    fm.states = want.filter((s) => src.includes(`'${s}'`));
+    fm.detail = `${fm.states.length} states: ${fm.states.join('→')} · transient vs temporal · app-tab bridge · src/logic/funnel-machine.js:1`;
+  }
+  if (nodes.some((n) => n.id === 'component:OpportunityCard')) addE('logic:funnel-machine', 'component:OpportunityCard', 'governs', 'funnel states drive card status');
   const seen = new Set();
   for (const [tok, comp] of Object.entries(TOK)) {
     if (patSrc.includes(tok) && compDirs.includes(comp) && !seen.has(comp)) { seen.add(comp); addE('screen:OppsHome', 'component:' + comp, 'composes'); }
