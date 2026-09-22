@@ -259,7 +259,9 @@
   "glass": {
     "blur": "12px",
     "blur-sm": "8px",
-    "saturate": "135%"
+    "saturate": "135%",
+    "chrome-blur": "4.5px",
+    "chrome-saturate": "128%"
   },
   "type": {
     "title": "var(--font-size-3xl)",

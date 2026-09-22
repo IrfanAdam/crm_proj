@@ -10,7 +10,7 @@
  --opacity-disabled:0.5; --opacity-overlay:0.3; --opacity-glass:0.85;
  --transition-fast:150ms cubic-bezier(0.4, 0, 0.2, 1); --transition-normal:250ms cubic-bezier(0.4, 0, 0.2, 1); --transition-spring:400ms cubic-bezier(0.25, 1, 0.5, 1);
  --shadow-sm:0 1px 2px rgba(15, 16, 21, 0.04); --shadow-md:0 4px 12px rgba(15, 16, 21, 0.06); --shadow-lg:0 12px 28px rgba(15, 16, 21, 0.08);
- --glass-blur:12px; --glass-blur-sm:8px; --glass-saturate:135%;
+ --glass-blur:12px; --glass-blur-sm:8px; --glass-saturate:135%; --glass-chrome-blur:4.5px; --glass-chrome-saturate:128%;
  --motion-duration-xs:100ms; --motion-duration-sm:150ms; --motion-duration-md:250ms; --motion-duration-lg:400ms; --motion-duration-xl:600ms;
  --motion-easing-standard:cubic-bezier(0.4, 0, 0.2, 1); --motion-easing-entrance:cubic-bezier(0, 0, 0.2, 1); --motion-easing-exit:cubic-bezier(0.4, 0, 1, 1); --motion-easing-spring:cubic-bezier(0.25, 1, 0.5, 1); --motion-easing-elastic:cubic-bezier(0.6, 0.1, 0.1, 1);
  --motion-spring-stiffness:300; --motion-spring-damping:20; --motion-spring-mass:1;

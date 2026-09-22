@@ -46,7 +46,7 @@
   background:
     linear-gradient(180deg,color-mix(in srgb,var(--signal) 12%,transparent),color-mix(in srgb,var(--signal) 7%,transparent)),
     linear-gradient(180deg,color-mix(in srgb,var(--bg-surface) 38%,transparent),color-mix(in srgb,var(--bg-surface) 24%,transparent));
-  -webkit-backdrop-filter:blur(4.5px) saturate(128%) brightness(1.02);backdrop-filter:blur(4.5px) saturate(128%) brightness(1.02);
+  -webkit-backdrop-filter:blur(var(--glass-chrome-blur)) saturate(var(--glass-chrome-saturate)) brightness(1.02);backdrop-filter:blur(var(--glass-chrome-blur)) saturate(var(--glass-chrome-saturate)) brightness(1.02); /* --glass-chrome-blur 4.5px / --glass-chrome-saturate 128% match capsule */
   box-shadow:inset 0 1px 0 rgba(255,255,255,.82),inset 0 -1px 1px color-mix(in srgb,var(--primitive-ink) 6%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--primitive-ink) 5%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--signal) 16%,transparent);
   transition:box-shadow 220ms ease,background 220ms ease,backdrop-filter 220ms ease,-webkit-backdrop-filter 220ms ease;
 }
@@ -61,7 +61,7 @@
   background:
     linear-gradient(180deg,color-mix(in srgb,var(--signal) 14%,transparent),color-mix(in srgb,var(--signal) 8%,transparent)),
     linear-gradient(180deg,color-mix(in srgb,var(--bg-surface) 46%,transparent),color-mix(in srgb,var(--bg-surface) 32%,transparent));
-  -webkit-backdrop-filter:blur(6px) saturate(138%) brightness(1.03);backdrop-filter:blur(6px) saturate(138%) brightness(1.03);
+  -webkit-backdrop-filter:blur(6px) saturate(138%) brightness(1.03);backdrop-filter:blur(6px) saturate(138%) brightness(1.03); /* live capsule 6px/138% — not --glass-chrome-blur */
   box-shadow:inset 0 1px 0 rgba(255,255,255,.88),inset 0 -1px 1px color-mix(in srgb,var(--primitive-ink) 8%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--primitive-ink) 7%,transparent),0 2px 5px -1px rgba(15,16,21,.06),0 8px 14px -10px rgba(15,16,21,.16);
 }
 .device .tabbar__capsule[data-glass="live"] .tabbar__capsule-glass::after{opacity:1}
@@ -70,7 +70,7 @@
    Keep it clear — 6px backdrop (was 20px milky), 1.2px copy blur (was 7px). */
 .device .tabbar[data-engine="slices"]{
   background:color-mix(in srgb,var(--bg-surface) 30%,transparent);
-  -webkit-backdrop-filter:blur(6px) saturate(132%) brightness(1.015);
+  -webkit-backdrop-filter:blur(6px) saturate(132%) brightness(1.015); /* slices keep 6px/132% — not --glass-chrome-blur (4.5px/128%) */
   backdrop-filter:blur(6px) saturate(132%) brightness(1.015);
 }
 .device .docklens__slice{position:absolute;inset:0;pointer-events:none;transform:translateZ(0)}
