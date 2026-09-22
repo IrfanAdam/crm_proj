@@ -126,7 +126,10 @@ No phase closes without your explicit approval in chat. The mechanism, same for 
 **1. Present verifiable outputs.** When a phase's tasks are done and green, the agent
 presents the phase's outputs (table below) — opens the live pages in the preview pane,
 names the exact files, pastes the gate outputs (tests/lint). Never a summary *about*
-the work; the work itself, viewable.
+the work; the work itself, viewable. Every presentation attaches rendered screenshots of
+each changed page/frame — headless Chrome against a temp server on a non-dev
+port, one shot per changed tab/panel, attached as MEDIA. Approval is judged on
+pixels, never on SHAs and file lists.
 **2. You tweak recursively.** You give feedback on what you see ("title still small",
 "chip wrong", "drop that panel"). The agent revises (appends fix commits under the same
 phase, re-runs `npm test` + `npm run ds:track`), re-presents. Rounds continue until you
