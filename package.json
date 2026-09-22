@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node scripts/build-tokens.mjs && vite build",
     "lint:tokens": "node scripts/lint-tokens.mjs",
-    "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node tests/funnel-machine.test.mjs && node tests/morph-timing.test.mjs && node tests/temporal.test.mjs && node tests/arch-atlas.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs && node scripts/generate-arch-atlas.mjs --check",
+    "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node tests/funnel-machine.test.mjs && node tests/morph-timing.test.mjs && node tests/temporal.test.mjs && node tests/arch-atlas.test.mjs && node tests/atlas-shell.test.mjs && node tests/atlas-layout.test.mjs && node tests/atlas-render.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs && node scripts/generate-arch-atlas.mjs --check",
     "gen:atlas": "node scripts/generate-arch-atlas.mjs",
     "verify:atlas": "node scripts/generate-arch-atlas.mjs --check",
     "ds:track": "node scripts/ds-track.mjs",

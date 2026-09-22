@@ -3,7 +3,7 @@
 <meta name="theme-color" content="#fafafa"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link rel="manifest" href="/manifest.webmanifest"/><link rel="icon" href="/icons/icon-192.png"/><link rel="apple-touch-icon" href="/icons/icon-192.png"/>
 <title>ALPHA CRM — Prototype</title>
-<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/shell/shell.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/shell/shell.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="src/arch/atlas.css"/><link rel="stylesheet" href="src/arch/atlas-nodes.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 </head><body>
 <div class="workspace">
   <aside class="ws-controls" aria-label="Canvas controls">
@@ -49,7 +49,7 @@
         <a class="side-link" href="gallery.html">DS Gallery →</a>
       </div>
       <div class="ws-card ws-card--muted">
-        <p class="stage__hint">Right panel is the full-height architecture doc — edge-to-edge from the top, no header gap.</p>
+        <p class="stage__hint">Right panel is the Architecture Atlas — pick a lens left, read the essence right. Code-layer truth lives under the canvas.</p>
       </div>
     </div>
   </aside>
@@ -66,16 +66,27 @@
       </section>
     </div>
     <div id="panel-architecture" role="tabpanel" aria-labelledby="tab-architecture" hidden>
-      <section class="ws-canvas ws-canvas--arch" aria-label="Architecture">
-        <div class="arch">
-          <h2>Architecture — layered prototype</h2>
+      <section class="ws-canvas ws-canvas--arch" aria-label="Architecture Atlas">
+        <div class="atlas">
+          <nav id="atlas-nav" class="atlas__nav" role="tree" aria-label="Atlas lenses">
+            <button type="button" role="treeitem" aria-selected="true" data-lens="logic">Product Logic</button>
+            <button type="button" role="treeitem" aria-selected="false" data-lens="components">Components</button>
+            <button type="button" role="treeitem" aria-selected="false" data-lens="ia">Information Arch</button>
+          </nav>
+          <div class="atlas__main">
+            <div id="atlas-canvas" class="atlas__canvas" role="img" aria-label="Product essence graph"></div>
+            <aside id="atlas-detail" class="atlas__detail" aria-live="polite"><p>Pick a node to read its contract.</p></aside>
+          </div>
+        </div>
+        <details class="arch">
+          <summary>Layered prototype — code truth</summary>
           <p>Extract-only refactor: each layer owns its modules behind documented contracts; geometry flows one way from <code>src/workspace/devices.js</code>.</p>
           <ul><li><b>Mounts:</b> <code>index.html</code> — stylesheet links + <code>#device #os-status #os-edges #app-content</code> only</li><li><b>Shell:</b> <code>src/shell/*</code> — workspace chrome, canvas viewport, launcher</li><li><b>Device:</b> <code>src/device/*</code> — frame + geometry, radii/bezel/squircle</li><li><b>OS:</b> <code>src/os/*</code> — live clock/battery status bar, notch variants, home indicator, edge materials</li><li><b>Glass:</b> <code>src/glass/*</code> — shell pills vs device dock/appbar; lens|slices engines</li><li><b>Patterns:</b> <code>src/patterns/*</code> — app screens, <code>mount(page)</code>, no OS/device knowledge</li><li><b>Logic:</b> <code>src/logic/*</code> — pure state machines, zero DOM, unit-tested</li><li><b>DS:</b> <code>src/components/*</code> — gallery-proven single source for avatar/card/kpi/meta</li><li><b>Rules:</b> patterns → components/tokens only; glass → tokens + <code>app-tab</code>; os/device/shell never import patterns; logic never touches DOM</li><li><b>Flows:</b> <a href="docs/flows/morph-pipeline.mmd">morph pipeline</a> · <a href="docs/flows/tab-bridge.mmd">tab bridge</a> · <a href="docs/flows/glass-engines.mmd">glass engines</a> · <a href="docs/graph.mmd">module graph</a></li></ul>
           <p class="meta" style="margin-top:16px">Platform-specific tuning (blur strength, sheen, glow) can be done per OS later via <code>optics</code> — geometry stays at points × scale.</p>
-        </div>
+        </details>
       </section>
     </div>
   </div>
 </div>
 <button id="exit-fullscreen" aria-label="Back to workspace">✕ Exit</button>
-<script type="module" src="./src/os/status-bar.js"></script><script type="module" src="./src/workspace/canvas.js"></script><script type="module" src="./src/patterns/OppsHome/opps-home.js"></script><script type="module" src="./src/workspace/mobile-fullscreen.js"></script><script type="module" src="./src/glass/main.jsx"></script><script type="module" src="./src/workspace/slowmo.js"></script></body></html>
+<script type="module" src="./src/arch/atlas.js"></script><script type="module" src="./src/os/status-bar.js"></script><script type="module" src="./src/workspace/canvas.js"></script><script type="module" src="./src/patterns/OppsHome/opps-home.js"></script><script type="module" src="./src/workspace/mobile-fullscreen.js"></script><script type="module" src="./src/glass/main.jsx"></script><script type="module" src="./src/workspace/slowmo.js"></script></body></html>
