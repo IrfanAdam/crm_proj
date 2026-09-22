@@ -196,6 +196,8 @@ quiet: hairlines carry elevation, one blue carries action, gems carry ceremony.
 - **Citrine (#FFB01E 50–900), Red Beryl (#EA005E 50–900), Amethyst (#A54CFF 50–900):** gamification gem categories + goal-bar fills. Each now ships 50/100/200/300/400/500/600/700/800/900. Never UI chrome. Alternate amber/teal signals via `--signal-amber`/`--signal-teal`.
 - **Success / Warning / Error:** messaging + status pills only.
 
+Action, Measure, Score, Warn are roles (`--role-action` → Sapphire / `--signal`, `--role-measure`/`--role-mark` → Amethyst, `--role-score` → Red Beryl, `--role-warn` → Citrine) aliasing the ramps so screens say \"measure\" without picking a hex; gem category hues themselves stay ceremony-only and never color UI chrome; `--signal` remains the swap-slot for re-theming.
+
 ## Typography
 
 Inter everywhere. Title 32/bold tight; card title 20/bold; body 16/regular;
@@ -233,5 +235,9 @@ category via hue-rotate filter, never via separate assets. All now reference `{c
 - DO keep Sapphire for action alone; gems never tint buttons. Swap via `--signal` repoint, not rename.
 - DO expand the stage's metric card on every funnel segment select.
 - DO treat Activities as transient, Goals as temporal (see docs/phase-4).
+- DO use glass only on chrome (dock, status edge, sheet scrim) with blur/saturate and hairline; never on content cards — Operate content stays paper + hairline.
 - DON'T put moodboard decoration (orbs, gradients, editorial type) inside Operate/Monitor screens.
 - DON'T add a shadow to make a card "pop" — use the hairline.
+- DON'T use glass or shadow on cards — hairline carries UI, shadow is for depth viz and controls floating on imagery.
+- DON'T use ceremony copy (`Rock Solid Goals`, `data in here don't lie`) inside the Operate feed.
+- DON'T use 24px as a title — title is 32 (`--type-title` / `--font-size-3xl` at `-0.01em`); 24 (`--font-size-2xl`) is reserved, not a hierarchy step.
