@@ -30,7 +30,7 @@
    (leaflet-rotate already counter-rotates its norotatePane, which keeps this and the pin
    badges upright while the tiles turn) */
 .opps__me{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px}
-.opps__me-arrow{display:block;width:26px;height:26px;fill:var(--primitive-sapphire-ui-500);stroke:var(--primitive-gray-white);stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(0 1px 3px rgba(15,16,21,.45))}
+.opps__me-arrow{display:block;width:26px;height:26px;fill:var(--primitive-sapphire-ui-500);stroke:var(--primitive-gray-white);stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(var(--shadow-mark))}
 .opps__me::after{content:"";position:absolute;inset:0;border-radius:var(--radius-full);border:2px solid var(--primitive-sapphire-ui-400);animation:opps-me 1.8s ease-out infinite;animation-delay:var(--me-delay,0ms)}
 @keyframes opps-me{from{transform:scale(.7);opacity:.9}to{transform:scale(1.6);opacity:0}}
 /* hotspot radius around my position (Leaflet circle, overlay pane sits under the pins) */

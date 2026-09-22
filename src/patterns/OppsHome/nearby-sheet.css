@@ -2,18 +2,18 @@
 /* Export map: .map-sheet · __scrim · __panel · __win · __map · __view · __tiles · __card · __row */
 .map-sheet{position:absolute;inset:0;z-index:8}
 .map-sheet[hidden]{display:none}
-.map-sheet__scrim{position:absolute;inset:0;background:rgba(15,16,21,.28)}
+.map-sheet__scrim{position:absolute;inset:0;background:var(--achievement-overlay-bg)}
 .map-sheet__panel{position:absolute;inset:0;overflow:hidden}
 /* the morph is a window, not a scale: .map-sheet__win is clipped to the widget's rect and grows
    to the screen while the tile layer keeps its own size, centred on HOME (see sheet-morph.js) */
 .map-sheet__win{position:absolute;overflow:hidden}
-.map-sheet__win{box-shadow:0 0 0 1px rgba(255,255,255,var(--win-ring,0)),0 12px 44px rgba(15,16,21,var(--win-sh,0))}
+.map-sheet__win{box-shadow:0 0 0 1px rgba(255,255,255,var(--win-ring,0)),0 12px 44px rgba(15,16,21,var(--win-sh,0))} /* lint-allow: morph window — dynamic alpha via var */
 .map-sheet__map{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden;touch-action:none;cursor:grab;background:var(--primitive-sapphire-ui-50)}
 .map-sheet__map:active{cursor:grabbing}
 /* sheet map: its own layer group below the sheet's overlays (recenter 1100, close/card) */
 .map-sheet__view{position:absolute;inset:0;z-index:1}
 .map-sheet__tiles{position:absolute;inset:0;overflow:hidden;background:var(--primitive-sapphire-ui-50);font:inherit}
-.map-sheet__close{position:absolute;top:60px;right:14px;z-index:1100;flex:0 0 auto;width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface-glass);border:1px solid color-mix(in srgb, white 24%, transparent);color:var(--text-primary);font-size:16px;cursor:pointer;box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42);backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate))}
+.map-sheet__close{position:absolute;top:60px;right:14px;z-index:1100;flex:0 0 auto;width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface-glass);border:1px solid color-mix(in srgb, white 24%, transparent);color:var(--text-primary);font-size:16px;cursor:pointer;box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42);backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate))} /* lint-allow: glass chrome */
 .map-sheet__close:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .map-sheet__card{position:absolute;z-index:1100;left:12px;right:12px;bottom:12px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:max(var(--radius-xl),calc(var(--display-r) - var(--radius-md)));corner-shape:squircle;-webkit-corner-shape:squircle;box-shadow:var(--shadow-md);padding:8px 12px 12px;will-change:transform,opacity}
 .map-sheet__handle{display:block;width:36px;height:4px;border-radius:var(--radius-full);background:var(--border-medium);margin:0 auto 8px}

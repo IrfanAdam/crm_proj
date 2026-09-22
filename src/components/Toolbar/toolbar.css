@@ -10,7 +10,7 @@
 .toolbar--floating{
   border:1px solid color-mix(in srgb, white 24%, transparent);
   border-radius:var(--radius-full);
-  box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42);
+  box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42); /* lint-allow: glass chrome — shadow tokens + inset white */
   padding:4px;
   height:auto;
   background:var(--bg-surface-glass);
