@@ -60,5 +60,12 @@
     "score": "var(--primitive-red-beryl-400)",
     "warn": "var(--primitive-citrine-700)",
     "mark": "var(--primitive-amethyst-500)"
+  },
+  "type": {
+    "title": "var(--font-size-3xl)",
+    "card": "var(--font-size-xl)",
+    "body": "var(--font-size-md)",
+    "meta": "var(--font-size-sm)",
+    "micro": "var(--font-size-xs)"
   }
 }

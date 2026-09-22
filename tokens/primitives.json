@@ -249,6 +249,7 @@
   "opacity": {
     "disabled": "0.5",
     "overlay": "0.3",
+    "subtle": "0.7",
     "glass": "0.85"
   },
   "shadow": {
