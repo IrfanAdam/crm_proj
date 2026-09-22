@@ -18,4 +18,8 @@ Source: ref-01..12, REGISTRY.md, DESIGN.md (beta, 56 colors 50–900 + signal), 
 | Patterns | 7 funnel states + blob vs Goals D/W/M/Q/Y + transient/temporal | `funnel-machine.js` (7) + `Operate/Monitor/ReportsMatrix` + `gallery operate/monitor/reports` | ✓ | segment select guarantees expand |
 | Foundations docs | ref-07 + ref-01/02/03 + ref-11 dark | `design-system/docs/phase-1` 39 lines 10-step table + `prototype/gallery/foundations.md` 37 lines live | ✓ | Evo table + live |
 
-**Verdict:** Code parity 100% for shipped Phases 1–13 + DS polish 1–2 (50–900 + signal + Evo foundations). `DESIGN.md` lint 0 errors, `npm test` green, `gallery.html` 88 lines. Future refs: add row to `REGISTRY.md` + dated polish pass + `DESIGN.md` version bump + re-lint.
+**Catalog parity:** ✓ atoms, ramps, contrast — still true for `gallery.html` (`DESIGN.md` lint 0 errors, `npm test` green, 88 lines). Shipped ramps + signal + Evo foundations remain ✓.
+
+**Prototype parity:** — not claimed. Opps follows ref-01 order and card anatomy. Nav (3-tab glass dock), glass chrome, title size (24 → 32), chip fork (`opps__chip` → `chip`), and empty tabs are tracked by `design-system/docs/visual-language.md` (2026-09-22), not marked ✓. Do not mark those gaps ✓.
+
+Future refs: add row to `REGISTRY.md` + dated polish pass + `DESIGN.md` version bump + re-lint.
