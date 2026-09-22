@@ -72,3 +72,6 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .lab-controls .select__input{width:100%}
 .lab-stage{border:1px solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-4);background:var(--bg-primary)}
 @media(max-width:700px){.lab-grid{grid-template-columns:1fr}}
+.ramp__cell--hero i{outline:2px solid var(--border-accent);outline-offset:1px}
+.ch-roles .sw{width:26px;height:26px;border-radius:8px}
+[data-lab-snippet]{overflow-wrap:anywhere}
