@@ -30,29 +30,38 @@
 <tr><td><i class="sw" style="background:var(--role-warn)"></i></td><td><code>--role-warn</code></td><td>citrine-700</td><td>warnings on light</td></tr>
 <tr><td><i class="sw" style="background:var(--role-mark)"></i></td><td><code>--role-mark</code></td><td>amethyst-500</td><td>ceremony marks</td></tr>
 </tbody></table>
-<h3>Semantic layer — every Tier 2 token, with its story job</h3>
-<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>Sourced from</th><th>Story job</th></tr></thead><tbody>
-<tr><td><i class="sw" style="background:var(--bg-primary)"></i></td><td><code>--bg-primary</code></td><td>neutral-light-200</td><td>the canvas — paper everything floats on</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-surface)"></i></td><td><code>--bg-surface</code></td><td>white</td><td>cards lift by hairline, not shadow</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-surface-glass)"></i></td><td><code>--bg-surface-glass / -active</code></td><td>white 38% / 46%</td><td>glass chrome — dock and overlays</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-surface-elevated)"></i></td><td><code>--bg-surface-elevated</code></td><td>white</td><td>raised panels above surface</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-interactive)"></i></td><td><code>--bg-interactive / -hover / -active</code></td><td>gray-100 / 50 / 200</td><td>rest / hover / press wells</td></tr>
-<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>--text-primary</code></td><td>ink #222222</td><td>prose — titles, body</td></tr>
-<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>--text-secondary</code></td><td>gray-700 #525252</td><td>meta, captions — quieter, never dim</td></tr>
-<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>--text-muted</code></td><td>gray-300 #8f8f8f</td><td>hints and placeholders</td></tr>
-<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>--text-dim</code></td><td>dim #737373</td><td>eyebrows, disabled text</td></tr>
-<tr><td><i class="sw" style="background:var(--text-accent)"></i></td><td><code>--text-accent</code></td><td>gray-900 #141414</td><td>emphasis that stays neutral</td></tr>
-<tr><td><i class="sw" style="background:var(--border-thin)"></i></td><td><code>--border-thin / -medium / -thick</code></td><td>gray-100 / ink 8% / ink 15%</td><td>hairlines that carry the UI</td></tr>
-<tr><td><i class="sw" style="background:var(--border-accent)"></i></td><td><code>--border-accent</code></td><td>gray-900 #141414</td><td>reject-rule markers, strong dividers</td></tr>
-<tr><td><i class="sw" style="background:var(--color-accent-brand)"></i></td><td><code>--color-accent-brand</code></td><td><code>--signal</code></td><td>the one swap-slot</td></tr>
-<tr><td><i class="sw" style="background:var(--color-accent-success)"></i></td><td><code>--color-accent-success / -warning / -error</code></td><td>green-300 / orange-400 / red-400</td><td>feedback trio — never structural</td></tr>
-<tr><td><i class="sw" style="background:var(--achievement-card-bg)"></i></td><td><code>--achievement-card-bg</code></td><td>white</td><td>reward cards</td></tr>
-<tr><td><i class="sw" style="background:var(--achievement-overlay-bg)"></i></td><td><code>--achievement-overlay-bg</code></td><td>ink 30%</td><td>ceremony scrims</td></tr>
-<tr><td><i class="sw" style="background:var(--focus-ring)"></i></td><td><code>--focus-ring / -offset</code></td><td>sapphire-400 + halo</td><td>keyboard path in the action hue</td></tr>
-<tr><td><i class="sw" style="background:var(--shadow-md);border-radius:0"></i></td><td><code>--shadow-sm / -md / -lg / -mark</code></td><td>ink 4–8% / mark 45%</td><td>depth for funnel and gems → Shadow 05</td></tr>
+<h3>Semantic layer — every Tier 2 token, light and dark</h3>
+<p class="meta">Samples in light; Dark lists night values. Grouped by job: backgrounds hold, foregrounds speak, borders shape, signal messages.</p>
+<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>Light</th><th>Dark</th><th>Story job</th></tr></thead><tbody>
+<tr><td colspan="5" class="meta"><b>Backgrounds</b> — hold the screen</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-primary)"></i></td><td><code>--bg-primary</code></td><td>#fafafa</td><td>#141414</td><td>the canvas, paper by day</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface)"></i></td><td><code>--bg-surface</code></td><td>#ffffff</td><td>#292929</td><td>cards lift by hairline</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface-glass)"></i></td><td><code>--bg-surface-glass / -active</code></td><td>white 38% / 46%</td><td>night blue 38% / 44%</td><td>dock and overlay glass</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface-elevated)"></i></td><td><code>--bg-surface-elevated</code></td><td>#ffffff</td><td>#292929</td><td>raised panels</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-interactive)"></i></td><td><code>--bg-interactive / -hover / -active</code></td><td>#e0e0e0 / #ffffff / #cccccc</td><td>#525252 / #292929 / #8f8f8f</td><td>rest / hover / press wells</td></tr>
+<tr><td colspan="5" class="meta"><b>Foregrounds</b> — speak the content</td></tr>
+<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>--text-primary</code></td><td>#222222</td><td>#ffffff</td><td>titles, body</td></tr>
+<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>--text-secondary</code></td><td>#525252</td><td>#e0e0e0</td><td>meta — quieter, never dim</td></tr>
+<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>--text-muted</code></td><td>#8f8f8f</td><td>#cccccc</td><td>hints, placeholders</td></tr>
+<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>--text-dim</code></td><td>#737373</td><td>#8f8f8f</td><td>eyebrows, disabled</td></tr>
+<tr><td><i class="sw" style="background:var(--text-accent)"></i></td><td><code>--text-accent</code></td><td>#141414</td><td>#ffffff</td><td>neutral emphasis</td></tr>
+<tr><td colspan="5" class="meta"><b>Borders and depth</b> — shape, never decorate</td></tr>
+<tr><td><i class="sw" style="background:var(--border-thin)"></i></td><td><code>--border-thin / -medium / -thick</code></td><td>#e0e0e0 / ink 8% / ink 15%</td><td>white 6% / 12% / 20%</td><td>hairlines carry the UI</td></tr>
+<tr><td><i class="sw" style="background:var(--border-accent)"></i></td><td><code>--border-accent</code></td><td>#141414</td><td>#ffffff</td><td>reject markers, strong dividers</td></tr>
+<tr><td><i class="sw" style="background:var(--shadow-md);border-radius:0"></i></td><td><code>--shadow-sm / -md / -lg / -mark</code></td><td>ink 4–8% / mark 45%</td><td>black 30–50% / mark 45%</td><td>funnel and gems → Shadow 05</td></tr>
+<tr><td colspan="5" class="meta"><b>Signal and messaging</b> — one action, honest feedback</td></tr>
+<tr><td><i class="sw" style="background:var(--color-accent-brand)"></i></td><td><code>--color-accent-brand</code></td><td>signal</td><td>signal</td><td>the one swap-slot</td></tr>
+<tr><td><i class="sw" style="background:var(--color-accent-success)"></i></td><td><code>--color-accent-success / -warning / -error</code></td><td>#18d824 / #f57f26 / #ff1f1f</td><td>same trio</td><td>feedback — never structural</td></tr>
+<tr><td><i class="sw" style="background:var(--role-action)"></i></td><td><code>--role-*</code></td><td>see Roles above</td><td>same</td><td>code touches roles, never hues</td></tr>
+<tr><td><i class="sw" style="background:var(--achievement-card-bg)"></i></td><td><code>--achievement-card-bg</code></td><td>#ffffff</td><td>#292929</td><td>reward cards</td></tr>
+<tr><td><i class="sw" style="background:var(--achievement-overlay-bg)"></i></td><td><code>--achievement-overlay-bg</code></td><td>ink 30%</td><td>black 70%</td><td>ceremony scrims</td></tr>
+<tr><td><i class="sw" style="background:var(--focus-ring)"></i></td><td><code>--focus-ring / -offset</code></td><td>sapphire-400 + halo</td><td>same</td><td>keyboard path in the action hue</td></tr>
 </tbody></table>
 <h3>Contrast — pairs that carry text</h3>
 <div class="row" style="margin-top:4px"><span style="padding:6px 12px;background:var(--role-action);color:var(--primitive-gray-white);border-radius:var(--radius-md);font-size:var(--font-size-sm)">white on action 5.91 AA</span><span style="padding:6px 12px;background:var(--primitive-gray-white);color:var(--role-measure);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">measure on white 4.14 AA-large</span><span style="padding:6px 12px;background:var(--primitive-gray-white);color:var(--role-score);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">score on white 4.51 AA</span></div>
+<h3>All pairings — every foreground on every background</h3>
+<p class="meta">The exhaustive matrix, computed live from tokens. Green passes AA, amber passes large-text only, red fails — use the lab below for any single pair.</p>
+<div data-matrix><p class="meta">computing pairs…</p></div>
 <h3>Pairing lab — test every permissible pair</h3>
 <p class="meta">Pick a foreground and a background. The lab computes the live ratio and verdict — only law-permitted colors are offered.</p>
 <div class="meta" style="margin-top:8px">Foreground</div>

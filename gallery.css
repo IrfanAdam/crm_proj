@@ -50,3 +50,9 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .ramp__cell b{font-size:var(--font-size-xs);font-weight:600}
 .ramp__cell s{text-decoration:none;font-size:10px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sw{display:inline-block;width:18px;height:18px;border-radius:6px;border:1px solid var(--border-thin);vertical-align:-3px}
+.mx{border-collapse:collapse;font-size:var(--font-size-xs);margin-top:4px}
+.mx th,.mx td{border:1px solid var(--border-thin);padding:2px 6px;text-align:center;white-space:nowrap}
+.mx th{color:var(--text-secondary);font-weight:600}
+.mx-ok{background:var(--primitive-green-100);color:var(--primitive-ink)}
+.mx-mid{background:var(--primitive-citrine-100);color:var(--primitive-ink)}
+.mx-bad{background:var(--primitive-red-beryl-100);color:var(--primitive-red-beryl-700)}
