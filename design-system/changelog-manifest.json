@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:50:22.094Z",
+  "generated": "2026-09-22T09:57:04.683Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "ab2fb68",
+      "full": "ab2fb6848b6bc97f429d824020315e6b418a82fd",
+      "date": "2026-09-22",
+      "subject": "fix: arch panel matches prototype dotted viewport, stable scrollbar gutter",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "3fee21a",
+      "full": "3fee21a2547e7a306d5c821a84c300ea7f3aa218",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "2b33509",
       "full": "2b33509eff53e8d99d006e041e2825de4db218b3",
