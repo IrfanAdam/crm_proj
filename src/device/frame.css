@@ -1,5 +1,6 @@
 /* ADAM/DEVICE — src/device/frame.css · device frame geometry + responsive radii · moved verbatim from app.css Phase 3 Task 1 */
 /* — device frame — iPhone 15 · 393×852 pt · 1179×2556 px @3× · 19.5:9 · 6.1" — 55pt squircle (true 55pt display, 65pt bezel inc. 10pt frame) */
+/* single-source: .device literals are boot fallbacks mirroring DEVICES.iphone15 (src/workspace/devices.js:2) — canvas.js applyDevice overwrites every var via frameVars on each switch; never edit geometry here. */
 .device{
   box-sizing:content-box;
   --display-r:55px;

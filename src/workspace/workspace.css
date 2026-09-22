@@ -36,6 +36,7 @@
 .ws-canvas__viewport{flex:1;min-height:620px;overflow:auto;background:
   radial-gradient(circle at 1px 1px, rgba(15,16,21,.07) 1px, transparent 0) 0 0/20px 20px,
   var(--bg-primary);display:grid;place-items:center;padding:40px;position:relative}
+/* single-source: scaler defaults mirror DEVICES.iphone15 (src/workspace/devices.js:2) — applyDevice overwrites via frameVars; never edit geometry here. */
 .ws-canvas__scaler{position:relative;flex-shrink:0;--device-w:393px;--device-h:852px;--display-r:55px;--bezel-w:10px;--bezel-r:65px;--zoom:1;width:calc(var(--device-w) * var(--zoom));height:calc(var(--device-h) * var(--zoom));transition:width .18s ease,height .18s ease}
 .ws-canvas__scaler .device{position:absolute;left:0;top:0;width:var(--device-w);height:var(--device-h);max-width:none;aspect-ratio:auto;transform:scale(var(--zoom));transform-origin:0 0;will-change:transform;transition:transform .18s ease}
 .ws-canvas--dragging{cursor:grabbing}

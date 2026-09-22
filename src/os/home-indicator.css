@@ -1,3 +1,4 @@
 /* ADAM/OS — src/os/home-indicator.css · system home indicator · moved verbatim from app.css Phase 2 Task 4 */
 .home-indicator-wrap{height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;z-index:9}
 .home-indicator{width:134px;height:5px;background:#000;border-radius:var(--radius-full)}
+/* single-source: 134px is the Apple HIG home-indicator width — spec constant, not device geometry. */
