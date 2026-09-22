@@ -67,18 +67,22 @@
 <tr><td><i class="sw" style="background:var(--focus-ring)"></i></td><td><code>--focus-ring / -offset</code></td><td>sapphire-400 · 2px ring + halo · 4px rgba(33,138,234,.15)</td><td>same</td><td>keyboard path in the action hue</td></tr>
 </tbody></table>
 <h3>Contrast — pairs that carry text</h3>
-<div class="row" style="margin-top:4px"><span style="padding:6px 12px;background:var(--role-action);color:var(--primitive-gray-white);border-radius:var(--radius-md);font-size:var(--font-size-sm)">white on action 5.91 AA</span><span style="padding:6px 12px;background:var(--primitive-gray-white);color:var(--role-measure);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">measure on white 4.14 AA-large</span><span style="padding:6px 12px;background:var(--primitive-gray-white);color:var(--role-score);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">score on white 4.51 AA</span></div>
+<p class="meta">Live pills — each paints its own pair and ratio straight from tokens.</p>
+<div class="row" style="margin-top:4px"><span data-pair data-fg="--primitive-gray-white" data-bg="--role-action" data-label="white on action">white on action</span><span data-pair data-fg="--role-measure" data-bg="--primitive-gray-white" data-label="measure on white">measure on white</span><span data-pair data-fg="--role-score" data-bg="--primitive-gray-white" data-label="score on white">score on white</span></div>
 <h3>All pairings — every foreground on every background</h3>
-<p class="meta">The exhaustive matrix, computed live from tokens. Green passes AA, amber passes large-text only, red fails — use the lab below for any single pair.</p>
-<div data-matrix><p class="meta">computing pairs…</p></div>
+<p class="meta">17 foregrounds × 10 backgrounds, computed live from tokens. Green passes AA, amber passes large-text only, red fails. Click any cell to load it into the lab.</p>
+<div class="row" style="margin-top:4px"><label class="meta"><input type="checkbox" data-matrix-aa/> AA passes only — dim the rest</label></div>
+<div class="mx-wrap" style="margin-top:4px"><div data-matrix><p class="meta">computing pairs…</p></div></div>
 <h3>Pairing lab — test every permissible pair</h3>
-<p class="meta">Pick a foreground and a background. The lab computes the live ratio and verdict — only law-permitted colors are offered.</p>
+<p class="meta">Pick a foreground and a background — or click the matrix. The lab computes the live ratio and verdict; only law-permitted colors are offered.</p>
+<div data-lab>
 <div class="meta" style="margin-top:8px">Foreground</div>
-<div class="row" style="margin-top:4px" data-lab-fg><button class="chip" data-c="var(--primitive-gray-white)">white</button><button class="chip" data-c="var(--primitive-ink)">ink</button><button class="chip chip--active" data-c="var(--role-action)">action</button><button class="chip" data-c="var(--role-measure)">measure</button><button class="chip" data-c="var(--role-score)">score</button><button class="chip" data-c="var(--role-warn)">warn</button><button class="chip" data-c="var(--text-secondary)">secondary</button></div>
+<div class="row" style="margin-top:4px" data-lab-fg></div>
 <div class="meta" style="margin-top:8px">Background</div>
-<div class="row" style="margin-top:4px" data-lab-bg><button class="chip" data-c="var(--bg-primary)">canvas</button><button class="chip" data-c="var(--bg-surface)">surface</button><button class="chip chip--active" data-c="var(--primitive-gray-white)">white</button><button class="chip" data-c="var(--role-action)">action</button><button class="chip" data-c="var(--primitive-ink)">ink</button><button class="chip" data-c="var(--role-measure-soft)">measure-soft</button></div>
-<div class="row" style="margin-top:8px;align-items:center"><span id="lab-spec" style="padding:10px 18px;border-radius:var(--radius-md);border:1px solid var(--border-thin);font-size:var(--font-size-md);font-weight:600">Ag</span><span class="meta" data-lab-out>computing…</span></div>
-<h3>Snippet</h3>
-<p class="meta"><code>color:var(--role-action);background:var(--bg-surface);border:1px solid var(--border-thin)</code></p>
+<div class="row" style="margin-top:4px" data-lab-bg></div>
+<div class="row" style="margin-top:8px;align-items:center"><span class="lab-spec" id="lab-spec"><b>Ag</b><span>Body 16px — safe only at AA and above</span></span><span class="lab-badge" data-lab-badge>…</span><span class="meta" data-lab-out>computing…</span><button class="chip" data-lab-swap>swap</button></div>
+</div>
+<h3>Snippet — follows the lab</h3>
+<p class="meta"><code data-lab-snippet>color:var(--role-action);background:var(--primitive-gray-white);</code> <button class="chip" data-lab-copy>copy</button></p>
 <h3>Related</h3>
 <p class="meta">Typography — type never carries hierarchy through color · Gems tab — the celebration system · Operate pattern — action order in situ</p>
