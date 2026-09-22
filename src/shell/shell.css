@@ -1,0 +1,6 @@
+/* ADAM/SHELL — src/shell/shell.css · workspace chrome (tabs, pills) · moved verbatim from app.css Phase 4 Task 2 */
+.ws-tabs .shell-tabs{display:inline-flex;gap:6px;padding:4px;background:var(--bg-surface-glass);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--border-thin);border-radius:var(--radius-full);box-shadow:var(--shadow-md)}
+.pill-tab{appearance:none;border:none;cursor:pointer;padding:7px 16px;border-radius:var(--radius-full);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:1;color:var(--text-secondary);background:transparent;transition:background var(--transition-fast),color var(--transition-fast),box-shadow var(--transition-fast)}
+.pill-tab[aria-selected="true"]{background:var(--primitive-neutral-dark-700);color:var(--primitive-gray-white)}
+.pill-tab[aria-selected="true"]:active,.pill-tab[aria-selected="true"][data-transit="true"]{box-shadow:var(--shadow-sm)}
+.pill-tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}

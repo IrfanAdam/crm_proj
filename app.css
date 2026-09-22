@@ -1,26 +1,8 @@
 *{box-sizing:border-box;margin:0}
 body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(--text-primary);min-height:100vh}
-/* — tabs live in left panel (.ws-tabs) — right panel is full-height from top — */
-.float-tabs{position:fixed;top:16px;left:16px;z-index:var(--z-index-sticky)}
-.float-tabs .shell-tabs{display:inline-flex;gap:6px;padding:4px;background:var(--bg-surface-glass);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--border-thin);border-radius:var(--radius-full);box-shadow:var(--shadow-md)}
-/* deprecated: .float-tabs no longer used (tabs now in .ws-controls .ws-tabs); kept for fallback */
-.ws-tabs .shell-tabs{display:inline-flex;gap:6px;padding:4px;background:var(--bg-surface-glass);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--border-thin);border-radius:var(--radius-full);box-shadow:var(--shadow-md)}
-.pill-tab{appearance:none;border:none;cursor:pointer;padding:7px 16px;border-radius:var(--radius-full);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:1;color:var(--text-secondary);background:transparent;transition:background var(--transition-fast),color var(--transition-fast),box-shadow var(--transition-fast)}
-.pill-tab[aria-selected="true"]{background:var(--primitive-neutral-dark-700);color:var(--primitive-gray-white)}
-.pill-tab[aria-selected="true"]:active,.pill-tab[aria-selected="true"][data-transit="true"]{box-shadow:var(--shadow-sm)}
-.pill-tab:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-/* — stage — */
-.stage{max-width:1200px;margin:0 auto;padding:var(--spacing-8) var(--spacing-6) var(--spacing-12);display:flex;flex-direction:column;align-items:center;gap:var(--spacing-6)}
-.stage--split{padding-top:76px}
-.stage__side{max-width:520px;display:flex;flex-direction:column;gap:var(--spacing-3)}
+/* — tabs live in left panel (.ws-tabs — see src/shell/shell.css) — right panel is full-height from top — */
 .stage__hint{font-size:var(--font-size-xs);color:var(--text-muted);text-align:left;line-height:1.6}
 .side-link{font-size:var(--font-size-xs);font-weight:600;color:var(--primitive-sapphire-ui-500);text-decoration:none}
-.stage__side .device-meta{justify-content:flex-start;text-align:left;line-height:1.6;display:flex;flex-wrap:wrap;gap:6px;width:100%;box-sizing:border-box;border-radius:var(--radius-lg);padding:10px 12px;align-items:center;align-content:flex-start}
-.stage__main{display:flex;flex-direction:column;align-items:center;gap:var(--spacing-4);min-width:0}
-@media(min-width:1024px){
-.stage--split{display:grid;grid-template-columns:230px minmax(0,1fr);gap:var(--spacing-8);align-items:start;max-width:1080px}
-.stage__side{position:sticky;top:76px}
-}
 .device-meta{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:11px;line-height:1;color:var(--text-muted);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:8px 12px}
 .device-meta b{font-weight:600;color:var(--text-secondary)}
 .device-meta__dot{width:3px;height:3px;border-radius:50%;background:var(--border-thin);display:inline-block}

@@ -38,7 +38,7 @@ Every file under `src/` appears exactly once, with its target layer from the pla
 | `src/glass/DockSlices.jsx` | 131 | `slices-spec.js` | OVER BUDGET — engine + band rendering mixed (Phase 5) |
 | `src/glass/DockLens.jsx` | 116 | `lens-map.js`, `lens-filter.jsx` | OVER BUDGET — placement + copy mixed (Phase 5) |
 | `src/glass/BottomDock.jsx` | 107 | `DockLens`, `DockSlices`, `engine.js`, `Icon` | OVER BUDGET — capsule + drag + engine switch (Phase 5) |
-| `src/glass/GlassBars.jsx` | 74 | `@samasante/liquid-glass` | STRADDLES shell (`TopPills`) + device (`DeviceAppBar`) (Phase 4) |
+| `src/glass/GlassBars.jsx` | 11 | — | Device-only scope now; `DeviceAppBar` zero importers — GRAPH-CONFIRMED dead, delete in Phase 5 (decisions/004) |
 | `src/glass/dock-lens.css` | 95 | — | Lens styles |
 | `src/glass/lens-filter.jsx` | 64 | — | Owns `OPTICS` (shared source — Phase 5) |
 | `src/glass/slices-spec.js` | 62 | `lens-filter.jsx` | `SLICES` + `PULL` doc-link; imports OPTICS across engines |
