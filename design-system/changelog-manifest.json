@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T10:46:41.133Z",
+  "generated": "2026-09-22T11:31:34.159Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -10,6 +10,22 @@
     "2026-09-22_155000-architecture-mechanics.md"
   ],
   "commits": [
+    {
+      "sha": "3bf2bd9",
+      "full": "3bf2bd900875c435aac244998b31b36bbd08985d",
+      "date": "2026-09-22",
+      "subject": "feat(mechanics): scheme-level canvas per lens (decisions/schema/logic) — SVG→canvas, highway routing, token shim",
+      "plan": "2026-09-22_155000-architecture-mechanics.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "5d47800",
+      "full": "5d478008092e952ed26acc048a9d059eb8514d04",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "3a52feb",
       "full": "3a52febb610155555996849d0c3129c5c2b4d423",
@@ -875,11 +891,5 @@
       "anchor": null
     }
   ],
-  "wip": [
-    "M design-system/tokens.css",
-    "M scripts/build-tokens.mjs",
-    "?? src/styles/",
-    "?? tests/mechanics-tokens.test.mjs",
-    "?? tokens/mechanics-compat.json"
-  ]
+  "wip": []
 }
