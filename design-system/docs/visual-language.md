@@ -42,7 +42,9 @@ Display title: `--type-title` 32/`-0.01em` bold (every screen opens with it; 24 
 
 ## Screen recipes — the build order
 
-One Operate screen composes, in order:
+Three screens, one grammar. Each step names the piece, then says what it is.
+
+Operate — the everyday screen, your pipeline at a glance — composes, in order:
 
 1. Display title (`--type-title` 32 / `-0.01em` bold) + avatar
 2. KPI strip (`4/32 closed`)
@@ -54,9 +56,9 @@ One Operate screen composes, in order:
 
 A missing step needs a written note in the PR. Home and Leads may omit hero/cards only by using the one empty state below — not by omitting the title. If the title is absent, the morph and top blur have no anchor.
 
-Monitor composes, in order: 1. Display title (`--type-title` 32) + avatar 2. Funnel hero (tilt 3D, 7-state machine ref-04) 3. Metrics (`32%` conversion, `4.9` NPS) 4. Timeline chips (Y/Q/M/W/D + Now, ref-05 temporal).
+Monitor — the funnel readout, where every deal stands — composes, in order: 1. Display title (`--type-title` 32) + avatar 2. Funnel hero (tilt 3D, 7-state machine ref-04: first touch to retained, tap a stage and the card expands) 3. Metrics (`32%` conversion, `4.9` NPS) 4. Timeline chips (Y/Q/M/W/D + Now — switching reshapes the funnel, ref-05 temporal).
 
-Reports composes, in order: 1. Display title 32 2. Matrix tabs (M/Q/Y) 3. Blob-vs-Goals grid (ref-06; transient Activities vs temporal Goals) 4. Business/Performance chips.
+Reports — the review, patterns over time — composes, in order: 1. Display title 32 (no avatar — this screen is about the numbers) 2. Matrix tabs (M/Q/Y time slices) 3. Blob-vs-Goals grid (ref-06; activity dots against goal bars — effort vs target) 4. Business/Performance chips (the lens).
 
 ## Voice
 

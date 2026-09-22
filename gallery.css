@@ -39,6 +39,8 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .ch-flow ol{list-style:none;margin-top:var(--spacing-2);counter-reset:step}
 .ch-flow li{counter-increment:step;font-size:var(--font-size-sm);padding:var(--spacing-1) 0 var(--spacing-1) var(--spacing-6);position:relative}
 .ch-flow li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;font-size:var(--font-size-xs);font-weight:700;color:var(--text-muted)}
+.ch-flow li b{font-weight:600}
+.ch-flow li span{display:block;color:var(--text-secondary);font-size:var(--font-size-xs);margin-top:2px}
 .ch-voice{display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-3);margin-top:var(--spacing-2)}
 .ch-voice>div{border-top:1px solid var(--border-thin);padding:var(--spacing-3) 0}
 .ch-quar{margin-top:var(--spacing-3);padding:var(--spacing-3);border:1px dashed var(--border-thick);border-radius:var(--radius-md);font-size:var(--font-size-sm);color:var(--text-secondary)}
