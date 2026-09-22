@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T07:49:43.386Z",
+  "generated": "2026-09-22T07:55:24.595Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -8,6 +8,30 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "b7b12dc",
+      "full": "b7b12dc6728d1d4c7c79fd2e9d0646bc3279f3d1",
+      "date": "2026-09-22",
+      "subject": "Phase 8 Task 2: lazy Leaflet chunk, passive+scaleX scroll, motion whitelists",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-8"
+    },
+    {
+      "sha": "42472e0",
+      "full": "42472e0e7152858a551ac16e39d03cda58252b3e",
+      "date": "2026-09-22",
+      "subject": "Phase 8 Task 1: geometry hits justified as boot fallbacks + HIG constant",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-8"
+    },
+    {
+      "sha": "dcb6ca6",
+      "full": "dcb6ca6c0154117f479d537f901a9a40b9fc195f",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest [phase 7 logic tests]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "2bc8d71",
       "full": "2bc8d71e1f996fdf520ef721abd858a9ccdddc9f",
