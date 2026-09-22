@@ -8,6 +8,6 @@ export function attachElastic(el){
  el.addEventListener('touchend',()=>{pulling=false; el.classList.remove('elastic-scroll--pull')});
  el.addEventListener('scroll',()=>{
   const r=el.scrollTop/(el.scrollHeight-el.clientHeight||1);
-  const ind=el.querySelector('.elastic-scroll__indicator'); if(ind) ind.style.width=(r*100)+'%';
- });
+  const ind=el.querySelector('.elastic-scroll__indicator'); if(ind) ind.style.transform=`scaleX(${r.toFixed(3)})`;
+ },{passive:true});
 }

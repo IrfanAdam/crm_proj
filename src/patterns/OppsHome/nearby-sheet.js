@@ -77,7 +77,7 @@ function close() {
   if (!reduced) flyPillBack(screen, p.sheet);
   morph(p, rect, -1, finish, reduced);
 }
-export function initSheet(api) {
+export async function initSheet(api) {
   inlineApi = api;
   const sheet = document.getElementById("nearby-sheet");
   const openBtn = document.getElementById("nearby-open");
@@ -86,7 +86,7 @@ export function initSheet(api) {
   openFn = open;
   if (sheet.dataset.wired) return;
   sheet.dataset.wired = "1";
-  sheetApi = createLiveMap(sheet.querySelector("#sheet-tiles"), PINS, {});
+  sheetApi = await createLiveMap(sheet.querySelector("#sheet-tiles"), PINS, {});
   /* while the sheet is open its view is the source of truth, so the widget underneath is
      already at the landed view when the morph closes — no tile reload during the reveal */
   const sync = () => { if (inlineApi) inlineApi.set(sheetApi.get()); };

@@ -27,11 +27,12 @@ export function mapViewHTML() {
     + `<button class="opps__nearby" id="nearby-open" type="button" aria-haspopup="dialog" aria-label="${PROSPECTS.length} prospects nearby">${avatarsHTML()}prospects nearby →</button>`;
 }
 // — Wiring (tap the tiles opens the sheet; home stays a quiet preview: no drag) —
-export function initMap(onTap) {
+// — async: Leaflet loads on first map mount (see leaflet-lazy.js), so callers chain —
+export async function initMap(onTap) {
   const box = document.getElementById("nearby-map");
   const tiles = document.getElementById("nearby-tiles");
   if (!box || !tiles) return null;
-  const api = createLiveMap(tiles, PINS, { dragging: false, touchZoom: false, doubleClickZoom: false, scrollWheelZoom: true });
+  const api = await createLiveMap(tiles, PINS, { dragging: false, touchZoom: false, doubleClickZoom: false, scrollWheelZoom: true });
   if (onTap) api.map.on("click", onTap);
   // — pressed state: the whole widget dents uniformly while held; the morph snaps it off
   // pre-measure (see fromState) so the window never starts smaller than the widget —

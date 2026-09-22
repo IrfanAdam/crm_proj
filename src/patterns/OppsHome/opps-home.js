@@ -53,16 +53,19 @@ function mount(page) {
   device?.classList.toggle("device--large", true);
   large = small = compact = largeAv = smallAv = null;
   if (isOpps) {
-    const api = initMap(() => openSheet());
-    let host = document.getElementById("map-sheet-host");
-    if (!host) {
-      host = document.createElement("div");
-      host.id = "map-sheet-host";
-      document.querySelector(".device__screen")?.appendChild(host);
-    }
-    if (!host.innerHTML) host.innerHTML = sheetHTML();
-    initSheet(api);
-    const strip = root.querySelector(".opps__bars"); if (strip) strip.scrollLeft = strip.scrollWidth;
+    // — maps resolve after Leaflet's first load; the feed renders first, tiles fade in —
+    initMap(() => openSheet()).then((api) => {
+      if (!api) return;
+      let host = document.getElementById("map-sheet-host");
+      if (!host) {
+        host = document.createElement("div");
+        host.id = "map-sheet-host";
+        document.querySelector(".device__screen")?.appendChild(host);
+      }
+      if (!host.innerHTML) host.innerHTML = sheetHTML();
+      initSheet(api);
+      const strip = root.querySelector(".opps__bars"); if (strip) strip.scrollLeft = strip.scrollWidth;
+    });
   }
   large = root.querySelector(".opps__title"); small = root.querySelector(".opps__compact-title");
   compact = root.querySelector(".opps__compact");

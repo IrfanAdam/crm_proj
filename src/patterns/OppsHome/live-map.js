@@ -1,9 +1,6 @@
 /* ADAM/PAGE — src/patterns/OppsHome/live-map.js · real tiles (Leaflet + Esri light grey) */
 // Export map: HOME · ZOOM · HEADING · RING_MS · createLiveMap
-import "./leaflet-global.js";
-import "leaflet-rotate";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+import { leaflet, pinIcon, meIcon } from "./leaflet-lazy.js";
 import { getScale } from "../../logic/time-scale.js";
 // Mumbai home — zoomed out to city level (was street-level dummy grid)
 export const HOME = [19.0759, 72.8777];
@@ -19,22 +16,11 @@ const PULSE_MS = 2600;    // radius breath cycle
 const K_MIN = 0.74;       // the breath contracts to this share of the radius
 const T0 = performance.now();   // one clock for every map's breath + ring, so the widget and
 export const RING_MS = 1800;    // the sheet are in phase when the morph hands over
-const pinIcon = (n) => L.divIcon({
-  className: "opps__leafpin",
-  html: `<span class="opps__pin opps__pin--static">${n}</span>`,
-  iconSize: [30, 30],
-  iconAnchor: [15, 15],
-});
-// blip = blue heading arrow (inline SVG, so no icon font is needed); CSS cancels the pane
-// bearing, so the arrow points screen-up = the heading
-const meIcon = L.divIcon({
-  className: "opps__me-wrap",
-  html: `<span class="opps__me"><svg class="opps__me-arrow" viewBox="0 0 24 24" aria-hidden="true">`
-    + `<path d="M12 2.4 19.6 21 12 16.4 4.4 21Z"/></svg></span>`,
-  iconSize: [28, 28],
-  iconAnchor: [14, 14],
-});
+// — pin/me icons live in leaflet-lazy.js (they need the loaded Leaflet instance) —
+// — blip = blue heading arrow (inline SVG, so no icon font is needed); CSS cancels the pane
+// — bearing, so the arrow points screen-up = the heading (factory in leaflet-lazy.js) —
 // — the coverage radius breathes: opacity rides the radius while the CSS keeps the colour —
+// — setRadius/setStyle are Leaflet internals, not DOM layout writes; skipped under reduced motion —
 let breathAcc = 0;
 let breathLast = T0;
 function breathe(circle, host) {
@@ -55,7 +41,8 @@ function breathe(circle, host) {
   };
   requestAnimationFrame(step);
 }
-export function createLiveMap(el, pins, opts = {}) {
+export async function createLiveMap(el, pins, opts = {}) {
+  const L = await leaflet();
   const map = L.map(el, {
     center: opts.center || HOME,
     zoom: opts.zoom ?? ZOOM,
@@ -84,7 +71,7 @@ export function createLiveMap(el, pins, opts = {}) {
   const hot = L.circle(HOME, { radius: HOTSPOT_M, className: "opps__hotspot", fill: true, weight: 1, interactive: false }).addTo(map);
   breathe(hot, el);
   // my position rides above every pin (zIndexOffset) — it must never hide behind a marker
-  L.marker(HOME, { icon: meIcon, zIndexOffset: 1000, interactive: false, keyboard: false }).addTo(map);
+  L.marker(HOME, { icon: meIcon(), zIndexOffset: 1000, interactive: false, keyboard: false }).addTo(map);
   (pins || []).forEach((p) => L.marker(p.ll, { icon: pinIcon(p.n), interactive: false, keyboard: false }).addTo(map));
   return {
     map,

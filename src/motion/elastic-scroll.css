@@ -2,5 +2,5 @@
 .elastic-scroll--pull{transform:translateY(12px)}
 @media(prefers-reduced-motion:reduce){.elastic-scroll{transition:none;scroll-behavior:auto}.elastic-scroll--pull{transform:none}}
 .elastic-scroll__content{min-height:220px;padding:var(--spacing-4);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg)}
-.elastic-scroll__indicator{height:4px;background:var(--primitive-sapphire-ui-300);border-radius:var(--radius-full);transition:width var(--transition-fast)}
+.elastic-scroll__indicator{height:4px;width:100%;background:var(--primitive-sapphire-ui-300);border-radius:var(--radius-full);transform:scaleX(0);transform-origin:0 50%;transition:transform var(--transition-fast)}
 @media(prefers-reduced-motion:reduce){.elastic-scroll__indicator{transition:none}}

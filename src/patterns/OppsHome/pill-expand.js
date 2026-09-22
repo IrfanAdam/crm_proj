@@ -65,6 +65,8 @@ export function driveExpand(screen, sheet, dir, ms, done) {
   if (dir < 0) pill.style.opacity = "0";   // real pill hides: ghost + pill never double
   screen.appendChild(ghost);
   const t0 = performance.now();
+  // — ghost box writes layout intentionally (same class as sheet-morph): the ghost
+  // — carries real pixels between rects; opacity/translate layers stay compositor-only.
   const paint = (s) => {
     const u = dir > 0 ? walk(OPEN, s) : walk(CLOSE, 1 - s);
     const L = (a, b) => a + (b - a) * u;

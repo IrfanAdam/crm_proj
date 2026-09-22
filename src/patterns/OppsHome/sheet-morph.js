@@ -29,6 +29,8 @@ export function morph(parts, rect, dir, done, instant) {
     const [a, b] = fade[kind];
     return clamp01((p - a) / (b - a));
   };
+  // — clip-window morph writes layout boxes intentionally: the window IS the geometry
+  // — (no transform equivalent exists for a growing clip rect) — compositor-only N/A here.
   const paint = (p) => {
     const u = walk(stops, p);
     const w = rect.w + (W - rect.w) * u;
