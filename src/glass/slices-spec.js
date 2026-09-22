@@ -1,4 +1,4 @@
-import { OPTICS } from "./lens-filter.jsx";
+import { OPTICS, PULL } from "./optics.js";
 
 /* The bevel spec for the "slices" path: the SDF displacement profile sampled at three
    depths per rim. u = 0 at the rim, 1 at the band's inner edge; the profile is the same
@@ -30,12 +30,7 @@ export const SLICES = [
   X("right", 0.25, 16, FR.WARM), X("right", 0.60, 20), X("right", 0.85, 24, FR.COOL),
 ];
 
-// signed displacement (px) of a slice's copy: outward at its own rim, so the world just
-// outside the shape is pulled in and compressed along the edge.
-// WebKit path has no SDF scale factor — PULL is direct px. iOS rims squeeze ~4–6px
-// at the contour (the reference tab bar visibly smears backdrop text under its top
-// edge); the Chromium SDF path gets the same punch via OPTICS.pull × scale.
-const PULL = 7;
+// PULL (direct-px pull, decoupled from OPTICS.strength) lives in ./optics.js.
 export const offsetFor = (s) => {
   const d = profile(s.u) * PULL;
   return s.band === "top" || s.band === "left" ? d : -d;

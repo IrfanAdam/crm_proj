@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import DockLens from "./DockLens.jsx";
 import DockSlices from "./DockSlices.jsx";
 import { ENGINE } from "./engine.js";
+import { getZoom } from "./rect-zoom.js";
 import Icon from "../components/Icon/Icon.jsx";
 
 /* Phosphor icon mapping — 3 tabs, icon-only (learned over time). */
@@ -25,14 +26,7 @@ export default function BottomDock() {
     const r = trackRef.current?.getBoundingClientRect();
     return r && r.width ? r.width / ITEMS.length : 70;
   };
-  const getZoom = () => {
-    // Effective visual scale (see DockLens): untransformed in app-fullscreen.
-    const d = document.getElementById('device');
-    if (!d || getComputedStyle(d).transform === 'none') return 1;
-    const s = document.getElementById('canvas-scaler');
-    const v = s ? parseFloat(getComputedStyle(s).getPropertyValue('--zoom')) : 1;
-    return Number.isFinite(v) && v > 0 ? v : 1;
-  };
+
   const onDown = (e) => {
     if (e.button !== undefined && e.button !== 0) return;
     e.currentTarget.setPointerCapture(e.pointerId);

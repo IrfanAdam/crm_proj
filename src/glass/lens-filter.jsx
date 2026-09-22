@@ -11,16 +11,7 @@
       so a map that arrives later leaves the element painted unfiltered for good.
    The map is also baked at region size and placed at the region's origin, because
    Chrome and WebKit disagree about how an under-specified feImage stretches. */
-export const OPTICS = {
-  bleed: 18,
-  band: 10,
-  pull: 1.0,
-  frost: 1.2,
-  strength: 3.2,
-  dispersion: 0.3,
-  saturate: 1.12,
-  brightness: 1.01,
-};
+import { OPTICS } from "./optics.js";
 
 const CH_R = "1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0";
 const CH_G = "0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0";

@@ -1,28 +1,8 @@
 /* ADAM/SHELL — src/shell/top-pills.jsx · workspace section pills (Prototype/Architecture) · moved verbatim from GlassBars.jsx Phase 4 Task 1 */
 import { Glass } from "@samasante/liquid-glass";
 import { useState, useEffect } from "react";
+import { TOP_OPTICS } from "../glass/optics.js";
 
-// Clear crystal glass — tiny frost, strong refraction
-// frost 2 = just a veil (not milky like 6-10), dispersion/bend/depth do the liquid work
-const TOP_OPTICS = {
-  frost: 2.2,
-  dispersion: 0.22,
-  strength: 0.05,
-  depth: 0.52,
-  curvature: 0.36,
-  bend: 0.42,
-  bendWidth: 0.16,
-  saturate: 1.08,
-  brightness: 0.01,
-  specular: 0.72,
-  sheen: 0.24,
-  sheenWidth: 2.8,
-  sheenFalloff: 1.5,
-  sheenAngle: 38,
-  glow: 0.08,
-  glowSpread: 0.9,
-  glowFalloff: 0.55,
-};
 
 export function TopPills() {
   const [active, setActive] = useState(() => (location.hash === "#architecture" ? "architecture" : "prototype"));

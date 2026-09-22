@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { SLICES, maskFor, transformFor } from "./slices-spec.js";
+import { getZoom, toLayout } from "./rect-zoom.js";
 
 /* WebKit's glass. Safari won't run the SDF displacement filter on this element, so the
    same bevel is built from what every engine always renders: transform + mask. The
@@ -15,21 +16,6 @@ export default function DockSlices({ source = "#app-content" }) {
   const frame = useRef(0);
   const base = useRef({ l: 0, t: 0, w: 0 });
 
-  // The device is scaled with transform:scale(var(--zoom)) from the canvas, so
-  // getBoundingClientRect() returns scaled (screen) px. Geometry written to the
-  // DOM copy lives in unscaled local px — divide the rect delta by the zoom.
-  // (DockLens already does this; DockSlices missing it showed content from ~140px
-  // higher up at the default 80% zoom — the "already scrolled" image in the glass.)
-  // Effective visual scale — see DockLens: in app-fullscreen the device is
-  // untransformed, so rect deltas are already 1:1 and must NOT be divided.
-  const getZoom = () => {
-    const d = document.getElementById('device');
-    if (!d || getComputedStyle(d).transform === 'none') return 1;
-    const s = document.getElementById('canvas-scaler');
-    const v = s ? parseFloat(getComputedStyle(s).getPropertyValue('--zoom')) : 1;
-    return Number.isFinite(v) && v > 0 ? v : 1;
-  };
-
   const slide = () => {
     frame.current = 0;
     const src = document.querySelector(source);
@@ -43,9 +29,8 @@ export default function DockSlices({ source = "#app-content" }) {
   const place = () => {
     const lens = lensRef.current, src = document.querySelector(source);
     if (!lens || !src) return;
-    const z = getZoom();
     const c = src.getBoundingClientRect(), l = lens.getBoundingClientRect();
-    base.current = { l: (c.left - l.left) / z, t: (c.top - l.top) / z, w: c.width / z };
+    base.current = toLayout({ l: c.left - l.left, t: c.top - l.top, w: c.width }, getZoom());
     copies.current.forEach((el) => {
       if (!el) return;
       el.style.left = `${base.current.l}px`;

@@ -20,6 +20,8 @@ graph TD
     glass_lens-filter[lens-filter.jsx]
     glass_lens-map[lens-map.js]
     glass_main[main.jsx]
+    glass_optics[optics.js]
+    glass_rect-zoom[rect-zoom.js]
     glass_slices-spec[slices-spec.js]
   end
   subgraph patterns
@@ -58,13 +60,18 @@ graph TD
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
   glass_BottomDock --> glass_engine
+  glass_BottomDock --> glass_rect-zoom
   glass_BottomDock --> components_Icon_Icon
   glass_DockLens --> glass_lens-map
   glass_DockLens --> glass_lens-filter
+  glass_DockLens --> glass_optics
+  glass_DockLens --> glass_rect-zoom
   glass_DockSlices --> glass_slices-spec
+  glass_DockSlices --> glass_rect-zoom
+  glass_lens-filter --> glass_optics
   glass_main --> shell_top-pills
   glass_main --> glass_BottomDock
-  glass_slices-spec --> glass_lens-filter
+  glass_slices-spec --> glass_optics
   patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
   patterns_OppsHome_face-handoff --> patterns_OppsHome_morph-timing
   patterns_OppsHome_live-map --> patterns_OppsHome_leaflet-global
@@ -84,6 +91,7 @@ graph TD
   patterns_OppsHome_pill-expand --> logic_time-scale
   patterns_OppsHome_sheet-morph --> patterns_OppsHome_morph-timing
   patterns_OppsHome_sheet-morph --> logic_time-scale
+  shell_top-pills --> glass_optics
   workspace_canvas --> workspace_devices
   workspace_canvas --> os_status-bar
   workspace_canvas --> device_frame
