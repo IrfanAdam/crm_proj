@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T08:34:14.621Z",
+  "generated": "2026-09-22T08:41:16.744Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "50e08b5",
+      "full": "50e08b5627da884719e6faaa0db056f048843ca1",
+      "date": "2026-09-22",
+      "subject": "feat: atlas shell with nav + SVG essence canvas",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "3c8afde",
+      "full": "3c8afdecef034337859d602c15fbf59fe44b76b2",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "b69b1b4",
       "full": "b69b1b42db25098e3fa9270afe9b518e56ef6ddb",
