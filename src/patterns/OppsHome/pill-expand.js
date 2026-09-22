@@ -31,6 +31,8 @@ export function driveExpand(screen, sheet, dir, ms, done) {
   const ct = card.style.transform;
   card.style.transform = "none";
   const c = relRect(card, screen);
+  const h = relRect(sheet.querySelector(".map-sheet__head"), screen);
+  const dh = { x: h.l + h.w / 2 - (c.l + c.w / 2), y: h.t + h.h / 2 - (c.t + c.h / 2) };
   const paintFaces = buildFaces(screen, pill, sheet);
   card.style.transform = ct;
   const rp = p.h / 2;
@@ -75,6 +77,7 @@ export function driveExpand(screen, sheet, dir, ms, done) {
     ghost.style.width = `${L(p.w, c.w).toFixed(2)}px`;
     ghost.style.height = `${L(p.h, c.h).toFixed(2)}px`;
     ghost.style.borderRadius = `${L(rp, rc).toFixed(2)}px`;
+    pl.style.transform = `translate(${(dh.x * u).toFixed(2)}px, ${(dh.y * u).toFixed(2)}px)`;
     pw.style.opacity = (1 - clamp01((s - X0) / (X1 - X0))).toFixed(3);
     cw.style.opacity = clamp01((s - X0) / (X1 - X0)).toFixed(3);
     paintFaces(s, dir < 0);

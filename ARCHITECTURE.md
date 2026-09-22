@@ -16,7 +16,8 @@ change per phase — see `.hermes/plans/2026-09-22_122850-museum-refactor.md`.
 | `src/patterns/` | app screens, `mount(page)`, vanilla, no OS/device knowledge | os/device/shell |
 | `src/logic/` | pure state machines, zero DOM, unit-tested | DOM, always |
 | `src/components/` | DS single source (avatar/card/kpi/meta), gallery-proven | prototype |
-| `src/arch/` | atlas essence manifest + lenses (logic/components/ia), SVG render | device/os/glass |
+| `src/arch/` | atlas essence manifest + lenses (decisions/schema/logic), canvas orchestrator (`atlas.js` → mechanics engine) | device/os/glass |
+| `src/js/mechanics/` | scheme-level canvas engine (canvas 2D, `route/highway+corridor`, `render` kind dots, `text p=0.38`, lenses `decisions|schema|logic`) | device/os/glass/patterns |
 
 Rules: patterns → components/tokens only; glass → tokens + `app-tab` events;
 logic never touches DOM. Module graph: `docs/graph.mmd` (`node scripts/map-graph.mjs`).
@@ -32,9 +33,15 @@ logic never touches DOM. Module graph: `docs/graph.mmd` (`node scripts/map-graph
 - Motion: transform/opacity only, except whitelisted clip geometry (see Phase 8);
   every entry honors `prefers-reduced-motion`. Leaflet loads on first map mount.
 - Flows: `docs/flows/morph-pipeline.mmd`, `tab-bridge.mmd`, `glass-engines.mmd`.
-- Atlas: `scripts/generate-arch-atlas.mjs` scans logic/patterns/components into
-  `src/arch/atlas.json` (one model, three lens views); `lens-{logic,components,ia}.js`
-  render per-lens detail (states/governs, usage/gallery, path/contract).
+- Atlas/Mechanics: `scripts/generate-arch-atlas.mjs` → `src/arch/atlas.json` (one model, three lens views);
+  `scripts/generate-mechanics-graph.js` → `src/js/mechanics/graphData.{decisions,schema,logic}.js`
+  (`GROUP_BY_FILE` + per-lens `CORE`, highway routing `lane=max(G.y+h)+22+(idx%4)*14`,
+  corridor guards, `p=0.38` gentle text scaling, `verify:mechanics --check` fails on staleness);
+  `src/js/mechanics/graph.js` is the mode store (`decisions|schema|logic`, `localStorage mechanics:mode`,
+  `CustomEvent('mechanics:mode')`); `src/arch/atlas.js` orchestrates lens nav → `engine.setMode()`,
+  canvas owns pan/zoom/drag (`scale .18–3.8`, DPR cap 2) — `atlas-viewport/layout/render` retired.
+  Edge kinds: `call/stone contains`, `data/violet governs`, `signal/amber dashed diamond`, `both` heads,
+  kind dots `3.8/scale`.
 
 ## Add a device (1 line)
 

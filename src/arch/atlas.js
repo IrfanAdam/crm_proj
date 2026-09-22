@@ -1,74 +1,81 @@
-/* ADAM/SHARED — src/arch/atlas.js · atlas composer [plan:2026-09-22_082844-arch-atlas.md#phase-2] */
-// — Exports: initAtlas (auto-mounts on #atlas-nav) —
-import data from './atlas.json';
-import { layoutLens, lensGraph } from './atlas-layout.js';
-import { renderAtlas, renderDetail } from './atlas-render.js';
+/* ADAM/SHARED — src/arch/atlas.js · mechanics shell [plan:2026-09-22_155000-architecture-mechanics.md#phase-4] */
 import { createAtlasState } from './atlas-state.js';
-import { detailLogic } from './lens-logic.js';
-import { detailComponents } from './lens-components.js';
-import { detailIA } from './lens-ia.js';
-import { renderTruth } from './lens-truth.js';
-function detailFor(lens, node, atlas) {
-  if (lens === 'logic') return detailLogic(node, atlas);
-  if (lens === 'components') return detailComponents(node, atlas);
-  if (lens === 'ia') return detailIA(node, atlas);
-  return renderDetail(node);
+import { ensureDetailEl, paintSelection } from './atlas-selection.js';
+import { getMode, setMode as setGraphMode, GRAPHS } from '../js/mechanics/graph.js';
+const state=createAtlasState();
+let engine=null,loaded=false;
+function tintDot(tint){
+  if(tint==='--violet-50') return 'var(--violet-600)';
+  if(tint==='--amber-50') return 'var(--amber-600)';
+  if(tint==='--stone-100') return 'var(--stone-500)';
+  if(tint==='--emerald-50') return 'var(--emerald-700)';
+  if(tint==='--color-card') return 'var(--stone-500)';
+  return 'var(--stone-500)';
 }
-import { attachViewport } from './atlas-viewport.js';
-// — Section — selection paint (inline block in the one container) —
-function paintSelection(canvas, graph, selected, lens) {
-  canvas.querySelector('.atlas__sel')?.remove();
-  if (lens === 'truth') return;
-  const node = graph.nodes.find((n) => n.id === selected) || null;
-  if (!node) return;
-  canvas.querySelectorAll('.atlas-node').forEach((r) => r.setAttribute('data-selected', String(r.dataset.id === selected)));
-  const sel = document.createElement('div');
-  sel.className = 'atlas__sel';
-  sel.setAttribute('aria-live', 'polite');
-  sel.innerHTML = detailFor(lens, node, data);
-  canvas.appendChild(sel);
+function edgeDot(kind){
+  if(kind==='signal') return 'var(--amber-600)';
+  if(kind==='data'||kind==='governs') return 'var(--violet-600)';
+  return 'var(--stone-500)';
 }
-// — Section — full lens paint (one container swaps content) —
-function paintLens(nav, canvas, view, state, graph) {
-  nav.querySelectorAll('[data-lens]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.lens === state.lens)));
-  if (state.lens === 'truth') {
-    canvas.innerHTML = renderTruth();
-    view.reset();
-    canvas.setAttribute('aria-label', 'truth lens — code truth');
-    return;
+function syncModeUI(m){
+  const cur=m||state.lens||getMode();
+  const s=document.getElementById('mechanics-mode'); if(s) s.value=cur;
+  document.querySelectorAll('#atlas-nav [data-lens]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.lens===cur)));
+  // per-lens float legends: Lanes (group tints) + Kinds (node kinds) + Edges (kind semantics)
+  const legendsWrap=document.querySelector('.mechanics-float-legends');
+  if(legendsWrap){
+    const g=(GRAPHS&&GRAPHS[cur])?GRAPHS[cur]:null;
+    const groups=g? g.GROUPS: [];
+    const kinds=g? g.KINDS: null;
+    const lanesHTML=groups.map(gd=>`<span class="mech-pill mech-pill--lane" style="background:var(${gd.tint})"><i style="background:${tintDot(gd.tint)}"></i> ${gd.label}</span>`).join('');
+    let kindsHTML='';
+    if(kinds){
+      kindsHTML=Object.entries(kinds).map(([k,v])=>`<span class="mech-pill mech-pill--edge-legend"><i style="background:var(${v.color})"></i> ${v.label}</span>`).join('');
+    }
+    let edgesHTML='';
+    if(cur==='logic'){
+      edgesHTML=`<span class="mech-pill"><i style="background:${edgeDot('data')}"></i> governs</span><span class="mech-pill"><i style="background:${edgeDot('signal')};transform:rotate(45deg);border-radius:1px"></i> signal</span>`;
+    } else if(cur==='schema'){
+      edgesHTML=`<span class="mech-pill"><i style="background:${edgeDot('call')}"></i> contains</span><span class="mech-pill"><i style="background:${edgeDot('data')}"></i> governs</span><span class="mech-pill"><i style="background:${edgeDot('signal')};transform:rotate(45deg);border-radius:1px"></i> signal</span>`;
+    } else {
+      edgesHTML=`<span class="mech-pill"><i style="background:${edgeDot('data')}"></i> governs</span><span class="mech-pill"><i style="background:${edgeDot('call')}"></i> contains</span>`;
+    }
+    legendsWrap.innerHTML=`<div class="mechanics-legend mechanics-legend--float" aria-label="Lane legend"><span class="mech-legend-label">Lanes</span>${lanesHTML}</div><div class="mechanics-legend mechanics-legend--float" aria-label="Kind legend"><span class="mech-legend-label">Kinds</span>${kindsHTML}</div><div class="mechanics-legend mechanics-legend--float" aria-label="Edge legend"><span class="mech-legend-label">Edges</span>${edgesHTML}</div>`;
   }
-  canvas.innerHTML = renderAtlas(graph.nodes, layoutLens(graph.nodes), graph.edges);
-  view.reset();
-  paintSelection(canvas, graph, state.selected, state.lens);
-  canvas.setAttribute('aria-label', `${state.lens} lens — ${graph.nodes.length} nodes`);
 }
-// — Section — mount + wiring —
-export function initAtlas() {
-  const nav = document.getElementById('atlas-nav');
-  const canvas = document.getElementById('atlas-canvas');
-  if (!nav || !canvas) return null;
-  const state = createAtlasState();
-  let graph = lensGraph(data, state.lens);
-  let lastLens = state.lens;
-  const view = attachViewport(canvas, {
-    getIds: () => graph.nodes.map((n) => n.id),
-    getSelected: () => state.selected,
-    onTap: (id) => state.select(id),
-    onEmpty: () => state.clear(),
-    onEscape: () => state.clear(),
-  });
-  nav.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-lens]');
-    if (btn) state.setLens(btn.dataset.lens);
-  });
-  state.subscribe(() => {
-    if (state.lens !== lastLens) {
-      lastLens = state.lens;
-      graph = lensGraph(data, state.lens);
-      paintLens(nav, canvas, view, state, graph);
-    } else paintSelection(canvas, graph, state.selected, state.lens);
-  });
-  paintLens(nav, canvas, view, state, graph);
-  return state;
+function toggleChrome(){
+  const h=document.getElementById('atlas-canvas'),b=document.getElementById('mechanics-chrome-toggle');
+  if(!h) return; const c=h.classList.toggle('mechanics-view--clean');
+  if(b){b.setAttribute('aria-pressed',String(c)); b.textContent=c?'◳ Show':'◱ Hide';}
+  if(engine) engine.resize();
 }
-if (typeof document !== 'undefined' && document.getElementById('atlas-nav')) initAtlas();
+async function ensureEngine(){
+  if(loaded&&engine) return engine;
+  const c=document.getElementById('mechanics-canvas'),t=document.getElementById('mechanics-tooltip');
+  if(!c||!t||c.tagName!=='CANVAS') return null;
+  const {createMechanicsCanvas}=await import('../js/mechanics/canvas.js');
+  engine=createMechanicsCanvas(c,t); loaded=true;
+  c.addEventListener('mechanics:select',e=>{ const id=e.detail?.id; if(id) state.select(id); else state.clear(); });
+  const cur=state.lens||getMode(); if(cur!==getMode()) setGraphMode(cur);
+  engine.setMode(cur); syncModeUI(cur);
+  if(state.selected) engine.select(state.selected);
+  paintSelection(state); return engine;
+}
+export function initAtlas(){
+  const nav=document.getElementById('atlas-nav'),canvas=document.getElementById('mechanics-canvas');
+  if(!nav||!canvas) return null;
+  const sel=document.getElementById('mechanics-mode'),tog=document.getElementById('mechanics-chrome-toggle');
+  ensureDetailEl(); syncModeUI(state.lens); paintSelection(state);
+  if(sel){ sel.value=state.lens; sel.addEventListener('change',async e=>{ const n=e.target.value; if(!['decisions','schema','logic'].includes(n))return; state.setLens(n); syncModeUI(n); if(!loaded) await ensureEngine(); else if(engine) engine.setMode(n); });}
+  if(tog) tog.addEventListener('click',toggleChrome);
+  document.addEventListener('keydown',e=>{
+    if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')) return;
+    if((e.key==='h'||e.key==='H')&&!e.metaKey&&!e.ctrlKey){ e.preventDefault(); toggleChrome(); }
+    if(e.key==='Escape'){ if(state.selected){ state.clear(); if(engine) engine.clearSelection(); } const tip=document.getElementById('mechanics-tooltip'); if(tip) tip.hidden=true; }
+  });
+  nav.addEventListener('click',async e=>{ const b=e.target.closest('[data-lens]'); if(!b) return; const n=b.dataset.lens; if(!['decisions','schema','logic'].includes(n)) return; state.setLens(n); syncModeUI(n); if(!loaded) await ensureEngine(); else if(engine) engine.setMode(n); });
+  state.subscribe(({lens,selected})=>{ syncModeUI(lens); if(engine&&engine.getMode()!==lens) engine.setMode(lens); if(engine){ if(selected) engine.select(selected); else engine.clearSelection(); } paintSelection(state); });
+  document.addEventListener('mechanics:mode',()=>syncModeUI(state.lens));
+  return {get engine(){return engine;},ensureEngine,syncModeUI,state};
+}
+if(typeof document!=='undefined'&&document.getElementById('atlas-nav')) initAtlas();

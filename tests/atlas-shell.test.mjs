@@ -1,4 +1,4 @@
-/* ADAM/TOOL — tests/atlas-shell.test.mjs · atlas mounts [plan:2026-09-22_082844-arch-atlas.md#phase-2] */
+/* ADAM/TOOL — tests/atlas-shell.test.mjs · atlas mounts [plan:2026-09-22_155000-architecture-mechanics.md#phase-3] */
 // — asserts: nav + canvas + detail mounts exist in index.html —
 import { readFileSync } from 'node:fs';
 let fails = 0;
@@ -9,14 +9,16 @@ const ok = (name, cond) => {
 const html = readFileSync('index.html', 'utf8');
 ok('atlas nav mount with tree role', html.includes('id="atlas-nav"') && html.includes('role="tree"'));
 ok('atlas single content container', html.includes('id="atlas-canvas"') && !html.includes('id="atlas-detail"'));
-for (const lens of ['logic', 'components', 'ia', 'truth']) ok(`atlas nav offers ${lens} lens`, html.includes(`data-lens="${lens}"`));
-ok('atlas has no separate detail card', !html.includes('atlas-detail'));
+for (const lens of ['decisions', 'schema', 'logic']) ok(`atlas nav offers ${lens} lens`, html.includes(`data-lens="${lens}"`));
+ok('atlas has no separate detail card yet shared sel', !html.includes('id="atlas-detail"'));
 ok('atlas composer script linked', html.includes('src/arch/atlas.js'));
 ok('atlas nav lives in left arch stack', html.indexOf('id="atlas-nav"') > html.indexOf('id="ws-arch-stack"') && html.indexOf('id="atlas-nav"') < html.indexOf('id="panel-architecture"'));
 const panel = html.slice(html.indexOf('id="panel-architecture"'));
 ok('atlas canvas fills right panel', panel.includes('id="atlas-canvas"') && !panel.includes('data-lens='));
 const rail = html.slice(html.indexOf('id="ws-arch-stack"'), html.indexOf('id="panel-architecture"'));
-ok('atlas truth is a lens tab, not an accordion', rail.includes('data-lens="truth"') && !html.includes('<details'));
+ok('atlas lenses are product-only 3', rail.includes('data-lens="decisions"') && rail.includes('data-lens="schema"') && rail.includes('data-lens="logic"') && !rail.includes('data-lens="truth"') && !rail.includes('data-lens="components"') && !rail.includes('data-lens="ia"'));
+ok('mechanics canvas present', html.includes('id="mechanics-canvas"') && html.includes('id="mechanics-mode"'));
+ok('no SVG truth overlay', !html.includes('atlas-viewport'));
 if (fails) {
   console.error(`✗ atlas-shell — ${fails} fail`);
   process.exit(1);

@@ -57,15 +57,13 @@ graph TD
     motion_elastic-scroll[elastic-scroll.js]
     motion_tilt-card[tilt-card.js]
   end
-  arch_atlas-render --> arch_atlas-layout
-  arch_atlas --> arch_atlas.json
-  arch_atlas --> arch_atlas-layout
-  arch_atlas --> arch_atlas-render
+  arch_atlas-selection --> arch_lens-logic
+  arch_atlas-selection --> arch_lens-schema
+  arch_atlas-selection --> arch_lens-decisions
+  arch_atlas-selection --> js_mechanics_graph
   arch_atlas --> arch_atlas-state
-  arch_atlas --> arch_lens-logic
-  arch_atlas --> arch_lens-components
-  arch_atlas --> arch_lens-ia
-  arch_atlas --> arch_atlas-viewport
+  arch_atlas --> arch_atlas-selection
+  arch_atlas --> js_mechanics_graph
   device_frame --> os_status-bar
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
@@ -88,6 +86,25 @@ graph TD
   glass_main --> glass_BottomDock
   glass_slice-bands --> glass_slices-spec
   glass_slices-spec --> glass_optics
+  js_mechanics_canvas-interaction --> js_mechanics_graph
+  js_mechanics_canvas-interaction --> js_mechanics_route
+  js_mechanics_canvas-interaction --> js_mechanics_graph
+  js_mechanics_canvas --> js_mechanics_graph
+  js_mechanics_canvas --> js_mechanics_render
+  js_mechanics_canvas --> js_mechanics_popover
+  js_mechanics_canvas --> js_mechanics_route
+  js_mechanics_canvas --> js_mechanics_canvas-interaction
+  js_mechanics_graph --> js_mechanics_graphData.decisions
+  js_mechanics_graph --> js_mechanics_graphData.schema
+  js_mechanics_graph --> js_mechanics_graphData.logic
+  js_mechanics_index --> js_mechanics_canvas
+  js_mechanics_index --> js_mechanics_graph
+  js_mechanics_popover --> js_mechanics_graph
+  js_mechanics_render --> js_mechanics_graph
+  js_mechanics_render --> js_mechanics_text
+  js_mechanics_render --> js_mechanics_route
+  js_mechanics_route --> js_mechanics_graph
+  js_mechanics_route --> js_mechanics_corridor
   patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
   patterns_OppsHome_face-handoff --> patterns_OppsHome_morph-timing
   patterns_OppsHome_live-map --> patterns_OppsHome_leaflet-lazy

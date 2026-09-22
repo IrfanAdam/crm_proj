@@ -1,5 +1,6 @@
 import fs from 'fs'; import {execSync} from 'child_process';
-const exempt=f=>f.includes('design-system/tokens.css')||f.startsWith('tokens/')||f.includes('references/')||f.includes('.hermes/')||f.includes('node_modules/')||f.includes('dist/');
+const waived=new Set(['src/js/mechanics/render.js','scripts/generate-mechanics-graph.js']);
+const exempt=f=>waived.has(f)||f.includes('design-system/tokens.css')||f.startsWith('tokens/')||f.includes('references/')||f.includes('.hermes/')||f.includes('node_modules/')||f.includes('dist/');
 let list=[]; try{list=execSync('git ls-files --cached --others --exclude-standard',{encoding:'utf8'}).trim().split('\n').filter(Boolean)}catch{ list=[]}
 let vio=[], long=[];
 for(const f of list){

@@ -3,7 +3,7 @@
 <meta name="theme-color" content="#fafafa"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link rel="manifest" href="/manifest.webmanifest"/><link rel="icon" href="/icons/icon-192.png"/><link rel="apple-touch-icon" href="/icons/icon-192.png"/>
 <title>ALPHA CRM — Prototype</title>
-<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/shell/shell.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="src/arch/atlas.css"/><link rel="stylesheet" href="src/arch/atlas-nodes.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/shell/shell.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="src/styles/mechanics.css"/><link rel="stylesheet" href="src/arch/atlas.css"/><link rel="stylesheet" href="src/arch/atlas-nodes.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 </head><body>
 <div class="workspace">
   <aside class="ws-controls" aria-label="Canvas controls">
@@ -45,10 +45,9 @@
     <div id="ws-arch-stack" hidden>
       <nav id="atlas-nav" class="atlas__nav ws-card" role="tree" aria-label="Atlas lenses">
         <h3 class="ws-card__title">Atlas lenses</h3>
-        <button type="button" role="treeitem" aria-selected="true" data-lens="logic">Product Logic</button>
-        <button type="button" role="treeitem" aria-selected="false" data-lens="components">Components</button>
-        <button type="button" role="treeitem" aria-selected="false" data-lens="ia">Information Arch</button>
-        <button type="button" role="treeitem" aria-selected="false" data-lens="truth">Code Truth</button>
+        <button type="button" role="treeitem" aria-selected="false" data-lens="decisions">Decisions</button>
+        <button type="button" role="treeitem" aria-selected="false" data-lens="schema">Schema</button>
+        <button type="button" role="treeitem" aria-selected="true" data-lens="logic">Logic</button>
       </nav>
       <div class="ws-card">
         <h3 class="ws-card__title">Architecture</h3>
@@ -56,7 +55,7 @@
         <a class="side-link" href="gallery.html">DS Gallery →</a>
       </div>
       <div class="ws-card ws-card--muted">
-        <p class="stage__hint">Right panel is the Architecture Atlas — pick a lens left, read the essence right. Manifest is L1 essence, freshness self-checked by <code>verify:atlas</code>.</p>
+        <p class="stage__hint">Right panel is the scheme-level Architecture Canvas — pick a lens left, read connectors right. <strong>Decisions</strong> constrains targets (governs), <strong>Schema</strong> shows entity→field→category (contains/governs), <strong>Logic</strong> shows state machines + NEXT chain (signal/governs). Manifest freshness self-checked by <code>verify:mechanics</code>.</p>
       </div>
     </div>
   </aside>
@@ -74,7 +73,12 @@
     </div>
     <div id="panel-architecture" role="tabpanel" aria-labelledby="tab-architecture" hidden>
       <section class="ws-canvas ws-canvas--arch" aria-label="Architecture Atlas">
-        <div id="atlas-canvas" class="atlas__canvas" role="region" aria-label="Product essence graph"></div>
+        <div id="atlas-canvas" class="atlas__canvas mechanics-canvas-wrap" role="region" aria-label="Architecture mechanics canvas">
+          <canvas id="mechanics-canvas" width="1600" height="900" aria-label="Architecture mechanics canvas" tabindex="0" role="img"></canvas>
+          <div id="mechanics-tooltip" class="mechanics-tooltip" hidden></div>
+          <div class="mechanics-float-controls" aria-label="Mechanics controls"><label class="mechanics-mode-label" for="mechanics-mode">View</label><select id="mechanics-mode" class="mechanics-mode-select" aria-label="Mechanics mode"><option value="decisions">Decisions</option><option value="schema">Schema</option><option value="logic">Logic</option></select><button id="mechanics-chrome-toggle" class="mechanics-chrome-toggle" type="button" aria-pressed="false">◱ Hide</button></div>
+          <div class="mechanics-float-legends" aria-hidden="true"><div class="mechanics-legend mechanics-legend--float" aria-label="Lane legend"><span class="mech-legend-label">Lanes</span><span class="mech-pill mech-pill--lane" style="background:var(--stone-100)"><i style="background:var(--stone-500)"></i> Product</span><span class="mech-pill mech-pill--lane" style="background:var(--violet-50)"><i style="background:var(--violet-600)"></i> System</span><span class="mech-pill mech-pill--lane" style="background:var(--amber-50)"><i style="background:var(--amber-600)"></i> Flow</span><span class="mech-pill mech-pill--lane" style="background:var(--emerald-50)"><i style="background:var(--emerald-700)"></i> State</span></div><div class="mechanics-legend mechanics-legend--float" aria-label="Kind legend"><span class="mech-legend-label">Kinds</span><span class="mech-pill mech-pill--edge-legend"><i style="background:var(--blue-600)"></i> Entry</span><span class="mech-pill mech-pill--edge-legend"><i style="background:var(--violet-600)"></i> State</span><span class="mech-pill mech-pill--edge-legend"><i style="background:var(--amber-600)"></i> Signal</span><span class="mech-pill mech-pill--edge-legend"><i style="background:var(--orange-600)"></i> Shop</span><span class="mech-pill mech-pill--edge-legend"><i style="background:var(--rose-600)"></i> Visual</span></div></div>
+        </div>
       </section>
     </div>
   </div>

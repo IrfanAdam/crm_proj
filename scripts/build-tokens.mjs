@@ -2,6 +2,7 @@ import fs from 'fs'; import {fileURLToPath} from 'url'; import {dirname,join} fr
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 const j=p=>JSON.parse(fs.readFileSync(join(root,p),'utf8'));
 const p=j('tokens/primitives.json'), L=j('tokens/semantic-light.json'), D=j('tokens/semantic-dark.json'); let motion=null; try{motion=j('tokens/motion.json')}catch{}
+let compat=null; try{compat=j('tokens/mechanics-compat.json')}catch{}
 const g=(pre,obj)=>Object.entries(obj).map(([k,v])=>`--${pre}-${k}:${v};`).join(' ');
 const ag=p['aliases-gray'], as=p['aliases-sapphire'], agm=p['aliases-gem'];
 const font=`--font-family-sans:${p.font['family-sans']}; `+g('font-size',{xs:p.font.xs,sm:p.font.sm,md:p.font.md,lg:p.font.lg,xl:p.font.xl,'2xl':p.font['2xl'],'3xl':p.font['3xl']})+' '+g('font-weight',{regular:p.font.regular,medium:p.font.medium,semibold:p.font.semibold,bold:p.font.bold})+' '+g('font-leading',{tight:p.font['leading-tight'],snug:p.font['leading-snug'],normal:p.font['leading-normal'],relaxed:p.font['leading-relaxed']})+' '+g('font-tracking',{tight:p.font['tracking-tight'],normal:p.font['tracking-normal'],wide:p.font['tracking-wide']});
@@ -23,7 +24,23 @@ out+=` ${g('primitive-sapphire-ui',p['sapphire-ui'])} ${g('primitive-sapphire-ga
 out+=` ${Object.entries(as).map(([k,v])=>`--primitive-sapphire-${k}:${v};`).join(' ')}\n`;
 out+=` ${g('primitive-citrine',p.citrine)} ${g('primitive-red-beryl',p['red-beryl'])} ${g('primitive-amethyst',p.amethyst)}\n`;
 out+=` ${g('primitive-orange',p.orange)} ${g('primitive-red',p.red)} ${g('primitive-green',p.green)}\n`;
-out+=` ${Object.entries(agm).map(([k,v])=>`--primitive-${k}:${v};`).join(' ')} --primitive-ink:${p.ink}; --primitive-dim:${p.dim}; --signal:${p.signal.default}; --signal-amber:${p.signal.amber}; --signal-teal:${p.signal.teal};\n}\n`;
+out+=` ${Object.entries(agm).map(([k,v])=>`--primitive-${k}:${v};`).join(' ')} --primitive-ink:${p.ink}; --primitive-dim:${p.dim}; --signal:${p.signal.default}; --signal-amber:${p.signal.amber}; --signal-teal:${p.signal.teal};\n`;
+if(compat){
+  const emit=(pre,obj)=>Object.entries(obj).map(([k,v])=>`--${pre}-${k}:${v};`).join(' ');
+  const flat=[];
+  // stone / violet / amber / emerald / rose / orange / blue are palette aliases
+  for(const cat of ['stone','violet','amber','emerald','rose','orange','blue']){
+    if(compat[cat]) flat.push(emit(cat, compat[cat]));
+  }
+  // semantic already contains --color-bg etc but stored without leading --
+  if(compat.semantic) flat.push(Object.entries(compat.semantic).map(([k,v])=>`--${k}:${v};`).join(' '));
+  if(compat.spacingAliases) flat.push(Object.entries(compat.spacingAliases).map(([k,v])=>`--${k}:${v};`).join(' '));
+  if(compat.z) flat.push(Object.entries(compat.z).map(([k,v])=>`--${k}:${v};`).join(' '));
+  if(compat.size) flat.push(Object.entries(compat.size).map(([k,v])=>`--${k}:${v};`).join(' '));
+  if(compat.typeAliases) flat.push(Object.entries(compat.typeAliases).map(([k,v])=>`--${k}:${v};`).join(' '));
+  if(flat.length) out+=` /* mechanics compat — aliases to ALPHA primitives [plan:2026-09-22_155000-architecture-mechanics.md#phase-1] */\n ${flat.join(' ')}\n`;
+}
+out+=`}\n`;
 const sEmit=(obj)=>` --bg-primary:${obj.bg.primary}; --bg-surface:${obj.bg.surface}; --bg-surface-glass:${obj.bg['surface-glass']}; --bg-surface-glass-active:${obj.bg['surface-glass-active']}; --bg-surface-elevated:${obj.bg['surface-elevated']}; --bg-interactive:${obj.bg.interactive}; --bg-interactive-hover:${obj.bg['interactive-hover']}; --bg-interactive-active:${obj.bg['interactive-active']}; --border-thin:${obj.border.thin}; --border-medium:${obj.border.medium}; --border-thick:${obj.border.thick}; --border-accent:${obj.border.accent}; --text-primary:${obj.text.primary}; --text-secondary:${obj.text.secondary}; --text-muted:${obj.text.muted}; --text-dim:${obj.text.dim}; --text-accent:${obj.text.accent}; --color-accent-brand:${obj.accent.brand}; --color-accent-success:${obj.accent.success}; --color-accent-warning:${obj.accent.warning}; --color-accent-error:${obj.accent.error}; --shadow-sm:${obj.shadow.sm}; --shadow-md:${obj.shadow.md}; --shadow-lg:${obj.shadow.lg}; --achievement-card-bg:${obj.achievement['card-bg']}; --achievement-overlay-bg:${obj.achievement['overlay-bg']}; --focus-ring:${obj.focus.ring}; --focus-ring-offset:${obj.focus['ring-offset']}; --border-width-hairline:${obj.borderWidth.hairline}; --border-width-thin:${obj.borderWidth.thin};`;
 out+=`:root,[data-theme="light"]{color-scheme:light;${sEmit(L)}}\n`;
 out+=`[data-theme="dark"]{color-scheme:dark;${sEmit(D)}}\n`;

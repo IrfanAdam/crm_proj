@@ -1,0 +1,116 @@
+{
+  "$meta": {
+    "tier": "Mechanics compat — DTCG alias layer for canvas engine [plan:2026-09-22_155000-architecture-mechanics.md#phase-1]",
+    "note": "Aliases mechanics primitives (stone/violet/amber/emerald/rose/orange/blue) to ALPHA primitives; semantic aliases map --color-bg/card/border etc. Never hand-edit design-system/tokens.css — regenerate via node scripts/build-tokens.mjs"
+  },
+  "stone": {
+    "50": "var(--primitive-neutral-light-50)",
+    "100": "var(--primitive-neutral-light-200)",
+    "200": "var(--primitive-neutral-light-400)",
+    "300": "var(--primitive-neutral-light-500)",
+    "500": "var(--primitive-neutral-dark-100)",
+    "600": "var(--primitive-neutral-dark-200)",
+    "700": "var(--primitive-neutral-dark-300)",
+    "800": "var(--primitive-neutral-dark-600)",
+    "900": "var(--primitive-neutral-dark-700)"
+  },
+  "violet": {
+    "50": "var(--primitive-amethyst-50)",
+    "100": "var(--primitive-amethyst-100)",
+    "300": "var(--primitive-amethyst-300)",
+    "600": "var(--primitive-amethyst-500)",
+    "700": "var(--primitive-amethyst-600)"
+  },
+  "amber": {
+    "50": "var(--primitive-citrine-50)",
+    "100": "var(--primitive-citrine-100)",
+    "200": "var(--primitive-citrine-200)",
+    "400": "var(--primitive-citrine-400)",
+    "600": "var(--primitive-citrine-500)",
+    "700": "var(--primitive-citrine-600)",
+    "800": "var(--primitive-citrine-700)"
+  },
+  "emerald": {
+    "50": "var(--primitive-green-50)",
+    "700": "var(--primitive-green-500)"
+  },
+  "rose": {
+    "50": "var(--primitive-red-beryl-50)",
+    "600": "var(--primitive-red-beryl-400)"
+  },
+  "orange": {
+    "50": "var(--primitive-orange-50)",
+    "600": "var(--primitive-orange-500)"
+  },
+  "blue": {
+    "600": "var(--primitive-sapphire-ui-500)"
+  },
+  "semantic": {
+    "color-bg": "var(--bg-primary)",
+    "color-card": "var(--bg-surface)",
+    "color-border": "var(--border-thin)",
+    "color-border-hover": "var(--border-medium)",
+    "color-text": "var(--text-primary)",
+    "color-text-inverse": "var(--primitive-gray-white)",
+    "color-muted": "var(--text-muted)",
+    "color-subtle": "var(--text-dim)",
+    "surface-raised": "var(--primitive-orange-50)",
+    "surface-sunken": "var(--primitive-neutral-light-300)",
+    "color-overlay-light": "rgba(28,25,23,.07)",
+    "color-overlay-soft": "rgba(28,25,23,.09)",
+    "color-shadow-strong": "rgba(28,25,23,.14)",
+    "color-transparent": "transparent"
+  },
+  "spacingAliases": {
+    "space-1": "var(--spacing-1)",
+    "space-2": "var(--spacing-2)",
+    "space-3": "var(--spacing-3)",
+    "space-4": "var(--spacing-4)",
+    "space-5": "var(--spacing-5)",
+    "space-6": "var(--spacing-6)",
+    "space-7": "var(--spacing-odd-7, 7px)",
+    "space-8": "var(--spacing-8)",
+    "space-10": "var(--spacing-10)",
+    "space-12": "var(--spacing-12)",
+    "space-odd-3": "3px",
+    "space-odd-5": "5px",
+    "space-odd-7": "7px",
+    "space-odd-9": "9px"
+  },
+  "z": {
+    "z-mechanics": "var(--z-index-modal)",
+    "z-float": "var(--z-index-overlay)",
+    "z-tooltip": "var(--z-index-dropdown)"
+  },
+  "size": {
+    "size-tooltip": "280px",
+    "size-legend-w": "560px"
+  },
+  "typeAliases": {
+    "text-body-sm": "var(--font-size-sm)",
+    "text-caption": "var(--font-size-xs)",
+    "text-heading": "var(--font-size-lg)",
+    "text-legend": "10px",
+    "text-legend-sm": "9px",
+    "text-legend-xs": "8px",
+    "font-body": "var(--font-family-sans)",
+    "font-display": "var(--font-family-sans)",
+    "font-weight-medium": "var(--font-weight-medium)",
+    "font-weight-semi": "var(--font-weight-semibold)",
+    "font-weight-extrabold": "var(--font-weight-bold)",
+    "tracking-tight": "var(--font-tracking-tight)",
+    "tracking-wide": "var(--font-tracking-wide)",
+    "leading-tight": "var(--font-leading-tight)",
+    "leading-normal": "var(--font-leading-normal)",
+    "radius-xs": "var(--radius-xs)",
+    "radius-base": "var(--radius-md)",
+    "radius-md": "var(--radius-md)",
+    "radius-pill": "var(--radius-full)",
+    "border-sm": "var(--border-width-thin)",
+    "blur-md": "var(--glass-blur)",
+    "duration-fast": "var(--motion-duration-sm)",
+    "duration-normal": "var(--motion-duration-md)",
+    "ease-default": "var(--motion-easing-standard)",
+    "ring-primary": "var(--focus-ring)"
+  }
+}
