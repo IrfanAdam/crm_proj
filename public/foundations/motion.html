@@ -1,0 +1,26 @@
+<p class="ch-kicker">Chapter 2 · Foundations · 06 Motion</p>
+<h2 class="ch-hero">Fast for response. Spring for delight.</h2>
+<p class="ch-lede meta">Motion answers touch in 150ms — anything slower feels broken. Delight gets the spring: overshoot, tilt, elastic scroll, and only in visualizations and ceremony. Chrome moves instantly or not at all, and every animation surrenders to reduced-motion.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Respond in 150</b> — presses, toggles, tab switches ride <code>--transition-fast</code>.</p><p class="ch-reject">Reject: a 400ms button press — feedback that arrives late is noise.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Spring is earned</b> — overshoot and elastic belong to funnel, gems and ceremony.</p><p class="ch-reject">Reject: a springy dropdown — delight spent on chrome is delight wasted.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>One easing family</b> — standard in, spring out; elastic only for scroll edges and tilt.</p><p class="ch-reject">Reject: a custom cubic-bezier per component — motion must rhyme.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Reduced-motion wins</b> — instant states, no tilt, no overshoot when preferred.</p><p class="ch-reject">Reject: any animation that cannot be switched off — access is not optional.</p></div></li>
+</ul>
+<h3>Token table</h3>
+<table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
+<tr><td><code>--transition-fast</code></td><td>150 standard</td><td>presses, toggles, tabs</td></tr>
+<tr><td><code>--transition-normal</code></td><td>250 standard</td><td>panels, expands</td></tr>
+<tr><td><code>--transition-spring</code></td><td>400 spring</td><td>ceremony, funnel, gems</td></tr>
+<tr><td><code>--motion-duration-xs–xl</code></td><td>100 / 150 / 250 / 400 / 600</td><td>raw scale behind transitions</td></tr>
+<tr><td><code>--motion-easing-standard / spring / elastic</code></td><td>0.4,0,0.2,1 / 0.25,1,0.5,1 / overshoot</td><td>the only three curves</td></tr>
+<tr><td><code>--motion-translate-elastic-overshoot</code></td><td>12px</td><td>scroll-edge overshoot</td></tr>
+</tbody></table>
+<h3>Specimens — the three speeds</h3>
+<div class="row" style="margin-top:4px"><button class="btn btn--primary" style="transition:var(--transition-fast)">fast 150</button><button class="btn btn--secondary" style="transition:var(--transition-normal)">normal 250</button><button class="btn btn--primary" style="transition:var(--transition-spring)">spring 400</button><span class="meta">press and feel the difference</span></div>
+<h3>Contrast — motion buttons carry text</h3>
+<p class="meta">Demo buttons above are white on <code>--role-action</code> 5.91 AA — motion never excuses an unreadable state.</p>
+<h3>Snippet</h3>
+<p class="meta"><code>transition:var(--transition-fast)</code> for response · <code>transition:var(--transition-spring)</code> for delight</p>
+<h3>Related</h3>
+<p class="meta">Funnel and Elastic scroll — spring in situ · Reduced-motion — the instant fallback · Gems — ceremony timing</p>
