@@ -71,6 +71,15 @@
   color: var(--text-primary);
   margin: 0 0 4px;
 }
+/* — Section — staleness badge — */
+.atlas-node[data-stale="true"]{stroke:var(--signal);stroke-dasharray:6 4}
+.atlas-stale{font-size:11px;font-weight:700;fill:var(--signal)}
+/* — Section — empty / error — */
+.atlas__canvas:empty::after{content:'Loading atlas…';display:block;padding:var(--spacing-6);color:var(--text-secondary);font-size:var(--font-size-sm)}
+.atlas__canvas[data-state="error"]::after{content:'Atlas failed to load — regen and reload.';display:block;padding:var(--spacing-6);color:var(--text-secondary)}
+/* — Section — reduced motion + print — */
+@media (prefers-reduced-motion:reduce){.atlas__canvas svg *{transition:none}}
+@media print{.atlas__nav{display:none}.atlas__canvas{overflow:visible;min-height:0}}
 /* — Section — narrow viewport — */
 @media (max-width: 900px) {
   .atlas__nav {

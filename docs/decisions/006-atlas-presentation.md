@@ -1,0 +1,7 @@
+# 006 — Atlas presentation decisions (Phase 4)
+
+- Context: the atlas needed a substrate for ~60 essence nodes with sharp type, keyboard/a11y selection, stills for review, and a freshness story as the product moves.
+- Options: (a) canvas 2D — rejected: blurry type on zoom, no DOM a11y, stills need extra capture code; (b) reuse the device/ops render pipeline — rejected: atlas is a meta-view, not app UI, and must never import device/os/glass; (c) standalone SVG module — chosen.
+- Decision: `src/arch/atlas-render.js` builds one SVG (bottom-center→top-center elbow edges, three edge kinds: `contains`/`governs`/`composes`); `atlas-layout.js` places lanes deterministically (sorted ids, fixed lane box); per-lens detail lives in `lens-{logic,components,ia}.js`; resolution L1/L2/L3 gates detail depth via `scripts/arch-atlas.manual.json`.
+- Why: SVG gives selectable text, focusable nodes, and print-clean stills for free; deterministic layout means zero layout drift between regens (only content changes); three edge kinds are the smallest vocabulary that answers logic/components/IA questions.
+- Consequences: `verify:atlas` (`--check` + source-mtime staleness) runs inside `npm test`, so any product edit touching an atlas source fails CI until `npm run gen:atlas`; stale nodes render a `data-stale` badge path (tested synthetically); L2/L3 detail stays a generator concern, never hand-edited JSON.

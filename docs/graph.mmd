@@ -57,6 +57,15 @@ graph TD
     motion_elastic-scroll[elastic-scroll.js]
     motion_tilt-card[tilt-card.js]
   end
+  arch_atlas-render --> arch_atlas-layout
+  arch_atlas --> arch_atlas.json
+  arch_atlas --> arch_atlas-layout
+  arch_atlas --> arch_atlas-render
+  arch_atlas --> arch_atlas-state
+  arch_atlas --> arch_lens-logic
+  arch_atlas --> arch_lens-components
+  arch_atlas --> arch_lens-ia
+  arch_atlas --> arch_atlas-viewport
   device_frame --> os_status-bar
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices

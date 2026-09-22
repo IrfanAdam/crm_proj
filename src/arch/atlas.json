@@ -1,12 +1,56 @@
 {
   "meta": {
-    "generatedAt": "2026-09-22T09:01:07.471Z",
+    "generatedAt": "2026-09-22T09:11:52.502Z",
     "resolution": "L1",
     "lenses": [
       "logic",
       "components",
       "ia"
-    ]
+    ],
+    "sources": {
+      "src/logic/funnel-machine.js": 1790068248814,
+      "src/logic/temporal.js": 1789570111928,
+      "src/logic/time-scale.js": 1789994153149,
+      "src/logic/transient.js": 1789570111929,
+      "src/components/Accordion": 1789568868441,
+      "src/components/Avatar": 1789567383730,
+      "src/components/Badge": 1789567383662,
+      "src/components/Breadcrumbs": 1789568868427,
+      "src/components/Button": 1789567394837,
+      "src/components/Checkbox": 1789567799670,
+      "src/components/Chip": 1789567383646,
+      "src/components/FunnelCard": 1789569517270,
+      "src/components/FunnelGlyph": 1789569517256,
+      "src/components/GemReward": 1789570253380,
+      "src/components/GoalBar": 1789569517289,
+      "src/components/Icon": 1789904927250,
+      "src/components/KpiStat": 1789569511416,
+      "src/components/ListRow": 1789569511398,
+      "src/components/OpportunityCard": 1789908103234,
+      "src/components/Overlay": 1789568876101,
+      "src/components/Pagination": 1789568868452,
+      "src/components/ProfileCard": 1789569517247,
+      "src/components/Radio": 1789567799698,
+      "src/components/Search": 1789567793766,
+      "src/components/Select": 1789567793789,
+      "src/components/Slider": 1789567799708,
+      "src/components/Sparkline": 1789569517321,
+      "src/components/StatusPill": 1789567383687,
+      "src/components/Switch": 1789567799697,
+      "src/components/TabBar": 1789904150316,
+      "src/components/Table": 1789569511404,
+      "src/components/Tabs": 1789568868416,
+      "src/components/TextInput": 1789567793771,
+      "src/components/Textarea": 1789567799658,
+      "src/components/Timeline": 1789569511389,
+      "src/components/Toolbar": 1789904156553,
+      "index.html": 1790068270043,
+      "src/glass/BottomDock.jsx": 1790063779559,
+      "src/patterns/MonitorScreen": 1789570118710,
+      "src/patterns/OperateScreen": 1789627036004,
+      "src/patterns/OppsHome": 1790063898579,
+      "src/patterns/ReportsMatrix": 1789570122013
+    }
   },
   "nodes": [
     {

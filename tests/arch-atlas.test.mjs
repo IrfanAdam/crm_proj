@@ -40,7 +40,17 @@ const depth = (id, seen) => {
 };
 ok('ia tree depth ≥3', !!a && depth('app', new Set()) >= 3);
 ok('ia every node carries a contract', !!a && a.nodes.filter((n) => n.lens === 'ia').every((n) => (n.detail || '').length > 0));
+import { buildAtlas } from '../scripts/generate-arch-atlas.mjs';
+import { renderAtlas } from '../src/arch/atlas-render.js';
 import { execSync } from 'node:child_process';
+// — Section — Phase 4 resolution ladder + staleness —
+const l2 = buildAtlas('L2');
+ok('atlas L2 enriches every node with a contract', l2.nodes.length > 0 && l2.nodes.every((n) => n.detail.includes('contract:')));
+const l3 = buildAtlas('L3');
+ok('atlas L3 appends file:line impl links', l3.nodes.every((n) => /impl: \S+:\d+/.test(n.detail)));
+ok('atlas meta records source mtimes', !!a && !!a.meta.sources && typeof a.meta.sources['src/logic/funnel-machine.js'] === 'number');
+const staleSvg = renderAtlas([{ id: 'x', lens: 'logic', title: 'X', source: 's.js', detail: 'd', stale: true }], new Map([['x', { x: 0, y: 0, w: 280, h: 48 }]]), []);
+ok('atlas stale nodes carry a visible badge', staleSvg.includes('data-stale="true"') && staleSvg.includes('atlas-stale'));
 for (const comp of ['Avatar', 'Chip', 'Button']) {
   let truth = 0;
   try {
