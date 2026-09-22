@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:16:41.087Z",
+  "generated": "2026-09-22T09:26:09.532Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "170e1f0",
+      "full": "170e1f0f8c4bd924f6fe544b3128a3130160dfcd",
+      "date": "2026-09-22",
+      "subject": "fix: atlas code truth moves to left rail as tab, full-width lens nav",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "208f0d0",
+      "full": "208f0d0c06a15f258476bd8e6a9817c75427d21b",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "593aad2",
       "full": "593aad28a98d66afdde75ef0ce9c5135000387e2",
