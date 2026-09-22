@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T09:57:04.683Z",
+  "generated": "2026-09-22T10:00:04.093Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "64b5df3",
+      "full": "64b5df30e0cb41d400920c0d9d9a2efdc0771f15",
+      "date": "2026-09-22",
+      "subject": "fix: dynamic viewport units stop Safari toolbar resize nudging layout",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "10a5e58",
+      "full": "10a5e58d5d5ba7be802dcd9114945109e91f5c8b",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "ab2fb68",
       "full": "ab2fb6848b6bc97f429d824020315e6b418a82fd",
