@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node scripts/build-tokens.mjs && vite build",
     "lint:tokens": "node scripts/lint-tokens.mjs",
-    "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs",
+    "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node tests/funnel-machine.test.mjs && node tests/morph-timing.test.mjs && node tests/temporal.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs",
     "ds:track": "node scripts/ds-track.mjs",
     "plan:names": "node scripts/plan-names.mjs",
     "dev": "vite --port 5173 --host 0.0.0.0",
