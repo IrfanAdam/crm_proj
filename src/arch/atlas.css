@@ -82,12 +82,6 @@
 /* — Section — reduced motion + print — */
 @media (prefers-reduced-motion:reduce){.atlas__canvas svg *{transition:none}}
 @media print{.atlas__nav{display:none}.atlas__canvas{overflow:visible;min-height:0}}
-/* — Section — rail truth tab (code truth disclosure) — */
-.atlas__truth{width:100%;padding:var(--spacing-4)}
-.atlas__truth>summary{cursor:pointer;font-size:var(--font-size-sm);font-weight:600;color:var(--text-secondary);border-radius:var(--radius-md);padding:var(--spacing-2) var(--spacing-3)}
-.atlas__truth[open]>summary{color:var(--text-primary);background:var(--bg-surface-elevated)}
-.atlas__truth ul{margin:8px 0 0 18px;line-height:1.8}
-.atlas__truth p{margin-top:8px;line-height:1.6}
 /* — Section — narrow viewport — */
 @media (max-width: 900px) {
   .atlas__nav {

@@ -48,13 +48,8 @@
         <button type="button" role="treeitem" aria-selected="true" data-lens="logic">Product Logic</button>
         <button type="button" role="treeitem" aria-selected="false" data-lens="components">Components</button>
         <button type="button" role="treeitem" aria-selected="false" data-lens="ia">Information Arch</button>
+        <button type="button" role="treeitem" aria-selected="false" data-lens="truth">Code Truth</button>
       </nav>
-      <details class="arch atlas__truth">
-        <summary>Code truth</summary>
-        <p>Extract-only refactor: each layer owns its modules behind documented contracts; geometry flows one way from <code>src/workspace/devices.js</code>.</p>
-        <ul><li><b>Mounts:</b> <code>index.html</code> — stylesheet links + <code>#device #os-status #os-edges #app-content</code> only</li><li><b>Shell:</b> <code>src/shell/*</code> — workspace chrome, canvas viewport, launcher</li><li><b>Device:</b> <code>src/device/*</code> — frame + geometry, radii/bezel/squircle</li><li><b>OS:</b> <code>src/os/*</code> — live clock/battery status bar, notch variants, home indicator, edge materials</li><li><b>Glass:</b> <code>src/glass/*</code> — shell pills vs device dock/appbar; lens|slices engines</li><li><b>Patterns:</b> <code>src/patterns/*</code> — app screens, <code>mount(page)</code>, no OS/device knowledge</li><li><b>Logic:</b> <code>src/logic/*</code> — pure state machines, zero DOM, unit-tested</li><li><b>DS:</b> <code>src/components/*</code> — gallery-proven single source for avatar/card/kpi/meta</li><li><b>Rules:</b> patterns → components/tokens only; glass → tokens + <code>app-tab</code>; os/device/shell never import patterns; logic never touches DOM</li><li><b>Flows:</b> <a href="docs/flows/morph-pipeline.mmd">morph pipeline</a> · <a href="docs/flows/tab-bridge.mmd">tab bridge</a> · <a href="docs/flows/glass-engines.mmd">glass engines</a> · <a href="docs/graph.mmd">module graph</a></li></ul>
-        <p class="meta" style="margin-top:16px">Platform-specific tuning (blur strength, sheen, glow) can be done per OS later via <code>optics</code> — geometry stays at points × scale.</p>
-      </details>
       <div class="ws-card">
         <h3 class="ws-card__title">Architecture</h3>
         <p class="ws-card__desc">Portable shell — same markup/styles port to any framework. Tokens are single-source, Glass islands wrap chrome.</p>

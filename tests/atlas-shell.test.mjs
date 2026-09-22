@@ -9,14 +9,14 @@ const ok = (name, cond) => {
 const html = readFileSync('index.html', 'utf8');
 ok('atlas nav mount with tree role', html.includes('id="atlas-nav"') && html.includes('role="tree"'));
 ok('atlas canvas mount with img role', html.includes('id="atlas-canvas"') && html.includes('role="img"'));
-for (const lens of ['logic', 'components', 'ia']) ok(`atlas nav offers ${lens} lens`, html.includes(`data-lens="${lens}"`));
+for (const lens of ['logic', 'components', 'ia', 'truth']) ok(`atlas nav offers ${lens} lens`, html.includes(`data-lens="${lens}"`));
 ok('atlas detail mount', html.includes('id="atlas-detail"'));
 ok('atlas composer script linked', html.includes('src/arch/atlas.js'));
 ok('atlas nav lives in left arch stack', html.indexOf('id="atlas-nav"') > html.indexOf('id="ws-arch-stack"') && html.indexOf('id="atlas-nav"') < html.indexOf('id="panel-architecture"'));
 const panel = html.slice(html.indexOf('id="panel-architecture"'));
 ok('atlas canvas fills right panel', panel.includes('id="atlas-canvas"') && !panel.includes('data-lens='));
 const rail = html.slice(html.indexOf('id="ws-arch-stack"'), html.indexOf('id="panel-architecture"'));
-ok('atlas code truth lives in left rail', rail.includes('atlas__truth') && !panel.includes('atlas__truth'));
+ok('atlas truth is a lens tab, not an accordion', rail.includes('data-lens="truth"') && !html.includes('<details'));
 if (fails) {
   console.error(`✗ atlas-shell — ${fails} fail`);
   process.exit(1);
