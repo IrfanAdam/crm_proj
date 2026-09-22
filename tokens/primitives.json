@@ -260,5 +260,14 @@
     "blur": "12px",
     "blur-sm": "8px",
     "saturate": "135%"
+  },
+  "type": {
+    "title": "var(--font-size-3xl)",
+    "title-tracking": "var(--font-tracking-tight)",
+    "compact": "var(--font-size-md)",
+    "card": "var(--font-size-xl)",
+    "body": "var(--font-size-md)",
+    "meta": "var(--font-size-sm)",
+    "micro": "var(--font-size-xs)"
   }
 }

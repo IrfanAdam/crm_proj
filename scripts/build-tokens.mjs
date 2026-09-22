@@ -8,6 +8,7 @@ const ag=p['aliases-gray'], as=p['aliases-sapphire'], agm=p['aliases-gem'];
 const font=`--font-family-sans:${p.font['family-sans']}; `+g('font-size',{xs:p.font.xs,sm:p.font.sm,md:p.font.md,lg:p.font.lg,xl:p.font.xl,'2xl':p.font['2xl'],'3xl':p.font['3xl']})+' '+g('font-weight',{regular:p.font.regular,medium:p.font.medium,semibold:p.font.semibold,bold:p.font.bold})+' '+g('font-leading',{tight:p.font['leading-tight'],snug:p.font['leading-snug'],normal:p.font['leading-normal'],relaxed:p.font['leading-relaxed']})+' '+g('font-tracking',{tight:p.font['tracking-tight'],normal:p.font['tracking-normal'],wide:p.font['tracking-wide']});
 let out=`/* GENERATED — do not hand-edit. Source: tokens/*.json. Regenerate: npm run build. */\n:root{\n`;
 out+=` ${font}\n`;
+if(p.type) out+=` ${g('type',p.type)}\n`;
 out+=` ${g('spacing',p.spacing)}\n`;
 out+=` ${g('radius',p.radius)}\n`;
 out+=` ${g('border-width',p.borderWidth)}\n`;
