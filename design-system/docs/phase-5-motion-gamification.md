@@ -30,9 +30,7 @@ reward surfaces use `--radius-xl/2xl` + `24px` pad (`gem-reward-*` in `DESIGN.md
   borders / Stand Out / Break Layout` — ref-10).
 - Iridescent-cube brand surface; ALPHA voice
   (`Only CRM stack you need / data in here don't lie` — ref-12, poster).
-- Constraint: this decoration lives in brand, onboarding, and ceremony
-  surfaces — never inside Operate/Monitor screens, which stay flat and quiet
-  (hairline `--border-thin` + `--bg-surface`, no gradients/shadows).
+- Constraint: decoration (orbs, iridescence, Spline gems, ceremony copy) stays on brand, onboarding, and reward surfaces. Glass on chrome is a material, not decoration — dock, status edge, and sheet scrim may use glass. Operate *content* stays paper + hairline (`--border-thin` + `--bg-surface`), no gradients/shadows. Amends the 2026-09-16 flat-Operate sentence (see `visual-language.md` 2026-09-22).
 
 ## Guardrails
 

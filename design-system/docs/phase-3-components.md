@@ -19,7 +19,7 @@ Witnesses: `../references/ref-01-opportunities.png`, `ref-02-reports.png`,
 
 ## Navigation + map (locked, 2026-09-16)
 
-- **Bottom tab** (`5` glyphs): single active dot below (`--primitive-ink` / `--primitive-gray-white` in dark), no labels; active state is position-only, never color-fill; pill indicator (`--radius-full`).
+- **Bottom dock** (product, 3 Phosphor tabs: Home `House`, Leads `Users`, Opportunities `Handshake`): glass capsule (`color-mix` + `blur`), no visible labels, signal on the selected icon (`--signal` fill). The ref-01 5-glyph position-only dot remains the witness of the original shell — do not restore it.
 - **Map prospect module:** light map, clustered count badges (`1`, `2` — `--primitive-neutral-dark-600` on white), centered `3 prospects nearby →` pill (`--radius-full`, `--bg-surface`, `--text-primary`, `12px` pad), Sapphire recenter control (`--primitive-sapphire-ui-400`).
 
 ## Guardrails

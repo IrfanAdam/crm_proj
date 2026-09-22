@@ -28,3 +28,5 @@ Add new ones; never rename or delete rows.
 | ref-10-mood-blobs.png | Pink gradient spheres trio | mood | 5 | brand-only |
 | ref-11-mood-bubble-cards.png | Bubble editorial + light/dark CRM cards | mood + mock | 3, 5 | dark-wrapper proof |
 | ref-12-mood-alpha-poster.png | ALPHA iridescent-cube poster, brand voice | mood | 5 | — |
+| (no new file) | Prototype dock supersedes ref-01 tab | decision | 3, 5 | 2026-09-22. 3 tabs, glass capsule. ref-01 row stays. |
+| (no new file) | Glass is chrome, not content | decision | 5 | 2026-09-22. Amends the flat-Operate sentence. |
