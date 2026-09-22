@@ -58,8 +58,15 @@
     "measure-soft": "var(--primitive-amethyst-200)",
     "measure-strong": "var(--primitive-amethyst-500)",
     "score": "var(--primitive-red-beryl-400)",
+    "score-soft": "var(--primitive-red-beryl-200)",
+    "score-strong": "var(--primitive-red-beryl-500)",
     "warn": "var(--primitive-citrine-700)",
-    "mark": "var(--primitive-amethyst-500)"
+    "warn-soft": "var(--primitive-citrine-500)",
+    "warn-strong": "var(--primitive-citrine-800)",
+    "mark": "var(--primitive-amethyst-500)",
+    "mark-soft": "var(--primitive-amethyst-300)",
+    "mark-strong": "var(--primitive-amethyst-600)",
+    "action-strong": "var(--primitive-sapphire-ui-600)"
   },
   "type": {
     "title": "var(--font-size-3xl)",
