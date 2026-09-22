@@ -14,12 +14,7 @@ export function TopPills() {
     if (leftProto) leftProto.hidden = active !== "prototype";
     if (leftArch) leftArch.hidden = active !== "architecture";
     document.querySelectorAll(".pill-tab").forEach((b) => {
-      const on = b.dataset.tab === active;
-      b.setAttribute("aria-selected", String(on));
-      if (on) {
-        b.setAttribute("data-transit", "true");
-        setTimeout(() => b.removeAttribute("data-transit"), 280);
-      } else b.removeAttribute("data-transit");
+      b.setAttribute("aria-selected", String(b.dataset.tab === active));
     });
     history.replaceState(null, "", `#${active}`);
   }, [active]);
