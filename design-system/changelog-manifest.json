@@ -1,13 +1,38 @@
 {
-  "generated": "2026-09-22T08:05:17.416Z",
+  "generated": "2026-09-22T08:34:14.621Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md",
     "2026-09-16_203500-ds-polish.md",
+    "2026-09-22_082844-arch-atlas.md",
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "b69b1b4",
+      "full": "b69b1b42db25098e3fa9270afe9b518e56ef6ddb",
+      "date": "2026-09-22",
+      "subject": "feat: atlas generator scans logic/components/IA to manifest",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "d6e0f15",
+      "full": "d6e0f151949b49d8719587fed85eee5de5cfa8ef",
+      "date": "2026-09-22",
+      "subject": "test: atlas schema skeleton + plan names",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "56ed59c",
+      "full": "56ed59cf89fd95bcf27832f2a478a8c34f82c5fe",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest [gallery back-link]",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "ced2627",
       "full": "ced2627e94d1ef8c431e3ccddbc730edc8e6eed8",
