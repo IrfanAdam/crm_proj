@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
-import { SLICES, maskFor, transformFor } from "./slices-spec.js";
+import { SLICES, transformFor } from "./slices-spec.js";
+import { buildCopies } from "./slice-bands.jsx";
 import { getZoom, toLayout } from "./rect-zoom.js";
 
 /* WebKit's glass. Safari won't run the SDF displacement filter on this element, so the
@@ -44,33 +45,11 @@ export default function DockSlices({ source = "#app-content" }) {
     const lens = lensRef.current, src = document.querySelector(source);
     if (!lens || !src) return;
     lens.textContent = "";
-    const build = (slice) => {
-      const node = src.cloneNode(true);
-      node.removeAttribute("id");
-      node.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
-      node.setAttribute("aria-hidden", "true");
-      node.inert = true;
-      const copy = document.createElement("div");
-      copy.className = "docklens__copy";
-      copy.appendChild(node);
-      if (slice) {
-        const band = document.createElement("div");
-        band.className = "docklens__slice";
-        band.dataset.band = slice.band;
-        Object.assign(band.style, maskFor(slice));
-        if (slice.fringe) band.style.filter = slice.fringe;
-        band.appendChild(copy);
-        lens.appendChild(band);
-      } else {
-        lens.appendChild(copy);
-      }
-      return copy;
-    };
-    copies.current = [build(null), ...SLICES.map(build)];
+    copies.current = buildCopies(lens, src);
     place();
     const rebuild = () => {
       lens.textContent = "";
-      copies.current = [build(null), ...SLICES.map(build)];
+      copies.current = buildCopies(lens, src);
       place();
     };
     window.addEventListener("app-tab", rebuild);

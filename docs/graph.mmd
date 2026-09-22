@@ -22,6 +22,7 @@ graph TD
     glass_main[main.jsx]
     glass_optics[optics.js]
     glass_rect-zoom[rect-zoom.js]
+    glass_slice-bands[slice-bands.jsx]
     glass_slices-spec[slices-spec.js]
   end
   subgraph patterns
@@ -67,10 +68,12 @@ graph TD
   glass_DockLens --> glass_optics
   glass_DockLens --> glass_rect-zoom
   glass_DockSlices --> glass_slices-spec
+  glass_DockSlices --> glass_slice-bands
   glass_DockSlices --> glass_rect-zoom
   glass_lens-filter --> glass_optics
   glass_main --> shell_top-pills
   glass_main --> glass_BottomDock
+  glass_slice-bands --> glass_slices-spec
   glass_slices-spec --> glass_optics
   patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
   patterns_OppsHome_face-handoff --> patterns_OppsHome_morph-timing
