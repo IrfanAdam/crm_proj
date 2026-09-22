@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T10:00:04.093Z",
+  "generated": "2026-09-22T10:05:21.622Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -9,6 +9,22 @@
     "2026-09-22_122850-museum-refactor.md"
   ],
   "commits": [
+    {
+      "sha": "889e064",
+      "full": "889e064b2237dac858136a772462b2d9452f00e8",
+      "date": "2026-09-22",
+      "subject": "fix: drop tab-switch shadow pulse that read as resize nudge",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "5412450",
+      "full": "5412450906d75c43f191607f9277003748ecd189",
+      "date": "2026-09-22",
+      "subject": "chore(ds): track refresh — manifest",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "64b5df3",
       "full": "64b5df30e0cb41d400920c0d9d9a2efdc0771f15",
