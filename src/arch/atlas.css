@@ -55,9 +55,7 @@
 .atlas__canvas svg {
   display: block;
   width: 100%;
-  max-width: 560px;
   height: auto;
-  margin: 0 auto;
 }
 .atlas__page{padding:var(--spacing-4) var(--spacing-2);max-width:720px;margin:0 auto}
 .atlas__page h3{font-size:var(--font-size-md);color:var(--text-primary);margin:0 0 4px}
