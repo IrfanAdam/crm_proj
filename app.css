@@ -13,7 +13,6 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 #glass-bottom{background:transparent;border:none;padding:0}
 /* OS: status bar lives in src/os/status-bar.css */
 /* app chrome inside device — transparent over the scroll (glass comes from the edge material) */
-.avatar{width:28px;height:28px;border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 /* scrollable content — full viewport top to bottom; both edges dissolve via blur, nothing fades or slices */
 .device__content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;background:var(--bg-primary);-webkit-overflow-scrolling:touch;padding-top:54px;padding-bottom:72px}
 /* app surface: never select text or start a native image/text drag inside the screen —
@@ -23,14 +22,6 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 .device .tabbar,.device .tabbar *{cursor:grab}
 .device__content::-webkit-scrollbar{width:0}
 .pad{padding:var(--spacing-4)}
-.kpi-row{display:flex;gap:var(--spacing-3)}
-.kpi{flex:1;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-3)}
-.kpi__label{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
-.kpi__value{font-size:var(--font-size-xl);font-weight:700;margin-top:4px}
-.kpi__delta{font-size:var(--font-size-xs);color:var(--signal-teal);margin-top:2px}
-.card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-4)}
-.meta{font-size:var(--font-size-xs);color:var(--text-muted)}
-.empty{border:1px dashed var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8) var(--spacing-4);text-align:center;color:var(--text-muted)}
 /* OS: home indicator + edge materials live in src/os/ */
 /* arch panel */
 .arch{max-width:720px;width:100%;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-lg);padding:var(--spacing-8);text-align:left}
