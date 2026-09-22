@@ -40,26 +40,27 @@
   outline: 2px solid var(--signal);
   outline-offset: 2px;
 }
-/* — Section — canvas content (page + inline selection, no nested cards) — */
+/* — Section — canvas content (borderless; the section panel is the one container) — */
 .atlas__canvas {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-thin);
-  border-radius: var(--radius-lg);
-  min-height: 480px;
+  background: transparent;
+  border: 0;
   overflow: auto;
   width: 100%;
   max-width: 1100px;
+  padding: var(--spacing-6);
 }
 .atlas__canvas svg {
   display: block;
   width: 100%;
+  max-width: 560px;
   height: auto;
+  margin: 0 auto;
 }
-.atlas__page{padding:var(--spacing-8);max-width:720px}
+.atlas__page{padding:var(--spacing-4) var(--spacing-2);max-width:720px;margin:0 auto}
 .atlas__page h3{font-size:var(--font-size-md);color:var(--text-primary);margin:0 0 4px}
 .atlas__page p,.atlas__page ul{font-size:var(--font-size-sm);color:var(--text-secondary);line-height:1.7}
 .atlas__page ul{margin:12px 0 0 18px}
-.atlas__sel{border-top:1px solid var(--border-thin);margin:var(--spacing-4) var(--spacing-8);padding-top:var(--spacing-4);font-size:var(--font-size-sm);color:var(--text-secondary)}
+.atlas__sel{border-top:1px solid var(--border-thin);margin:var(--spacing-4) auto 0;padding:var(--spacing-4) var(--spacing-2) 0;max-width:560px;font-size:var(--font-size-sm);color:var(--text-secondary)}
 .atlas__sel h3{font-size:var(--font-size-md);color:var(--text-primary);margin:0 0 4px}
 /* — Section — staleness badge — */
 .atlas-node[data-stale="true"]{stroke:var(--signal);stroke-dasharray:6 4}

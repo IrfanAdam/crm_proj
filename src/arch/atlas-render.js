@@ -22,7 +22,7 @@ function edgePath(e, pos) {
 function nodeCard(n, pos) {
   const p = pos.get(n.id);
   if (!p) return '';
-  const sub = (n.detail || '').split(',')[0].slice(0, 42);
+  const sub = (n.detail || '').split(',')[0].slice(0, 30);
   const stale = n.stale ? `<text class="atlas-stale" x="${p.x + 14}" y="${p.y + p.h - 8}">⚠ stale — regen atlas</text>` : '';
   return `<g><title>${esc(n.title)} — ${esc(n.source)}</title><rect class="atlas-node" data-id="${esc(n.id)}"${n.stale ? ' data-stale="true"' : ''} x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="10" tabindex="0" role="button" aria-label="${esc(n.title)}${n.stale ? ' (stale)' : ''}"/><text class="atlas-label" x="${p.x + 14}" y="${p.y + 20}">${esc(n.title)}</text><text class="atlas-sub" x="${p.x + 14}" y="${p.y + 36}">${esc(sub || n.source)}</text>${stale}</g>`;
 }
