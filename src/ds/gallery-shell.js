@@ -1,5 +1,7 @@
 /* ADAM/DS — src/ds/gallery-shell.js · gallery frames: language + docs fetch, tabs, sort, accordion, tooltip, signal */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-3] · shell behavior extracted from gallery.html (Task 9).
+// — Language frame (served from public/ at root by Vite) —
+fetch('language-panel.html').then(r=>r.text()).then(h=>{document.getElementById('stage').insertAdjacentHTML('afterbegin',h)});
 // — Foundation articles —
 document.querySelectorAll('[data-doc]').forEach(el=>{fetch(el.dataset.doc).then(r=>r.text()).then(h=>{el.innerHTML=h;document.dispatchEvent(new Event('ds:doc'))})});
 // — Sortable tables —
