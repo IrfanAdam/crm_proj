@@ -607,6 +607,17 @@ render a stale fragment against fresh CSS.
 **Commit:** `fix(ds): stage owns layer anchoring, panel fetches bypass cache [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 75b49e3 · 85c2a3f · 4180310 · 72f12b1 · ea8b760 · 9aa879b · Task 12M · phase-4.*
 
+### Task 12N: The gallery works in the build it deploys ✓ done
+
+**Objective:** a deployment serves `dist/`, not the dev server — the gallery has to behave identically there. Vite rewrites module scripts and stylesheets referenced from HTML but leaves *classic* `<script src="src/…">` tags alone, so all 12 of the gallery's classic scripts 404'd in `dist/`. `gallery-shell.js` never executed, the `.dnav` sidebar rendered with no click handlers, and every panel stayed empty ("none of the sidebar items are clickable in the deployment").
+
+**Files:** `vite.config.js` — new `rawSourceRefsPlugin`: at `closeBundle`, walk the built HTML, collect every `src/…` still referenced by a `src=`/`href=`, and copy those files into `dist/` verbatim at the same path.
+
+**Verify:** `npm test` + `npm run build` green (`raw-source-refs — copied 12 raw source files into dist/`). Serving `dist/` statically and driving Chromium: `gallery.html` → `visiblePanels ["overlays"]`, clicking `Color` → `visiblePanels ["color"]` + `hash #color`; `gallery.html`, `preview.html`, `index.html`, `app.html` all load with zero local 404s (only the third-party `my.spline.design` embed 403s, which it also does from other origins).
+
+**Commit:** `fix(build): copy raw source refs into dist so the gallery's classic scripts load`
+*Shipped in 2a77584 · Task 12N · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
