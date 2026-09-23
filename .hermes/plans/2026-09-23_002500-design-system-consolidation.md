@@ -602,9 +602,10 @@ render a stale fragment against fresh CSS.
 - Follow-up: the stage scope also pins `position:absolute` on the anchored floats, so no stale base rule can unanchor a menu or popover.
 - Follow-up: `gallery.html?open=<id>` deep-links a specimen's open layer (retries on `ds:doc` + `DOMContentLoaded`), so an open state can be checked without a click and verified in a real browser.
 - Follow-up: the open drawer takes its lane (`.ov-stage:has(.drawer--open)` pads right by the drawer's width), so the in-flow trigger stays centred in the dotted space that's left and glides over in step with the slide.
-**Verify:** `npm test` + `npm run build` green; drawer flush right (1px border gap) and full stage height at 1440/1100/820/640; every specimen's trigger centred on both axes at all widths; menu/popover/toast/tooltip interactions unchanged; `?open=ov-drawer#overlays` opens docked-right in **WebKit and Chromium** (Playwright, rightGap 1; trigger↔lane centre 0 when open, 0 on the stage when closed; padding 24→223→363→408 through the 400ms spring).
+- Follow-up: that lane shift was reverted — the trigger's position animation was noise on top of the drawer's own slide. Root cause of the "jitter / enters from the left" report: the engine's auto-focus of the dialog's first focusable scrolled the stage (`overflow:hidden` is still a scroll container), shifting the whole stage content and scrolling back. Fixed at the source: `focus({preventScroll:true})` in the engine + `overflow:clip` on the demo stage, so nothing can scroll a layer into view.
+**Verify:** `npm test` + `npm run build` green; drawer flush right (1px border gap) and full stage height at 1440/1100/820/640; every specimen's trigger centred on both axes at all widths; menu/popover/toast/tooltip interactions unchanged; `?open=ov-drawer#overlays` opens docked-right in **WebKit and Chromium** (Playwright, rightGap 1); per-frame rAF sampling of the entrance — drawer x 1374→1324→…→998 monotonic leftward with 0 rightward steps and the trigger's x constant at 785 through the whole slide.
 **Commit:** `fix(ds): stage owns layer anchoring, panel fetches bypass cache [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in 75b49e3 · 85c2a3f · 4180310 · 72f12b1 · Task 12M · phase-4.*
+*Shipped in 75b49e3 · 85c2a3f · 4180310 · 72f12b1 · ea8b760 · 9aa879b · Task 12M · phase-4.*
 
 ---
 
