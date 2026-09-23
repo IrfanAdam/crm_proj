@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:27:01.839Z",
+  "generated": "2026-09-23T13:31:40.969Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "57b7f73",
+      "full": "57b7f73f33d8ed97ad5d4c8dea9bf2a3ab189748",
+      "date": "2026-09-23",
+      "subject": "feat(ds): 8 agents refine panels, all frames intro-first with live specimens after tenets",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "7b66556",
+      "full": "7b66556b9ced797ec6dcde9cd27b3d86f6be2e03",
+      "date": "2026-09-23",
+      "subject": "chore(ds): close Task 12D — shipped da10664, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "da10664",
       "full": "da10664d319fd13df97883bc63d01f31353a3d6d",
@@ -1443,13 +1459,10 @@
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
     "M src/arch/atlas.js",
-    "M src/arch/atlas.json",
     "D src/arch/lens-decisions.js",
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/components/Breadcrumbs/breadcrumbs.css",
-    "M src/components/Slider/slider.css",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
