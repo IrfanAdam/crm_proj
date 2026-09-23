@@ -1,0 +1,48 @@
+<div class="tp">
+<p class="ch-kicker">Components · Actions · 01 Button</p>
+<h2 class="ch-hero">One primary per row. Never a second.</h2>
+<p class="ch-lede meta">Button carries the row's single high-emphasis action — the tap the whole row exists for. Everything else in the row steps down to secondary, tonal, or ghost. Use it when the user commits, advances, or confirms; reach for a chip when they filter, a link when they navigate away.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — frame · label · icon · spinner.</b> 44px frame holds size across variants with a transparent 1px border; label never wraps; optional leading <code>.btn__icon</code>; loading swaps in <code>.btn__spinner</code> without moving the frame.</p><p class="ch-reject">Reject: a button that changes width when it starts loading — layout shift reads as breakage.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Emphasis is a ladder, not a palette.</b> Primary → secondary → tonal → ghost → danger-ghost, each step quieter. Sapphire stays the sole action hue; red appears only where data is destroyed.</p><p class="ch-reject">Reject: two primaries side by side, or a shadow added to "pop" — elevation never sells emphasis.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>States speak before words do.</b> Hover deepens one step, active one more; focus always rings; disabled dims to <code>opacity.disabled</code> and drops the pointer; loading holds the frame and announces <code>aria-busy</code>.</p><p class="ch-reject">Reject: grey text on grey fill with no ring — a keyboard user must always see where they are.</p></div></li>
+</ul>
+<h3>Variants — the ladder, top to bottom</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>btn--primary</code></td><td>the row's one commitment</td><td><code>role.action</code> fill, white ink; hover <code>strong</code>, active sapphire-700</td></tr>
+<tr><td><code>btn--secondary</code></td><td>default chrome action</td><td>surface fill, ink text, <code>border.thin</code></td></tr>
+<tr><td><code>btn--tonal</code></td><td>mid emphasis, stays calm</td><td><code>role.action.soft</code> wash, dark ink</td></tr>
+<tr><td><code>btn--ghost</code></td><td>tertiary / inline action</td><td>transparent, sapphire text, sapphire-100 hover wash</td></tr>
+<tr><td><code>btn--destructive</code></td><td>irreversible action</td><td><code>role.danger</code> fill, white ink</td></tr>
+<tr><td><code>btn--danger-ghost</code></td><td>delete inside a quiet row</td><td>transparent, danger text, red-50 hover wash</td></tr>
+<tr><td><code>btn--icon-only</code></td><td>toolbar-grade action</td><td>square, 44px, needs <code>aria-label</code></td></tr>
+<tr><td><code>btn--full-width</code></td><td>form / sheet commitment</td><td>stretches, label centered</td></tr>
+<tr><td><code>btn--sm / md / lg</code></td><td>density</td><td>32 / 44 / 48px frame, xs / sm / md type</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting fill + ink per variant</td><td>—</td></tr>
+<tr><td>Hover</td><td>one step deeper (primary 600, ghost sapphire-100)</td><td><code>:hover</code></td></tr>
+<tr><td>Active</td><td>pressed depth, no lift</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring, 3px offset</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer, skipped by tab</td><td><code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Aria-disabled</td><td>looks disabled, stays focusable (explains why)</td><td><code>aria-disabled="true"</code></td></tr>
+<tr><td>Loading</td><td>spinner in, frame held, click ignored</td><td><code>data-loading</code> + <code>aria-busy</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>primary fill / ink / hover</td><td><code>role.action</code> / <code>role.action.ink</code> / <code>role.action.strong</code></td></tr>
+<tr><td>secondary fill / ink / border</td><td><code>bg.surface</code> / <code>text.primary</code> / <code>border.thin</code></td></tr>
+<tr><td>frame radius / gap / padding</td><td><code>radius.md</code> / <code>spacing.2</code> / <code>spacing.3–6</code></td></tr>
+<tr><td>focus ring / disabled dim</td><td><code>primitive.sapphire-ui.400</code> / <code>opacity.disabled</code></td></tr>
+<tr><td>motion</td><td><code>transition.fast</code> (spinner dies under reduced-motion)</td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;button class="btn btn--primary" data-loading&gt;Save deal&lt;/button&gt;
+&lt;button class="btn btn--ghost btn--icon-only" aria-label="Close"&gt;…&lt;/button&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep one primary per row. Keep sapphire the sole action hue. Hold the frame while loading. Explain disabled with aria-disabled where the reason matters.</p></div><div><b>Don't</b><p class="meta">Never shadow a button to "pop". Never ghost a primary action. Never wrap the label. Never invent a hue for emphasis.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">44px minimum target on md and up · native <code>&lt;button&gt;</code> semantics, links stay links · visible focus ring always · loading sets <code>aria-busy</code> · white on sapphire-500 clears AA (gated in <code>tests/contrast.test.mjs</code>) · forced-colors falls back to ButtonFace/ButtonText.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Chip — filtering, not committing · Icon — the only glyphs allowed inside · StatusPill — stage flags, never actions · Full spec: <a href="prototype/gallery/actions.md">actions.md</a></p>
+</div>

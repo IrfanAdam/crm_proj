@@ -1,0 +1,43 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 02 Chip</p>
+<h2 class="ch-hero">Filterable facets. Never commitments.</h2>
+<p class="ch-lede meta">Chip is the Opps filter row: countable facets the user toggles — stages, ranges, people. It selects and deselects; it never advances a flow. Use it when a tap narrows what is shown; use Button when a tap does something.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — pill · label · count · close.</b> Full-pill frame, label first, optional <code>.chip__count</code> for the number, optional <code>.chip__close</code> on removable input chips. Faces variants carry a mini-stack instead.</p><p class="ch-reject">Reject: a chip with no visible selected state — toggling must always answer back.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Four types, four jobs (Material 3).</b> Filter chips toggle facets; assist chips act on what's shown; input chips represent something removable (Delete key removes); suggestion chips offer a next try. One row mixes types only when each keeps its own job.</p><p class="ch-reject">Reject: a suggestion chip styled as selected — suggestions propose, they never claim state.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Selected is unmistakable.</b> <code>chip--selected</code> inverts to near-black fill with white ink; unselected stays surface with a hairline border. Pressed state must be announced — sync <code>aria-pressed</code> wherever JS toggles the class.</p><p class="ch-reject">Reject: selected signalled by hue alone — gem hues never do chip chrome.</p></div></li>
+</ul>
+<h3>Variants — type + size</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>filter (base + <code>--selected</code>)</td><td>toggle a facet</td><td>surface → black fill when selected</td></tr>
+<tr><td><code>chip--input</code></td><td>removable value</td><td>tonal wash + close affordance, Delete removes</td></tr>
+<tr><td><code>chip--suggestion</code></td><td>propose a try</td><td>tonal, transparent border, secondary ink</td></tr>
+<tr><td><code>chip--sm</code></td><td>dense rows</td><td>24px frame (base is 32px)</td></tr>
+<tr><td><code>chip--dragging</code></td><td>reorder in flight</td><td>lifts to <code>shadow.md</code> while held</td></tr>
+<tr><td><code>chip--hot / --faces</code></td><td>legacy Opps facets</td><td>2px ink border law / 44px people facet — kept, not extended</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting chrome per type</td><td>—</td></tr>
+<tr><td>Hover</td><td>interactive-hover wash</td><td><code>:hover</code></td></tr>
+<tr><td>Active / pressed</td><td>active wash + <code>aria-pressed</code> sync</td><td><code>data-toggle</code> + <code>aria-pressed</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>disabled</code> / <code>aria-disabled</code> + <code>opacity.disabled</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius / padding</td><td><code>bg.surface</code> / <code>radius.full</code> / <code>spacing.2–3</code></td></tr>
+<tr><td>border / hot border</td><td><code>border.thin</code> / <code>border-width.medium</code> + <code>border.accent</code></td></tr>
+<tr><td>selected fill / ink</td><td><code>primitive.gray-black</code> / <code>primitive.gray-white</code></td></tr>
+<tr><td>count dim / disabled</td><td><code>opacity.subtle</code> / <code>opacity.disabled</code></td></tr>
+<tr><td>motion</td><td><code>transition.fast</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;button class="chip chip--selected" data-toggle aria-pressed="true"&gt;Value range&lt;/button&gt;
+&lt;button class="chip chip--input" data-toggle&gt;Economic &lt;span class="chip__count"&gt;4&lt;/span&gt;&lt;/button&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Use pills for countable, filterable facets. Reserve hot chrome for the live streak. Announce pressed state to assistive tech. Let Delete remove input chips.</p></div><div><b>Don't</b><p class="meta">Never commit a flow from a chip. Never tint chips with gem hues. Never leave selection to color alone. Never wrap the label.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Native <code>&lt;button&gt;</code> semantics · <code>aria-pressed</code> mirrors selection · Delete/Backspace removes focused input chips · 44px target on faces facets · visible focus ring · forced-colors keeps the selected inversion.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Button — commits, never filters · Badge — counts beside labels, never toggles · Search — the text twin of filtering · Full spec: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</div>

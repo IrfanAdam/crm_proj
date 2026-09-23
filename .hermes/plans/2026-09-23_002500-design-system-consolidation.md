@@ -439,6 +439,24 @@ sort, tooltip) to delegated `document` listeners so fetched panels stay live.
 **Verify:** all six panels render on `:5174`; screenshots at gate; budget + lint green.
 **Commit:** `feat(ds): gallery showcases remaining variants [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 
+### Task 12C: Full component articles — Material/Carbon-grade docs
+**Objective:** Every component gets a full article in `public/component-docs/*.html`
+(kicker → hero → lede → laws+rejects → variants table → states table → token
+table → code snippet → do/don't → a11y → related + contract link), copying the
+`button.html` exemplar idiom and `ch-*`/`tp-*` classes, ≤100 lines each. Articles
+load as second `data-doc` pads inside their gallery frame, below the specimens.
+Fanned out per panel (6 agents, one panel each); parent wires frames.
+**Files:**
+- Create: `public/component-docs/{badge,statuspill,avatar,icon,textinput,select,
+search,textarea,checkbox,radio,switch,slider,tabs,breadcrumbs,pagination,
+accordion,tabbar,toolbar,overlays,table,listrow,kpi,timeline,sparkline,
+funnelglyph,opportunitycard,funnelcard,profilecard,goalbar,gemreward}.html`
+(`button.html`, `chip.html` done as exemplars).
+- Modify: `gallery.html` — one `component-docs` pad per article per frame.
+**Verify:** every article renders on `:5174` with all 10 sections; screenshots at
+gate; budget + lint green.
+**Commit:** `feat(ds): full component articles [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
