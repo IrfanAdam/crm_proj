@@ -495,6 +495,18 @@ frames follow the same idiom next iterations.
 **Commit:** `feat(ds): contextual specimens, actions exemplar [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 5b53d45 · Task 12E · phase-4.*
 
+### Task 12F: Contextual specimens — identity frame ✓ done
+**Objective:** Same contextual idiom as 12E for Identity: full `chip-intro`
+kept above; `identity.html` becomes 5 specimens (chips, badges, pills,
+avatars, icons) each with demo + 1-line `spec-note` + `<details class="spec-more">`;
+5 spec pads unwired from the frame. Spec article files stay on disk (no
+deletions without the grep-0-importers guarantee).
+**Files:**
+- Modify: `public/gallery-panels/identity.html` (contextual), `gallery.html` (drop 5 spec pads).
+**Verify:** `#identity` renders intro → 5 specimens, zero open-scroll tables; `npm test` + `npm run build` green.
+**Commit:** `feat(ds): contextual specimens, identity frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12F · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}

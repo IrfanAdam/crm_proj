@@ -1,4 +1,5 @@
 <div class="pad">
+<section class="specimen">
 <h3>Chips — filter / assist / input / suggestion (tap to toggle)</h3>
 <div class="row">
 <button class="chip chip--selected" data-toggle aria-pressed="true">Value range</button>
@@ -8,6 +9,17 @@
 <button class="chip chip--suggestion" data-toggle>Try “closed won”</button>
 <button class="chip chip--sm" data-toggle>Small</button>
 </div>
+<p class="spec-note">Four types, four jobs — filter toggles, assist acts, input removes (Delete key), suggestion proposes. Selected inverts to near-black; sync <code>aria-pressed</code>. Reject: selected by hue alone.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>filter + <code>--selected</code></td><td>toggle a facet</td><td>surface → black fill when selected</td></tr>
+<tr><td><code>chip--input</code></td><td>removable value</td><td>tonal wash + close, Delete removes</td></tr>
+<tr><td><code>chip--suggestion</code> / <code>--sm</code></td><td>propose / dense</td><td>tonal borderless / 24px frame (base 32px)</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>bg.surface</code>, <code>radius.full</code>, <code>spacing.2–3</code>, <code>opacity.subtle/disabled</code>, <code>transition.fast</code>. Native <code>&lt;button&gt;</code>; Delete removes input chips.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Badges — tones / sm / dot / max / overlap</h3>
 <div class="row">
 <span class="badge">3</span>
@@ -20,6 +32,17 @@
 <span class="badge badge--max">99+</span>
 <span class="badge-wrap"><span class="avatar avatar--sm">OA</span><span class="badge badge--overlap">3</span></span>
 </div>
+<p class="spec-note">Counts beside things, never things themselves — static only, no hover or focus; the anchor owns interaction. Cap at <code>99+</code>. Reject: a clickable badge, a sixth tone.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default / <code>--neutral</code></td><td>headline / muted count</td><td>sapphire wash / interactive fill</td></tr>
+<tr><td><code>--success / --warning / --danger</code></td><td>signal count</td><td>green / orange / red wash + dark ink</td></tr>
+<tr><td><code>--sm / --dot / --max / --overlap</code></td><td>dense / presence / cap / anchor</td><td>16px / 8px circle / <code>99+</code> / pinned corner</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>radius.full</code>, <code>spacing.1–2</code>, <code>font-size.xs</code> bold tabular-nums. Redundant badge is <code>aria-hidden</code>; standalone gets <code>aria-label</code>.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Status pills — tone + label, never color-alone</h3>
 <div class="row">
 <span class="status-pill status-pill--accepted">Accepted</span>
@@ -34,15 +57,29 @@
 <span class="status-pill status-pill--progress status-pill--sm"><span class="status-pill__icon" aria-hidden="true">●</span>In Progress</span>
 <button class="status-pill status-pill--review status-pill--clickable">Clickable review</button>
 </div>
+<p class="spec-note">Stage flags — solid fill, uppercase label, optional icon/dot prefix. Six hues, closed set; hover only when <code>--clickable</code>. Reject: meaning by hue alone, a seventh hue.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>--accepted / --progress / --review</code></td><td>won / in flight / needs eyes</td><td>green-300 / sapphire-500 white / sapphire wash + border</td></tr>
+<tr><td><code>--new / --warning / --danger</code></td><td>fresh / caution / blocked</td><td>neutral-dark white / orange ink / red white</td></tr>
+<tr><td><code>--sm / __icon / __dot / --clickable</code></td><td>compact / prefixes / action</td><td>dense pad / 12px icon / 8px dot / pointer + ring</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>radius.full</code>, <code>font-size.xs</code> semibold wide tracking, <code>opacity.subtle</code> hover, sapphire-400 ring. Clickable pills are native <code>&lt;button&gt;</code>.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Avatars — xs to xl / presence / stack</h3>
 <div class="row">
-<span class="avatar avatar--xs">OA</span>
-<span class="avatar avatar--sm">OA</span>
-<span class="avatar avatar--md">OA</span>
-<span class="avatar avatar--lg avatar--online">AJ</span>
-<span class="avatar avatar--xl avatar--offline">RK</span>
+<span class="avatar avatar--xs">OA</span><span class="avatar avatar--sm">OA</span><span class="avatar avatar--md">OA</span>
+<span class="avatar avatar--lg avatar--online">AJ</span><span class="avatar avatar--xl avatar--offline">RK</span>
 <span class="avatar-stack"><span class="avatar avatar--sm">OA</span><span class="avatar avatar--sm">AJ</span><span class="avatar avatar--sm">+2</span></span>
 </div>
+<p class="spec-note">Person marks — round always, initials or cover-fit photo; stacks overlap one step with a surface ring. Presence is decorative; the name talks. Reject: square frames, a dot as the only signal.</p>
+<details class="spec-more"><summary>Spec · sizes + tokens</summary>
+<p class="meta">Sizes — xs 20 / sm 24 / md 32 base / lg 48 / xl 64. Tokens — <code>radius.full</code>, <code>bg.interactive</code>, ring <code>bg.surface</code>, online <code>primitive.green-300</code>. Photos <code>alt=""</code>; clickable avatars named with the person name.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Icons — Phosphor sizes xs–xl / muted / subtle</h3>
 <div class="row" style="align-items:center">
 <span class="icon icon--xs" aria-hidden="true"><i class="ph ph-bell"></i></span>
@@ -54,5 +91,9 @@
 <span class="icon icon--subtle" aria-hidden="true"><i class="ph ph-funnel-simple"></i></span>
 <span class="icon icon--lg" role="img" aria-label="Home, selected"><i class="ph-fill ph-house"></i></span>
 </div>
-<p class="meta" style="margin-top:8px">Anatomy: pill · label · count/close; 20px tinted badge; solid pill + label; avatar 20–64 + stack + presence dot; Phosphor xs–xl + muted/subtle · Tokens: radius-full, opacity-subtle/disabled · Pills filter, status never color-alone · Contract: <a href="prototype/gallery/identity.md">identity.md</a></p>
+<p class="spec-note">Phosphor only — regular default, fill marks selected, inherits <code>currentColor</code>. Decorative stays <code>aria-hidden</code>; semantic gets a name. Reject: sprite.svg in new work, off-scale sizes. Contract: <a href="prototype/gallery/identity.md">identity.md</a></p>
+<details class="spec-more"><summary>Spec · sizes + tokens</summary>
+<p class="meta">Sizes — xs 12 / sm 16 / md 20 base / lg 24 / xl 32 via <code>icon-size.*</code>; muted <code>text.muted</code>, subtle <code>text.dim</code>. Weight via <code>Icon.jsx</code> — never a hand-swapped svg.</p>
+</details>
+</section>
 </div>
