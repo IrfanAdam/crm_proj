@@ -18,6 +18,8 @@ th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefa
 const dsTab=name=>{
 document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('tab--active',x.dataset.tab===name));
 document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==name});
+const panel=document.querySelector('[data-panel="'+name+'"]');
+if(panel)panel.scrollIntoView();
 };
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
 dsTab(b.dataset.tab);

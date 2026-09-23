@@ -404,6 +404,41 @@ token + do/don't captions with contract links.
 **Verify:** captions render; budget + lint green.
 **Commit:** `feat(ds): gallery proves batch-2 components [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 
+### Task 12A: Gallery showcases actions + identity variants
+**Objective:** Pixels finally move — the Actions and Identity panels render every
+rebuilt variant/state/size side by side, so the M3+Carbon rebuild is judgable on
+sight. Panel partials live in `public/gallery-panels/*.html` (Vite serves `public/`
+at root), loaded through the existing `data-doc` fetch in `gallery-shell.js`;
+`gallery.html` keeps only thin frame shells (file-budget law).
+**Files:**
+- Create: `public/gallery-panels/actions.html` — all button variants
+(primary/secondary/tonal/ghost/destructive/danger-ghost), icon-led + icon-only,
+sm/md/lg, full-width, disabled + aria-disabled + loading (`data-loading` demo),
+focus-ring note, caption + contract link.
+- Create: `public/gallery-panels/identity.html` — chip types
+(filter/assist/input/suggestion, selected, sm, deletable), badge tones + sm/dot/
+max/overlap, status-pill tones + sm + dot/icon, avatar xs–xl + stack + presence.
+- Modify: `gallery.html` — `actions` + `identity` frames become `data-doc` shells.
+**Verify:** panels render on `:5174/gallery.html#actions` + `#identity`; screenshots
+attached at gate; budget + lint green.
+**Commit:** `feat(ds): gallery showcases actions + identity variants [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+
+### Task 12B: Gallery showcases remaining variants
+**Objective:** Same full-variant showcase for `text`, `choice`, `nav`, `overlays`,
+`data`, `cards` panels. Fanned out to 6 parallel subagents (one per panel), no
+approval gate per user override — each agent writes ONLY its own
+`public/gallery-panels/<panel>.html` partial (copying `actions.html` as the idiom:
+`<div class="pad">`, `h3` rows, `.row`, caption + contract link, ≤100 lines,
+Phosphor `<i class="ph…">` icons, never `sprite.svg`); parent does the single
+`gallery.html` rewiring + shell delegation fix itself so agents never collide.
+**Files:**
+- Create: `public/gallery-panels/{text,choice,nav,overlays,data,cards}.html`.
+- Modify: `gallery.html` — remaining frames become `data-doc` shells.
+- Modify: `src/ds/gallery-shell.js` — convert direct bindings (accordion, table
+sort, tooltip) to delegated `document` listeners so fetched panels stay live.
+**Verify:** all six panels render on `:5174`; screenshots at gate; budget + lint green.
+**Commit:** `feat(ds): gallery showcases remaining variants [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
