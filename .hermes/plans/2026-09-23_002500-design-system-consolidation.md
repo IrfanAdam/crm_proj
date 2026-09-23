@@ -517,7 +517,7 @@ meta); 4 spec pads unwired from the frame. Article files stay on disk.
 - Modify: `public/gallery-panels/text.html` (contextual), `gallery.html` (drop 4 spec pads).
 **Verify:** `#text` renders intro → 6 specimens, zero open-scroll tables; `npm test` + `npm run build` green.
 **Commit:** `feat(ds): contextual specimens, form frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12G · phase-4.*
+*Shipped in 744386f · Task 12G · phase-4.*
 
 ---
 

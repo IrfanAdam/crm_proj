@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:48:06.011Z",
+  "generated": "2026-09-23T13:50:20.861Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "0cec697",
+      "full": "0cec697b4e56c65604c4c644a05832a4850b6b2d",
+      "date": "2026-09-23",
+      "subject": "chore(ds): close Task 12F — shipped 29bf342, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "d2c3dd5",
       "full": "d2c3dd5292d09211f02c96884a8268cace3cfb2e",
