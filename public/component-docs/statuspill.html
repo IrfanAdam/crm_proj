@@ -1,0 +1,42 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 04 StatusPill</p>
+<h2 class="ch-hero">Stage flags. Never color alone.</h2>
+<p class="ch-lede meta">StatusPill is the record stage flag — Accepted, In Progress, Review, New, Warning, Danger. Solid fill, uppercase label, optional icon or dot. The label carries meaning in every state; hue never works solo.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — pill · optional prefix · uppercase micro label.</b> Optional leading <code>status-pill__icon</code> (Phosphor, <code>icon-size-xs</code>) or <code>status-pill__dot</code> (currentColor) for scan speed, then the uppercase label. Six tones, fixed ramp steps.</p><p class="ch-reject">Reject: a status told by hue alone — label (and prefix) always present.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Static by default — hover only when clickable.</b> Plain pills have no hover. <code>status-pill--clickable</code> adds pointer + <code>opacity-subtle</code> hover; focus draws the 2px sapphire ring; disabled dims with no pointer.</p><p class="ch-reject">Reject: hover on a non-clickable pill — motion must not promise action.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Six hues, closed set.</b> Accepted green, progress sapphire, review sapphire wash, new neutral-dark, warning orange, danger red. New stages map to the six; counts go to Badge, filters go to Chip.</p><p class="ch-reject">Reject: a seventh status hue — map, never invent.</p></div></li>
+</ul>
+<h3>Variants — tone + size + prefix</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>status-pill--accepted</code></td><td>won / done</td><td>green-300 fill, ink text</td></tr>
+<tr><td><code>status-pill--progress</code></td><td>in flight</td><td>sapphire-500 fill, white text</td></tr>
+<tr><td><code>status-pill--review</code></td><td>needs eyes</td><td>sapphire wash, sapphire ink + border</td></tr>
+<tr><td><code>status-pill--new</code></td><td>fresh record</td><td>neutral-dark fill, white text</td></tr>
+<tr><td><code>status-pill--warning / --danger</code></td><td>caution / blocked</td><td>orange fill ink text / red fill white text</td></tr>
+<tr><td><code>status-pill--sm</code> / <code>__icon</code> / <code>__dot</code></td><td>compact / prefixes</td><td>dense padding / 12px icon / 8px dot</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting fill per tone</td><td>—</td></tr>
+<tr><td>Hover</td><td>subtle dim, clickable only</td><td><code>status-pill--clickable:hover</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>disabled</code> / <code>opacity.disabled</code></td></tr>
+<tr><td>Clickable</td><td>pointer + transition</td><td><code>status-pill--clickable</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>fills / inks</td><td><code>primitive.ink</code> / <code>primitive.gray-white</code> + variant ramp steps</td></tr>
+<tr><td>radius / tracking / type</td><td><code>radius.full</code> / <code>font-tracking.wide</code> / <code>font-size.xs</code> semibold</td></tr>
+<tr><td>gap / padding / prefix size</td><td><code>spacing.1</code> / <code>spacing.3</code> / <code>icon-size.xs</code> + <code>spacing.2</code></td></tr>
+<tr><td>hover / focus / motion</td><td><code>opacity.subtle</code> / sapphire-400 ring / <code>transition.fast</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;span class="status-pill status-pill--progress"&gt;&lt;span class="status-pill__dot" aria-hidden="true"&gt;&lt;/span&gt;In progress&lt;/span&gt;
+&lt;button class="status-pill status-pill--review status-pill--clickable"&gt;Review&lt;/button&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Always show the label. Use the icon or dot prefix when scanning speed matters. Reserve hover for clickable pills. Make clickable pills native buttons or links.</p></div><div><b>Don't</b><p class="meta">Never invent status hues. Never count with a pill. Never filter with a pill. Never leave meaning to color alone.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Status never color-alone (label + tone + optional prefix) · ink pairs gated AA · clickable pills are native <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code> with the label as the accessible name · decorative prefix icons carry <code>aria-hidden="true"</code> · visible focus ring.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Badge — counts, never stages · Chip — filters, never flags · Button — commits, never labels · Full spec: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</div>

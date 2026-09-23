@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 02 Breadcrumbs</p>
+<h2 class="ch-hero">Where you are. Never where to go next.</h2>
+<p class="ch-lede meta">Breadcrumbs show the trail back — workspace, list, record. They orient and offer retreat; they never drive the next action. Use them on depth 2+ pages; omit them where Tabs already name the context.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — nav · list · current.</b> <code>nav aria-label="Breadcrumb"</code> holds an <code>ol</code>; separators (<code>/</code> or <code>·</code>) carry <code>aria-hidden="true"</code>. The current page is <code>.breadcrumbs__current</code> with <code>aria-current="page"</code> — never a link.</p><p class="ch-reject">Reject: a linked current page — arrival is a fact, not a destination.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Collapse the middle, keep the ends.</b> <code>.breadcrumbs--collapsed</code> hides <code>.breadcrumbs__item--collapsible</code> behind a <code>.breadcrumbs__collapse</code> (<code>…</code>) button; expanded shows the full trail. Home and current never collapse.</p><p class="ch-reject">Reject: hiding the current page to save room — collapse the middle, never the answer.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Truncate long labels, not the trail.</b> <code>.breadcrumbs__item--truncated</code> ellipsizes past <code>--spacing-16</code> with full text on title. The structure stays complete while the ink stays short.</p><p class="ch-reject">Reject: a crumb pushing siblings off-screen — long labels end in …, never in overflow.</p></div></li>
+</ul>
+<h3>Variants — collapsed vs full</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>expanded (base)</td><td>full trail on roomy pages</td><td>every item visible, separators between</td></tr>
+<tr><td><code>.breadcrumbs--collapsed</code></td><td>narrow or deep trails</td><td>middle items hide behind <code>…</code> toggle</td></tr>
+<tr><td><code>--truncated</code> item</td><td>one long label</td><td>ellipsis at <code>--spacing-16</code>, title keeps full text</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Current</td><td>plain text, emphasis ink, no hover</td><td><code>.breadcrumbs__current</code> + <code>aria-current="page"</code></td></tr>
+<tr><td>Hover (links)</td><td>underline + primary ink</td><td><code>a:hover</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring on links and <code>…</code></td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+<tr><td>Collapsed toggle</td><td><code>…</code> expands in place</td><td><code>.breadcrumbs__collapse</code>, 44px target</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>link / current / separators</td><td><code>--text-secondary</code> / <code>--text-emphasis</code> / <code>--text-muted</code></td></tr>
+<tr><td>truncation cap / target</td><td><code>--spacing-16</code> max-width, 44px collapse button</td></tr>
+<tr><td>focus</td><td><code>--focus-ring</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;nav class="breadcrumbs" aria-label="Breadcrumb"&gt;&lt;ol&gt;
+&lt;li class="breadcrumbs__item"&gt;&lt;a href="/deals"&gt;Deals&lt;/a&gt;&lt;/li&gt;
+&lt;li class="breadcrumbs__item"&gt;&lt;span class="breadcrumbs__current" aria-current="page"&gt;Acme&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Mark the current page with aria-current and plain text. Hide separators from assistive tech. Keep the collapse button 44px.</p></div><div><b>Don't</b><p class="meta">Never link the current page. Never collapse home or current. Never expose separators to screen readers.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Landmark nav with aria-label · <code>aria-current="page"</code> on plain-text current · hidden separators · 44px collapsed toggle · visible focus ring.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Pagination — position in a list, not a trail · Tabs — peer views, not ancestry · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</div>

@@ -1,0 +1,40 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 06 Textarea</p>
+<h2 class="ch-hero">Paragraphs with counts. Never single words.</h2>
+<p class="ch-lede meta">Textarea is multi-line free text — Notes, context, P2 depth. It composes the TextInput skin (requires text-input.css) with auto height and a visible count; single values are TextInput, structured lines are rows of inputs, rich text is a different component.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Compose, never duplicate.</b> <code>textarea.field__input</code> takes auto height, 88px min, <code>spacing.3</code> pad, relaxed leading, vertical-only resize — the full TextInput state table rides along for free.</p><p class="ch-reject">Reject: redeclared error or focus states here, or horizontal resize breaking layout.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Min-heights set the depth.</b> Base 88px, <code>--sm</code> 64px (<code>spacing.16</code>), <code>--lg</code> 160px; outlined, filled, error, success, disabled, and readonly are all inherited modifiers, never new states.</p><p class="ch-reject">Reject: a one-word textarea, or resize disabled entirely — small screens need it.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>The count warns before the wall.</b> <code>.textarea__count</code> sits right-aligned, xs muted; <code>--limit</code> flips it to <code>role.warning-strong</code> near the cap, with a sensible <code>rows</code> + maxlength and polite live announcements past 90%.</p><p class="ch-reject">Reject: a silent maxlength — the cap must always be visible.</p></div></li>
+</ul>
+<h3>Variants — depth + count</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>base (<code>textarea.field__input</code>)</td><td>default notes depth</td><td>auto height, 88px min, relaxed leading</td></tr>
+<tr><td><code>textarea__input--sm / --lg</code></td><td>shallow / deep</td><td>64px <code>spacing.16</code> min / 160px min</td></tr>
+<tr><td>inherited skins</td><td>outlined / filled / error / success</td><td><code>field__input</code> modifiers, no duplicates here</td></tr>
+<tr><td><code>textarea__count / --limit</code></td><td>length feedback</td><td>xs muted right-aligned → <code>role.warning-strong</code> near cap</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover / focus</td><td>deeper border / sapphire ring</td><td>inherits the TextInput table 1:1</td></tr>
+<tr><td>Disabled / readonly</td><td>dims, not-allowed / dashed hairline</td><td>native <code>disabled</code> / <code>readonly</code></td></tr>
+<tr><td>Error / success</td><td>danger / success border + focus outline</td><td><code>aria-invalid</code> + <code>aria-describedby</code> → error id</td></tr>
+<tr><td>Count near limit</td><td>count flips to warning ink</td><td><code>--limit</code> + <code>aria-live="polite"</code> past 90%</td></tr>
+<tr><td>Resize</td><td>vertical-only, layout never breaks</td><td><code>resize: vertical</code>, keep it enabled</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>pad / leading</td><td><code>spacing.3</code> / <code>font-leading.relaxed</code></td></tr>
+<tr><td>count ink / near-limit</td><td><code>font-size.xs</code> + <code>text.muted</code> / <code>role.warning-strong</code></td></tr>
+<tr><td>frame / states</td><td>everything from TextInput — surface, hairlines, sapphire ring, danger/success</td></tr>
+<tr><td>min-heights</td><td>88px base / <code>spacing.16</code> sm / 160px lg (px content targets)</td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;label class="field__label" for="notes"&gt;Notes&lt;/label&gt;
+&lt;div class="textarea"&gt;&lt;textarea id="notes" rows="4" maxlength="500" aria-describedby="notes-count"&gt;&lt;/textarea&gt;&lt;p id="notes-count" class="textarea__count" aria-live="polite"&gt;0 / 500&lt;/p&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Set sensible rows plus maxlength with a visible count. Keep vertical-only resize. Describe by help, error, and count ids together.</p></div><div><b>Don't</b><p class="meta">Never use textarea for one word. Never disable resize entirely. Never duplicate input states here.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Label + <code>aria-describedby</code> covering help, error, and count · error path identical to TextInput · count needs <code>aria-live="polite"</code> past 90% · touch height far exceeded · reduced-motion still.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">TextInput — the skin it composes, never duplicated · Search — finding, never paragraphs · Select — choices, never prose · Full spec: <a href="prototype/gallery/form.md">form.md</a></p>
+</div>

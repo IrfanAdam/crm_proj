@@ -1,0 +1,43 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 05 Search</p>
+<h2 class="ch-hero">Pill filters. Never data capture.</h2>
+<p class="ch-lede meta">Search filters and finds within the dataset — opportunities, list rows — with a clear action. It is the 44px pill affordance for filtering; labelled capture is TextInput, navigation is links and tabs, and ⏎ submits while clear resets.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>One pill, no sizes.</b> <code>.search__input</code> is always <code>radius.full</code> at 44px with left pad for the 16px leading <code>.search__icon</code>; sm/lg are intentionally absent — search is always the filter affordance.</p><p class="ch-reject">Reject: a 12px-radius search, or help text stuffed inside the pill.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Clear only when there is text.</b> The 24px round <code>.search__clear</code> sits on an interactive wash, hovers to primary ink on the active wash, and takes a sapphire width-medium <code>:focus-visible</code> outline — a real button with an accessible name.</p><p class="ch-reject">Reject: a permanent clear on an empty field, or a clear no keyboard can reach.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Loading and verdicts stay honest.</b> <code>search--loading</code> spins the icon (<code>motion-duration.md</code>, linear, infinite, cursor stays text) with <code>aria-busy</code>; <code>--error</code> / <code>--success</code> borders mark no-results and applied-filter states, counts announced via live region.</p><p class="ch-reject">Reject: a spin with no reduced-motion stop, or silence when results land.</p></div></li>
+</ul>
+<h3>Variants — one pill, honest overlays</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>pill (only frame)</td><td>filter affordance</td><td>always <code>radius.full</code>, 44px, leading icon pad</td></tr>
+<tr><td><code>search--loading</code></td><td>fetch in flight</td><td>icon spins <code>motion-duration.md</code>, cursor stays text</td></tr>
+<tr><td><code>search__input--error</code></td><td>no-results verdict</td><td><code>role.danger</code> border + danger outline on focus</td></tr>
+<tr><td><code>search__input--success</code></td><td>applied-filter confirmation</td><td><code>role.success</code> border on confirmation</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>hairline pill, icon muted</td><td><code>aria-label</code> or wrapped label</td></tr>
+<tr><td>Hover</td><td>one step deeper border</td><td><code>border.medium</code> on <code>:hover</code></td></tr>
+<tr><td>Focus</td><td>sapphire border + ring shadow</td><td><code>:focus</code>, never outline alone</td></tr>
+<tr><td>Clear hover / focus</td><td>primary ink on active wash / sapphire outline</td><td>real <code>button aria-label="Clear"</code> + <code>:focus-visible</code></td></tr>
+<tr><td>Loading</td><td>icon spins, text cursor held</td><td><code>search--loading</code> + <code>aria-busy</code></td></tr>
+<tr><td>Disabled / readonly</td><td>dims, not-allowed / dashed hairline</td><td>native <code>disabled</code> / <code>readonly</code></td></tr>
+<tr><td>Error / success</td><td>verdict borders, never bare hue</td><td>width-medium outline + offset on focus</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius (always pill)</td><td><code>bg.surface</code> / <code>radius.full</code>, 44px raw</td></tr>
+<tr><td>borders / focus</td><td><code>border.thin</code>, hover <code>border.medium</code> / sapphire-400 + <code>focus.ring</code></td></tr>
+<tr><td>icon / clear box</td><td><code>icon-size.sm</code> muted icon / <code>icon-size.lg</code> clear on <code>bg.interactive</code> → hover <code>bg.interactive-active</code></td></tr>
+<tr><td>error / success / disabled</td><td><code>role.danger</code> / <code>role.success</code> / <code>opacity.disabled</code></td></tr>
+<tr><td>motion</td><td><code>transition.fast</code>; spin <code>motion-duration.md</code> linear infinite</td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="search"&gt;&lt;span class="search__icon" aria-hidden="true"&gt;⌕&lt;/span&gt;&lt;input class="search__input" type="search" aria-label="Search opportunities" placeholder="Search opportunities"&gt;&lt;button class="search__clear" aria-label="Clear"&gt;×&lt;/button&gt;&lt;/div&gt;
+&lt;p role="status" class="meta"&gt;6 results&lt;/p&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Show clear only when there is text. Keep the pill. Announce result counts via a live region. Hold the text cursor while loading.</p></div><div><b>Don't</b><p class="meta">Never use search as a generic input. Never put help text inside the pill. Never ship a 12px search.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Labelled input (<code>for</code> / wrapped / <code>aria-label</code>) · icon <code>aria-hidden</code> · clear is a real button named Clear (24px visual inside the 44px field) · loading sets <code>aria-busy</code> · <code>role="status"</code> count line · forced-colors outline · reduced-motion stops the spin.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">TextInput — capture, never filtering · Chip — the tap twin of filtering · Select — suggestions need a listbox, not a select · Full spec: <a href="prototype/gallery/form.md">form.md</a></p>
+</div>

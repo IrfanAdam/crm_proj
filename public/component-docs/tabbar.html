@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 05 TabBar</p>
+<h2 class="ch-hero">Three icons home. Never a fourth wheel.</h2>
+<p class="ch-lede meta">TabBar is the mobile dock — icon-only Phosphor glyphs with 44px+ targets that jump between top-level homes. It docks and signals; it never labels. At three or fewer tabs it supersedes Tabs — never render both.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Icon-only dock, fat targets.</b> Glyphs only, no labels; each <code>.tabbar__item</code> clears 44px (<code>--spacing-10</code> min) inside a <code>--bg-surface-glass</code> bar. Active state is <code>.tabbar__item--active</code> mirrored by <code>aria-current="page"</code>.</p><p class="ch-reject">Reject: labelled dock items or sub-44px targets — the dock is thumb-first, text-free.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>One signal dot, ever.</b> A single <code>.tabbar__signal</code> dot in <code>--role-action</code> sits on the active item only. Counts live in the separate <code>.tabbar__badge</code> pill (<code>--role-score</code>), omitted at zero — badge and signal never read as two dots.</p><p class="ch-reject">Reject: a badge plus a signal dot on one item — one item, one mark.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Three tabs kill the tab row.</b> At ≤3 tabs on mobile the dock supersedes Tabs for the same views. Two switchers for one set is disorientation with extra steps.</p><p class="ch-reject">Reject: dock and tab row side by side — pick the dock, drop the row.</p></div></li>
+</ul>
+<h3>Variants — item + marks</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>.tabbar__item</code> base</td><td>one home</td><td>icon-only, 44px target, glass bar</td></tr>
+<tr><td><code>--active</code> + signal</td><td>current home</td><td>action-ink item + one <code>--role-action</code> dot</td></tr>
+<tr><td><code>.tabbar__badge</code></td><td>unread count</td><td><code>--role-score</code> pill, separate slot, hidden at zero</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Active</td><td>action ink + signal dot shows</td><td><code>--active</code> + <code>aria-current="page"</code></td></tr>
+<tr><td>Hover</td><td>interactive wash</td><td><code>--bg-interactive</code></td></tr>
+<tr><td>Disabled</td><td>dims, no action</td><td><code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>bar / signal / badge</td><td><code>--bg-surface-glass</code> / <code>--role-action</code> / <code>--role-score</code> + <code>--role-score-ink</code></td></tr>
+<tr><td>active ink / target</td><td><code>--role-action</code> / <code>--spacing-10</code> min</td></tr>
+<tr><td>focus / disabled</td><td><code>--focus-ring</code> / <code>--opacity-disabled</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;nav class="tabbar" role="tablist" aria-label="Primary"&gt;
+&lt;button class="tabbar__item tabbar__item--active" aria-current="page" aria-label="Deals"&gt;◆&lt;span class="tabbar__signal"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button class="tabbar__item" aria-label="Inbox"&gt;◆&lt;span class="tabbar__badge"&gt;3&lt;/span&gt;&lt;/button&gt;&lt;/nav&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep icons labelless with aria-labels. Show one signal dot on the active item. Drop Tabs when the dock takes over.</p></div><div><b>Don't</b><p class="meta">Never pair badge and signal as twins. Never ship sub-44px targets. Never depend on motion to show state.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Tablist semantics · <code>aria-current</code> mirrors active · icon <code>aria-label</code>s · forced-colors fallback · state never carried by motion alone.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Tabs — the row twin, superseded at ≤3 · Toolbar — actions, not homes · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</div>

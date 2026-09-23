@@ -1,0 +1,39 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 03 KpiStat</p>
+<h2 class="ch-hero">One headline number. Signed direction.</h2>
+<p class="ch-lede meta">KpiStat is the headline metric: value plus total plus delta — the 4/32 closed +2%. It states the number; it never explains it. Use it when a trio tells the story; use Sparkline when momentum needs a gesture.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — value · total · delta · spark.</b> <code>__value</code> headline, <code>__total</code> muted scope, <code>__delta</code> signed chip, <code>__spark</code> trailing slot right-aligned on the baseline.</p><p class="ch-reject">Reject: a second delta — one direction chip per KPI, never two.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Delta ink passes, tint never speaks alone.</b> Up is green 700 on green 100, down is red 700 on red 100 — the tone-on-tone wash that failed AA now follows the badge ink scale.</p><p class="ch-reject">Reject: unsigned or tint-only deltas — the sign and the 700-step ink carry meaning.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Sizes scale the number, never drop the total.</b> <code>kpi--sm</code> compacts to md value, <code>kpi--lg</code> opens to 2xl value with md total; the trio stays in order at every size.</p><p class="ch-reject">Reject: a lonely value — value/total/delta stay together in that order.</p></div></li>
+</ul>
+<h3>Variants — direction + size</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (delta up)</td><td>improving metric</td><td>green 700 ink on green 100</td></tr>
+<tr><td><code>kpi__delta--down</code></td><td>declining metric</td><td>red 700 ink on red 100</td></tr>
+<tr><td><code>kpi--sm</code></td><td>dense strip</td><td>md value, compact trio</td></tr>
+<tr><td><code>kpi--lg</code></td><td>hero number</td><td>2xl value + md total</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Up</td><td>green signed chip</td><td><code>primitive.green.700</code> on <code>100</code></td></tr>
+<tr><td>Down</td><td>red signed chip</td><td><code>kpi__delta--down</code></td></tr>
+<tr><td>Small</td><td>compact trio</td><td><code>kpi--sm</code></td></tr>
+<tr><td>Large</td><td>hero trio</td><td><code>kpi--lg</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>value / total ink</td><td><code>text.primary</code> / <code>text.muted</code>, <code>font-size.xl</code> value</td></tr>
+<tr><td>delta up</td><td><code>primitive.green.700</code> on <code>primitive.green.100</code>, <code>radius.full</code></td></tr>
+<tr><td>delta down</td><td><code>primitive.red.700</code> on <code>primitive.red.100</code></td></tr>
+<tr><td>type</td><td><code>font-weight.bold</code> value, <code>semibold</code> delta</td></tr>
+<tr><td>chip padding</td><td><code>spacing.1</code> <code>spacing.2</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="kpi"&gt;&lt;span class="kpi__value"&gt;4&lt;/span&gt;&lt;span class="kpi__total"&gt;/32 closed&lt;/span&gt;&lt;span class="kpi__delta"&gt;+2%&lt;/span&gt;&lt;span class="kpi__spark"&gt;…&lt;/span&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep value/total/delta in that order. Sign the delta. Let the spark slot sit trailing on the baseline.</p></div><div><b>Don't</b><p class="meta">Never add a second delta. Never use the delta chip outside a KPI. Never drop the total at small sizes.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">The trio must read as one sentence to assistive tech — value, total, then signed delta — with delta never carried by color alone.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Sparkline — momentum in the spark slot · Badge — the ink scale the delta borrows · Table — the ledger below the headline · Full spec: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>

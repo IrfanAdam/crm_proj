@@ -1,0 +1,39 @@
+<div class="tp">
+<p class="ch-kicker">Components · Cards · 04 GoalBar</p>
+<h2 class="ch-hero">Temporal fill. Never a ceremony leak.</h2>
+<p class="ch-lede meta">GoalBar is the D/W/M/Q/Y goal fill: label-left, value-right, time on top, width-% fill in a pill track. Operate chrome by default; the gem variant is quarantined to ceremony.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — track · fill · label + value.</b> Pill track (<code>goal-bar</code>), <code>__fill</code> at width %, <code>__label</code> left and <code>__value</code> right overlaid. Time granularity sits above, never inside.</p><p class="ch-reject">Reject: restating the value beside the bar — label-left/value-right is the whole readout.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Gem is quarantined.</b> <code>goal-bar--gem</code> (amethyst-700 + ◇ mark) lives only in ceremony; Operate chrome never borrows it and it never appears beside operate fills.</p><p class="ch-reject">Reject: <code>--gem</code> outside ceremony — gem hues stay behind the quarantine gate.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Fill is a progressbar with an exit.</b> Live fills carry <code>role=progressbar</code> + <code>aria-valuenow</code>; width animates on <code>transition.spring</code> and surrenders to reduced-motion.</p><p class="ch-reject">Reject: animating the fill with no reduced-motion fallback — motion is earned, never forced.</p></div></li>
+</ul>
+<h3>Variants — operate default, ceremony exception</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (<code>goal-bar</code>)</td><td>operate goal</td><td>amethyst-100 track, amethyst-400 fill, 28px</td></tr>
+<tr><td><code>goal-bar--sm</code></td><td>dense rows</td><td>20px track, same fill scale</td></tr>
+<tr><td><code>goal-bar--lg</code></td><td>hero goals</td><td>36px track, same fill scale</td></tr>
+<tr><td><code>goal-bar--gem</code></td><td>ceremony only</td><td>amethyst-700 fill + ◇ mark, quarantined copy</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting track + fill</td><td><code>__fill style="width:…%"</code></td></tr>
+<tr><td>Animating</td><td>width eases on spring</td><td><code>transition.spring</code></td></tr>
+<tr><td>Reduced-motion</td><td>width jumps, no animation</td><td><code>prefers-reduced-motion</code></td></tr>
+<tr><td>Focus</td><td>ring only when focusable</td><td><code>:focus-visible</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>track / fill / radius</td><td><code>primitive.amethyst.100</code> / <code>400</code> (gem <code>700</code>), <code>radius.full</code></td></tr>
+<tr><td>fill ink / type</td><td><code>primitive.gray-white</code>, <code>font-size.xs</code> semibold</td></tr>
+<tr><td>motion</td><td><code>transition.spring</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="goal-bar"&gt;&lt;span class="goal-bar__label"&gt;Week&lt;/span&gt;
+&lt;div class="goal-bar__fill" role="progressbar" aria-valuenow="60" aria-label="Week goal" style="width:60%"&gt;
+&lt;span class="goal-bar__value"&gt;60%&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep label-left/value-right. Small fill labels belong on strong (white on amethyst-500 AA). Announce live fills.</p></div><div><b>Don't</b><p class="meta">Never use --gem outside ceremony. Never restate the value beside the bar. Never animate past reduced-motion.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Live fill needs <code>role=progressbar</code> + <code>aria-valuenow</code> + <code>aria-label</code> · white on amethyst-400 is large/bold-only (4.14), small labels go on strong · reduced-motion jumps instantly.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">GemReward — the ceremony twin of --gem · FunnelCard — transient trends, not temporal fill · Full spec: <a href="prototype/gallery/cards.md">cards.md</a></p>
+</div>

@@ -1,0 +1,40 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 04 Timeline</p>
+<h2 class="ch-hero">Events on a spine. Done versus todo.</h2>
+<p class="ch-lede meta">Timeline is the event spine: dots on a rail, hollow for todo and filled for done. It orders history; it never decorates chrome. Use it when time order explains; use ListRow when rows navigate.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — rail · item · dot · label.</b> Rail drawn in <code>::before</code>, <code>__item</code> rows, <code>__dot</code> hollow until done, <code>__label</code> with right-aligned <code>__time</code>.</p><p class="ch-reject">Reject: a rail without dots — the spine never runs bare.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Three tones, no more.</b> Status dots use green, orange, red 500 rings with matching done fills; default done is sapphire. DOM order always equals time order, even horizontal.</p><p class="ch-reject">Reject: a fourth dot hue — three status tones cover every event.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Geometry stays pixel-identical.</b> 10px dot/rail geometry and the 6px dot offset sit off-scale and are kept as-is — no spacing token fits them.</p><p class="ch-reject">Reject: token-snapped dots — the spine geometry is exempt by decision.</p></div></li>
+</ul>
+<h3>Variants — axis + status</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (vertical)</td><td>reading-order spine</td><td>left rail, rows stack</td></tr>
+<tr><td><code>timeline--horizontal</code></td><td>stepper / progress axis</td><td>top rail, items in columns</td></tr>
+<tr><td><code>timeline--compact</code></td><td>dense activity feed</td><td><code>spacing.1</code> row padding</td></tr>
+<tr><td><code>timeline__item--done</code></td><td>completed event</td><td>sapphire-filled dot</td></tr>
+<tr><td><code>--success / --warning / --danger</code></td><td>status tones</td><td>green / orange / red 500 ring + done fill</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Todo</td><td>hollow dot, surface center</td><td><code>primitive.sapphire-ui.400</code> ring</td></tr>
+<tr><td>Done</td><td>filled dot</td><td><code>timeline__item--done</code></td></tr>
+<tr><td>Success / warning / danger</td><td>status ring + fill</td><td><code>--success</code> / <code>--warning</code> / <code>--danger</code></td></tr>
+<tr><td>Compact</td><td>tighter rows</td><td><code>timeline--compact</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>rail</td><td><code>border.thin</code>, <code>border-width.thin</code></td></tr>
+<tr><td>dot ring / done fill</td><td><code>primitive.sapphire-ui.400</code> + <code>bg.surface</code>, <code>radius.full</code></td></tr>
+<tr><td>status rings</td><td><code>primitive.green.500</code> / <code>orange.500</code> / <code>red.500</code></td></tr>
+<tr><td>stroke scale</td><td><code>border-width.thin</code> rail, <code>medium</code> dot ring</td></tr>
+<tr><td>label / time ink</td><td><code>text.primary</code> / <code>text.muted</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;ol class="timeline" role="list"&gt;&lt;li class="timeline__item timeline__item--done"&gt;&lt;span class="timeline__dot"&gt;&lt;/span&gt;&lt;span class="timeline__label"&gt;Call logged&lt;/span&gt;&lt;time class="timeline__time"&gt;09:12&lt;/time&gt;&lt;/li&gt;&lt;/ol&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Right-align times. Pair status dots with text. Keep DOM order equal to time order on the horizontal axis.</p></div><div><b>Don't</b><p class="meta">Never run the rail without dots. Never invent new dot hues. Never let done be dot-alone where status matters.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">List semantics via <code>role=list</code> and items · done state needs text, not dot-alone, where status matters · horizontal variant keeps DOM order as time order · times right-aligned and plain.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">ListRow — the dense feed twin · StatusPill — state where dots won't do · Sparkline — momentum beside history · Full spec: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>

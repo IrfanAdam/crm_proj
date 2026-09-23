@@ -1,0 +1,42 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 04 Select</p>
+<h2 class="ch-hero">Native lists. Never faked dropdowns.</h2>
+<p class="ch-lede meta">Select holds 4+ mutually exclusive options where the current value stays visible — Stage from Prospecting to Closed. It keeps the native select for free keyboard and mobile sheets; ≤3 options is Radio, multi is Checkbox, text suggestions is Search with a listbox.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — anchor · native input · chevron · option.</b> <code>.select</code> relative anchor; native <code>.select__input</code> at 44px / <code>radius.md</code> with right pad for the 16px <code>.select__chevron</code> (<code>pointer-events:none</code>); <code>option</code> inherits surface wash and primary ink in both themes.</p><p class="ch-reject">Reject: a div-faked select — native semantics are the feature.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>The chevron answers the open.</b> <code>:focus-within</code> tints the chevron <code>role.action</code> and rotates it 180° — the CSS proxy for open, since native select exposes none; reduced-motion flips instantly with no animation.</p><p class="ch-reject">Reject: a hidden chevron, or a pill select — pill is Search-only.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Frames and states map 1:1 to TextInput.</b> Outlined default, <code>--filled</code>, sm 32px / lg 48px; hover deepens, focus rings sapphire, error and success swap the outline — same tokens, same widths, same offsets.</p><p class="ch-reject">Reject: a select skin that drifts from the input scale.</p></div></li>
+</ul>
+<h3>Variants — skin + size</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>outlined (default)</td><td>default choice</td><td><code>bg.surface</code>, <code>border.thin</code> hairline</td></tr>
+<tr><td><code>select__input--filled</code></td><td>dense / filter chrome</td><td><code>bg.interactive</code> wash, transparent border</td></tr>
+<tr><td><code>select__input--sm / --lg</code></td><td>density sizes</td><td>32px xs type / 48px md type (md is 44px)</td></tr>
+<tr><td>themed <code>option</code></td><td>readable list rows</td><td>surface wash + primary ink, both themes</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>hairline frame, chevron muted</td><td><code>aria-label</code> or <code>.field__label</code></td></tr>
+<tr><td>Hover</td><td>one step deeper border</td><td><code>border.medium</code> on <code>:hover</code></td></tr>
+<tr><td>Focus / open</td><td>sapphire ring; chevron tints + rotates</td><td><code>:focus-within</code> → <code>role.action</code>, 180°</td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td>native <code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Error</td><td>danger border, danger outline on focus</td><td><code>aria-invalid</code> + <code>aria-describedby</code> → error id</td></tr>
+<tr><td>Success</td><td>success border on confirmation</td><td><code>aria-describedby</code> → confirmation id</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius / chevron pad</td><td><code>bg.surface</code> / <code>radius.md</code> / right calc pad for <code>icon-size.sm</code></td></tr>
+<tr><td>borders / focus</td><td><code>border.thin</code>, hover <code>border.medium</code> / sapphire-400 + <code>focus.ring</code></td></tr>
+<tr><td>chevron ink / open ink</td><td><code>text.muted</code> → open <code>role.action</code> / <code>transition.fast</code></td></tr>
+<tr><td>error / success / disabled</td><td><code>role.danger</code> / <code>role.success</code> / <code>opacity.disabled</code></td></tr>
+<tr><td>sizes</td><td>sm <code>spacing.8</code>, md 44px raw, lg <code>spacing.12</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;label class="field__label" for="stage"&gt;Stage&lt;/label&gt;
+&lt;div class="select"&gt;&lt;select id="stage" class="select__input"&gt;&lt;option&gt;Prospecting&lt;/option&gt;&lt;option&gt;Closed&lt;/option&gt;&lt;/select&gt;&lt;span class="select__chevron" aria-hidden="true"&gt;⌄&lt;/span&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep the native select. Name it with aria-label or .field__label. Let option inherit surface and ink. Announce errors exactly like TextInput.</p></div><div><b>Don't</b><p class="meta">Never fake a select with divs. Never hide the chevron. Never ship a pill select.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Native semantics announce options + count · chevron <code>aria-hidden</code> · 44px frame · <code>aria-invalid</code> + <code>aria-describedby</code> on error · visible focus ring with forced-colors <code>CanvasText</code> fallback · reduced-motion flips the chevron instantly.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">TextInput — free text, never choices · Search — suggestions pair with a listbox, not a select · Radio — ≤3 visible options · Full spec: <a href="prototype/gallery/form.md">form.md</a></p>
+</div>

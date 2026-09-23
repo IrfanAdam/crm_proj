@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 05 Sparkline</p>
+<h2 class="ch-hero">A gesture of momentum. Never chrome.</h2>
+<p class="ch-lede meta">Sparkline is momentum in bars: gem hues only, no axes, no labels. It gestures at direction; it never charts precisely. Use it when a glance suffices; use a real chart when values matter.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — bars · accent · peak.</b> Base bars in amethyst 300, <code>--accent</code> 500 marks the climb, <code>--gem</code> 700 crowns the peak; <code>sparkline--stroke</code> draws outline bars for overlays.</p><p class="ch-reject">Reject: an unmarked run — always crown the peak with accent or gem.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Gem hues stay quarantined.</b> Amethyst bars live only here — never as chrome fills, never as text ink. Stroke style is a transparent fill with a medium amethyst-400 ring, open at the bottom.</p><p class="ch-reject">Reject: gem bars outside viz — the quarantine gate holds.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Decorative or labelled, decided up front.</b> Decorative bars hide behind <code>aria-hidden</code> with a data fallback beside them; semantic ones take <code>role=img</code> plus a trend label.</p><p class="ch-reject">Reject: silent semantic bars — a trend without a label says nothing to AT.</p></div></li>
+</ul>
+<h3>Variants — size + emphasis</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default</td><td>momentum bars, 40px</td><td>amethyst-300 base</td></tr>
+<tr><td><code>sparkline--sm / --lg</code></td><td>sizes</td><td>24px / 56px row height</td></tr>
+<tr><td><code>sparkline--stroke</code></td><td>outline bars for overlays</td><td>transparent + medium amethyst-400 stroke</td></tr>
+<tr><td><code>bar --accent / --gem</code></td><td>peak emphasis</td><td>500 / 700 fill</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting bars</td><td>—</td></tr>
+<tr><td>Resizing</td><td>height animates</td><td><code>transition.fast</code> on height</td></tr>
+<tr><td>Decorative</td><td>hidden from AT, fallback beside</td><td><code>aria-hidden</code> + data table</td></tr>
+<tr><td>Semantic</td><td>trend announced</td><td><code>role=img</code> + <code>aria-label</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>bars</td><td><code>primitive.amethyst.300</code> / <code>500</code> / <code>700</code></td></tr>
+<tr><td>stroke style</td><td><code>border-width.medium</code> + <code>primitive.amethyst.400</code></td></tr>
+<tr><td>gap / caps</td><td><code>spacing.1</code> / <code>radius.xs</code></td></tr>
+<tr><td>motion</td><td><code>transition.fast</code> on height</td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="sparkline" role="img" aria-label="Up 12% over 7 days"&gt;&lt;span class="sparkline__bar"&gt;&lt;/span&gt;&lt;span class="sparkline__bar sparkline__bar--accent"&gt;&lt;/span&gt;&lt;span class="sparkline__bar sparkline__bar--gem"&gt;&lt;/span&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Mark the peak. Pair decorative bars with a data fallback. Summarize semantic trends in the label.</p></div><div><b>Don't</b><p class="meta">Never axis-label a sparkline. Never reuse gem bars for chrome fills. Never leave semantic bars unlabeled.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Decorative bars take <code>aria-hidden</code> with a table or data fallback beside them · semantic bars take <code>role=img</code> plus an <code>aria-label</code> summarizing the trend, such as up 12% over 7 days.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">KpiStat — hosts the spark slot · FunnelGlyph — the measure-family mark · GemReward — celebration hues, never momentum · Full spec: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>

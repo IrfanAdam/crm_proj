@@ -1,0 +1,45 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 01 Checkbox</p>
+<h2 class="ch-hero">Many independent on-offs. Never instant settings.</h2>
+<p class="ch-lede meta">Checkbox is the multi-select control: 0..n independent on/offs in a list or form, bulk select, confirmations. It answers to a submit; it never takes instant effect. Use it when each option stands alone; use Switch for instant settings, Radio for one-of-n.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — label · input · box · tick.</b> <code>label.check</code> wraps a native <code>input[type=checkbox]</code> (absolute, transparent, still focusable) + <code>.check__box</code> (20px, rounded) + <code>.check__icon</code> tick (SVG scales 0.6 to 1) + <code>.check__label</code> text.</p><p class="ch-reject">Reject: a div-faked box with no native input — proxies never intercept pointer or keyboard.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Sizes and partial state.</b> <code>check--sm</code> (16px) / default (20px) / <code>check--lg</code> (24px); partial-group "select all" uses native <code>input:indeterminate</code>, set via <code>el.indeterminate = true</code> in JS.</p><p class="ch-reject">Reject: indeterminate used as a third value — it means partial group only.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Focus is the shared ring law.</b> <code>input:focus-visible + .check__box</code> paints <code>box-shadow: var(--focus-ring)</code> (2px sapphire ring); paint uses <code>var(--transition-fast)</code>, reduced-motion kills it.</p><p class="ch-reject">Reject: a custom glow or outline — focus is always the shared ring token.</p></div></li>
+</ul>
+<h3>Variants — size + signal</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (20px)</td><td>standard form rows</td><td><code>.check__box</code> 20px, tick scales in</td></tr>
+<tr><td><code>check--sm</code></td><td>dense lists</td><td>16px box, never smaller</td></tr>
+<tr><td><code>check--lg</code></td><td>emphasis rows</td><td>24px box, same tick travel</td></tr>
+<tr><td>indeterminate</td><td>partial "select all"</td><td>dash glyph, set in JS</td></tr>
+<tr><td><code>check--error</code></td><td>failed validation</td><td>danger border + danger-strong label</td></tr>
+<tr><td><code>check--disabled</code></td><td>unavailable option</td><td>dims box, muted label, no pointer</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>surface face, strong border</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border + hover wash</td><td><code>:hover</code></td></tr>
+<tr><td>Checked</td><td>action fill, white tick</td><td><code>:checked</code></td></tr>
+<tr><td>Active / pressed</td><td>active wash; checked presses to action-strong</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>shared 2px ring on box</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, muted label, no pointer</td><td><code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Error</td><td>danger border/fill + danger label</td><td><code>check--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>box face / resting border</td><td><code>bg.surface</code> / <code>border.strong</code></td></tr>
+<tr><td>checked fill / pressed fill</td><td><code>role.action</code> / <code>role.action-strong</code></td></tr>
+<tr><td>tick / label / disabled label</td><td><code>primitive.gray-white</code> / <code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>error border / error label</td><td><code>role.danger</code> / <code>role.danger-strong</code></td></tr>
+<tr><td>corner / gap / focus / motion</td><td><code>radius.sm</code> / <code>spacing.2</code> / <code>focus.ring</code> / <code>transition.fast</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;label class="check"&gt;&lt;input type="checkbox"&gt;&lt;span class="check__box"&gt;&lt;svg class="check__icon"&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span class="check__label"&gt;Email me&lt;/span&gt;&lt;/label&gt;
+&lt;label class="check check--sm check--error"&gt;&lt;input type="checkbox" aria-invalid="true"&gt;&lt;span class="check__box"&gt;&lt;svg class="check__icon"&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span class="check__label"&gt;Required&lt;/span&gt;&lt;/label&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Wrap the input in the label. Use indeterminate only for partial groups. Keep label text always visible on a 44px row.</p></div><div><b>Don't</b><p class="meta">Never fake with divs. Never shrink below 16px. Never put two checkboxes on one label. Never use for instant settings.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Native <code>input[type=checkbox]</code> · <code>Space</code> toggles · <code>aria-checked="mixed"</code> only on custom proxies · label always visible · shared focus ring · 44px row · forced-colors maps fill to Highlight.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Radio — exclusive choice · Switch — instant settings · Search — text twin of filtering · Full spec: <a href="prototype/gallery/choice.md">choice.md</a></p>
+</div>

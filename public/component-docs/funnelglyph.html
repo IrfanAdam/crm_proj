@@ -1,0 +1,35 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 06 FunnelGlyph</p>
+<h2 class="ch-hero">The measure mark. One tile everywhere.</h2>
+<p class="ch-lede meta">FunnelGlyph is the funnel mark: a rounded sapphire tile with the glyph in bold display type. It marks measure-family visuals; it never celebrates. Use it when the funnel needs a face; use GemReward when something is won.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — tile · glyph.</b> Rounded tile plus glyph in bold display type; no label, no count, no chrome inside the tile.</p><p class="ch-reject">Reject: a glyph restyled per metric — one tile everywhere.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Sapphire means measure.</b> Tile in sapphire-100 with sapphire-600 ink; the funnel never borrows a gem hue, however festive the metric feels.</p><p class="ch-reject">Reject: a gem-hued funnel — celebration hues never mark measure.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Sizes follow placement.</b> 56px hero on cards, 40px small in strips and rows, 32px inline beside chips; radius steps down with the tile.</p><p class="ch-reject">Reject: a free-scaled tile — three sizes cover every placement.</p></div></li>
+</ul>
+<h3>Variants — three sizes</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default</td><td>hero / card tile</td><td>56px, <code>radius.lg</code>, <code>font-size.xl</code></td></tr>
+<tr><td><code>funnel-glyph--small</code></td><td>strip / row tile</td><td>40px, <code>font-size.md</code></td></tr>
+<tr><td><code>funnel-glyph--xs</code></td><td>inline / chip-adjacent</td><td>32px, <code>font-size.sm</code>, <code>radius.md</code></td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting tile</td><td>—</td></tr>
+<tr><td>Small</td><td>strip density</td><td><code>funnel-glyph--small</code></td></tr>
+<tr><td>Inline</td><td>chip-adjacent mark</td><td><code>funnel-glyph--xs</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>tile / ink</td><td><code>primitive.sapphire-ui.100</code> / <code>600</code>, <code>radius.lg</code></td></tr>
+<tr><td>type</td><td><code>font-weight.bold</code>, <code>font-size</code> scale per size</td></tr>
+<tr><td>geometry</td><td>56 / 40 / 32px tile (avatar px-geometry, not spacing)</td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;span class="funnel-glyph funnel-glyph--small" aria-hidden="true"&gt;⬢&lt;/span&gt;&lt;span&gt;Qualification 12&lt;/span&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep sapphire for measure. Keep one tile across placements. Put metric values in adjacent text.</p></div><div><b>Don't</b><p class="meta">Never set the glyph in a gem hue. Never restyle per metric. Never let the tile speak the number.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Always decorative with <code>aria-hidden</code> · metric values live in adjacent text, never inside the tile · sapphire-600 on sapphire-100 contrast reads AAA.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Sparkline — momentum beside the mark · FunnelCard — the card the hero tile sits on · GemReward — celebration, never measure · Full spec: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>

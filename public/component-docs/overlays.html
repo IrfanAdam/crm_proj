@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Overlays · 01 Layers</p>
+<h2 class="ch-hero">Interrupt with intent. Never stack surprises.</h2>
+<p class="ch-lede meta">Overlays float six layers — modal, drawer, menu, tooltip, popover, toast — served by one engine: single focus-trap, Esc-to-close, return-focus. Each layer has one job and one alternative; stacking reuses tokens, never raw z-index.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>When, or its alternative.</b> Modal blocks for confirms; drawer keeps context for filters and long forms; menu lists actions; tooltip names one thing; popover anchors rich panels; toast confirms past acts. Drawer over modal-for-forms, toast-plus-undo over modal-for-trivia.</p><p class="ch-reject">Reject: a modal for filter panels or a tooltip holding buttons — right layer or no layer.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Trap, Esc, return.</b> Modal and dismissible drawer trap Tab, close on Esc (unless <code>.overlay--persistent</code>), and return focus to the opener; menus and popovers close-and-refocus without trapping. Toasts never take focus at all.</p><p class="ch-reject">Reject: a trap that strands focus or an Esc that does nothing — every layer gives focus back.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Tokens stack, DOM orders.</b> Floats sit on <code>--z-index-dropdown</code> (in-dialog: <code>--z-index-modal</code>), scrim <code>--z-index-overlay</code>, dialogs <code>--z-index-modal</code>, toasts always <code>--z-index-toast</code>. Later dialogs paint above by DOM order; tooltips never trap, toasts always win.</p><p class="ch-reject">Reject: raw z-index numbers or nested modal-on-modal — restack in order, never invent depth.</p></div></li>
+</ul>
+<h3>Variants — layer vs alternative</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>.overlay__content</code> modal</td><td>blocking confirm / short task</td><td><code>--sm/md/lg/full</code>, <code>--top</code> sheet / center / <code>--bottom</code></td></tr>
+<tr><td><code>.drawer</code> + <code>.menu</code></td><td>context panel / action list</td><td>drawer <code>--right/--left/--top/--bottom</code>, <code>--narrow/--wide</code>; menu flips, <code>--in-dialog</code> re-layers</td></tr>
+<tr><td><code>.tooltip</code> / <code>.popover</code> / <code>.toast</code></td><td>name / rich anchor / transient confirm</td><td>tooltip pointer-only <code>--visible</code>; popover <code>dialog</code> non-modal; toast <code>--success/--danger/--warning</code> in <code>.toast-region</code></td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>fade + rise / slide in</td><td><code>.overlay--open</code> / <code>.drawer--open</code> / <code>.toast--visible</code> + <code>--transition-fast</code></td></tr>
+<tr><td>Closing</td><td>exit to opacity 0, then unmount</td><td><code>.is-closing</code> over <code>--motion-duration-sm</code></td></tr>
+<tr><td>Persistent</td><td>ignores scrim + Esc, explicit close</td><td><code>.overlay--persistent</code> / <code>.drawer--persistent</code> (no trap)</td></tr>
+<tr><td>Reduced motion</td><td>snaps, no slide/fade</td><td><code>prefers-reduced-motion</code> disables transitions</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>scrim / surface / edge</td><td><code>--achievement-overlay-bg</code> / <code>--bg-surface</code> / <code>--border-thin</code></td></tr>
+<tr><td>elevation / radius / ink</td><td><code>--shadow-lg</code> (dialogs) / <code>--radius-lg</code> / <code>--text-primary</code> + <code>--text-muted</code></td></tr>
+<tr><td>stacking / motion / focus</td><td><code>--z-index-dropdown/--z-index-overlay/--z-index-modal/--z-index-toast</code> / <code>--transition-fast</code> / <code>--focus-ring</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="overlay overlay--open"&gt;&lt;div class="overlay__content overlay__content--md" role="dialog" aria-modal="true" aria-labelledby="t1"&gt;
+&lt;div class="overlay__header"&gt;&lt;h2 class="overlay__title" id="t1"&gt;Delete deal?&lt;/h2&gt;&lt;/div&gt;
+&lt;div class="toast-region" aria-live="polite"&gt;&lt;div class="toast toast--visible" role="status"&gt;Saved&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Pick the lightest layer that does the job. Trap and return focus on dialogs. Announce toasts via live regions, never focus.</p></div><div><b>Don't</b><p class="meta">Never nest modals, auto-open on load, or full-screen except --full. Never put critical errors only in a toast.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Dialogs: labelledby/describedby, focus in on open, Tab wrap, Esc, return-focus, background inert · menus: roving arrows · tooltips: describedby, Esc, never focusable · toasts: <code>role=status</code> (<code>alert</code> for danger), container <code>aria-live</code>, action Tab-reachable, no focus steal.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Toolbar — overflow opens a menu, not a dialog · Accordion — inline expand instead of floating detail · Full spec: <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</div>

@@ -1,0 +1,42 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 06 Icon</p>
+<h2 class="ch-hero">Phosphor only. Decorative until named.</h2>
+<p class="ch-lede meta">Icon is the Phosphor-only glyph system — registry plus CDN, currentColor, token sizes. Regular 1.5px stroke by default; fill weight marks selected. Legacy sprite.svg is fallback only; new work never touches it.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — <code>.icon</code> frame · Phosphor <code>svg</code> at 100% · size modifier.</b> The frame inherits context color; the svg fills it edge to edge. Five sizes, xs 12px to xl 32px; md 20px is the base with no modifier.</p><p class="ch-reject">Reject: any glyph outside the Phosphor registry — one foundry only.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight means state.</b> Regular is default; fill marks selected or emphasis; bold is high-emphasis only. Selected state is fill weight plus signal color, applied via <code>Icon.jsx</code> — never a hand-swapped svg.</p><p class="ch-reject">Reject: fill weight as decoration — fill always answers selection.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Static — it inherits, never owns state.</b> No hover, active, or disabled of its own; the surrounding control owns interaction. Muted and subtle inks exist for hierarchy, not for meaning.</p><p class="ch-reject">Reject: an off-scale size — xs–xl or nothing.</p></div></li>
+</ul>
+<h3>Variants — size + weight + ink</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>icon--xs</code></td><td>prefix glyphs, dense rows</td><td>12px, <code>icon-size.xs</code></td></tr>
+<tr><td><code>icon--sm</code></td><td>button / input adornment</td><td>16px, <code>icon-size.sm</code></td></tr>
+<tr><td><code>icon--md</code> (base)</td><td>default glyph</td><td>20px, no modifier needed</td></tr>
+<tr><td><code>icon--lg / --xl</code></td><td>emphasis / hero glyphs</td><td>24px / 32px</td></tr>
+<tr><td>regular / fill / bold</td><td>default / selected / high-emphasis</td><td>1.5px stroke / fill / bold via <code>Icon.jsx</code></td></tr>
+<tr><td><code>icon--muted / --subtle</code></td><td>hierarchy</td><td>secondary / faint ink, never meaning</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>inherits context color</td><td><code>currentColor</code></td></tr>
+<tr><td>Selected</td><td>fill weight + signal color</td><td><code>Icon.jsx</code> <code>weight="fill"</code></td></tr>
+<tr><td>Muted / subtle</td><td>steps down hierarchy</td><td><code>icon--muted</code> / <code>icon--subtle</code></td></tr>
+<tr><td>Decorative</td><td>hidden from assistive tech</td><td><code>aria-hidden="true"</code></td></tr>
+<tr><td>Semantic</td><td>exposed with a name</td><td><code>role="img"</code> + <code>aria-label</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>sizes xs–xl</td><td><code>icon-size.xs / sm / md / lg / xl</code></td></tr>
+<tr><td>ink</td><td><code>currentColor</code> (inherits context)</td></tr>
+<tr><td>muted / subtle</td><td><code>text.muted</code> / <code>text.dim</code></td></tr>
+<tr><td>weight</td><td><code>Icon.jsx</code> <code>weight="regular / fill / bold"</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;span class="icon icon--sm" aria-hidden="true"&gt;&lt;!-- Phosphor svg --&gt;&lt;/span&gt;
+&lt;button aria-label="Close dialog"&gt;&lt;span class="icon" aria-hidden="true"&gt;&lt;!-- Phosphor svg --&gt;&lt;/span&gt;&lt;/button&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Use Phosphor only via the registry. Mark decorative icons aria-hidden. Reserve fill for selected state. Name semantic icons through their control or role img.</p></div><div><b>Don't</b><p class="meta">Never use sprite.svg in new work. Never carry meaning by color alone. Never invent off-scale sizes. Never leave a semantic icon unnamed.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Decorative icons: <code>aria-hidden="true"</code>, never focusable · semantic icons: exposed via the control's accessible name (e.g. button <code>aria-label</code>) or standalone <code>role="img"</code> + <code>aria-label</code> · icon color never carries meaning alone — contrast follows the surrounding text pair.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">StatusPill — icon prefix host · Chip — leading-icon host · Avatar — never an icon frame · Full spec: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</div>

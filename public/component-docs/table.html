@@ -1,0 +1,41 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 01 Table</p>
+<h2 class="ch-hero">Comparable rows. One sorted column.</h2>
+<p class="ch-lede meta">Table is the Opps ledger: sortable columns over comparable rows, keyboard-driven. It sorts and selects; it never hosts row actions inside the sort header. Use it when columns compare; use ListRow when rows navigate.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — wrap · head · rows · footer.</b> <code>.table__wrap</code> scroll container holds <code>table.table</code>; header cells sort, body rows carry data, <code>.table__footer</code> hosts the Pagination slot (count left, controls right).</p><p class="ch-reject">Reject: a sticky header scoped to the page — sticky lives inside <code>.table__wrap</code> only.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Density is a choice, not a drift.</b> Default operates comfortable; <code>table--compact</code> goes dense Carbon-style; <code>table--comfortable</code> goes roomy for monitors. Striping is allowed only outside dense tables.</p><p class="ch-reject">Reject: striped dense rows — hover wash is enough signal at density.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Sort is announced, selection is railed.</b> One sorted column at a time via <code>aria-sort</code> plus the sapphire arrow; <code>.table__row--selected</code> pairs the active wash with a sapphire inset rail.</p><p class="ch-reject">Reject: selection by fill alone — the rail must mark the picked row.</p></div></li>
+</ul>
+<h3>Variants — density + chrome</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default</td><td>comfortable operate density</td><td><code>spacing.3</code> cells</td></tr>
+<tr><td><code>table--compact</code></td><td>dense ledger</td><td><code>spacing.1 spacing.2</code> cells</td></tr>
+<tr><td><code>table--comfortable</code></td><td>roomy monitor density</td><td><code>spacing.3 spacing.4</code> header, <code>spacing.4</code> cells</td></tr>
+<tr><td><code>table--striped</code></td><td>scan long lists</td><td><code>bg.interactive</code> even rows, never with compact</td></tr>
+<tr><td><code>table--sticky</code></td><td>pin header in scroll</td><td><code>position: sticky</code> + <code>z-index.sticky</code> + <code>bg.surface</code> mask</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Sorted</td><td>sapphire arrow + ink header</td><td><code>aria-sort</code> ascending / descending</td></tr>
+<tr><td>Row hover</td><td>hover wash</td><td><code>bg.interactive-hover</code></td></tr>
+<tr><td>Selected</td><td>active wash + sapphire rail</td><td><code>.table__row--selected</code></td></tr>
+<tr><td>Empty</td><td>centered muted row, AT-readable</td><td><code>.table__empty</code></td></tr>
+<tr><td>Loading</td><td>shimmer bars, never focusable</td><td><code>.table__skeleton-bar</code> + <code>aria-busy</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>wrap frame / radius</td><td><code>border.thin</code> / <code>radius.lg</code>, <code>bg.surface</code></td></tr>
+<tr><td>header / cell ink</td><td><code>text.muted</code> / <code>text.primary</code>, <code>font-weight.semibold</code></td></tr>
+<tr><td>sort arrow / focus</td><td><code>primitive.sapphire-ui.500</code> / <code>400</code> ring</td></tr>
+<tr><td>hover / selected / stripe</td><td><code>bg.interactive-hover</code> / <code>bg.interactive-active</code> + rail / <code>bg.interactive</code></td></tr>
+<tr><td>skeleton / footer</td><td><code>motion.duration-xl</code> shimmer / <code>text.muted</code> <code>font-size.xs</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="table__wrap"&gt;&lt;table class="table table--sticky"&gt;&lt;th scope="col" aria-sort="ascending"&gt;Value&lt;/th&gt;&lt;tr class="table__row--selected"&gt;&lt;td class="table__cell--select"&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;div class="table__footer"&gt;…&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep one sorted column at a time. Scope sticky to the wrap. Give selectable rows a leading checkbox column with scope and row aria-selected.</p></div><div><b>Don't</b><p class="meta">Never stripe dense tables. Never put actions inside the sort header. Never make the skeleton focusable.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Header cells carry <code>scope=col</code> · <code>aria-sort</code> ascending/descending with Enter/Space toggling and an audible announcement · checkbox column needs <code>scope</code> plus row <code>aria-selected</code> · empty state is a real row · skeleton is <code>aria-busy</code>, never focusable.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">ListRow — navigates, never compares · Pagination — lives in the footer slot · KpiStat — the headline above the ledger · Full spec: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>

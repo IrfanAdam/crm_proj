@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 06 Toolbar</p>
+<h2 class="ch-hero">Actions in formation. Never a spill.</h2>
+<p class="ch-lede meta">Toolbar lines up record and list actions — create, filter, sort, overflow. It groups and compresses; it never lets labels shove actions off-screen. Use groups with dividers; collapse excess into overflow on narrow widths.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Density sets the frame.</b> Default 44px, <code>.toolbar--comfortable</code> 56px, <code>.toolbar--compact</code> tightens to <code>--spacing-8</code> with tight gaps. Density changes rhythm, never which actions exist.</p><p class="ch-reject">Reject: compact mode dropping actions — density compresses spacing, not capability.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Groups divide, spacers push.</b> <code>.toolbar__group</code> clusters kin; adjacent groups split on a <code>--border-default</code> divider. <code>.toolbar__spacer</code> shoves trailing actions right while <code>.toolbar__title</code> ellipsizes without shrinking the cluster.</p><p class="ch-reject">Reject: an undifferentiated action soup — group kin, divide strangers, pin the tail.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Overflow catches the spill.</b> Excess <code>.toolbar__action</code>s collapse into a <code>.toolbar__overflow</code> menu button on narrow widths. Nothing falls off-screen; everything stays one tap away.</p><p class="ch-reject">Reject: actions clipped past the edge — what doesn't fit joins the menu.</p></div></li>
+</ul>
+<h3>Variants — density + parts</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>--comfortable</code> / base / <code>--compact</code></td><td>roomy / default / dense</td><td>56px / 44px / <code>--spacing-8</code> frame</td></tr>
+<tr><td><code>__group</code> + divider</td><td>cluster kin actions</td><td><code>--border-default</code> split between groups</td></tr>
+<tr><td><code>__overflow</code> menu</td><td>catch the spill</td><td>menu button appears when width runs out</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover</td><td>interactive wash per action</td><td><code>--bg-interactive</code></td></tr>
+<tr><td>Disabled action</td><td>dims, keeps slot</td><td><code>disabled</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring per action</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+<tr><td>Overflowed</td><td>action lives in menu</td><td><code>.toolbar__overflow</code> + menu semantics</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>surface / divider</td><td><code>--bg-surface</code> / <code>--border-default</code></td></tr>
+<tr><td>action hover / ink</td><td><code>--bg-interactive</code> / <code>--text-primary</code></td></tr>
+<tr><td>focus / disabled</td><td><code>--focus-ring</code> / <code>--opacity-disabled</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="toolbar" role="toolbar" aria-label="Deal actions"&gt;
+&lt;div class="toolbar__group" aria-label="Create"&gt;…&lt;/div&gt;&lt;div class="toolbar__spacer"&gt;&lt;/div&gt;
+&lt;button class="toolbar__overflow" aria-haspopup="menu" aria-expanded="false"&gt;⋯&lt;/button&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Group kin actions with labelled groups. Ellipsize the title, never the cluster. Keep overflow keyboard-reachable.</p></div><div><b>Don't</b><p class="meta">Never let labels push actions off-screen. Never drop actions to fit density. Never strand overflow from the keyboard.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta"><code>role=toolbar</code> + aria-label · grouped aria-labels · keyboard-reachable overflow menu · visible focus ring per action.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Menu — where overflow actions live · TabBar — homes, not actions · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</div>

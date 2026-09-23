@@ -1,0 +1,42 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 03 Badge</p>
+<h2 class="ch-hero">Counts beside things. Never things themselves.</h2>
+<p class="ch-lede meta">Badge is the unread/count glyph beside a label or anchored to an object — an inbox total, a row count, a dot of presence. It annotates; it never acts, never filters, never carries meaning alone.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — pill · bold micro count · tinted fill.</b> Tinted fill with darker ink and a matching border, or a bare 8px <code>.badge--dot</code> with no text. Counts cap at <code>99+</code> via <code>.badge--max</code> with tabular numerals so the pill never wraps.</p><p class="ch-reject">Reject: an exact 4-digit count — cap it, never let the pill grow.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Static only — never interactive.</b> No hover, active, disabled, or focus. A badge inherits its context's state (the button or row around it); giving it hover would promise an action it must not own. Keyboard users reach the anchor, never the badge.</p><p class="ch-reject">Reject: a focusable or clickable badge — the anchor owns interaction.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Overlap draws its own ring.</b> <code>.badge-wrap</code> (relative anchor) + <code>.badge--overlap</code> pins the pill top-right with <code>translate(50%,-50%)</code>; the pill's own border is the separation ring, so no extra halo token exists.</p><p class="ch-reject">Reject: a sixth tone — map every count to the five.</p></div></li>
+</ul>
+<h3>Variants — tone + size + placement</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (brand)</td><td>headline count</td><td>sapphire wash, sapphire ink</td></tr>
+<tr><td><code>badge--neutral</code></td><td>muted count</td><td>interactive fill, secondary ink</td></tr>
+<tr><td><code>badge--success / --warning / --danger</code></td><td>signal count</td><td>green / orange / red wash + dark ink</td></tr>
+<tr><td><code>badge--sm</code></td><td>dense lists, icon anchors</td><td>16px frame (base is 20px)</td></tr>
+<tr><td><code>badge--dot</code></td><td>presence, no count</td><td>fixed 8px circle, text omitted</td></tr>
+<tr><td><code>badge--max</code> / <code>--overlap</code></td><td>cap / anchor</td><td><code>99+</code> tabular cap / pinned top-right</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting tint per tone</td><td>—</td></tr>
+<tr><td>Standalone</td><td>flows inline beside its label</td><td><code>.badge</code></td></tr>
+<tr><td>Overlap</td><td>pinned over icon / avatar corner</td><td><code>.badge-wrap</code> + <code>.badge--overlap</code></td></tr>
+<tr><td>Capped</td><td>large counts freeze width</td><td><code>.badge--max</code></td></tr>
+<tr><td>Forced-colors</td><td>flattens to Canvas / CanvasText</td><td><code>@media (forced-colors:active)</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>fills / inks / borders</td><td><code>primitive.sapphire-ui / green / orange / red</code> + <code>bg.interactive</code></td></tr>
+<tr><td>radius / padding / border width</td><td><code>radius.full</code> / <code>spacing.1–2</code> / <code>border-width.thin</code></td></tr>
+<tr><td>type / max-count numerals</td><td><code>font-size.xs</code> / <code>font-weight.bold</code> / tabular-nums</td></tr>
+<tr><td>overlap offset</td><td><code>translate(50%,-50%)</code> off the anchor corner</td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;span class="badge badge--max"&gt;99+&lt;/span&gt;
+&lt;span class="badge-wrap"&gt;&lt;span class="badge badge--overlap badge--dot" aria-hidden="true"&gt;&lt;/span&gt;&lt;/span&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Pair every badge with a visible label or anchored object. Cap at 99+. Use the dot for presence only. Use overlap for icon and avatar anchors.</p></div><div><b>Don't</b><p class="meta">Never write a status word as a badge. Never make one focusable. Never invent a sixth tone. Never show an exact 4-digit count.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Redundant badge (label already states the count) is <code>aria-hidden="true"</code> · standalone badge (count unclear from context) gets <code>aria-label</code> (e.g. <code>aria-label="5 unread"</code>) · dot always needs a text twin elsewhere · tint + dark ink keeps micro type readable · forced-colors keeps the count without hue.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">StatusPill — stage words, never counts · Chip — toggles facets, never annotates · Avatar — presence anchor · Full spec: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</div>

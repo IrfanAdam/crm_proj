@@ -1,0 +1,44 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 03 Switch</p>
+<h2 class="ch-hero">Instant effect on toggle. Never submit-gated.</h2>
+<p class="ch-lede meta">Switch is the instant binary setting: notifications, dark mode, availability — the effect applies on toggle and reverses inline. Use it when flipping takes effect now; use Checkbox for anything Review-then-Submit, Radio for exclusive choice.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — label · track · thumb · icon.</b> <code>label.switch</code> wraps <code>input[type=checkbox][role=switch]</code> + <code>.switch__track</code> (44 by 26, full pill) + <code>.switch__thumb</code> (20px, travels 18px via translate) + optional <code>.switch__icon</code> + <code>.switch__label</code>.</p><p class="ch-reject">Reject: a thumb animated by anything but the spring token — travel is always the spring.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Two faces, one track.</b> Without icon is the default; with icon nests <code>.switch__icon</code> in the thumb, fading in only when on. <code>switch--sm</code> shrinks to a 36 by 22 track, 16px thumb, 14px travel.</p><p class="ch-reject">Reject: icon-only with no text label — the governed thing must be named.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Focus is the shared ring law.</b> <code>input:focus-visible + .switch__track</code> paints <code>box-shadow: var(--focus-ring)</code>; off presses to the active wash, on presses to action-strong, so pressed never equals focus.</p><p class="ch-reject">Reject: pressed styled the same as focus — the two must read apart.</p></div></li>
+</ul>
+<h3>Variants — face + size</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (no icon)</td><td>standard instant setting</td><td>bare thumb, track flips action when on</td></tr>
+<tr><td>with icon</td><td>needs on-state confirmation</td><td>check glyph at full opacity only when on</td></tr>
+<tr><td><code>switch--sm</code></td><td>dense settings rows</td><td>36 by 22 track, 16px thumb, 14px travel</td></tr>
+<tr><td><code>switch--error</code></td><td>failed or blocked state</td><td>danger border on track</td></tr>
+<tr><td><code>switch--disabled</code></td><td>locked setting</td><td>dims track, no pointer</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Off</td><td>interactive track, thumb left</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border on track</td><td><code>:hover</code></td></tr>
+<tr><td>On</td><td>action track, thumb right, icon fades in</td><td><code>:checked</code></td></tr>
+<tr><td>Active / pressed</td><td>off presses to active wash, on to action-strong</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>shared 2px ring on track</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Error</td><td>danger border on track</td><td><code>switch--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>off track / pressed off</td><td><code>bg.interactive</code> / <code>bg.interactive-active</code></td></tr>
+<tr><td>on track / pressed on</td><td><code>role.action</code> / <code>role.action-strong</code></td></tr>
+<tr><td>thumb face / thumb lift</td><td><code>bg.surface</code> / <code>shadow.sm</code></td></tr>
+<tr><td>track border / error / gap</td><td><code>border.strong</code> / <code>role.danger</code> / <code>spacing.2</code></td></tr>
+<tr><td>shape / focus / motion</td><td><code>radius.full</code> / <code>focus.ring</code> / <code>transition.fast + spring</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;label class="switch"&gt;&lt;input type="checkbox" role="switch"&gt;&lt;span class="switch__track"&gt;&lt;span class="switch__thumb"&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="switch__label"&gt;Email alerts&lt;/span&gt;&lt;/label&gt;
+&lt;label class="switch switch--sm"&gt;&lt;input type="checkbox" role="switch" checked aria-checked="true"&gt;&lt;span class="switch__track"&gt;&lt;span class="switch__thumb"&gt;&lt;span class="switch__icon"&gt;✓&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="switch__label"&gt;Dark mode&lt;/span&gt;&lt;/label&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Label the governed thing ("Email alerts", not "On"). Keep the effect instant and reversible. Expose switch semantics.</p></div><div><b>Don't</b><p class="meta">Never use for submit-gated choices. Never use icon-only without text. Never animate the thumb off-token.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta"><code>input[type=checkbox]</code> + <code>role="switch"</code> · <code>Space</code> toggles · state announced on/off via <code>aria-checked</code> · 44px row · reduced-motion snaps the thumb · forced-colors maps on-track to Highlight.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Checkbox — submit-gated booleans · Radio — exclusive choice · Button — committing actions · Full spec: <a href="prototype/gallery/choice.md">choice.md</a></p>
+</div>

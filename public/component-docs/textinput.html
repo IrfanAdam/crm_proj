@@ -1,0 +1,48 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 03 TextInput</p>
+<h2 class="ch-hero">Labelled single lines. Never naked placeholders.</h2>
+<p class="ch-lede meta">TextInput is single-line entry — names, amounts, emails. One md frame at 44px, label above, help or error below. It captures values; it never offers choices (Select), never filters (Search), never holds paragraphs (Textarea).</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — field · label · wrap · input · affix · help.</b> <code>.field</code> columns with <code>spacing.2</code> gap; xs uppercase <code>.field__label</code>; relative <code>.field__wrap</code> anchoring absolute 16px <code>.field__prefix</code> / <code>.field__suffix</code> slots (₹/L, icon, action); xs meta below.</p><p class="ch-reject">Reject: an input with no label — placeholder text never names the field.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>States speak in tokens, never bare hue.</b> Error is a <code>role.danger</code> border with <code>aria-invalid</code> + <code>aria-describedby</code> to the error id; success swaps in <code>role.success</code>; focus is sapphire-400 plus the <code>focus.ring</code> shadow, on <code>:focus</code> not only keyboard.</p><p class="ch-reject">Reject: a second error hue, or an error carried by color alone.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Sizes and skins stay on the scale.</b> sm 32px, md 44px, lg 48px; <code>--filled</code> is the dense interactive wash; affix padding reserves <code>calc(spacing.3 + icon-size.sm + spacing.2)</code> so ₹ never collides with ink.</p><p class="ch-reject">Reject: a shrunk md frame — 44px is the touch target, not a suggestion.</p></div></li>
+</ul>
+<h3>Variants — skin + size + affix</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>outlined (default)</td><td>default entry</td><td><code>bg.surface</code>, <code>border.thin</code> hairline</td></tr>
+<tr><td><code>field__input--filled</code></td><td>dense / filter chrome</td><td><code>bg.interactive</code> wash, transparent border</td></tr>
+<tr><td><code>field__input--sm / --lg</code></td><td>density sizes</td><td>32px xs type / 48px md type (md is 44px)</td></tr>
+<tr><td><code>--with-prefix / --with-suffix</code></td><td>affix room</td><td>calc pad for ₹/L, icon, or action slots</td></tr>
+<tr><td><code>field--loading</code></td><td>async submit guard</td><td><code>progress</code> cursor + <code>aria-busy</code></td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>hairline frame, labelled</td><td><code>label[for]</code> or wrapped label</td></tr>
+<tr><td>Hover</td><td>one step deeper border</td><td><code>border.medium</code> on <code>:hover</code></td></tr>
+<tr><td>Focus</td><td>sapphire border + ring shadow</td><td><code>:focus</code>, never outline alone</td></tr>
+<tr><td>Disabled</td><td>dims, muted ink, interactive fill</td><td>native <code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Readonly</td><td>dashed hairline, default cursor</td><td>native <code>readonly</code>, still submitted</td></tr>
+<tr><td>Error</td><td>danger border, danger outline on focus</td><td><code>aria-invalid</code> + <code>aria-describedby</code> → error id</td></tr>
+<tr><td>Success</td><td>success border, success outline on focus</td><td><code>aria-describedby</code> → confirmation id</td></tr>
+<tr><td>Placeholder / autofill</td><td>muted at full opacity / ink forced primary</td><td>never a label; UA <code>:-webkit-autofill</code> flood</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius / gaps</td><td><code>bg.surface</code> / <code>radius.md</code> / <code>spacing.2</code>, pads <code>spacing.3</code></td></tr>
+<tr><td>borders (all widths)</td><td><code>border.thin</code> + <code>border-width.thin</code>, hover <code>border.medium</code></td></tr>
+<tr><td>label / input / help ink</td><td><code>text.secondary</code> / <code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>focus border + ring</td><td><code>primitive.sapphire-ui.400</code> + <code>focus.ring</code></td></tr>
+<tr><td>error / success</td><td><code>role.danger</code> / <code>role.success</code>, width-medium outline + offset on focus</td></tr>
+<tr><td>disabled dim / filled wash</td><td><code>opacity.disabled</code> / <code>bg.interactive</code>, transparent <code>color.transparent</code></td></tr>
+<tr><td>sizes / icon / motion</td><td>sm <code>spacing.8</code>, md 44px raw, lg <code>spacing.12</code> / <code>icon-size.sm</code> / <code>transition.fast</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;label class="field__label" for="amt"&gt;Amount&lt;/label&gt;
+&lt;div class="field__wrap"&gt;&lt;span class="field__prefix"&gt;₹&lt;/span&gt;&lt;input id="amt" class="field__input field__input--with-prefix field__input--with-suffix field__input--error" aria-invalid="true" aria-describedby="amt-err"&gt;&lt;span class="field__suffix"&gt;L&lt;/span&gt;&lt;/div&gt;
+&lt;p id="amt-err" class="field__error"&gt;Enter an amount in lakhs.&lt;/p&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep every input labelled. Put errors in .field__error with aria-describedby, icon plus text. Hold md at 44px. Say why near any disabled field.</p></div><div><b>Don't</b><p class="meta">Never use placeholder as the label. Never invent a second error hue. Never let an affix collide with the value.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Label association (<code>for</code> or wrapped) · error sets <code>aria-invalid</code> + <code>aria-describedby</code> · success/error never color-alone (icon + text) · md frame meets the 44px target · muted and danger ink gated by contrast tests · forced-colors restores a <code>CanvasText</code> outline · reduced-motion still.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Select — choices, never free text · Search — the pill twin for filtering · Textarea — paragraphs, never single lines · Full spec: <a href="prototype/gallery/form.md">form.md</a></p>
+</div>

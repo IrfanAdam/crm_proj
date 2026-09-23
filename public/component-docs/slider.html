@@ -1,0 +1,43 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 04 Slider</p>
+<h2 class="ch-hero">Draggable quantity. Never a hidden value.</h2>
+<p class="ch-lede meta">Slider is the quantity control: continuous amounts (volume, price cap) or stepped amounts with visible stops. The value benefits from drag plus tick labels, and the value is always shown. Use it when amount matters; use Radio for 2–4 named options, text input for exact entry.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — input · track · thumb · ticks.</b> <code>input[type=range].slider</code> (full-width 6px track) + <code>::-webkit-slider-thumb</code> / <code>::-moz-range-thumb</code> (20px face, medium-width accent ring, grab cursor) + <code>::-moz-range-track</code> / <code>::-moz-range-progress</code> fill + optional <code>.slider__ticks</code> row.</p><p class="ch-reject">Reject: styling one vendor engine only — webkit and moz thumbs ship together.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Continuous or discrete, never vague.</b> Continuous is the default; <code>slider--discrete</code> adds native <code>step</code>, a repeating-gradient tick strip, and <code>.slider__ticks</code> labels. <code>slider--sm</code> (16px) / <code>--lg</code> (24px) resize the thumb.</p><p class="ch-reject">Reject: discrete steps without native step, or step and tick counts that disagree.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Dragging keeps the ring.</b> <code>:active</code> switches the cursor to grabbing while the shared <code>var(--focus-ring)</code> persists on the thumb; hover lifts to a medium shadow.</p><p class="ch-reject">Reject: error shown by color alone — danger paint always ships with text.</p></div></li>
+</ul>
+<h3>Variants — mode + size</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>continuous (default)</td><td>free amounts</td><td>bare track + progress fill</td></tr>
+<tr><td><code>slider--discrete</code></td><td>stepped amounts</td><td>native step + tick strip + tick labels</td></tr>
+<tr><td><code>slider--sm</code></td><td>dense rows</td><td>16px thumb, never smaller</td></tr>
+<tr><td><code>slider--lg</code></td><td>touch-first rows</td><td>24px thumb</td></tr>
+<tr><td><code>slider--error</code></td><td>out-of-range value</td><td>danger ring + danger progress</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting track + thumb</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent-strong ring + lifted shadow</td><td><code>:hover</code></td></tr>
+<tr><td>Focus</td><td>shared ring on thumb</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Dragging</td><td>grabbing cursor, ring persists</td><td><code>:active</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Error</td><td>danger ring + danger progress + text</td><td><code>slider--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>track / progress + thumb ring</td><td><code>bg.interactive</code> / <code>role.action</code> + <code>role.action-strong</code></td></tr>
+<tr><td>thumb face / tick marks</td><td><code>bg.surface</code> / <code>border.strong</code></td></tr>
+<tr><td>error ring + progress</td><td><code>role.danger</code></td></tr>
+<tr><td>tick labels / thumb lift</td><td><code>text.muted</code> + <code>font-size.xs</code> / <code>shadow.sm–md</code></td></tr>
+<tr><td>shape / thumb width / focus</td><td><code>radius.full</code> / <code>border-width.medium</code> / <code>focus.ring</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;input type="range" class="slider" min="0" max="100" value="40" aria-valuetext="40 percent"&gt;
+&lt;input type="range" class="slider slider--discrete slider--lg" min="1" max="10" step="1" value="4"&gt;&lt;div class="slider__ticks"&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;10&lt;/span&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Pair with a live value readout. Match step and tick counts. Keep tick labels short. Keep thumbs 16px or larger.</p></div><div><b>Don't</b><p class="meta">Never hide the value. Never build discrete steps without native step. Never use for binary choice.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Native <code>input[type=range]</code> with <code>min/max/step/value</code> · <code>aria-valuetext</code> ("75 percent, high") · arrows step, PgUp/PgDn, Home/End · <code>aria-invalid</code> plus described error · visible thumb ring · full-width track · reduced-motion safe.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Radio — few named options · Text input — exact numeric entry · Switch — binary choice · Full spec: <a href="prototype/gallery/choice.md">choice.md</a></p>
+</div>

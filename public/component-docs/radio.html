@@ -1,0 +1,45 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 02 Radio</p>
+<h2 class="ch-hero">Exactly one of n. Never a lone boolean.</h2>
+<p class="ch-lede meta">Radio is the exclusive-choice control: 2–7 visible options where options need comparison text. One shared name, one checked at a time, a sane default pre-selected. Use it when choice is exclusive; use Checkbox for multi-select, Switch for instant settings.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — group · label · dot.</b> <code>fieldset.radio-group</code> (+ <code>legend</code>) holds <code>label.radio</code> rows: native <code>input[type=radio][name=shared]</code> + <code>.radio__dot</code> (20px circle, inner <code>::after</code> dot at 50% scaling 0.6 to 1) + <code>.radio__label</code>.</p><p class="ch-reject">Reject: radios without a shared name or without fieldset + legend — a group must read as a group.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Groups lay out two ways.</b> <code>radio-group--vertical</code> is the default (tight gap); <code>radio-group--horizontal</code> is a wrapping row (wide gap) for short options on wide screens.</p><p class="ch-reject">Reject: horizontal layout on narrow screens — stack when space runs out.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Focus is the shared ring law.</b> <code>input:focus-visible + .radio__dot</code> paints <code>box-shadow: var(--focus-ring)</code>; checked is an accent ring plus a scaling dot, never hue alone.</p><p class="ch-reject">Reject: checked signalled by color without the dot — selection must survive no-color rendering.</p></div></li>
+</ul>
+<h3>Variants — layout + size</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>radio-group--vertical</code></td><td>default stacked options</td><td>column, tight gap</td></tr>
+<tr><td><code>radio-group--horizontal</code></td><td>short options, wide screens</td><td>wrapping row, wide gap</td></tr>
+<tr><td><code>radio--sm / --lg</code></td><td>dense / emphasis rows</td><td>smaller / larger dot, same travel</td></tr>
+<tr><td><code>radio--error</code></td><td>failed validation</td><td>danger ring; checked dot turns danger</td></tr>
+<tr><td><code>radio--disabled</code></td><td>unavailable option</td><td>dims dot, muted label, no pointer</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>surface well, strong ring</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border on well</td><td><code>:hover</code></td></tr>
+<tr><td>Checked</td><td>accent ring + inner dot scales in</td><td><code>:checked</code></td></tr>
+<tr><td>Active / pressed</td><td>active wash in the well</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>shared 2px ring on dot</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, muted label</td><td><code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Error</td><td>danger ring + danger dot</td><td><code>radio--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>well / resting ring</td><td><code>bg.surface</code> / <code>border.strong</code></td></tr>
+<tr><td>checked ring + dot / hover</td><td><code>role.action</code> / <code>role.action-strong</code></td></tr>
+<tr><td>error ring + dot</td><td><code>role.danger</code></td></tr>
+<tr><td>label / disabled label</td><td><code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>shape / gaps / focus / motion</td><td><code>radius.full</code> / <code>spacing.2–4</code> / <code>focus.ring</code> / <code>transition.fast</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;fieldset class="radio-group radio-group--vertical"&gt;&lt;legend&gt;Plan&lt;/legend&gt;
+&lt;label class="radio"&gt;&lt;input type="radio" name="plan" checked&gt;&lt;span class="radio__dot"&gt;&lt;/span&gt;&lt;span class="radio__label"&gt;Team&lt;/span&gt;&lt;/label&gt;
+&lt;label class="radio radio--error"&gt;&lt;input type="radio" name="plan" aria-invalid="true"&gt;&lt;span class="radio__dot"&gt;&lt;/span&gt;&lt;span class="radio__label"&gt;Custom&lt;/span&gt;&lt;/label&gt;&lt;/fieldset&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Share one name per group. Use fieldset + legend. Pre-select a sane default. Describe group help and errors.</p></div><div><b>Don't</b><p class="meta">Never mix radios and checkboxes in one group. Never offer a single-option group. Never disable all options without help text.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Native same-name radios · arrows move and select, <code>Space</code> selects · <code>Tab</code> enters the group once · <code>aria-describedby</code> for help and error · visible focus ring · 44px rows · forced-colors safe.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Checkbox — multi-select · Switch — instant settings · Select — 7+ options · Full spec: <a href="prototype/gallery/choice.md">choice.md</a></p>
+</div>

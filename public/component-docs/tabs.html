@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 01 Tabs</p>
+<h2 class="ch-hero">One row of views. Never a second dock.</h2>
+<p class="ch-lede meta">Tabs switch views inside one context — pipeline stages, record sections, report slices. It selects a view; it never navigates pages. Use Tabs for peer views in place; use TabBar for the mobile dock, never both at once.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — tablist · tab · panel.</b> <code>role=tablist</code> holds <code>role=tab</code> triggers with <code>aria-selected</code>; each panel is <code>role=tabpanel</code>, <code>hidden</code> when inactive. Underline <code>.tabs</code> is default; <code>.tabs--contained</code> segments on <code>--bg-interactive</code>.</p><p class="ch-reject">Reject: a contained pill and an underline row for the same views — pick one chrome.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Scrollable, never squished.</b> The tablist scrolls on <code>overflow-x: auto</code> and triggers hold <code>white-space: nowrap</code>. Narrow widths scroll the row; labels never shrink to fit.</p><p class="ch-reject">Reject: wrapped or truncated tab labels — overflow scrolls, it never wraps.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Roving tabindex, one stop.</b> Exactly one tab carries <code>tabindex="0"</code>, the rest <code>-1</code>; ArrowLeft/Right move, Home/End jump. Disabled tabs leave the roving order entirely.</p><p class="ch-reject">Reject: every tab in tab order — Tab enters once, arrows do the rest.</p></div></li>
+</ul>
+<h3>Variants — chrome + density</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>.tabs</code> underline</td><td>default view switch</td><td><code>--role-action</code> ink bar under active</td></tr>
+<tr><td><code>.tabs--contained</code></td><td>segmented switch</td><td>pill on <code>--bg-interactive</code>, active lifts on <code>--bg-surface</code> + <code>--shadow-sm</code></td></tr>
+<tr><td><code>.tab__trigger--active</code></td><td>selected tab</td><td>mirrors <code>aria-selected="true"</code>, never alone</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Selected</td><td>underline bar / pill lift + primary ink</td><td><code>aria-selected</code> + <code>--active</code></td></tr>
+<tr><td>Hover</td><td>ink warms toward primary</td><td><code>--text-primary</code></td></tr>
+<tr><td>Disabled</td><td>dims, skipped in arrow nav</td><td><code>--text-dim</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring on the roving tab</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>selected signal / pill fill</td><td><code>--role-action</code> / <code>--bg-interactive</code> + <code>--bg-surface</code></td></tr>
+<tr><td>ink / dim</td><td><code>--text-primary</code> / <code>--text-dim</code></td></tr>
+<tr><td>lift / focus / disabled</td><td><code>--shadow-sm</code> / <code>--focus-ring</code> / <code>--opacity-disabled</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="tabs" role="tablist" aria-label="Deal views"&gt;
+&lt;button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true" tabindex="0"&gt;Pipeline&lt;/button&gt;
+&lt;button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1"&gt;Activity&lt;/button&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep one tab stop with arrow-key travel. Scroll the row on narrow widths. Mirror active class and aria-selected.</p></div><div><b>Don't</b><p class="meta">Never render Tabs beside a TabBar for the same views. Never wrap labels. Never leave disabled tabs arrow-reachable.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Tablist semantics · roving tabindex with Arrow/Home/End travel · <code>aria-selected</code> mirrors the active class · labelled panels · visible focus ring.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">TabBar — the dock twin, never co-rendered · Accordion — stacked detail, not peer views · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</div>

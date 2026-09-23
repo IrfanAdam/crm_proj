@@ -1,0 +1,39 @@
+<div class="tp">
+<p class="ch-kicker">Components · Cards · 01 OpportunityCard</p>
+<h2 class="ch-hero">One row's full story. Never a floating panel.</h2>
+<p class="ch-lede meta">OpportunityCard is the Opps row: who, stage, chance, value, next touch. It tells the deal's state at a glance; it never hosts a second primary action — icon actions only.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — logo · who · stage rail · chance + value · segs · contacts · foot.</b> 44px round <code>__logo</code>, <code>__stage-name</code> on a sapphire-400 rail with a 3px left rule, <code>__chance</code> red-beryl beside <code>__value</code> sapphire, <code>__segs</code> segment bar, <code>__stack</code> contacts, <code>__foot</code> meta + citrine <code>__dist</code>.</p><p class="ch-reject">Reject: a second primary button — foot carries 44px icon <code>__actions</code> only.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Hues are data, never decoration.</b> Sapphire = stage, red-beryl = chance, citrine = distance datum. Content drives emphasis; there is a single variant, no decorative recoloring.</p><p class="ch-reject">Reject: swapping chance to sapphire or distance off citrine-700 — the mapping is the contract.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Hairline frame, zero shadow.</b> <code>border.thin</code> frame on surface; cards never float and never lift on hover — only action buttons take the wash.</p><p class="ch-reject">Reject: any <code>box-shadow</code> on the card — shadow law holds for every card.</p></div></li>
+</ul>
+<h3>Variants — one frame, data-driven emphasis</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>base (<code>opp-card</code>)</td><td>the deal row</td><td>single variant; stage/chance/value hues carry emphasis</td></tr>
+<tr><td>stack overlap</td><td>contact faces</td><td><code>-10px</code> overlap, surface ring, kept pixel-identical</td></tr>
+<tr><td>segment height</td><td>stage progress</td><td><code>6px</code> bars, live step sapphire-400 — kept, not rescaled here</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting hairline frame</td><td>—</td></tr>
+<tr><td>Action hover / active</td><td>wash on the icon button only</td><td><code>__actions :hover</code></td></tr>
+<tr><td>Focus</td><td><code>focus-ring</code> shadow, no outline</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Forced-colors</td><td>segment hairline survives</td><td><code>forced-colors</code> adjustments</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius / padding</td><td><code>bg.surface</code> / <code>radius.xl</code> / <code>spacing.4</code></td></tr>
+<tr><td>stage rail / live seg</td><td><code>primitive.sapphire-ui.400</code> + <code>border-width.thick</code></td></tr>
+<tr><td>chance / value / distance</td><td><code>primitive.red-beryl.400</code> / <code>sapphire-ui.500</code> / <code>citrine.700</code></td></tr>
+<tr><td>actions / focus</td><td><code>bg.interactive</code>, 44px, <code>radius.md</code> / <code>focus.ring</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;article class="opp-card"&gt;&lt;div class="opp-card__stage-name"&gt;Negotiation&lt;/div&gt;
+&lt;div class="opp-card__segs" role="progressbar" aria-valuenow="60"&gt;…&lt;/div&gt;
+&lt;div class="opp-card__actions"&gt;&lt;button&gt;…&lt;/button&gt;&lt;/div&gt;&lt;/article&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep sapphire = stage, red-beryl = chance, citrine = distance. Keep the card an article with a heading. Keep actions 44px icons.</p></div><div><b>Don't</b><p class="meta">Never shadow the card. Never add a second primary button. Never recolor hues decoratively.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta"><code>&lt;article&gt;</code> with heading · live segment bar carries <code>role=progressbar</code> + <code>aria-valuenow</code> · 44px action targets · chance 4.51 and value 5.9 AA on white · visible focus ring.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">FunnelCard — pipeline health, not the deal · ProfileCard — the person, not the row · Full spec: <a href="prototype/gallery/cards.md">cards.md</a></p>
+</div>

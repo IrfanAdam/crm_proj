@@ -1,0 +1,40 @@
+<div class="tp">
+<p class="ch-kicker">Components · Ceremony · 05 GemReward</p>
+<h2 class="ch-hero">One gem, four moods. Never in Operate.</h2>
+<p class="ch-lede meta">GemReward is the achievement ceremony: a single Spline iframe recolored per category through a hue-rotate API, standing on a capsule with Rock Solid Goals copy. Celebration only — quarantined from Operate and Monitor.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — spline · title · capsule · copy.</b> One <code>__spline</code> iframe (<code>my.spline.design/gem-embed</code>), <code>__title</code>, <code>__capsule</code> stand (<code>+Rs 4lakh · Beyond Target</code>), <code>__copy</code> slots. One iframe, never four embeds.</p><p class="ch-reject">Reject: a second Spline embed per category — recolor, don't re-embed.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Ceremony-only quarantine.</b> Gems appear in achievement moments; mood never enters Operate/Monitor chrome, KPI fills, or measure visuals.</p><p class="ch-reject">Reject: a gem beside a KPI or inside Operate — ceremony leaking into chrome.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Hue-rotate API, reduced-motion exit.</b> Category maps to filter: sapphire 0°, citrine 38° + 1.1, red-beryl 310° + 1.2, amethyst 265° + 1.2. Reduced-motion drops to no filter.</p><p class="ch-reject">Reject: animating or recoloring the gem under reduced-motion — the fallback is instant and unfiltered.</p></div></li>
+</ul>
+<h3>Variants — one gem, four filters</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>gem-reward--sapphire</code></td><td>default Rock Solid</td><td><code>hue-rotate(0deg)</code></td></tr>
+<tr><td><code>gem-reward--citrine</code></td><td>second category</td><td><code>hue-rotate(38deg) saturate(1.1)</code></td></tr>
+<tr><td><code>gem-reward--red-beryl</code></td><td>third category</td><td><code>hue-rotate(310deg) saturate(1.2)</code></td></tr>
+<tr><td><code>gem-reward--amethyst</code></td><td>fourth category</td><td><code>hue-rotate(265deg) saturate(1.2)</code></td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting gem on capsule</td><td>—</td></tr>
+<tr><td>Ceremony motion</td><td>spring entrance in situ</td><td><code>transition.spring</code></td></tr>
+<tr><td>Reduced-motion</td><td>no hue-rotate, no entrance</td><td><code>filter: none</code> + <code>prefers-reduced-motion</code></td></tr>
+<tr><td>Spline fails</td><td>fallback SVG per category</td><td>fallback slot</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>recolor API</td><td><code>hue-rotate</code> + <code>saturate</code> per category</td></tr>
+<tr><td>capsule / copy ink</td><td>capsule stand, <code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>motion</td><td><code>transition.spring</code>, <code>motion-duration-*</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="gem-reward gem-reward--sapphire"&gt;
+&lt;iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Sapphire"&gt;&lt;/iframe&gt;
+&lt;div class="gem-reward__title"&gt;Rock Solid Goals&lt;/div&gt;
+&lt;div class="gem-reward__capsule"&gt;+Rs 4lakh · Beyond Target&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Use one Spline iframe with the hue-rotate map. Title the iframe. Provide the per-category SVG fallback. Keep mood quarantined.</p></div><div><b>Don't</b><p class="meta">Never place gems in Operate/Monitor. Never use gem hues as chrome. Never skip the reduced-motion fallback. Never embed four iframes.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Iframe carries a <code>title</code> per category · fallback SVG when Spline fails · reduced-motion means no hue-rotate and no entrance · copy stays real text.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">GoalBar --gem — the ceremony fill twin · TiltCard / ElasticScroll — motion siblings, never chrome · Full spec: <a href="prototype/gallery/motion-gems.md">motion-gems.md</a></p>
+</div>

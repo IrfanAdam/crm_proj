@@ -1,0 +1,38 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 04 Accordion</p>
+<h2 class="ch-hero">Stacked detail on demand. Never hidden chrome.</h2>
+<p class="ch-lede meta">Accordion expands sections in place — record detail blocks, grouped filters, help text. It reveals and collapses; it never navigates. Use single-expand for exclusive sections, multi-expand for independent ones.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — trigger · icon · panel.</b> <code>.accordion__trigger</code> carries <code>aria-expanded</code> + <code>aria-controls</code>; <code>.accordion__panel</code> is <code>hidden</code> when shut. The chevron <code>.accordion__icon</code> trails by default, leads under <code>.accordion--chevron-leading</code> via <code>order: -1</code>.</p><p class="ch-reject">Reject: a panel with no labelled trigger — every region answers to its header.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Single or multi, same CSS.</b> Single-expand closes siblings in JS; multi-expand leaves items independent. The mode is behaviour, never a second stylesheet — chrome stays identical either way.</p><p class="ch-reject">Reject: two accordion skins for two modes — behaviour varies, chrome does not.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Motion earns its keep.</b> Panels animate <code>grid-template-rows 0fr ↔ 1fr</code> over <code>--motion-duration-md</code>; chevrons rotate 180°. Under <code>prefers-reduced-motion</code> transitions die and <code>hidden</code> toggles instantly.</p><p class="ch-reject">Reject: pixel-height keyframes or motion that survives reduced-motion — snap, don't slide.</p></div></li>
+</ul>
+<h3>Variants — chevron + mode</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>trailing chevron (base)</td><td>default sections</td><td>icon after label, rotates 180° on <code>--open</code></td></tr>
+<tr><td><code>.accordion--chevron-leading</code></td><td>tree-like scans</td><td>icon first via <code>order: -1</code></td></tr>
+<tr><td>single / multi (JS)</td><td>exclusive vs independent</td><td>same CSS, sibling-close differs</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>panel rows 0fr → 1fr, icon flips</td><td><code>.accordion__item--open</code> + <code>aria-expanded="true"</code></td></tr>
+<tr><td>Hover</td><td>trigger wash</td><td><code>--bg-interactive</code></td></tr>
+<tr><td>Disabled</td><td>dims, panel stays shut, skipped</td><td><code>disabled</code> + <code>--text-dim</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>ring on the trigger</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>dividers / hover</td><td><code>--border-default</code> / <code>--bg-interactive</code></td></tr>
+<tr><td>disabled / focus</td><td><code>--text-dim</code> + <code>--opacity-disabled</code> / <code>--focus-ring</code></td></tr>
+<tr><td>motion</td><td><code>--motion-duration-md</code> + <code>--motion-easing-standard</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="accordion__item"&gt;
+&lt;button class="accordion__trigger" aria-expanded="false" aria-controls="p1"&gt;Terms &lt;span class="accordion__icon"&gt;›&lt;/span&gt;&lt;/button&gt;
+&lt;div class="accordion__panel" id="p1" hidden&gt;&lt;div class="accordion__panel-inner"&gt;…&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Wire aria-expanded to the panel's hidden state. Animate grid rows, not pixel heights. Snap instantly under reduced motion.</p></div><div><b>Don't</b><p class="meta">Never restyle per expand mode. Never leave disabled triggers reachable. Never animate raw height.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta"><code>aria-expanded</code>/<code>aria-controls</code> on triggers · instant <code>hidden</code> toggle · visible focus ring · disabled triggers skipped · no motion dependence.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Tabs — peer views, not stacked reveals · Drawer — side detail with context · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</div>

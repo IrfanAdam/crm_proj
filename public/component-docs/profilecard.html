@@ -1,0 +1,37 @@
+<div class="tp">
+<p class="ch-kicker">Components · Cards · 03 ProfileCard</p>
+<h2 class="ch-hero">Face, role, three proofs. Never a résumé.</h2>
+<p class="ch-lede meta">ProfileCard is the person card — the Olivia pattern: 64px avatar, name plus role, a trio of proof stats over a hairline rule. It introduces a person; detail lives on their page.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — avatar · name · role · stat trio.</b> 64px round <code>__avatar</code>, <code>__name</code> + <code>__role</code>, <code>__stats</code> of three <code>__stat</code> cells (<code>__val</code> + <code>__label</code>) divided by a hairline top rule.</p><p class="ch-reject">Reject: a fourth stat — the trio is the contract, not a starting point.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Centered, always.</b> Content centers in the frame; avatar, name, role and stats share one axis. No left-aligned variant exists.</p><p class="ch-reject">Reject: a left-aligned ProfileCard — alignment is identity, not preference.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Hairline frame, zero shadow.</b> <code>border.thin</code> on surface; avatar ring and stat rule reuse the same hairline. The card is static.</p><p class="ch-reject">Reject: any <code>box-shadow</code> or a heavier stat rule — one hairline weight throughout.</p></div></li>
+</ul>
+<h3>Variants — one centered card</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>base (<code>profile-card</code>)</td><td>the person</td><td>single variant; content is avatar + role + trio</td></tr>
+<tr><td>stat content</td><td>proof points</td><td>each <code>__stat</code> pairs a <code>__val</code> with a <code>__label</code></td></tr>
+<tr><td>avatar source</td><td>the face</td><td>photo or fallback; name stays text beside it</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting centered card</td><td>—</td></tr>
+<tr><td>Missing photo</td><td>fallback mark, layout unchanged</td><td><code>__avatar</code> fallback</td></tr>
+<tr><td>Focus</td><td>not focusable — no ring</td><td>—</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius</td><td><code>bg.surface</code> / <code>radius.lg</code>, <code>border.thin</code> + <code>border-width.thin</code></td></tr>
+<tr><td>avatar ring / stat rule</td><td><code>border.thin</code> + <code>border-width.thin</code> each</td></tr>
+<tr><td>name / role / stat ink</td><td><code>text.primary</code> / <code>text.muted</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="profile-card"&gt;&lt;img class="profile-card__avatar" alt="" src="…"&gt;
+&lt;div class="profile-card__name"&gt;Olivia&lt;/div&gt;&lt;div class="profile-card__role"&gt;AE&lt;/div&gt;
+&lt;div class="profile-card__stats"&gt;&lt;div class="profile-card__stat"&gt;…&lt;/div&gt; × 3&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep exactly three stats. Keep everything centered. Leave the photo alt empty — the name is text.</p></div><div><b>Don't</b><p class="meta">Never left-align the card. Never add a fourth stat. Never shadow the frame.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Photo carries <code>alt=""</code> (name is adjacent text) · stats are plain text pairs, never color-only · static card takes no focus · centered order stays logical.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">OpportunityCard — the deal, not the person · FunnelCard — the pipeline, not the face · Full spec: <a href="prototype/gallery/cards.md">cards.md</a></p>
+</div>

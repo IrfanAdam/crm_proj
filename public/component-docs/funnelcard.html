@@ -1,0 +1,37 @@
+<div class="tp">
+<p class="ch-kicker">Components · Cards · 02 FunnelCard</p>
+<h2 class="ch-hero">Pipeline health at a glance. Never a metric dump.</h2>
+<p class="ch-lede meta">FunnelCard is the pipeline summary: glyph tile, title with refresh stamp, metric strip. It answers "how is the funnel" in one look; detail lives elsewhere.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — glyph · title · stamp · strip.</b> 48px <code>__glyph</code> tile, <code>__title</code> plus <code>Last Refreshed</code> <code>__meta</code>, <code>__metrics</code> row of <code>__metric</code> chips. Nothing else joins the frame.</p><p class="ch-reject">Reject: a metric rendered outside the strip — CR/RR/CSAT/NPS live only in <code>__metrics</code>.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Glyph stays sapphire, stays decorative.</b> Funnel is the measure family visual — sapphire tile, never a gem celebration hue — and it carries no meaning assistive tech must hear.</p><p class="ch-reject">Reject: a gem-hued glyph — ceremony chrome never marks measurement.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Hairline frame, static posture.</b> <code>border.thin</code> on surface, zero shadow; the card is static — no hover lift, no press state.</p><p class="ch-reject">Reject: an interactive treatment on the frame — the strip reads, it never acts.</p></div></li>
+</ul>
+<h3>Variants — one frame, strip-driven content</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>base (<code>funnel-card</code>)</td><td>pipeline health</td><td>single variant; metrics use badge-neutral-style chips</td></tr>
+<tr><td>refresh stamp</td><td>data freshness</td><td><code>__meta</code> muted text beside the title</td></tr>
+<tr><td>metric count</td><td>strip density</td><td>chips wrap in <code>__metrics</code>; frame never grows chrome</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting hairline frame</td><td>—</td></tr>
+<tr><td>Stale</td><td>stamp text updates, frame unchanged</td><td><code>__meta</code> text</td></tr>
+<tr><td>Focus</td><td>not focusable — no ring</td><td>—</td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius</td><td><code>bg.surface</code> / <code>radius.lg</code>, <code>border.thin</code> + <code>border-width.thin</code></td></tr>
+<tr><td>glyph tile</td><td><code>primitive.sapphire-ui.100</code> / <code>500</code>, <code>radius.lg</code></td></tr>
+<tr><td>title / meta / metric ink</td><td><code>text.primary</code> / <code>text.muted</code>, metric on <code>bg.interactive</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;div class="funnel-card"&gt;&lt;div class="funnel-card__glyph" aria-hidden="true"&gt;…&lt;/div&gt;
+&lt;div class="funnel-card__title"&gt;Pipeline&lt;/div&gt;&lt;div class="funnel-card__meta"&gt;Last Refreshed …&lt;/div&gt;
+&lt;div class="funnel-card__metrics"&gt;&lt;span class="funnel-card__metric"&gt;CR 24%&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Keep the glyph sapphire and decorative. Keep every metric inside the strip. Keep the stamp next to the title.</p></div><div><b>Don't</b><p class="meta">Never gem-tint the glyph. Never scatter metrics outside the strip. Never shadow the frame.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Glyph is decorative (<code>aria-hidden</code>) · metric values are plain text, never color-only · stamp is readable text · static card takes no focus.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">OpportunityCard — the deal row, not the summary · GoalBar — temporal fill, not pipeline · Full spec: <a href="prototype/gallery/cards.md">cards.md</a></p>
+</div>

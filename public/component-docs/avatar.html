@@ -1,0 +1,42 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 05 Avatar</p>
+<h2 class="ch-hero">Person marks. Round only, always named.</h2>
+<p class="ch-lede meta">Avatar is the person mark — initials fallback or photo, with presence and stacking. Round always, never square or squircle. Initials when there is no photo; cover-fit photo when there is.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — round frame · initials or <code>img</code> · optional presence.</b> Five sizes from <code>avatar--xs</code> (20px) to <code>avatar--xl</code> (64px); md 32px is the base. Initials are 1–2 semibold chars; photos use <code>object-fit: cover</code> and never crop the face.</p><p class="ch-reject">Reject: a square or squircle avatar — round is the law.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Stacks overlap by one step with a surface ring.</b> <code>.avatar-stack</code> piles faces with a one-step negative overlap; every stacked face and every presence dot carries the surface ring so marks never bleed together.</p><p class="ch-reject">Reject: a stack or dot without the surface ring.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Presence is decorative — the name does the talking.</b> <code>avatar--online</code> (green dot) and <code>avatar--offline</code> (dim dot) never mean availability alone in text contexts; status is announced in text or an accessible name.</p><p class="ch-reject">Reject: presence color as the only availability signal.</p></div></li>
+</ul>
+<h3>Variants — size + content + presence</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>avatar--xs / --sm</code></td><td>dense rows, mention chips</td><td>20px micro / 24px xs type</td></tr>
+<tr><td><code>avatar--md</code> (base)</td><td>default person mark</td><td>32px, sm type, no modifier needed</td></tr>
+<tr><td><code>avatar--lg / --xl</code></td><td>profile, detail headers</td><td>48px xl type / 64px 2xl type</td></tr>
+<tr><td>initials</td><td>fallback, no photo</td><td>1–2 chars, semibold, primary ink</td></tr>
+<tr><td><code>img</code></td><td>photo available</td><td>fills frame, <code>object-fit: cover</code></td></tr>
+<tr><td><code>.avatar-stack</code> / <code>--online</code> / <code>--offline</code></td><td>pile / presence</td><td>overlap + ring / green dot / dim dot</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting round mark</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border, clickable only</td><td><code>avatar--clickable:hover</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>opacity.disabled</code></td></tr>
+<tr><td>Stacked</td><td>overlap + surface ring</td><td><code>.avatar-stack</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frames xs–xl</td><td><code>spacing.5 / 6 / 8 / 12 / 16</code></td></tr>
+<tr><td>frame / fill / text</td><td><code>radius.full</code> / <code>bg.interactive</code> / <code>text.primary</code> semibold</td></tr>
+<tr><td>stack overlap / ring</td><td><code>spacing.2</code> negative / <code>border-width.medium</code> + <code>bg.surface</code></td></tr>
+<tr><td>online dot / hover / motion</td><td><code>primitive.green-300</code> / <code>border.accent</code> / <code>transition.fast</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;span class="avatar avatar--md avatar--online" aria-label="Ada Lovelace — online"&gt;AL&lt;/span&gt;
+&lt;span class="avatar-stack"&gt;&lt;span class="avatar avatar--sm"&gt;AL&lt;/span&gt;&lt;span class="avatar avatar--sm"&gt;&lt;img src="grace.jpg" alt=""&gt;&lt;/span&gt;&lt;/span&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Use initials when there is no photo. Keep the surface ring on stacks and dots. Overlap stacks by one spacing step. Give clickable avatars the person's name.</p></div><div><b>Don't</b><p class="meta">Never crop faces. Never square the frame. Never dot without the ring. Never signal availability by dot color alone.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Decorative photos carry <code>alt=""</code>; initials are text, not image · presence dots are decorative — announce status in text or <code>aria-label</code> (e.g. <code>aria-label="Online"</code>) · clickable avatars are native <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code> named with the person name · visible focus ring.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Badge — anchors presence counts · StatusPill — stage words, never people · Icon — never inside initials · Full spec: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</div>

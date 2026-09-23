@@ -1,0 +1,39 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 02 ListRow</p>
+<h2 class="ch-hero">One line per opportunity. Nothing more.</h2>
+<p class="ch-lede meta">ListRow is the one-line opportunity: logo, name, meta, end slot. It navigates to the record; it never compares columns. Use it when rows open something; use Table when rows compare.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — logo · main · end.</b> <code>__logo</code> 32px tile, <code>__main</code> with ellipsized <code>__name</code> plus <code>__meta</code>, <code>__end</code> right column stacking Badge over <code>__time</code>.</p><p class="ch-reject">Reject: a wrapping name — the name ellipsizes, always.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>End slot composes, never crowds.</b> Badge carries the state hue, <code>__time</code> carries plain text beside it; the column stays right-aligned and stacked.</p><p class="ch-reject">Reject: badge-alone meaning — hue plus time text, never hue by itself.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Selection means picked, not hovered.</b> <code>list-row--selected</code> pairs the active wash with a sapphire border; hover wash alone never claims current.</p><p class="ch-reject">Reject: selection where rows only navigate — select only the current row.</p></div></li>
+</ul>
+<h3>Variants — picked or dimmed</h3>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default</td><td>navigating row</td><td>hover wash only</td></tr>
+<tr><td><code>list-row--selected</code></td><td>current / picked row</td><td><code>bg.interactive-active</code> + sapphire-500 border</td></tr>
+<tr><td><code>list-row--disabled</code></td><td>unavailable row</td><td><code>opacity.disabled</code>, no pointer</td></tr>
+</tbody></table>
+<h3>States — every frame it can be in</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting hairline frame</td><td>—</td></tr>
+<tr><td>Hover</td><td>hover wash</td><td><code>:hover</code> + <code>bg.interactive-hover</code></td></tr>
+<tr><td>Selected</td><td>active wash + sapphire border</td><td><code>list-row--selected</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>list-row--disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring</td><td><code>:focus-visible</code></td></tr>
+</tbody></table>
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>frame / radius</td><td><code>bg.surface</code> / <code>radius.md</code>, <code>border.thin</code></td></tr>
+<tr><td>logo tile</td><td><code>bg.interactive</code> / <code>radius.sm</code>, <code>text.secondary</code> <code>font-weight.semibold</code></td></tr>
+<tr><td>name / meta ink</td><td><code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>selected / focus</td><td><code>bg.interactive-active</code> + sapphire-500 / sapphire-400 ring</td></tr>
+<tr><td>motion / end gap</td><td><code>transition.fast</code> / <code>spacing.1</code></td></tr>
+</tbody></table>
+<h3>Snippet — the contract in code</h3>
+<code class="tp-code">&lt;article class="list-row list-row--selected"&gt;&lt;span class="list-row__logo"&gt;Ac&lt;/span&gt;&lt;div class="list-row__main"&gt;&lt;p class="list-row__name"&gt;Acme&lt;/p&gt;&lt;p class="list-row__meta"&gt;Enterprise&lt;/p&gt;&lt;/div&gt;&lt;div class="list-row__end"&gt;&lt;span class="badge"&gt;Open&lt;/span&gt;&lt;time class="list-row__time"&gt;2d&lt;/time&gt;&lt;/div&gt;&lt;/article&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">Ellipsize the name. Keep the end slot right-aligned with badge over time. Keep the hairline frame flat.</p></div><div><b>Don't</b><p class="meta">Never shadow rows. Never wrap the name. Never use selection where rows only navigate.</p></div></div>
+<h3>Accessibility — the non-negotiables</h3>
+<p class="meta">Row is an <code>article</code> with a heading where standalone · logo tile is decorative · time is plain text beside the badge, never badge-alone meaning · visible focus ring · disabled rows leave the order.</p>
+<h3>Related — neighbours in the system</h3>
+<p class="meta">Table — compares, never navigates · Badge — state hue in the end slot · Avatar — the people twin of the logo tile · Full spec: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>
