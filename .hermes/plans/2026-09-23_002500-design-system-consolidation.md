@@ -231,9 +231,13 @@ only begin after this phase.*
 | 5 | Foundations documented | gallery Foundations frames show token table + contrast + snippet per foundation |
 | 6 | Lint foundation drift | `scripts/lint-tokens.mjs` fails raw paint/space/radius/motion in components/patterns |
 
+*Shipped in f428087 · Tasks 4–6 · phase-2.*
+
+*Gate: approved 2026-09-23 — "Approve — close Phase 2, start Phase 3"*
+
 > **Course correction 2026-09-23:** Task 5's append-lines pass shipped (commits `93a8993`) but reads as meta-line soup — no layout, story, or structure; below industry-doc bar. Foundations are rebuilt as chapter-idiom articles (`public/foundations/*.html`, fetched into slim frame shells): kicker → hero → lede → laws + rejects → token table → specimens → contrast → snippet → related. Color first as exemplar; the other six follow on exemplar approval.
 
-### Task 4: Build the token source ground-up
+### Task 4: Build the token source ground-up ✓ done
 **Objective:** The complete Layer 1. Intake the raw material (§0) into tokens; propose
 (not invent) anything missing.
 **Files:**
@@ -257,7 +261,7 @@ is absent. Never hand-edit `tokens.css` (`npm run build`).
 throughout the JSON source.
 **Commit:** `feat(ds): build token source ground-up — all layers tokenized [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-2}]`
 
-### Task 5: Document foundations with specimens + contrast + code
+### Task 5: Document foundations with specimens + contrast + code ✓ done
 **Objective:** Layer 2. Each foundation teaches: token → value → where used →
 contrast pair + ratio → copy-paste snippet.
 **Files:**
@@ -270,7 +274,7 @@ addition; no new panels.
 **Verify:** each Foundations tab shows tokens + contrast + snippet; `lint:tokens` green.
 **Commit:** `feat(ds): foundations documented — tokens, contrast, code [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-2}]`
 
-### Task 6: Lint foundation drift
+### Task 6: Lint foundation drift ✓ done
 **Objective:** The ground stays solid — the next screen cannot invent paint, space,
 radius, or motion.
 **Files:**
