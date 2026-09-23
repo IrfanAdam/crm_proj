@@ -31,7 +31,7 @@
 </tbody></table>
 <h3>Snippet — the contract in code</h3>
 <code class="tp-code">&lt;label class="field__label" for="notes"&gt;Notes&lt;/label&gt;
-&lt;div class="textarea"&gt;&lt;textarea id="notes" rows="4" maxlength="500" aria-describedby="notes-count"&gt;&lt;/textarea&gt;&lt;p id="notes-count" class="textarea__count" aria-live="polite"&gt;0 / 500&lt;/p&gt;&lt;/div&gt;</code>
+&lt;div class="textarea"&gt;&lt;textarea id="notes" class="field__input" rows="4" maxlength="500" aria-describedby="notes-count"&gt;&lt;/textarea&gt;&lt;span id="notes-count" class="textarea__count" aria-live="polite"&gt;0 / 500&lt;/span&gt;&lt;/div&gt;</code>
 <div class="ch-voice"><div><b>Do</b><p class="meta">Set sensible rows plus maxlength with a visible count. Keep vertical-only resize. Describe by help, error, and count ids together.</p></div><div><b>Don't</b><p class="meta">Never use textarea for one word. Never disable resize entirely. Never duplicate input states here.</p></div></div>
 <h3>Accessibility — the non-negotiables</h3>
 <p class="meta">Label + <code>aria-describedby</code> covering help, error, and count · error path identical to TextInput · count needs <code>aria-live="polite"</code> past 90% · touch height far exceeded · reduced-motion still.</p>

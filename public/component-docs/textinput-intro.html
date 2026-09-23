@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 03 TextInput</p>
+<h2 class="ch-hero">Labelled single lines. Never naked placeholders.</h2>
+<p class="ch-lede meta">TextInput is single-line entry — names, amounts, emails. One md frame at 44px, label above, help or error below. It captures values; it never offers choices (Select), never filters (Search), never holds paragraphs (Textarea).</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — field · label · wrap · input · affix · help.</b> <code>.field</code> columns with <code>spacing.2</code> gap; xs uppercase <code>.field__label</code>; relative <code>.field__wrap</code> anchoring absolute 16px <code>.field__prefix</code> / <code>.field__suffix</code> slots (₹/L, icon, action); xs meta below.</p><p class="ch-reject">Reject: an input with no label — placeholder text never names the field.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>States speak in tokens, never bare hue.</b> Error is a <code>role.danger</code> border with <code>aria-invalid</code> + <code>aria-describedby</code> to the error id; success swaps in <code>role.success</code>; focus is sapphire-400 plus the <code>focus.ring</code> shadow, on <code>:focus</code> not only keyboard.</p><p class="ch-reject">Reject: a second error hue, or an error carried by color alone.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Sizes and skins stay on the scale.</b> sm 32px, md 44px, lg 48px; <code>--filled</code> is the dense interactive wash; affix padding reserves <code>calc(spacing.3 + icon-size.sm + spacing.2)</code> so ₹ never collides with ink.</p><p class="ch-reject">Reject: a shrunk md frame — 44px is the touch target, not a suggestion.</p></div></li>
+</ul>
+</div>

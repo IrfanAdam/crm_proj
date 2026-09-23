@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 01 Tabs</p>
+<h2 class="ch-hero">One row of views. Never a second dock.</h2>
+<p class="ch-lede meta">Tabs switch views inside one context — pipeline stages, record sections, report slices. It selects a view; it never navigates pages. Use Tabs for peer views in place; use TabBar for the mobile dock, never both at once.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — tablist · tab · panel.</b> <code>role=tablist</code> holds <code>role=tab</code> triggers with <code>aria-selected</code>; each panel is <code>role=tabpanel</code>, <code>hidden</code> when inactive. Underline <code>.tabs</code> is default; <code>.tabs--contained</code> segments on <code>--bg-interactive</code>.</p><p class="ch-reject">Reject: a contained pill and an underline row for the same views — pick one chrome.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Scrollable, never squished.</b> The tablist scrolls on <code>overflow-x: auto</code> and triggers hold <code>white-space: nowrap</code>. Narrow widths scroll the row; labels never shrink to fit.</p><p class="ch-reject">Reject: wrapped or truncated tab labels — overflow scrolls, it never wraps.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Roving tabindex, one stop.</b> Exactly one tab carries <code>tabindex="0"</code>, the rest <code>-1</code>; ArrowLeft/Right move, Home/End jump. Disabled tabs leave the roving order entirely.</p><p class="ch-reject">Reject: every tab in tab order — Tab enters once, arrows do the rest.</p></div></li>
+</ul>
+</div>

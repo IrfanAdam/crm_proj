@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 01 Checkbox</p>
+<h2 class="ch-hero">Many independent on-offs. Never instant settings.</h2>
+<p class="ch-lede meta">Checkbox is the multi-select control: 0..n independent on/offs in a list or form, bulk select, confirmations. It answers to a submit; it never takes instant effect. Use it when each option stands alone; use Switch for instant settings, Radio for one-of-n.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — label · input · box · tick.</b> <code>label.check</code> wraps a native <code>input[type=checkbox]</code> (absolute, transparent, still focusable) + <code>.check__box</code> (20px, rounded) + <code>.check__icon</code> tick (SVG scales 0.6 to 1) + <code>.check__label</code> text.</p><p class="ch-reject">Reject: a div-faked box with no native input — proxies never intercept pointer or keyboard.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Sizes and partial state.</b> <code>check--sm</code> (16px) / default (20px) / <code>check--lg</code> (24px); partial-group "select all" uses native <code>input:indeterminate</code>, set via <code>el.indeterminate = true</code> in JS.</p><p class="ch-reject">Reject: indeterminate used as a third value — it means partial group only.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Focus is the shared ring law.</b> <code>input:focus-visible + .check__box</code> paints <code>box-shadow: var(--focus-ring)</code> (2px sapphire ring); paint uses <code>var(--transition-fast)</code>, reduced-motion kills it.</p><p class="ch-reject">Reject: a custom glow or outline — focus is always the shared ring token.</p></div></li>
+</ul>
+</div>

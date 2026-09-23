@@ -33,7 +33,7 @@
 </tbody></table>
 <h3>Snippet — the contract in code</h3>
 <code class="tp-code">&lt;label class="field__label" for="stage"&gt;Stage&lt;/label&gt;
-&lt;div class="select"&gt;&lt;select id="stage" class="select__input"&gt;&lt;option&gt;Prospecting&lt;/option&gt;&lt;option&gt;Closed&lt;/option&gt;&lt;/select&gt;&lt;span class="select__chevron" aria-hidden="true"&gt;⌄&lt;/span&gt;&lt;/div&gt;</code>
+&lt;div class="select"&gt;&lt;select id="stage" class="select__input"&gt;&lt;option&gt;Prospecting&lt;/option&gt;&lt;option&gt;Closed&lt;/option&gt;&lt;/select&gt;&lt;i class="ph-bold ph-caret-down select__chevron" aria-hidden="true"&gt;&lt;/i&gt;&lt;/div&gt;</code>
 <div class="ch-voice"><div><b>Do</b><p class="meta">Keep the native select. Name it with aria-label or .field__label. Let option inherit surface and ink. Announce errors exactly like TextInput.</p></div><div><b>Don't</b><p class="meta">Never fake a select with divs. Never hide the chevron. Never ship a pill select.</p></div></div>
 <h3>Accessibility — the non-negotiables</h3>
 <p class="meta">Native semantics announce options + count · chevron <code>aria-hidden</code> · 44px frame · <code>aria-invalid</code> + <code>aria-describedby</code> on error · visible focus ring with forced-colors <code>CanvasText</code> fallback · reduced-motion flips the chevron instantly.</p>

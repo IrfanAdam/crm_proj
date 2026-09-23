@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-23T12:02:48.215Z",
+    "generatedAt": "2026-09-23T13:26:49.632Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -15,7 +15,7 @@
       "src/components/Accordion": 1790164696756,
       "src/components/Avatar": 1790164789097,
       "src/components/Badge": 1790164719934,
-      "src/components/Breadcrumbs": 1790164696666,
+      "src/components/Breadcrumbs": 1790169430200,
       "src/components/Button": 1790164744897,
       "src/components/Checkbox": 1790164793218,
       "src/components/Chip": 1790164764688,
@@ -33,7 +33,7 @@
       "src/components/Radio": 1790164793196,
       "src/components/Search": 1790164876042,
       "src/components/Select": 1790164876009,
-      "src/components/Slider": 1790164793229,
+      "src/components/Slider": 1790169770547,
       "src/components/Sparkline": 1790164774799,
       "src/components/StatusPill": 1790164747231,
       "src/components/Switch": 1790164793242,

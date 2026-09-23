@@ -68,6 +68,7 @@
 .slider__ticks {
   display: flex;
   justify-content: space-between;
+  margin-top: var(--spacing-2);
   font-size: var(--font-size-xs);
   color: var(--text-muted);
 }
@@ -87,6 +88,7 @@
   width: var(--icon-size-lg);
   height: var(--icon-size-lg);
 }
+.slider--lg { margin-bottom: var(--spacing-2); }
 @media (prefers-reduced-motion: reduce) {
   .slider::-webkit-slider-thumb { transition: none; }
 }

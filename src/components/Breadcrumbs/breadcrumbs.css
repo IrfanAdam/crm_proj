@@ -41,6 +41,10 @@ user-select: none;
 color: var(--text-dim);
 }
 .breadcrumbs__item--truncated {
+min-width: 0;
+}
+.breadcrumbs__item--truncated a {
+display: block;
 max-width: var(--spacing-16);
 overflow: hidden;
 text-overflow: ellipsis;
