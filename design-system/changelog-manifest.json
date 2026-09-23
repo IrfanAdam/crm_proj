@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T09:21:09.173Z",
+  "generated": "2026-09-23T10:04:32.218Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "167a4b1",
+      "full": "167a4b150f3dcea98bedeb0e0170dc36f0714a1b",
+      "date": "2026-09-23",
+      "subject": "refine(ds): typography foundation — labeled specimens, spec table, leading proof",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "204b330",
+      "full": "204b3309e2f17002572c81a553a75def9770912c",
+      "date": "2026-09-23",
+      "subject": "fix(ds): neutral night ladder mirrors so the prominence ramp holds (strong brightest > basic > neutral)",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "1fc1907",
       "full": "1fc1907b36020db35073dfa7f517bda15d819aa2",
@@ -70,6 +86,14 @@
       "anchor": "{#phase-2}"
     },
     {
+      "sha": "cddf126",
+      "full": "cddf126d7e04b8aa7e8446e0fa3d7941c6e99b78",
+      "date": "2026-09-23",
+      "subject": "feat(ds): color page UX — section nav, ramp heroes, collapsible matrix, single snippet",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
       "sha": "de89505",
       "full": "de895058429a0fd914e59bc2034025f38515e35d",
       "date": "2026-09-23",
@@ -106,6 +130,94 @@
       "full": "10188e13484bdd7512c52125c410a6b5929d2377",
       "date": "2026-09-23",
       "subject": "feat(ds): color — grouped semantic with dark, full pairing matrix, lab extracted",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "6187179",
+      "full": "61871797ad99e4b72a14daae06ae819b8997307d",
+      "date": "2026-09-23",
+      "subject": "fix(ds): unify article vocabulary — specimens + contrast on color",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "2f9a183",
+      "full": "2f9a183c5b19d9d7280b20580e65e849523b3093",
+      "date": "2026-09-23",
+      "subject": "fix(ds): fold orphan motion demo into article — one motion panel",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "4e72db6",
+      "full": "4e72db67e1885584e5f1e9f1312730d86e0b86b3",
+      "date": "2026-09-23",
+      "subject": "feat(ds): color article — labeled ramps, hero samples, exhaustive semantic, pairing lab",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "1283e65",
+      "full": "1283e65d5e7ae28af6f37df836e75c4b813c2b75",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as articles — iconography chapter, shell swap",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "629889c",
+      "full": "629889c98dfcc3acc28260033ed181c7cec17131",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as articles — motion chapter, shell swap",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "61038ac",
+      "full": "61038ac1fe16aca5222c350af4e15d0ccb60b1d1",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as articles — shadow chapter, shell swap",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "040514e",
+      "full": "040514e9e7e3791c16bc5132c3d08c4f42506b54",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as articles — radius chapter, shell swap",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "83b4ea2",
+      "full": "83b4ea236071a36e99fa2bfe3bfddccf6d016ea9",
+      "date": "2026-09-23",
+      "subject": "feat(ds): color article — full 50–900 ramps + story-tied semantic layer",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "fd0d416",
+      "full": "fd0d416dcd247778e1527c461abb78f6354c3093",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as articles — spacing chapter, shell swap",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "aa922f2",
+      "full": "aa922f28d98a130d7d24a882474fc7590f7deaf9",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as articles — typography chapter, shell swap",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "2a7bcdb",
+      "full": "2a7bcdb596158729fd391f03193d8620407dd3f0",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations as chapter articles — color exemplar, frame shells + doc loader",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-2}"
     },
@@ -154,6 +266,14 @@
       "full": "d2b1ebf92b1d89b3efad27e3ccb2e560bdd435b7",
       "date": "2026-09-23",
       "subject": "feat(ds): ceramic/aluminium/gems story — decluttered chapter, plain words",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "79f4846",
+      "full": "79f4846cf5d38fd04eeb2fab05357b86d3bb3fe8",
+      "date": "2026-09-23",
+      "subject": "feat(ds): design Chapter 1 as a chapter page — laws, registers, roles, flows",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-1}"
     },
@@ -1215,6 +1335,7 @@
     }
   ],
   "wip": [
+    "M scripts/ds-track.mjs",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
@@ -1224,7 +1345,6 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/ds/contrast-dark.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",

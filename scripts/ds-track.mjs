@@ -1,6 +1,6 @@
 import fs from 'fs'; import {execSync} from 'child_process'; import {fileURLToPath} from 'url'; import {dirname,join} from 'path';
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
-const DS=['DESIGN.md','design-system','tokens','src','prototype','preview.html','scripts','tests'];
+const DS=['DESIGN.md','design-system','tokens','src','prototype','preview.html','scripts','tests','gallery.css','public/foundations','public/language-panel.html'];
 let log=''; try{log=execSync(`git log --format='%H|%h|%ad|%s' --date=short -- ${DS.join(' ')}`,{encoding:'utf8'})}catch{log=''}
 const TAG=/\[plan:([^\]#\s]+)(?:#([^\]]+))?\]/;
 let commits=log.trim()? log.trim().split('\n').map(l=>{const [full,sha,date,subject]=l.split('|'); const m=subject.match(TAG); return {full,sha,date,subject,m,plan:m?.[1]||null,anchor:m?.[2]||null}}):[];
