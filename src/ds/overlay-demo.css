@@ -3,8 +3,9 @@
 /* [plan:2026-09-23_002500-design-system-consolidation.md#phase-4] */
 .ov-stage {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: calc(var(--spacing-16) * 4);
   padding: var(--spacing-6);
   background-color: var(--bg-primary);
@@ -23,9 +24,13 @@
 }
 .ov-stage .overlay {
   position: absolute;
+  inset: 0;
 }
 .ov-stage .drawer {
   position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
   height: 100%;
 }
 .ov-stage .toast-region {
