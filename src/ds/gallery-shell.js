@@ -33,10 +33,10 @@ document.querySelectorAll('.table th').forEach(th=>{th.tabIndex=0});
 });
 // — Section tabs (hash-deep-linked: #actions etc.) —
 const dsTab=name=>{
-document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('tab--active',x.dataset.tab===name));
+document.querySelectorAll('.dnav__item').forEach(x=>x.classList.toggle('dnav__item--active',x.dataset.tab===name));
 document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==name});
 };
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.dnav__item').forEach(b=>b.addEventListener('click',()=>{
 dsTab(b.dataset.tab);
 history.replaceState(null,'','#'+b.dataset.tab);
 }));
