@@ -1,0 +1,83 @@
+<div class="pad">
+<h3>Tabs — underline + contained</h3>
+<div class="row">
+<div class="tabs" role="tablist" aria-label="Deals">
+<button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true" tabindex="0">Pipeline</button>
+<button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1">Won</button>
+<button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1" disabled>Archived</button>
+</div>
+<div class="tabs tabs--contained" role="tablist" aria-label="Views">
+<button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true" tabindex="0">Board</button>
+<button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1">List</button>
+</div>
+</div>
+<h3>Breadcrumbs — full trail + collapsed</h3>
+<div class="row">
+<nav aria-label="Breadcrumb"><ol class="breadcrumbs">
+<li class="breadcrumbs__item"><a href="#">Home</a><span class="breadcrumbs__sep" aria-hidden="true">/</span></li>
+<li class="breadcrumbs__item breadcrumbs__item--truncated"><a href="#">Acme Corp renewal</a><span class="breadcrumbs__sep" aria-hidden="true">/</span></li>
+<li class="breadcrumbs__item"><span class="breadcrumbs__current" aria-current="page">Quote</span></li>
+</ol></nav>
+<nav aria-label="Breadcrumb"><ol class="breadcrumbs breadcrumbs--collapsed">
+<li class="breadcrumbs__item"><a href="#">Home</a><span class="breadcrumbs__sep" aria-hidden="true">/</span></li>
+<li class="breadcrumbs__item"><button class="breadcrumbs__collapse" aria-label="Show path">…</button><span class="breadcrumbs__sep" aria-hidden="true">/</span></li>
+<li class="breadcrumbs__item breadcrumbs__item--collapsible"><a href="#">Deals</a><span class="breadcrumbs__sep" aria-hidden="true">/</span></li>
+<li class="breadcrumbs__item"><span class="breadcrumbs__current" aria-current="page">Quote</span></li>
+</ol></nav>
+</div>
+<h3>Pagination — full + compact</h3>
+<div class="row">
+<nav class="pagination" aria-label="Pagination">
+<button class="pagination__btn pagination__nav">Prev</button>
+<button class="pagination__btn pagination__btn--active" aria-current="page">1</button>
+<button class="pagination__btn">2</button>
+<span class="pagination__ellipsis" aria-hidden="true">…</span>
+<button class="pagination__btn">8</button>
+<button class="pagination__btn pagination__nav">Next</button>
+<span class="pagination__status">1–20 of 96</span>
+</nav>
+<nav class="pagination pagination--compact" aria-label="Pagination">
+<button class="pagination__btn" disabled>Prev</button>
+<button class="pagination__btn">Next</button>
+</nav>
+</div>
+<h3>Accordion — open / closed / disabled</h3>
+<div class="row">
+<div class="accordion">
+<div class="accordion__item accordion__item--open">
+<button class="accordion__trigger" aria-expanded="true" aria-controls="acc-p1"><span class="accordion__label">Deal terms</span><i class="ph ph-caret-down accordion__icon" aria-hidden="true"></i></button>
+<div class="accordion__panel" id="acc-p1"><div class="accordion__panel-inner">Net-30 · auto-renew · Q3 close.</div></div>
+</div>
+<div class="accordion__item">
+<button class="accordion__trigger" aria-expanded="false" aria-controls="acc-p2"><span class="accordion__label">Activity</span><i class="ph ph-caret-right accordion__icon" aria-hidden="true"></i></button>
+<div class="accordion__panel" id="acc-p2" hidden><div class="accordion__panel-inner">3 calls logged.</div></div>
+</div>
+<div class="accordion__item">
+<button class="accordion__trigger" aria-expanded="false" disabled><span class="accordion__label">Locked history</span><i class="ph ph-caret-right accordion__icon" aria-hidden="true"></i></button>
+</div>
+</div>
+</div>
+<h3>TabBar — icon-only dock (3 tabs)</h3>
+<div class="row">
+<div class="tabbar"><nav class="tabbar__nav" role="tablist" aria-label="Primary">
+<button class="tabbar__item tabbar__item--active" role="tab" aria-current="page" aria-label="Home"><i class="ph ph-house" aria-hidden="true"></i><span class="tabbar__signal"></span></button>
+<button class="tabbar__item" role="tab" aria-label="Leads"><i class="ph ph-users" aria-hidden="true"></i><span class="tabbar__badge">4</span></button>
+<button class="tabbar__item" role="tab" aria-label="Reports"><i class="ph ph-chart-bar" aria-hidden="true"></i></button>
+</nav></div>
+</div>
+<h3>Toolbar — comfortable + compact</h3>
+<div class="row">
+<div class="toolbar toolbar--comfortable" role="toolbar" aria-label="Deal actions">
+<span class="toolbar__title">Acme renewal</span>
+<span class="toolbar__spacer"></span>
+<div class="toolbar__group" aria-label="Views"><button class="toolbar__action"><i class="ph ph-squares-four" aria-hidden="true"></i></button></div>
+<div class="toolbar__group" aria-label="More"><button class="toolbar__action">Share</button><span class="toolbar__overflow"><button class="toolbar__action" aria-label="More actions"><i class="ph ph-caret-down" aria-hidden="true"></i></button></span></div>
+</div>
+<div class="toolbar toolbar--compact" role="toolbar" aria-label="Deal actions">
+<span class="toolbar__title">Acme</span>
+<span class="toolbar__spacer"></span>
+<div class="toolbar__group" aria-label="Edit"><button class="toolbar__action">Save</button></div>
+</div>
+</div>
+<p class="meta">Keyboard: roving tabindex — one tab stop per tablist/dock, ArrowLeft/Right move, Home/End jump · Contract: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</div>

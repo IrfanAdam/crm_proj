@@ -1,0 +1,58 @@
+<div class="pad">
+<h3>Table — comfortable, sortable + selected</h3>
+<div class="row">
+<div class="table__wrap">
+<table class="table table--comfortable">
+<thead><tr><th class="table__cell--select" scope="col"><input type="checkbox" aria-label="Select all"></th><th scope="col" aria-sort="ascending" tabindex="0">Deal</th><th scope="col">Stage</th><th scope="col">Value</th></tr></thead>
+<tbody><tr><td class="table__cell--select"><input type="checkbox" aria-label="Select Acme"></td><td>Acme</td><td>Negotiation</td><td>$48k</td></tr>
+<tr class="table__row--selected" aria-selected="true"><td class="table__cell--select"><input type="checkbox" checked aria-label="Select Globex"></td><td>Globex</td><td>Closed</td><td>$32k</td></tr></tbody>
+</table>
+</div>
+</div>
+<h3>Table — compact + sticky header</h3>
+<div class="row">
+<div class="table__wrap" style="max-height:120px;overflow:auto">
+<table class="table table--compact table--sticky">
+<thead><tr><th scope="col" aria-sort="descending" tabindex="0">Rep</th><th scope="col">Quota</th><th scope="col">Closed</th></tr></thead>
+<tbody><tr><td>A. Rao</td><td>$100k</td><td>$82k</td></tr>
+<tr><td>J. Diaz</td><td>$100k</td><td>$64k</td></tr>
+<tr><td>K. Osei</td><td>$80k</td><td>$71k</td></tr></tbody>
+</table>
+</div>
+</div>
+<h3>Table — empty + skeleton + footer</h3>
+<div class="row">
+<div class="table__wrap">
+<table class="table">
+<thead><tr><th scope="col">Deal</th><th scope="col">Stage</th></tr></thead>
+<tbody><tr class="table__empty"><td colspan="2">No deals match this filter.</td></tr>
+<tr aria-busy="true"><td><div class="table__skeleton-bar"></div></td><td><div class="table__skeleton-bar"></div></td></tr></tbody>
+</table>
+<div class="table__footer"><span>0 of 0</span><span>Pagination slot</span></div>
+</div>
+</div>
+<h3>KpiStat — value/total/delta + spark</h3>
+<div class="row">
+<span class="kpi kpi--sm"><span class="kpi__value">4</span><span class="kpi__total">/32 closed</span><span class="kpi__delta">+2%</span><span class="kpi__spark"><span class="sparkline sparkline--sm" aria-hidden="true"><span class="sparkline__bar" style="height:30%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:70%"></span></span></span></span>
+<span class="kpi kpi--lg"><span class="kpi__value">$182k</span><span class="kpi__total">/ $240k</span><span class="kpi__delta kpi__delta--down">−3%</span></span>
+</div>
+<h3>ListRow — default / selected / disabled</h3>
+<div class="row">
+<article class="list-row"><span class="list-row__logo" aria-hidden="true">AC</span><div class="list-row__main"><div class="list-row__name">Acme Corp</div><div class="list-row__meta">Negotiation · $48k</div></div><div class="list-row__end"><span class="badge badge--success">Open</span><span class="list-row__time">2h ago</span></div></article>
+<article class="list-row list-row--selected"><span class="list-row__logo" aria-hidden="true">GL</span><div class="list-row__main"><div class="list-row__name">Globex</div><div class="list-row__meta">Closed · $32k</div></div><div class="list-row__end"><span class="badge badge--neutral">Won</span><span class="list-row__time">1d ago</span></div></article>
+<article class="list-row list-row--disabled"><span class="list-row__logo" aria-hidden="true">IN</span><div class="list-row__main"><div class="list-row__name">Initech</div><div class="list-row__meta">Paused</div></div><div class="list-row__end"><span class="badge badge--warning">Stale</span><span class="list-row__time">9d ago</span></div></article>
+</div>
+<h3>Timeline — vertical / horizontal / compact</h3>
+<div class="row">
+<ol class="timeline"><li class="timeline__item timeline__item--done timeline__item--success"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Qualified — won</span><span class="timeline__time">Mon</span></li><li class="timeline__item timeline__item--warning"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Legal — waiting</span><span class="timeline__time">Tue</span></li></ol>
+<ol class="timeline timeline--horizontal"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Lead</span><span class="timeline__time">S1</span></li><li class="timeline__item timeline__item--danger"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Blocked</span><span class="timeline__time">S2</span></li></ol>
+<ol class="timeline timeline--compact"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Call logged</span><span class="timeline__time">9:41</span></li></ol>
+</div>
+<h3>Sparkline + FunnelGlyph</h3>
+<div class="row">
+<span class="sparkline sparkline--sm" role="img" aria-label="Up 12% over 7 days"><span class="sparkline__bar" style="height:25%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:55%"></span><span class="sparkline__bar sparkline__bar--gem" style="height:90%"></span></span>
+<span class="sparkline sparkline--lg sparkline--stroke" aria-hidden="true"><span class="sparkline__bar" style="height:35%"></span><span class="sparkline__bar" style="height:75%"></span></span>
+<span class="funnel-glyph" aria-hidden="true">⬢</span><span class="funnel-glyph funnel-glyph--small" aria-hidden="true">⬢</span><span class="funnel-glyph funnel-glyph--xs" aria-hidden="true">⬢</span>
+</div>
+<p class="meta">Anatomy: scope col + aria-sort one column · KPI reads as one sentence (value, total, signed delta) · Contract: <a href="prototype/gallery/data.md">data.md</a></p>
+</div>

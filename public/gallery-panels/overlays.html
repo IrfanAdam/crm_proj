@@ -1,0 +1,47 @@
+<div class="pad">
+<h3>Triggers — one button per layer</h3>
+<div class="row">
+<button class="btn btn--primary" data-overlay-target="ov-modal">Modal</button>
+<button class="btn btn--secondary" data-overlay-target="ov-drawer">Drawer</button>
+<button class="btn btn--secondary" data-overlay-target="ov-menu">Menu</button>
+<button class="btn btn--secondary" data-overlay-target="ov-tip">Tooltip</button>
+<button class="btn btn--secondary" data-overlay-target="ov-pop">Popover</button>
+<button class="btn btn--secondary" data-overlay-target="ov-toast">Toast</button>
+</div>
+<h3>Modal — sm (md / lg wider · top / center / bottom)</h3>
+<div class="row">
+<div class="overlay overlay--open" id="ov-modal">
+<div class="overlay__content overlay__content--sm" role="dialog" aria-modal="true" aria-labelledby="ov-modal-t">
+<div class="overlay__header"><span class="overlay__title" id="ov-modal-t">Delete deal?</span><button class="overlay__close" data-overlay-close aria-label="Close">×</button></div>
+<p class="overlay__body">Removes Acme from pipeline. Sizes: sm confirm · md form · lg preview.</p>
+<div class="overlay__footer"><button class="btn btn--secondary" data-overlay-close>Cancel</button><button class="btn btn--primary">Delete</button></div>
+</div>
+</div>
+</div>
+<h3>Drawer — right filter panel (left / top / bottom · narrow / wide)</h3>
+<div class="row">
+<div class="drawer drawer--open" id="ov-drawer">
+<div class="overlay__header"><span class="overlay__title">Filters</span><button class="overlay__close" data-overlay-close aria-label="Close">×</button></div>
+<p class="overlay__body">Stage · Owner · Close date — body scrolls, footer sticks.</p>
+<div class="overlay__footer"><button class="btn btn--secondary" data-overlay-close>Reset</button><button class="btn btn--primary">Apply</button></div>
+</div>
+</div>
+<h3>Menu + Popover — anchored floats</h3>
+<div class="row">
+<div class="menu overlay--open" id="ov-menu" role="menu">
+<button class="menu__item" role="menuitem">Rename</button>
+<button class="menu__item menu__item--selected" role="menuitem">Assign</button>
+<button class="menu__item" role="menuitem">Archive</button>
+</div>
+<div class="popover" id="ov-pop">
+<p class="popover__title">Close date</p>
+<p class="popover__body">Anchored hint — top / bottom via placement.</p>
+</div>
+</div>
+<h3>Tooltip + Toast — pointer hint, always topmost</h3>
+<div class="row">
+<span class="tooltip tooltip--visible" data-placement="top" role="tooltip" id="ov-tip">Save this view</span>
+<div class="toast-region toast-region--bottom-right"><div class="toast toast--visible toast--success" role="status" id="ov-toast"><span>Deal saved</span><button class="toast__close" data-overlay-close aria-label="Dismiss">×</button></div></div>
+</div>
+<p class="meta">Focus-trap + Esc close (persistent opt-out) · z: dropdown floats &lt; scrim &lt; modal &lt; toast · Contract: <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</div>

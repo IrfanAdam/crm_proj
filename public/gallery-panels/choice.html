@@ -1,0 +1,44 @@
+<div class="pad">
+<h3>Checkbox — unchecked / checked / indeterminate / disabled / error</h3>
+<div class="row">
+<label class="check"><input type="checkbox"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Unchecked</span></label>
+<label class="check"><input type="checkbox" checked><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Checked</span></label>
+<label class="check"><input type="checkbox" checked indeterminate id="choice-select-all"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="check__label">Select all (partial)</span></label>
+<label class="check check--disabled"><input type="checkbox" disabled><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Disabled</span></label>
+<label class="check check--error"><input type="checkbox" aria-invalid="true"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Error — pick one</span></label>
+</div>
+<h3>Checkbox sizes — sm / lg</h3>
+<div class="row">
+<label class="check check--sm"><input type="checkbox" checked><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Small</span></label>
+<label class="check check--lg"><input type="checkbox"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Large</span></label>
+</div>
+<h3>Radio group — vertical + horizontal</h3>
+<fieldset class="radio-group">
+<legend>Plan (vertical)</legend>
+<label class="radio"><input type="radio" name="choice-plan-v" checked><span class="radio__dot"></span><span class="radio__label">Starter</span></label>
+<label class="radio"><input type="radio" name="choice-plan-v"><span class="radio__dot"></span><span class="radio__label">Growth</span></label>
+<label class="radio radio--disabled"><input type="radio" name="choice-plan-v" disabled><span class="radio__dot"></span><span class="radio__label">Enterprise (disabled)</span></label>
+</fieldset>
+<fieldset class="radio-group radio-group--horizontal">
+<legend>Billing (horizontal)</legend>
+<label class="radio"><input type="radio" name="choice-bill-h" checked><span class="radio__dot"></span><span class="radio__label">Monthly</span></label>
+<label class="radio"><input type="radio" name="choice-bill-h"><span class="radio__dot"></span><span class="radio__label">Annual</span></label>
+<label class="radio radio--error"><input type="radio" name="choice-bill-h" aria-invalid="true"><span class="radio__dot"></span><span class="radio__label">Custom (error)</span></label>
+</fieldset>
+<h3>Switch — off / on / disabled / sm / with icon</h3>
+<div class="row">
+<label class="switch"><input type="checkbox" role="switch"><span class="switch__track"><span class="switch__thumb"></span></span>Email alerts (off)</label>
+<label class="switch"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"></span></span>Dark preview (on)</label>
+<label class="switch switch--disabled"><input type="checkbox" role="switch" disabled><span class="switch__track"><span class="switch__thumb"></span></span>Disabled</label>
+<label class="switch switch--sm"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"></span></span>Compact</label>
+<label class="switch"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"><svg class="switch__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>With icon</label>
+</div>
+<h3>Slider — continuous / discrete + ticks / error / sm / lg</h3>
+<label>Volume<input type="range" class="slider" min="0" max="100" value="45" aria-label="Volume"></label>
+<div><input type="range" class="slider slider--discrete" min="1" max="5" step="1" value="3" aria-label="Seats"><div class="slider__ticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+<label>Budget cap<input type="range" class="slider slider--error" min="0" max="100" value="80" aria-label="Budget cap" aria-invalid="true"></label>
+<label>Fine tune (sm)<input type="range" class="slider slider--sm" min="0" max="100" value="30" aria-label="Fine tune"></label>
+<label>Coarse (lg)<input type="range" class="slider slider--lg" min="0" max="100" value="60" aria-label="Coarse adjust"></label>
+<p class="meta">Shared law: native input stays focusable, visual proxy takes the 2px focus ring · 44px label rows / full-width track · Contract: <a href="prototype/gallery/choice.md">choice.md</a></p>
+<script>document.getElementById('choice-select-all').indeterminate=true</script>
+</div>

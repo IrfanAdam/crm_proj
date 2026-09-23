@@ -1,0 +1,37 @@
+<div class="pad">
+<h3>Sizes — outlined + filled, sm / md / lg</h3>
+<div class="row">
+<div class="field"><label class="field__label" for="t-sm">Name sm</label><div class="field__wrap"><input class="field__input field__input--sm" id="t-sm" type="text" placeholder="Small"></div></div>
+<div class="field"><label class="field__label" for="t-md">Name md</label><div class="field__wrap"><input class="field__input" id="t-md" type="text" placeholder="Medium"></div></div>
+<div class="field"><label class="field__label" for="t-lg">Name lg</label><div class="field__wrap"><input class="field__input field__input--lg" id="t-lg" type="text" placeholder="Large"></div></div>
+<div class="field"><label class="field__label" for="t-filled">Company filled</label><div class="field__wrap"><input class="field__input field__input--filled" id="t-filled" type="text" placeholder="Filled wash"></div></div>
+</div>
+<h3>Affixes — prefix Rs + suffix</h3>
+<div class="row">
+<div class="field"><label class="field__label" for="t-amt">Amount</label><div class="field__wrap"><span class="field__prefix" aria-hidden="true">Rs</span><input class="field__input field__input--with-prefix" id="t-amt" type="text" placeholder="0.00" aria-describedby="t-amt-help"><span class="field__suffix" aria-hidden="true">L</span></div><p class="field__help" id="t-amt-help">Lakhs, prefix + suffix room.</p></div>
+<div class="field"><label class="field__label" for="t-qty">Quantity</label><div class="field__wrap"><input class="field__input field__input--with-suffix" id="t-qty" type="text" placeholder="10" aria-describedby="t-qty-help"><span class="field__suffix" aria-hidden="true">pcs</span></div><p class="field__help" id="t-qty-help">Suffix keeps units visible.</p></div>
+</div>
+<h3>States — error / success / disabled / readonly</h3>
+<div class="row">
+<div class="field"><label class="field__label" for="t-err">Email</label><div class="field__wrap"><input class="field__input field__input--error" id="t-err" type="email" value="ops@" aria-invalid="true" aria-describedby="t-err-msg"></div><p class="field__error" id="t-err-msg">Enter a valid email.</p></div>
+<div class="field"><label class="field__label" for="t-ok">Domain</label><div class="field__wrap"><input class="field__input field__input--success" id="t-ok" type="text" value="acme.in" aria-describedby="t-ok-msg"></div><p class="field__help" id="t-ok-msg">Domain verified.</p></div>
+<div class="field"><label class="field__label" for="t-dis">Owner</label><div class="field__wrap"><input class="field__input" id="t-dis" type="text" value="A. Rao" disabled aria-describedby="t-dis-help"></div><p class="field__help" id="t-dis-help">Disabled: assigned by system.</p></div>
+<div class="field"><label class="field__label" for="t-ro">Deal ID</label><div class="field__wrap"><input class="field__input" id="t-ro" type="text" value="D-1042" readonly aria-describedby="t-ro-help"></div><p class="field__help" id="t-ro-help">Readonly: still submitted.</p></div>
+</div>
+<h3>Select — label + chevron</h3>
+<div class="row">
+<div class="field"><label class="field__label" for="t-stage">Stage</label><div class="select"><select class="select__input" id="t-stage"><option>Prospecting</option><option selected>Negotiation</option><option>Closed</option></select><i class="ph-bold ph-caret-down select__chevron" aria-hidden="true"></i></div></div>
+<div class="field"><label class="field__label" for="t-stage-f">Region filled</label><div class="select"><select class="select__input select__input--filled" id="t-stage-f"><option selected>West</option><option>East</option></select><i class="ph-bold ph-caret-down select__chevron" aria-hidden="true"></i></div></div>
+</div>
+<h3>Search — pill, icon + clear + loading</h3>
+<div class="row">
+<div class="search"><i class="ph-bold ph-magnifying-glass search__icon" aria-hidden="true"></i><input class="search__input" type="search" value="acme" aria-label="Search opportunities"><button class="search__clear" type="button" aria-label="Clear"><i class="ph-bold ph-x" aria-hidden="true"></i></button></div>
+<div class="search search--loading"><i class="ph-bold ph-magnifying-glass search__icon" aria-hidden="true"></i><input class="search__input" type="search" value="acme" aria-label="Searching opportunities" aria-busy="true" readonly></div>
+</div>
+<h3>Textarea — notes + character count</h3>
+<div class="row">
+<div class="textarea"><label class="field__label" for="notes">Notes</label><textarea class="field__input" id="notes" rows="3" maxlength="280" aria-describedby="notes-help notes-count">Met at demo day.</textarea><p class="field__help" id="notes-help">Context for the next call.</p><span class="textarea__count" id="notes-count">16 / 280</span></div>
+<div class="textarea"><label class="field__label" for="t-near">Summary near limit</label><textarea class="field__input" id="t-near" rows="3" maxlength="120" aria-describedby="t-near-count">Renewal at risk, needs exec review this week.</textarea><span class="textarea__count textarea__count--limit" id="t-near-count" aria-live="polite">108 / 120</span></div>
+</div>
+<p class="meta">Anatomy: label · 44px frame · affix/icon slots · help/error/count · Tokens: radius-md/full, border-thin, focus-ring · Label everything, never placeholder-as-label · Contract: <a href="prototype/gallery/form.md">form.md</a></p>
+</div>
