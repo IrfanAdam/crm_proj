@@ -4,22 +4,37 @@
 fetch('language-panel.html').then(r=>r.text()).then(h=>{document.getElementById('stage').insertAdjacentHTML('afterbegin',h)});
 // — Foundation articles —
 document.querySelectorAll('[data-doc]').forEach(el=>{fetch(el.dataset.doc).then(r=>r.text()).then(h=>{el.innerHTML=h;document.dispatchEvent(new Event('ds:doc'))})});
-// — Sortable tables —
-document.querySelectorAll('.table th').forEach(th=>{
-th.tabIndex=0;
-th.addEventListener('click',()=>{
+// — Sortable tables (delegated — covers fetched panels) —
+const dsSort=th=>{
 const asc=th.getAttribute('aria-sort')==='ascending';
 document.querySelectorAll('.table th').forEach(h=>h.removeAttribute('aria-sort'));
 th.setAttribute('aria-sort',asc?'descending':'ascending');
+};
+document.addEventListener('click',e=>{
+const th=e.target.closest('.table th');
+if(th)dsSort(th);
+const acc=e.target.closest('.accordion__trigger');
+if(acc){
+const it=acc.closest('.accordion__item');
+const open=it.classList.toggle('accordion__item--open');
+acc.setAttribute('aria-expanded',open);
+it.querySelector('.accordion__panel').hidden=!open;
+}
 });
-th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();th.click()}});
+document.addEventListener('keydown',e=>{
+if(e.key!=='Enter'&&e.key!==' ')return;
+const th=e.target.closest('.table th');
+if(th){e.preventDefault();dsSort(th);}
+});
+// — Fetched panels: indeterminate checkboxes + sortable tab stops —
+document.addEventListener('ds:doc',()=>{
+document.querySelectorAll('input[indeterminate]').forEach(el=>{el.indeterminate=true});
+document.querySelectorAll('.table th').forEach(th=>{th.tabIndex=0});
 });
 // — Section tabs (hash-deep-linked: #actions etc.) —
 const dsTab=name=>{
 document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('tab--active',x.dataset.tab===name));
 document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==name});
-const panel=document.querySelector('[data-panel="'+name+'"]');
-if(panel)panel.scrollIntoView();
 };
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
 dsTab(b.dataset.tab);
