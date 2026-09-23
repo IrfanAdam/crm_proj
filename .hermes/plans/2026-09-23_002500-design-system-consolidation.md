@@ -505,7 +505,7 @@ deletions without the grep-0-importers guarantee).
 - Modify: `public/gallery-panels/identity.html` (contextual), `gallery.html` (drop 5 spec pads).
 **Verify:** `#identity` renders intro → 5 specimens, zero open-scroll tables; `npm test` + `npm run build` green.
 **Commit:** `feat(ds): contextual specimens, identity frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12F · phase-4.*
+*Shipped in 29bf342 · Task 12F · phase-4.*
 
 ---
 
