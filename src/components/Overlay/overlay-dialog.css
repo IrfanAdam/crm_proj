@@ -10,6 +10,11 @@
   max-height: 85vh;
   overflow: auto;
   padding: var(--spacing-6);
+  transform: translateY(var(--spacing-2)) scale(0.98);
+  transition: var(--transition-fast);
+}
+.overlay--open .overlay__content {
+  transform: none;
 }
 .overlay__content--sm {
   max-width: calc(var(--spacing-16) * 5);
@@ -63,6 +68,12 @@
 }
 .overlay__close:hover {
   background: var(--bg-interactive);
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay__content {
+    transition: none;
+    transform: none;
+  }
 }
 @media (forced-colors: active) {
   .overlay__content {

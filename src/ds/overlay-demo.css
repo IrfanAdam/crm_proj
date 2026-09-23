@@ -1,0 +1,59 @@
+/* ADAM/DS — src/ds/overlay-demo.css · Overlays specimen stages — gallery-only demo frames */
+/* Exports: none (stylesheet) — loaded by gallery.html after the Overlay component stylesheets. */
+/* [plan:2026-09-23_002500-design-system-consolidation.md#phase-4] */
+.ov-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: calc(var(--spacing-16) * 4);
+  padding: var(--spacing-6);
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(circle at 1px 1px, var(--border-default) 1px, transparent 0);
+  background-size: var(--spacing-4) var(--spacing-4);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.ov-stage .overlay__content {
+  max-height: 100%;
+}
+.ov-anchor {
+  position: relative;
+  display: inline-flex;
+}
+.ov-stage .overlay {
+  position: absolute;
+}
+.ov-stage .drawer {
+  position: absolute;
+  height: 100%;
+}
+.ov-stage .toast-region {
+  position: absolute;
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+}
+.ov-anchor .menu {
+  top: calc(100% + var(--spacing-1));
+  left: 0;
+}
+.ov-anchor .popover {
+  top: calc(100% + var(--spacing-2));
+  left: 0;
+}
+.ov-stage .ov-tip .tooltip {
+  left: 50%;
+  bottom: calc(100% + var(--spacing-2));
+  transform: translate(-50%, calc(var(--spacing-1) * -1));
+}
+.ov-stage .ov-tip:hover .tooltip,
+.ov-stage .ov-tip:focus-within .tooltip {
+  opacity: 1;
+  transition-delay: var(--motion-duration-xs);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ov-stage .ov-tip:hover .tooltip,
+  .ov-stage .ov-tip:focus-within .tooltip {
+    transition-delay: 0s;
+  }
+}

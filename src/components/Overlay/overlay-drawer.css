@@ -13,6 +13,16 @@
   flex-direction: column;
   transform: translateX(100%);
   transition: var(--transition-spring);
+  padding: var(--spacing-6);
+}
+.drawer .overlay__body {
+  flex: 1;
+  overflow-y: auto;
+}
+.drawer .overlay__footer {
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-4);
+  border-top: var(--border-width-thin) solid var(--border-thin);
 }
 .drawer--open {
   transform: translateX(0);
