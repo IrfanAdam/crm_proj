@@ -13,12 +13,7 @@
   background-size: var(--spacing-4) var(--spacing-4);
   border: var(--border-width-thin) solid var(--border-thin);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: padding-right var(--transition-spring);
-}
-/* the drawer takes its lane: the in-flow trigger stays centred in the dotted space that's left */
-.ov-stage:has(.drawer--open) {
-  padding-right: calc(var(--spacing-6) + min(calc(var(--spacing-16) * 6), 85vw));
+  overflow: clip; /* clips like hidden but is not a scroll container — nothing can scroll the stage out from under a layer */
 }
 .ov-stage .overlay__content {
   max-height: 100%;

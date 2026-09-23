@@ -26,7 +26,7 @@ export function openOverlay(el, opts = {}) {
   syncExpanded(el, true);
   const item = el.classList.contains("menu") ? el.querySelector(".menu__item") : null;
   const target = item || (isDialog(el) ? focusables(el)[0] || el : null);
-  if (target) setTimeout(() => target.focus(), 10);
+  if (target) setTimeout(() => target.focus({ preventScroll: true }), 10);
   stack.push(el);
   if (el.classList.contains("toast")) {
     wireDwell(el, () => closeOverlay(el));
