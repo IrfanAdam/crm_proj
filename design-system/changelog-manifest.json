@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T08:20:52.914Z",
+  "generated": "2026-09-23T08:28:41.494Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "3a9e7fe",
+      "full": "3a9e7fe83e1a31fd21f07a8e727d87d8bc9556c1",
+      "date": "2026-09-23",
+      "subject": "chore(manifest): refresh after color foundations build",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "42539cf",
       "full": "42539cf20da52b8385ecdd3c19f86452b27258c9",
@@ -1184,6 +1192,7 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
+    "M src/ds/contrast-families.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",

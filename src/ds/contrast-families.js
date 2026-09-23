@@ -1,6 +1,8 @@
 /* ADAM/DS — src/ds/contrast-families.js · playground families, subs, tiers */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-2]
-// Exports: PG_TIERS, PG_STEPS, PG_RAMPS, PG_FAM. Tier = how much ramp shows:
+// Exports: PG_TIERS, PG_STEPS, PG_RAMPS, PG_FAM. Family = the job the hue does:
+// Neutral = brand action + content ink · Core = gem hues (measure, score, streak)
+// · Messaging = feedback (success, danger, warning). Tier = how much ramp shows:
 // strong = hero fill (most color), basic = tinted ground (hue in the ground),
 // neut = hue as ink on paper (no fill). Candidates come from that sub's ramp
 // only; the runtime keeps the strongest passing one.
@@ -14,18 +16,15 @@ const PG_RAMPS = ['neutral-light', 'neutral-dark', 'sapphire-ui', 'amethyst', 'r
 const PG_FAM = {
   neutral: {
     label: 'Neutral',
-    subs: [{
-      key: 'content', label: 'Content · Ink', ramp: 'neutral-dark',
-      tiers: {
-        strong: [['white', 'neutral-dark-700'], ['neutral-light-900', 'neutral-dark-800']],
-        basic: [['ink', 'neutral-light-500'], ['ink', 'neutral-light-400'], ['neutral-dark-800', 'neutral-light-400']],
-        neut: [['neutral-dark-400', 'white'], ['neutral-dark-300', 'white'], ['neutral-dark-100', 'white']]
-      }
-    }]
-  },
-  core: {
-    label: 'Core',
     subs: [
+      {
+        key: 'content', label: 'Content · Ink', ramp: 'neutral-dark',
+        tiers: {
+          strong: [['white', 'neutral-dark-700'], ['neutral-light-900', 'neutral-dark-800']],
+          basic: [['ink', 'neutral-light-500'], ['ink', 'neutral-light-400'], ['neutral-dark-800', 'neutral-light-400']],
+          neut: [['neutral-dark-400', 'white'], ['neutral-dark-300', 'white'], ['neutral-dark-100', 'white']]
+        }
+      },
       {
         key: 'action', label: 'Action · Sapphire', ramp: 'sapphire-ui',
         tiers: {
@@ -33,7 +32,12 @@ const PG_FAM = {
           basic: [['sapphire-ui-700', 'sapphire-ui-100'], ['sapphire-ui-700', 'sapphire-ui-50'], ['ink', 'sapphire-ui-200']],
           neut: [['sapphire-ui-600', 'white'], ['sapphire-ui-700', 'white'], ['sapphire-ui-500', 'surface']]
         }
-      },
+      }
+    ]
+  },
+  core: {
+    label: 'Core',
+    subs: [
       {
         key: 'measure', label: 'Measure · Amethyst', ramp: 'amethyst',
         tiers: {
@@ -48,6 +52,14 @@ const PG_FAM = {
           strong: [['white', 'red-beryl-500'], ['red-beryl-100', 'red-beryl-700']],
           basic: [['red-beryl-700', 'red-beryl-100'], ['red-beryl-700', 'red-beryl-50'], ['ink', 'red-beryl-200']],
           neut: [['red-beryl-600', 'white'], ['red-beryl-500', 'white'], ['red-beryl-700', 'white']]
+        }
+      },
+      {
+        key: 'streak', label: 'Streak · Citrine', ramp: 'citrine',
+        tiers: {
+          strong: [['ink', 'citrine-400'], ['citrine-800', 'citrine-100']],
+          basic: [['citrine-700', 'citrine-50'], ['citrine-800', 'citrine-100'], ['ink', 'citrine-200']],
+          neut: [['citrine-700', 'white'], ['citrine-600', 'white'], ['citrine-800', 'white']]
         }
       }
     ]
@@ -72,11 +84,11 @@ const PG_FAM = {
         }
       },
       {
-        key: 'warning', label: 'Warning · Citrine', ramp: 'citrine',
+        key: 'warning', label: 'Warning · Orange', ramp: 'orange',
         tiers: {
-          strong: [['ink', 'citrine-400'], ['citrine-800', 'citrine-100']],
-          basic: [['citrine-700', 'citrine-50'], ['citrine-800', 'citrine-100'], ['ink', 'citrine-200']],
-          neut: [['citrine-700', 'white'], ['citrine-600', 'white'], ['citrine-800', 'white']]
+          strong: [['ink', 'orange-400'], ['white', 'orange-600']],
+          basic: [['orange-900', 'orange-50'], ['orange-800', 'orange-100'], ['ink', 'orange-100']],
+          neut: [['orange-800', 'white'], ['orange-700', 'white'], ['orange-900', 'white']]
         }
       }
     ]
