@@ -1,39 +1,41 @@
 <div class="tp">
 <p class="ch-kicker">Chapter 2 · Foundations · 02 Typography</p>
 <h2 class="ch-hero">Type carries hierarchy. Never color.</h2>
-<p class="ch-lede meta">One family — Inter — five reading steps. Hierarchy comes from size, weight and leading, never from hue: a title is bigger and bolder, never bluer. Color-coded hierarchy dies in sunlight, in grayscale, and for every color-blind user.</p>
+<p class="ch-lede meta">One family — Inter — five reading steps. Hierarchy comes from size, weight and line height, never from hue: a title is bigger and bolder, never bluer. Color-coded hierarchy dies in sunlight, in grayscale, and for every color-blind user.</p>
 <ul class="ch-laws">
 <li class="ch-law"><span class="ch-num">01</span><div><p><b>Five steps, fixed jobs</b> — title 32 · card 20 · body 16 · meta 14 · micro 12.</p><p class="ch-reject">Reject: a 24 or an 18 — steps exist so sizes never drift.</p></div></li>
 <li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight pairs with the step</b> — title and card bold, body regular, meta and micro medium.</p><p class="ch-reject">Reject: bold body copy, or a meta line shouting in semibold.</p></div></li>
-<li class="ch-law"><span class="ch-num">03</span><div><p><b>Leading belongs to the step</b> — titles hold at 1.15, prose reads at 1.5, meta at 1.4.</p><p class="ch-reject">Reject: 1.15 on a paragraph — tight prose turns reading into line-hunting.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Line height belongs to the step</b> — titles hold at 1.15, prose reads at 1.50, meta at 1.40.</p><p class="ch-reject">Reject: 1.15 on a paragraph — tight prose turns reading into line-hunting.</p></div></li>
 <li class="ch-law"><span class="ch-num">04</span><div><p><b>Quieter means <code>--text-secondary</code></b> — a lower ink step, never a lighter hue and never opacity.</p><p class="ch-reject">Reject: gray-blue captions, faded-sapphire timestamps.</p></div></li>
 <li class="ch-law"><span class="ch-num">05</span><div><p><b>Roles, not sizes, in code</b> — components reference <code>--type-*</code>, never <code>--font-size-*</code> directly.</p><p class="ch-reject">Reject: a card title pointing at <code>--font-size-xl</code> — rename the scale and it orphans.</p></div></li>
 </ul>
 <h3>Scale — five steps, fixed jobs</h3>
-<table class="ch-roles tp-scale"><thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Leading</th><th>Tracking</th><th>Job</th></tr></thead><tbody>
-<tr><td><code>--type-title</code></td><td>32px</td><td>700 bold</td><td>1.15</td><td>−0.01em</td><td>screen titles (H1)</td></tr>
-<tr><td><code>--type-card</code></td><td>20px</td><td>700 bold</td><td>1.25</td><td>—</td><td>card + panel titles</td></tr>
-<tr><td><code>--type-body</code></td><td>16px</td><td>400 regular</td><td>1.50</td><td>—</td><td>prose, values, copy</td></tr>
-<tr><td><code>--type-meta</code></td><td>14px</td><td>500 medium</td><td>1.40</td><td>—</td><td>captions, statuses</td></tr>
-<tr><td><code>--type-micro</code></td><td>12px</td><td>500 medium</td><td>1.40</td><td>+0.04em</td><td>caps labels, eyebrows</td></tr>
+<table class="ch-roles tp-scale"><thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Line height</th><th>Tracking</th><th>Job</th></tr></thead><tbody>
+<tr><td><code>--type-title</code></td><td>32px</td><td>700 <code>bold</code></td><td>1.15 <code>tight</code></td><td>−0.01em <code>tight</code></td><td>screen titles (H1)</td></tr>
+<tr><td><code>--type-card</code></td><td>20px</td><td>700 <code>bold</code></td><td>1.25 <code>snug</code></td><td>none</td><td>card + panel titles</td></tr>
+<tr><td><code>--type-body</code></td><td>16px</td><td>400 <code>regular</code></td><td>1.50 <code>relaxed</code></td><td>none</td><td>prose, values, copy</td></tr>
+<tr><td><code>--type-meta</code></td><td>14px</td><td>500 <code>medium</code></td><td>1.40 <code>normal</code></td><td>none</td><td>captions, statuses</td></tr>
+<tr><td><code>--type-micro</code></td><td>12px</td><td>500 <code>medium</code></td><td>1.40 <code>normal</code></td><td>+0.04em <code>wide</code></td><td>caps labels, eyebrows</td></tr>
 </tbody></table>
 <div class="tp-notes">
-<p class="meta"><code>--type-*</code> roles alias one size step each: title → 3xl 2rem · card → xl 1.25rem · body → md 1rem · meta → sm 0.875rem · micro → xs 0.75rem.</p>
-<p class="meta">Weight, leading and tracking stay separate — <code>--font-weight-*</code>, <code>--font-leading-*</code>, <code>--font-tracking-*</code>. A role never bundles them.</p>
-<p class="meta"><code>--type-compact</code> (16 / 600) is title's morph twin inside Operate — not a sixth reading step.</p>
+<p class="meta"><code>--type-*</code> carries size — title 3xl 2rem · card xl 1.25rem · body md 1rem · meta sm 0.875rem · micro xs 0.75rem</p>
+<p class="meta"><code>--font-leading-*</code> line height — tight 1.15 · snug 1.25 · normal 1.40 · relaxed 1.50</p>
+<p class="meta"><code>--font-weight-*</code> weight — regular 400 · medium 500 · semibold 600 · bold 700</p>
+<p class="meta"><code>--font-tracking-*</code> tracking — tight −0.01em · wide +0.04em</p>
+<p class="meta"><code>--type-compact</code> 16 / 600 — title's morph twin inside Operate, not a sixth reading step</p>
 </div>
 <h3>Specimens — the five steps, live</h3>
 <div class="tp-specs">
-<div class="tp-spec"><span style="font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--type-title-tracking)">Opportunities</span><code>--type-title · 32px / 1.15</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-card);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Acme Corp — Enterprise</span><code>--type-card · 20px / 1.25</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-body);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Proposal sent yesterday, worth Rs 3.2L at 73%.</span><code>--type-body · 16px / 1.50</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-meta);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Last contact 2d ago · 1.2km</span><code>--type-meta · 14px / 1.40</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-micro);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);letter-spacing:var(--font-tracking-wide);color:var(--text-muted)">OPERATE · MONITOR · REPORTS</span><code>--type-micro · 12px / 1.40</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--type-title-tracking)">Opportunities</span><code>--type-title · 32px / lh 1.15</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-card);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Acme Corp — Enterprise</span><code>--type-card · 20px / lh 1.25</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-body);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Proposal sent yesterday, worth Rs 3.2L at 73%.</span><code>--type-body · 16px / lh 1.50</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-meta);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Last contact 2d ago · 1.2km</span><code>--type-meta · 14px / lh 1.40</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-micro);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);letter-spacing:var(--font-tracking-wide);color:var(--text-muted)">OPERATE · MONITOR · REPORTS</span><code>--type-micro · 12px / lh 1.40</code></div>
 </div>
-<h3>Leading — the reading measure</h3>
+<h3>Line height — the reading measure</h3>
 <div class="tp-lead">
-<div><span class="ch-num">Reject — 1.15 on prose</span><p style="line-height:var(--font-leading-tight)">Acme Corp is waiting on the revised scope before Thursday's review. The proposal went out yesterday, the value still sits at 73%, and the buying committee has gone quiet since the demo — two follow-ups are overdue.</p></div>
-<div><span class="ch-num">Body — 1.50 on prose</span><p style="line-height:var(--font-leading-relaxed)">Acme Corp is waiting on the revised scope before Thursday's review. The proposal went out yesterday, the value still sits at 73%, and the buying committee has gone quiet since the demo — two follow-ups are overdue.</p></div>
+<div><span class="ch-num">Reject — lh 1.15 on prose</span><p style="line-height:var(--font-leading-tight)">Acme Corp is waiting on the revised scope before Thursday's review. The proposal went out yesterday, the value still sits at 73%, and the buying committee has gone quiet since the demo — two follow-ups are overdue.</p></div>
+<div><span class="ch-num">Body — lh 1.50 on prose</span><p style="line-height:var(--font-leading-relaxed)">Acme Corp is waiting on the revised scope before Thursday's review. The proposal went out yesterday, the value still sits at 73%, and the buying committee has gone quiet since the demo — two follow-ups are overdue.</p></div>
 </div>
 <h3>Contrast — ink per step</h3>
 <table class="ch-roles"><thead><tr><th></th><th>Token</th><th>On canvas</th><th>May carry</th></tr></thead><tbody>
@@ -43,7 +45,7 @@
 <tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>--text-dim</code></td><td>3.10 decorative</td><td>rules, disabled — never a sentence</td></tr>
 </tbody></table>
 <p class="meta">Ratios measured on the canvas (<code>--bg-primary</code>); paper lifts every value. Stepping down this ladder is how type quiets.</p>
-<h3>Snippet — role + weight + leading</h3>
+<h3>Snippet — role + weight + line height</h3>
 <code class="tp-code">h1 { font-size:var(--type-title); font-weight:var(--font-weight-bold); line-height:var(--font-leading-tight) }
 p  { font-size:var(--type-body);  font-weight:var(--font-weight-regular); line-height:var(--font-leading-relaxed) }</code>
 <h3>Related — neighbours in the chapter</h3>

@@ -83,3 +83,4 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .tp-notes{margin-top:var(--spacing-3)}
 .tp-notes p+p{margin-top:var(--spacing-1)}
 .tp-scale td:not(:last-child),.tp-scale th:not(:last-child){width:1%;white-space:nowrap}
+.tp-scale td+td,.tp-scale th+th{padding-left:var(--spacing-4)}
