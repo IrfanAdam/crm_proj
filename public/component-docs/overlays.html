@@ -1,12 +1,4 @@
 <div class="tp">
-<p class="ch-kicker">Components · Overlays · 01 Layers</p>
-<h2 class="ch-hero">Interrupt with intent. Never stack surprises.</h2>
-<p class="ch-lede meta">Overlays float six layers — modal, drawer, menu, tooltip, popover, toast — served by one engine: single focus-trap, Esc-to-close, return-focus. Each layer has one job and one alternative; stacking reuses tokens, never raw z-index.</p>
-<ul class="ch-laws">
-<li class="ch-law"><span class="ch-num">01</span><div><p><b>When, or its alternative.</b> Modal blocks for confirms; drawer keeps context for filters and long forms; menu lists actions; tooltip names one thing; popover anchors rich panels; toast confirms past acts. Drawer over modal-for-forms, toast-plus-undo over modal-for-trivia.</p><p class="ch-reject">Reject: a modal for filter panels or a tooltip holding buttons — right layer or no layer.</p></div></li>
-<li class="ch-law"><span class="ch-num">02</span><div><p><b>Trap, Esc, return.</b> Modal and dismissible drawer trap Tab, close on Esc (unless <code>.overlay--persistent</code>), and return focus to the opener; menus and popovers close-and-refocus without trapping. Toasts never take focus at all.</p><p class="ch-reject">Reject: a trap that strands focus or an Esc that does nothing — every layer gives focus back.</p></div></li>
-<li class="ch-law"><span class="ch-num">03</span><div><p><b>Tokens stack, DOM orders.</b> Floats sit on <code>--z-index-dropdown</code> (in-dialog: <code>--z-index-modal</code>), scrim <code>--z-index-overlay</code>, dialogs <code>--z-index-modal</code>, toasts always <code>--z-index-toast</code>. Later dialogs paint above by DOM order; tooltips never trap, toasts always win.</p><p class="ch-reject">Reject: raw z-index numbers or nested modal-on-modal — restack in order, never invent depth.</p></div></li>
-</ul>
 <h3>Variants — layer vs alternative</h3>
 <table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
 <tr><td><code>.overlay__content</code> modal</td><td>blocking confirm / short task</td><td><code>--sm/md/lg/full</code>, <code>--top</code> sheet / center / <code>--bottom</code></td></tr>

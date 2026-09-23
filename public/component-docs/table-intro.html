@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Data · 01 Table</p>
+<h2 class="ch-hero">Comparable rows. One sorted column.</h2>
+<p class="ch-lede meta">Table is the Opps ledger: sortable columns over comparable rows, keyboard-driven. It sorts and selects; it never hosts row actions inside the sort header. Use it when columns compare; use ListRow when rows navigate.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — wrap · head · rows · footer.</b> <code>.table__wrap</code> scroll container holds <code>table.table</code>; header cells sort, body rows carry data, <code>.table__footer</code> hosts the Pagination slot (count left, controls right).</p><p class="ch-reject">Reject: a sticky header scoped to the page — sticky lives inside <code>.table__wrap</code> only.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Density is a choice, not a drift.</b> Default operates comfortable; <code>table--compact</code> goes dense Carbon-style; <code>table--comfortable</code> goes roomy for monitors. Striping is allowed only outside dense tables.</p><p class="ch-reject">Reject: striped dense rows — hover wash is enough signal at density.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Sort is announced, selection is railed.</b> One sorted column at a time via <code>aria-sort</code> plus the sapphire arrow; <code>.table__row--selected</code> pairs the active wash with a sapphire inset rail.</p><p class="ch-reject">Reject: selection by fill alone — the rail must mark the picked row.</p></div></li>
+</ul>
+</div>
