@@ -1,5 +1,5 @@
 /* ADAM/DS — src/ds/gallery.js · pairing pills + matrix */
-// [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · plain script, lab in pairing-lab.js.
+// [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · plain script, playground in contrast-playground.js.
 const pxLum=v=>{
   const m=v.match(/[\d.]+/g).slice(0,3).map(x=>{
     x/=255;
@@ -31,14 +31,18 @@ const PAIR_FG=[
   ['secondary','--text-secondary','Text'],['muted','--text-muted','Text'],
   ['dim','--text-dim','Text'],['accent','--text-accent','Text'],
   ['white','--primitive-gray-white','Neutrals'],['ink','--primitive-ink','Neutrals'],
-  ['success','--color-accent-success','Feedback'],['error','--color-accent-error','Feedback']
+  ['success','--color-accent-success','Feedback'],['error','--color-accent-error','Feedback'],
+  ['warning','--color-accent-warning','Feedback']
 ];
 const PAIR_BG=[
   ['canvas','--bg-primary','Surfaces'],['surface','--bg-surface','Surfaces'],
   ['white','--primitive-gray-white','Surfaces'],['glass','--bg-surface-glass','Surfaces'],
   ['action','--role-action','Action'],['ink','--primitive-ink','Neutrals'],
   ['measure','--role-measure','Measure'],['measure-soft','--role-measure-soft','Measure'],
-  ['score','--role-score','Score'],['score-soft','--role-score-soft','Score']
+  ['score','--role-score','Score'],['score-soft','--role-score-soft','Score'],
+  ['action-soft','--role-action-soft','Action'],['mark-soft','--role-mark-soft','Mark'],
+  ['success','--color-accent-success','Feedback'],['error','--color-accent-error','Feedback'],
+  ['warning','--color-accent-warning','Feedback']
 ];
 const FG_BY=Object.fromEntries(PAIR_FG);
 const BG_BY=Object.fromEntries(PAIR_BG);
@@ -77,10 +81,6 @@ const pxMatrix=()=>{
     h+='</tr>';
   });
   host.innerHTML=h+'</tbody></table>';
-  host.addEventListener('click',e=>{
-    const c=e.target.closest('.mx-cell');
-    if(c&&typeof pxLabLoad!=='undefined')pxLabLoad(c.dataset.f,c.dataset.b);
-  });
   const aa=document.querySelector('[data-matrix-aa]');
   if(aa)aa.addEventListener('change',()=>host.querySelector('.mx').classList.toggle('mx--aa',aa.checked));
 };

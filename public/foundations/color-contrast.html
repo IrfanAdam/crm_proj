@@ -1,0 +1,32 @@
+<h3 id="ch-contrast">Contrast playground — pick a family, read the pairing</h3>
+<p class="meta">Families segment by job; Neutral is content (ink and grays), Core splits into its gem hues (action · sapphire, measure · amethyst, score · red beryl), Messaging into success · green, danger · red and warning · citrine. Strong fills with the ramp hero (most color), Basic sets the hue as a tinted ground, Neutral writes the hue as ink on paper with no fill. Only pairs that pass are shown — Swap flips ink and ground, and the ramp strip marks the steps in play.</p>
+<div class="pg-bar">
+<div class="pg-seg" role="tablist" aria-label="Pairing family" data-pg-fams>
+<button type="button" class="pg-seg__btn" role="tab" data-pg-fam="neutral">Neutral</button>
+<button type="button" class="pg-seg__btn" role="tab" data-pg-fam="core">Core</button>
+<button type="button" class="pg-seg__btn" role="tab" data-pg-fam="messaging">Messaging</button>
+</div>
+<div class="pg-tools">
+<button type="button" class="chip" data-pg-theme>Light</button>
+<button type="button" class="chip" data-pg-swap>Swap ink</button>
+<button type="button" class="chip chip--icon" data-overlay-target="pg-matrix-modal" aria-label="All pairings" title="All pairings"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13M1.5 10h13M6 2.5v11M10.5 2.5v11" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+</div>
+</div>
+<div class="pg-sub" data-pg-subs></div>
+<div class="pg-ramp" data-pg-ramp></div>
+<p class="meta pg-pin" data-pg-pin hidden></p>
+<div data-pg-scope data-theme="light">
+<div class="pg-grid" data-pg><p class="meta">computing pairs…</p></div>
+</div>
+<h3>Snippet — follows the playground</h3>
+<p class="meta"><code data-pg-snippet>color:var(--role-action);background:var(--primitive-gray-white);</code> <button type="button" class="chip" data-pg-copy>copy</button></p>
+<div id="pg-matrix-modal" class="overlay" hidden role="dialog" aria-modal="true" aria-label="All pairings">
+<div class="overlay__content pg-sheet">
+<div class="overlay__header"><strong class="overlay__title">All pairings — reference map</strong><button type="button" class="overlay__close" data-overlay-close aria-label="Close">✕</button></div>
+<p class="meta">Every foreground on every background, computed live. Click any cell to pin it in the playground.</p>
+<div class="row" style="margin-top:4px"><label class="meta"><input type="checkbox" data-matrix-aa/> AA passes only — dim the rest</label></div>
+<div class="mx-wrap" style="margin-top:4px"><div data-matrix><p class="meta">computing pairs…</p></div></div>
+</div>
+</div>
+<h3>Related</h3>
+<p class="meta">Typography — type never carries hierarchy through color · Gems tab — the celebration system · Operate pattern — action order in situ</p>

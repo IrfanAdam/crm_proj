@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T19:46:01.274Z",
+  "generated": "2026-09-23T08:15:27.205Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,78 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "babeb34",
+      "full": "babeb3490afa0fb36965babf94e3b3d46fb0df32",
+      "date": "2026-09-23",
+      "subject": "feat(ds): color section nav as tabs for Ramps/Roles/Semantics, rest scrolls",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "de89505",
+      "full": "de895058429a0fd914e59bc2034025f38515e35d",
+      "date": "2026-09-23",
+      "subject": "feat(ds): pairing explorer — grouped pass-only dropdowns, scoped light/dark preview",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "407e509",
+      "full": "407e50960b7e2117ba6c1707192674f44c07ecd4",
+      "date": "2026-09-23",
+      "subject": "feat(ds): live contrast pills, full 17x10 pairing matrix, lab picker",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "c07d17e",
+      "full": "c07d17e073376587288130af3b9a8d4868713b7f",
+      "date": "2026-09-23",
+      "subject": "fix(ds): drop self-referential token aliases — amethyst-900/50, radius, weight resolve",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "9d7d5ab",
+      "full": "9d7d5ab4daae201cfb4eb7cdf794ff22245e0432",
+      "date": "2026-09-23",
+      "subject": "feat(ds): role gradations per category, unified value grammar, roles light/dark",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "10188e1",
+      "full": "10188e13484bdd7512c52125c410a6b5929d2377",
+      "date": "2026-09-23",
+      "subject": "feat(ds): color — grouped semantic with dark, full pairing matrix, lab extracted",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "98fe52f",
+      "full": "98fe52f5fbf09e4c6e054c27585b912f9de3f5ba",
+      "date": "2026-09-23",
+      "subject": "feat(tooling): lint foundation drift",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "abd40b2",
+      "full": "abd40b2f656d4ee75f971837cf1a0f25b8c8d91a",
+      "date": "2026-09-23",
+      "subject": "feat(ds): build token source ground-up — all layers tokenized",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "d10b870",
+      "full": "d10b870ee82e6d17516b6ac1bb724a6041513acf",
+      "date": "2026-09-23",
+      "subject": "chore(plan): close consolidation phase 1 — mark shipped, hide exhaustive subset",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "3e75875",
       "full": "3e758751a17cb4101945adf06d6509556c84b721",
@@ -1104,7 +1176,12 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/ds/changelog-names.json",
+    "M src/components/Overlay/overlay.js",
+    "M src/ds/color-tabs.js",
+    "M src/ds/gallery.js",
+    "D src/ds/pairing-lab-tools.js",
+    "D src/ds/pairing-lab.js",
+    "D src/ds/pairing-options.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1114,6 +1191,11 @@
     "M src/js/mechanics/render.js",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs"
+    "M tests/atlas-shell.test.mjs",
+    "?? src/ds/contrast-controls.js",
+    "?? src/ds/contrast-families.js",
+    "?? src/ds/contrast-playground.css",
+    "?? src/ds/contrast-playground.js",
+    "?? src/ds/contrast-render.js"
   ]
 }

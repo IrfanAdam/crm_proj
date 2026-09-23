@@ -27,6 +27,8 @@ graph TD
     glass_slices-spec[slices-spec.js]
   end
   subgraph patterns
+    patterns_ActivityStrip_activity-strip[activity-strip.js]
+    patterns_EmptyState_empty-state[empty-state.js]
     patterns_MonitorScreen_monitor-screen[monitor-screen.js]
     patterns_OperateScreen_operate-screen[operate-screen.js]
     patterns_OppsHome_face-handoff[face-handoff.js]
@@ -57,12 +59,8 @@ graph TD
     motion_elastic-scroll[elastic-scroll.js]
     motion_tilt-card[tilt-card.js]
   end
-  arch_atlas-selection --> arch_lens-logic
-  arch_atlas-selection --> arch_lens-schema
-  arch_atlas-selection --> arch_lens-decisions
-  arch_atlas-selection --> js_mechanics_graph
   arch_atlas --> arch_atlas-state
-  arch_atlas --> arch_atlas-selection
+  arch_atlas --> arch_lens-truth
   arch_atlas --> js_mechanics_graph
   device_frame --> os_status-bar
   glass_BottomDock --> glass_DockLens
@@ -91,6 +89,7 @@ graph TD
   js_mechanics_canvas-interaction --> js_mechanics_graph
   js_mechanics_canvas --> js_mechanics_graph
   js_mechanics_canvas --> js_mechanics_render
+  js_mechanics_canvas --> js_mechanics_tokens
   js_mechanics_canvas --> js_mechanics_popover
   js_mechanics_canvas --> js_mechanics_route
   js_mechanics_canvas --> js_mechanics_canvas-interaction
@@ -103,6 +102,7 @@ graph TD
   js_mechanics_render --> js_mechanics_graph
   js_mechanics_render --> js_mechanics_text
   js_mechanics_render --> js_mechanics_route
+  js_mechanics_render --> js_mechanics_tokens
   js_mechanics_route --> js_mechanics_graph
   js_mechanics_route --> js_mechanics_corridor
   patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
@@ -118,6 +118,8 @@ graph TD
   patterns_OppsHome_nearby-sheet --> patterns_OppsHome_nearby-map
   patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-map
   patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-sheet
+  patterns_OppsHome_opps-home --> patterns_ActivityStrip_activity-strip
+  patterns_OppsHome_opps-home --> patterns_EmptyState_empty-state
   patterns_OppsHome_pill-expand --> patterns_OppsHome_nearby-map
   patterns_OppsHome_pill-expand --> patterns_OppsHome_morph-timing
   patterns_OppsHome_pill-expand --> patterns_OppsHome_face-handoff
