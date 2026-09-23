@@ -1,4 +1,5 @@
 <div class="pad">
+<section class="specimen">
 <h3>Variants — one emphasis per row</h3>
 <div class="row">
 <button class="btn btn--primary">Primary</button>
@@ -8,6 +9,19 @@
 <button class="btn btn--destructive">Destructive</button>
 <button class="btn btn--danger-ghost">Delete</button>
 </div>
+<p class="spec-note">Emphasis is a ladder, not a palette — primary → secondary → tonal → ghost. Sapphire acts; red destroys only. Reject: two primaries side by side, or a shadow added to "pop".</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>btn--primary</code></td><td>the row's one commitment</td><td><code>role.action</code> fill, white ink; hover <code>strong</code></td></tr>
+<tr><td><code>btn--secondary</code></td><td>default chrome action</td><td>surface fill, ink text, <code>border.thin</code></td></tr>
+<tr><td><code>btn--tonal</code></td><td>mid emphasis, stays calm</td><td><code>role.action.soft</code> wash, dark ink</td></tr>
+<tr><td><code>btn--ghost</code></td><td>tertiary / inline</td><td>transparent, sapphire text, sapphire-100 hover</td></tr>
+<tr><td><code>btn--destructive</code></td><td>irreversible</td><td><code>role.danger</code> fill, white ink</td></tr>
+<tr><td><code>btn--danger-ghost</code></td><td>delete in a quiet row</td><td>transparent, danger text, red-50 hover</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
 <h3>With icons — leading + icon-only</h3>
 <div class="row">
 <button class="btn btn--primary"><i class="ph-bold ph-plus" aria-hidden="true"></i>New deal</button>
@@ -16,13 +30,22 @@
 <button class="btn btn--secondary btn--icon-only" aria-label="Search"><i class="ph-bold ph-magnifying-glass" aria-hidden="true"></i></button>
 <button class="btn btn--ghost btn--icon-only" aria-label="Close"><i class="ph-bold ph-x" aria-hidden="true"></i></button>
 </div>
+<p class="spec-note">Anatomy — 44px frame · label · icon · spinner. Label never wraps; icon-only is square and needs <code>aria-label</code>. Reject: a button that changes width when loading starts.</p>
+<details class="spec-more"><summary>Spec · anatomy</summary>
+<p class="meta">44px frame holds size across variants with a transparent 1px border; optional leading <code>.btn__icon</code>; loading swaps in <code>.btn__spinner</code> without moving the frame. Glyphs: Icon only — see Identity.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Sizes — sm / md / lg</h3>
 <div class="row">
 <button class="btn btn--primary btn--sm">Small</button>
 <button class="btn btn--primary btn--md">Medium</button>
 <button class="btn btn--primary btn--lg">Large</button>
 </div>
-<h3>States — disabled / aria-disabled / loading / focus (Tab for ring, click Loading to spin)</h3>
+<p class="spec-note">Density — <code>btn--sm / md / lg</code> map to 32 / 44 / 48px frames, xs / sm / md type. md and up keep the 44px minimum target.</p>
+</section>
+<section class="specimen">
+<h3>States — disabled / aria-disabled / loading / focus</h3>
 <div class="row">
 <button class="btn btn--primary" disabled>Disabled</button>
 <button class="btn btn--secondary" aria-disabled="true">Aria-disabled</button>
@@ -30,7 +53,26 @@
 <button class="btn btn--primary" data-loading="1" aria-busy="true"><span class="btn__spinner" aria-hidden="true"></span>Loading…</button>
 <a href="#" class="btn btn--secondary">Link button</a>
 </div>
-<h3>Full width</h3>
+<p class="spec-note">States speak before words do — hover deepens one step, active one more, focus always rings (Tab for the 2px ring). Loading holds the frame and announces <code>aria-busy</code>. Reject: grey-on-grey with no ring.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover / Active</td><td>one step deeper, then pressed depth, no lift</td><td><code>:hover</code> / <code>:active</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring, 3px offset</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims via <code>opacity.disabled</code>, no pointer, skipped by tab</td><td><code>disabled</code></td></tr>
+<tr><td>Aria-disabled</td><td>looks disabled, stays focusable to explain why</td><td><code>aria-disabled="true"</code></td></tr>
+<tr><td>Loading</td><td>spinner in, frame held, click ignored</td><td><code>data-loading</code> + <code>aria-busy</code></td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>role.action / strong</code>, <code>radius.md</code>, <code>opacity.disabled</code>, <code>transition.fast</code> (spinner dies under reduced-motion). A11y — native <code>&lt;button&gt;</code>, white on sapphire-500 clears AA, forced-colors falls back to ButtonFace/ButtonText.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Full width + contract</h3>
 <button class="btn btn--secondary btn--full-width">Full-width secondary</button>
-<p class="meta" style="margin-top:8px">Anatomy: 44px frame · label · icon/spinner · Tokens: role-action/strong, radius-md, opacity-disabled · One primary per row, no shadow pop · Focus: Tab for the 2px ring · Contract: <a href="prototype/gallery/actions.md">actions.md</a></p>
+<p class="spec-note">Form / sheet commitment — stretches, label centered. Do: one primary per row, hold the frame while loading. Don't: shadow to "pop", ghost a primary, wrap the label.</p>
+<details class="spec-more"><summary>Spec · snippet + related</summary>
+<code class="tp-code">&lt;button class="btn btn--primary" data-loading&gt;Save deal&lt;/button&gt;
+&lt;button class="btn btn--ghost btn--icon-only" aria-label="Close"&gt;…&lt;/button&gt;</code>
+<p class="meta">Related — Chip filters, never commits · StatusPill flags stages, never actions · Full article: <a href="prototype/gallery/actions.md">actions.md</a></p>
+</details>
+</section>
 </div>

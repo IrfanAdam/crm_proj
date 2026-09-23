@@ -481,6 +481,20 @@ playground; `npm test` green.
 **Commit:** `feat(ds): pairings in situ — matrix modal mapped to shipped elements [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in da10664 · Task 12D · phase-4.*
 
+### Task 12E: Contextual specimens — verbose text embedded per component ✓ done
+**Objective:** Kill the scroll — every frame reads intro (kicker + hero + 1-line
+lede) → specimens, with each specimen section carrying its own rule inline
+(`spec-note`) and its tables behind a native `<details class="spec-more">`.
+No separate spec pads below the specimens; `gallery.html` frames keep intro +
+specimens only. Exemplar is Actions (`button-intro` slim + `actions.html`
+contextual + `.specimen/.spec-note/.spec-more` in `gallery.css`); remaining 7
+frames follow the same idiom next iterations.
+**Files:**
+- Modify: `public/component-docs/button-intro.html` (slim), `public/gallery-panels/actions.html` (contextual), `gallery.css` (specimen rules), `gallery.html` (drop `button.html` pad).
+**Verify:** `#actions` renders intro → 5 specimens each with note + Spec details, zero long tables in the open scroll; `npm test` green.
+**Commit:** `feat(ds): contextual specimens, actions exemplar [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12E · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
