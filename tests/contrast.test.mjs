@@ -16,6 +16,16 @@ const pairs=[
  ['goal-bar 700 on white','#27004d','#ffffff',4.5,'gem bar'],
  ['white on dark surface','#ffffff','#141414',4.5,'dark'],
  ['amethyst-100 on ink','#f7eeff','#222222',4.5,''],
+ ['role.action — white on base','#ffffff','#1666af',4.5,'role.action'],
+ ['role.action.soft — ink on it','#222222','#7cbefb',4.5,'role.action.soft'],
+ ['role.measure — white on strong','#ffffff','#6e00db',4.5,'role.measure.strong'],
+ ['role.score — white on base','#ffffff','#ea005e',4.5,'role.score'],
+ ['role.streak — ink on base','#222222','#ffb01e',4.5,'role.streak'],
+ ['role.success — ink on base','#222222','#18d824',4.5,'role.success'],
+ ['role.danger — white on base','#ffffff','#e00000',4.5,'role.danger'],
+ ['role.danger.soft — ink on it','#222222','#ff3d3d',4.5,'role.danger.soft'],
+ ['role.warning — ink on base','#222222','#f57f26',4.5,'role.warning'],
+ ['text.muted on paper','#737373','#fafafa',4.5,'text.muted — ladder fixed, monotonic in both themes'],
 ];
 let fails=0;
 for(const [name,fg,bg,need,note] of pairs){

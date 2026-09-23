@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T08:57:20.343Z",
+  "generated": "2026-09-23T09:15:37.501Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "4b78817",
+      "full": "4b78817860e22933ea6c0555a4d042bd93afcbce",
+      "date": "2026-09-23",
+      "subject": "feat(ds): messaging ramps in color specimens — green · red · orange",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "0748a65",
       "full": "0748a656a54e1c2198666ba580ab925d612bdf86",
@@ -1199,6 +1207,8 @@
     }
   ],
   "wip": [
+    "M design-system/tokens.css",
+    "M scripts/build-tokens.mjs",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
@@ -1208,6 +1218,7 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
+    "M src/ds/gallery.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1215,8 +1226,12 @@
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
     "M src/js/mechanics/render.js",
+    "M src/patterns/ActivityStrip/activity-strip.css",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs"
+    "M tests/atlas-shell.test.mjs",
+    "M tests/contrast.test.mjs",
+    "M tokens/semantic-dark.json",
+    "M tokens/semantic-light.json"
   ]
 }

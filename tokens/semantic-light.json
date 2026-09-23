@@ -14,23 +14,23 @@
     "interactive-active": "var(--primitive-gray-200)"
   },
   "border": {
-    "thin": "var(--primitive-gray-100)",
-    "medium": "rgba(15, 16, 21, 0.08)",
-    "thick": "rgba(15, 16, 21, 0.15)",
+    "subtle": "var(--primitive-gray-100)",
+    "default": "rgba(15, 16, 21, 0.08)",
+    "strong": "rgba(15, 16, 21, 0.15)",
     "accent": "var(--primitive-gray-900)"
   },
   "text": {
     "primary": "var(--primitive-ink)",
     "secondary": "var(--primitive-gray-700)",
-    "muted": "var(--primitive-gray-300)",
-    "dim": "var(--primitive-dim)",
-    "accent": "var(--primitive-gray-900)"
+    "muted": "var(--primitive-dim)",
+    "dim": "var(--primitive-gray-300)",
+    "emphasis": "var(--primitive-gray-900)"
   },
   "accent": {
     "brand": "var(--signal)",
-    "success": "var(--primitive-green-300)",
-    "warning": "var(--primitive-orange-400)",
-    "error": "var(--primitive-red-400)"
+    "success": "var(--role-success)",
+    "danger": "var(--role-danger)",
+    "warning": "var(--role-warning)"
   },
   "shadow": {
     "sm": "0 1px 2px rgba(15, 16, 21, 0.04)",
@@ -39,34 +39,46 @@
     "mark": "0 1px 3px rgba(15, 16, 21, 0.45)"
   },
   "achievement": {
-    "card-bg": "var(--primitive-gray-white)",
-    "overlay-bg": "rgba(15, 16, 21, 0.3)"
+    "card": "var(--primitive-gray-white)",
+    "scrim": "rgba(15, 16, 21, 0.3)"
   },
   "focus": {
     "ring": "0 0 0 2px var(--primitive-sapphire-ui-400)",
     "ring-offset": "0 0 0 4px rgba(33,138,234,0.15)"
   },
-  "borderWidth": {
+  "stroke": {
     "hairline": "var(--primitive-border-width-hairline)",
-    "thin": "var(--primitive-border-width-thin)"
+    "medium": "var(--primitive-border-width-medium)"
   },
   "role": {
     "action": "var(--signal)",
-    "action-soft": "var(--primitive-sapphire-ui-400)",
+    "action-soft": "var(--primitive-sapphire-ui-300)",
+    "action-strong": "var(--primitive-sapphire-ui-600)",
     "action-ink": "var(--primitive-gray-white)",
     "measure": "var(--primitive-amethyst-400)",
     "measure-soft": "var(--primitive-amethyst-200)",
     "measure-strong": "var(--primitive-amethyst-500)",
+    "measure-ink": "var(--primitive-gray-white)",
     "score": "var(--primitive-red-beryl-400)",
     "score-soft": "var(--primitive-red-beryl-200)",
     "score-strong": "var(--primitive-red-beryl-500)",
-    "warn": "var(--primitive-citrine-700)",
-    "warn-soft": "var(--primitive-citrine-500)",
-    "warn-strong": "var(--primitive-citrine-800)",
-    "mark": "var(--primitive-amethyst-500)",
-    "mark-soft": "var(--primitive-amethyst-300)",
-    "mark-strong": "var(--primitive-amethyst-600)",
-    "action-strong": "var(--primitive-sapphire-ui-600)"
+    "score-ink": "var(--primitive-gray-white)",
+    "streak": "var(--primitive-citrine-400)",
+    "streak-soft": "var(--primitive-citrine-200)",
+    "streak-strong": "var(--primitive-citrine-500)",
+    "streak-ink": "var(--primitive-ink)",
+    "success": "var(--primitive-green-300)",
+    "success-soft": "var(--primitive-green-100)",
+    "success-strong": "var(--primitive-green-400)",
+    "success-ink": "var(--primitive-ink)",
+    "danger": "var(--primitive-red-500)",
+    "danger-soft": "var(--primitive-red-300)",
+    "danger-strong": "var(--primitive-red-600)",
+    "danger-ink": "var(--primitive-gray-white)",
+    "warning": "var(--primitive-orange-400)",
+    "warning-soft": "var(--primitive-orange-200)",
+    "warning-strong": "var(--primitive-orange-500)",
+    "warning-ink": "var(--primitive-ink)"
   },
   "type": {
     "title": "var(--font-size-3xl)",

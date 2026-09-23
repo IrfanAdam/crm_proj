@@ -26,13 +26,12 @@ const PAIR_FG=[
   ['action','--role-action','Action'],['action-strong','--role-action-strong','Action'],
   ['measure','--role-measure','Measure'],['measure-strong','--role-measure-strong','Measure'],
   ['score','--role-score','Score'],['score-strong','--role-score-strong','Score'],
-  ['warn','--role-warn','Warn'],['warn-strong','--role-warn-strong','Warn'],
-  ['mark','--role-mark','Mark'],['mark-strong','--role-mark-strong','Mark'],
+  ['streak','--role-streak','Streak'],['streak-strong','--role-streak-strong','Streak'],
   ['secondary','--text-secondary','Text'],['muted','--text-muted','Text'],
-  ['dim','--text-dim','Text'],['accent','--text-accent','Text'],
+  ['dim','--text-dim','Text'],['emphasis','--text-emphasis','Text'],
   ['white','--primitive-gray-white','Neutrals'],['ink','--primitive-ink','Neutrals'],
-  ['success','--color-accent-success','Feedback'],['error','--color-accent-error','Feedback'],
-  ['warning','--color-accent-warning','Feedback']
+  ['success','--role-success','Feedback'],['danger','--role-danger','Feedback'],
+  ['warning','--role-warning','Feedback']
 ];
 const PAIR_BG=[
   ['canvas','--bg-primary','Surfaces'],['surface','--bg-surface','Surfaces'],
@@ -40,9 +39,10 @@ const PAIR_BG=[
   ['action','--role-action','Action'],['ink','--primitive-ink','Neutrals'],
   ['measure','--role-measure','Measure'],['measure-soft','--role-measure-soft','Measure'],
   ['score','--role-score','Score'],['score-soft','--role-score-soft','Score'],
-  ['action-soft','--role-action-soft','Action'],['mark-soft','--role-mark-soft','Mark'],
-  ['success','--color-accent-success','Feedback'],['error','--color-accent-error','Feedback'],
-  ['warning','--color-accent-warning','Feedback']
+  ['action-soft','--role-action-soft','Action'],['streak','--role-streak','Streak'],
+  ['streak-soft','--role-streak-soft','Streak'],
+  ['success','--role-success','Feedback'],['danger','--role-danger','Feedback'],
+  ['warning','--role-warning','Feedback']
 ];
 const FG_BY=Object.fromEntries(PAIR_FG);
 const BG_BY=Object.fromEntries(PAIR_BG);

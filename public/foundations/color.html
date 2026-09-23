@@ -19,48 +19,70 @@
 <div class="meta" style="margin-top:8px">Orange — warning · hero <i class="sw" style="background:var(--primitive-orange-400)"></i> 400 #f57f26</div>
 <div class="ramp"><span class="ramp__cell"><i style="background:var(--primitive-orange-50)"></i><b>50</b><s>#fef0e6</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-100)"></i><b>100</b><s>#fac69e</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-200)"></i><b>200</b><s>#f8ac72</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-300)"></i><b>300</b><s>#f69246</s></span><span class="ramp__cell ramp__cell--hero"><i style="background:var(--primitive-orange-400)"></i><b>400</b><s>#f57f26</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-500)"></i><b>500</b><s>#e0660a</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-600)"></i><b>600</b><s>#c85b09</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-700)"></i><b>700</b><s>#ab4e08</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-800)"></i><b>800</b><s>#8a3d06</s></span><span class="ramp__cell"><i style="background:var(--primitive-orange-900)"></i><b>900</b><s>#6b2f05</s></span></div>
 <h3 id="ch-roles">Roles — what code may touch (Law 03)</h3>
-<p class="meta">Every role ships soft / base / strong on its home ramp (soft −200 steps, strong +100; action-soft predates the rule at 400). Roles are theme-stable — identical light and dark — because they are hue-meanings; surfaces and prose adapt around them. Grammar: token → ramp step · hex.</p>
-<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>Light</th><th>Dark</th><th>Where used</th></tr></thead><tbody>
-<tr><td><i class="sw" style="background:var(--role-action)"></i></td><td><code>--role-action</code></td><td>sapphire-ui-500 · #1666af</td><td>same</td><td>buttons, links, selected</td></tr>
-<tr><td><i class="sw" style="background:var(--role-action-soft)"></i></td><td><code>--role-action-soft</code></td><td>sapphire-ui-400 · #218aea</td><td>same</td><td>secondary emphasis</td></tr>
-<tr><td><i class="sw" style="background:var(--role-action-strong)"></i></td><td><code>--role-action-strong</code></td><td>sapphire-ui-600 · #0b4377</td><td>same</td><td>pressed, deep emphasis</td></tr>
-<tr><td><i class="sw" style="background:var(--role-action-ink)"></i></td><td><code>--role-action-ink</code></td><td>white · #ffffff</td><td>same</td><td>text on action</td></tr>
-<tr><td><i class="sw" style="background:var(--role-measure)"></i></td><td><code>--role-measure</code></td><td>amethyst-400 · #a54cff</td><td>same</td><td>progress, funnel</td></tr>
-<tr><td><i class="sw" style="background:var(--role-measure-soft)"></i></td><td><code>--role-measure-soft</code></td><td>amethyst-200 · #debeff</td><td>same</td><td>measure backgrounds</td></tr>
-<tr><td><i class="sw" style="background:var(--role-measure-strong)"></i></td><td><code>--role-measure-strong</code></td><td>amethyst-500 · #6e00db</td><td>same</td><td>measure emphasis</td></tr>
-<tr><td><i class="sw" style="background:var(--role-score)"></i></td><td><code>--role-score</code></td><td>red-beryl-400 · #ea005e</td><td>same</td><td>scores, chance %</td></tr>
-<tr><td><i class="sw" style="background:var(--role-score-soft)"></i></td><td><code>--role-score-soft</code></td><td>red-beryl-200 · #ffaac5</td><td>same</td><td>score backgrounds</td></tr>
-<tr><td><i class="sw" style="background:var(--role-score-strong)"></i></td><td><code>--role-score-strong</code></td><td>red-beryl-500 · #a80035</td><td>same</td><td>score emphasis</td></tr>
-<tr><td><i class="sw" style="background:var(--role-warn)"></i></td><td><code>--role-warn</code></td><td>citrine-700 · #452c00</td><td>same</td><td>warnings on light</td></tr>
-<tr><td><i class="sw" style="background:var(--role-warn-soft)"></i></td><td><code>--role-warn-soft</code></td><td>citrine-500 · #9d6a00</td><td>same</td><td>warning fills</td></tr>
-<tr><td><i class="sw" style="background:var(--role-warn-strong)"></i></td><td><code>--role-warn-strong</code></td><td>citrine-800 · #2e1e00</td><td>same</td><td>warning emphasis</td></tr>
-<tr><td><i class="sw" style="background:var(--role-mark)"></i></td><td><code>--role-mark</code></td><td>amethyst-500 · #6e00db</td><td>same</td><td>ceremony marks</td></tr>
-<tr><td><i class="sw" style="background:var(--role-mark-soft)"></i></td><td><code>--role-mark-soft</code></td><td>amethyst-300 · #c48aff</td><td>same</td><td>ceremony washes</td></tr>
-<tr><td><i class="sw" style="background:var(--role-mark-strong)"></i></td><td><code>--role-mark-strong</code></td><td>amethyst-600 · #490091</td><td>same</td><td>ceremony emphasis</td></tr>
+<p class="meta">One shape per role: <code>role.name</code> ships <b>soft</b> (−200) · <b>base</b> · <b>strong</b> (+100) · <b>ink</b>, and ink is the only text colour allowed on its base. Families follow the playground — Neutral the brand action, Core the gem hues, Messaging feedback. Ratios are measured; roles are theme-stable. Code spells the same name with dashes: <code>role.action.soft</code> → <code>--role-action-soft</code>.</p>
+<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>Ramp step</th><th>Pairing · ratio</th><th>Where used</th></tr></thead><tbody>
+<tr><td colspan="5" class="ch-group">Neutral — the brand action</td></tr>
+<tr><td><i class="sw" style="background:var(--role-action)"></i></td><td><code>role.action</code></td><td>sapphire-ui-500 · #1666af</td><td>white on it · <b>5.91 AA</b></td><td>buttons, links, selected</td></tr>
+<tr><td><i class="sw" style="background:var(--role-action-soft)"></i></td><td><code>role.action.soft</code></td><td>sapphire-ui-300 · #7cbefb</td><td>ink on it · <b>8.04 AAA</b></td><td>lighter action fill</td></tr>
+<tr><td><i class="sw" style="background:var(--role-action-strong)"></i></td><td><code>role.action.strong</code></td><td>sapphire-ui-600 · #0b4377</td><td>white on it · <b>10.08 AAA</b></td><td>pressed, deep emphasis</td></tr>
+<tr><td><i class="sw" style="background:var(--role-action-ink)"></i></td><td><code>role.action.ink</code></td><td>white · #ffffff</td><td>5.91 on base · 10.08 on strong</td><td>text on action</td></tr>
+<tr><td colspan="5" class="ch-group">Core — the gem hues</td></tr>
+<tr><td><i class="sw" style="background:var(--role-measure)"></i></td><td><code>role.measure</code></td><td>amethyst-400 · #a54cff</td><td>white on it · <b>4.14 AA-large</b></td><td>progress, funnel — small text goes on <code>.strong</code></td></tr>
+<tr><td><i class="sw" style="background:var(--role-measure-soft)"></i></td><td><code>role.measure.soft</code></td><td>amethyst-200 · #debeff</td><td>ink on it · <b>9.78 AAA</b></td><td>measure grounds</td></tr>
+<tr><td><i class="sw" style="background:var(--role-measure-strong)"></i></td><td><code>role.measure.strong</code></td><td>amethyst-500 · #6e00db</td><td>white on it · <b>7.82 AAA</b></td><td>measure fill, gems, ceremony marks</td></tr>
+<tr><td><i class="sw" style="background:var(--role-measure-ink)"></i></td><td><code>role.measure.ink</code></td><td>white · #ffffff</td><td>7.82 on strong</td><td>text on a measure fill</td></tr>
+<tr><td><i class="sw" style="background:var(--role-score)"></i></td><td><code>role.score</code></td><td>red-beryl-400 · #ea005e</td><td>white on it · <b>4.51 AA</b></td><td>scores, chance %</td></tr>
+<tr><td><i class="sw" style="background:var(--role-score-soft)"></i></td><td><code>role.score.soft</code></td><td>red-beryl-200 · #ffaac5</td><td>ink on it · <b>8.95 AAA</b></td><td>score grounds</td></tr>
+<tr><td><i class="sw" style="background:var(--role-score-strong)"></i></td><td><code>role.score.strong</code></td><td>red-beryl-500 · #a80035</td><td>white on it · <b>7.73 AAA</b></td><td>score emphasis</td></tr>
+<tr><td><i class="sw" style="background:var(--role-score-ink)"></i></td><td><code>role.score.ink</code></td><td>white · #ffffff</td><td>4.51 on base · 7.73 on strong</td><td>text on score</td></tr>
+<tr><td><i class="sw" style="background:var(--role-streak)"></i></td><td><code>role.streak</code></td><td>citrine-400 · #ffb01e</td><td>ink on it · <b>8.70 AAA</b></td><td>streaks, momentum</td></tr>
+<tr><td><i class="sw" style="background:var(--role-streak-soft)"></i></td><td><code>role.streak.soft</code></td><td>citrine-200 · #ffe0a3</td><td>ink on it · <b>12.46 AAA</b></td><td>streak grounds</td></tr>
+<tr><td><i class="sw" style="background:var(--role-streak-strong)"></i></td><td><code>role.streak.strong</code></td><td>citrine-500 · #9d6a00</td><td>white on it · <b>4.67 AA</b></td><td>streak emphasis</td></tr>
+<tr><td><i class="sw" style="background:var(--role-streak-ink)"></i></td><td><code>role.streak.ink</code></td><td>ink · #222222</td><td>8.70 on base</td><td>text on streak</td></tr>
+<tr><td colspan="5" class="ch-group">Messaging — feedback, never structural</td></tr>
+<tr><td><i class="sw" style="background:var(--role-success)"></i></td><td><code>role.success</code></td><td>green-300 · #18d824</td><td>ink on it · <b>8.25 AAA</b></td><td>accepted, saved</td></tr>
+<tr><td><i class="sw" style="background:var(--role-success-soft)"></i></td><td><code>role.success.soft</code></td><td>green-100 · #7ef186</td><td>ink on it · <b>11.22 AAA</b></td><td>success grounds</td></tr>
+<tr><td><i class="sw" style="background:var(--role-success-strong)"></i></td><td><code>role.success.strong</code></td><td>green-400 · #15be20</td><td>ink on it · <b>6.38 AAA</b></td><td>success emphasis</td></tr>
+<tr><td><i class="sw" style="background:var(--role-success-ink)"></i></td><td><code>role.success.ink</code></td><td>ink · #222222</td><td>8.25 on base</td><td>text on success</td></tr>
+<tr><td><i class="sw" style="background:var(--role-danger)"></i></td><td><code>role.danger</code></td><td>red-500 · #e00000</td><td>white on it · <b>5.04 AA</b></td><td>errors, blocked</td></tr>
+<tr><td><i class="sw" style="background:var(--role-danger-soft)"></i></td><td><code>role.danger.soft</code></td><td>red-300 · #ff3d3d</td><td>ink on it · <b>4.54 AA</b></td><td>danger grounds</td></tr>
+<tr><td><i class="sw" style="background:var(--role-danger-strong)"></i></td><td><code>role.danger.strong</code></td><td>red-600 · #c20000</td><td>white on it · <b>6.38 AAA</b></td><td>danger emphasis</td></tr>
+<tr><td><i class="sw" style="background:var(--role-danger-ink)"></i></td><td><code>role.danger.ink</code></td><td>white · #ffffff</td><td>5.04 on base · 6.38 on strong</td><td>text on danger</td></tr>
+<tr><td><i class="sw" style="background:var(--role-warning)"></i></td><td><code>role.warning</code></td><td>orange-400 · #f57f26</td><td>ink on it · <b>6.02 AA</b></td><td>caution, pending</td></tr>
+<tr><td><i class="sw" style="background:var(--role-warning-soft)"></i></td><td><code>role.warning.soft</code></td><td>orange-200 · #f8ac72</td><td>ink on it · <b>8.44 AAA</b></td><td>warning grounds</td></tr>
+<tr><td><i class="sw" style="background:var(--role-warning-strong)"></i></td><td><code>role.warning.strong</code></td><td>orange-500 · #e0660a</td><td>ink on it · <b>4.60 AA</b></td><td>warning emphasis</td></tr>
+<tr><td><i class="sw" style="background:var(--role-warning-ink)"></i></td><td><code>role.warning.ink</code></td><td>ink · #222222</td><td>6.02 on base</td><td>text on warning</td></tr>
 </tbody></table>
 <h3 id="ch-semantics">Semantic layer — every Tier 2 token, light and dark</h3>
-<p class="meta">Samples in light; Dark lists night values. Grouped by job: backgrounds hold, foregrounds speak, borders shape, signal messages.</p>
-<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>Light</th><th>Dark</th><th>Story job</th></tr></thead><tbody>
-<tr><td colspan="5" class="meta"><b>Backgrounds</b> — hold the screen</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-primary)"></i></td><td><code>--bg-primary</code></td><td>neutral-light-200 · #fafafa</td><td>gray-900 · #141414</td><td>the canvas, paper by day</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-surface)"></i></td><td><code>--bg-surface</code></td><td>white · #ffffff</td><td>gray-800 · #292929</td><td>cards lift by hairline</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-surface-glass)"></i></td><td><code>--bg-surface-glass / -active</code></td><td>white · 38% / white · 46%</td><td>rgba(28,29,36,.38) / rgba(36,38,48,.44)</td><td>dock and overlay glass</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-surface-elevated)"></i></td><td><code>--bg-surface-elevated</code></td><td>white · #ffffff</td><td>gray-800 · #292929</td><td>raised panels</td></tr>
-<tr><td><i class="sw" style="background:var(--bg-interactive)"></i></td><td><code>--bg-interactive / -hover / -active</code></td><td>gray-100 · #e0e0e0 / gray-50 · #ffffff / gray-200 · #cccccc</td><td>gray-700 · #525252 / gray-800 · #292929 / gray-550 · #8f8f8f</td><td>rest / hover / press wells</td></tr>
-<tr><td colspan="5" class="meta"><b>Foregrounds</b> — speak the content</td></tr>
-<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>--text-primary</code></td><td>ink · #222222</td><td>white · #ffffff</td><td>titles, body</td></tr>
-<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>--text-secondary</code></td><td>gray-700 · #525252</td><td>gray-100 · #e0e0e0</td><td>meta — quieter, never dim</td></tr>
-<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>--text-muted</code></td><td>gray-300 · #8f8f8f</td><td>gray-200 · #cccccc</td><td>hints, placeholders</td></tr>
-<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>--text-dim</code></td><td>dim · #737373</td><td>gray-300 · #8f8f8f</td><td>eyebrows, disabled</td></tr>
-<tr><td><i class="sw" style="background:var(--text-accent)"></i></td><td><code>--text-accent</code></td><td>gray-900 · #141414</td><td>white · #ffffff</td><td>neutral emphasis</td></tr>
-<tr><td colspan="5" class="meta"><b>Borders and depth</b> — shape, never decorate</td></tr>
-<tr><td><i class="sw" style="background:var(--border-thin)"></i></td><td><code>--border-thin / -medium / -thick</code></td><td>gray-100 · #e0e0e0 / rgba(15,16,21,.08) / rgba(15,16,21,.15)</td><td>rgba(255,255,255,.06) / rgba(255,255,255,.12) / rgba(255,255,255,.20)</td><td>hairlines carry the UI</td></tr>
-<tr><td><i class="sw" style="background:var(--border-accent)"></i></td><td><code>--border-accent</code></td><td>gray-900 · #141414</td><td>white · #ffffff</td><td>reject markers, strong dividers</td></tr>
-<tr><td><i class="sw" style="background:var(--shadow-md);border-radius:0"></i></td><td><code>--shadow-sm / -md / -lg / -mark</code></td><td>ink 4% / 6% / 8% / mark 45%</td><td>black 30% / 40% / 50% / mark 45%</td><td>funnel and gems → Shadow 05</td></tr>
-<tr><td colspan="5" class="meta"><b>Signal and messaging</b> — one action, honest feedback</td></tr>
-<tr><td><i class="sw" style="background:var(--color-accent-brand)"></i></td><td><code>--color-accent-brand</code></td><td>--signal → sapphire-ui-500 · #1666af</td><td>same</td><td>the one swap-slot</td></tr>
-<tr><td><i class="sw" style="background:var(--color-accent-success)"></i></td><td><code>--color-accent-success / -warning / -error</code></td><td>green-300 · #18d824 / orange-400 · #f57f26 / red-400 · #ff1f1f</td><td>same · #18d824 / #f57f26 / #ff1f1f</td><td>feedback — never structural</td></tr>
-<tr><td><i class="sw" style="background:var(--achievement-card-bg)"></i></td><td><code>--achievement-card-bg</code></td><td>white · #ffffff</td><td>gray-800 · #292929</td><td>reward cards</td></tr>
-<tr><td><i class="sw" style="background:var(--achievement-overlay-bg)"></i></td><td><code>--achievement-overlay-bg</code></td><td>rgba(15,16,21,.30)</td><td>rgba(0,0,0,.70)</td><td>ceremony scrims</td></tr>
-<tr><td><i class="sw" style="background:var(--focus-ring)"></i></td><td><code>--focus-ring / -offset</code></td><td>sapphire-400 · 2px ring + halo · 4px rgba(33,138,234,.15)</td><td>same</td><td>keyboard path in the action hue</td></tr>
+<p class="meta">Samples in light; Dark lists night values. Grouped by family, then job — surfaces hold, ink speaks, shape never decorates, messaging reports, chrome carries depth. Roles are theme-stable; surfaces and prose adapt around them. Same names as code, dashed: <code>text.muted</code> → <code>--text-muted</code>.</p>
+<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>Light</th><th>Dark</th><th>Job</th></tr></thead><tbody>
+<tr><td colspan="5" class="ch-group">Neutral — surfaces</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-primary)"></i></td><td><code>bg.primary</code></td><td>neutral-light-200 · #fafafa</td><td>gray-900 · #141414</td><td>the canvas, paper by day</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface)"></i></td><td><code>bg.surface</code></td><td>white · #ffffff</td><td>gray-800 · #292929</td><td>cards lift by hairline</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface-glass)"></i></td><td><code>bg.surface.glass / .glass.active</code></td><td>white · 38% / 46%</td><td>rgba(28,29,36,.38) / rgba(36,38,48,.44)</td><td>dock and overlay glass</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface-elevated)"></i></td><td><code>bg.surface.elevated</code></td><td>white · #ffffff</td><td>gray-800 · #292929</td><td>raised panels</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-interactive)"></i></td><td><code>bg.interactive / .hover / .active</code></td><td>gray-100 · #e0e0e0 / gray-50 · #ffffff / gray-200 · #cccccc</td><td>gray-700 · #525252 / gray-800 · #292929 / gray-550 · #8f8f8f</td><td>rest / hover / press wells</td></tr>
+<tr><td colspan="5" class="ch-group">Neutral — ink</td></tr>
+<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>text.primary</code></td><td>ink · #222222</td><td>white · #ffffff</td><td>titles, body — 15.91 AA</td></tr>
+<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>text.secondary</code></td><td>gray-700 · #525252</td><td>gray-100 · #e0e0e0</td><td>meta — 7.81 AA</td></tr>
+<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>text.muted</code></td><td>dim · #737373</td><td>gray-200 · #cccccc</td><td>hints, placeholders — 4.74 AA</td></tr>
+<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>text.dim</code></td><td>gray-300 · #8f8f8f</td><td>gray-300 · #8f8f8f</td><td>eyebrows, disabled — 3.23, decorative only</td></tr>
+<tr><td><i class="sw" style="background:var(--text-emphasis)"></i></td><td><code>text.emphasis</code></td><td>gray-900 · #141414</td><td>white · #ffffff</td><td>neutral emphasis, no hue</td></tr>
+<tr><td colspan="5" class="ch-group">Neutral — shape</td></tr>
+<tr><td><i class="sw" style="background:var(--border-subtle)"></i></td><td><code>border.subtle</code></td><td>gray-100 · #e0e0e0</td><td>rgba(255,255,255,.06)</td><td>hairline colour, carries the UI</td></tr>
+<tr><td><i class="sw" style="background:var(--border-default)"></i></td><td><code>border.default</code></td><td>rgba(15,16,21,.08)</td><td>rgba(255,255,255,.12)</td><td>standard divider</td></tr>
+<tr><td><i class="sw" style="background:var(--border-strong)"></i></td><td><code>border.strong</code></td><td>rgba(15,16,21,.15)</td><td>rgba(255,255,255,.20)</td><td>deliberate separation</td></tr>
+<tr><td><i class="sw" style="background:var(--border-accent)"></i></td><td><code>border.accent</code></td><td>gray-900 · #141414</td><td>white · #ffffff</td><td>reject markers, strong dividers</td></tr>
+<tr><td><i class="sw" style="background:var(--text-primary);height:var(--stroke-medium);border-radius:0"></i></td><td><code>stroke.hairline / .medium</code></td><td>1px / 2px</td><td>same</td><td>width, never colour</td></tr>
+<tr><td colspan="5" class="ch-group">Messaging — feedback</td></tr>
+<tr><td><i class="sw" style="background:var(--accent-brand)"></i></td><td><code>accent.brand</code></td><td>signal → sapphire-ui-500 · #1666af</td><td>same</td><td>the one swap-slot</td></tr>
+<tr><td><i class="sw" style="background:var(--accent-success)"></i></td><td><code>accent.success</code></td><td>role.success → green-300 · #18d824</td><td>same</td><td>feedback — never structural</td></tr>
+<tr><td><i class="sw" style="background:var(--accent-danger)"></i></td><td><code>accent.danger</code></td><td>role.danger → red-500 · #e00000</td><td>same</td><td>errors, blocked</td></tr>
+<tr><td><i class="sw" style="background:var(--accent-warning)"></i></td><td><code>accent.warning</code></td><td>role.warning → orange-400 · #f57f26</td><td>same</td><td>caution, pending</td></tr>
+<tr><td colspan="5" class="ch-group">Chrome — depth and ceremony</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface);box-shadow:var(--shadow-md)"></i></td><td><code>shadow.sm / .md / .lg</code></td><td>ink 4% / 6% / 8%</td><td>black 30% / 40% / 50%</td><td>depth → Shadow 05</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface);box-shadow:var(--shadow-mark)"></i></td><td><code>shadow.mark</code></td><td>ink 45%</td><td>black 45%</td><td>gem marks</td></tr>
+<tr><td><i class="sw" style="background:var(--bg-surface);box-shadow:var(--focus-ring)"></i></td><td><code>focus.ring / .offset</code></td><td>sapphire-400 · 2px ring + halo · 4px rgba(33,138,234,.15)</td><td>same</td><td>keyboard path in the action hue</td></tr>
+<tr><td><i class="sw" style="background:var(--achievement-card)"></i></td><td><code>achievement.card</code></td><td>white · #ffffff</td><td>gray-800 · #292929</td><td>reward cards</td></tr>
+<tr><td><i class="sw" style="background:var(--achievement-scrim)"></i></td><td><code>achievement.scrim</code></td><td>rgba(15,16,21,.30)</td><td>rgba(0,0,0,.70)</td><td>ceremony scrims</td></tr>
 </tbody></table>

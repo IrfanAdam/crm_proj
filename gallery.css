@@ -33,6 +33,7 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .ch-roles th{font-size:var(--font-size-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-align:left;padding:var(--spacing-2);border-bottom:1px solid var(--border-thin)}
 .ch-roles td{padding:var(--spacing-2);border-bottom:1px solid var(--border-thin);vertical-align:middle}
 .ch-roles code{font-size:var(--font-size-xs)}
+.ch-roles .ch-group{padding-top:var(--spacing-5);font-size:var(--font-size-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-primary);border-bottom:1px solid var(--border-accent)}
 .ch-flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--spacing-3);margin-top:var(--spacing-2)}
 .ch-flow{border-top:1px solid var(--border-thin);padding:var(--spacing-3) 0}
 .ch-flowname{font-size:var(--font-size-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
@@ -64,7 +65,7 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .mx--aa .mx-mid,.mx--aa .mx-bad{opacity:.15}
 .mx thead th{position:sticky;top:0;background:var(--bg-surface)}
 .ramp__cell--hero i{outline:2px solid var(--border-accent);outline-offset:1px}
-.ch-roles .sw{width:26px;height:26px;border-radius:8px}
+.ch-roles .sw{width:26px;height:26px;border-radius:8px;box-shadow:inset 0 0 0 1px var(--border-default)}
 .ch-tabs{display:flex;gap:var(--spacing-4);border-bottom:1px solid var(--border-thin);margin-top:8px}
 .ch-tab{padding:var(--spacing-2) var(--spacing-1);font-size:var(--font-size-sm);font-weight:600;color:var(--text-muted);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
 .ch-tab:hover{color:var(--text-primary)}
