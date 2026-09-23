@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T16:28:25.900Z",
+  "generated": "2026-09-23T16:32:06.680Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "72f12b1",
+      "full": "72f12b133d9d3a0339b244da0ceab40b0c538179",
+      "date": "2026-09-23",
+      "subject": "fix(ds): drawer takes its lane, trigger re-centres in the dotted space",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "c397a1c",
+      "full": "c397a1c5f2bd0b13374f29d9066fcb68ce7a8cf0",
+      "date": "2026-09-23",
+      "subject": "chore(ds): record deep-link shipment, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "4180310",
       "full": "41803100a6c449f213f7026d1d577f0732c25583",
