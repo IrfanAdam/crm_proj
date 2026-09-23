@@ -542,6 +542,18 @@ Every component frame is now intro + specimens; article files stay on disk.
 **Commit:** `feat(ds): contextual specimens, final 4 frames [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 18d5e97 · Task 12I · phase-4.*
 
+### Task 12J: Overlay showcase alignment fix ✓ done
+**Objective:** Tooltip/toast/drawer specimens escaped the gallery row —
+absolute tooltip floated unanchored, fixed toast-region left a void, fixed
+drawer left an empty row; plus the toast × never closed (missing from the
+close selector). Gallery-scoped showcase rules pin all three in-flow;
+toast × added to the close selector. Component CSS untouched.
+**Files:**
+- Modify: `gallery.css` (3 showcase rules), `src/components/Overlay/overlay.js` (close selector).
+**Verify:** `npm test` + `npm run build` green.
+**Commit:** `fix(ds): overlay specimens render in-flow, toast close works [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12J · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}

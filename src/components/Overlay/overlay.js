@@ -17,7 +17,7 @@ export function closeOverlay(el,prev){
  stack=stack.filter(x=>x!==el);
 }
 document.addEventListener('click',e=>{
- const t=e.target.closest('[data-overlay-close]'); if(t){ const root=t.closest('.overlay,.drawer,.menu,.popover'); if(root) closeOverlay(root); }
+ const t=e.target.closest('[data-overlay-close]'); if(t){ const root=t.closest('.overlay,.drawer,.menu,.popover,.toast'); if(root) closeOverlay(root); }
  const trigger=e.target.closest('[data-overlay-target]'); if(trigger){
   const id=trigger.dataset.overlayTarget; const el=document.getElementById(id);
   if(el) { e.preventDefault(); el.hidden ? openOverlay(el) : closeOverlay(el); }
