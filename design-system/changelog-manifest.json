@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T08:15:27.205Z",
+  "generated": "2026-09-23T08:20:52.914Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "42539cf",
+      "full": "42539cf20da52b8385ecdd3c19f86452b27258c9",
+      "date": "2026-09-23",
+      "subject": "feat(ds): color foundations — chapter article, contrast playground, section tabs",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "babeb34",
       "full": "babeb3490afa0fb36965babf94e3b3d46fb0df32",
@@ -1176,12 +1184,6 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/components/Overlay/overlay.js",
-    "M src/ds/color-tabs.js",
-    "M src/ds/gallery.js",
-    "D src/ds/pairing-lab-tools.js",
-    "D src/ds/pairing-lab.js",
-    "D src/ds/pairing-options.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1191,11 +1193,6 @@
     "M src/js/mechanics/render.js",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs",
-    "?? src/ds/contrast-controls.js",
-    "?? src/ds/contrast-families.js",
-    "?? src/ds/contrast-playground.css",
-    "?? src/ds/contrast-playground.js",
-    "?? src/ds/contrast-render.js"
+    "M tests/atlas-shell.test.mjs"
   ]
 }
