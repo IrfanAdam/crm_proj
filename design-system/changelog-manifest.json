@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T12:02:38.455Z",
+  "generated": "2026-09-23T13:27:01.839Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,62 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "da10664",
+      "full": "da10664d319fd13df97883bc63d01f31353a3d6d",
+      "date": "2026-09-23",
+      "subject": "feat(ds): pairings in situ — matrix modal mapped to shipped elements",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "0771cba",
+      "full": "0771cbab2fe298895a6c1ea2b8bb8d6b9b871374",
+      "date": "2026-09-23",
+      "subject": "fix(ds): dnav rename kills tabs collision, load toolbar+textarea css, stack nav demos",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "57b0475",
+      "full": "57b04758339c1da273ce93fb1a4fe443fe9c3971",
+      "date": "2026-09-23",
+      "subject": "fix(ds): drop scrollIntoView — tab switch no longer yanks scroll",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "ee40b04",
+      "full": "ee40b041fa1bed6815069175a7b3ab66810ea2b5",
+      "date": "2026-09-23",
+      "subject": "feat(ds): gallery showcases actions + identity variants, hash scroll, plan 12A/12B",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "62201f4",
+      "full": "62201f4cde9579af4dbc963a6f029e9b16c40dcd",
+      "date": "2026-09-23",
+      "subject": "fix(ds): restore language-panel fetch — resolves via Vite public/ on live server",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "c3beace",
+      "full": "c3beace17c73c1242c09d67f505ad4d6b79e9be4",
+      "date": "2026-09-23",
+      "subject": "fix(ds): hash-deep-link gallery panels, drop dead language-panel fetch",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "a8464e1",
+      "full": "a8464e123cb9f9cd2715e8674b92d23e16f318ab",
+      "date": "2026-09-23",
+      "subject": "feat(ds): rebuild all 30 components to M3+Carbon bar — full states, sizes, a11y",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "95a380e",
       "full": "95a380eaa5ae913bbc2bc8944db5fc1bb3fba154",
@@ -1383,13 +1439,6 @@
     }
   ],
   "wip": [
-    "M prototype/gallery/actions.md",
-    "M prototype/gallery/choice.md",
-    "M prototype/gallery/data.md",
-    "M prototype/gallery/form.md",
-    "M prototype/gallery/identity.md",
-    "M prototype/gallery/navigation.md",
-    "M prototype/gallery/overlays.md",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
@@ -1399,38 +1448,8 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/components/Accordion/accordion.css",
-    "M src/components/Avatar/avatar.css",
-    "M src/components/Badge/badge.css",
     "M src/components/Breadcrumbs/breadcrumbs.css",
-    "M src/components/Button/button.css",
-    "M src/components/Checkbox/checkbox.css",
-    "M src/components/Chip/chip.css",
-    "M src/components/FunnelCard/funnel-card.css",
-    "M src/components/FunnelGlyph/funnel-glyph.css",
-    "M src/components/GemReward/gem-reward.css",
-    "M src/components/GoalBar/goal-bar.css",
-    "M src/components/Icon/icon.css",
-    "M src/components/KpiStat/kpi.css",
-    "M src/components/ListRow/list-row.css",
-    "M src/components/OpportunityCard/opportunity-card.css",
-    "M src/components/Overlay/overlay.css",
-    "M src/components/Pagination/pagination.css",
-    "M src/components/ProfileCard/profile-card.css",
-    "M src/components/Radio/radio.css",
-    "M src/components/Search/search.css",
-    "M src/components/Select/select.css",
     "M src/components/Slider/slider.css",
-    "M src/components/Sparkline/sparkline.css",
-    "M src/components/StatusPill/status-pill.css",
-    "M src/components/Switch/switch.css",
-    "M src/components/TabBar/tabbar.css",
-    "M src/components/Table/table.css",
-    "M src/components/Tabs/tabs.css",
-    "M src/components/TextInput/text-input.css",
-    "M src/components/Textarea/textarea.css",
-    "M src/components/Timeline/timeline.css",
-    "M src/components/Toolbar/toolbar.css",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1440,14 +1459,6 @@
     "M src/js/mechanics/render.js",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs",
-    "?? src/components/Button/button-base.css",
-    "?? src/components/Button/button-variants.css",
-    "?? src/components/Overlay/overlay-base.css",
-    "?? src/components/Overlay/overlay-dialog.css",
-    "?? src/components/Overlay/overlay-drawer.css",
-    "?? src/components/Overlay/overlay-menu.css",
-    "?? src/components/Overlay/overlay-toast.css",
-    "?? src/components/Overlay/overlay-tooltip.css"
+    "M tests/atlas-shell.test.mjs"
   ]
 }

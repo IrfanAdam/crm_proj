@@ -479,7 +479,7 @@ of a silently wrong ratio.
 Badge warning 3.57) are the audit; pin flow closes the modal and reads back in the
 playground; `npm test` green.
 **Commit:** `feat(ds): pairings in situ — matrix modal mapped to shipped elements [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12D · phase-4.*
+*Shipped in da10664 · Task 12D · phase-4.*
 
 ---
 
