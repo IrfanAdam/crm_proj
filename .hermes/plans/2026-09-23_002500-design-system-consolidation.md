@@ -588,6 +588,21 @@ missing padding and a sticky body/footer behind a hairline.
 **Commit:** `fix(ds): overlay specimens — contained stages, product-grade dismissal [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in d69a054 · Task 12L · phase-4.*
 
+### Task 12M: Stage geometry hardened, panels fetched fresh ✓ done
+**Objective:** The drawer demo read as broken when the page was served from a
+stale asset mix — the layer's anchoring depended on inherited rules, so an
+out-of-date base stylesheet left the drawer floating in the middle of the stage
+instead of docking to its right edge. The stage now owns the geometry
+outright (`display:flex` centring for the trigger, explicit `top/right/left`
+for the drawer, `inset:0` for the scrim) so no inherited or stale rule can move
+a layer; panel + language fetches carry a cache-buster so the gallery can never
+render a stale fragment against fresh CSS.
+**Files:**
+- Modify: `src/ds/overlay-demo.css` (flex centring, explicit layer anchors), `src/ds/gallery-shell.js` (`?v=` on the doc + language fetches).
+**Verify:** `npm test` + `npm run build` green; drawer flush right (1px border gap) and full stage height at 1440/1100/820/640; every specimen's trigger centred on both axes at all widths; menu/popover/toast/tooltip interactions unchanged.
+**Commit:** `fix(ds): stage owns layer anchoring, panel fetches bypass cache [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in 75b49e3 · Task 12M · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
