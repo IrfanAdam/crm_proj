@@ -1,25 +1,51 @@
+<div class="tp">
 <p class="ch-kicker">Chapter 2 · Foundations · 02 Typography</p>
 <h2 class="ch-hero">Type carries hierarchy. Never color.</h2>
-<p class="ch-lede meta">One family — Inter — five steps. A title is bigger and bolder, never bluer. When hierarchy rides on color, it dies in sunlight, in grayscale, and for every color-blind user. Size and weight are the only levers.</p>
+<p class="ch-lede meta">One family — Inter — five reading steps. Hierarchy comes from size, weight and leading, never from hue: a title is bigger and bolder, never bluer. Color-coded hierarchy dies in sunlight, in grayscale, and for every color-blind user.</p>
 <ul class="ch-laws">
-<li class="ch-law"><span class="ch-num">01</span><div><p><b>Five steps, fixed jobs</b> — title 32, card 20, body 16, meta 14, micro 12.</p><p class="ch-reject">Reject: a 24 or an 18 — steps exist so sizes never drift.</p></div></li>
-<li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight pairs with step</b> — title and card bold, body regular, meta and micro medium.</p><p class="ch-reject">Reject: bold body copy, or a meta line shouting in semibold.</p></div></li>
-<li class="ch-law"><span class="ch-num">03</span><div><p><b>Muted steps to secondary only</b> — quieter means <code>--text-secondary</code>, never a lighter hue.</p><p class="ch-reject">Reject: gray-blue captions, faded-sapphire timestamps.</p></div></li>
-<li class="ch-law"><span class="ch-num">04</span><div><p><b>Roles, not sizes, in code</b> — components reference <code>--type-*</code>, never <code>--font-size-*</code> directly.</p><p class="ch-reject">Reject: a card title pointing at <code>--font-size-xl</code> — rename the scale and it orphans.</p></div></li>
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Five steps, fixed jobs</b> — title 32 · card 20 · body 16 · meta 14 · micro 12.</p><p class="ch-reject">Reject: a 24 or an 18 — steps exist so sizes never drift.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight pairs with the step</b> — title and card bold, body regular, meta and micro medium.</p><p class="ch-reject">Reject: bold body copy, or a meta line shouting in semibold.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Leading belongs to the step</b> — titles hold at 1.15, prose reads at 1.5, meta at 1.4.</p><p class="ch-reject">Reject: 1.15 on a paragraph — tight prose turns reading into line-hunting.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Quieter means <code>--text-secondary</code></b> — a lower ink step, never a lighter hue and never opacity.</p><p class="ch-reject">Reject: gray-blue captions, faded-sapphire timestamps.</p></div></li>
+<li class="ch-law"><span class="ch-num">05</span><div><p><b>Roles, not sizes, in code</b> — components reference <code>--type-*</code>, never <code>--font-size-*</code> directly.</p><p class="ch-reject">Reject: a card title pointing at <code>--font-size-xl</code> — rename the scale and it orphans.</p></div></li>
 </ul>
-<h3>Token table</h3>
-<table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
-<tr><td><code>--type-title</code></td><td>32 / Bold / 1.15 / -0.01</td><td>screen titles (H1)</td></tr>
-<tr><td><code>--type-card</code></td><td>20 / Bold / 1.25</td><td>card + panel titles</td></tr>
-<tr><td><code>--type-body</code></td><td>16 / Regular / 1.5</td><td>prose, values, copy</td></tr>
-<tr><td><code>--type-meta</code></td><td>14 / Medium / 1.4</td><td>captions, statuses</td></tr>
-<tr><td><code>--type-micro</code></td><td>12 / Medium / 1.35</td><td>labels, eyebrows</td></tr>
+<h3>Scale — five steps, fixed jobs</h3>
+<table class="ch-roles tp-scale"><thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Leading</th><th>Tracking</th><th>Job</th></tr></thead><tbody>
+<tr><td><code>--type-title</code></td><td>32px</td><td>700 bold</td><td>1.15</td><td>−0.01em</td><td>screen titles (H1)</td></tr>
+<tr><td><code>--type-card</code></td><td>20px</td><td>700 bold</td><td>1.25</td><td>—</td><td>card + panel titles</td></tr>
+<tr><td><code>--type-body</code></td><td>16px</td><td>400 regular</td><td>1.50</td><td>—</td><td>prose, values, copy</td></tr>
+<tr><td><code>--type-meta</code></td><td>14px</td><td>500 medium</td><td>1.40</td><td>—</td><td>captions, statuses</td></tr>
+<tr><td><code>--type-micro</code></td><td>12px</td><td>500 medium</td><td>1.40</td><td>+0.04em</td><td>caps labels, eyebrows</td></tr>
 </tbody></table>
-<h3>Specimens — live scale</h3>
-<div style="display:flex;flex-direction:column;gap:8px;margin-top:4px"><span style="font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--font-tracking-tight)">Title 32 — Opportunities</span><span style="font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Card 20 — Acme Corp</span><span style="font-size:var(--font-size-md);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Body 16 — Proposal sent yesterday, worth Rs 3.2L at 73%.</span><span style="font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Meta 14 — Last contact 2d ago · 1.2km</span><span style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Micro 12 — OPERATE · MONITOR · REPORTS</span></div>
-<h3>Contrast — prose pairs</h3>
-<div class="row" style="margin-top:4px"><span style="padding:6px 12px;background:var(--bg-primary);color:var(--text-primary);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">ink on canvas 15.24 AAA</span><span style="padding:6px 12px;background:var(--bg-primary);color:var(--text-secondary);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm)">secondary on canvas 7.81 AA</span></div>
-<h3>Snippet</h3>
-<p class="meta"><code>font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight)</code></p>
-<h3>Related</h3>
+<div class="tp-notes">
+<p class="meta"><code>--type-*</code> roles alias one size step each: title → 3xl 2rem · card → xl 1.25rem · body → md 1rem · meta → sm 0.875rem · micro → xs 0.75rem.</p>
+<p class="meta">Weight, leading and tracking stay separate — <code>--font-weight-*</code>, <code>--font-leading-*</code>, <code>--font-tracking-*</code>. A role never bundles them.</p>
+<p class="meta"><code>--type-compact</code> (16 / 600) is title's morph twin inside Operate — not a sixth reading step.</p>
+</div>
+<h3>Specimens — the five steps, live</h3>
+<div class="tp-specs">
+<div class="tp-spec"><span style="font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--type-title-tracking)">Opportunities</span><code>--type-title · 32px / 1.15</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-card);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Acme Corp — Enterprise</span><code>--type-card · 20px / 1.25</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-body);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Proposal sent yesterday, worth Rs 3.2L at 73%.</span><code>--type-body · 16px / 1.50</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-meta);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Last contact 2d ago · 1.2km</span><code>--type-meta · 14px / 1.40</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-micro);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);letter-spacing:var(--font-tracking-wide);color:var(--text-muted)">OPERATE · MONITOR · REPORTS</span><code>--type-micro · 12px / 1.40</code></div>
+</div>
+<h3>Leading — the reading measure</h3>
+<div class="tp-lead">
+<div><span class="ch-num">Reject — 1.15 on prose</span><p style="line-height:var(--font-leading-tight)">Acme Corp is waiting on the revised scope before Thursday's review. The proposal went out yesterday, the value still sits at 73%, and the buying committee has gone quiet since the demo — two follow-ups are overdue.</p></div>
+<div><span class="ch-num">Body — 1.50 on prose</span><p style="line-height:var(--font-leading-relaxed)">Acme Corp is waiting on the revised scope before Thursday's review. The proposal went out yesterday, the value still sits at 73%, and the buying committee has gone quiet since the demo — two follow-ups are overdue.</p></div>
+</div>
+<h3>Contrast — ink per step</h3>
+<table class="ch-roles"><thead><tr><th></th><th>Token</th><th>On canvas</th><th>May carry</th></tr></thead><tbody>
+<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>--text-primary</code></td><td>15.24 <b>AAA</b></td><td>title · card · body</td></tr>
+<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>--text-secondary</code></td><td>7.49 <b>AAA</b></td><td>meta · captions</td></tr>
+<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>--text-muted</code></td><td>4.54 <b>AA</b></td><td>micro · hints</td></tr>
+<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>--text-dim</code></td><td>3.10 decorative</td><td>rules, disabled — never a sentence</td></tr>
+</tbody></table>
+<p class="meta">Ratios measured on the canvas (<code>--bg-primary</code>); paper lifts every value. Stepping down this ladder is how type quiets.</p>
+<h3>Snippet — role + weight + leading</h3>
+<code class="tp-code">h1 { font-size:var(--type-title); font-weight:var(--font-weight-bold); line-height:var(--font-leading-tight) }
+p  { font-size:var(--type-body);  font-weight:var(--font-weight-regular); line-height:var(--font-leading-relaxed) }</code>
+<h3>Related — neighbours in the chapter</h3>
 <p class="meta">Color — hierarchy never rides on hue · Spacing — the 4px grid prose breathes on · Cards — title/card/body in situ</p>
+</div>
