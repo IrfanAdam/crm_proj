@@ -540,7 +540,7 @@ Every component frame is now intro + specimens; article files stay on disk.
 - Modify: `gallery.html` (drop 18 spec pads).
 **Verify:** all 8 frames intro → specimens, zero open-scroll tables; `npm test` + `npm run build` green.
 **Commit:** `feat(ds): contextual specimens, final 4 frames [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12I · phase-4.*
+*Shipped in 18d5e97 · Task 12I · phase-4.*
 
 ---
 
