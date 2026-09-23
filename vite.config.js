@@ -1,7 +1,33 @@
-import { resolve } from 'node:path';
+import { resolve, dirname } from 'node:path';
 import { spawn } from 'node:child_process';
+import { readdirSync, readFileSync, mkdirSync, copyFileSync, statSync } from 'node:fs';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+function rawSourceRefsPlugin(){
+  // The DS gallery and the preview load their scripts as classic <script src="src/…">, which Vite leaves
+  // untouched in the build (only module scripts and stylesheets get rewritten). Without the files themselves
+  // in dist/ every one of those scripts 404s in a deployment — dead sidebar, no panels. Copy what the built
+  // HTML still points at, verbatim, at the same relative path.
+  const walk=(dir)=>readdirSync(dir,{withFileTypes:true}).flatMap((e)=>e.isDirectory()?walk(`${dir}/${e.name}`):[`${dir}/${e.name}`]);
+  return {
+    name:'raw-source-refs',
+    apply:'build',
+    closeBundle(){
+      const dist=resolve(__dirname,'dist');
+      const refs=new Set();
+      for(const file of walk(dist).filter((f)=>f.endsWith('.html'))){
+        for(const m of readFileSync(file,'utf8').matchAll(/(?:src|href)="(?:\.\/)?(src\/[^"]+)"/g)) refs.add(m[1]);
+      }
+      for(const ref of refs){
+        if(!statSync(ref,{throwIfNoEntry:false})) continue;
+        const dest=`${dist}/${ref}`;
+        mkdirSync(dirname(dest),{recursive:true});
+        copyFileSync(ref,dest);
+      }
+      if(refs.size) console.log(`raw-source-refs — copied ${refs.size} raw source files into dist/`);
+    },
+  };
+}
 function mechanicsGraphPlugin(){
   let timer=null; let busy=false; let queued=false;
   function run(){
@@ -28,7 +54,7 @@ function mechanicsGraphPlugin(){
   };
 }
 export default defineConfig({
-  plugins: [react(), mechanicsGraphPlugin()],
+  plugins: [react(), rawSourceRefsPlugin(), mechanicsGraphPlugin()],
   server: { port: 5173, host: '0.0.0.0', open: false },
   appType: 'mpa',
   // index.html is the app entry (serves /); app.html is a redirect shim
