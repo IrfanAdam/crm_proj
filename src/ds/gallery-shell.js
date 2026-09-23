@@ -26,11 +26,20 @@ if(e.key!=='Enter'&&e.key!==' ')return;
 const th=e.target.closest('.table th');
 if(th){e.preventDefault();dsSort(th);}
 });
-// — Fetched panels: indeterminate checkboxes + sortable tab stops —
+// — Fetched panels: indeterminate checkboxes + sortable tab stops + deep-linked layer (?open=ov-drawer) —
+const dsOpenParam=()=>{
+const id=new URLSearchParams(location.search).get('open');
+if(!id)return;
+const t=document.querySelector('[data-overlay-target="'+id+'"]'),el=document.getElementById(id);
+if(t&&el&&el.hidden)t.click();
+};
 document.addEventListener('ds:doc',()=>{
 document.querySelectorAll('input[indeterminate]').forEach(el=>{el.indeterminate=true});
 document.querySelectorAll('.table th').forEach(th=>{th.tabIndex=0});
+dsOpenParam();
 });
+// deferred modules (the overlay engine) run before DOMContentLoaded; retries are idempotent (only fire while hidden)
+document.addEventListener('DOMContentLoaded',()=>{[0,250,700].forEach(ms=>setTimeout(dsOpenParam,ms))});
 // — Section tabs (hash-deep-linked: #actions etc.) —
 const dsTab=name=>{
 document.querySelectorAll('.dnav__item').forEach(x=>x.classList.toggle('dnav__item--active',x.dataset.tab===name));
