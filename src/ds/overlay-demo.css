@@ -39,10 +39,12 @@
   right: var(--spacing-4);
 }
 .ov-anchor .menu {
+  position: absolute;
   top: calc(100% + var(--spacing-1));
   left: 0;
 }
 .ov-anchor .popover {
+  position: absolute;
   top: calc(100% + var(--spacing-2));
   left: 0;
 }
