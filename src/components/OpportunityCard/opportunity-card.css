@@ -1,28 +1,28 @@
-.opp-card{background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-xl);padding:var(--spacing-4);display:flex;flex-direction:column;gap:var(--spacing-3)}
+.opp-card{background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-xl);padding:var(--spacing-4);display:flex;flex-direction:column;gap:var(--spacing-3)}
 .opp-card__head{display:flex;align-items:center;gap:var(--spacing-3)}
 .opp-card__logo{width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-interactive);display:inline-flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);font-size:var(--font-size-lg);color:var(--text-secondary);flex:0 0 auto;overflow:hidden}
 .opp-card__logo img{width:100%;height:100%;object-fit:cover}
-.opp-card__name{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--text-primary);letter-spacing:-0.01em;display:block}
+.opp-card__name{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--text-primary);letter-spacing:var(--font-tracking-tight);display:block}
 .opp-card__product{font-size:var(--font-size-sm);color:var(--text-muted);display:block;margin-top:2px}
 .opp-card__stage{display:flex;align-items:center;gap:var(--spacing-2);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold)}
-.opp-card__stage-name{color:var(--primitive-sapphire-ui-400);border-left:3px solid var(--primitive-sapphire-ui-400);padding-left:var(--spacing-2)}
-.opp-card__sep{width:3px;height:12px;border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-200)}
+.opp-card__stage-name{color:var(--primitive-sapphire-ui-400);border-left:var(--border-width-thick) solid var(--primitive-sapphire-ui-400);padding-left:var(--spacing-2)}
+.opp-card__sep{width:var(--border-width-thick);height:var(--spacing-3);border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-200)}
 .opp-card__chance{color:var(--primitive-red-beryl-400)}
 .opp-card__value{margin-left:auto;color:var(--primitive-sapphire-ui-500)}
-.opp-card__segs{display:flex;gap:4px}
+.opp-card__segs{display:flex;gap:var(--spacing-1)}
 .opp-card__segs i{flex:1;height:6px;border-radius:var(--radius-full);background:var(--primitive-sapphire-ui-100)}
 .opp-card__segs i.on{background:var(--primitive-sapphire-ui-400)}
 .opp-card__contact{display:flex;align-items:center;gap:var(--spacing-3)}
 .opp-card__stack{display:flex;align-items:center}
-.opp-card__stack .avatar{margin-left:-10px;border:2px solid var(--bg-surface)}
+.opp-card__stack .avatar{margin-left:-10px;border:var(--border-width-medium) solid var(--bg-surface)}
 .opp-card__stack .avatar:first-child{margin-left:0}
 .opp-card__who{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--text-primary);display:block}
 .opp-card__sub{font-size:var(--font-size-sm);color:var(--text-muted);display:block;margin-top:2px}
 .opp-card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--spacing-3)}
 .opp-card__meta{font-size:var(--font-size-sm);color:var(--text-muted);display:block}
-.opp-card__dist{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--primitive-citrine-700);display:block;margin-top:4px}
+.opp-card__dist{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--primitive-citrine-700);display:block;margin-top:var(--spacing-1)}
 .opp-card__actions{display:flex;gap:var(--spacing-2)}
 .opp-card__actions button{width:44px;height:44px;border-radius:var(--radius-md);background:var(--bg-interactive);border:none;color:var(--text-primary);font-size:20px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .opp-card__actions button:active{background:var(--bg-interactive-active)}
 .opp-card__actions button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-@media (forced-colors:active){.opp-card__segs i{border:1px solid CanvasText}}
+@media (forced-colors:active){.opp-card__segs i{border:var(--border-width-thin) solid CanvasText}}

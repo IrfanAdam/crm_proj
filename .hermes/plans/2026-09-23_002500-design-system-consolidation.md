@@ -304,7 +304,8 @@ the skill's own core list: button, card, nav, badge + chip, avatar, KPI/data.*
 | 8 | Cards + data specced and built | OppCard, FunnelCard, ProfileCard, GoalBar, KpiStat, Table, ListRow, Timeline — full §3 |
 | 9 | Gallery proves batch 1 | each batch-1 panel shows anatomy + token table + do/don't caption + contract link |
 
-### Task 7: Build actions + identity on tokens
+### Task 7: Build actions + identity on tokens ✓ done
+*Shipped in 80164f5 — see commit subject.*
 **Objective:** Intake the five highest-traffic components; reverse-engineer every crude
 value to its Phase-2 token first; surface (never invent) new token needs.
 **Files:**
@@ -320,7 +321,7 @@ Phase-2 token, zero visual change.
 `lint:tokens` green.
 **Commit:** `feat(ds): build actions + identity on tokens [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-3}]`
 
-### Task 8: Build cards + data on tokens
+### Task 8: Build cards + data on tokens ✓ done
 **Objective:** Same bar for the domain components.
 **Files:**
 - Modify: `prototype/gallery/cards.md` — OpportunityCard (sapphire stage, red-beryl

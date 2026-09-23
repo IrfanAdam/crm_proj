@@ -1,8 +1,8 @@
 .table{width:100%;border-collapse:collapse;font-size:var(--font-size-sm)}
-.table th{text-align:left;padding:var(--spacing-2) var(--spacing-3);border-bottom:1px solid var(--border-thin);font-weight:600;color:var(--text-muted);cursor:pointer;user-select:none;white-space:nowrap}
+.table th{text-align:left;padding:var(--spacing-2) var(--spacing-3);border-bottom:var(--border-width-thin) solid var(--border-thin);font-weight:var(--font-weight-semibold);color:var(--text-muted);cursor:pointer;user-select:none;white-space:nowrap}
 .table th:hover{color:var(--text-primary)}
 .table th[aria-sort="ascending"]::after{content:" ↑";color:var(--primitive-sapphire-ui-500)}
 .table th[aria-sort="descending"]::after{content:" ↓";color:var(--primitive-sapphire-ui-500)}
-.table td{padding:var(--spacing-3);border-bottom:1px solid var(--border-thin);color:var(--text-primary)}
+.table td{padding:var(--spacing-3);border-bottom:var(--border-width-thin) solid var(--border-thin);color:var(--text-primary)}
 .table tr:hover td{background:var(--bg-interactive-hover)}
 .table--striped tr:nth-child(even) td{background:var(--bg-interactive)}
