@@ -599,9 +599,10 @@ a layer; panel + language fetches carry a cache-buster so the gallery can never
 render a stale fragment against fresh CSS.
 **Files:**
 - Modify: `src/ds/overlay-demo.css` (flex centring, explicit layer anchors), `src/ds/gallery-shell.js` (`?v=` on the doc + language fetches).
+- Follow-up: the stage scope also pins `position:absolute` on the anchored floats, so no stale base rule can unanchor a menu or popover.
 **Verify:** `npm test` + `npm run build` green; drawer flush right (1px border gap) and full stage height at 1440/1100/820/640; every specimen's trigger centred on both axes at all widths; menu/popover/toast/tooltip interactions unchanged.
 **Commit:** `fix(ds): stage owns layer anchoring, panel fetches bypass cache [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in 75b49e3 · Task 12M · phase-4.*
+*Shipped in 75b49e3 · 85c2a3f · Task 12M · phase-4.*
 
 ---
 
