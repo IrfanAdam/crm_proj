@@ -565,7 +565,7 @@ clean; the demo is the trigger click.
 - Modify: `gallery.css` (drop drawer + toast-region showcase rules).
 **Verify:** `npm test` + `npm run build` green; Drawer trigger opens a right-edge panel.
 **Commit:** `fix(ds): anchored layers demo live, drop in-flow override [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12K · phase-4.*
+*Shipped in 9ce8dae · Task 12K · phase-4.*
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:57:58.921Z",
+  "generated": "2026-09-23T14:02:48.618Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "cb93cce",
+      "full": "cb93cceda76918248f147b8c8c2c3a1e39fc76aa",
+      "date": "2026-09-23",
+      "subject": "chore(ds): refresh changelog manifest — register 12J shipments",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "363a58d",
       "full": "363a58de68f5801e151973ea36d30a0d81da3cd6",
@@ -1535,6 +1543,7 @@
     }
   ],
   "wip": [
+    "M gallery.css",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
