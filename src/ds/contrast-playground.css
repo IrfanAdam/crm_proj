@@ -1,4 +1,4 @@
-/* ADAM/DS — src/ds/contrast-playground.css · playground chrome + matrix sheet */
+/* ADAM/DS — src/ds/contrast-playground.css · playground chrome + pair-map sheet */
 /* [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] */
 .pg-bar{display:flex;justify-content:space-between;align-items:center;gap:var(--spacing-3);flex-wrap:wrap}
 .pg-seg{display:inline-flex;gap:2px;padding:2px;background:var(--bg-interactive);border-radius:var(--radius-full)}
@@ -26,8 +26,18 @@
 .pg-badge{display:inline-block;padding:6px 12px;border-radius:var(--radius-md);font-size:var(--font-size-sm);font-weight:700}
 .pg-pin{margin-top:var(--spacing-2)}
 .pg-sheet{width:min(1120px,96vw);max-width:min(1120px,96vw)}
-.pg-sheet .mx{width:auto;margin:0 auto}
-.pg-sheet .mx td{text-align:right;font-variant-numeric:tabular-nums}
-.pg-sheet .mx th:first-child,.pg-sheet .mx td:first-child{position:sticky;left:0;background:var(--bg-surface);z-index:1}
-.pg-sheet .mx thead th{position:sticky;top:0;z-index:2}
+.pm-title{margin:var(--spacing-4) 0 var(--spacing-2);font-size:var(--font-size-sm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary)}
+.pm-title:first-child{margin-top:0}
+.pm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:var(--spacing-3)}
+.pm-card{display:flex;flex-direction:column;gap:var(--spacing-2);padding:var(--spacing-3);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-md);color:var(--text-primary);text-align:left;cursor:pointer}
+.pm-card:hover{border-color:var(--border-strong)}
+.pm-card:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.pm-prev{display:flex;align-items:center;justify-content:center;min-height:64px;padding:var(--spacing-2);border:1px solid var(--border-thin);border-radius:var(--radius-sm);overflow:hidden}
+.pm-name{font-size:var(--font-size-sm);font-weight:600}
+.pm-pair{font-size:var(--font-size-xs);color:var(--text-muted)}
+.pm-meta{display:flex;align-items:center;gap:var(--spacing-2);flex-wrap:wrap;font-size:var(--font-size-xs);color:var(--text-secondary)}
+.pm-ratio{font-variant-numeric:tabular-nums}
+.pm-guide{color:var(--text-muted)}
+.pm-ink{padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--font-size-sm);font-weight:600}
+.pm-host{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;color:var(--text-secondary)}
 @media(max-width:700px){.pg-grid{grid-template-columns:1fr}}

@@ -457,6 +457,30 @@ funnelglyph,opportunitycard,funnelcard,profilecard,goalbar,gemreward}.html`
 gate; budget + lint green.
 **Commit:** `feat(ds): full component articles [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 
+### Task 12D: Pairings in situ — the pairing map, mapped to elements ✓ done
+**Objective:** The 17×16 matrix modal answered nothing: its axes were token keys, the
+cross-product was mostly pairs nothing ships, and the calibrated picks already live in
+the playground above. Replace it with evidence — every pair the components actually
+ship, on the element that carries it (Button · primary, StatusPill · accepted,
+GoalBar · fill…), grouped by the playground's families, measured live, click-to-pin
+kept. Rows are audited from `src/components/*` CSS, so a pair that is not in the
+components cannot appear, and a key that does not resolve renders `unresolved` instead
+of a silently wrong ratio.
+**Files:**
+- Create: `src/ds/pair-map-data.js` (the audited rows) + `src/ds/pair-map.js`
+(cards into `[data-pairmap]`).
+- Modify: `public/foundations/color-contrast.html` (modal copy + host), `src/ds/gallery.js`
+(matrix + `mx` table removed, `primary`/`interactive`/`danger-strong` keys added),
+`src/ds/contrast-controls.js` (pin branch), `src/ds/contrast-playground.css` (`.pm-*`),
+`gallery.css` (`.mx` table rules), `gallery.html` (script block),
+`src/ds/contrast-families.js` (`gray` ramp for pin resolution).
+**Verify:** 25 cards render on `:5174` with live ratios; the AA-large flags
+(GoalBar fill 4.14, Eyebrow 3.23, StatusPill blocked 3.84, KpiStat delta down 3.25,
+Badge warning 3.57) are the audit; pin flow closes the modal and reads back in the
+playground; `npm test` green.
+**Commit:** `feat(ds): pairings in situ — matrix modal mapped to shipped elements [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12D · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}

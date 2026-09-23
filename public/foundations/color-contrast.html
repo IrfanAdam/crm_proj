@@ -8,7 +8,7 @@
 </div>
 <div class="pg-tools">
 <button type="button" class="chip" data-pg-theme>Light</button>
-<button type="button" class="chip chip--icon" data-overlay-target="pg-matrix-modal" aria-label="All pairings" title="All pairings"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13M1.5 10h13M6 2.5v11M10.5 2.5v11" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+<button type="button" class="chip chip--icon" data-overlay-target="pg-pairs-modal" aria-label="Pairings in situ" title="Pairings in situ"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13M1.5 10h13M6 2.5v11M10.5 2.5v11" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
 </div>
 </div>
 <div class="pg-sub" data-pg-subs></div>
@@ -19,12 +19,11 @@
 </div>
 <h3>Snippet — follows the playground</h3>
 <p class="meta"><code data-pg-snippet>color:var(--role-action);background:var(--primitive-gray-white);</code> <button type="button" class="chip" data-pg-copy>copy</button></p>
-<div id="pg-matrix-modal" class="overlay" hidden role="dialog" aria-modal="true" aria-label="All pairings">
+<div id="pg-pairs-modal" class="overlay" hidden role="dialog" aria-modal="true" aria-label="Pairings in situ">
 <div class="overlay__content pg-sheet">
-<div class="overlay__header"><strong class="overlay__title">All pairings — reference map</strong><button type="button" class="overlay__close" data-overlay-close aria-label="Close">✕</button></div>
-<p class="meta">Every foreground on every background, computed live. Click any cell to pin it in the playground.</p>
-<div class="row" style="margin-top:4px"><label class="meta"><input type="checkbox" data-matrix-aa/> AA passes only — dim the rest</label></div>
-<div class="mx-wrap" style="margin-top:4px"><div data-matrix><p class="meta">computing pairs…</p></div></div>
+<div class="overlay__header"><strong class="overlay__title">Pairings in situ — each pair on the element that carries it</strong><button type="button" class="overlay__close" data-overlay-close aria-label="Close">✕</button></div>
+<p class="meta">The pairs the system ships, audited from the component CSS — not a cross-product. Every card is the real element on its real tokens, measured live on paper (roles are theme-stable), grouped by the playground's families. Click a card to pin its pair above.</p>
+<div data-pairmap><p class="meta">computing pairs…</p></div>
 </div>
 </div>
 <h3>Related</h3>

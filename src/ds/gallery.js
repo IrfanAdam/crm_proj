@@ -1,5 +1,6 @@
-/* ADAM/DS — src/ds/gallery.js · pairing pills + matrix */
-// [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · plain script, playground in contrast-playground.js.
+/* ADAM/DS — src/ds/gallery.js · token registries + contrast maths for the color section */
+// [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · plain script;
+// FG_BY/BG_BY are the key registry (playground + pair-map), playground in contrast-playground.js.
 const pxLum=v=>{
   const m=v.match(/[\d.]+/g).slice(0,3).map(x=>{
     x/=255;
@@ -27,15 +28,16 @@ const PAIR_FG=[
   ['measure','--role-measure','Measure'],['measure-strong','--role-measure-strong','Measure'],
   ['score','--role-score','Score'],['score-strong','--role-score-strong','Score'],
   ['streak','--role-streak','Streak'],['streak-strong','--role-streak-strong','Streak'],
-  ['secondary','--text-secondary','Text'],['muted','--text-muted','Text'],
+  ['primary','--text-primary','Text'],['secondary','--text-secondary','Text'],['muted','--text-muted','Text'],
   ['dim','--text-dim','Text'],['emphasis','--text-emphasis','Text'],
   ['white','--primitive-gray-white','Neutrals'],['ink','--primitive-ink','Neutrals'],
-  ['success','--role-success','Feedback'],['danger','--role-danger','Feedback'],
+  ['success','--role-success','Feedback'],['danger','--role-danger','Feedback'],['danger-strong','--role-danger-strong','Feedback'],
   ['warning','--role-warning','Feedback']
 ];
 const PAIR_BG=[
   ['canvas','--bg-primary','Surfaces'],['surface','--bg-surface','Surfaces'],
   ['white','--primitive-gray-white','Surfaces'],['glass','--bg-surface-glass','Surfaces'],
+  ['interactive','--bg-interactive','Surfaces'],
   ['action','--role-action','Action'],['ink','--primitive-ink','Neutrals'],
   ['measure','--role-measure','Measure'],['measure-soft','--role-measure-soft','Measure'],
   ['score','--role-score','Score'],['score-soft','--role-score-soft','Score'],
@@ -61,29 +63,6 @@ const pxPills=()=>{
     el.textContent=el.dataset.label+' '+r.toFixed(2)+' '+pxVerdict(r);
   });
 };
-const pxCell=(f,b,fc)=>{
-  const r=pxRatio(fc,pxResolve(BG_BY[b]));
-  const tip=f+' on '+b+' — '+r.toFixed(2)+' '+pxVerdict(r);
-  const open='<td><button class="'+pxCls(r)+' mx-cell" data-f="'+f+'" data-b="'+b+'"';
-  return open+' title="'+tip+'">'+r.toFixed(2)+'</button></td>';
-};
-const pxMatrix=()=>{
-  const host=document.querySelector('[data-matrix]');
-  if(!host||host.dataset.done)return;
-  host.dataset.done='1';
-  let h='<table class="mx"><thead><tr><th>fg \\ bg</th>';
-  Object.keys(BG_BY).forEach(b=>{h+='<th>'+b+'</th>'});
-  h+='</tr></thead><tbody>';
-  Object.keys(FG_BY).forEach(f=>{
-    h+='<tr><th>'+f+'</th>';
-    const fc=pxResolve(FG_BY[f]);
-    Object.keys(BG_BY).forEach(b=>{h+=pxCell(f,b,fc)});
-    h+='</tr>';
-  });
-  host.innerHTML=h+'</tbody></table>';
-  const aa=document.querySelector('[data-matrix-aa]');
-  if(aa)aa.addEventListener('change',()=>host.querySelector('.mx').classList.toggle('mx--aa',aa.checked));
-};
 const dsWidgets=()=>{
   if(!pxProbe){
     pxProbe=document.createElement('span');
@@ -91,7 +70,6 @@ const dsWidgets=()=>{
     document.body.appendChild(pxProbe);
   }
   pxPills();
-  pxMatrix();
 };
 document.addEventListener('ds:doc',dsWidgets);
 dsWidgets();

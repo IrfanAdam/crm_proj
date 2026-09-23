@@ -12,7 +12,7 @@ const PG_TIERS = [
   ['neut', 'Neutral', 'hue as ink — no fill']
 ];
 const PG_STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-const PG_RAMPS = ['neutral-light', 'neutral-dark', 'sapphire-ui', 'amethyst', 'red-beryl', 'citrine', 'green', 'red', 'orange'];
+const PG_RAMPS = ['neutral-light', 'neutral-dark', 'gray', 'sapphire-ui', 'amethyst', 'red-beryl', 'citrine', 'green', 'red', 'orange'];
 const PG_FAM = {
   neutral: {
     label: 'Neutral',
