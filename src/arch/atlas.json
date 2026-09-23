@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-23T14:38:50.295Z",
+    "generatedAt": "2026-09-23T17:01:46.862Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -27,7 +27,7 @@
       "src/components/KpiStat": 1790164767740,
       "src/components/ListRow": 1790164767729,
       "src/components/OpportunityCard": 1790164802893,
-      "src/components/Overlay": 1790174172210,
+      "src/components/Overlay": 1790182563310,
       "src/components/Pagination": 1790164696696,
       "src/components/ProfileCard": 1790164683674,
       "src/components/Radio": 1790164793196,
