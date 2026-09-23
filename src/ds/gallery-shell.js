@@ -1,7 +1,5 @@
 /* ADAM/DS — src/ds/gallery-shell.js · gallery frames: language + docs fetch, tabs, sort, accordion, tooltip, signal */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-3] · shell behavior extracted from gallery.html (Task 9).
-// — Language frame —
-fetch('language-panel.html').then(r=>r.text()).then(h=>{document.getElementById('stage').insertAdjacentHTML('afterbegin',h)});
 // — Foundation articles —
 document.querySelectorAll('[data-doc]').forEach(el=>{fetch(el.dataset.doc).then(r=>r.text()).then(h=>{el.innerHTML=h;document.dispatchEvent(new Event('ds:doc'))})});
 // — Sortable tables —
@@ -14,12 +12,16 @@ th.setAttribute('aria-sort',asc?'descending':'ascending');
 });
 th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();th.click()}});
 });
-// — Section tabs —
+// — Section tabs (hash-deep-linked: #actions etc.) —
+const dsTab=name=>{
+document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('tab--active',x.dataset.tab===name));
+document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==name});
+};
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
-document.querySelectorAll('.tab').forEach(x=>x.classList.remove('tab--active'));
-b.classList.add('tab--active');
-document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==b.dataset.tab});
+dsTab(b.dataset.tab);
+history.replaceState(null,'','#'+b.dataset.tab);
 }));
+if(location.hash)dsTab(location.hash.slice(1));
 // — Accordions —
 document.querySelectorAll('.accordion__trigger').forEach(b=>b.addEventListener('click',()=>{
 const it=b.closest('.accordion__item');
