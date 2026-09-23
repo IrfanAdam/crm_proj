@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:54:33.843Z",
+  "generated": "2026-09-23T13:56:43.986Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "6f16193",
+      "full": "6f1619305e561490134917f7b593127f7a500d38",
+      "date": "2026-09-23",
+      "subject": "chore(ds): close Task 12I — shipped 18d5e97, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "3ebdef1",
       "full": "3ebdef1203e4f432285a02ec26cb4c4ff99d1131",
@@ -1511,14 +1519,17 @@
     }
   ],
   "wip": [
+    "M gallery.css",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
     "M src/arch/atlas.js",
+    "M src/arch/atlas.json",
     "D src/arch/lens-decisions.js",
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
+    "M src/components/Overlay/overlay.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",

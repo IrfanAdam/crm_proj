@@ -552,7 +552,7 @@ toast × added to the close selector. Component CSS untouched.
 - Modify: `gallery.css` (3 showcase rules), `src/components/Overlay/overlay.js` (close selector).
 **Verify:** `npm test` + `npm run build` green.
 **Commit:** `fix(ds): overlay specimens render in-flow, toast close works [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12J · phase-4.*
+*Shipped in 6f864c8 · Task 12J · phase-4.*
 
 ---
 
