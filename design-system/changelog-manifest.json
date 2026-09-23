@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:56:43.986Z",
+  "generated": "2026-09-23T13:57:58.921Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "363a58d",
+      "full": "363a58de68f5801e151973ea36d30a0d81da3cd6",
+      "date": "2026-09-23",
+      "subject": "chore(ds): close Task 12J — shipped 6f864c8, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "6f864c8",
+      "full": "6f864c87eefa49e54836c8ffc8360ef551c3d859",
+      "date": "2026-09-23",
+      "subject": "fix(ds): overlay specimens render in-flow, toast close works",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "6f16193",
       "full": "6f1619305e561490134917f7b593127f7a500d38",
@@ -1519,17 +1535,14 @@
     }
   ],
   "wip": [
-    "M gallery.css",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
     "M src/arch/atlas.js",
-    "M src/arch/atlas.json",
     "D src/arch/lens-decisions.js",
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/components/Overlay/overlay.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
