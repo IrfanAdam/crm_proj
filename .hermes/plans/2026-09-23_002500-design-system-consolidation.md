@@ -528,7 +528,7 @@ pads unwired. Article files stay on disk.
 - Modify: `public/gallery-panels/choice.html` (contextual), `gallery.html` (drop 4 spec pads).
 **Verify:** `#choice` renders intro → 5 specimens, zero open-scroll tables; `npm test` + `npm run build` green.
 **Commit:** `feat(ds): contextual specimens, choice frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12H · phase-4.*
+*Shipped in 88a2c96 · Task 12H · phase-4.*
 
 ---
 
