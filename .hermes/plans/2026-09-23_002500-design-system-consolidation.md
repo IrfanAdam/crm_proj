@@ -493,7 +493,7 @@ frames follow the same idiom next iterations.
 - Modify: `public/component-docs/button-intro.html` (slim), `public/gallery-panels/actions.html` (contextual), `gallery.css` (specimen rules), `gallery.html` (drop `button.html` pad).
 **Verify:** `#actions` renders intro → 5 specimens each with note + Spec details, zero long tables in the open scroll; `npm test` green.
 **Commit:** `feat(ds): contextual specimens, actions exemplar [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
-*Shipped in <sha> · Task 12E · phase-4.*
+*Shipped in 5b53d45 · Task 12E · phase-4.*
 
 ---
 
