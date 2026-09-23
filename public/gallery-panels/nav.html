@@ -1,9 +1,9 @@
 <div class="pad">
+<section class="specimen">
 <h3>Tabs — underline + contained</h3>
 <div class="row">
 <div class="tabs" role="tablist" aria-label="Deals">
-<button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true" tabindex="0">Pipeline</button>
-<button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1">Won</button>
+<button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true" tabindex="0">Pipeline</button><button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1">Won</button>
 <button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1" disabled>Archived</button>
 </div>
 <div class="tabs tabs--contained" role="tablist" aria-label="Views">
@@ -11,6 +11,9 @@
 <button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1">List</button>
 </div>
 </div>
+<p class="spec-note">One row of peer views — underline by default, contained segments the switch; one tab stop, arrows do the rest. Reject: a second dock or row for the same views, or every tab in tab order.</p>
+<details class="spec-more"><summary>Spec · variants + keys + a11y</summary><p class="meta">Tokens — <code>--role-action</code> bar, <code>--bg-interactive</code> pill + <code>--shadow-sm</code> lift, <code>--text-primary / dim</code>, <code>--focus-ring</code>. A11y — tablist semantics, <code>aria-selected</code> mirrors active, labelled panels, row scrolls and never wraps.</p></details></section>
+<section class="specimen">
 <h3>Breadcrumbs — full trail + collapsed</h3>
 <div style="display:flex;flex-direction:column;gap:var(--spacing-2)">
 <nav aria-label="Breadcrumb"><ol class="breadcrumbs">
@@ -25,6 +28,9 @@
 <li class="breadcrumbs__item"><span class="breadcrumbs__current" aria-current="page">Quote</span></li>
 </ol></nav>
 </div>
+<p class="spec-note">The trail back, never the next action — collapse the middle behind <code>…</code>, truncate long labels at <code>--spacing-16</code>. Reject: a linked current page, or hiding home and current to save room.</p>
+<details class="spec-more"><summary>Spec · collapse + tokens + a11y</summary><p class="meta">Tokens — <code>--text-secondary / emphasis / muted</code>, <code>--focus-ring</code>, 44px <code>…</code> target. A11y — landmark nav, plain-text current with <code>aria-current="page"</code>, hidden separators.</p></details></section>
+<section class="specimen">
 <h3>Pagination — full + compact</h3>
 <div style="display:flex;flex-direction:column;gap:var(--spacing-2)">
 <nav class="pagination" aria-label="Pagination">
@@ -41,6 +47,9 @@
 <button class="pagination__btn">Next</button>
 </nav>
 </div>
+<p class="spec-note">Position in a list — every control pairs with a status line, ends disable in place and never vanish. Reject: numbers with no status, or hiding Prev on page one.</p>
+<details class="spec-more"><summary>Spec · full vs compact + tokens</summary><p class="meta">Full paging for tables, <code>--compact</code> prev/next strip for narrow slots; ellipsis compresses, never deletes orientation. Tokens — <code>--role-action</code> active, <code>--bg-interactive-hover</code>, <code>--opacity-disabled</code>, <code>--focus-ring</code>; <code>aria-current="page"</code> + announced status.</p></details></section>
+<section class="specimen">
 <h3>Accordion — open / closed / disabled</h3>
 <div class="row">
 <div class="accordion">
@@ -57,6 +66,9 @@
 </div>
 </div>
 </div>
+<p class="spec-note">Stacked detail on demand — trigger answers for its panel via <code>aria-expanded / controls</code>; single vs multi is JS, same CSS. Reject: pixel-height keyframes, or motion that survives reduced-motion.</p>
+<details class="spec-more"><summary>Spec · motion + tokens + a11y</summary><p class="meta">Grid-rows 0fr ↔ 1fr over <code>--motion-duration-md</code>, chevron rotates 180°, snap instantly under reduced-motion. Tokens — <code>--border-default</code>, <code>--bg-interactive</code>, <code>--text-dim</code> + <code>--opacity-disabled</code>, <code>--focus-ring</code>; disabled triggers skipped.</p></details></section>
+<section class="specimen">
 <h3>TabBar — icon-only dock (3 tabs)</h3>
 <div class="row">
 <div class="tabbar"><nav class="tabbar__nav" role="tablist" aria-label="Primary">
@@ -65,6 +77,9 @@
 <button class="tabbar__item" role="tab" aria-label="Reports"><i class="ph ph-chart-bar" aria-hidden="true"></i></button>
 </nav></div>
 </div>
+<p class="spec-note">Thumb-first dock — icon-only, 44px+ targets, max three homes; one signal dot on the active item, counts in a separate badge. Reject: dock plus tab row together, or badge and signal on one item.</p>
+<details class="spec-more"><summary>Spec · dock rules + tokens</summary><p class="meta">Tokens — <code>--bg-surface-glass</code> bar, <code>--role-action</code> signal + active ink, <code>--role-score</code> badge, <code>--focus-ring</code>. A11y — tablist semantics, <code>aria-current</code> mirrors active, icon <code>aria-label</code>s; at ≤3 tabs the dock supersedes Tabs.</p></details></section>
+<section class="specimen">
 <h3>Toolbar — comfortable + compact</h3>
 <div style="display:flex;flex-direction:column;gap:var(--spacing-2)">
 <div class="toolbar toolbar--comfortable" role="toolbar" aria-label="Deal actions">
@@ -79,5 +94,6 @@
 <div class="toolbar__group" aria-label="Edit"><button class="toolbar__action">Save</button></div>
 </div>
 </div>
-<p class="meta">Keyboard: roving tabindex — one tab stop per tablist/dock, ArrowLeft/Right move, Home/End jump · Contract: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+<p class="spec-note">Actions in formation — groups divide kin, spacer pins the tail, overflow menus the spill; density never drops actions. Keyboard: one stop per tablist/dock, arrows move, Home/End jump · Contract: <a href="prototype/gallery/navigation.md">navigation.md</a>. Reject: action soup, or labels shoving actions off-screen.</p>
+<details class="spec-more"><summary>Spec · density + tokens + a11y</summary><p class="meta">Comfortable 56px / default 44px / compact <code>--spacing-8</code>; title ellipsizes, cluster never shrinks. Tokens — <code>--bg-surface</code>, <code>--border-default</code> dividers, <code>--bg-interactive</code>, <code>--focus-ring</code>. A11y — <code>role=toolbar</code> + group labels, keyboard-reachable overflow.</p></details></section>
 </div>

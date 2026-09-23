@@ -1,4 +1,5 @@
 <div class="pad">
+<section class="specimen">
 <h3>Table — comfortable, sortable + selected</h3>
 <div class="row">
 <div class="table__wrap">
@@ -9,6 +10,12 @@
 </table>
 </div>
 </div>
+<p class="spec-note">One sorted column at a time via <code>aria-sort</code>; selection pairs wash with sapphire rail. Reject: selection by fill alone, or actions inside the sort header.</p>
+<details class="spec-more"><summary>Spec · sort + select</summary>
+<p class="meta">Variants — default / <code>table--compact</code> dense / <code>table--comfortable</code> roomy; <code>table--striped</code> never with compact. Tokens — <code>text.muted</code> header, sapphire-500 arrow, <code>bg.interactive-active</code> + rail. A11y — <code>scope=col</code>, Enter/Space toggles sort, checkbox column + row <code>aria-selected</code>.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Table — compact + sticky header</h3>
 <div class="row">
 <div class="table__wrap" style="max-height:120px;overflow:auto">
@@ -20,6 +27,12 @@
 </table>
 </div>
 </div>
+<p class="spec-note">Density is a choice — compact goes dense, never striped. Reject: striped dense rows, or sticky scoped to the page instead of <code>.table__wrap</code>.</p>
+<details class="spec-more"><summary>Spec · density + sticky</summary>
+<p class="meta">Sticky pins via <code>position:sticky</code> + <code>z-index.sticky</code> + <code>bg.surface</code> mask inside the wrap; row hover is <code>bg.interactive-hover</code> wash, enough signal at density.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Table — empty + skeleton + footer</h3>
 <div class="row">
 <div class="table__wrap">
@@ -31,28 +44,56 @@
 <div class="table__footer"><span>0 of 0</span><span>Pagination slot</span></div>
 </div>
 </div>
+<p class="spec-note">Empty is a real centered row; loading shimmers, never focuses. Reject: a focusable skeleton, or pagination outside the footer slot.</p>
+<details class="spec-more"><summary>Spec · states</summary>
+<p class="meta">Empty — <code>.table__empty</code> muted, AT-readable. Loading — <code>.table__skeleton-bar</code> shimmer (<code>motion.duration-xl</code>) + <code>aria-busy</code>. Footer — count left, Pagination controls right, <code>text.muted xs</code>.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>KpiStat — value/total/delta + spark</h3>
 <div class="row">
 <span class="kpi kpi--sm"><span class="kpi__value">4</span><span class="kpi__total">/32 closed</span><span class="kpi__delta">+2%</span><span class="kpi__spark"><span class="sparkline sparkline--sm" aria-hidden="true"><span class="sparkline__bar" style="height:30%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:70%"></span></span></span></span>
 <span class="kpi kpi--lg"><span class="kpi__value">$182k</span><span class="kpi__total">/ $240k</span><span class="kpi__delta kpi__delta--down">−3%</span></span>
 </div>
+<p class="spec-note">Value / total / signed delta read as one sentence, spark trailing. Reject: a lonely value, a second delta, or tint-only direction.</p>
+<details class="spec-more"><summary>Spec · trio + delta</summary>
+<p class="meta">Up green-700 on green-100, down red-700 on red-100 (<code>radius.full</code>); <code>kpi--sm</code> md value, <code>kpi--lg</code> 2xl value — trio stays in order at every size, delta never by color alone.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>ListRow — default / selected / disabled</h3>
 <div class="row">
 <article class="list-row"><span class="list-row__logo" aria-hidden="true">AC</span><div class="list-row__main"><div class="list-row__name">Acme Corp</div><div class="list-row__meta">Negotiation · $48k</div></div><div class="list-row__end"><span class="badge badge--success">Open</span><span class="list-row__time">2h ago</span></div></article>
 <article class="list-row list-row--selected"><span class="list-row__logo" aria-hidden="true">GL</span><div class="list-row__main"><div class="list-row__name">Globex</div><div class="list-row__meta">Closed · $32k</div></div><div class="list-row__end"><span class="badge badge--neutral">Won</span><span class="list-row__time">1d ago</span></div></article>
 <article class="list-row list-row--disabled"><span class="list-row__logo" aria-hidden="true">IN</span><div class="list-row__main"><div class="list-row__name">Initech</div><div class="list-row__meta">Paused</div></div><div class="list-row__end"><span class="badge badge--warning">Stale</span><span class="list-row__time">9d ago</span></div></article>
 </div>
+<p class="spec-note">Logo · main · end — name ellipsizes, badge over time right-aligned. Reject: a wrapping name, hue-alone meaning, or selection where rows only navigate.</p>
+<details class="spec-more"><summary>Spec · row + end slot</summary>
+<p class="meta">Selected — <code>bg.interactive-active</code> + sapphire border; disabled — <code>opacity.disabled</code>, no pointer, leaves tab order. Tokens — <code>bg.surface / radius.md / border.thin</code>, logo <code>bg.interactive / radius.sm</code>. Navigates, never compares.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Timeline — vertical / horizontal / compact</h3>
 <div class="row">
 <ol class="timeline"><li class="timeline__item timeline__item--done timeline__item--success"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Qualified — won</span><span class="timeline__time">Mon</span></li><li class="timeline__item timeline__item--warning"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Legal — waiting</span><span class="timeline__time">Tue</span></li></ol>
 <ol class="timeline timeline--horizontal"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Lead</span><span class="timeline__time">S1</span></li><li class="timeline__item timeline__item--danger"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Blocked</span><span class="timeline__time">S2</span></li></ol>
 <ol class="timeline timeline--compact"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Call logged</span><span class="timeline__time">9:41</span></li></ol>
 </div>
+<p class="spec-note">Hollow todo, filled done; three status tones, no more. Reject: a bare rail, a fourth dot hue, or DOM order ≠ time order.</p>
+<details class="spec-more"><summary>Spec · spine + tones</summary>
+<p class="meta">Rail in <code>::before</code> (<code>border.thin</code>); done sapphire fill, status green/orange/red-500 rings; 10px dot geometry off-scale by decision. Times right-aligned plain text; done needs text, not dot-alone.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Sparkline + FunnelGlyph</h3>
 <div class="row">
 <span class="sparkline sparkline--sm" role="img" aria-label="Up 12% over 7 days"><span class="sparkline__bar" style="height:25%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:55%"></span><span class="sparkline__bar sparkline__bar--gem" style="height:90%"></span></span>
 <span class="sparkline sparkline--lg sparkline--stroke" aria-hidden="true"><span class="sparkline__bar" style="height:35%"></span><span class="sparkline__bar" style="height:75%"></span></span>
 <span class="funnel-glyph" aria-hidden="true">⬢</span><span class="funnel-glyph funnel-glyph--small" aria-hidden="true">⬢</span><span class="funnel-glyph funnel-glyph--xs" aria-hidden="true">⬢</span>
 </div>
-<p class="meta">Anatomy: scope col + aria-sort one column · KPI reads as one sentence (value, total, signed delta) · Contract: <a href="prototype/gallery/data.md">data.md</a></p>
+<p class="spec-note">Sparkline gestures momentum — always crown the peak; funnel marks measure in sapphire, one tile everywhere (56/40/32). Reject: gem hues outside viz, axes on a sparkline. Contract: <a href="prototype/gallery/data.md">data.md</a></p>
+<details class="spec-more"><summary>Spec · bars + tile</summary>
+<p class="meta">Bars amethyst 300 / accent 500 / gem 700, <code>spacing.1</code> gap; stroke is transparent + amethyst-400 ring for overlays. Semantic bars take <code>role=img</code> + trend label, decorative <code>aria-hidden</code> + fallback. Funnel tile sapphire-100/600, always <code>aria-hidden</code>, value in adjacent text.</p>
+</details>
+</section>
 </div>

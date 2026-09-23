@@ -1,4 +1,5 @@
 <div class="pad">
+<section class="specimen">
 <h3>OpportunityCard — full anatomy</h3>
 <div class="row">
 <article class="opp-card">
@@ -12,6 +13,13 @@
 <div class="opp-card__foot"><div><span class="opp-card__meta">Updated 2h ago</span><span class="opp-card__dist">1.2 km away</span></div><span class="opp-card__actions"><button class="btn btn--icon-only" aria-label="Call contact"><i class="ph-bold ph-phone" aria-hidden="true"></i></button><button class="btn btn--icon-only" aria-label="Message contact"><i class="ph-bold ph-chat-centered-text" aria-hidden="true"></i></button></span></div>
 </article>
 </div>
+<p class="spec-note">Hues are data — sapphire = stage, red-beryl = chance, citrine = distance. Reject: a second primary button in the foot, or any recoloring for decoration.</p>
+<details class="spec-more"><summary>Spec · tokens + a11y</summary>
+<p class="meta">Tokens — surface / radius.xl / spacing.4; stage rail sapphire-400 + thick; actions 44px on bg.interactive; focus ring, no outline.</p>
+<p class="meta">A11y — article + heading, segs carry progressbar + aria-valuenow, chance 4.51 / value 5.9 AA. Related: FunnelCard (pipeline) · ProfileCard (person).</p>
+</details>
+</section>
+<section class="specimen">
 <h3>FunnelCard — glyph + refresh + metric strip</h3>
 <div class="row">
 <article class="funnel-card">
@@ -19,6 +27,13 @@
 <div class="funnel-card__body"><div class="funnel-card__title">Pipeline health</div><div class="funnel-card__meta">Last refreshed 9:41 AM</div><div class="funnel-card__metrics"><span class="funnel-card__metric">CR 24%</span><span class="funnel-card__metric">RR 61%</span><span class="funnel-card__metric">CSAT 4.8</span><span class="funnel-card__metric">NPS 52</span></div></div>
 </article>
 </div>
+<p class="spec-note">Glyph · title · stamp · strip — metrics live only in the strip, the frame never acts. Reject: a gem-hued glyph, or a metric rendered outside __metrics.</p>
+<details class="spec-more"><summary>Spec · tokens + a11y</summary>
+<p class="meta">Tokens — surface / radius.lg + border.thin; glyph sapphire-100 / 500; title primary, meta muted, metrics on bg.interactive. Stale = stamp text only.</p>
+<p class="meta">A11y — glyph aria-hidden, metrics plain text never color-only, static card takes no focus.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>ProfileCard — face + role + stat trio</h3>
 <div class="row">
 <article class="profile-card">
@@ -27,14 +42,32 @@
 <div class="profile-card__stats"><div class="profile-card__stat"><span class="profile-card__val">128</span><span class="profile-card__label">Deals</span></div><div class="profile-card__stat"><span class="profile-card__val">96%</span><span class="profile-card__label">Quota</span></div><div class="profile-card__stat"><span class="profile-card__val">4.9</span><span class="profile-card__label">CSAT</span></div></div>
 </article>
 </div>
+<p class="spec-note">Face, role, three proofs — centered on one axis, trio is the contract. Reject: a fourth stat, or a left-aligned variant.</p>
+<details class="spec-more"><summary>Spec · tokens + a11y</summary>
+<p class="meta">Tokens — surface / radius.lg + border.thin; avatar ring and stat rule reuse the same hairline; ink primary / muted.</p>
+<p class="meta">A11y — photo alt="" (name is text), stats plain-text pairs, static card takes no focus.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>GoalBar — default + sm / lg + gem-quarantined</h3>
 <div class="goal-bar"><div class="goal-bar__fill" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Q3 quota" style="width:60%"><span class="goal-bar__label">Q3 quota</span><span class="goal-bar__value">60%</span></div></div>
 <div class="goal-bar goal-bar--sm"><div class="goal-bar__fill" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" aria-label="Weekly calls" style="width:35%"><span class="goal-bar__label">Calls</span><span class="goal-bar__value">35%</span></div></div>
 <div class="goal-bar goal-bar--lg"><div class="goal-bar__fill" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Annual target" style="width:82%"><span class="goal-bar__label">Annual</span><span class="goal-bar__value">82%</span></div></div>
 <div class="goal-bar goal-bar--gem"><div class="goal-bar__fill" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Ceremony milestone" style="width:100%"><span class="goal-bar__label">Milestone · ceremony only</span><span class="goal-bar__value">100%</span></div></div>
+<p class="spec-note">Label-left / value-right is the whole readout; gem (amethyst-700 + ◇) lives only in ceremony. Reject: --gem in Operate chrome, or a value restated beside the bar.</p>
+<details class="spec-more"><summary>Spec · variants + tokens + a11y</summary>
+<p class="meta">Variants — default 28px · sm 20px · lg 36px · gem quarantined. Track amethyst-100, fill 400 (gem 700), radius.full; width animates on spring.</p>
+<p class="meta">A11y — live fill needs progressbar + aria-valuenow + aria-label; reduced-motion jumps instantly. Related: GemReward (ceremony twin — one Spline iframe, hue-rotate per category).</p>
+</details>
+</section>
+<section class="specimen">
 <h3>No-shadow law — hairline borders, zero lift</h3>
 <div class="row">
 <article class="funnel-card"><span class="funnel-card__glyph"><i class="ph-bold ph-check" aria-hidden="true"></i></span><div class="funnel-card__body"><div class="funnel-card__title">Flat by law</div><div class="funnel-card__meta">border only · box-shadow: none</div></div></article>
 </div>
+<p class="spec-note">Cards never float — hairline border on surface, hover wash on actions only. Reject: any box-shadow on any card frame.</p>
+<details class="spec-more"><summary>Spec · law + contract</summary>
 <p class="meta">Law: sapphire = stage · red-beryl = chance · citrine = distance · hairline border, never a shadow · Contract: <a href="prototype/gallery/cards.md">cards.md</a></p>
+</details>
+</section>
 </div>

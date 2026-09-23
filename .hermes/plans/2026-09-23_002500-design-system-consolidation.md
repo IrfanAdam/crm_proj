@@ -530,6 +530,18 @@ pads unwired. Article files stay on disk.
 **Commit:** `feat(ds): contextual specimens, choice frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 88a2c96 · Task 12H · phase-4.*
 
+### Task 12I: Contextual specimens — nav/overlays/data/cards via subagents ✓ done
+**Objective:** Fan-out finish: 4 parallel subagents rewrite `nav` (6 specimens),
+`overlays` (5), `data` (7), `cards` (5) panels in the 12E idiom; parent trims
+nav 101→99 lines, rewires all 4 frames (18 spec pads unwired), verifies.
+Every component frame is now intro + specimens; article files stay on disk.
+**Files:**
+- Create (via subagents): `public/gallery-panels/{nav,overlays,data,cards}.html` contextual.
+- Modify: `gallery.html` (drop 18 spec pads).
+**Verify:** all 8 frames intro → specimens, zero open-scroll tables; `npm test` + `npm run build` green.
+**Commit:** `feat(ds): contextual specimens, final 4 frames [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12I · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}

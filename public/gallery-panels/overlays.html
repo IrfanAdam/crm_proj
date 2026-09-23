@@ -1,4 +1,5 @@
 <div class="pad">
+<section class="specimen">
 <h3>Triggers — one button per layer</h3>
 <div class="row">
 <button class="btn btn--primary" data-overlay-target="ov-modal">Modal</button>
@@ -8,6 +9,12 @@
 <button class="btn btn--secondary" data-overlay-target="ov-pop">Popover</button>
 <button class="btn btn--secondary" data-overlay-target="ov-toast">Toast</button>
 </div>
+<p class="spec-note">Pick the lightest layer that does the job — modal blocks, drawer keeps context, toast confirms past acts. Reject: a modal for filters or a tooltip holding buttons.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<p class="meta">Modal = blocking confirm / short task · drawer = context panel / long form · menu = action list · tooltip = one name · popover = rich anchor · toast = transient confirm. Drawer over modal-for-forms, toast-plus-undo over modal-for-trivia.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Modal — sm (md / lg wider · top / center / bottom)</h3>
 <div class="row">
 <div class="overlay" id="ov-modal" hidden aria-hidden="true">
@@ -18,6 +25,12 @@
 </div>
 </div>
 </div>
+<p class="spec-note">Modal blocks for confirms only — traps Tab, closes on Esc, returns focus to the opener. Reject: nested modals, auto-open on load, or a trap that strands focus.</p>
+<details class="spec-more"><summary>Spec · sizes + states</summary>
+<p class="meta">Sizes <code>--sm/md/lg/full</code>, position <code>--top</code> sheet / center / <code>--bottom</code>; open = <code>.overlay--open</code> fade + rise, closing = <code>.is-closing</code>, persistent <code>.overlay--persistent</code> ignores scrim + Esc. A11y: labelledby, focus in, Tab wrap, inert background.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Drawer — right filter panel (left / top / bottom · narrow / wide)</h3>
 <div class="row">
 <div class="drawer" id="ov-drawer" hidden aria-hidden="true">
@@ -26,6 +39,12 @@
 <div class="overlay__footer"><button class="btn btn--secondary" data-overlay-close>Reset</button><button class="btn btn--primary">Apply</button></div>
 </div>
 </div>
+<p class="spec-note">Drawer keeps context for filters and long forms — body scrolls, footer sticks. Reject: a modal where a drawer would keep context, or full-screen except <code>--full</code>.</p>
+<details class="spec-more"><summary>Spec · placements + motion</summary>
+<p class="meta">Sides <code>--right/--left/--top/--bottom</code>, widths <code>--narrow/--wide</code>; open = <code>.drawer--open</code> slide in over <code>--transition-fast</code>, reduced-motion snaps. Dismissible drawers trap like modals; persistent ones don't.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Menu + Popover — anchored floats</h3>
 <div class="row">
 <div style="position:relative;flex:none;width:calc(var(--spacing-16) * 3);height:calc(var(--spacing-16) * 2)"><div class="menu overlay--open" id="ov-menu" role="menu">
@@ -38,10 +57,20 @@
 <p class="popover__body">Anchored hint — top / bottom via placement.</p>
 </div></div>
 </div>
+<p class="spec-note">Anchored floats list actions or rich detail — menu flips to fit, popover is non-modal dialog. Reject: raw z-index to force depth; in-dialog floats re-layer, never invent it.</p>
+<details class="spec-more"><summary>Spec · anchors + a11y</summary>
+<p class="meta">Menu flips, <code>--in-dialog</code> re-layers to modal z; popover = <code>dialog</code> non-modal, top / bottom placement. A11y: menus roving arrows, close-and-refocus without trapping.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Tooltip + Toast — pointer hint, always topmost</h3>
 <div class="row">
 <div style="position:relative;flex:none;display:flex;align-items:center;width:calc(var(--spacing-16) * 3);height:var(--spacing-8)"><span class="tooltip tooltip--visible" data-placement="top" role="tooltip" id="ov-tip">Save this view</span></div>
 <div class="toast-region toast-region--bottom-right"><div class="toast toast--success" role="status" id="ov-toast" hidden aria-hidden="true"><span>Deal saved</span><button class="toast__close" data-overlay-close aria-label="Dismiss">×</button></div></div>
 </div>
-<p class="meta">Focus-trap + Esc close (persistent opt-out) · z: dropdown floats &lt; scrim &lt; modal &lt; toast · Contract: <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+<p class="spec-note">Tooltip names one thing (pointer-only, never focusable); toast confirms past acts and always wins the stack. Reject: critical errors only in a toast, or a toast that steals focus.</p>
+<details class="spec-more"><summary>Spec · stacking + tokens + a11y</summary>
+<p class="meta">Stack: floats <code>--z-index-dropdown</code> &lt; scrim <code>--z-index-overlay</code> &lt; dialogs <code>--z-index-modal</code> &lt; toasts <code>--z-index-toast</code>; surface <code>--bg-surface</code>, edge <code>--border-thin</code>, <code>--shadow-lg / --radius-lg / --focus-ring</code>. A11y: tooltip via describedby + Esc; toast <code>role=status</code> (<code>alert</code> for danger), container <code>aria-live</code>, action Tab-reachable. Related: toolbar overflow opens a menu · full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
 </div>
