@@ -92,5 +92,3 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .spec-more summary{font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);cursor:pointer}
 .spec-more .ch-roles{margin-top:var(--spacing-1)}
 .specimen .tooltip{position:static;transform:none}
-.specimen .toast-region{position:static;transform:none}
-.specimen .drawer{position:static;transform:none;height:auto;flex:none}

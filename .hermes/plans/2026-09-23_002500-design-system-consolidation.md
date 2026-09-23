@@ -554,6 +554,19 @@ toast × added to the close selector. Component CSS untouched.
 **Commit:** `fix(ds): overlay specimens render in-flow, toast close works [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 6f864c8 · Task 12J · phase-4.*
 
+### Task 12K: Drawer/toast back to anchored layers ✓ done
+**Objective:** The 12J in-flow override was wrong for viewport-anchored
+layers — a drawer ripped from the viewport edge reads as broken layout.
+Revert: drawer + toast-region keep their fixed anchoring (triggers open
+them live: drawer slides from the right edge, toast pins bottom-right);
+only the tooltip stays pinned in-flow since it ships visible. Rows stay
+clean; the demo is the trigger click.
+**Files:**
+- Modify: `gallery.css` (drop drawer + toast-region showcase rules).
+**Verify:** `npm test` + `npm run build` green; Drawer trigger opens a right-edge panel.
+**Commit:** `fix(ds): anchored layers demo live, drop in-flow override [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12K · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
