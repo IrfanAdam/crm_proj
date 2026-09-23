@@ -1,7 +1,70 @@
-.list-row{display:flex;align-items:center;gap:var(--spacing-3);padding:var(--spacing-3);background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);transition:var(--transition-fast)}
-.list-row:hover{background:var(--bg-interactive-hover)}
-.list-row__logo{width:32px;height:32px;border-radius:var(--radius-sm);background:var(--bg-interactive);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:var(--font-size-xs);flex:0 0 32px}
-.list-row__main{flex:1;min-width:0}
-.list-row__name{font-size:var(--font-size-sm);font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.list-row__meta{font-size:var(--font-size-xs);color:var(--text-muted)}
-.list-row__end{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+/* ListRow — one-line opportunity: logo, name, meta, end slot (cards hairline law). */
+/* Anatomy: __logo 32px tile · __main (name+meta) · __end (badge + __time, right). */
+/* Variants: default | .list-row--selected | .list-row--disabled. */
+/* States: hover wash · selected rail · disabled dim · focus-visible ring. */
+/* Tokens: bg.surface/interactive(-hover/-active) · text.primary/muted · radius.md/sm. */
+/* DO ellipsize name, keep end slot right; DON'T shadow rows or wrap names. */
+/* A11y: article+heading standalone; logo decorative; time is text, never badge-alone. */
+.list-row{
+display: flex;
+align-items: center;
+gap: var(--spacing-3);
+padding: var(--spacing-3);
+background: var(--bg-surface);
+border: var(--border-width-thin) solid var(--border-thin);
+border-radius: var(--radius-md);
+transition: var(--transition-fast);
+}
+.list-row:hover{background: var(--bg-interactive-hover);}
+.list-row--selected{
+background: var(--bg-interactive-active);
+border-color: var(--primitive-sapphire-ui-500);
+}
+.list-row--disabled{
+opacity: var(--opacity-disabled);
+pointer-events: none;
+}
+.list-row:focus-visible{
+outline: var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
+outline-offset: 2px;
+}
+.list-row__logo{
+width: 32px;
+height: 32px;
+flex: 0 0 32px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: var(--bg-interactive);
+border-radius: var(--radius-sm);
+font-size: var(--font-size-xs);
+font-weight: var(--font-weight-semibold);
+color: var(--text-secondary);
+}
+.list-row__main{
+flex: 1;
+min-width: 0;
+}
+.list-row__name{
+font-size: var(--font-size-sm);
+font-weight: var(--font-weight-semibold);
+color: var(--text-primary);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.list-row__meta{
+font-size: var(--font-size-xs);
+color: var(--text-muted);
+}
+.list-row__end{
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: var(--spacing-1);
+}
+.list-row__time{
+font-size: var(--font-size-xs);
+color: var(--text-muted);
+white-space: nowrap;
+}

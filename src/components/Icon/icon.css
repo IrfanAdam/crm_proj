@@ -1,14 +1,42 @@
-/* Icon — Phosphor (regular 1.5px) · DS token only */
-.icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  flex:0 0 auto;
-  color:inherit;
-  line-height:0;
+/* Icon — Phosphor-only system: decorative by default, currentColor, token sizes */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  color: inherit;
+  line-height: 0;
 }
-.icon svg{width:100%;height:100%;display:block}
-.icon--xs{width:12px;height:12px}
-.icon--sm{width:14px;height:14px}
-.icon--md{width:16px;height:16px}
-.icon--lg{width:20px;height:20px}
-.icon--xl{width:24px;height:24px}
-.icon--2xl{width:32px;height:32px}
+.icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.icon--xs {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+}
+.icon--sm {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.icon--md {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+.icon--lg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+.icon--xl {
+  width: var(--icon-size-xl);
+  height: var(--icon-size-xl);
+}
+.icon--muted {
+  color: var(--text-muted);
+}
+.icon--subtle {
+  color: var(--text-dim);
+}

@@ -1,0 +1,91 @@
+/* Overlay toast — region placements, tones, show/hide, reduced-motion. */
+.toast-region {
+  position: fixed;
+  bottom: var(--spacing-6);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  z-index: var(--z-index-toast);
+}
+.toast-region--top-center {
+  bottom: auto;
+  top: var(--spacing-6);
+}
+.toast-region--bottom-left {
+  left: var(--spacing-6);
+  transform: none;
+}
+.toast-region--bottom-right {
+  left: auto;
+  right: var(--spacing-6);
+  transform: none;
+}
+.toast-region--top-right {
+  left: auto;
+  right: var(--spacing-6);
+  top: var(--spacing-6);
+  bottom: auto;
+  transform: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  background: var(--primitive-neutral-dark-700);
+  color: var(--primitive-gray-white);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(var(--spacing-4));
+  transition: var(--transition-spring);
+}
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast.is-closing {
+  opacity: 0;
+  transform: translateY(var(--spacing-4));
+}
+.toast--success {
+  border-left: var(--border-width-medium) solid var(--role-success-strong);
+}
+.toast--danger {
+  border-left: var(--border-width-medium) solid var(--role-danger-strong);
+}
+.toast--warning {
+  border-left: var(--border-width-medium) solid var(--role-warning-strong);
+}
+.toast__action {
+  background: transparent;
+  border: none;
+  color: var(--primitive-citrine-300);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+.toast__close {
+  background: transparent;
+  border: none;
+  color: var(--primitive-gray-white);
+  opacity: var(--opacity-subtle);
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: none;
+  }
+  .toast-region {
+    transform: translateX(-50%);
+  }
+}
+@media (forced-colors: active) {
+  .toast {
+    background: Canvas;
+    color: CanvasText;
+  }
+}

@@ -1,5 +1,48 @@
-.kpi{display:inline-flex;align-items:baseline;gap:var(--spacing-2);font-family:var(--font-family-sans)}
-.kpi__value{font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);color:var(--text-primary);line-height:1}
-.kpi__total{font-size:var(--font-size-sm);color:var(--text-muted)}
-.kpi__delta{display:inline-flex;align-items:center;gap:2px;font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);color:var(--primitive-green-300);background:var(--primitive-green-100);padding:2px var(--spacing-2);border-radius:var(--radius-full)}
-.kpi__delta--down{color:var(--primitive-red-500);background:var(--primitive-red-100)}
+/* KpiStat — headline number: value + total + delta chip + sparkline slot. */
+/* Anatomy: __value xl bold · __total muted · __delta tinted chip · __spark slot. */
+/* Variants: delta up (green) | __delta--down (red) | .kpi--sm / .kpi--lg sizes. */
+/* States: static; delta direction is the only change. */
+/* Tokens: text.primary/muted · green/red 700 ink on 100 tint · radius.full. */
+/* FIX APPLIED: delta ink raised to 700-step (was tone-on-tone, sub-AA) — badge scale. */
+/* DO value/total/delta order, signed delta; DON'T add a second delta. */
+/* A11y: trio reads as one AT sentence (value, total, delta); delta never color-alone. */
+.kpi{
+display: inline-flex;
+align-items: baseline;
+gap: var(--spacing-2);
+font-family: var(--font-family-sans);
+}
+.kpi__value{
+font-size: var(--font-size-xl);
+font-weight: var(--font-weight-bold);
+color: var(--text-primary);
+line-height: 1;
+}
+.kpi__total{
+font-size: var(--font-size-sm);
+color: var(--text-muted);
+}
+.kpi__delta{
+display: inline-flex;
+align-items: center;
+gap: var(--spacing-1);
+padding: var(--spacing-1) var(--spacing-2);
+background: var(--primitive-green-100);
+color: var(--primitive-green-700);
+border-radius: var(--radius-full);
+font-size: var(--font-size-xs);
+font-weight: var(--font-weight-semibold);
+white-space: nowrap;
+}
+.kpi__delta--down{
+background: var(--primitive-red-100);
+color: var(--primitive-red-700);
+}
+.kpi__spark{
+display: inline-flex;
+align-items: flex-end;
+margin-left: auto;
+}
+.kpi--sm .kpi__value{font-size: var(--font-size-md);}
+.kpi--lg .kpi__value{font-size: var(--font-size-2xl);}
+.kpi--lg .kpi__total{font-size: var(--font-size-md);}

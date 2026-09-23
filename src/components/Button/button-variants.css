@@ -1,0 +1,90 @@
+/* ADAM/DS — src/components/Button/button-variants.css · variants */
+.btn--primary {
+background:var(--role-action);
+color:var(--role-action-ink);
+border-color:var(--role-action);
+}
+.btn--primary:hover {
+background:var(--role-action-strong);
+border-color:var(--role-action-strong);
+}
+.btn--primary:active {
+background:var(--primitive-sapphire-ui-700);
+border-color:var(--primitive-sapphire-ui-700);
+}
+.btn--secondary {
+background:var(--bg-surface);
+color:var(--text-primary);
+border-color:var(--border-thin);
+}
+.btn--secondary:hover {
+background:var(--bg-interactive-hover);
+}
+.btn--secondary:active {
+background:var(--bg-interactive-active);
+}
+.btn--ghost {
+background:var(--color-transparent);
+color:var(--role-action);
+border-color:var(--color-transparent);
+}
+.btn--ghost:hover {
+background:var(--primitive-sapphire-ui-100);
+}
+.btn--ghost:active {
+background:var(--primitive-sapphire-ui-200);
+}
+.btn--destructive {
+background:var(--role-danger);
+color:var(--role-danger-ink);
+border-color:var(--role-danger);
+}
+.btn--destructive:hover {
+background:var(--role-danger-strong);
+border-color:var(--role-danger-strong);
+}
+.btn--destructive:active {
+background:var(--role-danger-strong);
+border-color:var(--role-danger-strong);
+}
+.btn--tonal {
+background:var(--role-action-soft);
+color:var(--primitive-gray-900);
+border-color:var(--color-transparent);
+}
+.btn--tonal:hover {
+background:var(--primitive-sapphire-ui-200);
+}
+.btn--tonal:active {
+background:var(--primitive-sapphire-ui-300);
+}
+.btn--danger-ghost {
+background:var(--color-transparent);
+color:var(--role-danger);
+border-color:var(--color-transparent);
+}
+.btn--danger-ghost:hover {
+background:var(--primitive-red-50);
+}
+.btn--danger-ghost:active {
+background:var(--primitive-red-100);
+}
+.btn--icon-only {
+padding-left:var(--spacing-0);
+padding-right:var(--spacing-0);
+min-width:var(--spacing-0);
+aspect-ratio:1 / 1;
+}
+.btn--full-width {
+width:100%;
+}
+@media (forced-colors:active) {
+.btn--primary {
+background:ButtonFace;
+color:ButtonText;
+}
+.btn--destructive {
+background:ButtonFace;
+color:ButtonText;
+}
+}

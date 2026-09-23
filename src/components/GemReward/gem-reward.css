@@ -1,10 +1,58 @@
-.gem-reward{display:flex;flex-direction:column;align-items:center;gap:var(--spacing-4);padding:var(--spacing-6);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-2xl);text-align:center;position:relative;overflow:hidden}
-.gem-reward__spline{width:100%;height:140px;border:none;border-radius:var(--radius-lg);background:var(--bg-interactive)}
-.gem-reward--sapphire .gem-reward__spline{filter:hue-rotate(0deg)}
-.gem-reward--citrine .gem-reward__spline{filter:hue-rotate(38deg) saturate(1.1)}
-.gem-reward--redberyl .gem-reward__spline,.gem-reward--red-beryl .gem-reward__spline{filter:hue-rotate(310deg) saturate(1.2)}
-.gem-reward--amethyst .gem-reward__spline{filter:hue-rotate(265deg) saturate(1.2)}
-.gem-reward__title{font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);color:var(--text-primary)}
-.gem-reward__copy{font-size:var(--font-size-sm);color:var(--text-secondary)}
-.gem-reward__capsule{padding:var(--spacing-2) var(--spacing-4);background:var(--primitive-amethyst-100);color:var(--primitive-amethyst-700);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:600}
-@media(prefers-reduced-motion:reduce){.gem-reward__spline{filter:none!important}}
+/* GemReward — CEREMONY ONLY. Never inside Operate/Monitor chrome (quarantine law). Spec: prototype/gallery/motion-gems.md. */
+.gem-reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-2xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.gem-reward__spline {
+  width: 100%;
+  height: 140px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--bg-interactive);
+}
+.gem-reward--sapphire .gem-reward__spline {
+  filter: hue-rotate(0deg);
+}
+.gem-reward--citrine .gem-reward__spline {
+  filter: hue-rotate(38deg) saturate(1.1);
+}
+.gem-reward--redberyl .gem-reward__spline {
+  filter: hue-rotate(310deg) saturate(1.2);
+}
+.gem-reward--red-beryl .gem-reward__spline {
+  filter: hue-rotate(310deg) saturate(1.2);
+}
+.gem-reward--amethyst .gem-reward__spline {
+  filter: hue-rotate(265deg) saturate(1.2);
+}
+.gem-reward__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+.gem-reward__copy {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+.gem-reward__capsule {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--primitive-amethyst-100);
+  color: var(--primitive-amethyst-700);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gem-reward__spline {
+    filter: none;
+  }
+}

@@ -1,0 +1,51 @@
+/* Overlay drawer — placements, widths, slide open/closing states. */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(calc(var(--spacing-16) * 6), 85vw);
+  background: var(--bg-surface);
+  border-left: var(--border-width-thin) solid var(--border-thin);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-index-modal);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: var(--transition-spring);
+}
+.drawer--open {
+  transform: translateX(0);
+}
+.drawer.is-closing {
+  transform: translateX(100%);
+}
+.drawer--left {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: var(--border-width-thin) solid var(--border-thin);
+  transform: translateX(-100%);
+}
+.drawer--left.drawer--open {
+  transform: translateX(0);
+}
+.drawer--left.is-closing {
+  transform: translateX(-100%);
+}
+.drawer--narrow {
+  width: min(calc(var(--spacing-16) * 5), 85vw);
+}
+.drawer--wide {
+  width: min(calc(var(--spacing-16) * 8), 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .drawer {
+    border-color: CanvasText;
+  }
+}

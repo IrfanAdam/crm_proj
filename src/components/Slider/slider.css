@@ -1,6 +1,96 @@
-.slider{width:100%;-webkit-appearance:none;appearance:none;height:6px;background:var(--bg-interactive);border-radius:var(--radius-full);outline:none}
-.slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--bg-surface);border:2px solid var(--primitive-sapphire-ui-500);border-radius:var(--radius-full);box-shadow:var(--shadow-sm);cursor:pointer;transition:var(--transition-fast)}
-.slider::-moz-range-thumb{width:20px;height:20px;background:var(--bg-surface);border:2px solid var(--primitive-sapphire-ui-500);border-radius:var(--radius-full);cursor:pointer}
-.slider:focus-visible::-webkit-slider-thumb{outline:2px solid var(--primitive-sapphire-ui-400);outline-offset:2px}
-.slider--segments{height:8px;background:linear-gradient(to right,var(--primitive-sapphire-ui-200) 0 20%,var(--bg-interactive) 20% 21%,var(--primitive-sapphire-ui-300) 21% 45%,var(--bg-interactive) 45% 46%,var(--primitive-sapphire-ui-400) 46% 75%,var(--bg-interactive) 75% 76%,var(--primitive-green-300) 76% 100%)}
-@media (prefers-reduced-motion: reduce){ .slider::-webkit-slider-thumb{transition:none} }
+/* Slider — continuous/discrete value control (Material 3 + Carbon rules). */
+/* Tokens only: every paint, spacing, radius, and motion value is var(--*). */
+.slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--bg-interactive);
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: var(--bg-surface);
+  border: var(--border-width-medium) solid var(--role-action);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  transition: var(--transition-fast);
+  forced-color-adjust: auto;
+}
+.slider::-moz-range-thumb {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: var(--bg-surface);
+  border: var(--border-width-medium) solid var(--role-action);
+  border-radius: var(--radius-full);
+  cursor: grab;
+  forced-color-adjust: auto;
+}
+.slider::-moz-range-track {
+  height: 6px;
+  background: var(--bg-interactive);
+  border-radius: var(--radius-full);
+}
+.slider::-moz-range-progress {
+  height: 6px;
+  background: var(--role-action);
+  border-radius: var(--radius-full);
+}
+.slider:hover::-webkit-slider-thumb {
+  border-color: var(--role-action-strong);
+  box-shadow: var(--shadow-md);
+}
+.slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  box-shadow: var(--focus-ring);
+}
+.slider:active::-moz-range-thumb { cursor: grabbing; }
+.slider:focus-visible { outline: none; }
+.slider:focus-visible::-webkit-slider-thumb { box-shadow: var(--focus-ring); }
+.slider:focus-visible::-moz-range-thumb { box-shadow: var(--focus-ring); }
+.slider:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+.slider--error::-webkit-slider-thumb { border-color: var(--role-danger); }
+.slider--error::-moz-range-thumb { border-color: var(--role-danger); }
+.slider--error::-moz-range-progress { background: var(--role-danger); }
+.slider--discrete {
+  background-color: var(--bg-interactive);
+  background-image: repeating-linear-gradient(to right, var(--border-strong) 0, var(--border-strong) 2px, transparent 2px, transparent 20px);
+}
+.slider__ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+.slider--sm::-webkit-slider-thumb {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.slider--sm::-moz-range-thumb {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.slider--lg::-webkit-slider-thumb {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+.slider--lg::-moz-range-thumb {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slider::-webkit-slider-thumb { transition: none; }
+}
+@media (forced-colors: active) {
+  .slider::-webkit-slider-thumb { background: ButtonFace; }
+  .slider:disabled { opacity: 1; }
+}

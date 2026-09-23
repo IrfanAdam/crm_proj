@@ -1,9 +1,87 @@
-.check{display:inline-flex;align-items:center;gap:var(--spacing-2);cursor:pointer;user-select:none;font-size:var(--font-size-sm);color:var(--text-primary)}
-.check input{position:absolute;opacity:0;width:0;height:0}
-.check__box{width:20px;height:20px;border:1px solid var(--border-thin);border-radius:var(--radius-sm);background:var(--bg-surface);display:inline-flex;align-items:center;justify-content:center;color:var(--primitive-gray-white);transition:var(--transition-fast);flex:0 0 20px}
-.check input:checked + .check__box{background:var(--primitive-sapphire-ui-500);border-color:var(--primitive-sapphire-ui-500)}
-.check input:disabled + .check__box{opacity:.5}
-.check input:focus-visible + .check__box{outline:2px solid var(--primitive-sapphire-ui-400);outline-offset:2px}
-.check__icon{width:12px;height:12px;opacity:0;transform:scale(.8);transition:var(--transition-fast)}
-.check input:checked + .check__box .check__icon{opacity:1;transform:scale(1)}
-@media (prefers-reduced-motion: reduce){ .check__box,.check__icon{transition:none} }
+/* Checkbox — multi-select choice control (Material 3 + Carbon rules). */
+/* Tokens only: every paint, spacing, radius, and motion value is var(--*). */
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-height: 44px;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+.check input {
+  position: absolute;
+  opacity: 0;
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+  margin: 0;
+}
+.check__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--primitive-gray-white);
+  transition: var(--transition-fast);
+  forced-color-adjust: auto;
+}
+.check:hover input:not(:disabled) + .check__box {
+  border-color: var(--role-action-strong);
+  background: var(--bg-interactive-hover);
+}
+.check input:checked + .check__box {
+  background: var(--role-action);
+  border-color: var(--role-action);
+}
+.check input:indeterminate + .check__box {
+  background: var(--role-action);
+  border-color: var(--role-action);
+}
+.check input:active + .check__box { background: var(--bg-interactive-active); }
+.check input:checked:active + .check__box { background: var(--role-action-strong); }
+.check input:focus-visible + .check__box { box-shadow: var(--focus-ring); }
+.check input:disabled ~ .check__label { color: var(--text-muted); }
+.check input:disabled + .check__box { opacity: var(--opacity-disabled); }
+.check--disabled { cursor: not-allowed; }
+.check--error .check__box { border-color: var(--role-danger); }
+.check--error .check__label { color: var(--role-danger-strong); }
+.check--error input:checked + .check__box {
+  background: var(--role-danger);
+  border-color: var(--role-danger);
+}
+.check__icon {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: var(--transition-fast);
+}
+.check input:checked + .check__box .check__icon {
+  opacity: 1;
+  transform: scale(1);
+}
+.check input:indeterminate + .check__box .check__icon {
+  opacity: 1;
+  transform: scale(1);
+}
+.check--sm .check__box {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.check--lg .check__box {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .check__box, .check__icon { transition: none; }
+}
+@media (forced-colors: active) {
+  .check input:checked + .check__box { background: Highlight; }
+  .check input:disabled + .check__box { opacity: 1; }
+}

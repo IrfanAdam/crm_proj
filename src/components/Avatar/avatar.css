@@ -1,11 +1,98 @@
-.avatar{width:32px;height:32px;border-radius:var(--radius-full);background:var(--bg-interactive);color:var(--text-primary);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-sans);font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);overflow:hidden;flex:0 0 auto;border:1px solid var(--border-thin);object-fit:cover}
-.avatar--sm{width:24px;height:24px;font-size:var(--font-size-xs)}
-.avatar--md{width:32px;height:32px}
-.avatar--lg{width:48px;height:48px;font-size:var(--font-size-xl)}
-.avatar--xl{width:64px;height:64px;font-size:var(--font-size-2xl)}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.avatar-stack{display:flex;align-items:center}
-.avatar-stack .avatar{margin-left:calc(var(--spacing-2) * -1);border:var(--border-width-medium) solid var(--bg-surface)}
-.avatar-stack .avatar:first-child{margin-left:0}
-.avatar--online{position:relative}
-.avatar--online::after{content:"";position:absolute;right:0;bottom:0;width:var(--spacing-2);height:var(--spacing-2);background:var(--primitive-green-300);border:var(--border-width-medium) solid var(--bg-surface);border-radius:var(--radius-full)}
+/* Avatar — round person mark: initials fallback or photo, stack + presence */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  overflow: hidden;
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-full);
+  background: var(--bg-interactive);
+  color: var(--text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+.avatar--xs {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  font-size: var(--type-micro);
+}
+.avatar--sm {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  font-size: var(--font-size-xs);
+}
+.avatar--md {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  font-size: var(--font-size-sm);
+}
+.avatar--lg {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  font-size: var(--font-size-xl);
+}
+.avatar--xl {
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  font-size: var(--font-size-2xl);
+}
+.avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.avatar-stack {
+  display: flex;
+  align-items: center;
+}
+.avatar-stack .avatar {
+  margin-left: calc(var(--spacing-2) * -1);
+  border: var(--border-width-medium) solid var(--bg-surface);
+}
+.avatar-stack .avatar:first-child {
+  margin-left: 0;
+}
+.avatar--online {
+  position: relative;
+}
+.avatar--offline {
+  position: relative;
+}
+.avatar--online::after,
+.avatar--offline::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border: var(--border-width-medium) solid var(--bg-surface);
+  border-radius: var(--radius-full);
+}
+.avatar--online::after {
+  background: var(--primitive-green-300);
+}
+.avatar--offline::after {
+  background: var(--text-dim);
+}
+.avatar--clickable {
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.avatar--clickable:hover {
+  border-color: var(--border-accent);
+}
+.avatar:focus-visible {
+  outline: var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
+  outline-offset: var(--border-width-medium);
+}
+.avatar:disabled,
+.avatar--disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}

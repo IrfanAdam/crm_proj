@@ -1,6 +1,65 @@
-.select{position:relative}
-.select__input{width:100%;height:44px;padding:0 36px 0 var(--spacing-3);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-md);font-size:var(--font-size-sm);color:var(--text-primary);-webkit-appearance:none;appearance:none;cursor:pointer;transition:var(--transition-fast)}
-.select__input:focus{outline:none;border-color:var(--primitive-sapphire-ui-400);box-shadow:0 0 0 3px var(--primitive-sapphire-ui-100)}
-.select__input:disabled{opacity:.5;cursor:not-allowed}
-.select__chevron{position:absolute;right:var(--spacing-3);top:50%;transform:translateY(-50%);pointer-events:none;color:var(--text-muted);width:16px;height:16px}
-.select--error .select__input{border-color:var(--primitive-red-400)}
+/* Select — native select · sm/md/lg · filled · error/success · chevron icon. */
+.select {
+  position: relative;
+  display: flex;
+  align-items: center; }
+.select__input {
+  width: 100%;
+  height: 44px;
+  padding: 0 calc(var(--spacing-3) + var(--icon-size-sm) + var(--spacing-2)) 0 var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  appearance: none;
+  transition: var(--transition-fast); }
+.select__input--sm {
+  height: var(--spacing-8);
+  font-size: var(--font-size-xs); }
+.select__input--lg {
+  height: var(--spacing-12);
+  font-size: var(--font-size-md); }
+.select__input--filled {
+  background-color: var(--bg-interactive);
+  border-color: var(--color-transparent); }
+.select__input:hover {
+  border-color: var(--border-medium); }
+.select__input:focus {
+  outline-style: none;
+  border-color: var(--primitive-sapphire-ui-400);
+  box-shadow: var(--focus-ring); }
+.select__input:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed; }
+.select__input--error {
+  border-color: var(--role-danger); }
+.select__input--error:focus {
+  outline: var(--border-width-medium) solid var(--role-danger);
+  outline-offset: var(--border-width-medium); }
+.select__input--success {
+  border-color: var(--role-success); }
+.select__chevron {
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-3);
+  transform: translateY(-50%);
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: var(--transition-fast); }
+.select:focus-within .select__chevron {
+  color: var(--role-action);
+  transform: translateY(-50%) rotate(180deg); }
+.select option {
+  background-color: var(--bg-surface);
+  color: var(--text-primary); }
+@media (forced-colors: active) {
+  .select__input:focus {
+    outline: var(--border-width-medium) solid CanvasText; } }
+@media (prefers-reduced-motion: reduce) {
+  .select__input,
+  .select__chevron {
+    transition: none; } }

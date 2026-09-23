@@ -1,10 +1,99 @@
-.chip{display:inline-flex;align-items:center;gap:var(--spacing-2);padding:var(--spacing-2) var(--spacing-3);background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-full);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--text-primary);cursor:pointer;transition:var(--transition-fast);user-select:none}
-.chip:hover{background:var(--bg-interactive-hover)}
-.chip:active{background:var(--bg-interactive-active)}
-.chip--active{background:var(--primitive-gray-black);color:var(--primitive-gray-white);border-color:var(--primitive-gray-black)}
-.chip--active:hover{background:var(--primitive-neutral-dark-600)}
-.chip:disabled{opacity:var(--opacity-disabled);cursor:not-allowed}
-.chip:focus-visible{outline:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);outline-offset:2px}
-.chip__count{font-size:var(--font-size-xs);opacity:var(--opacity-subtle)}
-.chip--hot{border-width:var(--border-width-medium);border-color:var(--border-accent);font-weight:var(--font-weight-bold)}
-.chip--faces{padding:0 var(--spacing-3) 0 var(--spacing-2);height:44px}
+/* ADAM/DS — src/components/Chip/chip.css · chip+badge rebuild */
+.chip {
+  display:inline-flex;
+  align-items:center;
+  gap:var(--spacing-2);
+  height:32px;
+  padding:0 var(--spacing-3);
+  background:var(--bg-surface);
+  border:var(--border-width-thin) solid var(--border-thin);
+  border-radius:var(--radius-full);
+  font-size:var(--font-size-sm);
+  font-weight:var(--font-weight-medium);
+  line-height:1;
+  color:var(--text-primary);
+  cursor:pointer;
+  transition:var(--transition-fast);
+  white-space:nowrap;
+}
+.chip--sm {
+  height:24px;
+  padding:0 var(--spacing-2);
+  font-size:var(--font-size-xs);
+}
+.chip--input {
+  background:var(--bg-interactive);
+  padding-right:var(--spacing-2);
+}
+.chip--suggestion {
+  background:var(--bg-interactive);
+  border-color:var(--color-transparent);
+  color:var(--text-secondary);
+}
+.chip--selected,
+.chip--active {
+  background:var(--primitive-gray-black);
+  border-color:var(--primitive-gray-black);
+  color:var(--primitive-gray-white);
+}
+.chip:hover {
+  background:var(--bg-interactive-hover);
+}
+.chip--selected:hover,
+.chip--active:hover {
+  background:var(--primitive-neutral-dark-600);
+}
+.chip:active {
+  background:var(--bg-interactive-active);
+}
+.chip:focus-visible {
+  outline:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
+  outline-offset:2px;
+}
+.chip:disabled,
+.chip[aria-disabled="true"] {
+  opacity:var(--opacity-disabled);
+  cursor:not-allowed;
+  pointer-events:none;
+}
+.chip--dragging {
+  background:var(--bg-surface-elevated);
+  box-shadow:var(--shadow-md);
+  cursor:grabbing;
+}
+.chip__count {
+  font-size:var(--font-size-xs);
+  opacity:var(--opacity-subtle);
+}
+.chip__close {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:var(--icon-size-sm);
+  height:var(--icon-size-sm);
+  background:var(--color-transparent);
+  border:0;
+  border-radius:var(--radius-full);
+  color:inherit;
+}
+.chip--hot {
+  border-width:var(--border-width-medium);
+  border-color:var(--border-accent);
+  font-weight:var(--font-weight-bold);
+}
+.chip--faces {
+  height:44px;
+  padding:0 var(--spacing-3) 0 var(--spacing-2);
+}
+@media (forced-colors:active) {
+  .chip--selected,
+  .chip--active {
+    background:CanvasText;
+    color:Canvas;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .chip {
+    transition:none;
+  }
+}

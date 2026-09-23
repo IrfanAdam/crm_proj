@@ -1,5 +1,48 @@
-.goal-bar{height:28px;background:var(--primitive-amethyst-100);border-radius:var(--radius-full);overflow:hidden;position:relative;display:flex;align-items:center}
-.goal-bar__fill{height:100%;background:var(--primitive-amethyst-400);display:flex;align-items:center;justify-content:space-between;padding:0 var(--spacing-3);color:var(--primitive-gray-white);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);transition:width var(--transition-spring)}
-.goal-bar--gem .goal-bar__fill{background:var(--primitive-amethyst-700)}
-.goal-bar__label,.goal-bar__value{position:relative;z-index:1}
-.goal-bar--gem .goal-bar__value::after{content:" ◇";opacity:.9}
+/* GoalBar — temporal goal fill; gem variant quarantined to ceremony. Spec: prototype/gallery/cards.md. */
+.goal-bar {
+  height: 28px;
+  background: var(--primitive-amethyst-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.goal-bar--sm {
+  height: 20px;
+}
+.goal-bar--lg {
+  height: 36px;
+}
+.goal-bar__fill {
+  height: 100%;
+  background: var(--primitive-amethyst-400);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-3);
+  color: var(--primitive-gray-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  transition: width var(--transition-spring);
+}
+.goal-bar--gem .goal-bar__fill {
+  background: var(--primitive-amethyst-700);
+}
+.goal-bar__label {
+  position: relative;
+  z-index: 1;
+}
+.goal-bar__value {
+  position: relative;
+  z-index: 1;
+}
+.goal-bar--gem .goal-bar__value::after {
+  content: " ◇";
+  opacity: var(--opacity-subtle);
+}
+@media (prefers-reduced-motion: reduce) {
+  .goal-bar__fill {
+    transition: none;
+  }
+}

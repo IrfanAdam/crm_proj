@@ -1,4 +1,30 @@
-.sparkline{display:flex;align-items:end;gap:3px;height:40px}
-.sparkline__bar{flex:1;background:var(--primitive-amethyst-300);border-radius:2px 2px 0 0;min-width:var(--spacing-1);transition:height var(--transition-fast)}
-.sparkline__bar--accent{background:var(--primitive-amethyst-500)}
-.sparkline__bar--gem{background:var(--primitive-amethyst-700)}
+/* Sparkline — gesture of momentum: gem-hue bars only, never chrome. */
+/* Anatomy: flex bar row · base bars (amethyst-300) · --accent (500) · --gem (700). */
+/* Variants: .sparkline--sm / .sparkline--lg sizes · --stroke outline-bar style. */
+/* States: height animates (transition.fast); static otherwise. */
+/* Tokens: amethyst 300/500/700 · border-width-medium stroke · spacing-1 gap · radius-xs caps. */
+/* Gap/caps scaled to tokens (3px→spacing-1, 2px→radius-xs); gem hues quarantined to viz. */
+/* DO mark the peak; DON'T axis-label (use a chart); DON'T gem-hue chrome fills. */
+/* A11y: decorative bars aria-hidden + data fallback; semantic needs role=img + label. */
+.sparkline{
+display: flex;
+align-items: flex-end;
+gap: var(--spacing-1);
+height: 40px;
+}
+.sparkline--sm{height: 24px;}
+.sparkline--lg{height: 56px;}
+.sparkline__bar{
+flex: 1;
+min-width: var(--spacing-1);
+background: var(--primitive-amethyst-300);
+border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+transition: height var(--transition-fast);
+}
+.sparkline__bar--accent{background: var(--primitive-amethyst-500);}
+.sparkline__bar--gem{background: var(--primitive-amethyst-700);}
+.sparkline--stroke .sparkline__bar{
+background: transparent;
+border: var(--border-width-medium) solid var(--primitive-amethyst-400);
+border-bottom: none;
+}

@@ -1,37 +1,95 @@
-/* TabBar — liquid glass · icon-only (Phosphor) · DS token only — neutral glass with real frost */
-.tabbar{
-  display:flex;align-items:center;justify-content:space-around;
-  height:60px;padding:0 var(--spacing-2);gap:var(--spacing-1);
-  background:color-mix(in srgb,var(--bg-surface) 38%,transparent);
-  backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  border:1px solid color-mix(in srgb, white 24%, transparent);
-  border-radius:var(--radius-2xl);
-  box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42); /* lint-allow: glass shadow — uses semantic shadow tokens but inset white is chrome */
-  overflow:hidden;
+/* TabBar — icon-only mobile dock · signal-on-selected · NOTE: 3-tab supersession — dock replaces Tabs at ≤3 tabs on mobile */
+.tabbar {
+display: flex;
+align-items: center;
+justify-content: space-around;
+height: calc(var(--spacing-4) + var(--spacing-6) + var(--icon-size-md));
+padding: 0 var(--spacing-2);
+gap: var(--spacing-1);
+overflow: hidden;
+background: var(--bg-surface-glass);
+backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+border: var(--border-width-thin) solid var(--border-default);
+border-radius: var(--radius-2xl);
+box-shadow: var(--shadow-md);
 }
-/* track holds capsule + nav — matches dock-lens.css proportions */
-.tabbar__track{position:relative;flex:1;display:flex;align-items:center;touch-action:none;cursor:grab}
-.tabbar__nav{display:flex;flex:1;align-items:center;justify-content:space-around;position:relative;z-index:1}
-.tabbar__item{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  background:transparent;border:none;color:var(--primitive-neutral-dark-600);
-  cursor:pointer;padding:0;position:relative;
-  height:44px;min-width:44px;
-  border-radius:var(--radius-lg);
-  transition:color var(--transition-fast);
+.tabbar__nav {
+display: flex;
+flex: 1;
+align-items: center;
+justify-content: space-around;
 }
-.tabbar__item .icon{width:22px;height:22px}
-.tabbar__item--active{color:var(--signal)}
-.tabbar__item[aria-current="page"]{color:var(--signal)}
-.tabbar__item[data-hot]{color:var(--signal)}
-.tabbar__dot{
-  position:absolute;top:6px;width:6px;height:6px;
-  background:var(--signal);border-radius:var(--radius-full);display:none
+.tabbar__item {
+position: relative;
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+min-width: var(--spacing-10);
+min-height: var(--spacing-10);
+padding: 0;
+background: transparent;
+border: none;
+border-radius: var(--radius-lg);
+color: var(--text-muted);
+cursor: pointer;
+transition: color var(--motion-duration-sm) var(--motion-easing-standard);
 }
-.tabbar__item--active .tabbar__dot,
-.tabbar__item[aria-current="page"] .tabbar__dot{display:block}
-.tabbar__item:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-@media (forced-colors:active){
-  .tabbar{background:Canvas;border:1px solid CanvasText;backdrop-filter:none}
+.tabbar__item .icon {
+width: var(--icon-size-md);
+height: var(--icon-size-md);
+}
+.tabbar__item:hover {
+color: var(--text-primary);
+}
+:is(.tabbar__item--active, .tabbar__item[aria-current="page"]) {
+color: var(--role-action);
+}
+.tabbar__signal {
+position: absolute;
+top: var(--spacing-1);
+left: 50%;
+display: none;
+width: var(--spacing-1);
+height: var(--spacing-1);
+background: var(--role-action);
+border-radius: var(--radius-full);
+transform: translateX(-50%);
+}
+:is(.tabbar__item--active, .tabbar__item[aria-current="page"]) .tabbar__signal {
+display: block;
+}
+.tabbar__badge {
+position: absolute;
+top: var(--spacing-1);
+left: calc(50% + var(--spacing-1));
+display: flex;
+align-items: center;
+justify-content: center;
+min-width: var(--icon-size-sm);
+height: var(--icon-size-sm);
+padding: 0 var(--spacing-1);
+background: var(--role-score);
+border-radius: var(--radius-full);
+font-size: var(--font-size-xs);
+color: var(--role-score-ink);
+}
+.tabbar__item:disabled {
+opacity: var(--opacity-disabled);
+cursor: not-allowed;
+}
+.tabbar__item:focus-visible {
+outline: none;
+box-shadow: var(--focus-ring);
+}
+@media (forced-colors: active) {
+.tabbar {
+background: Canvas;
+border-color: CanvasText;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+.tabbar__item {
+transition: none;
+}
 }

@@ -1,5 +1,73 @@
-.badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 var(--spacing-2);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);border:var(--border-width-thin) solid var(--primitive-sapphire-ui-200);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);line-height:1}
-.badge--neutral{background:var(--bg-interactive);color:var(--text-secondary);border-color:var(--border-thin)}
-.badge--success{background:var(--primitive-green-100);color:var(--primitive-green-700);border-color:var(--primitive-green-200)}
-.badge--warning{background:var(--primitive-orange-100);color:var(--primitive-orange-700);border-color:var(--primitive-orange-200)}
-.badge--danger{background:var(--primitive-red-100);color:var(--primitive-red-700);border-color:var(--primitive-red-200)}
+/* ADAM/DS — src/components/Badge/badge.css · chip+badge rebuild */
+.badge {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:20px;
+  height:20px;
+  padding:0 var(--spacing-2);
+  background:var(--primitive-sapphire-ui-100);
+  border:var(--border-width-thin) solid var(--primitive-sapphire-ui-200);
+  border-radius:var(--radius-full);
+  font-size:var(--font-size-xs);
+  font-weight:var(--font-weight-bold);
+  line-height:1;
+  color:var(--primitive-sapphire-ui-700);
+  white-space:nowrap;
+}
+.badge--sm {
+  min-width:16px;
+  height:16px;
+  padding:0 var(--spacing-1);
+}
+.badge--dot {
+  min-width:8px;
+  width:8px;
+  height:8px;
+  padding:0;
+}
+.badge--neutral {
+  background:var(--bg-interactive);
+  border-color:var(--border-thin);
+  color:var(--text-secondary);
+}
+.badge--success {
+  background:var(--primitive-green-100);
+  border-color:var(--primitive-green-200);
+  color:var(--primitive-green-700);
+}
+.badge--warning {
+  background:var(--primitive-orange-100);
+  border-color:var(--primitive-orange-200);
+  color:var(--primitive-orange-700);
+}
+.badge--danger {
+  background:var(--primitive-red-100);
+  border-color:var(--primitive-red-200);
+  color:var(--primitive-red-700);
+}
+.badge--max {
+  font-variant-numeric:tabular-nums;
+}
+.badge-wrap {
+  position:relative;
+  display:inline-flex;
+}
+.badge--overlap {
+  position:absolute;
+  top:0;
+  right:0;
+  transform:translate(50%,-50%);
+}
+@media (forced-colors:active) {
+  .badge {
+    background:Canvas;
+    border-color:CanvasText;
+    color:CanvasText;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .badge {
+    transition:none;
+  }
+}

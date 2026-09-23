@@ -1,0 +1,71 @@
+/* Overlay dialog — modal sizes and header/body/footer anatomy. */
+.overlay__content {
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-index-modal);
+  width: 100%;
+  max-width: calc(var(--spacing-16) * 7);
+  max-height: 85vh;
+  overflow: auto;
+  padding: var(--spacing-6);
+}
+.overlay__content--sm {
+  max-width: calc(var(--spacing-16) * 5);
+}
+.overlay__content--md {
+  max-width: calc(var(--spacing-16) * 7);
+}
+.overlay__content--lg {
+  max-width: calc(var(--spacing-16) * 10);
+}
+.overlay__content--full {
+  max-width: calc(100% - var(--spacing-8));
+}
+.overlay__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+.overlay__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+.overlay__desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+.overlay__body {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+}
+.overlay__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-6);
+}
+.overlay__close {
+  width: var(--icon-size-xl);
+  height: var(--icon-size-xl);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.overlay__close:hover {
+  background: var(--bg-interactive);
+}
+@media (forced-colors: active) {
+  .overlay__content {
+    border-color: CanvasText;
+  }
+}

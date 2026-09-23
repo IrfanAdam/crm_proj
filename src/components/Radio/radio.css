@@ -1,8 +1,82 @@
-.radio{display:inline-flex;align-items:center;gap:var(--spacing-2);cursor:pointer;font-size:var(--font-size-sm);color:var(--text-primary)}
-.radio input{position:absolute;opacity:0}
-.radio__dot{width:20px;height:20px;border:1px solid var(--border-thin);border-radius:var(--radius-full);background:var(--bg-surface);display:inline-flex;align-items:center;justify-content:center;transition:var(--transition-fast);flex:0 0 20px}
-.radio__dot::after{content:"";width:8px;height:8px;background:var(--primitive-sapphire-ui-500);border-radius:var(--radius-full);opacity:0;transform:scale(.6);transition:var(--transition-fast)}
-.radio input:checked + .radio__dot{border-color:var(--primitive-sapphire-ui-500)}
-.radio input:checked + .radio__dot::after{opacity:1;transform:scale(1)}
-.radio input:focus-visible + .radio__dot{outline:2px solid var(--primitive-sapphire-ui-400);outline-offset:2px}
-@media (prefers-reduced-motion: reduce){ .radio__dot,.radio__dot::after{transition:none} }
+/* Radio — single-select choice control (Material 3 + Carbon rules). */
+/* Tokens only: every paint, spacing, radius, and motion value is var(--*). */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.radio-group--horizontal {
+  flex-direction: row;
+  gap: var(--spacing-4);
+}
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-height: 44px;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.radio input {
+  position: absolute;
+  opacity: 0;
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+  margin: 0;
+}
+.radio__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-strong);
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
+  forced-color-adjust: auto;
+}
+.radio__dot::after {
+  content: "";
+  width: 50%;
+  height: 50%;
+  background: var(--role-action);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: var(--transition-fast);
+}
+.radio:hover input:not(:disabled) + .radio__dot { border-color: var(--role-action-strong); }
+.radio input:checked + .radio__dot { border-color: var(--role-action); }
+.radio input:active + .radio__dot { background: var(--bg-interactive-active); }
+.radio input:focus-visible + .radio__dot { box-shadow: var(--focus-ring); }
+.radio input:disabled + .radio__dot { opacity: var(--opacity-disabled); }
+.radio input:disabled ~ .radio__label { color: var(--text-muted); }
+.radio--disabled { cursor: not-allowed; }
+.radio--error .radio__dot { border-color: var(--role-danger); }
+.radio--error input:checked + .radio__dot { border-color: var(--role-danger); }
+.radio--error input:checked + .radio__dot::after { background: var(--role-danger); }
+.radio input:checked + .radio__dot::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.radio--sm .radio__dot {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.radio--lg .radio__dot {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .radio__dot, .radio__dot::after { transition: none; }
+}
+@media (forced-colors: active) {
+  .radio input:checked + .radio__dot::after { background: Highlight; }
+  .radio input:disabled + .radio__dot { opacity: 1; }
+}

@@ -1,2 +1,31 @@
-.funnel-glyph{width:56px;height:56px;background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-600);display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-lg);font-weight:var(--font-weight-bold);font-size:var(--font-size-xl)}
-.funnel-glyph--small{width:40px;height:40px;font-size:var(--font-size-md)}
+/* FunnelGlyph — funnel mark, measure-family visual (sapphire, never gem hue). */
+/* Anatomy: rounded tile + glyph mark in bold display type. */
+/* Variants: default 56 hero · .funnel-glyph--small 40 · .funnel-glyph--xs 32 inline. */
+/* States: static; decorative always (aria-hidden), metric values are text. */
+/* Tokens: sapphire-ui 100 tile / 600 ink · radius.lg/md · font-size scale. */
+/* Tile geometry (56/40/32) follows the avatar px-geometry pattern, not spacing. */
+/* DO keep sapphire; DON'T set the glyph in a gem hue or restyle per metric. */
+/* A11y: decorative (aria-hidden); sapphire-600 on sapphire-100 reads ~9 AAA. */
+.funnel-glyph{
+width: 56px;
+height: 56px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: var(--primitive-sapphire-ui-100);
+color: var(--primitive-sapphire-ui-600);
+border-radius: var(--radius-lg);
+font-size: var(--font-size-xl);
+font-weight: var(--font-weight-bold);
+}
+.funnel-glyph--small{
+width: 40px;
+height: 40px;
+font-size: var(--font-size-md);
+}
+.funnel-glyph--xs{
+width: 32px;
+height: 32px;
+font-size: var(--font-size-sm);
+border-radius: var(--radius-md);
+}

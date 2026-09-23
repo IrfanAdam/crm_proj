@@ -1,0 +1,93 @@
+/* ADAM/DS — src/components/Button/button-base.css · foundation */
+.btn {
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:var(--spacing-2);
+font-family:var(--font-family-sans);
+font-size:var(--font-size-sm);
+font-weight:var(--font-weight-semibold);
+line-height:var(--font-leading-tight);
+border-radius:var(--radius-md);
+padding:var(--spacing-0) var(--spacing-4);
+min-height:44px;
+height:44px;
+min-width:var(--spacing-16);
+border:var(--border-width-thin) solid var(--color-transparent);
+cursor:pointer;
+transition:var(--transition-fast);
+user-select:none;
+white-space:nowrap;
+}
+a.btn {
+text-decoration:none;
+}
+.btn--sm {
+height:var(--spacing-8);
+min-height:var(--spacing-8);
+padding:var(--spacing-0) var(--spacing-3);
+font-size:var(--font-size-xs);
+}
+.btn--md {
+height:44px;
+min-height:44px;
+}
+.btn--lg {
+height:var(--spacing-12);
+min-height:var(--spacing-12);
+padding:var(--spacing-0) var(--spacing-6);
+font-size:var(--font-size-md);
+}
+.btn__icon {
+width:var(--icon-size-sm);
+height:var(--icon-size-sm);
+flex:0 0 var(--icon-size-sm);
+}
+.btn__spinner {
+width:var(--icon-size-xs);
+height:var(--icon-size-xs);
+border:var(--border-width-medium) solid currentColor;
+border-top-color:var(--color-transparent);
+border-radius:var(--radius-full);
+animation:btn-spin var(--motion-duration-xl) linear infinite;
+}
+@keyframes btn-spin {
+to {
+transform:rotate(360deg);
+}
+}
+.btn:disabled {
+opacity:var(--opacity-disabled);
+cursor:not-allowed;
+pointer-events:none;
+}
+.btn[aria-disabled="true"] {
+opacity:var(--opacity-disabled);
+cursor:not-allowed;
+}
+.btn:focus-visible {
+box-shadow:var(--focus-ring);
+outline:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
+outline-offset:var(--space-odd-3);
+}
+.btn--loading, .btn[data-loading="1"] {
+pointer-events:none;
+opacity:var(--opacity-subtle);
+cursor:wait;
+}
+@media (prefers-reduced-motion:reduce) {
+.btn {
+transition:none;
+}
+.btn__spinner {
+animation:none;
+}
+}
+@media (forced-colors:active) {
+.btn {
+border-color:ButtonText;
+}
+.btn:focus-visible {
+outline:var(--border-width-medium) solid Highlight;
+}
+}

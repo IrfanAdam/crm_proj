@@ -1,7 +1,80 @@
-.status-pill{display:inline-flex;align-items:center;gap:var(--spacing-1);padding:6px var(--spacing-3);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);line-height:1;text-transform:uppercase;letter-spacing:var(--font-tracking-wide);border:var(--border-width-thin) solid transparent;white-space:nowrap}
-.status-pill--accepted{background:var(--primitive-green-300);color:var(--primitive-ink);border-color:var(--primitive-green-300)}
-.status-pill--progress{background:var(--primitive-sapphire-ui-500);color:var(--primitive-gray-white);border-color:var(--primitive-sapphire-ui-500)}
-.status-pill--review{background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-600);border-color:var(--primitive-sapphire-ui-300)}
-.status-pill--new{background:var(--primitive-neutral-dark-700);color:var(--primitive-gray-white);border-color:var(--primitive-neutral-dark-700)}
-.status-pill--warning{background:var(--primitive-orange-400);color:var(--primitive-ink);border-color:var(--primitive-orange-400)}
-.status-pill--danger{background:var(--primitive-red-400);color:var(--primitive-gray-white);border-color:var(--primitive-red-400)}
+/* StatusPill — stage flag: solid fill + uppercase label, never color-alone */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: 6px var(--spacing-3);
+  border: var(--border-width-thin) solid var(--color-transparent);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--font-tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.status-pill--accepted {
+  background: var(--primitive-green-300);
+  border-color: var(--primitive-green-300);
+  color: var(--primitive-ink);
+}
+.status-pill--progress {
+  background: var(--primitive-sapphire-ui-500);
+  border-color: var(--primitive-sapphire-ui-500);
+  color: var(--primitive-gray-white);
+}
+.status-pill--review {
+  background: var(--primitive-sapphire-ui-100);
+  border-color: var(--primitive-sapphire-ui-300);
+  color: var(--primitive-sapphire-ui-600);
+}
+.status-pill--new {
+  background: var(--primitive-neutral-dark-700);
+  border-color: var(--primitive-neutral-dark-700);
+  color: var(--primitive-gray-white);
+}
+.status-pill--warning {
+  background: var(--primitive-orange-400);
+  border-color: var(--primitive-orange-400);
+  color: var(--primitive-ink);
+}
+.status-pill--danger {
+  background: var(--primitive-red-400);
+  border-color: var(--primitive-red-400);
+  color: var(--primitive-gray-white);
+}
+.status-pill--sm {
+  padding: var(--spacing-1) var(--spacing-2);
+}
+.status-pill--md {
+  padding: 6px var(--spacing-3);
+}
+.status-pill__icon {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+}
+.status-pill__dot {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: var(--radius-full);
+  background: currentColor;
+}
+.status-pill--clickable {
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.status-pill--clickable:hover {
+  opacity: var(--opacity-subtle);
+}
+.status-pill:focus-visible {
+  outline: var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
+  outline-offset: var(--border-width-medium);
+}
+.status-pill:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+.status-pill--disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}

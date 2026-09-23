@@ -1,0 +1,51 @@
+/* Overlay base — scrim, placement, open/closing, reduced-motion, forced-colors. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  background: var(--achievement-overlay-bg);
+  z-index: var(--z-index-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+}
+.overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+.overlay.is-closing {
+  opacity: 0;
+  visibility: hidden;
+}
+.overlay--no-scrim {
+  background: transparent;
+}
+.overlay--persistent {
+  cursor: default;
+}
+.overlay--top {
+  align-items: flex-start;
+}
+.overlay--bottom {
+  align-items: flex-end;
+}
+.overlay :focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    transition: none;
+  }
+  .overlay.is-closing {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .overlay {
+    border: var(--border-width-thin) solid CanvasText;
+  }
+}

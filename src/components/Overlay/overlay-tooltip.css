@@ -1,0 +1,37 @@
+/* Overlay tooltip — pointer-only label, placements, reduced-motion. */
+.tooltip {
+  position: absolute;
+  background: var(--primitive-neutral-dark-700);
+  color: var(--primitive-gray-white);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+  z-index: var(--z-index-modal);
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+.tooltip--visible {
+  opacity: 1;
+}
+.tooltip--wrap {
+  white-space: normal;
+}
+.tooltip[data-placement="top"] {
+  transform: translateY(calc(var(--spacing-1) * -1));
+}
+.tooltip[data-placement="bottom"] {
+  transform: translateY(var(--spacing-1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .tooltip {
+    background: Canvas;
+    color: CanvasText;
+  }
+}
