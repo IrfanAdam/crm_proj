@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T08:28:41.494Z",
+  "generated": "2026-09-23T08:52:55.879Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "1391cf6",
+      "full": "1391cf6ea7e8748a8ff6b92bd80348deb98029a5",
+      "date": "2026-09-23",
+      "subject": "fix(ds): playground families — action to Neutral, citrine to Core, warning to orange",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "3a9e7fe",
       "full": "3a9e7fe83e1a31fd21f07a8e727d87d8bc9556c1",
@@ -1192,7 +1200,9 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/ds/contrast-families.js",
+    "M src/ds/contrast-controls.js",
+    "M src/ds/contrast-playground.js",
+    "M src/ds/contrast-render.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1202,6 +1212,7 @@
     "M src/js/mechanics/render.js",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs"
+    "M tests/atlas-shell.test.mjs",
+    "?? src/ds/contrast-dark.js"
   ]
 }

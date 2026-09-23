@@ -1,7 +1,7 @@
 /* ADAM/DS — src/ds/contrast-controls.js · playground controls + matrix pin */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-2]
 // Exports: none (delegated clicks) · needs contrast-playground.js + overlay.js.
-// — Section — family, sub, theme, swap, copy, pin
+// — Section — family, sub, theme, copy, pin
 document.addEventListener('click', (e) => {
   const fam = e.target.closest('[data-pg-fam]');
   if (fam) {
@@ -26,11 +26,6 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.closest('[data-pg-theme]')) {
     pgDark = !pgDark;
-    pgRender();
-    return;
-  }
-  if (e.target.closest('[data-pg-swap]')) {
-    pgSwap = !pgSwap;
     pgRender();
     return;
   }

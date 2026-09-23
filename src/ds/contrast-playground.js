@@ -1,11 +1,10 @@
 /* ADAM/DS — src/ds/contrast-playground.js · contrast + pairing playground */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-2]
 // Exports: pgRender (auto on ds:doc) · gem/ramp/chrome/pin in contrast-render.js,
-// controls in contrast-controls.js.
+// the night ladder in contrast-dark.js, controls in contrast-controls.js.
 let pgFam = 'neutral';
 let pgSubKey = null;
 let pgDark = false;
-let pgSwap = false;
 let pgSel = 'strong';
 let pgPinPair = null;
 let pgProbe = null;
@@ -38,8 +37,8 @@ const pgPick = (pairs) => {
 const pgSubs = () => PG_FAM[pgFam].subs;
 const pgSub = () => pgSubs().find((s) => s.key === pgSubKey) || pgSubs()[0];
 const pgPair = (tier) => {
-  const w = pgPick(pgSub().tiers[tier]);
-  return pgSwap ? { f: w.b, b: w.f, r: w.r } : w;
+  const list = pgSub().tiers[tier];
+  return pgPick(pgDark ? list.map(pgNightPair) : list);
 };
 const pgWin = () => (pgPinPair ? pgPinPair : pgPair(pgSel));
 // — Section — tier card

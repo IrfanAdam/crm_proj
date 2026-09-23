@@ -46,11 +46,9 @@ const pgChrome = () => {
     }).join('');
   }
   const th = document.querySelector('[data-pg-theme]');
-  if (th) th.textContent = pgDark ? 'Dark' : 'Light';
-  const sw = document.querySelector('[data-pg-swap]');
-  if (sw) {
-    sw.textContent = 'Swap ink';
-    sw.classList.toggle('chip--active', pgSwap);
+  if (th) {
+    th.textContent = pgDark ? 'Dark' : 'Light';
+    th.classList.toggle('chip--active', pgDark);
   }
 };
 // — Section — pinned pair read-out
