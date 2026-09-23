@@ -335,7 +335,7 @@ Sparkline, FunnelGlyph to §3.
 to ceremony variants only.
 **Commit:** `feat(ds): build cards + data on tokens [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-3}]`
 
-### Task 9: Gallery proves batch 1
+### Task 9: Gallery proves batch 1 ✓ done
 **Objective:** Panels are specimens: anatomy labels + token table + do/don't, beside the
 render.
 **Files:**
