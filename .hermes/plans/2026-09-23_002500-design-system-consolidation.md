@@ -567,6 +567,27 @@ clean; the demo is the trigger click.
 **Commit:** `fix(ds): anchored layers demo live, drop in-flow override [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 9ce8dae · Task 12K · phase-4.*
 
+### Task 12L: Overlay specimens — contained stages, product-grade dismissal ✓ done
+**Objective:** The six layers still read as scattered: a fixed scrim covered
+the whole gallery, the drawer/toast anchored to the viewport, the menu shipped
+open, and every dismissal snapped shut because the engine hid the layer
+synchronously. Rebuild the panel as six identical stages — each layer opens
+*inside* its own framed canvas (scrim, drawer, toast and floats scoped to the
+stage), triggers centred on one axis, note + spec under each stage — and give
+the engine a real exit: `is-closing` over the layer's own transition, `hidden`
+once it settles, scrim click, outside-click light dismiss, Esc on the top layer
+only, toast dwell (4s / 8s with action) pausing on hover + focus, `aria-expanded`
+sync, focus returned to the opener. Entrance needed a reflow tick before
+`overlay--open` or the first paint skipped the transition. Drawer gained its
+missing padding and a sticky body/footer behind a hairline.
+**Files:**
+- Modify: `public/gallery-panels/overlays.html` (six stages), `gallery.css` (drop the stale `.specimen .tooltip` in-flow rule), `gallery.html` (link the stage scope), `src/ds/gallery-shell.js` (re-apply the tab after the language fetch so a deep link stops stacking two frames).
+- Create: `src/ds/overlay-demo.css` (stage scope: contained layers, centred triggers, tooltip reveal).
+- Modify: `src/components/Overlay/overlay.js` + new `overlay-behavior.js` / `overlay-exit.js` (engine split for the 100-line law), `overlay-dialog.css` (content rise), `overlay-menu.css` (float fade/scale by placement), `overlay-drawer.css` (padding, sticky body/footer).
+**Verify:** `npm test` + `npm run build` green; headless probes — scrim == stage, scrim click fades out over ~150ms then hides, Esc closes the top layer and returns focus, outside click dismisses floats, toast dwells 8s with an action and pauses on hover, tooltip centred above its button; screenshots at gate.
+**Commit:** `fix(ds): overlay specimens — contained stages, product-grade dismissal [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in d69a054 · Task 12L · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
