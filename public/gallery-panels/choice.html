@@ -1,4 +1,5 @@
 <div class="pad">
+<section class="specimen">
 <h3>Checkbox — unchecked / checked / indeterminate / disabled / error</h3>
 <div class="row">
 <label class="check"><input type="checkbox"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Unchecked</span></label>
@@ -7,11 +8,25 @@
 <label class="check check--disabled"><input type="checkbox" disabled><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Disabled</span></label>
 <label class="check check--error"><input type="checkbox" aria-invalid="true"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Error — pick one</span></label>
 </div>
+<p class="spec-note">Multi-select on 44px label rows — wrap the input in the label, native <code>Space</code> toggles. Indeterminate is partial "select all" only, set in JS. Reject: div-faked boxes, boxes below 16px.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>check--sm / --lg</code></td><td>dense / emphasis</td><td>16px / 24px box, same tick travel</td></tr>
+<tr><td>indeterminate</td><td>partial group</td><td>dash glyph, set in JS</td></tr>
+<tr><td><code>check--error / --disabled</code></td><td>failed / unavailable</td><td>danger border + label / dims, muted label</td></tr>
+</tbody></table>
+<p class="meta">Tokens — face <code>bg.surface</code>, border <code>border.strong</code>, checked <code>role.action</code> (pressed <code>strong</code>), tick white, corner <code>radius.sm</code>, ring <code>focus.ring</code>. Forced-colors maps fill to Highlight.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Checkbox sizes — sm / lg</h3>
 <div class="row">
 <label class="check check--sm"><input type="checkbox" checked><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Small</span></label>
 <label class="check check--lg"><input type="checkbox"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Large</span></label>
 </div>
+<p class="spec-note">Density without losing the target — box shrinks, the 44px label row stays.</p>
+</section>
+<section class="specimen">
 <h3>Radio group — vertical + horizontal</h3>
 <fieldset class="radio-group">
 <legend>Plan (vertical)</legend>
@@ -25,6 +40,12 @@
 <label class="radio"><input type="radio" name="choice-bill-h"><span class="radio__dot"></span><span class="radio__label">Annual</span></label>
 <label class="radio radio--error"><input type="radio" name="choice-bill-h" aria-invalid="true"><span class="radio__dot"></span><span class="radio__label">Custom (error)</span></label>
 </fieldset>
+<p class="spec-note">Exactly one of n — one shared name, one checked, sane default pre-selected; fieldset + legend so the group reads as a group. Checked is ring + dot, never hue alone.</p>
+<details class="spec-more"><summary>Spec · layout + tokens</summary>
+<p class="meta">Layout — vertical default (tight gap); horizontal wrapping row for short options on wide screens. Tokens — 20px dot, accent ring, danger ring on error, shared <code>focus.ring</code>. Never a lone boolean.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Switch — off / on / disabled / sm / with icon</h3>
 <div class="row">
 <label class="switch"><input type="checkbox" role="switch"><span class="switch__track"><span class="switch__thumb"></span></span>Email alerts (off)</label>
@@ -33,12 +54,22 @@
 <label class="switch switch--sm"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"></span></span>Compact</label>
 <label class="switch"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"><svg class="switch__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>With icon</label>
 </div>
+<p class="spec-note">Instant effect on toggle, never submit-gated — effect applies now and reverses inline. Thumb travels on the spring token; icon fades in only when on. Reject: icon-only with no text label.</p>
+<details class="spec-more"><summary>Spec · sizes + tokens</summary>
+<p class="meta">Sizes — 44×26 track, 20px thumb, 18px travel; sm 36×22, 16px thumb. Tokens — track flips <code>role.action</code> when on, <code>radius.full</code>, shared <code>focus.ring</code>; pressed never equals focus.</p>
+</details>
+</section>
+<section class="specimen">
 <h3>Slider — continuous / discrete + ticks / error / sm / lg</h3>
 <label>Volume<input type="range" class="slider" min="0" max="100" value="45" aria-label="Volume"></label>
 <div><input type="range" class="slider slider--discrete" min="1" max="5" step="1" value="3" aria-label="Seats"><div class="slider__ticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
 <label>Budget cap<input type="range" class="slider slider--error" min="0" max="100" value="80" aria-label="Budget cap" aria-invalid="true"></label>
 <label>Fine tune (sm)<input type="range" class="slider slider--sm" min="0" max="100" value="30" aria-label="Fine tune"></label>
 <label>Coarse (lg)<input type="range" class="slider slider--lg" min="0" max="100" value="60" aria-label="Coarse adjust"></label>
-<p class="meta">Shared law: native input stays focusable, visual proxy takes the 2px focus ring · 44px label rows / full-width track · Contract: <a href="prototype/gallery/choice.md">choice.md</a></p>
+<p class="spec-note">Draggable quantity, never a hidden value — pair with a live readout, match step and tick counts. Style both vendor thumbs. Contract: <a href="prototype/gallery/choice.md">choice.md</a></p>
+<details class="spec-more"><summary>Spec · modes + tokens</summary>
+<p class="meta">Modes — continuous default; discrete adds native <code>step</code> + tick strip + labels; sm 16px / lg 24px thumbs. Dragging keeps the ring; error is danger paint plus text, never color alone.</p>
+</details>
+</section>
 <script>document.getElementById('choice-select-all').indeterminate=true</script>
 </div>

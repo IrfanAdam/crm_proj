@@ -519,6 +519,17 @@ meta); 4 spec pads unwired from the frame. Article files stay on disk.
 **Commit:** `feat(ds): contextual specimens, form frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 744386f · Task 12G · phase-4.*
 
+### Task 12H: Contextual specimens — choice frame ✓ done
+**Objective:** Same contextual idiom for Choice: full `checkbox-intro` kept
+above; `choice.html` becomes 5 specimens (checkbox, sizes, radio, switch,
+slider) each with demo + 1-line `spec-note` + condensed `<details>`; 4 spec
+pads unwired. Article files stay on disk.
+**Files:**
+- Modify: `public/gallery-panels/choice.html` (contextual), `gallery.html` (drop 4 spec pads).
+**Verify:** `#choice` renders intro → 5 specimens, zero open-scroll tables; `npm test` + `npm run build` green.
+**Commit:** `feat(ds): contextual specimens, choice frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12H · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
