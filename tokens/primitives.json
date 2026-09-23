@@ -231,6 +231,10 @@
     "medium": "2px",
     "thick": "3px"
   },
+  "primitiveBorderWidth": {
+    "hairline": "1px",
+    "medium": "2px"
+  },
   "zIndex": {
     "base": "0",
     "dropdown": "1000",

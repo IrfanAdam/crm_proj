@@ -1,4 +1,4 @@
-.status-pill{display:inline-flex;align-items:center;gap:var(--spacing-1);padding:6px var(--spacing-3);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);line-height:1;text-transform:uppercase;letter-spacing:.04em;border:1px solid transparent;white-space:nowrap}
+.status-pill{display:inline-flex;align-items:center;gap:var(--spacing-1);padding:6px var(--spacing-3);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);line-height:1;text-transform:uppercase;letter-spacing:var(--font-tracking-wide);border:var(--border-width-thin) solid transparent;white-space:nowrap}
 .status-pill--accepted{background:var(--primitive-green-300);color:var(--primitive-ink);border-color:var(--primitive-green-300)}
 .status-pill--progress{background:var(--primitive-sapphire-ui-500);color:var(--primitive-gray-white);border-color:var(--primitive-sapphire-ui-500)}
 .status-pill--review{background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-600);border-color:var(--primitive-sapphire-ui-300)}

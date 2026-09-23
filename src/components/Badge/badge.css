@@ -1,4 +1,4 @@
-.badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 var(--spacing-2);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);border:1px solid var(--primitive-sapphire-ui-200);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);line-height:1}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 var(--spacing-2);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);border:var(--border-width-thin) solid var(--primitive-sapphire-ui-200);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);line-height:1}
 .badge--neutral{background:var(--bg-interactive);color:var(--text-secondary);border-color:var(--border-thin)}
 .badge--success{background:var(--primitive-green-100);color:var(--primitive-green-700);border-color:var(--primitive-green-200)}
 .badge--warning{background:var(--primitive-orange-100);color:var(--primitive-orange-700);border-color:var(--primitive-orange-200)}

@@ -12,6 +12,7 @@ if(p.type) out+=` ${g('type',p.type)}\n`;
 out+=` ${g('spacing',p.spacing)}\n`;
 out+=` ${g('radius',p.radius)}\n`;
 out+=` ${g('border-width',p.borderWidth)}\n`;
+out+=` ${g('primitive-border-width',p.primitiveBorderWidth)}\n`;
 out+=` ${g('z-index',p.zIndex)}\n`;
 out+=` ${g('icon-size',p.iconSize)}\n`;
 out+=` ${g('opacity',p.opacity)}\n`;
