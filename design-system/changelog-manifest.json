@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T08:52:55.879Z",
+  "generated": "2026-09-23T08:57:20.343Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,6 +13,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "0748a65",
+      "full": "0748a656a54e1c2198666ba580ab925d612bdf86",
+      "date": "2026-09-23",
+      "subject": "fix(ds): playground night ladder — pairing inverts for dark, swap control removed",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "1391cf6",
       "full": "1391cf6ea7e8748a8ff6b92bd80348deb98029a5",
@@ -1200,9 +1208,6 @@
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
-    "M src/ds/contrast-controls.js",
-    "M src/ds/contrast-playground.js",
-    "M src/ds/contrast-render.js",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1212,7 +1217,6 @@
     "M src/js/mechanics/render.js",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs",
-    "?? src/ds/contrast-dark.js"
+    "M tests/atlas-shell.test.mjs"
   ]
 }
