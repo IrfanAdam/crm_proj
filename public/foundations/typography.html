@@ -6,31 +6,32 @@
 <li class="ch-law"><span class="ch-num">01</span><div><p><b>Five steps, fixed jobs</b> — title 32 · card 20 · body 16 · meta 14 · micro 12.</p><p class="ch-reject">Reject: a 24 or an 18 — steps exist so sizes never drift.</p></div></li>
 <li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight pairs with the step</b> — title and card bold, body regular, meta and micro medium.</p><p class="ch-reject">Reject: bold body copy, or a meta line shouting in semibold.</p></div></li>
 <li class="ch-law"><span class="ch-num">03</span><div><p><b>Line height belongs to the step</b> — titles hold at 1.15, prose reads at 1.50, meta at 1.40.</p><p class="ch-reject">Reject: 1.15 on a paragraph — tight prose turns reading into line-hunting.</p></div></li>
-<li class="ch-law"><span class="ch-num">04</span><div><p><b>Quieter means <code>--text-secondary</code></b> — a lower ink step, never a lighter hue and never opacity.</p><p class="ch-reject">Reject: gray-blue captions, faded-sapphire timestamps.</p></div></li>
-<li class="ch-law"><span class="ch-num">05</span><div><p><b>Roles, not sizes, in code</b> — components reference <code>--type-*</code>, never <code>--font-size-*</code> directly.</p><p class="ch-reject">Reject: a card title pointing at <code>--font-size-xl</code> — rename the scale and it orphans.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Quieter means <code>text.secondary</code></b> — a lower ink step, never a lighter hue and never opacity.</p><p class="ch-reject">Reject: gray-blue captions, faded-sapphire timestamps.</p></div></li>
+<li class="ch-law"><span class="ch-num">05</span><div><p><b>Roles, not sizes, in code</b> — components reference <code>type.*</code>, never <code>font.size.*</code> directly.</p><p class="ch-reject">Reject: a card title pointing at <code>font.size.xl</code> — rename the scale and it orphans.</p></div></li>
 </ul>
 <h3>Scale — five steps, fixed jobs</h3>
+<p class="meta">Same names as code, dashed: <code>type.title</code> → <code>--type-title</code>.</p>
 <table class="ch-roles tp-scale"><thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Line height</th><th>Tracking</th><th>Job</th></tr></thead><tbody>
-<tr><td><code>--type-title</code></td><td>32px</td><td>700 <code>bold</code></td><td>1.15 <code>tight</code></td><td>−0.01em <code>tight</code></td><td>screen titles (H1)</td></tr>
-<tr><td><code>--type-card</code></td><td>20px</td><td>700 <code>bold</code></td><td>1.25 <code>snug</code></td><td>none</td><td>card + panel titles</td></tr>
-<tr><td><code>--type-body</code></td><td>16px</td><td>400 <code>regular</code></td><td>1.50 <code>relaxed</code></td><td>none</td><td>prose, values, copy</td></tr>
-<tr><td><code>--type-meta</code></td><td>14px</td><td>500 <code>medium</code></td><td>1.40 <code>normal</code></td><td>none</td><td>captions, statuses</td></tr>
-<tr><td><code>--type-micro</code></td><td>12px</td><td>500 <code>medium</code></td><td>1.40 <code>normal</code></td><td>+0.04em <code>wide</code></td><td>caps labels, eyebrows</td></tr>
+<tr><td><code>type.title</code></td><td>32px</td><td>700 <code>font.weight.bold</code></td><td>1.15 <code>font.leading.tight</code></td><td>−0.01em <code>font.tracking.tight</code></td><td>screen titles (H1)</td></tr>
+<tr><td><code>type.card</code></td><td>20px</td><td>700 <code>font.weight.bold</code></td><td>1.25 <code>font.leading.snug</code></td><td>none</td><td>card + panel titles</td></tr>
+<tr><td><code>type.body</code></td><td>16px</td><td>400 <code>font.weight.regular</code></td><td>1.50 <code>font.leading.relaxed</code></td><td>none</td><td>prose, values, copy</td></tr>
+<tr><td><code>type.meta</code></td><td>14px</td><td>500 <code>font.weight.medium</code></td><td>1.40 <code>font.leading.normal</code></td><td>none</td><td>captions, statuses</td></tr>
+<tr><td><code>type.micro</code></td><td>12px</td><td>500 <code>font.weight.medium</code></td><td>1.40 <code>font.leading.normal</code></td><td>+0.04em <code>font.tracking.wide</code></td><td>caps labels, eyebrows</td></tr>
 </tbody></table>
 <div class="tp-notes">
-<p class="meta"><code>--type-*</code> carries size — title 3xl 2rem · card xl 1.25rem · body md 1rem · meta sm 0.875rem · micro xs 0.75rem</p>
-<p class="meta"><code>--font-leading-*</code> line height — tight 1.15 · snug 1.25 · normal 1.40 · relaxed 1.50</p>
-<p class="meta"><code>--font-weight-*</code> weight — regular 400 · medium 500 · semibold 600 · bold 700</p>
-<p class="meta"><code>--font-tracking-*</code> tracking — tight −0.01em · wide +0.04em</p>
-<p class="meta"><code>--type-compact</code> 16 / 600 — title's morph twin inside Operate, not a sixth reading step</p>
+<p class="meta"><code>type.*</code> carries size — title font.size.3xl 2rem · card font.size.xl 1.25rem · body font.size.md 1rem · meta font.size.sm 0.875rem · micro font.size.xs 0.75rem</p>
+<p class="meta"><code>font.leading.*</code> line height — tight 1.15 · snug 1.25 · normal 1.40 · relaxed 1.50</p>
+<p class="meta"><code>font.weight.*</code> weight — regular 400 · medium 500 · semibold 600 · bold 700</p>
+<p class="meta"><code>font.tracking.*</code> tracking — tight −0.01em · wide +0.04em</p>
+<p class="meta"><code>type.compact</code> 16 / 600 — title's morph twin inside Operate, not a sixth reading step</p>
 </div>
 <h3>Specimens — the five steps, live</h3>
 <div class="tp-specs">
-<div class="tp-spec"><span style="font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--type-title-tracking)">Opportunities</span><code>--type-title · 32px / lh 1.15</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-card);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Acme Corp — Enterprise</span><code>--type-card · 20px / lh 1.25</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-body);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Proposal sent yesterday, worth Rs 3.2L at 73%.</span><code>--type-body · 16px / lh 1.50</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-meta);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Last contact 2d ago · 1.2km</span><code>--type-meta · 14px / lh 1.40</code></div>
-<div class="tp-spec"><span style="font-size:var(--type-micro);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);letter-spacing:var(--font-tracking-wide);color:var(--text-muted)">OPERATE · MONITOR · REPORTS</span><code>--type-micro · 12px / lh 1.40</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-title);font-weight:var(--font-weight-bold);line-height:var(--font-leading-tight);letter-spacing:var(--font-tracking-tight)">Opportunities</span><code>type.title · 32px / lh 1.15</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-card);font-weight:var(--font-weight-bold);line-height:var(--font-leading-snug)">Acme Corp — Enterprise</span><code>type.card · 20px / lh 1.25</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-body);font-weight:var(--font-weight-regular);line-height:var(--font-leading-relaxed)">Proposal sent yesterday, worth Rs 3.2L at 73%.</span><code>type.body · 16px / lh 1.50</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-meta);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);color:var(--text-secondary)">Last contact 2d ago · 1.2km</span><code>type.meta · 14px / lh 1.40</code></div>
+<div class="tp-spec"><span style="font-size:var(--type-micro);font-weight:var(--font-weight-medium);line-height:var(--font-leading-normal);letter-spacing:var(--font-tracking-wide);color:var(--text-muted)">OPERATE · MONITOR · REPORTS</span><code>type.micro · 12px / lh 1.40</code></div>
 </div>
 <h3>Line height — the reading measure</h3>
 <div class="tp-lead">
@@ -39,12 +40,12 @@
 </div>
 <h3>Contrast — ink per step</h3>
 <table class="ch-roles"><thead><tr><th></th><th>Token</th><th>On canvas</th><th>May carry</th></tr></thead><tbody>
-<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>--text-primary</code></td><td>15.24 <b>AAA</b></td><td>title · card · body</td></tr>
-<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>--text-secondary</code></td><td>7.49 <b>AAA</b></td><td>meta · captions</td></tr>
-<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>--text-muted</code></td><td>4.54 <b>AA</b></td><td>micro · hints</td></tr>
-<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>--text-dim</code></td><td>3.10 decorative</td><td>rules, disabled — never a sentence</td></tr>
+<tr><td><i class="sw" style="background:var(--text-primary)"></i></td><td><code>text.primary</code></td><td>15.24 <b>AAA</b></td><td>title · card · body</td></tr>
+<tr><td><i class="sw" style="background:var(--text-secondary)"></i></td><td><code>text.secondary</code></td><td>7.49 <b>AAA</b></td><td>meta · captions</td></tr>
+<tr><td><i class="sw" style="background:var(--text-muted)"></i></td><td><code>text.muted</code></td><td>4.54 <b>AA</b></td><td>micro · hints</td></tr>
+<tr><td><i class="sw" style="background:var(--text-dim)"></i></td><td><code>text.dim</code></td><td>3.10 decorative</td><td>rules, disabled — never a sentence</td></tr>
 </tbody></table>
-<p class="meta">Ratios measured on the canvas (<code>--bg-primary</code>); paper lifts every value. Stepping down this ladder is how type quiets.</p>
+<p class="meta">Ratios measured on the canvas (<code>bg.primary</code>); paper lifts every value. Stepping down this ladder is how type quiets.</p>
 <h3>Snippet — role + weight + line height</h3>
 <code class="tp-code">h1 { font-size:var(--type-title); font-weight:var(--font-weight-bold); line-height:var(--font-leading-tight) }
 p  { font-size:var(--type-body);  font-weight:var(--font-weight-regular); line-height:var(--font-leading-relaxed) }</code>

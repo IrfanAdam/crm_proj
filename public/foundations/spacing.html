@@ -3,25 +3,26 @@
 <p class="ch-lede meta">Spacing is the quiet law: every pad, gap and section is a multiple of 4. Cards breathe at 16, sections break at 24 and 32. When two elements feel "slightly off", it is always the grid — never taste.</p>
 <ul class="ch-laws">
 <li class="ch-law"><span class="ch-num">01</span><div><p><b>Multiples of 4, no exceptions</b> — 4, 8, 12, 16, 24, 32, 48, 64.</p><p class="ch-reject">Reject: a 10px gap, a 20px pad — if it is not on the grid, it is a mistake.</p></div></li>
-<li class="ch-law"><span class="ch-num">02</span><div><p><b>Card padding is 16</b> — <code>--spacing-4</code> inside every card, every time.</p><p class="ch-reject">Reject: a 12px card that "felt tighter" — tightness comes from the grid, not around it.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Card padding is 16</b> — <code>spacing.4</code> inside every card, every time.</p><p class="ch-reject">Reject: a 12px card that "felt tighter" — tightness comes from the grid, not around it.</p></div></li>
 <li class="ch-law"><span class="ch-num">03</span><div><p><b>Sections break at 24 / 32</b> — rhythm the eye can predict.</p><p class="ch-reject">Reject: three different section gaps on one screen.</p></div></li>
-<li class="ch-law"><span class="ch-num">04</span><div><p><b>Tokens, not numbers, in code</b> — <code>--spacing-*</code> everywhere.</p><p class="ch-reject">Reject: <code>padding:16px</code> — one rescale and every bare number lies.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Tokens, not numbers, in code</b> — <code>spacing.*</code> everywhere.</p><p class="ch-reject">Reject: <code>padding:16px</code> — one rescale and every bare number lies.</p></div></li>
 </ul>
 <h3>Token table</h3>
+<p class="meta">Same names as code, dashed: <code>spacing.4</code> → <code>--spacing-4</code>.</p>
 <table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
-<tr><td><code>--spacing-1</code></td><td>4</td><td>hairline gaps, dots</td></tr>
-<tr><td><code>--spacing-2</code></td><td>8</td><td>chip gaps, tight rows</td></tr>
-<tr><td><code>--spacing-3</code></td><td>12</td><td>compact pads</td></tr>
-<tr><td><code>--spacing-4</code></td><td>16</td><td>card padding — the default</td></tr>
-<tr><td><code>--spacing-6</code></td><td>24</td><td>section breaks</td></tr>
-<tr><td><code>--spacing-8</code></td><td>32</td><td>large sections</td></tr>
-<tr><td><code>--spacing-12</code></td><td>48</td><td>screen margins</td></tr>
-<tr><td><code>--spacing-16</code></td><td>64</td><td>hero spacing</td></tr>
+<tr><td><code>spacing.1</code></td><td>4px</td><td>hairline gaps, dots</td></tr>
+<tr><td><code>spacing.2</code></td><td>8px</td><td>chip gaps, tight rows</td></tr>
+<tr><td><code>spacing.3</code></td><td>12px</td><td>compact pads</td></tr>
+<tr><td><code>spacing.4</code></td><td>16px</td><td>card padding — the default</td></tr>
+<tr><td><code>spacing.6</code></td><td>24px</td><td>section breaks</td></tr>
+<tr><td><code>spacing.8</code></td><td>32px</td><td>large sections</td></tr>
+<tr><td><code>spacing.12</code></td><td>48px</td><td>screen margins</td></tr>
+<tr><td><code>spacing.16</code></td><td>64px</td><td>hero spacing</td></tr>
 </tbody></table>
 <h3>Specimens — the grid, drawn</h3>
 <div class="row" style="align-items:end;margin-top:4px"><span style="width:var(--spacing-1);height:var(--spacing-1);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">4</span><span style="width:var(--spacing-2);height:var(--spacing-2);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">8</span><span style="width:var(--spacing-3);height:var(--spacing-3);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">12</span><span style="width:var(--spacing-4);height:var(--spacing-4);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">16</span><span style="width:var(--spacing-6);height:var(--spacing-6);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">24</span><span style="width:var(--spacing-8);height:var(--spacing-8);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">32</span><span style="width:var(--spacing-12);height:var(--spacing-12);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">48</span><span style="width:var(--spacing-16);height:var(--spacing-16);background:var(--primitive-sapphire-ui-500);border-radius:2px"></span><span class="meta">64</span></div>
 <h3>Contrast — the grid is structural</h3>
-<p class="meta">Sapphire swatches on white 5.91 AA — the specimens above are drawn in <code>--role-action</code> so the grid itself stays legible.</p>
+<p class="meta">Sapphire swatches on white 5.91 AA — the specimens above are drawn in <code>role.action</code> so the grid itself stays legible.</p>
 <h3>Snippet</h3>
 <p class="meta"><code>padding:var(--spacing-4);gap:var(--spacing-2)</code></p>
 <h3>Related</h3>

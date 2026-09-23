@@ -2,23 +2,24 @@
 <h2 class="ch-hero">Hairlines carry the UI. Shadow is for depth.</h2>
 <p class="ch-lede meta">Cards float on white by hairline, not by shadow — restraint is the brand. Shadow is spent only where depth means something: the funnel you can tilt, the gem you just earned. If everything casts a shadow, nothing is elevated.</p>
 <ul class="ch-laws">
-<li class="ch-law"><span class="ch-num">01</span><div><p><b>Cards use hairlines, never shadow</b> — <code>--border-thin</code> on white separates every card.</p><p class="ch-reject">Reject: a drop shadow under an opportunity card — decoration posing as structure.</p></div></li>
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Cards use hairlines, never shadow</b> — <code>border.subtle</code> on white separates every card.</p><p class="ch-reject">Reject: a drop shadow under an opportunity card — decoration posing as structure.</p></div></li>
 <li class="ch-law"><span class="ch-num">02</span><div><p><b>Shadow marks visualization depth</b> — funnel tilt, gem capsules, overlays.</p><p class="ch-reject">Reject: shadow on a static list row — there is no depth to show.</p></div></li>
 <li class="ch-law"><span class="ch-num">03</span><div><p><b>Three steps only</b> — sm for lift, md for float, lg for ceremony; mark for dark-on-dark.</p><p class="ch-reject">Reject: a custom blur radius — depth is a scale, not a slider.</p></div></li>
 <li class="ch-law"><span class="ch-num">04</span><div><p><b>Dark theme deepens, never inverts</b> — black-based shadows at higher alpha.</p><p class="ch-reject">Reject: reusing a light shadow on dark surfaces — it vanishes.</p></div></li>
 </ul>
 <h3>Token table</h3>
+<p class="meta">Same names as code, dashed: <code>shadow.md</code> → <code>--shadow-md</code>.</p>
 <table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
-<tr><td><code>--shadow-sm</code></td><td>ink 4% · 1px / 2px</td><td>lifted controls</td></tr>
-<tr><td><code>--shadow-md</code></td><td>ink 6% · 4px / 12px</td><td>floating panels</td></tr>
-<tr><td><code>--shadow-lg</code></td><td>ink 8% · 12px / 28px</td><td>ceremony — gems, overlays</td></tr>
-<tr><td><code>--shadow-mark</code></td><td>ink 45% · 1px / 3px</td><td>marks on dark surfaces</td></tr>
+<tr><td><code>shadow.sm</code></td><td>ink 4% · 1px / 2px</td><td>lifted controls</td></tr>
+<tr><td><code>shadow.md</code></td><td>ink 6% · 4px / 12px</td><td>floating panels</td></tr>
+<tr><td><code>shadow.lg</code></td><td>ink 8% · 12px / 28px</td><td>ceremony — gems, overlays</td></tr>
+<tr><td><code>shadow.mark</code></td><td>ink 45% · 1px / 3px</td><td>marks on dark surfaces</td></tr>
 </tbody></table>
 <h3>Specimens — hairline vs depth</h3>
-<div class="row" style="margin-top:4px"><span style="width:120px;height:72px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">hairline card</span><span style="width:100px;height:64px;background:var(--bg-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">sm</span><span style="width:100px;height:64px;background:var(--bg-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-md);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">md</span><span style="width:100px;height:64px;background:var(--bg-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">lg</span></div>
+<div class="row" style="margin-top:4px"><span style="width:120px;height:72px;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">hairline card</span><span style="width:100px;height:64px;background:var(--bg-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">sm</span><span style="width:100px;height:64px;background:var(--bg-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-md);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">md</span><span style="width:100px;height:64px;background:var(--bg-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs)">lg</span></div>
 <h3>Contrast — depth is decorative</h3>
-<p class="meta"><code>--border-thin</code> on white 1.32 — hairlines separate without carrying text, so no pair is gated. Anything with words on it inherits its surface pair.</p>
+<p class="meta"><code>border.subtle</code> on white 1.32 — hairlines separate without carrying text, so no pair is gated. Anything with words on it inherits its surface pair.</p>
 <h3>Snippet</h3>
-<p class="meta"><code>border:1px solid var(--border-thin)</code> for cards · <code>box-shadow:var(--shadow-md)</code> for float</p>
+<p class="meta"><code>border:1px solid var(--border-subtle)</code> for cards · <code>box-shadow:var(--shadow-md)</code> for float</p>
 <h3>Related</h3>
 <p class="meta">Color — the hairline and surface tokens · Funnel and Gems — depth in situ · Cards — hairline anatomy</p>

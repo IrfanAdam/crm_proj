@@ -1,26 +1,42 @@
 <p class="ch-kicker">Chapter 2 · Foundations · 07 Iconography</p>
 <h2 class="ch-hero">Regular walks. Fill is chosen.</h2>
-<p class="ch-lede meta">One set — Phosphor — two voices. Regular 1.5px is the resting state; fill plus Sapphire plus a dot marks the chosen one. The dock stays neutral glass: the icon carries the signal, never the background. Sizes step 12 to 32, and nothing else.</p>
+<p class="ch-lede meta">One set — Phosphor — six weights, one voice. Regular 1.5px is the resting state; fill plus Sapphire plus a dot marks the chosen one. The dock stays neutral glass: the icon carries the signal, never the background. Sizes step 12 to 32, and nothing else.</p>
 <ul class="ch-laws">
 <li class="ch-law"><span class="ch-num">01</span><div><p><b>One set only</b> — Phosphor Regular and Fill. No mixing with legacy sprite glyphs.</p><p class="ch-reject">Reject: a one-off custom SVG that "felt more precise" — the set is the voice.</p></div></li>
 <li class="ch-law"><span class="ch-num">02</span><div><p><b>Fill means chosen</b> — selected tab: fill glyph, signal color, dot above.</p><p class="ch-reject">Reject: fill without the dot, or color without fill — the selected state is all three.</p></div></li>
-<li class="ch-law"><span class="ch-num">03</span><div><p><b>Unselected is secondary, never dim</b> — <code>--text-secondary</code> keeps every glyph legible.</p><p class="ch-reject">Reject: dim or muted unselected icons — resting is not fading.</p></div></li>
-<li class="ch-law"><span class="ch-num">04</span><div><p><b>Sizes step 12 → 32</b> — <code>--icon-size-xs–xl</code>, nothing between.</p><p class="ch-reject">Reject: a 22px icon eyeballed into place — the dock uses lg, the reason is documented.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Unselected is secondary, never dim</b> — <code>text.secondary</code> keeps every glyph legible.</p><p class="ch-reject">Reject: dim or muted unselected icons — resting is not fading.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Sizes step 12 → 32</b> — <code>icon.size.xs–xl</code>, nothing between.</p><p class="ch-reject">Reject: a 22px icon eyeballed into place — the dock uses lg, the reason is documented.</p></div></li>
 </ul>
 <h3>Token table</h3>
+<p class="meta">Same names as code, dashed: <code>icon.size.md</code> → <code>--icon-size-md</code>.</p>
 <table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
-<tr><td><code>--icon-size-xs</code></td><td>12</td><td>inline glyphs, dots</td></tr>
-<tr><td><code>--icon-size-sm</code></td><td>16</td><td>list glyphs, search</td></tr>
-<tr><td><code>--icon-size-md</code></td><td>20</td><td>default — mail, rows</td></tr>
-<tr><td><code>--icon-size-lg</code></td><td>24</td><td>dock glyphs, phone</td></tr>
-<tr><td><code>--icon-size-xl</code></td><td>32</td><td>feature glyphs, calendar</td></tr>
+<tr><td><code>icon.size.xs</code></td><td>12px</td><td>inline glyphs, dots</td></tr>
+<tr><td><code>icon.size.sm</code></td><td>16px</td><td>list glyphs, search</td></tr>
+<tr><td><code>icon.size.md</code></td><td>20px</td><td>default — mail, rows</td></tr>
+<tr><td><code>icon.size.lg</code></td><td>24px</td><td>dock glyphs, phone</td></tr>
+<tr><td><code>icon.size.xl</code></td><td>32px</td><td>feature glyphs, calendar</td></tr>
 </tbody></table>
-<h3>Specimens — the two voices</h3>
-<div class="row" style="color:var(--text-secondary);align-items:center;gap:12px;margin-top:4px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-house" style="font-size:12px"></i><span class="meta">12 regular</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px;color:var(--signal)"><i class="ph-fill ph-house" style="font-size:12px"></i><span class="meta">12 fill</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-magnifying-glass" style="font-size:16px"></i><span class="meta">16</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-envelope" style="font-size:20px"></i><span class="meta">20</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-phone" style="font-size:24px"></i><span class="meta">24</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-calendar-blank" style="font-size:32px"></i><span class="meta">32</span></span></div>
+<h3>Variants — six weights, one family</h3>
+<p class="meta">Every glyph ships in all six weights at the same codepoint — weight is a class swap (<code>ph</code> → <code>ph-bold</code>), never a different icon. Pages load all six stylesheets so any weight renders anywhere.</p>
+<table class="ch-roles ig-ladder"><thead><tr><th></th><th>Weight</th><th>Voice</th><th>When</th></tr></thead><tbody>
+<tr><td><i class="ph-thin ph-house"></i></td><td><code>thin</code></td><td>hairline</td><td>hero illustration, empty-state backdrops at 32+ — never chrome, too fragile at 16</td></tr>
+<tr><td><i class="ph-light ph-house"></i></td><td><code>light</code></td><td>display</td><td>large display 24+, marketing surfaces — never dense rows</td></tr>
+<tr><td><i class="ph ph-house"></i></td><td><code>regular</code></td><td>resting UI</td><td>every unselected glyph in chrome — the default voice</td></tr>
+<tr><td><i class="ph-bold ph-house"></i></td><td><code>bold</code></td><td>emphasis</td><td>12–16px sizes where regular starves; emphasis without fill</td></tr>
+<tr><td><i class="ph-fill ph-house"></i></td><td><code>fill</code></td><td>chosen</td><td>selected tab only, with signal + dot — never decoration</td></tr>
+<tr><td><i class="ph-duotone ph-house"></i></td><td><code>duotone</code></td><td>two-tone</td><td>feature illustration, onboarding — secondary layer at 20%; never status, reads as decoration</td></tr>
+</tbody></table>
+<h3>Samples — the app vocabulary</h3>
+<div class="row" style="color:var(--text-secondary);align-items:center;gap:12px;margin-top:4px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-house" style="font-size:20px"></i><span class="meta">home</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-users" style="font-size:20px"></i><span class="meta">leads</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-handshake" style="font-size:20px"></i><span class="meta">opps</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-magnifying-glass" style="font-size:20px"></i><span class="meta">search</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-funnel-simple" style="font-size:20px"></i><span class="meta">filter</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-bell" style="font-size:20px"></i><span class="meta">alerts</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-chart-line-up" style="font-size:20px"></i><span class="meta">reports</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:4px"><i class="ph ph-gear" style="font-size:20px"></i><span class="meta">settings</span></span></div>
 <div class="row" style="margin-top:12px;align-items:center;gap:8px"><span class="meta" style="font-weight:600">Dock 3 (icon-only):</span><span class="icon icon--lg" style="color:var(--signal)"><i class="ph-fill ph-house" style="font-size:22px"></i></span><span class="meta" style="color:var(--signal)">House fill</span><span class="icon icon--lg" style="color:var(--text-secondary)"><i class="ph ph-users" style="font-size:22px"></i></span><span class="meta">Users</span><span class="icon icon--lg" style="color:var(--text-secondary)"><i class="ph ph-handshake" style="font-size:22px"></i></span><span class="meta">Handshake</span></div>
+<h3>Playground — the full set</h3>
+<p class="meta">Search the set, switch the weight, drag the size. Click any glyph to copy its class.</p>
+<div class="ig-bar"><input type="search" class="ig-search" data-ig-q placeholder="Search icons…" aria-label="Search icons"/><span class="ig-seg" data-ig-w><button type="button" class="chip" data-w="thin">Thin</button><button type="button" class="chip" data-w="light">Light</button><button type="button" class="chip chip--active" data-w="regular">Regular</button><button type="button" class="chip" data-w="bold">Bold</button><button type="button" class="chip" data-w="fill">Fill</button><button type="button" class="chip" data-w="duotone">Duotone</button></span><label class="meta">Size <input type="range" data-ig-s min="16" max="48" step="4" value="24"/></label></div>
+<div class="ig-grid" data-ig-grid><p class="meta">loading icons…</p></div>
+<p class="meta" data-ig-note></p>
 <h3>Contrast — glyphs carry meaning</h3>
-<p class="meta">Unselected <code>--text-secondary</code> on white 7.81 AA · selected <code>--signal</code> 5.91 AA — resting glyphs stay legible, chosen ones stay loud.</p>
+<p class="meta">Unselected <code>text.secondary</code> on white 7.81 AA · selected <code>signal</code> 5.91 AA — resting glyphs stay legible, chosen ones stay loud.</p>
 <h3>Snippet</h3>
-<p class="meta"><code>font-size:var(--icon-size-md);color:var(--text-secondary)</code> resting · fill + <code>--signal</code> + dot chosen</p>
+<p class="meta"><code>font-size:var(--icon-size-md);color:var(--text-secondary)</code> resting · fill + <code>signal</code> + dot chosen</p>
 <h3>Related</h3>
 <p class="meta">Color — the signal and secondary tokens · Navigation — the 3-tab dock in situ · sprite.svg — deprecated, do not extend</p>

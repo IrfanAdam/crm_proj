@@ -3,24 +3,25 @@
 <p class="ch-lede meta">A pill is a promise: this can be tapped, filtered, slid. A rounded rect is a container: it holds, it stays. Gem capsules are the only organic shape in the system — everything else is geometry. Read a corner and you know the behavior before you touch it.</p>
 <ul class="ch-laws">
 <li class="ch-law"><span class="ch-num">01</span><div><p><b>Full-pill means transient</b> — chips, bars, filters, toggles. If it can be tapped on and off, it is a pill.</p><p class="ch-reject">Reject: a pill-shaped card, a square chip.</p></div></li>
-<li class="ch-law"><span class="ch-num">02</span><div><p><b>Cards live at 16→24</b> — <code>--radius-lg</code> default, <code>--radius-2xl</code> for hero cards.</p><p class="ch-reject">Reject: a 4px card (reads as a button) or a fully round panel.</p></div></li>
-<li class="ch-law"><span class="ch-num">03</span><div><p><b>Small steps for small chrome</b> — inputs and thumbs at <code>--radius-xs/sm/md</code>.</p><p class="ch-reject">Reject: a 16px text input — the chrome outweighs the content.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Cards live at 16→24</b> — <code>radius.lg</code> default, <code>radius.2xl</code> for hero cards.</p><p class="ch-reject">Reject: a 4px card (reads as a button) or a fully round panel.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Small steps for small chrome</b> — inputs and thumbs at <code>radius.xs/sm/md</code>.</p><p class="ch-reject">Reject: a 16px text input — the chrome outweighs the content.</p></div></li>
 <li class="ch-law"><span class="ch-num">04</span><div><p><b>Gem capsules stay organic</b> — only rewards may break geometry.</p><p class="ch-reject">Reject: an organic blob behind a KPI — ceremony leaking into chrome.</p></div></li>
 </ul>
 <h3>Token table</h3>
+<p class="meta">Same names as code, dashed: <code>radius.lg</code> → <code>--radius-lg</code>.</p>
 <table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
-<tr><td><code>--radius-xs</code></td><td>4</td><td>thumbs, ticks, inner corners</td></tr>
-<tr><td><code>--radius-sm</code></td><td>8</td><td>inputs, small buttons</td></tr>
-<tr><td><code>--radius-md</code></td><td>12</td><td>default control corner</td></tr>
-<tr><td><code>--radius-lg</code></td><td>16</td><td>cards — the default</td></tr>
-<tr><td><code>--radius-xl</code></td><td>20</td><td>large cards, sheets</td></tr>
-<tr><td><code>--radius-2xl</code></td><td>24</td><td>hero cards</td></tr>
-<tr><td><code>--radius-full</code></td><td>9999</td><td>pills — chips, bars, filters</td></tr>
+<tr><td><code>radius.xs</code></td><td>4px</td><td>thumbs, ticks, inner corners</td></tr>
+<tr><td><code>radius.sm</code></td><td>8px</td><td>inputs, small buttons</td></tr>
+<tr><td><code>radius.md</code></td><td>12px</td><td>default control corner</td></tr>
+<tr><td><code>radius.lg</code></td><td>16px</td><td>cards — the default</td></tr>
+<tr><td><code>radius.xl</code></td><td>20px</td><td>large cards, sheets</td></tr>
+<tr><td><code>radius.2xl</code></td><td>24px</td><td>hero cards</td></tr>
+<tr><td><code>radius.full</code></td><td>9999px</td><td>pills — chips, bars, filters</td></tr>
 </tbody></table>
 <h3>Specimens — corners with jobs</h3>
-<div class="row" style="margin-top:4px"><span style="width:48px;height:48px;background:var(--bg-interactive);border:1px solid var(--border-thin);border-radius:var(--radius-xs);display:inline-flex;align-items:center;justify-content:center;font-size:10px">xs 4</span><span style="width:48px;height:48px;background:var(--bg-interactive);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:10px">sm 8</span><span style="width:48px;height:48px;background:var(--bg-interactive);border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;font-size:10px">md 12</span><span style="width:48px;height:48px;background:var(--bg-interactive);border-radius:var(--radius-lg);display:inline-flex;align-items:center;justify-content:center;font-size:10px">lg 16</span><span style="width:64px;height:32px;background:var(--bg-interactive);border-radius:var(--radius-xl);display:inline-flex;align-items:center;justify-content:center;font-size:10px">xl 20</span><span style="width:64px;height:32px;background:var(--bg-interactive);border-radius:var(--radius-2xl);display:inline-flex;align-items:center;justify-content:center;font-size:10px">2xl 24</span><span style="padding:6px 12px;background:var(--bg-interactive);border-radius:var(--radius-full);font-size:var(--font-size-xs)">pill 9999</span></div>
+<div class="row" style="margin-top:4px"><span style="width:48px;height:48px;background:var(--bg-interactive);border:1px solid var(--border-subtle);border-radius:var(--radius-xs);display:inline-flex;align-items:center;justify-content:center;font-size:10px">xs 4</span><span style="width:48px;height:48px;background:var(--bg-interactive);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:10px">sm 8</span><span style="width:48px;height:48px;background:var(--bg-interactive);border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;font-size:10px">md 12</span><span style="width:48px;height:48px;background:var(--bg-interactive);border-radius:var(--radius-lg);display:inline-flex;align-items:center;justify-content:center;font-size:10px">lg 16</span><span style="width:64px;height:32px;background:var(--bg-interactive);border-radius:var(--radius-xl);display:inline-flex;align-items:center;justify-content:center;font-size:10px">xl 20</span><span style="width:64px;height:32px;background:var(--bg-interactive);border-radius:var(--radius-2xl);display:inline-flex;align-items:center;justify-content:center;font-size:10px">2xl 24</span><span style="padding:6px 12px;background:var(--bg-interactive);border-radius:var(--radius-full);font-size:var(--font-size-xs)">pill 9999</span></div>
 <h3>Contrast — corners are decorative</h3>
-<p class="meta">Swatches above are <code>--bg-interactive</code> on white 1.32 — geometry carries no text, so no pair is gated. Text sitting on a rounded surface inherits its panel's pair.</p>
+<p class="meta">Swatches above are <code>bg.interactive</code> on white 1.32 — geometry carries no text, so no pair is gated. Text sitting on a rounded surface inherits its panel's pair.</p>
 <h3>Snippet</h3>
 <p class="meta"><code>border-radius:var(--radius-full)</code> for anything tappable · <code>border-radius:var(--radius-lg)</code> for anything that holds</p>
 <h3>Related</h3>
