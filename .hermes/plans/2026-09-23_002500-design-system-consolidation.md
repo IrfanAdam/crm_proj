@@ -507,6 +507,18 @@ deletions without the grep-0-importers guarantee).
 **Commit:** `feat(ds): contextual specimens, identity frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
 *Shipped in 29bf342 · Task 12F · phase-4.*
 
+### Task 12G: Contextual specimens — form frame ✓ done
+**Objective:** Same contextual idiom for Form: full `textinput-intro` kept
+above; `text.html` becomes 6 specimens (sizes, affixes, states, select,
+search, textarea) each with demo + 1-line `spec-note`, tables/details only
+where they pay (sizes, states full mini-tables; select/search/textarea condensed
+meta); 4 spec pads unwired from the frame. Article files stay on disk.
+**Files:**
+- Modify: `public/gallery-panels/text.html` (contextual), `gallery.html` (drop 4 spec pads).
+**Verify:** `#text` renders intro → 6 specimens, zero open-scroll tables; `npm test` + `npm run build` green.
+**Commit:** `feat(ds): contextual specimens, form frame [plan:2026-09-23_002500-design-system-consolidation.md#{#phase-4}]`
+*Shipped in <sha> · Task 12G · phase-4.*
+
 ---
 
 ## Phase 5 — Build Layer 4+5: feedback, patterns, pages {#phase-5}
