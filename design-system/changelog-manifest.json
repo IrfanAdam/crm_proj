@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T13:23:25.152Z",
+  "generated": "2026-09-24T13:35:47.739Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,8 +15,16 @@
   ],
   "commits": [
     {
-      "sha": "d50cd58",
-      "full": "d50cd587b68d581fb8a6e2aa22a9a5755c641664",
+      "sha": "717e98b",
+      "full": "717e98bde3f6824526ff2c3f29f81915fd0c24d4",
+      "date": "2026-09-24",
+      "subject": "chore(ds): sync plan SHA + manifest after component docs loop",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-3"
+    },
+    {
+      "sha": "44c2bab",
+      "full": "44c2bab367c10f023d927ae9ccb6c1c6362e26b3",
       "date": "2026-09-24",
       "subject": "feat(ds): per-component intro·lab·spec for all components — scannable gallery",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
@@ -1693,7 +1701,20 @@
       "subject": "Fresh CRM design system exercise: plan, DESIGN.md, phase docs, references",
       "plan": null,
       "anchor": null
+    },
+    {
+      "sha": "d50cd58",
+      "full": "d50cd587b68d581fb8a6e2aa22a9a5755c641664",
+      "date": "2026-09-24",
+      "subject": "feat(ds): per-component intro·lab·spec for all components — scannable gallery",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
