@@ -91,7 +91,7 @@ rounded:
   md: 12px
   lg: 16px
   xl: 24px
-  pill: 9999px
+  pill: 32px
 spacing:
   sm: 8px
   md: 16px

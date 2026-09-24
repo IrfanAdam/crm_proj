@@ -1,0 +1,99 @@
+<section class="specimen">
+<h3>Playground — configure one button</h3>
+<div class="blab" data-blab>
+<div class="blab__bar">
+<div class="blab__group" role="group" aria-label="Hue and emphasis">
+<label class="blab__label" for="blab-hue">Hue</label>
+<select class="blab__select" id="blab-hue" data-blab-hue-select>
+<option value="neutral">Neutral</option>
+<option value="accent" selected>Accent</option>
+<option value="core-red">Core red</option>
+<option value="core-yellow">Core yellow</option>
+<option value="success">Success</option>
+<option value="destructive">Destructive</option>
+<option value="warning">Warning</option>
+</select>
+<button class="blab__pill is-on" data-blab-emphasis="primary">Primary</button>
+<button class="blab__pill" data-blab-emphasis="secondary">Secondary</button>
+<button class="blab__pill" data-blab-emphasis="tertiary">Tertiary</button>
+</div>
+<div class="blab__group blab__group--right" role="group" aria-label="Size and state">
+<span class="blab__label">Size</span>
+<button class="blab__pill" data-blab-size="btn--sm">SM</button>
+<button class="blab__pill is-on" data-blab-size="btn--md">MD</button>
+<button class="blab__pill" data-blab-size="btn--lg">LG</button>
+<label class="blab__label" for="blab-state">State</label>
+<select class="blab__select" id="blab-state" data-blab-state>
+<option value="default">Default</option>
+<option value="disabled">Disabled</option>
+<option value="aria-disabled">Aria-disabled</option>
+<option value="loading">Loading</option>
+<option value="focus">Focus ring</option>
+</select>
+</div>
+</div>
+<div class="blab__stage" data-blab-stage data-surface="canvas" data-theme="light">
+<button class="blab__pill blab__inspect" data-blab-inspect aria-pressed="false">Inspect</button>
+<div data-blab-preview data-blab-hue="accent"></div>
+<p class="blab__hint meta" data-blab-note></p>
+</div>
+<div class="blab__tune" data-blab-tune hidden>
+<div class="blab__tune-row">
+<span class="blab__label">Pad</span>
+<label class="blab__range"><span>Min</span><input type="range" data-blab-pad-min min="0" max="24" step="4" value="8"><output data-blab-pad-min-val>8px</output></label>
+<span class="blab__dash">—</span>
+<label class="blab__range"><span>Max</span><input type="range" data-blab-pad-max min="0" max="24" step="4" value="12"><output data-blab-pad-max-val>12px</output></label>
+<span class="blab__tune-bar" aria-hidden="true"><i data-blab-pad-track></i></span>
+</div>
+<div class="blab__tune-row">
+<span class="blab__label">Radius</span>
+<label class="blab__range"><span>Min</span><input type="range" data-blab-radius-min min="4" max="32" step="4" value="12"><output data-blab-radius-min-val>12px</output></label>
+<span class="blab__dash">—</span>
+<label class="blab__range"><span>Max</span><input type="range" data-blab-radius-max min="4" max="32" step="4" value="32"><output data-blab-radius-max-val>32px</output></label>
+<span class="blab__tune-bar" aria-hidden="true"><i data-blab-radius-track></i></span>
+</div>
+</div>
+<div class="blab__bar blab__bar--foot">
+<div class="blab__group" role="group" aria-label="Stage surface">
+<span class="blab__label">Stage</span>
+<button class="blab__pill is-on" data-blab-surface="canvas">Canvas</button>
+<button class="blab__pill" data-blab-surface="surface">Surface</button>
+<button class="blab__pill" data-blab-surface="wash">Wash</button>
+</div>
+<div class="blab__group blab__group--right" role="group" aria-label="Color scheme">
+<span class="blab__label">Scheme</span>
+<button class="blab__pill is-on" data-blab-scheme="light">Light</button>
+<button class="blab__pill" data-blab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="blab__edit">
+<label class="blab__field">Label<input data-blab-label value="New deal" maxlength="24"></label>
+<label class="blab__field">Icon<select data-blab-icon>
+<option value="none">No icon</option>
+<option value="ph-plus" selected>Plus</option>
+<option value="ph-arrow-right">Arrow right</option>
+<option value="ph-magnifying-glass">Search</option>
+<option value="ph-check">Check</option>
+<option value="ph-download-simple">Download</option>
+<option value="ph-x">Close</option>
+</select></label>
+<label class="blab__check"><input type="checkbox" data-blab-icononly> Icon-only</label>
+<label class="blab__check"><input type="checkbox" data-blab-full> Full-width</label>
+<label class="blab__check"><input type="checkbox" data-blab-capsule> Concentric</label>
+<label class="blab__check"><input type="checkbox" data-blab-badge> Badge</label>
+<label class="blab__field blab__field--sm">Count<input data-blab-count value="3" maxlength="4"></label>
+<label class="blab__field">Badge tone<select data-blab-tone>
+<option value="">Default</option>
+<option value="badge--neutral">Neutral</option>
+<option value="badge--success">Success</option>
+<option value="badge--warning">Warning</option>
+<option value="badge--danger">Danger</option>
+</select></label>
+</div>
+<div class="blab__code">
+<pre><code class="tp-code" data-blab-code></code></pre>
+<span class="blab__ratio" data-blab-ratio>Aa — · —</span>
+<button class="btn btn--secondary btn--sm" data-blab-copy>Copy snippet</button>
+</div>
+</div>
+<p class="spec-note">Hue × emphasis — pick a hue, then primary / secondary / tertiary. Concentric nests the capsule button in its container (demo only). Pad min–max sets nest gap (y/x); Radius min–max sets button/box corners (brand max 32). Hit Inspect and hover padding, corners, glyphs; the Aa badge reports the live pair.</p></section>

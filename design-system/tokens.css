@@ -3,7 +3,7 @@
  --font-family-sans:'Inter', system-ui, -apple-system, sans-serif; --font-size-xs:0.75rem; --font-size-sm:0.875rem; --font-size-md:1rem; --font-size-lg:1.125rem; --font-size-xl:1.25rem; --font-size-2xl:1.5rem; --font-size-3xl:2.0rem; --font-weight-regular:400; --font-weight-medium:500; --font-weight-semibold:600; --font-weight-bold:700; --font-leading-tight:1.15; --font-leading-snug:1.25; --font-leading-normal:1.4; --font-leading-relaxed:1.5; --font-tracking-tight:-0.01em; --font-tracking-normal:0; --font-tracking-wide:0.04em;
  --type-title:var(--font-size-3xl); --type-title-tracking:var(--font-tracking-tight); --type-compact:var(--font-size-md); --type-card:var(--font-size-xl); --type-body:var(--font-size-md); --type-meta:var(--font-size-sm); --type-micro:var(--font-size-xs);
  --spacing-0:0; --spacing-1:0.25rem; --spacing-2:0.5rem; --spacing-3:0.75rem; --spacing-4:1rem; --spacing-5:1.25rem; --spacing-6:1.5rem; --spacing-8:2rem; --spacing-10:2.5rem; --spacing-12:3rem; --spacing-16:4rem;
- --radius-xs:4px; --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-xl:20px; --radius-2xl:24px; --radius-3xl:32px; --radius-full:9999px; --radius-none:0;
+ --radius-xs:4px; --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-xl:20px; --radius-2xl:24px; --radius-3xl:32px; --radius-full:32px; --radius-none:0;
  --border-width-hairline:1px; --border-width-thin:1px; --border-width-medium:2px; --border-width-thick:3px;
  --primitive-border-width-hairline:1px; --primitive-border-width-medium:2px;
  --z-index-base:0; --z-index-dropdown:1000; --z-index-sticky:1020; --z-index-overlay:1030; --z-index-modal:1040; --z-index-toast:1050;

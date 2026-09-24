@@ -1,7 +1,8 @@
 /* ADAM/SHARED — src/arch/atlas.js · mechanics shell [plan:2026-09-22_155000-architecture-mechanics.md#phase-4] */
 import { createAtlasState } from './atlas-state.js';
-import { ensureDetailEl, paintSelection } from './atlas-selection.js';
+import { ensureTruthEl } from './lens-truth.js';
 import { getMode, setMode as setGraphMode, GRAPHS } from '../js/mechanics/graph.js';
+const GRAPH = ['decisions', 'schema', 'logic'];
 const state=createAtlasState();
 let engine=null,loaded=false;
 function tintDot(tint){
@@ -19,7 +20,7 @@ function edgeDot(kind){
 }
 function syncModeUI(m){
   const cur=m||state.lens||getMode();
-  const s=document.getElementById('mechanics-mode'); if(s) s.value=cur;
+  const s=document.getElementById('mechanics-mode'); if(s) s.value=GRAPH.includes(cur)?cur:getMode();
   document.querySelectorAll('#atlas-nav [data-lens]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.lens===cur)));
   // per-lens float legends: Lanes (group tints) + Kinds (node kinds) + Edges (kind semantics)
   const legendsWrap=document.querySelector('.mechanics-float-legends');
@@ -49,6 +50,15 @@ function toggleChrome(){
   if(b){b.setAttribute('aria-pressed',String(c)); b.textContent=c?'◳ Show':'◱ Hide';}
   if(engine) engine.resize();
 }
+function paintLens(){
+  const lens=state.lens, isTruth=lens==='truth';
+  const c=document.getElementById('mechanics-canvas'), t=ensureTruthEl();
+  const fc=document.querySelector('.mechanics-float-controls'), fl=document.querySelector('.mechanics-float-legends'), tip=document.getElementById('mechanics-tooltip');
+  if(c) c.hidden=isTruth; if(t) t.hidden=!isTruth;
+  if(fc) fc.hidden=isTruth; if(fl) fl.hidden=isTruth; if(tip&&isTruth) tip.hidden=true;
+  if(!isTruth&&engine&&engine.getMode()!==lens) engine.setMode(lens);
+  syncModeUI(lens);
+}
 async function ensureEngine(){
   if(loaded&&engine) return engine;
   const c=document.getElementById('mechanics-canvas'),t=document.getElementById('mechanics-tooltip');
@@ -57,24 +67,23 @@ async function ensureEngine(){
   engine=createMechanicsCanvas(c,t); loaded=true;
   c.addEventListener('mechanics:select',e=>{ const id=e.detail?.id; if(id) state.select(id); else state.clear(); });
   const cur=state.lens||getMode(); if(cur!==getMode()) setGraphMode(cur);
-  engine.setMode(cur); syncModeUI(cur);
   if(state.selected) engine.select(state.selected);
-  paintSelection(state); return engine;
+  paintLens(); return engine;
 }
 export function initAtlas(){
   const nav=document.getElementById('atlas-nav'),canvas=document.getElementById('mechanics-canvas');
   if(!nav||!canvas) return null;
   const sel=document.getElementById('mechanics-mode'),tog=document.getElementById('mechanics-chrome-toggle');
-  ensureDetailEl(); syncModeUI(state.lens); paintSelection(state);
-  if(sel){ sel.value=state.lens; sel.addEventListener('change',async e=>{ const n=e.target.value; if(!['decisions','schema','logic'].includes(n))return; state.setLens(n); syncModeUI(n); if(!loaded) await ensureEngine(); else if(engine) engine.setMode(n); });}
+  paintLens();
+  if(sel){ sel.value=state.lens; sel.addEventListener('change',async e=>{ const n=e.target.value; if(!GRAPH.includes(n))return; state.setLens(n); if(!loaded) await ensureEngine(); paintLens(); });}
   if(tog) tog.addEventListener('click',toggleChrome);
   document.addEventListener('keydown',e=>{
     if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')) return;
     if((e.key==='h'||e.key==='H')&&!e.metaKey&&!e.ctrlKey){ e.preventDefault(); toggleChrome(); }
     if(e.key==='Escape'){ if(state.selected){ state.clear(); if(engine) engine.clearSelection(); } const tip=document.getElementById('mechanics-tooltip'); if(tip) tip.hidden=true; }
   });
-  nav.addEventListener('click',async e=>{ const b=e.target.closest('[data-lens]'); if(!b) return; const n=b.dataset.lens; if(!['decisions','schema','logic'].includes(n)) return; state.setLens(n); syncModeUI(n); if(!loaded) await ensureEngine(); else if(engine) engine.setMode(n); });
-  state.subscribe(({lens,selected})=>{ syncModeUI(lens); if(engine&&engine.getMode()!==lens) engine.setMode(lens); if(engine){ if(selected) engine.select(selected); else engine.clearSelection(); } paintSelection(state); });
+  nav.addEventListener('click',async e=>{ const b=e.target.closest('[data-lens]'); if(!b) return; const n=b.dataset.lens; if(n!=='truth'&&!GRAPH.includes(n)) return; state.setLens(n); if(!loaded) await ensureEngine(); paintLens(); });
+  state.subscribe(()=>{ paintLens(); if(engine&&state.lens!=='truth'){ const s=state.selected; if(s) engine.select(s); else engine.clearSelection(); } });
   document.addEventListener('mechanics:mode',()=>syncModeUI(state.lens));
   return {get engine(){return engine;},ensureEngine,syncModeUI,state};
 }

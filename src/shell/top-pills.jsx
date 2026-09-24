@@ -20,11 +20,11 @@ export function TopPills() {
   }, [active]);
   return (
     <Glass
-      radius={9999}
+      radius={32}
       optics={TOP_OPTICS}
       style={{
         background: "color-mix(in srgb, var(--bg-surface) 38%, transparent)",
-        borderRadius: 9999,
+        borderRadius: 32,
         padding: 4,
         border: "1px solid color-mix(in srgb, white 34%, transparent)",
         boxShadow: "0 8px 28px rgba(15,16,21,0.10), 0 1px 2px rgba(15,16,21,0.06)",

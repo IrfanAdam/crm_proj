@@ -1,0 +1,82 @@
+/* ADAM/DS — src/ds/button-lab-hue.css · playground hue scope */
+/* Exports: [data-blab-hue] role repoint + tonal/active parity */
+[data-blab-hue] {
+  --blab-ink: var(--text-primary);
+}
+[data-blab-hue="neutral"] .btn {
+  --role-action: var(--primitive-gray-900);
+  --role-action-strong: var(--primitive-gray-black);
+  --role-action-soft: var(--primitive-gray-100);
+  --role-action-ink: var(--primitive-gray-white);
+}
+[data-blab-hue="accent"] .btn {
+  --blab-ink: var(--role-action-strong);
+}
+[data-blab-stage][data-theme="dark"] [data-blab-hue="accent"] .btn {
+  --blab-ink: var(--role-action-soft);
+}
+[data-blab-hue="core-red"] .btn {
+  --role-action: var(--role-score);
+  --role-action-strong: var(--role-score-strong);
+  --role-action-soft: var(--role-score-soft);
+  --role-action-ink: var(--role-score-ink);
+  --blab-ink: var(--role-score-strong);
+}
+[data-blab-stage][data-theme="dark"] [data-blab-hue="core-red"] .btn {
+  --blab-ink: var(--role-score-soft);
+}
+[data-blab-hue="core-yellow"] .btn {
+  --role-action: var(--role-streak);
+  --role-action-strong: var(--role-streak-strong);
+  --role-action-soft: var(--role-streak-soft);
+  --role-action-ink: var(--role-streak-ink);
+  --blab-ink: var(--role-streak-strong);
+}
+[data-blab-stage][data-theme="dark"] [data-blab-hue="core-yellow"] .btn {
+  --blab-ink: var(--role-streak-soft);
+}
+[data-blab-hue="success"] .btn {
+  --role-action: var(--role-success);
+  --role-action-strong: var(--role-success-strong);
+  --role-action-soft: var(--role-success-soft);
+  --role-action-ink: var(--role-success-ink);
+  --blab-ink: var(--primitive-green-700);
+}
+[data-blab-stage][data-theme="dark"] [data-blab-hue="success"] .btn {
+  --blab-ink: var(--role-success-soft);
+}
+[data-blab-hue="destructive"] .btn {
+  --role-action: var(--role-danger);
+  --role-action-strong: var(--role-danger-strong);
+  --role-action-soft: var(--role-danger-soft);
+  --role-action-ink: var(--role-danger-ink);
+  --blab-ink: var(--role-danger-strong);
+}
+[data-blab-stage][data-theme="dark"] [data-blab-hue="destructive"] .btn {
+  --blab-ink: var(--role-danger-soft);
+}
+[data-blab-hue="warning"] .btn {
+  --role-action: var(--role-warning);
+  --role-action-strong: var(--role-warning-strong);
+  --role-action-soft: var(--role-warning-soft);
+  --role-action-ink: var(--role-warning-ink);
+  --blab-ink: var(--primitive-orange-700);
+}
+[data-blab-stage][data-theme="dark"] [data-blab-hue="warning"] .btn {
+  --blab-ink: var(--role-warning-soft);
+}
+/* — Parity: tonal + primary-active via repointed roles — */
+[data-blab-hue]:not([data-blab-hue="accent"]) .btn--tonal:hover {
+  background: var(--role-action-soft);
+}
+[data-blab-hue]:not([data-blab-hue="accent"]) .btn--tonal:active {
+  background: var(--role-action-strong);
+  color: var(--role-action-ink);
+}
+[data-blab-hue]:not([data-blab-hue="accent"]) .btn--primary:active {
+  background: var(--role-action-strong);
+  border-color: var(--role-action-strong);
+}
+[data-blab-stage] [data-blab-hue] .btn--secondary {
+  color: var(--blab-ink);
+}

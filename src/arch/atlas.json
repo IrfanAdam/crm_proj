@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-23T17:01:46.862Z",
+    "generatedAt": "2026-09-24T08:57:43.883Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -16,7 +16,7 @@
       "src/components/Avatar": 1790164789097,
       "src/components/Badge": 1790164719934,
       "src/components/Breadcrumbs": 1790169430200,
-      "src/components/Button": 1790164744897,
+      "src/components/Button": 1790239956211,
       "src/components/Checkbox": 1790164793218,
       "src/components/Chip": 1790164764688,
       "src/components/FunnelCard": 1790164683655,

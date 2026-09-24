@@ -8,7 +8,7 @@ Source: ref-01..12, REGISTRY.md, DESIGN.md (beta, 56 colors 50–900 + signal), 
 | Signal swap-slot | — | `--signal var(--primitive-sapphire-ui-500)` + `--signal-amber var(--primitive-citrine-500)` + `--signal-teal var(--primitive-green-500)` → `--color-accent-brand:var(--signal)`; Gallery chips toggle live | ✓ | re-theme without rename |
 | Type scale | Inter H1 32/bold -0.01, title 20, body 16, meta 14, micro 12 | `font` primitives + `gallery typography` live | ✓ | weight+size hierarchy only |
 | Spacing/Grid | 4px base, card pad 16, section 24/32 | `spacing` 0–16 + `gallery spacing` bars | ✓ |  |
-| Radius | cards 16–24, chips/bars pill 9999 | `radius` none→3xl/full + `gallery radius` | ✓ |  |
+| Radius | cards 16–24, chips/bars pill 32 | `radius` none→3xl/full + `gallery radius` | ✓ |  |
 | Shadow/Elevation | hairline + white on #FAFAFA, no decor shadow | `shadow` sm/md/lg + `border hairline` + `gallery shadow` | ✓ | depth only for funnel/gems |
 | Motion | elastic funnel, tilt funnel ref-09, spring 400 | `tokens/motion.json` + `src/motion/*` + `gallery motion` (prefers-reduced-motion instant) | ✓ | |
 | Gem ceremony | Single Spline `my.spline.design/gem-embed` + hue-rotate per category + Rock Solid Goals | `GemReward` 4 variants + `gallery gems` | ✓ | mood quarantined |

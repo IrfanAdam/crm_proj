@@ -45,7 +45,7 @@
     "xl": "20px",
     "2xl": "24px",
     "3xl": "32px",
-    "full": "9999px",
+    "full": "32px",
     "none": "0"
   },
   "transition": {

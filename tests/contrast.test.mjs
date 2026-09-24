@@ -26,6 +26,17 @@ const pairs=[
  ['role.danger.soft — ink on it','#222222','#ff3d3d',4.5,'role.danger.soft'],
  ['role.warning — ink on base','#222222','#f57f26',4.5,'role.warning'],
  ['text.muted on paper','#737373','#fafafa',4.5,'text.muted — ladder fixed, monotonic in both themes'],
+['lab tertiary core-red — score-strong on surface','#a80035','#ffffff',4.5,'playground tertiary tint'],
+['lab tertiary core-yellow — streak-strong on surface','#9d6a00','#ffffff',4.5,'playground tertiary tint'],
+['lab tertiary success — green-700 on surface','#0c6a12','#ffffff',4.5,'playground tertiary tint'],
+['lab tertiary destructive — danger-strong on surface','#c20000','#ffffff',4.5,'playground tertiary tint'],
+['lab tertiary warning — orange-700 on surface','#ab4e08','#ffffff',4.5,'playground tertiary tint'],
+['lab wash citrine-200 ink','#141414','#ffe0a3',4.5,'playground secondary wash'],
+['lab wash green-100 ink','#141414','#7ef186',4.5,'playground secondary wash'],
+['lab wash red-300 ink','#141414','#ff3d3d',4.5,'playground secondary wash'],
+['lab wash orange-200 ink','#141414','#f8ac72',4.5,'playground secondary wash'],
+['lab wash red-beryl-200 ink','#141414','#ffaac5',4.5,'playground secondary wash'],
+['lab wash gray-100 ink','#141414','#e0e0e0',4.5,'playground neutral wash'],
 ];
 let fails=0;
 for(const [name,fg,bg,need,note] of pairs){

@@ -1,0 +1,81 @@
+/* ADAM/DS — src/ds/button-lab-inspect.css · readout + inspector tip */
+/* Exports: .blab__ratio, .blab-tip, inspect outline */
+.blab__ratio {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  border: var(--border-width-thin) solid var(--border-thin);
+  white-space: nowrap;
+}
+.blab-tip {
+  position: fixed;
+  z-index: var(--z-index-toast);
+  max-width: 34ch;
+  background: var(--bg-surface-elevated);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+.blab-tip b {
+  display: block;
+  color: var(--text-primary);
+  margin-top: var(--spacing-2);
+}
+.blab-tip b:first-child {
+  margin-top: var(--spacing-0);
+}
+.blab-tip div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  padding-top: var(--spacing-1);
+}
+.blab-tip code {
+  color: var(--text-primary);
+}
+.blab-tip span {
+  color: var(--text-muted);
+  text-align: right;
+}
+[data-inspect="1"] .btn {
+  outline: var(--border-width-medium) dashed var(--border-strong);
+  outline-offset: var(--spacing-1);
+  cursor: help;
+}
+.blab__inspect {
+  position: absolute;
+  top: var(--spacing-2);
+  right: var(--spacing-2);
+}
+.blab-overlay {
+  position: absolute;
+  inset: var(--spacing-0);
+  pointer-events: none;
+}
+.blab-hl {
+  position: absolute;
+  border: var(--border-width-medium) solid var(--role-action);
+  border-radius: var(--radius-xs);
+}
+.blab-dot {
+  position: absolute;
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: var(--radius-full);
+  background: var(--role-action);
+}
+.blab-chip {
+  position: absolute;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--role-action-ink);
+  background: var(--role-action);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}

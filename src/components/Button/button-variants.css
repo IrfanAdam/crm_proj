@@ -78,6 +78,9 @@ aspect-ratio:1 / 1;
 .btn--full-width {
 width:100%;
 }
+.btn--capsule {
+border-radius:var(--radius-full);
+}
 @media (forced-colors:active) {
 .btn--primary {
 background:ButtonFace;

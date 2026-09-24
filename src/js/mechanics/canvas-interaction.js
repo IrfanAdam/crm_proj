@@ -2,7 +2,7 @@ import { getMode, bases } from './graph.js';
 import { clearRouteCache } from './route.js';
 import { NODES } from './graph.js';
 export function attachCanvasInteraction(o){
-  const {canvas,tooltip,S,getBB,world,hitNode,hitGroup,layoutGroup,reorderNode,draw,tip,tipEdge,hitEdge}=o;
+  const {canvas,tooltip,S,getBB,world,hitNode,hitGroup,layoutGroup,reorderNode,draw,tip,tipEdge,hitEdge,clampView}=o;
   const fallback={
     decisions:{product:{x:18,y:16},system:{x:162,y:16},architecture:{x:162,y:244},constraints:{x:322,y:16}},
     schema:{entities:{x:18,y:130},fields:{x:162,y:16},categories:{x:162,y:244},flows:{x:322,y:16}},
@@ -16,7 +16,7 @@ export function attachCanvasInteraction(o){
     const p=world(e);
     if(S.dragGroup){ S.moved=true; const dx=p.x-S.dragGroup.offX, dy=p.y-S.dragGroup.offY; S.dragGroup.g.x=S.dragGroup.sx+dx; S.dragGroup.g.y=S.dragGroup.sy+dy; S.dragGroup.members.forEach(m=>{m.n.x=m.sx+dx; m.n.y=m.sy+dy;}); clearRouteCache(); draw(); return; }
     if(S.dragNode){ S.moved=true; reorderNode(S.dragNode,p.y); draw(); tip(S.dragNode); return; }
-    if(S.pan){ if(Math.hypot(e.clientX-S.downX,e.clientY-S.downY)>5) S.moved=true; S.ox=e.clientX-S.pan.sx; S.oy=e.clientY-S.pan.sy; draw(); return; }
+    if(S.pan){ if(Math.hypot(e.clientX-S.downX,e.clientY-S.downY)>5) S.moved=true; S.ox=e.clientX-S.pan.sx; S.oy=e.clientY-S.pan.sy; if(clampView) clampView(); draw(); return; }
     const hg=hitGroup(p), h=hitNode(p); const he=h?null:hitEdge(p);
     const hgChanged=hg!==S.hoverGroup; S.hoverGroup=hg;
     if(h!==S.hover||he!==S.hovEdge||hgChanged){ S.hover=h; S.hovEdge=he; canvas.style.cursor=hg?'grab':h?'ns-resize':he?'pointer':'grab'; draw(); }
@@ -47,7 +47,7 @@ export function attachCanvasInteraction(o){
   canvas.addEventListener('wheel',e=>{
     e.preventDefault(); const r=canvas.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
     const k=e.deltaY>0?0.92:1.08, ns=Math.max(.18,Math.min(3.8,S.scale*k));
-    S.ox=mx-(mx-S.ox)*(ns/S.scale); S.oy=my-(my-S.oy)*(ns/S.scale); S.scale=ns; draw();
+    S.ox=mx-(mx-S.ox)*(ns/S.scale); S.oy=my-(my-S.oy)*(ns/S.scale); S.scale=ns; if(clampView) clampView(); draw();
     const p=world(e), h=hitNode(p); if(h||S.hover) tip(h||S.hover);
   },{passive:false});
   canvas.addEventListener('click',e=>{

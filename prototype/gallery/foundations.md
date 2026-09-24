@@ -32,7 +32,7 @@ Gallery `Color` tab renders each ramp live as `background:var(--primitive-*-50�
 
 - **Type:** Inter sans, `xs 12` → `3xl 32`, `regular 400`/`medium 500`/`semibold 600`/`bold 700`, `leading-tight 1.15`/`snug 1.25`/`normal 1.4`/`relaxed 1.5`, `tracking-tight -0.01`/`wide 0.04`.
 - **Spacing:** `0 0` / `1 4` / `2 8` / `3 12` / `4 16` / `5 20` / `6 24` / `8 32` / `10 40` / `12 48` / `16 64` — card `spacing-4`, section `12/16`.
-- **Radius:** `none 0`/`xs 4`/`sm 8`/`md 12`/`lg 16`/`xl 20`/`2xl 24`/`3xl 32`/`full 9999` — chips `full`, cards `lg→2xl`.
+- **Radius:** `none 0`/`xs 4`/`sm 8`/`md 12`/`lg 16`/`xl 20`/`2xl 24`/`3xl 32`/`full 32` — chips `full`, cards `lg→2xl`.
 - **Shadow/Border/Z:** `shadow-sm/md/lg` (hairline carries UI, shadow only for depth viz) + `border hairline 1px/thin/medium/thick` + `z base 0→toast 1050` + `opacity disabled .5`.
 - **Motion/Icon:** `duration xs 100→xl 600` + `easing standard/spring/elastic` + `spring 300/20/1` + `elastic-overshoot 12px/tilt-max 12deg` + `icon 12→32`.
 

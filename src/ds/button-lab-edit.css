@@ -1,0 +1,61 @@
+/* ADAM/DS — src/ds/button-lab-edit.css · playground edit+code */
+/* Exports: .blab__edit fields, .blab__code row */
+.blab__edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-top: var(--border-width-thin) solid var(--border-thin);
+}
+.blab__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+}
+.blab__field input {
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-1) var(--spacing-2);
+  min-width: var(--spacing-16);
+}
+.blab__field select {
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-1) var(--spacing-2);
+}
+.blab__field--sm input {
+  max-width: var(--spacing-12);
+}
+.blab__check {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+/* — Code — */
+.blab__code {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-top: var(--border-width-thin) solid var(--border-thin);
+}
+.blab__code pre {
+  flex: 1;
+  margin: var(--spacing-0);
+  min-width: var(--spacing-0);
+}
+.blab__code .tp-code {
+  margin-top: var(--spacing-0);
+}

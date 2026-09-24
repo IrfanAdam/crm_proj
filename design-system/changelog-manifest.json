@@ -1,10 +1,11 @@
 {
-  "generated": "2026-09-23T17:14:54.050Z",
+  "generated": "2026-09-24T10:13:14.649Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
     "2026-09-16_193500-full-publishable-design-system.md",
     "2026-09-16_203500-ds-polish.md",
+    "2026-09-21_000000-lump-sum-builds.md",
     "2026-09-22_082844-arch-atlas.md",
     "2026-09-22_122850-museum-refactor.md",
     "2026-09-22_155000-architecture-mechanics.md",
@@ -13,6 +14,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "8e04731",
+      "full": "8e0473198c4e31c436fcf50359515c483dc595f0",
+      "date": "2026-09-23",
+      "subject": "chore(ds): record the build fix for the gallery's classic scripts",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "a56fe25",
       "full": "a56fe25ceca443f56eff84eafff29f42e8174458",
@@ -1663,14 +1672,21 @@
     }
   ],
   "wip": [
+    "M DESIGN.md",
+    "M design-system/tokens.css",
+    "M prototype/gallery/foundations.md",
+    "M public/foundations/radius.html",
     "D src/arch/atlas-selection.js",
     "M src/arch/atlas-state.js",
     "M src/arch/atlas.css",
     "M src/arch/atlas.js",
+    "M src/arch/atlas.json",
     "D src/arch/lens-decisions.js",
     "D src/arch/lens-logic.js",
     "D src/arch/lens-schema.js",
     "M src/arch/lens-truth.js",
+    "M src/components/Button/button-variants.css",
+    "M src/ds/changelog-names.json",
     "M src/js/mechanics/canvas-interaction.js",
     "M src/js/mechanics/canvas.js",
     "M src/js/mechanics/graphData.decisions.js",
@@ -1678,8 +1694,23 @@
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
     "M src/js/mechanics/render.js",
+    "M src/shell/top-pills.jsx",
     "M src/styles/mechanics.css",
     "M src/workspace/workspace.css",
-    "M tests/atlas-shell.test.mjs"
+    "M tests/atlas-shell.test.mjs",
+    "M tests/contrast.test.mjs",
+    "M tokens/primitives.json",
+    "?? src/ds/button-lab-a11y.js",
+    "?? src/ds/button-lab-edit.css",
+    "?? src/ds/button-lab-hue.css",
+    "?? src/ds/button-lab-inspect.css",
+    "?? src/ds/button-lab-inspect.js",
+    "?? src/ds/button-lab-overlay-render.js",
+    "?? src/ds/button-lab-overlay.js",
+    "?? src/ds/button-lab-tone.js",
+    "?? src/ds/button-lab-tune.css",
+    "?? src/ds/button-lab-tune.js",
+    "?? src/ds/button-lab.css",
+    "?? src/ds/button-lab.js"
   ]
 }

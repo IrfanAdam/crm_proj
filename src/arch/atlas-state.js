@@ -1,6 +1,6 @@
 /* ADAM/SHARED — src/arch/atlas-state.js · lens + selection [plan:2026-09-22_155000-architecture-mechanics.md#phase-3] */
 // — Exports: createAtlasState, LENSES —
-const VALID = ['decisions', 'schema', 'logic'];
+const VALID = ['decisions', 'schema', 'logic', 'truth'];
 export const LENSES = VALID;
 function readMode() {
   try {

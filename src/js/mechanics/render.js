@@ -144,21 +144,31 @@ export function drawNodes(ctx,scale,hover,selected,selEdge){
     ctx.save();
     if(dim) ctx.globalAlpha=.52;
     const kc=kindColor(n.kind);
-    const showContainer = act&&!reduced;
-    if(showContainer){
-      ctx.shadowColor=token('--color-shadow-strong'); ctx.shadowBlur=10; ctx.shadowOffsetY=2;
-      drawRound(ctx,n.x,n.y,n.w,n.h,6); ctx.fillStyle=token('--amber-50'); ctx.globalAlpha=dim? .72:1; ctx.fill();
+    // idle card: ghost fill + subtle border so nodes are visible before hover
+    ctx.fillStyle=token('--color-card'); ctx.globalAlpha=dim? .55:.92;
+    drawRound(ctx,n.x,n.y,n.w,n.h,6); ctx.fill();
+    ctx.strokeStyle=token('--color-border'); ctx.globalAlpha=dim? .35:.72; ctx.lineWidth=1/scale; ctx.stroke();
+    ctx.globalAlpha=dim? .52:1;
+    if(act){
+      ctx.save();
+      if(!reduced){ ctx.shadowColor=token('--color-shadow-strong'); ctx.shadowBlur=10; ctx.shadowOffsetY=2; }
+      ctx.fillStyle=token('--amber-50'); ctx.globalAlpha=dim? .72:1;
+      drawRound(ctx,n.x,n.y,n.w,n.h,6); ctx.fill();
       ctx.shadowColor=token('--color-transparent');
-      ctx.globalAlpha=dim? .55:1;
       ctx.strokeStyle=token('--stone-900'); ctx.lineWidth=1.7/scale; ctx.stroke();
-      ctx.save(); ctx.globalAlpha=dim? .45:1;
+      ctx.globalAlpha=dim? .45:1;
       drawRound(ctx,n.x,n.y,n.w,n.h,6); ctx.clip();
       ctx.fillStyle=kc; ctx.fillRect(n.x,n.y,2.5,n.h);
       ctx.restore();
+      ctx.globalAlpha=dim? .52:1;
     } else {
-      ctx.shadowColor=token('--color-transparent');
+      // idle kind strip: 2px tinted line on left edge
+      ctx.save(); drawRound(ctx,n.x,n.y,n.w,n.h,6); ctx.clip();
+      ctx.fillStyle=kc; ctx.globalAlpha=dim? .28:.45; ctx.fillRect(n.x,n.y,2,n.h);
+      ctx.restore();
+      ctx.globalAlpha=dim? .52:1;
     }
-    ctx.beginPath(); ctx.arc(n.x+7,n.y+n.h/2,2.8,0,Math.PI*2); ctx.fillStyle=kc; ctx.fill(); ctx.strokeStyle=token('--color-card'); ctx.lineWidth=1.2; ctx.stroke();
+    ctx.beginPath(); ctx.arc(n.x+7,n.y+n.h/2,2.8,0,Math.PI*2); ctx.fillStyle=kc; ctx.globalAlpha=dim? .55:1; ctx.fill(); ctx.strokeStyle=token('--color-card'); ctx.lineWidth=1.2; ctx.stroke(); ctx.globalAlpha=dim? .52:1;
     const leftPad=12;
     const contentW=n.w-leftPad-4;
     // subtle scaling: p=0.38 — keeps 7.5 base readable, grows only gently on zoom (no tiny when zoomed out, no huge when zoomed in)
