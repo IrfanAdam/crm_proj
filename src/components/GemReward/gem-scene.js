@@ -23,7 +23,8 @@ const T = window.THREE;
 api.geometry = function (cut) {
 const p = cut.positions;
 const v = [];
-cut.cells.forEach(function (c) {
+const fv = [];
+cut.cells.forEach(function (c, ci) {
 const a = p[c[0]], b = p[c[1]], d = p[c[2]];
 if (!a || !b || !d) return;
 const nx = (b[1] - a[1]) * (d[2] - a[2]) - (b[2] - a[2]) * (d[1] - a[1]);
@@ -31,10 +32,12 @@ const ny = (b[2] - a[2]) * (d[0] - a[0]) - (b[0] - a[0]) * (d[2] - a[2]);
 const nz = (b[0] - a[0]) * (d[1] - a[1]) - (b[1] - a[1]) * (d[0] - a[0]);
 const ox = (a[0] + b[0] + d[0]) / 3, oy = (a[1] + b[1] + d[1]) / 3, oz = (a[2] + b[2] + d[2]) / 3;
 const f = nx * ox + ny * oy + nz * oz < 0 ? [a, d, b] : [a, b, d];
-f.forEach(function (q) { v.push(q[0], q[1], q[2]); });
+const z = 0.8 + 0.4 * (Math.sin(ci * 12.9898) * 43758.5453 % 1 + 1) % 1;
+f.forEach(function (q) { v.push(q[0], q[1], q[2]); fv.push(z, z, z); });
 });
 const geo = new T.BufferGeometry();
 geo.setAttribute('position', new T.BufferAttribute(new Float32Array(v), 3));
+geo.setAttribute('color', new T.BufferAttribute(new Float32Array(fv), 3));
 geo.computeVertexNormals();
 geo.computeBoundingBox();
 return geo;
@@ -44,7 +47,7 @@ const m = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.
 if (!soft) {
 m.transmission = 0.95;
 m.thickness = 0.9;
-m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.3);
+m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.15);
 m.attenuationDistance = 0.6;
 m.onBeforeCompile = function (s) {
 if (window.GEM_ENV && window.GEM_ENV.dispersion) s.fragmentShader = window.GEM_ENV.dispersion(s.fragmentShader);
@@ -53,7 +56,8 @@ if (window.GEM_ENV && window.GEM_ENV.dispersion) s.fragmentShader = window.GEM_E
 return m;
 };
 api.inner = function (color, ior, side, opacity) {
-const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: side || T.BackSide, transparent: true, opacity: opacity || 0.72, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.5, emissive: color.clone().multiplyScalar(0.18) });
+const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: side || T.BackSide, transparent: true, opacity: opacity || 0.72, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.5, emissive: color.clone().multiplyScalar(0.18), vertexColors: true });
+b.onBeforeCompile = function (s) { s.fragmentShader = s.fragmentShader.replace('vec3 totalEmissiveRadiance = emissive;', 'vec3 totalEmissiveRadiance = emissive * vColor;'); };
 return b;
 };
 api.ghost = function (geo, color, ior, side, scale, opacity) { const m = new T.Mesh(geo, api.inner(color, ior, side, opacity)); m.renderOrder = -1; m.scale.setScalar(scale); return m; };

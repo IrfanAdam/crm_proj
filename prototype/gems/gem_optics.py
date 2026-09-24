@@ -12,8 +12,8 @@ ENV_HI = 14.0                            # tent emitter radiance (HDR: survives 
 KEY = np.array([0.42, 0.71, 0.57])       # directional key light (gem-scene.js: position 3, 5, 4)
 ENV_I, EMIT = 1.6, 0.12                  # envMapIntensity · emissive = base × EMIT
 TRANS, THICK, ATTD = 0.95, 0.9, 0.6      # transmission · march distance · attenuation distance
-TINT, EXPO = 0.3, 0.95                   # attenuationColor = base lerped TINT toward white
-DISP = (0.985, 1.0, 1.015)               # ior multipliers → R, G, B (chromatic dispersion)
+TINT, EXPO = 0.15, 0.95                 # attenuationColor = base lerped TINT toward white
+DISP = (0.88, 1.0, 1.12)                 # ior multipliers → R, G, B (chromatic dispersion, shipped 12%)
 ACES_IN = np.array([[.59719, .35458, .04823], [.076, .90834, .01566], [.0284, .13383, .83777]])
 ACES_OUT = np.array([[1.60475, -.53108, -.07367], [-.10208, 1.10813, -.00605], [-.00327, -.07276, 1.07602]])
 
