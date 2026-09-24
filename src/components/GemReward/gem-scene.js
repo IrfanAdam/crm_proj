@@ -69,12 +69,20 @@ camera.position.set(0, cy + h * 0.16, dist);
 camera.lookAt(0, cy - h * 0.02, 0);
 const scene = new T.Scene();
 if (window.GEM_ENV) scene.environment = window.GEM_ENV.texture(renderer);
-if (window.GEM_ENV && window.GEM_ENV.stage) scene.background = window.GEM_ENV.stage(renderer.domElement);
+if (window.GEM_TEXTURES && window.GEM_TEXTURES.stage) scene.background = window.GEM_TEXTURES.stage(renderer.domElement);
 const soft = !/(\?|&)gem=high/.test(window.location.search) && api.soft(renderer);
 const key = new T.DirectionalLight(0xfff4e6, 1.2);
 key.position.set(3, 5, 4);
 scene.add(key);
 scene.add(new T.AmbientLight(0xffffff, 0.12));
+if (window.GEM_TEXTURES && window.GEM_TEXTURES.caustic) {
+const cm = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: window.GEM_TEXTURES.caustic(color), transparent: true, blending: T.AdditiveBlending, depthWrite: false }));
+cm.rotation.x = -Math.PI / 2;
+cm.position.y = bb.min.y - h * 0.2;
+cm.scale.setScalar(rad * 2.4);
+cm.renderOrder = -1;
+scene.add(cm);
+}
 const group = new T.Group();
 const inner = new T.Mesh(geo, api.inner(color, ior));
 inner.renderOrder = -1;

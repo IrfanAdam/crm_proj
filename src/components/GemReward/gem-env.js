@@ -4,7 +4,7 @@
 // —      plus dim broad fill; HDR values >1 survive because PMREM renders with NoToneMapping —
 // — Why small and many: a facet only glints when its mirror direction finds a source, so the —
 // —      tent must cover the sphere; a few big panels just light every facet flat —
-// Export map: GEM_ENV.texture(renderer) → PMREM texture for scene.environment · GEM_ENV.stage(canvas) → stage backdrop · GEM_ENV.lastMs
+// Export map: GEM_ENV.texture(renderer) → PMREM texture for scene.environment · GEM_ENV.lastMs (stage/caustic textures live in gem-textures.js)
 (function () {
 if (!window.THREE) return;
 const T = window.THREE;
@@ -47,38 +47,6 @@ glow(Math.cos(az) * rr, 12 * Math.sin(p[0]), Math.sin(az) * rr, 0.3, p[1], 1);
 });
 return s;
 }
-api.stage = function (canvas) {
-const cv = document.createElement('canvas');
-cv.width = 512;
-cv.height = 136;
-const c = cv.getContext('2d');
-const rgb = function (v, a) {
-const s = String(v).trim();
-const m = s.match(/^#([0-9a-f]{6}|[0-9a-f]{3})$/i);
-if (m) {
-const h = m[1];
-const n = h.length === 3 ? h.split('').map(function (c) { return parseInt(c + c, 16); }) : [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
-return 'rgba(' + n[0] + ',' + n[1] + ',' + n[2] + ',' + a + ')';
-}
-const d = s.match(/\d+/g);
-return d && d.length >= 3 ? 'rgba(' + d[0] + ',' + d[1] + ',' + d[2] + ',' + a + ')' : 'rgba(128,128,128,' + a + ')';
-};
-c.fillStyle = canvas ? getComputedStyle(canvas).backgroundColor : 'transparent';
-c.fillRect(0, 0, 512, 136);
-const g1 = c.createRadialGradient(256, 30, 0, 256, 30, 380);
-g1.addColorStop(0, rgb(getComputedStyle(document.documentElement).getPropertyValue('--bg-surface'), 0.72));
-g1.addColorStop(0.76, 'rgba(255,255,255,0)');
-c.fillStyle = g1;
-c.fillRect(0, 0, 512, 136);
-const g2 = c.createRadialGradient(256, 117, 0, 256, 117, 90);
-g2.addColorStop(0, rgb(getComputedStyle(document.documentElement).getPropertyValue('--text-primary'), 0.26));
-g2.addColorStop(0.7, 'rgba(0,0,0,0)');
-c.fillStyle = g2;
-c.fillRect(0, 0, 512, 136);
-const t = new T.CanvasTexture(cv);
-t.colorSpace = T.SRGBColorSpace;
-return t;
-};
 api.texture = function (renderer) {
 const t0 = performance.now();
 const pmrem = new T.PMREMGenerator(renderer);

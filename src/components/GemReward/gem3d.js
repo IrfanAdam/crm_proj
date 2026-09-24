@@ -94,5 +94,5 @@ ptr.at = e;
 if (window.MutationObserver) new MutationObserver(function (list) {
 list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });
 }).observe(document.body, { childList: true, subtree: true });
-window.GEM3D = { bg: function (url) { if (!THREE_) return; demoBg = url ? new THREE_.TextureLoader().load(url) : null; rigs.forEach(function (r) { if (r.scene) r.scene.background = demoBg || r.stageBg; }); }, restage: function () { rigs.forEach(function (r) { if (!r.stageBg || !window.GEM_ENV || !window.GEM_ENV.stage) return; r.stageBg.dispose(); r.stageBg = window.GEM_ENV.stage(r.canvas); if (!demoBg) r.scene.background = r.stageBg; }); } };
+window.GEM3D = { bg: function (url) { if (!THREE_) return; demoBg = url ? new THREE_.TextureLoader().load(url) : null; rigs.forEach(function (r) { if (r.scene) r.scene.background = demoBg || r.stageBg; }); }, restage: function () { rigs.forEach(function (r) { if (!r.stageBg || !window.GEM_TEXTURES || !window.GEM_TEXTURES.stage) return; r.stageBg.dispose(); r.stageBg = window.GEM_TEXTURES.stage(r.canvas); if (!demoBg) r.scene.background = r.stageBg; }); } };
 })();
