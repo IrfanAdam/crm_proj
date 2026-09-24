@@ -53,7 +53,7 @@ s.fragmentShader = s.fragmentShader.replace(/vec4 transmitted = getIBLVolumeRefr
 return m;
 };
 api.inner = function (color, ior) {
-const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: T.BackSide, transparent: true, opacity: 0.5, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.1, emissive: color.clone().multiplyScalar(0.1) });
+const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: T.BackSide, transparent: true, opacity: 0.62, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.1, emissive: color.clone().multiplyScalar(0.12) });
 return b;
 };
 api.stage = function (renderer, color, cut, aspect, ior) {
@@ -78,6 +78,7 @@ scene.add(new T.AmbientLight(0xffffff, 0.12));
 const group = new T.Group();
 const inner = new T.Mesh(geo, api.inner(color, ior));
 inner.renderOrder = -1;
+inner.scale.setScalar(0.955);
 group.add(inner);
 group.add(new T.Mesh(geo, api.surface(color, soft, ior)));
 scene.add(group);
