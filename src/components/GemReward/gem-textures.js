@@ -3,7 +3,7 @@
 // — Stage: matches the CSS card stage (base = the canvas' computed colour, so the lab's —
 // —        subtree data-theme is honoured) + soft glow + contact pool; the gem refracts it —
 // — Caustic: the focused light pool under the stone — faceted spokes, not a smooth blob —
-// Export map: GEM_TEXTURES.stage(canvas) · GEM_TEXTURES.caustic(color)
+// Export map: GEM_TEXTURES.stage(canvas) · GEM_TEXTURES.shadow() contact shadow · GEM_TEXTURES.caustic(color) light pool
 (function () {
 if (!window.THREE) return;
 const T = window.THREE;
@@ -36,6 +36,21 @@ g2.addColorStop(0, rgb(getComputedStyle(document.documentElement).getPropertyVal
 g2.addColorStop(0.7, 'rgba(0,0,0,0)');
 c.fillStyle = g2;
 c.fillRect(0, 0, 512, 136);
+const t = new T.CanvasTexture(cv);
+t.colorSpace = T.SRGBColorSpace;
+return t;
+};
+api.shadow = function () {
+const cv = document.createElement('canvas');
+cv.width = 128;
+cv.height = 128;
+const c = cv.getContext('2d');
+const g = c.createRadialGradient(64, 64, 2, 64, 64, 62);
+g.addColorStop(0, 'rgba(0,0,0,0.5)');
+g.addColorStop(0.55, 'rgba(0,0,0,0.22)');
+g.addColorStop(1, 'rgba(0,0,0,0)');
+c.fillStyle = g;
+c.fillRect(0, 0, 128, 128);
 const t = new T.CanvasTexture(cv);
 t.colorSpace = T.SRGBColorSpace;
 return t;

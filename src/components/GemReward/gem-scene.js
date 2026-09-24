@@ -76,13 +76,10 @@ const key = new T.DirectionalLight(0xfff4e6, 1.2);
 key.position.set(3, 5, 4);
 scene.add(key);
 scene.add(new T.AmbientLight(0xffffff, 0.12));
+const floor = function (tex, y, scale, order) { const m = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: tex, transparent: true, blending: order === -1 ? T.AdditiveBlending : T.NormalBlending, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.y = y; m.scale.setScalar(scale); m.renderOrder = order; return m; };
 if (window.GEM_TEXTURES && window.GEM_TEXTURES.caustic) {
-const cm = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: window.GEM_TEXTURES.caustic(color), transparent: true, blending: T.AdditiveBlending, depthWrite: false }));
-cm.rotation.x = -Math.PI / 2;
-cm.position.y = bb.min.y - h * 0.2;
-cm.scale.setScalar(rad * 2.4);
-cm.renderOrder = -1;
-scene.add(cm);
+scene.add(floor(window.GEM_TEXTURES.shadow(), bb.min.y - h * 0.26, rad * 2.6, -2));
+scene.add(floor(window.GEM_TEXTURES.caustic(color), bb.min.y - h * 0.2, rad * 2.4, -1));
 }
 const group = new T.Group();
 group.add(api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66));
