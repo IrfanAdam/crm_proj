@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T18:41:18.472Z",
+  "generated": "2026-09-24T18:48:20.512Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,38 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "b17292e",
+      "full": "b17292e2cdfef66a940def47f9c2346bae27cd3c",
+      "date": "2026-09-25",
+      "subject": "feat(ds): gem — near-side ghost shell + GEM3D.rigs debug hook; internal facet depth on the card",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "6ff8a4c",
+      "full": "6ff8a4c726ff89a64a5f88c2aaec97dac2dc5db9",
+      "date": "2026-09-25",
+      "subject": "chore(ds): plan Task 23 (material accuracy) + mechanics regen",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "0de664e",
+      "full": "0de664e33e5c9e254ee08bd25d28bc5125c387c4",
+      "date": "2026-09-25",
+      "subject": "feat(gems): python twin synced to shipped material — refraction march, per-stone IOR + attenuation, ACES, thin-film sheen",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "64ca717",
+      "full": "64ca717cdf7e0e9d243f1924a39f7dabb014b056",
+      "date": "2026-09-25",
+      "subject": "chore(ds): regen manifest after gem caustic pool",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "42f5180",
       "full": "42f518095cfa0b0e2e15a08cff5369dbda7c7491",
@@ -1871,11 +1903,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M prototype/gems/README.md",
-    "M prototype/gems/gems-preview.png",
-    "M prototype/gems/render_gems.py",
-    "M prototype/gems/soft_render.py",
-    "?? prototype/gems/gem_optics.py"
-  ]
+  "wip": []
 }
