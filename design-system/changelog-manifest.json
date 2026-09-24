@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T18:58:01.238Z",
+  "generated": "2026-09-24T19:00:42.622Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "901e300",
+      "full": "901e300783d047c5be8e37dd3122cde4e6f4c649",
+      "date": "2026-09-25",
+      "subject": "feat(ds): gem — soft contact shadow grounds the stone (caustic pool layered inside it)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "f8bcde6",
+      "full": "f8bcde6443e99f657e924d3394862bd0ce230d8b",
+      "date": "2026-09-25",
+      "subject": "chore(ds): regen manifest after dispersion spread tune",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "521ee2d",
       "full": "521ee2dd020a8709c92fc6a4b2f107291f1cec75",
