@@ -1,10 +1,10 @@
 /* ADAM/SHARED — src/components/GemReward/gem-scene.js · gem cut → camera/surface rig */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · camera/fit/surface builder (Task 22).
 // — Env: gem-env.js supplies the PMREM studio; degrade to key+ambient if it is absent —
-// — Surface: MeshPhysicalMaterial flatShading; transmission on GPU, off on software (force: ?gem=high) —
+// — Surface: MeshPhysicalMaterial flatShading; ior per stone from CATEGORIES; transmission on GPU, off on software (?gem=high) —
 // — Cut: faces rewound outward, so no GEM_CUT winding can punch a hole in a facet —
 // — Frame: camera sits so the gem fills FILL of the stage height, centred, stage stays 140px —
-// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft) · stage(renderer, color, cut, aspect)
+// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft, ior) · stage(renderer, color, cut, aspect, ior)
 (function () {
 const api = {};
 const FILL = 0.75;
@@ -39,20 +39,20 @@ geo.computeVertexNormals();
 geo.computeBoundingBox();
 return geo;
 };
-api.surface = function (color, soft) {
-const m = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.06, ior: 2.4, clearcoat: 1, clearcoatRoughness: 0.04, flatShading: true, envMapIntensity: 1.6, emissive: color.clone().multiplyScalar(0.13), iridescence: 0.45, iridescenceIOR: 1.9, iridescenceThicknessRange: [120, 640], sheen: 0.12, sheenRoughness: 0.25, sheenColor: new T.Color(1, 1, 1) });
+api.surface = function (color, soft, ior) {
+const m = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.06, ior: ior || 2.4, clearcoat: 1, clearcoatRoughness: 0.04, flatShading: true, envMapIntensity: 1.6, emissive: color.clone().multiplyScalar(0.09), iridescence: 0.45, iridescenceIOR: 1.9, iridescenceThicknessRange: [120, 640], sheen: 0.12, sheenRoughness: 0.25, sheenColor: new T.Color(1, 1, 1) });
 if (!soft) {
-m.transmission = 0.9;
-m.thickness = 1.15;
-m.attenuationColor = color.clone();
-m.attenuationDistance = 0.5;
+m.transmission = 0.95;
+m.thickness = 0.9;
+m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.3);
+m.attenuationDistance = 0.85;
 m.onBeforeCompile = function (s) {
 s.fragmentShader = s.fragmentShader.replace(/vec4 transmitted = getIBLVolumeRefraction\([\s\S]*?\);/, 'vec4 t0 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 0.985, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t1 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t2 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 1.015, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 transmitted = vec4(t0.r, t1.g, t2.b, t1.a);');
 };
 }
 return m;
 };
-api.stage = function (renderer, color, cut, aspect) {
+api.stage = function (renderer, color, cut, aspect, ior) {
 const geo = api.geometry(cut);
 const bb = geo.boundingBox;
 const h = Math.max(bb.max.y - bb.min.y, 0.001);
@@ -71,7 +71,7 @@ key.position.set(3, 5, 4);
 scene.add(key);
 scene.add(new T.AmbientLight(0xffffff, 0.12));
 const group = new T.Group();
-group.add(new T.Mesh(geo, api.surface(color, soft)));
+group.add(new T.Mesh(geo, api.surface(color, soft, ior)));
 scene.add(group);
 return { scene: scene, camera: camera, group: group };
 };

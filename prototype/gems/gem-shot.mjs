@@ -71,6 +71,7 @@ const readJSON = async (expr) => {
   const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true });
   return r.result && r.result.value;
 };
+const fps = evalExpr ? await readJSON(evalExpr) : null;
 const rects = clips.length
   ? await readJSON(`JSON.stringify(${JSON.stringify(clips)}.map((s) => { const els = Array.from(document.querySelectorAll(s));
       const el = els.find((e) => e.getBoundingClientRect().width > 0); if (!el) return null;
@@ -91,7 +92,6 @@ const probe = await readJSON(`JSON.stringify((() => { const g = window.THREE; re
   gems: document.querySelectorAll('canvas[data-gem]').length, mounted: document.querySelectorAll('canvas[data-gem][data-gem-done]').length,
   notFound: performance.getEntriesByType('resource').filter((r) => r.responseStatus === 404).map((r) => r.name).slice(0, 5),
   title: document.title }; })())`);
-const fps = evalExpr ? await readJSON(evalExpr) : null;
 console.log(JSON.stringify({ probe: JSON.parse(probe || '{}'), fps, consoleErrors: consoleErrors.slice(0, 8) }, null, 2));
 ws.close();
 chrome.kill();

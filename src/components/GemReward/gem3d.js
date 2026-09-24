@@ -3,12 +3,13 @@
 // — Color: category token → getComputedStyle; no CSS filter recolors the canvas any more —
 // — Motion: dt-based spin + float + pointer tilt, eased, no per-frame allocation; paused offscreen, —
 // — hidden tab, reduced motion (one static frame) · Degrade: no THREE → GEM_FALLBACK.paint paints it —
-// Export map: mounts canvas[data-gem] on boot · ds:doc · DOM insert · frees removed canvases.
+// Export map: mounts canvas[data-gem] on boot · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) demo backdrop.
 (function () {
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rigs = [];
 const ptr = { at: null };
+let demoBg = null;
 const css = function (name) {
 return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 };
@@ -18,7 +19,8 @@ const renderer = new THREE_.WebGLRenderer({ canvas: canvas, antialias: true, alp
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.toneMapping = THREE_.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.95;
-Object.assign(rig, window.GEM_SCENE.stage(renderer, new THREE_.Color(rig.paint), GEM.gemCut(GEM.CUT), canvas.clientWidth / Math.max(canvas.clientHeight, 16)), { renderer: renderer });
+Object.assign(rig, window.GEM_SCENE.stage(renderer, new THREE_.Color(rig.paint), GEM.gemCut(GEM.CUT), canvas.clientWidth / Math.max(canvas.clientHeight, 16), rig.cat.ior), { renderer: renderer });
+if (demoBg) rig.scene.background = demoBg;
 const size = function () {
 const w = Math.max(canvas.clientWidth, 16), h = Math.max(canvas.clientHeight, 16);
 if (rig.w === w && rig.h === h) return;
@@ -92,4 +94,5 @@ ptr.at = e;
 if (window.MutationObserver) new MutationObserver(function (list) {
 list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });
 }).observe(document.body, { childList: true, subtree: true });
+window.GEM3D = { bg: function (url) { if (!THREE_) return; demoBg = url ? new THREE_.TextureLoader().load(url) : null; rigs.forEach(function (r) { if (r.scene) r.scene.background = demoBg; }); } };
 })();

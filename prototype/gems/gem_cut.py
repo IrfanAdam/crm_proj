@@ -1,6 +1,6 @@
 """ADAM/SHARED — prototype/gems/gem_cut.py · portable round-brilliant cut (mirror)."""
 # [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · Task 18 parity twin of gem-cut.js.
-# — Data: CUT dims + CATEGORIES (token, hue, spin) · key order mirrors the JS core —
+# — Data: CUT dims + CATEGORIES (token, hue, spin, ior = real refractive index) · key order mirrors the JS core —
 # — Cut: octagon table · 8 star · 8 bezel kites · upper-girdle fan · thin girdle band (2
 #   close rings) · 8 pavilion mains · 16 lower-girdle facets · tiny culet ring — triangles —
 # — Mirror: same vertex order + same expressions as the JS core; parity_check.py asserts 1e-9 —
@@ -10,10 +10,10 @@ CUT = {"facets": 48, "girdle": 1.0, "table": 0.55, "crown": 0.32, "pavilion": 0.
        "band": 0.055, "star": 0.74, "starDrop": 0.5, "lower": 0.15, "scallop": 0.75,
        "culet": 0.06}
 CATEGORIES = {
-    "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35},
-    "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3},
-    "amethyst": {"token": "--primitive-amethyst-400", "hue": 265, "spin": 0.4},
-    "redberyl": {"token": "--primitive-red-beryl-400", "hue": 310, "spin": 0.5},
+    "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35, "ior": 1.77},
+    "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3, "ior": 1.545},
+    "amethyst": {"token": "--primitive-amethyst-400", "hue": 265, "spin": 0.4, "ior": 1.545},
+    "redberyl": {"token": "--primitive-red-beryl-400", "hue": 310, "spin": 0.5, "ior": 1.577},
 }
 ALIASES = {"red-beryl": "redberyl"}   # legacy kebab key (JS exposes the same as a property)
 FALLBACK = {"sapphire": "#218aea", "citrine": "#ffb01e", "amethyst": "#a54cff", "redberyl": "#ea005e"}

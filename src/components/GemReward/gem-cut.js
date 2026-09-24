@@ -8,14 +8,15 @@
 //   (two close rings) · 8 pavilion mains · 16 lower-girdle facets · tiny culet ring —
 // Export map: window.GEM_CUT = { CUT, CATEGORIES, gemCut(cut) } — zero DOM, zero THREE,
 // deterministic (no Math.random); prototype/gems/gem_cut.py mirrors it, parity_check.py
-// asserts identical vertex order + ≤1e-9. CATEGORIES also carries the legacy kebab alias.
+// asserts identical vertex order + ≤1e-9. CATEGORIES also carries the legacy kebab alias;
+// ior = real refractive index (ordinary ray) per stone — sapphire 1.77 · quartz 1.545 · red beryl 1.577.
 window.GEM_CUT = {
 CUT: { facets: 48, girdle: 1, table: 0.55, crown: 0.32, pavilion: 0.86, band: 0.055, star: 0.74, starDrop: 0.5, lower: 0.15, scallop: 0.75, culet: 0.06 },
 CATEGORIES: {
-sapphire: { token: '--primitive-sapphire-ui-400', hue: 0, spin: 0.35 },
-citrine: { token: '--primitive-citrine-400', hue: 38, spin: 0.3 },
-amethyst: { token: '--primitive-amethyst-400', hue: 265, spin: 0.4 },
-redberyl: { token: '--primitive-red-beryl-400', hue: 310, spin: 0.5 },
+sapphire: { token: '--primitive-sapphire-ui-400', hue: 0, spin: 0.35, ior: 1.77 },
+citrine: { token: '--primitive-citrine-400', hue: 38, spin: 0.3, ior: 1.545 },
+amethyst: { token: '--primitive-amethyst-400', hue: 265, spin: 0.4, ior: 1.545 },
+redberyl: { token: '--primitive-red-beryl-400', hue: 310, spin: 0.5, ior: 1.577 },
 },
 gemCut: function (cut) {
 const n = Math.max(16, cut.facets - cut.facets % 16);
