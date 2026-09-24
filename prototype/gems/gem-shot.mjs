@@ -75,7 +75,7 @@ const fps = evalExpr ? await readJSON(evalExpr) : null;
 const rects = clips.length
   ? await readJSON(`JSON.stringify(${JSON.stringify(clips)}.map((s) => { const els = Array.from(document.querySelectorAll(s));
       const el = els.find((e) => e.getBoundingClientRect().width > 0); if (!el) return null;
-      const b = el.getBoundingClientRect(); return { x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height) }; }))`)
+      const b = el.getBoundingClientRect(); return { x: Math.round(b.x + window.scrollX), y: Math.round(b.y + window.scrollY), w: Math.round(b.width), h: Math.round(b.height) }; }))`)
   : '[]';
 const shot = async (clip, file) => {
   const r = await send('Page.captureScreenshot', clip ? { format: 'png', clip, captureBeyondViewport: true } : { format: 'png', captureBeyondViewport: true });
