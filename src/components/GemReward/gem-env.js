@@ -48,7 +48,7 @@ glow(Math.cos(az) * rr, 12 * Math.sin(p[0]), Math.sin(az) * rr, 0.3, p[1], 1);
 return s;
 }
 api.dispersion = function (src, spread) {
-const d = spread || 7;
+const d = spread || 12;
 const lo = (1 - d / 100).toFixed(4), hi = (1 + d / 100).toFixed(4);
 const call = function (i) { return 'getIBLVolumeRefraction(\n\t\tn, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90,\n\t\tpos, modelMatrix, viewMatrix, projectionMatrix, material.ior * ' + i + ', material.thickness,\n\t\tmaterial.attenuationColor, material.attenuationDistance )'; };
 const frag = '#ifdef USE_TRANSMISSION\n\tmaterial.transmission = transmission;\n\tmaterial.transmissionAlpha = 1.0;\n\tmaterial.thickness = thickness;\n\tmaterial.attenuationDistance = attenuationDistance;\n\tmaterial.attenuationColor = attenuationColor;\n\t#ifdef USE_TRANSMISSIONMAP\n\t\tmaterial.transmission *= texture2D( transmissionMap, vTransmissionMapUv ).r;\n\t#endif\n\t#ifdef USE_THICKNESSMAP\n\t\tmaterial.thickness *= texture2D( thicknessMap, vThicknessMapUv ).g;\n\t#endif\n\tvec3 pos = vWorldPosition;\n\tvec3 v = normalize( cameraPosition - pos );\n\tvec3 n = inverseTransformDirection( normal, viewMatrix );\n\tvec4 t0 = ' + call(lo) + ';\n\tvec4 t1 = ' + call('1.0') + ';\n\tvec4 t2 = ' + call(hi) + ';\n\tvec4 transmitted = vec4( t0.r, t1.g, t2.b, t1.a );\n\tmaterial.transmissionAlpha = mix( material.transmissionAlpha, transmitted.a, material.transmission );\n\ttotalDiffuse = mix( totalDiffuse, transmitted.rgb, material.transmission );\n#endif';
