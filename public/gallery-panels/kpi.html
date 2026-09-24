@@ -1,0 +1,30 @@
+<div class="pad">
+<section class="specimen">
+<h3>KpiStat — default up</h3>
+<div class="row">
+<span class="kpi"><span class="kpi__value">4</span><span class="kpi__total">/32 closed</span><span class="kpi__delta">+2%</span></span>
+</div>
+<p class="spec-note">Value · total · signed up chip (green 700 on 100, <code>radius.full</code>) in order.</p>
+</section>
+<section class="specimen">
+<h3>KpiStat — down</h3>
+<div class="row">
+<span class="kpi"><span class="kpi__value">$182k</span><span class="kpi__total">/ $240k</span><span class="kpi__delta kpi__delta--down">−3%</span></span>
+</div>
+<p class="spec-note">Down variant uses <code>kpi__delta--down</code> red 700 on 100; sign required.</p>
+</section>
+<section class="specimen">
+<h3>KpiStat — small</h3>
+<div class="row">
+<span class="kpi kpi--sm"><span class="kpi__value">4</span><span class="kpi__total">/32 closed</span><span class="kpi__delta">+2%</span></span>
+</div>
+<p class="spec-note"><code>kpi--sm</code> compacts value to md; trio stays value/total/delta.</p>
+</section>
+<section class="specimen">
+<h3>KpiStat — large + spark</h3>
+<div class="row">
+<span class="kpi kpi--lg"><span class="kpi__value">$182k</span><span class="kpi__total">/ $240k</span><span class="kpi__delta kpi__delta--down">−3%</span><span class="kpi__spark"><span class="sparkline sparkline--sm" aria-hidden="true"><span class="sparkline__bar" style="height:30%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:70%"></span></span></span></span>
+</div>
+<p class="spec-note"><code>kpi--lg</code> opens to 2xl value + md total; spark sits trailing on baseline, not inside delta.</p>
+</section>
+</div>

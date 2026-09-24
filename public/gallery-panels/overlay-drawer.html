@@ -1,0 +1,44 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — drawer sides + widths</h3>
+<p class="spec-note">Context panel — keeps the page behind visible, slides in to hold filters and long-form work. Pick the narrowest width that fits the form.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>drawer--right</code> · default</td><td>filters from the end edge</td><td>6 × --spacing-16 default, slides from 100%</td></tr>
+<tr><td><code>drawer--left</code></td><td>nav-side drawer</td><td>mirrors right, border-right not left</td></tr>
+<tr><td><code>drawer--narrow</code></td><td>tight filter rail</td><td>5 × --spacing-16 · one column</td></tr>
+<tr><td><code>drawer--wide</code></td><td>form + preview</td><td>8 × --spacing-16 · two-column allowed</td></tr>
+</tbody></table>
+<p class="meta">Widths clamp to 85vw (wide to 100%) — never wider than --wide.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<p class="spec-note">.drawer is a fixed-height flex column — header pins up, .overlay__body scrolls, .overlay__footer sticks with a top rule. The same header/body/footer tokens as modals, but pinned in a column.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Open slides in over --transition-spring; closing rides the same curve back; reduced-motion snaps. Dismissible drawers trap like modals; persistent ones don't.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>translate 0</td><td><code>.drawer--open</code> + --transition-spring</td></tr>
+<tr><td>Closing</td><td>translate back out</td><td><code>.is-closing</code></td></tr>
+<tr><td>Persistent</td><td>ignores Esc</td><td><code>.drawer--persistent</code></td></tr>
+<tr><td>Reduced motion</td><td>no slide</td><td>prefers-reduced-motion</td></tr>
+</tbody></table>
+<p class="meta">Tokens --bg-surface / --border-thin / --shadow-lg / --z-index-modal / --focus-ring. A11y Esc, Tab wrap when dismissible, return-focus, background inert when trapping.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use for filter rails and long forms where context matters. Modal over drawer for one-question confirms.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;div class="drawer drawer--open drawer--wide"&gt;
+  &lt;div class="overlay__header"&gt;&lt;span class="overlay__title"&gt;Filters&lt;/span&gt;&lt;/div&gt;
+  &lt;p class="overlay__body"&gt;Stage · Owner · Close date&lt;/p&gt;
+  &lt;div class="overlay__footer"&gt;&lt;button class="btn btn--secondary"&gt;Reset&lt;/button&gt;&lt;button class="btn btn--primary"&gt;Apply&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;</code>
+<p class="meta">Related — Modal blocks for confirms · Toolbar overflow opens a menu, not a drawer · Full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
+</div>

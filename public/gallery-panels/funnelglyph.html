@@ -1,0 +1,46 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>FunnelGlyph — 56 hero tile</h3>
+<div class="row"><span class="funnel-glyph" aria-hidden="true">⬢</span><span class="meta">Measure tile · sapphire-100/600</span></div>
+<p class="spec-note">Default 56px · radius.lg · font-size xl bold.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>tile <code>primitive.sapphire-ui.100</code> · ink <code>600</code> · <code>radius.lg</code> · 56px</td></tr>
+<tr><td>type <code>font-weight.bold</code> · <code>font-size.xl</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Sizes — 40 small · 32 xs inline</h3>
+<div class="row"><span class="funnel-glyph funnel-glyph--small" aria-hidden="true">⬢</span><span class="funnel-glyph funnel-glyph--xs" aria-hidden="true">⬢</span><span class="meta">40px / 32px</span></div>
+<p class="spec-note">Three sizes cover card, strip, chip-adjacent placements.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Size variants</th></tr></thead><tbody>
+<tr><td>default 56 · <code>--small</code> 40 · <code>--xs</code> 32 + <code>radius.md</code></td></tr>
+<tr><td>reject: free-scaled tile</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Sapphire law — never gem</h3>
+<div class="row"><span class="funnel-glyph" aria-hidden="true">⬡</span><span class="meta">sapphire means measure, never ceremony</span></div>
+<p class="spec-note">FunnelGlyph stays sapphire; gem hues never mark measure.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Hue law</th></tr></thead><tbody>
+<tr><td>sapphire-100 / 600 only</td></tr>
+<tr><td>reject: gem-hued funnel</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y — decorative always</h3>
+<div class="row"><span class="funnel-glyph" aria-hidden="true">⬢</span><span class="meta">value lives in adjacent text, never in tile</span></div>
+<p class="spec-note">Always aria-hidden; metric value in sibling text; AAA on sapphire-100.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td><code>aria-hidden</code> decorative · adjacent text carries value</td></tr>
+<tr><td>contrast ~9 AAA</td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

@@ -11,6 +11,7 @@ out+=` ${font}\n`;
 if(p.type) out+=` ${g('type',p.type)}\n`;
 out+=` ${g('spacing',p.spacing)}\n`;
 out+=` ${g('radius',p.radius)}\n`;
+if(p.container) out+=` ${g('container',p.container)}\n`;
 out+=` ${g('border-width',p.borderWidth)}\n`;
 out+=` ${g('primitive-border-width',p.primitiveBorderWidth)}\n`;
 out+=` ${g('z-index',p.zIndex)}\n`;
@@ -46,7 +47,7 @@ if(compat){
 out+=`}\n`;
 const flat=(pre,o)=>Object.entries(o).map(([k,v])=>`--${pre}-${k}:${v};`).join(' ');
 const sEmit=(obj)=>{const legacy=' --text-accent:var(--text-emphasis); --color-accent-brand:var(--accent-brand); --color-accent-success:var(--accent-success); --color-accent-warning:var(--accent-warning); --color-accent-error:var(--accent-danger); --border-thin:var(--border-subtle); --border-medium:var(--border-default); --border-thick:var(--border-strong); --border-width-hairline:var(--stroke-hairline); --border-width-thin:var(--stroke-hairline); --achievement-card-bg:var(--achievement-card); --achievement-overlay-bg:var(--achievement-scrim); --role-warn:var(--role-streak); --role-warn-soft:var(--role-streak-soft); --role-warn-strong:var(--role-streak-strong); --role-mark:var(--role-measure-strong); --role-mark-soft:var(--role-measure-soft); --role-mark-strong:var(--role-measure-strong);';
-  return ['bg','border','text','accent','shadow','achievement','focus','stroke','role','type'].filter(g=>obj[g]).map(g=>flat(g,obj[g])).join(' ')+legacy+' ';};
+  return ['bg','border','text','accent','shadow','achievement','focus','stroke','role','type','color-code'].filter(g=>obj[g]).map(g=>flat(g,obj[g])).join(' ')+legacy+' ';};
 out+=`:root,[data-theme="light"]{color-scheme:light;${sEmit(L)}}\n`;
 out+=`[data-theme="dark"]{color-scheme:dark;${sEmit(D)}}\n`;
 out+=`@media (forced-colors:active){ :root{ --border-thin:CanvasText; --text-primary:CanvasText; } }\n`;

@@ -1,0 +1,50 @@
+<section class="specimen">
+<h3>Playground — configure one toast</h3>
+<div class="olab" data-olab="toast">
+<div class="olab__bar">
+<div class="olab__group" role="group" aria-label="Tone">
+<span class="olab__label">Tone</span>
+<button class="olab__pill is-on" data-olab-tone="">Default</button>
+<button class="olab__pill" data-olab-tone="success">Success</button>
+<button class="olab__pill" data-olab-tone="warning">Warning</button>
+<button class="olab__pill" data-olab-tone="danger">Danger</button>
+</div>
+<div class="olab__group" role="group" aria-label="Placement">
+<span class="olab__label">At</span>
+<button class="olab__pill is-on" data-olab-size="bottom-right">BR</button>
+<button class="olab__pill" data-olab-size="bottom-left">BL</button>
+<button class="olab__pill" data-olab-size="top-right">TR</button>
+<button class="olab__pill" data-olab-size="top-center">TC</button>
+</div>
+</div>
+<div class="olab__stage" data-olab-stage data-surface="canvas" data-theme="light">
+<div data-olab-preview></div>
+<p class="olab__hint meta">Rises in, dwells, pauses on hover, sinks out — never takes focus, always topmost.</p>
+</div>
+<div class="olab__bar olab__bar--foot">
+<div class="olab__group" role="group" aria-label="Stage surface">
+<span class="olab__label">Stage</span>
+<button class="olab__pill is-on" data-olab-surface="canvas">Canvas</button>
+<button class="olab__pill" data-olab-surface="surface">Surface</button>
+<button class="olab__pill" data-olab-surface="wash">Wash</button>
+</div>
+<div class="olab__group" role="group" aria-label="Color scheme">
+<span class="olab__label">Scheme</span>
+<button class="olab__pill is-on" data-olab-scheme="light">Light</button>
+<button class="olab__pill" data-olab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="olab__edit">
+<label class="olab__field">Message<input data-olab-body value="Deal saved" maxlength="48"></label>
+<label class="olab__check"><input type="checkbox" data-olab-hasact checked> Action</label>
+<label class="olab__field">Action<input data-olab-act1 value="Undo" maxlength="16"></label>
+<label class="olab__field olab__field--sm">Dwell (s)<select data-olab-dur><option value="4">4s</option><option value="8">8s</option></select></label>
+</div>
+<div class="olab__code">
+<pre><code class="tp-code" data-olab-code></code></pre>
+<span class="olab__ratio meta" data-olab-ratio>toast · default · br</span>
+<button class="olab__copy" data-olab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Transient confirm of a past act — 4s dwell, 8s with an action, pauses on hover. Reject: critical errors only in a toast, or a toast that steals focus.</p>
+</section>

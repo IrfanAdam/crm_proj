@@ -1,0 +1,36 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — chevron + mode</h3>
+<p class="spec-note">Single or multi same CSS; chevron trails by default, leads via order:-1.</p>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>trailing chevron (base)</td><td>default sections</td><td>icon after label, rotates 180° on <code>--open</code></td></tr>
+<tr><td><code>.accordion--chevron-leading</code></td><td>tree-like scans</td><td>icon first via <code>order:-1</code></td></tr>
+<tr><td>single / multi (JS)</td><td>exclusive vs independent</td><td>same CSS, sibling-close differs</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — states</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>panel 0fr→1fr, icon flips</td><td><code>.accordion__item--open</code> + <code>aria-expanded="true"</code></td></tr>
+<tr><td>Hover</td><td>trigger wash</td><td><code>--bg-interactive</code></td></tr>
+<tr><td>Disabled</td><td>dims, panel stays shut, skipped</td><td><code>disabled</code> + <code>--text-dim</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>ring on trigger</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — tokens + motion</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>dividers / hover</td><td><code>--border-default</code> / <code>--bg-interactive</code></td></tr>
+<tr><td>disabled / focus</td><td><code>--text-dim</code> + <code>--opacity-disabled</code> / <code>--focus-ring</code></td></tr>
+<tr><td>motion</td><td><code>--motion-duration-md</code> + <code>--motion-easing-standard</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Grid rows animate, not heights; reduced-motion snaps.</p>
+<code class="tp-code">&lt;div class="accordion__item"&gt;
+&lt;button class="accordion__trigger" aria-expanded="false" aria-controls="p1"&gt;Terms&lt;/button&gt;
+&lt;div class="accordion__panel" id="p1" hidden&gt;&lt;div class="accordion__panel-inner"&gt;…&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</code>
+<p class="meta">Related — Tabs is peer views, not stacked reveals · Drawer is side detail · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</section>
+</div>

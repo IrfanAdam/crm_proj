@@ -1,0 +1,30 @@
+<div class="pad">
+<section class="specimen">
+<h3>ListRow — default</h3>
+<div class="row">
+<article class="list-row"><span class="list-row__logo" aria-hidden="true">AC</span><div class="list-row__main"><div class="list-row__name">Acme Corp</div><div class="list-row__meta">Negotiation · $48k</div></div><div class="list-row__end"><span class="badge badge--success">Open</span><span class="list-row__time">2h ago</span></div></article>
+</div>
+<p class="spec-note">Logo 32px tile, name ellipsizes, meta muted, end stacks Badge over time right-aligned.</p>
+</section>
+<section class="specimen">
+<h3>ListRow — selected</h3>
+<div class="row">
+<article class="list-row list-row--selected"><span class="list-row__logo" aria-hidden="true">GL</span><div class="list-row__main"><div class="list-row__name">Globex</div><div class="list-row__meta">Closed · $32k</div></div><div class="list-row__end"><span class="badge badge--neutral">Won</span><span class="list-row__time">1d ago</span></div></article>
+</div>
+<p class="spec-note"><code>list-row--selected</code> pairs <code>bg.interactive-active</code> with sapphire-500 border; hover wash alone never claims current.</p>
+</section>
+<section class="specimen">
+<h3>ListRow — disabled</h3>
+<div class="row">
+<article class="list-row list-row--disabled"><span class="list-row__logo" aria-hidden="true">IN</span><div class="list-row__main"><div class="list-row__name">Initech</div><div class="list-row__meta">Paused</div></div><div class="list-row__end"><span class="badge badge--warning">Stale</span><span class="list-row__time">9d ago</span></div></article>
+</div>
+<p class="spec-note"><code>opacity.disabled</code>, no pointer, leaves tab order; still shows logo and end slot.</p>
+</section>
+<section class="specimen">
+<h3>ListRow — long name ellipsis</h3>
+<div class="row" style="max-width:320px">
+<article class="list-row"><span class="list-row__logo" aria-hidden="true">VE</span><div class="list-row__main"><div class="list-row__name">Very Extremely Long Enterprise Name That Must Ellipsize</div><div class="list-row__meta">Enterprise · $120k</div></div><div class="list-row__end"><span class="badge">New</span><span class="list-row__time">now</span></div></article>
+</div>
+<p class="spec-note">Name is single-line ellipsis; meta never wraps; end slot stays right-aligned at all widths.</p>
+</section>
+</div>

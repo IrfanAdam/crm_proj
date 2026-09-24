@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 03 Pagination</p>
+<h2 class="ch-hero">Position in a list. Never a wall of numbers.</h2>
+<p class="ch-lede meta">Pagination moves through long lists — deals, activities, results. It pages and announces place; it never hides how much remains. Use full paging for tables; use compact prev/next where the slot is narrow.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — nav · pages · status.</b> <code>nav aria-label="Pagination"</code> holds prev, numbered <code>.pagination__btn</code>, next, plus <code>.pagination__ellipsis</code> and <code>.pagination__status</code>. Current carries <code>aria-current="page"</code>.</p><p class="ch-reject">Reject: numbers without a status line — every control answers “where am I”.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Ellipsis compresses, compact strips.</b> Distant ranges collapse to one <code>…</code>; <code>.pagination--compact</code> drops numbers for a joined prev/next strip. Status stays — compression never deletes orientation.</p><p class="ch-reject">Reject: a compact strip with no status — fewer buttons means the words matter more.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Disabled, never vanished.</b> Unavailable nav keeps its slot with <code>disabled</code> + <code>--opacity-disabled</code> so layout holds. Active page is action-ink, not a link away.</p><p class="ch-reject">Reject: hiding prev on page one — ends disable, they never disappear.</p></div></li>
+</ul>
+</div>

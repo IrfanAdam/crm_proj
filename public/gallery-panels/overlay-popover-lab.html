@@ -1,0 +1,40 @@
+<section class="specimen">
+<h3>Playground — configure one popover</h3>
+<div class="olab" data-olab="popover">
+<div class="olab__bar">
+<div class="olab__group" role="group" aria-label="Placement">
+<span class="olab__label">Anchor</span>
+<button class="olab__pill is-on" data-olab-size="bottom">Bottom</button>
+<button class="olab__pill" data-olab-size="top">Top</button>
+</div>
+</div>
+<div class="olab__stage" data-olab-stage data-surface="canvas" data-theme="light">
+<div data-olab-preview></div>
+<p class="olab__hint meta">Non-modal dialog — one focusable group, Esc + outside click dismiss, re-centers on scroll.</p>
+</div>
+<div class="olab__bar olab__bar--foot">
+<div class="olab__group" role="group" aria-label="Stage surface">
+<span class="olab__label">Stage</span>
+<button class="olab__pill is-on" data-olab-surface="canvas">Canvas</button>
+<button class="olab__pill" data-olab-surface="surface">Surface</button>
+<button class="olab__pill" data-olab-surface="wash">Wash</button>
+</div>
+<div class="olab__group" role="group" aria-label="Color scheme">
+<span class="olab__label">Scheme</span>
+<button class="olab__pill is-on" data-olab-scheme="light">Light</button>
+<button class="olab__pill" data-olab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="olab__edit">
+<label class="olab__field">Trigger<input data-olab-act1 value="Close date" maxlength="24"></label>
+<label class="olab__field">Title<input data-olab-title value="Close date" maxlength="32"></label>
+<label class="olab__field">Body<input data-olab-body value="Anchored detail that keeps its trigger — links and buttons welcome." maxlength="96"></label>
+</div>
+<div class="olab__code">
+<pre><code class="tp-code" data-olab-code></code></pre>
+<span class="olab__ratio meta" data-olab-ratio>popover · bottom</span>
+<button class="olab__copy" data-olab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Rich anchored panel for detail — never chains, never holds critical content, hover alone never opens it.</p>
+</section>

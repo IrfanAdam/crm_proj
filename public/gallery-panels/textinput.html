@@ -1,0 +1,47 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — variants</h3>
+<p class="spec-note">Outlined default vs filled wash for dense chrome; affix padding reserves room for Rs/L icons. Md 44px is the default density.</p>
+<details class="spec-more" open><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>outlined (default) / <code>--filled</code></td><td>entry / dense chrome</td><td>surface + hairline / interactive wash, transparent border</td></tr>
+<tr><td><code>--sm / --lg</code></td><td>density</td><td>32px xs type / 48px md type (md is 44px)</td></tr>
+<tr><td><code>--with-prefix / --with-suffix</code></td><td>affix room</td><td>calc pad for Rs/L, icon, or action slots</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>bg.surface</code>, <code>radius.md</code>, <code>border.thin</code> (hover <code>medium</code>), <code>transition.fast</code>.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note"><code>.field</code> columns with <code>spacing.2</code> gap; xs uppercase <code>.field__label</code> above; relative <code>.field__wrap</code> anchoring absolute 16px <code>.field__prefix</code> / <code>.field__suffix</code> slots.</p>
+<details class="spec-more"><summary>Spec · anatomy + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Part</th><th>Token</th><th>Note</th></tr></thead><tbody>
+<tr><td>field / label / wrap</td><td><code>spacing.2</code> / <code>text.secondary</code> / relative</td><td>columns, never row</td></tr>
+<tr><td>input frame</td><td><code>bg.surface</code> / <code>radius.md</code> / 44px</td><td>sm 32, lg 48</td></tr>
+<tr><td>affix slots</td><td><code>calc(spacing.3 + icon-size.sm + spacing.2)</code></td><td>never collides with ink</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Error is border + icon + text + <code>aria-invalid</code>, never hue alone; focus is sapphire ring, never outline alone.</p>
+<details class="spec-more" open><summary>Spec · states + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Focus / Hover</td><td>sapphire border + ring / deeper border</td><td><code>:focus</code> / <code>border.medium</code></td></tr>
+<tr><td>Error / Success</td><td>danger / success border + focus outline</td><td><code>aria-invalid</code> + <code>aria-describedby</code> → id</td></tr>
+<tr><td>Disabled / Readonly</td><td>dims + muted / dashed hairline, still submitted</td><td>native <code>disabled</code> / <code>readonly</code></td></tr>
+</tbody></table>
+<p class="meta">A11y — label association, error never color-alone, forced-colors <code>CanvasText</code> outline, reduced-motion still. 44px target.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Labelled single lines only — names, amounts, emails. Placeholder never names the field. One primary label per input, help carries meaning for affixes.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;label class="field__label" for="amt"&gt;Amount&lt;/label&gt;
+&lt;div class="field__wrap"&gt;&lt;span class="field__prefix"&gt;Rs&lt;/span&gt;&lt;input id="amt" class="field__input field__input--with-prefix" aria-describedby="amt-help"&gt;&lt;/div&gt;
+&lt;p class="field__help" id="amt-help"&gt;In lakhs&lt;/p&gt;</code>
+<p class="meta">Related — Select choices · Search pill twin · Textarea paragraphs · Full spec: <a href="prototype/gallery/form.md">form.md</a></p>
+</details>
+</section>
+</div>

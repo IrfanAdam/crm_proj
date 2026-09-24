@@ -58,7 +58,14 @@ function blabInit(root) {
     const boxEl = preview.querySelector('.blab-box');
     if (boxEl) boxEl.dataset.full = fullEl.checked ? '1' : '';
     blabTuneApply(root);
-    code.textContent = '<button class="' + cls.join(' ') + '"' + aria + hueStyle() + buildAttrs() + '>' + buildInner(true).replace('{{LABEL}}', currentLabel()) + '</button>';
+    const pretty = window.blabPretty(cls, aria, hueStyle(), buildAttrs(), buildInner(true), currentLabel());
+    if (window.highlight) {
+      code.innerHTML = window.highlight(pretty);
+      code.classList.add('hl');
+      code.dataset.hlDone = '1';
+    } else {
+      code.textContent = pretty;
+    }
     note.textContent = iconOnlyEl.checked && badgeEl.checked ? 'Badge off — icon-only has no room for a count.' : '';
     badgeEl.disabled = iconOnlyEl.checked;
     if (st.state === 'focus' || focusIt === true) preview.querySelector('.btn').focus();

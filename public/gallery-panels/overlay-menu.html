@@ -1,0 +1,42 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — menu anchors + density</h3>
+<p class="spec-note">Anchored action list from a trigger — one column, no icons-only, one level deep. Opens under its trigger and flips to fit.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>data-placement=bottom</code></td><td>default</td><td>top: calc(100% + --spacing-1), origin top left</td></tr>
+<tr><td><code>data-placement=top</code></td><td>flipped</td><td>origin bottom left, translates down</td></tr>
+<tr><td><code>.menu--in-dialog</code></td><td>inside a modal/drawer</td><td>re-layers to --z-index-modal</td></tr>
+</tbody></table>
+<p class="meta">Min-width 3 × --spacing-16 · --radius-md · --shadow-md · --z-index-dropdown.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<p class="spec-note">.menu is an absolute list, .menu__item rows with --spacing-2 gaps. Selected rows get .menu__item--selected (bg-interactive). A separator uses .menu__separator.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Opens with fade + scale over --transition-fast; Esc or a select or an outside click dismisses and refocuses the trigger. Arrows rove items, Home/End jump, no tab trap.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>opacity 1, scale 1</td><td><code>.overlay--open</code> + --transition-fast</td></tr>
+<tr><td>Hover / selected</td><td>wash</td><td><code>:hover</code> / <code>.menu__item--selected</code> → --bg-interactive</td></tr>
+<tr><td>Focus</td><td>ring inset</td><td>--focus-ring, offset -2px</td></tr>
+</tbody></table>
+<p class="meta">Tokens --bg-surface / --border-thin / --shadow-md / --z-index-dropdown / --transition-fast. A11y role=menu/menuitem, roving arrows, Esc closes and refocuses, never traps.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use for Assign / Rename / Archive rows and toolbar overflows. Dialog over menu when the choice needs a confirm.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;button aria-haspopup="menu" aria-expanded="false"&gt;Assign&lt;/button&gt;
+&lt;div class="menu overlay--open" role="menu" data-placement="bottom"&gt;
+  &lt;button class="menu__item" role="menuitem"&gt;Rename&lt;/button&gt;
+  &lt;button class="menu__item menu__item--selected" role="menuitem"&gt;Assign&lt;/button&gt;
+&lt;/div&gt;</code>
+<p class="meta">Related — Popover for rich detail · Toolbar overflow · Full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
+</div>

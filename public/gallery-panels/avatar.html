@@ -1,0 +1,41 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — sizes · person, not placeholder</h3>
+<p class="spec-note">Five sizes — xs 20 to xl 64 — cover dense rows to profile headers. md 32 is the base; pick the smallest that keeps initials legible. Photo fills via cover, never stretches.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>avatar--xs / --sm</code></td><td>dense rows, mention chips</td><td>20px micro / 24px xs type</td></tr>
+<tr><td><code>avatar--md</code> (base)</td><td>default person mark</td><td>32px sm type, no modifier</td></tr>
+<tr><td><code>avatar--lg / --xl</code></td><td>profile, detail headers</td><td>48px xl type / 64px 2xl type</td></tr>
+<tr><td><code>.avatar-stack</code> / <code>--online</code> / <code>--offline</code></td><td>pile / presence</td><td>overlap + ring / green-300 dot / dim dot</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>spacing.5 / 6 / 8 / 12 / 16</code> frames, <code>radius.full</code>, <code>bg.interactive</code> fallback.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note">Round frame (<code>radius.full</code>, 1px <code>border.thin</code>), centered semibold initials (1–2 chars) or <code>img</code> with <code>object-fit:cover</code>. Stack overlaps by one <code>spacing.2</code> step; every stacked face carries a <code>bg.surface</code> ring via <code>border.medium</code>.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Presence dot is decorative — 8px top-right patch with <code>bg.surface</code> border; online green-300, offline dim. Clickable avatars hover <code>border-accent</code>; focus rings 2px sapphire.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover</td><td>accent border, clickable only</td><td><code>avatar--clickable:hover</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims via <code>opacity.disabled</code></td><td><code>opacity.disabled</code></td></tr>
+<tr><td>Stacked</td><td>overlap + surface ring</td><td><code>.avatar-stack</code></td></tr>
+</tbody></table>
+<p class="meta">Photos: <code>alt=""</code>. Clickable avatars: named via <code>aria-label="Ada Lovelace"</code>; initials: <code>aria-hidden</code> if name supplied via parent label.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Person in a row — always round, always named. Do: initials fallback, cover-fit photo, surface ring on stack/dot. Don't: square frame, dot as only signal, invent off-scale size.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;span class="avatar avatar--md avatar--online"&gt;OA&lt;/span&gt;
+&lt;span class="avatar-stack"&gt;&lt;span class="avatar avatar--sm"&gt;OA&lt;/span&gt;&lt;span class="avatar avatar--sm"&gt;AJ&lt;/span&gt;&lt;span class="avatar avatar--sm"&gt;+2&lt;/span&gt;&lt;/span&gt;</code>
+<p class="meta">Related — Icon glyphs never carry persons · Badge overlaps avatar · Full: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</details>
+</section>
+</div>

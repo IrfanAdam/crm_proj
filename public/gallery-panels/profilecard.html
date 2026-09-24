@@ -1,0 +1,54 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>ProfileCard — avatar · name · role · trio</h3>
+<div class="row">
+<article class="profile-card" style="flex:1;max-width:320px"><span class="profile-card__avatar" aria-hidden="true">OK</span><div><div class="profile-card__name">Olivia Kang</div><div class="profile-card__role">Regional rep · West</div></div><div class="profile-card__stats"><div class="profile-card__stat"><span class="profile-card__val">128</span><span class="profile-card__label">Deals</span></div><div class="profile-card__stat"><span class="profile-card__val">96%</span><span class="profile-card__label">Quota</span></div><div class="profile-card__stat"><span class="profile-card__val">4.9</span><span class="profile-card__label">CSAT</span></div></div></article>
+</div>
+<p class="spec-note">64px avatar · hairline ring · centered axis · trio over hairline top rule.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>frame <code>bg.surface</code> · <code>radius.lg</code> · <code>border.thin</code></td></tr>
+<tr><td>avatar 64px · ring <code>border.thin</code> · stat rule <code>border.thin</code></td></tr>
+<tr><td>name <code>text.primary</code> · role/label <code>text.muted</code> · stat val <code>text.primary</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Centered always — no left variant</h3>
+<div class="row">
+<article class="profile-card" style="flex:1;max-width:320px"><span class="profile-card__avatar">AL</span><div><div class="profile-card__name">Alex Lee</div><div class="profile-card__role">AE · East</div></div><div class="profile-card__stats"><div class="profile-card__stat"><span class="profile-card__val">42</span><span class="profile-card__label">Deals</span></div><div class="profile-card__stat"><span class="profile-card__val">88%</span><span class="profile-card__label">Quota</span></div><div class="profile-card__stat"><span class="profile-card__val">4.6</span><span class="profile-card__label">CSAT</span></div></div></article>
+</div>
+<p class="spec-note">Alignment is identity — centered axis holds across content lengths.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Alignment law</th></tr></thead><tbody>
+<tr><td>single centered variant — no left-aligned card</td></tr>
+<tr><td>reject: left-aligned ProfileCard</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Zero shadow — hairline only</h3>
+<div class="row">
+<article class="profile-card" style="flex:1;max-width:320px"><span class="profile-card__avatar">MK</span><div><div class="profile-card__name">Flat by law</div><div class="profile-card__role">border only · box-shadow: none</div></div><div class="profile-card__stats"><div class="profile-card__stat"><span class="profile-card__val">—</span><span class="profile-card__label">proof</span></div><div class="profile-card__stat"><span class="profile-card__val">—</span><span class="profile-card__label">proof</span></div><div class="profile-card__stat"><span class="profile-card__val">—</span><span class="profile-card__label">proof</span></div></div></article>
+</div>
+<p class="spec-note">One hairline weight for frame, avatar ring, stat rule; never a shadow.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Surface law</th></tr></thead><tbody>
+<tr><td><code>border.thin</code> throughout · <code>box-shadow: none</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y — trio as plain text</h3>
+<div class="row">
+<article class="profile-card" style="flex:1;max-width:320px"><span class="profile-card__avatar">JD</span><div><div class="profile-card__name">Jordan Doe</div><div class="profile-card__role">SDR</div></div><div class="profile-card__stats"><div class="profile-card__stat"><span class="profile-card__val">10</span><span class="profile-card__label">Deals</span></div><div class="profile-card__stat"><span class="profile-card__val">100%</span><span class="profile-card__label">Quota</span></div><div class="profile-card__stat"><span class="profile-card__val">5.0</span><span class="profile-card__label">CSAT</span></div></div></article>
+</div>
+<p class="spec-note">Photo alt empty (name is text); stats plain-text pairs; static card takes no focus.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td>photo <code>alt=""</code> · adjacent name text</td></tr>
+<tr><td>stats plain text · never color-only meaning</td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

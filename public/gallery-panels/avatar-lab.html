@@ -1,0 +1,54 @@
+<section class="specimen">
+<h3>Playground — configure one avatar</h3>
+<div class="ilab" data-ilab="avatar">
+<div class="ilab__bar">
+<div class="ilab__group" role="group" aria-label="Size">
+<span class="ilab__label">Size</span>
+<button class="ilab__pill" data-ilab-size="avatar--xs">XS</button>
+<button class="ilab__pill" data-ilab-size="avatar--sm">SM</button>
+<button class="ilab__pill is-on" data-ilab-size="avatar--md">MD</button>
+<button class="ilab__pill" data-ilab-size="avatar--lg">LG</button>
+<button class="ilab__pill" data-ilab-size="avatar--xl">XL</button>
+</div>
+<div class="ilab__group ilab__group--right" role="group" aria-label="Presence">
+<span class="ilab__label">Presence</span>
+<button class="ilab__pill is-on" data-ilab-presence="">None</button>
+<button class="ilab__pill" data-ilab-presence="avatar--online">Online</button>
+<button class="ilab__pill" data-ilab-presence="avatar--offline">Offline</button>
+</div>
+</div>
+<div class="ilab__stage" data-ilab-stage data-surface="canvas" data-theme="light">
+<label class="ilab__check"><input type="checkbox" data-ilab-capsule> Concentric</label>
+<div class="ilab__tune" data-ilab-tune hidden>
+<label class="ilab__range"><span>Pad</span><input type="range" data-ilab-pad min="8" max="48" step="4" value="12"><output data-ilab-pad-val>12px</output></label>
+<label class="ilab__range"><span>Radius</span><input type="range" data-ilab-radius min="8" max="48" step="4" value="32"><output data-ilab-radius-val>32px</output></label>
+</div>
+<div data-ilab-preview data-ilab-hue="neutral"></div>
+<p class="ilab__hint meta" data-ilab-note></p>
+</div>
+<div class="ilab__bar ilab__bar--foot">
+<div class="ilab__group" role="group" aria-label="Stage surface">
+<span class="ilab__label">Stage</span>
+<button class="ilab__pill is-on" data-ilab-surface="canvas">Canvas</button>
+<button class="ilab__pill" data-ilab-surface="surface">Surface</button>
+<button class="ilab__pill" data-ilab-surface="wash">Wash</button>
+</div>
+<div class="ilab__group ilab__group--right" role="group" aria-label="Color scheme">
+<span class="ilab__label">Scheme</span>
+<button class="ilab__pill is-on" data-ilab-scheme="light">Light</button>
+<button class="ilab__pill" data-ilab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="ilab__edit">
+<label class="ilab__field">Initials<input data-ilab-label value="OA" maxlength="2"></label>
+<label class="ilab__check"><input type="checkbox" data-ilab-stack> Stack 3</label>
+<label class="ilab__check"><input type="checkbox" data-ilab-clickable> Clickable</label>
+</div>
+<div class="ilab__code">
+<pre><code class="tp-code" data-ilab-code></code></pre>
+<span class="ilab__ratio" data-ilab-ratio>Aa — · —</span>
+<button class="ilab__copy" data-ilab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Person mark — round only via <code>radius.full</code>; sizes xs 20–xl 64 map to <code>spacing.5 / 6 / 8 / 12 / 16</code>; stack + presence carry <code>bg.surface</code> ring.</p>
+</section>

@@ -1,0 +1,62 @@
+<section class="specimen">
+<h3>Playground — configure one radio group</h3>
+<div class="clab" data-clab data-clab-name="radio">
+<div class="clab__bar">
+<div class="clab__group" role="group" aria-label="Layout">
+<span class="clab__label">Layout</span>
+<button class="clab__pill is-on" data-clab-variant="vertical">Vertical</button>
+<button class="clab__pill" data-clab-variant="horizontal">Horizontal</button>
+</div>
+<div class="clab__group" role="group" aria-label="Size">
+<span class="clab__label">Size</span>
+<button class="clab__pill is-on" data-clab-size="md">MD</button>
+<button class="clab__pill" data-clab-size="sm">SM</button>
+<button class="clab__pill" data-clab-size="lg">LG</button>
+</div>
+<div class="clab__group clab__group--right" role="group" aria-label="State">
+<span class="clab__label">Checked</span>
+<select class="clab__select" data-clab-checked-index>
+<option value="0">Option 1</option>
+<option value="1">Option 2</option>
+<option value="2">Option 3</option>
+<option value="-1">None</option>
+</select>
+<select class="clab__select" data-clab-state>
+<option value="default">Default</option>
+<option value="disabled">Disabled one</option>
+<option value="error">Error one</option>
+<option value="focus">Focus ring</option>
+</select>
+</div>
+</div>
+<div class="clab__stage" data-clab-stage data-surface="canvas" data-theme="light">
+<div data-clab-preview></div>
+<p class="clab__hint meta" data-clab-note></p>
+</div>
+<div class="clab__bar clab__bar--foot">
+<div class="clab__group" role="group" aria-label="Stage surface">
+<span class="clab__label">Stage</span>
+<button class="clab__pill is-on" data-clab-surface="canvas">Canvas</button>
+<button class="clab__pill" data-clab-surface="surface">Surface</button>
+<button class="clab__pill" data-clab-surface="wash">Wash</button>
+</div>
+<div class="clab__group clab__group--right" role="group" aria-label="Color scheme">
+<span class="clab__label">Scheme</span>
+<button class="clab__pill is-on" data-clab-scheme="light">Light</button>
+<button class="clab__pill" data-clab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="clab__edit">
+<label class="clab__field">Group legend<input data-clab-group value="Plan" maxlength="20"></label>
+<label class="clab__field">Name<input data-clab-name value="plan" maxlength="16"></label>
+<label class="clab__field">Options (comma)<input data-clab-options value="Starter,Growth,Enterprise" maxlength="40"></label>
+<label class="clab__check"><input type="checkbox" data-clab-disabled> Disable last</label>
+</div>
+<div class="clab__code">
+<pre><code class="tp-code" data-clab-code></code></pre>
+<span class="clab__ratio" data-clab-ratio>Aa — · —</span>
+<button class="clab__copy" data-clab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">One shared <code>name</code> per group — fieldset + legend reads as group. Shared <code>focus.ring</code>; checked shows dot + ring, never hue alone.</p>
+</section>

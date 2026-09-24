@@ -1,0 +1,63 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>OpportunityCard — full anatomy</h3>
+<div class="row">
+<article class="opp-card" style="flex:1;min-width:280px">
+<div class="opp-card__head"><span class="opp-card__logo" aria-hidden="true">NS</span><div><span class="opp-card__name">Nova Steel</span><span class="opp-card__product">Pipe retrofit · Q3</span></div></div>
+<div class="opp-card__stage"><span class="opp-card__stage-name">Negotiate</span><span class="opp-card__sep" aria-hidden="true"></span><span class="opp-card__chance">65%</span><span class="opp-card__value">$48,200</span></div>
+<div class="opp-card__segs" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Deal progress"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+<div class="opp-card__contact"><span class="opp-card__stack"><span class="avatar avatar--sm">AK</span><span class="avatar avatar--sm">JM</span></span><span class="opp-card__meta">A. Khan · call Thu 10:00</span></div>
+<div class="opp-card__foot"><div><span class="opp-card__meta">Updated 2h ago</span><span class="opp-card__dist">1.2 km away</span></div><span class="opp-card__actions"><button class="btn btn--icon-only" aria-label="Call"><i class="ph-bold ph-phone" aria-hidden="true"></i></button></span></div>
+</article>
+</div>
+<p class="spec-note">Logo 44 round · stage rail sapphire-400 · chance red-beryl · value sapphire · segs · stack · foot dist citrine · hairline zero shadow.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>frame: <code>bg.surface</code> · <code>radius.xl</code> · <code>border.thin</code> + <code>border-width.thin</code></td></tr>
+<tr><td>stage: <code>primitive.sapphire-ui.400</code> left rule + <code>sep</code> 200 · chance <code>red-beryl.400</code> · value <code>sapphire.500</code> · dist <code>citrine.700</code></td></tr>
+<tr><td>segs: 5× <code>sapphire.100</code> + <code>on</code> 400 · 6px caps <code>radius.full</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Stage rail — qualified · proposal · closed</h3>
+<div class="row" style="gap:var(--spacing-3)">
+<article class="opp-card" style="flex:1"><div class="opp-card__stage"><span class="opp-card__stage-name">Qualified</span><span class="opp-card__chance">32%</span><span class="opp-card__value">$12k</span></div></article>
+<article class="opp-card" style="flex:1"><div class="opp-card__stage"><span class="opp-card__stage-name">Proposal</span><span class="opp-card__chance">48%</span><span class="opp-card__value">$28k</span></div></article>
+</div>
+<p class="spec-note">Stage name always sapphire-400 rail; chance/value hues never swap.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Stage variants</th></tr></thead><tbody>
+<tr><td>single anatomy — content drives stage, no variant chrome</td></tr>
+<tr><td>reject: swapping chance to sapphire or recoloring rail per deal</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Zero-shadow law — hairline only</h3>
+<div class="row">
+<article class="opp-card" style="flex:1"><div class="opp-card__head"><span class="opp-card__logo">AL</span><div><span class="opp-card__name">Flat by law</span><span class="opp-card__product">border only · box-shadow: none</span></div></div></article>
+</div>
+<p class="spec-note">Cards never float — hover wash on action buttons only, never lift the frame.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Surface law</th></tr></thead><tbody>
+<tr><td><code>border.thin</code> on <code>bg.surface</code> · <code>box-shadow: none</code> always</td></tr>
+<tr><td>reject: any shadow or hover lift on the card</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y — progress + focus</h3>
+<div class="row">
+<article class="opp-card" style="flex:1"><div class="opp-card__segs" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Deal progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span class="meta">4/5 segs · 80%</span></article>
+</div>
+<p class="spec-note">Segs carry progressbar + aria-valuenow; actions 44px with focus ring; chance 4.51 / value 5.9 AA.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td><code>role=progressbar</code> + <code>aria-valuenow</code> + <code>aria-label</code> on segs</td></tr>
+<tr><td>action buttons 44px · <code>:focus-visible</code> ring · no outline</td></tr>
+<tr><td>static card takes no focus; deal name is heading level in list</td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

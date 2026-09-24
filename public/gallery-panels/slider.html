@@ -1,0 +1,45 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — variants</h3>
+<p class="spec-note">Continuous free amounts vs discrete stepped with native step and visible ticks. Sm/lg thumbs keep touch targets.</p>
+<details class="spec-more" open><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>continuous (default)</td><td>free amounts</td><td>bare track + progress fill</td></tr>
+<tr><td><code>slider--discrete</code></td><td>stepped amounts</td><td>native step + tick strip + <code>.slider__ticks</code></td></tr>
+<tr><td><code>slider--sm</code> / <code>--lg</code></td><td>dense / touch</td><td>16px / 24px thumb, never smaller</td></tr>
+<tr><td><code>slider--error</code></td><td>out-of-range</td><td>danger ring + danger progress</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Hover lifts to <code>shadow.md</code> and strong ring; active keeps <code>focus.ring</code>; error swaps danger ring, never color-alone.</p>
+<details class="spec-more" open><summary>Spec · states + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover / Focus</td><td>strong ring + lift / <code>focus.ring</code></td><td><code>:hover</code> / <code>:focus-visible</code></td></tr>
+<tr><td>Dragging</td><td>grabbing cursor, ring persists</td><td><code>:active</code></td></tr>
+<tr><td>Disabled / Error</td><td>dims <code>opacity.disabled</code> / danger ring + text</td><td><code>disabled</code> + <code>slider--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+<p class="meta">A11y — native <code>input[type=range]</code> + <code>aria-valuetext</code>, arrows/PgUp/Home, visible ring, reduced-motion safe.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>track / progress + thumb ring</td><td><code>bg.interactive</code> / <code>role.action</code> + <code>role.action-strong</code></td></tr>
+<tr><td>thumb face / tick marks</td><td><code>bg.surface</code> / <code>border.strong</code></td></tr>
+<tr><td>error ring + progress</td><td><code>role.danger</code></td></tr>
+<tr><td>tick labels / thumb lift</td><td><code>text.muted</code> + <code>font-size.xs</code> / <code>shadow.sm–md</code></td></tr>
+<tr><td>shape / thumb width / focus</td><td><code>radius.full</code> / <code>border-width.medium</code> / <code>focus.ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Quantity control — value always shown beside track, ticks match step. Never hide value, never binary.</p>
+<table class="ch-roles"><thead><tr><th>Snippet</th><th>Code</th></tr></thead><tbody>
+<tr><td>continuous</td><td><code>&lt;input type="range" class="slider" min="0" max="100" value="40"&gt;</code></td></tr>
+<tr><td>discrete</td><td><code>&lt;input class="slider slider--discrete" step="10"&gt;&lt;div class="slider__ticks"&gt;…</code></td></tr>
+</tbody></table>
+<p class="meta">Related — Radio few named options · TextInput exact entry · Switch binary · Full spec: <a href="prototype/gallery/choice.md">choice.md</a></p>
+</section>
+</div>

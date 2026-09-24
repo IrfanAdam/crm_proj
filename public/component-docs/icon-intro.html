@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 06 Icon</p>
+<h2 class="ch-hero">Phosphor only. Decorative until named.</h2>
+<p class="ch-lede meta">Icon is the Phosphor-only glyph system — registry via <code>Icon.jsx</code> plus <code>sprite.svg</code> fallback and CDN <code>ph</code> classes, <code>currentColor</code>, token sizes. Regular 1.5px stroke by default; fill marks selected. Use it when an action or signal needs a glyph; reach for Avatar when the mark is a person.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — icon frame · Phosphor svg at 100% · size modifier.</b> Frame inherits context color; svg fills edge to edge; five sizes xs 12px to xl 32px via <code>icon-size.xs / sm / md / lg / xl</code>; base md 20px with no modifier.</p><p class="ch-reject">Reject: any glyph outside the Phosphor registry — one foundry only.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Weight means state.</b> Regular default; <code>fill</code> marks selected; <code>bold</code> is high-emphasis only. Applied via <code>Icon.jsx</code> <code>weight</code> prop or <code>ph-fill / ph-bold</code> — never a hand-swapped svg.</p><p class="ch-reject">Reject: fill weight as decoration — fill always answers selection.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Static — it inherits, never owns state.</b> No hover, active, or disabled of its own; the surrounding control owns interaction. <code>icon--muted</code> (<code>text.muted</code>) and <code>icon--subtle</code> (<code>text.dim</code>) step hierarchy, not meaning.</p><p class="ch-reject">Reject: an off-scale size — xs–xl or nothing.</p></div></li>
+</ul>
+</div>

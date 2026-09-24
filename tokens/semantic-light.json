@@ -86,5 +86,17 @@
     "body": "var(--font-size-md)",
     "meta": "var(--font-size-sm)",
     "micro": "var(--font-size-xs)"
+  },
+  "color-code": {
+    "bg": "var(--bg-interactive)",
+    "fg": "var(--text-secondary)",
+    "comm": "var(--text-muted)",
+    "str": "var(--primitive-orange-600)",
+    "tag": "var(--primitive-sapphire-ui-500)",
+    "attr": "var(--primitive-amethyst-600)",
+    "kw": "var(--primitive-red-beryl-500)",
+    "var": "var(--primitive-citrine-600)",
+    "num": "var(--primitive-orange-500)",
+    "punct": "var(--text-dim)"
   }
 }

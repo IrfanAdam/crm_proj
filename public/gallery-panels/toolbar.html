@@ -1,0 +1,36 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — density + parts</h3>
+<p class="spec-note">Density changes rhythm, never capability; groups divide kin, overflow catches spill.</p>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>--comfortable</code> / base / <code>--compact</code></td><td>roomy / default / dense</td><td>56px / 44px / <code>--spacing-8</code> frame</td></tr>
+<tr><td><code>__group</code> + divider</td><td>cluster kin actions</td><td><code>--border-default</code> split between groups</td></tr>
+<tr><td><code>__overflow</code> menu</td><td>catch spill</td><td>menu button appears when width runs out</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — states</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover</td><td>interactive wash per action</td><td><code>--bg-interactive</code></td></tr>
+<tr><td>Disabled action</td><td>dims, keeps slot</td><td><code>disabled</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring per action</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+<tr><td>Overflowed</td><td>action lives in menu</td><td><code>.toolbar__overflow</code> + menu semantics</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — tokens</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>surface / divider</td><td><code>--bg-surface</code> / <code>--border-default</code></td></tr>
+<tr><td>action hover / ink</td><td><code>--bg-interactive</code> / <code>--text-primary</code></td></tr>
+<tr><td>focus / disabled</td><td><code>--focus-ring</code> / <code>--opacity-disabled</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Title ellipsizes, cluster never shrinks; keyboard-reachable overflow.</p>
+<code class="tp-code">&lt;div class="toolbar" role="toolbar" aria-label="Deal actions"&gt;
+&lt;div class="toolbar__group" aria-label="Create"&gt;…&lt;/div&gt;&lt;div class="toolbar__spacer"&gt;&lt;/div&gt;
+&lt;button class="toolbar__overflow" aria-haspopup="menu" aria-expanded="false"&gt;⋯&lt;/button&gt;&lt;/div&gt;</code>
+<p class="meta">Related — Menu holds overflow actions · TabBar is homes, not actions · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</section>
+</div>

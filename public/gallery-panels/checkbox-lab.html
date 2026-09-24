@@ -1,0 +1,54 @@
+<section class="specimen">
+<h3>Playground — configure one checkbox</h3>
+<div class="clab" data-clab data-clab-name="checkbox">
+<div class="clab__bar">
+<div class="clab__group" role="group" aria-label="Size">
+<span class="clab__label">Size</span>
+<button class="clab__pill is-on" data-clab-size="md">MD</button>
+<button class="clab__pill" data-clab-size="sm">SM</button>
+<button class="clab__pill" data-clab-size="lg">LG</button>
+</div>
+<div class="clab__group clab__group--right" role="group" aria-label="State">
+<span class="clab__label">State</span>
+<select class="clab__select" data-clab-state>
+<option value="default">Default</option>
+<option value="checked">Checked</option>
+<option value="indeterminate">Indeterminate</option>
+<option value="disabled">Disabled</option>
+<option value="error">Error</option>
+<option value="focus">Focus ring</option>
+</select>
+</div>
+</div>
+<div class="clab__stage" data-clab-stage data-surface="canvas" data-theme="light">
+<div data-clab-preview></div>
+<p class="clab__hint meta" data-clab-note></p>
+</div>
+<div class="clab__bar clab__bar--foot">
+<div class="clab__group" role="group" aria-label="Stage surface">
+<span class="clab__label">Stage</span>
+<button class="clab__pill is-on" data-clab-surface="canvas">Canvas</button>
+<button class="clab__pill" data-clab-surface="surface">Surface</button>
+<button class="clab__pill" data-clab-surface="wash">Wash</button>
+</div>
+<div class="clab__group clab__group--right" role="group" aria-label="Color scheme">
+<span class="clab__label">Scheme</span>
+<button class="clab__pill is-on" data-clab-scheme="light">Light</button>
+<button class="clab__pill" data-clab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="clab__edit">
+<label class="clab__field">Label<input data-clab-label value="Email alerts" maxlength="24"></label>
+<label class="clab__check"><input type="checkbox" data-clab-checked> Checked</label>
+<label class="clab__check"><input type="checkbox" data-clab-indeterminate> Indeterminate</label>
+<label class="clab__check"><input type="checkbox" data-clab-disabled> Disabled</label>
+<label class="clab__check"><input type="checkbox" data-clab-error> Error</label>
+</div>
+<div class="clab__code">
+<pre><code class="tp-code" data-clab-code></code></pre>
+<span class="clab__ratio" data-clab-ratio>Aa — · —</span>
+<button class="clab__copy" data-clab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Label wraps the native input — indeterminate set via <code>el.indeterminate=true</code>. Shared <code>focus.ring</code>; reduced-motion kills tick travel. Try disabled + error together disables first.</p>
+</section>

@@ -1,0 +1,5 @@
+/* ADAM/DS — src/ds/icon-lab.css · hue maps to role tokens */
+[data-ilab-hue="measure"] .icon{color:var(--role-measure)}
+[data-ilab-hue="score"] .icon{color:var(--role-score)}
+[data-ilab-hue="streak"] .icon{color:var(--role-streak)}
+[data-ilab-hue="neutral"] .icon{color:var(--text-primary)}

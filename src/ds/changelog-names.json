@@ -1,42 +1,42 @@
 {
   "2026-09-16_180000-crm-design-system.md": {
-    "title": "CRM Design System — foundations to polish (Phases 1–5)",
+    "title": "CRM Design System \u2014 foundations to polish (Phases 1\u20135)",
     "purpose": "tokens & patterns"
   },
   "2026-09-16_193500-full-publishable-design-system.md": {
-    "title": "Full Publishable CRM System — token pipeline to handoff (Ph 6–13)",
+    "title": "Full Publishable CRM System \u2014 token pipeline to handoff (Ph 6\u201313)",
     "purpose": "pipeline to gallery"
   },
   "2026-09-16_203500-ds-polish.md": {
-    "title": "DS Polish — Evo ramps + docs maturity rebuild",
+    "title": "DS Polish \u2014 Evo ramps + docs maturity rebuild",
     "purpose": "optimise rebuild to Evo parity"
   },
   "2026-09-22_122850-museum-refactor.md": {
-    "title": "Museum refactor — layered prototype architecture (Ph 1–9)",
+    "title": "Museum refactor \u2014 layered prototype architecture (Ph 1\u20139)",
     "purpose": "layer split + handoff"
   },
   "2026-09-22_082844-arch-atlas.md": {
-    "title": "Architecture Atlas — self-improving essence canvas",
+    "title": "Architecture Atlas \u2014 self-improving essence canvas",
     "purpose": "logic + library + IA"
   },
   "2026-09-22_155000-architecture-mechanics.md": {
-    "title": "Architecture Mechanics — connector canvas per atlas lens",
+    "title": "Architecture Mechanics \u2014 connector canvas per atlas lens",
     "purpose": "mechanics engine port"
   },
   "2026-09-22_190645-visual-language.md": {
-    "title": "Visual language — paper, glass, ceremony",
+    "title": "Visual language \u2014 paper, glass, ceremony",
     "purpose": "roles and composition"
   },
   "2026-09-23_002500-design-system-consolidation.md": {
-    "title": "Design system — ground-up build, tokens to pages",
+    "title": "Design system \u2014 ground-up build, tokens to pages",
     "purpose": "ground-up DS"
   },
   "2026-09-23_003000-exhaustive-visual-language.md": {
-    "title": "Exhaustive visual language — eBay-bar spec (hidden subset)",
+    "title": "Exhaustive visual language \u2014 eBay-bar spec (hidden subset)",
     "purpose": "language spec"
   },
   "2026-09-21_000000-lump-sum-builds.md": {
-    "title": "Lump-sum builds — week of Sep 21 (button lab fixes)",
-    "purpose": "weekly catch-all"
+    "title": "Lump-sum builds \u2014 week of Sep 21 (button lab + component docs loop)",
+    "purpose": "weekly catch-all + per-component labs"
   }
 }

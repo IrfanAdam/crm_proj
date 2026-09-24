@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="src/ds/table-lab.css">
+<section class="specimen">
+<h3>Playground — configure one table</h3>
+<div class="dlab" data-dlab="table">
+<div class="dlab__bar">
+<div class="dlab__group" role="group" aria-label="Density">
+<span class="dlab__label">Density</span>
+<button class="dlab__pill is-on" data-table-density="default">Default</button>
+<button class="dlab__pill" data-table-density="compact">Compact</button>
+<button class="dlab__pill" data-table-density="comfortable">Comfortable</button>
+<label class="dlab__check"><input type="checkbox" data-table-striped> Striped</label>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Chrome">
+<label class="dlab__check"><input type="checkbox" data-table-sticky> Sticky</label>
+<label class="dlab__check"><input type="checkbox" data-table-sortable checked> Sortable</label>
+<label class="dlab__check"><input type="checkbox" data-table-selected> Selected</label>
+</div>
+</div>
+<div class="dlab__stage" data-dlab-stage data-surface="canvas" data-theme="light">
+<div data-dlab-preview></div>
+<p class="dlab__hint meta" data-dlab-note></p>
+</div>
+<div class="dlab__bar dlab__bar--foot">
+<div class="dlab__group" role="group" aria-label="Stage surface">
+<span class="dlab__label">Stage</span>
+<button class="dlab__pill is-on" data-dlab-surface="canvas">Canvas</button>
+<button class="dlab__pill" data-dlab-surface="surface">Surface</button>
+<button class="dlab__pill" data-dlab-surface="wash">Wash</button>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Color scheme">
+<span class="dlab__label">Scheme</span>
+<button class="dlab__pill is-on" data-dlab-scheme="light">Light</button>
+<button class="dlab__pill" data-dlab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="dlab__edit">
+<label class="dlab__field">Rows <input type="number" data-table-rows value="3" min="1" max="5"></label>
+<label class="dlab__field">Cols <input type="number" data-table-cols value="3" min="2" max="4"></label>
+<label class="dlab__field">Selected <input type="number" data-table-sel value="2" min="0" max="5"></label>
+<label class="dlab__check"><input type="checkbox" data-table-empty> Empty</label>
+<label class="dlab__check"><input type="checkbox" data-table-skeleton> Skeleton</label>
+</div>
+<div class="dlab__code">
+<pre><code class="tp-code" data-dlab-code></code></pre>
+<span class="dlab__ratio" data-dlab-ratio>—</span>
+<button class="dlab__copy" data-dlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">One sorted column — <code>aria-sort</code> toggles on click/Enter; selection pairs wash with sapphire rail; sticky lives inside <code>.table__wrap</code> only.</p>
+</section>
+<script src="src/ds/table-lab.js"></script>

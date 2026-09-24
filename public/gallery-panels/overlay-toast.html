@@ -1,0 +1,40 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — toast regions + tones</h3>
+<p class="spec-note">Transient confirm of a past act — always topmost, rises in over --transition-spring, dwells, pauses on hover, sinks out.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>toast-region--bottom-right</code></td><td>default</td><td>right --spacing-6, bottom --spacing-6, column stack</td></tr>
+<tr><td><code>toast-region--bottom-left / --top-right / --top-center</code></td><td>alternate anchors</td><td>same stack, different inset</td></tr>
+<tr><td><code>toast--success / --warning / --danger</code></td><td>tone</td><td>left border --border-width-medium + --role-*-strong; danger uses alert</td></tr>
+</tbody></table>
+<p class="meta">Pill --radius-full · --shadow-md · --z-index-toast always wins.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<p class="spec-note">.toast-region is fixed, .toast is a flex row — message + optional .toast__action (semibold, citrine) + .toast__close (✕, subtle). Dark surface --primitive-neutral-dark-700, white ink, flex gap --spacing-3.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Visible = opacity 1 translate 0; closing sinks back. Dwell 4s default, 8s with an action, hover pauses dwell via stopDwell/startDwell. Never takes focus.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Visible</td><td>rise in</td><td><code>.toast--visible</code> + --transition-spring</td></tr>
+<tr><td>Closing</td><td>sink out</td><td><code>.is-closing</code> → opacity 0</td></tr>
+<tr><td>Hover pause</td><td>dwell freezes</td><td>wireDwell + mouseenter pause</td></tr>
+</tbody></table>
+<p class="meta">Tokens --primitive-neutral-dark-700 / --primitive-gray-white / --radius-full / --shadow-md / --z-index-toast / --transition-spring. A11y role=status (alert for danger), container aria-live, action Tab-reachable, no focus steal.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use after saves and completes — never for critical errors alone, never steals focus, stack floats below modals in DOM but above via --z-index-toast.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;div class="toast-region toast-region--bottom-right" aria-live="polite"&gt;
+  &lt;div class="toast toast--visible toast--success" role="status"&gt;&lt;span&gt;Deal saved&lt;/span&gt;&lt;button class="toast__action"&gt;Undo&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;</code>
+<p class="meta">Related — Modal for blocking confirms · Menu for choices · Full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
+</div>

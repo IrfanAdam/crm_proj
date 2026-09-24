@@ -1,0 +1,58 @@
+<div class="pad">
+<section class="specimen">
+<h3>Radio — vertical group</h3>
+<fieldset class="radio-group">
+<legend>Plan</legend>
+<label class="radio"><input type="radio" name="spec-radio-v" checked><span class="radio__dot"></span><span class="radio__label">Starter</span></label>
+<label class="radio"><input type="radio" name="spec-radio-v"><span class="radio__dot"></span><span class="radio__label">Growth</span></label>
+<label class="radio radio--disabled"><input type="radio" name="spec-radio-v" disabled><span class="radio__dot"></span><span class="radio__label">Enterprise (disabled)</span></label>
+</fieldset>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>radio-group--vertical</code></td><td>default stacked</td><td>column, tight gap</td></tr>
+<tr><td><code>radio-group--horizontal</code></td><td>short options, wide</td><td>wrapping row, wide gap</td></tr>
+<tr><td><code>radio--sm / --lg</code></td><td>dense / emphasis</td><td>16px / 24px dot</td></tr>
+<tr><td><code>radio--error</code></td><td>failed validation</td><td>danger ring + danger dot</td></tr>
+<tr><td><code>radio--disabled</code></td><td>unavailable</td><td>dims dot, muted label</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Radio — horizontal + error</h3>
+<fieldset class="radio-group radio-group--horizontal">
+<legend>Billing</legend>
+<label class="radio"><input type="radio" name="spec-radio-h" checked><span class="radio__dot"></span><span class="radio__label">Monthly</span></label>
+<label class="radio"><input type="radio" name="spec-radio-h"><span class="radio__dot"></span><span class="radio__label">Annual</span></label>
+<label class="radio radio--error"><input type="radio" name="spec-radio-h" aria-invalid="true"><span class="radio__dot"></span><span class="radio__label">Custom (error)</span></label>
+</fieldset>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>surface well, strong ring</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border</td><td><code>:hover</code></td></tr>
+<tr><td>Checked</td><td>accent ring + inner dot</td><td><code>:checked</code></td></tr>
+<tr><td>Active</td><td>active wash</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>shared 2px ring</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, muted</td><td><code>disabled</code></td></tr>
+<tr><td>Error</td><td>danger ring + dot</td><td><code>radio--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>well / resting ring</td><td><code>bg.surface</code> / <code>border.strong</code></td></tr>
+<tr><td>checked ring + dot / hover</td><td><code>role.action</code> / <code>role.action-strong</code></td></tr>
+<tr><td>error ring + dot</td><td><code>role.danger</code></td></tr>
+<tr><td>label / disabled label</td><td><code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>shape / gaps / focus / motion</td><td><code>radius.full</code> / <code>spacing.2–4</code> / <code>focus.ring</code> / <code>transition.fast</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Accessibility + snippet</h3>
+<table class="ch-roles"><thead><tr><th>Rule</th><th>How</th></tr></thead><tbody>
+<tr><td>Group</td><td><code>fieldset.radio-group</code> + <code>legend</code>, one shared <code>name</code></td></tr>
+<tr><td>Keyboard</td><td>arrows move + select, <code>Space</code> selects, <code>Tab</code> enters once</td></tr>
+<tr><td>Focus</td><td><code>input:focus-visible + .radio__dot</code> → <code>focus.ring</code></td></tr>
+<tr><td>Selection</td><td>ring + scaling dot, never hue alone</td></tr>
+<tr><td>Row</td><td>44px min-height</td></tr>
+<tr><td>Snippet</td><td><code>&lt;fieldset class="radio-group"&gt;&lt;label class="radio"&gt;&lt;input type="radio" name="plan"&gt;…</code></td></tr>
+</tbody></table>
+<p class="meta">Do: share one name, fieldset+legend, sane default. Don't: mix with checkboxes, single-option group.</p>
+</section>
+</div>

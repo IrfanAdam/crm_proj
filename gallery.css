@@ -91,3 +91,9 @@ a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 .spec-more{margin-top:var(--spacing-1)}
 .spec-more summary{font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);cursor:pointer}
 .spec-more .ch-roles{margin-top:var(--spacing-1)}
+.spec-grid{display:block;min-width:0}
+.spec-grid .specimen{border-top:1px solid var(--border-thin);padding:var(--spacing-3) 0;min-width:0}
+.spec-grid .specimen:first-child{border-top:none;padding-top:0}
+.spec-grid .spec-note,.specimen > .spec-note{max-width:none}
+.spec-grid .ch-roles{max-width:100%;table-layout:auto;word-break:break-word}
+.frame,.pad{min-width:0}

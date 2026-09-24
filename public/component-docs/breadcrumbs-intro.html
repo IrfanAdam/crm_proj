@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 02 Breadcrumbs</p>
+<h2 class="ch-hero">Where you are. Never where to go next.</h2>
+<p class="ch-lede meta">Breadcrumbs show the trail back — workspace, list, record. They orient and offer retreat; they never drive the next action. Use them on depth 2+ pages; omit them where Tabs already name the context.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — nav · list · current.</b> <code>nav aria-label="Breadcrumb"</code> holds an <code>ol</code>; separators carry <code>aria-hidden="true"</code>. Current is <code>.breadcrumbs__current</code> with <code>aria-current="page"</code> — never a link.</p><p class="ch-reject">Reject: a linked current page — arrival is a fact, not a destination.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Collapse the middle, keep the ends.</b> <code>.breadcrumbs--collapsed</code> hides <code>.breadcrumbs__item--collapsible</code> behind a <code>.breadcrumbs__collapse</code> (<code>…</code>) button; Home and current never collapse.</p><p class="ch-reject">Reject: hiding current to save room — collapse the middle, never the answer.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Truncate long labels, not the trail.</b> <code>.breadcrumbs__item--truncated</code> ellipsizes past <code>--spacing-16</code> with full text on title. Structure stays complete while ink stays short.</p><p class="ch-reject">Reject: a crumb pushing siblings off-screen — long labels end in …, never in overflow.</p></div></li>
+</ul>
+</div>

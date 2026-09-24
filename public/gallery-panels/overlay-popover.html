@@ -1,0 +1,42 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — popover anchors</h3>
+<p class="spec-note">Rich anchored panel — keeps its trigger, holds links and buttons, non-modal. One focusable group, never chains.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>data-placement=bottom</code></td><td>default</td><td>below trigger, leaves --spacing-2 gap</td></tr>
+<tr><td><code>data-placement=top</code></td><td>flipped</td><td>above trigger, origin bottom left</td></tr>
+<tr><td><code>.popover--in-dialog</code></td><td>inside modal/drawer</td><td>re-layers to --z-index-modal</td></tr>
+</tbody></table>
+<p class="meta">Min 4 × --spacing-16, max 6 × --spacing-16 · --radius-md · --shadow-md · --z-index-dropdown · re-centers on scroll.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<p class="spec-note">.popover owns the surface, radius, and shadow; .popover__title (semibold, sm) names the panel, .popover__body (regular, sm, --text-secondary) holds detail. Absolute positioned from the anchor, like a menu.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Opens fade + scale over --transition-fast; Esc and outside clicks dismiss and return focus; focus may move inside and returns on close. Never paints a full scrim.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>opacity 1, transform none</td><td><code>.overlay--open.popover</code> + --transition-fast</td></tr>
+<tr><td>Closing</td><td>opacity 0</td><td>hidden + aria-hidden true</td></tr>
+<tr><td>Reduced motion</td><td>snaps</td><td>prefers-reduced-motion</td></tr>
+</tbody></table>
+<p class="meta">Tokens --bg-surface / --border-thin / --shadow-md / --z-index-dropdown / --transition-fast. A11y role=dialog (non-modal), labelledby title, no trap, Esc closes and refocuses.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use for close-date pickers and rich detail that needs to stay anchored. Never popover chains or critical content.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;button aria-haspopup="dialog" aria-expanded="false"&gt;Close date&lt;/button&gt;
+&lt;div class="popover overlay--open" role="dialog" data-placement="bottom" aria-labelledby="t1"&gt;
+  &lt;p class="popover__title" id="t1"&gt;Close date&lt;/p&gt;
+  &lt;p class="popover__body"&gt;Anchored detail — links and buttons welcome.&lt;/p&gt;
+&lt;/div&gt;</code>
+<p class="meta">Related — Tooltip for names · Menu for actions · Full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
+</div>

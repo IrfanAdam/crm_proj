@@ -55,7 +55,10 @@
   color: var(--text-primary);
   font-size: var(--font-size-xs);
   padding: var(--spacing-1) var(--spacing-2);
+  min-width: 172px;
 }
+#stage{min-width:0}
+.grid > *{min-width:0}
 /* — Stage — */
 .blab__stage {
   position: relative;

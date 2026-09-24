@@ -1,0 +1,55 @@
+<div class="pad">
+<section class="specimen">
+<h3>Switch — off / on / disabled</h3>
+<div class="row">
+<label class="switch"><input type="checkbox" role="switch"><span class="switch__track"><span class="switch__thumb"></span></span><span class="switch__label">Email alerts (off)</span></label>
+<label class="switch"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"></span></span><span class="switch__label">Dark preview (on)</span></label>
+<label class="switch switch--disabled"><input type="checkbox" role="switch" disabled><span class="switch__track"><span class="switch__thumb"></span></span><span class="switch__label">Disabled</span></label>
+</div>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (no icon)</td><td>standard instant setting</td><td>bare thumb, track flips action when on</td></tr>
+<tr><td>with icon</td><td>needs on confirmation</td><td>check glyph fades in only when on</td></tr>
+<tr><td><code>switch--sm</code></td><td>dense settings rows</td><td>36×22 track, 16px thumb, 14px travel</td></tr>
+<tr><td><code>switch--error</code></td><td>failed / blocked</td><td>danger border on track</td></tr>
+<tr><td><code>switch--disabled</code></td><td>locked setting</td><td>dims track, no pointer</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Switch — sm + with icon</h3>
+<div class="row">
+<label class="switch switch--sm"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"></span></span><span class="switch__label">Compact</span></label>
+<label class="switch"><input type="checkbox" role="switch" checked><span class="switch__track"><span class="switch__thumb"><svg class="switch__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span class="switch__label">With icon</span></label>
+</div>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Off</td><td>interactive track, thumb left</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border</td><td><code>:hover</code></td></tr>
+<tr><td>On</td><td>action track, thumb right, icon in</td><td><code>:checked</code></td></tr>
+<tr><td>Active / pressed</td><td>off→active wash, on→action-strong</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>shared 2px ring on track</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td><code>disabled</code></td></tr>
+<tr><td>Error</td><td>danger border</td><td><code>switch--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>off track / pressed off</td><td><code>bg.interactive</code> / <code>bg.interactive-active</code></td></tr>
+<tr><td>on track / pressed on</td><td><code>role.action</code> / <code>role.action-strong</code></td></tr>
+<tr><td>thumb face / thumb lift</td><td><code>bg.surface</code> / <code>shadow.sm</code></td></tr>
+<tr><td>track border / error / gap</td><td><code>border.strong</code> / <code>role.danger</code> / <code>spacing.2</code></td></tr>
+<tr><td>shape / focus / motion</td><td><code>radius.full</code> / <code>focus.ring</code> / <code>transition.fast + spring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Accessibility + snippet</h3>
+<table class="ch-roles"><thead><tr><th>Rule</th><th>How</th></tr></thead><tbody>
+<tr><td>Semantics</td><td><code>input[type=checkbox]</code> + <code>role="switch"</code></td></tr>
+<tr><td>Keyboard</td><td><code>Space</code> toggles</td></tr>
+<tr><td>Announce</td><td><code>aria-checked</code> on/off</td></tr>
+<tr><td>Focus</td><td><code>input:focus-visible + .switch__track</code> → <code>focus.ring</code></td></tr>
+<tr><td>Row</td><td>44px min-height, label visible</td></tr>
+<tr><td>Snippet</td><td><code>&lt;label class="switch"&gt;&lt;input type="checkbox" role="switch"&gt;…</code></td></tr>
+</tbody></table>
+<p class="meta">Do: label governed thing, instant + reversible. Don't: submit-gated, icon-only, off-token animation.</p>
+</section>
+</div>

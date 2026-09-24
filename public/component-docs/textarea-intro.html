@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 06 Textarea</p>
+<h2 class="ch-hero">Paragraphs with counts. Never single words.</h2>
+<p class="ch-lede meta">Textarea is multi-line free text — Notes, context, P2 depth. Composes the TextInput skin with auto height and a visible count; single values are TextInput, structured lines are input rows.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Compose, never duplicate.</b> <code>textarea.field__input</code> auto height, 88px min, <code>spacing.3</code> pad, relaxed leading, vertical-only resize — full TextInput state table rides free.</p><p class="ch-reject">Reject: redeclared error states here, or horizontal resize breaking layout.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Min-heights set depth.</b> Base 88px, <code>--sm</code> 64px (<code>spacing.16</code>), <code>--lg</code> 160px; outlined, filled, error, success, disabled inherited — never new states.</p><p class="ch-reject">Reject: a one-word textarea, or resize disabled entirely.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Count warns before the wall.</b> <code>.textarea__count</code> right-aligned xs muted; <code>--limit</code> flips to <code>role.warning-strong</code> near cap with <code>rows</code> + maxlength and polite live announcements past 90%.</p><p class="ch-reject">Reject: a silent maxlength — the cap must always be visible.</p></div></li>
+</ul>
+</div>

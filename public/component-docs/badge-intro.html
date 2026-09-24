@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Identity · 03 Badge</p>
+<h2 class="ch-hero">Counts beside things. Never things themselves.</h2>
+<p class="ch-lede meta">Badge is the count glyph beside a label or pinned to an object — inbox totals, row counts, a dot of presence. It annotates; it never acts, filters, or carries meaning alone. Use it when a number clarifies scale; reach for Chip when the tap filters, StatusPill when it flags a stage.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — pill · bold micro count · tinted fill.</b> Tinted fill with darker ink and hairline border via <code>primitive.sapphire-ui / green / orange / red</code> + <code>radius.full</code> + <code>spacing.1–2</code>; bare 8px <code>badge--dot</code> omits text; <code>badge--max</code> caps at <code>99+</code> with tabular-nums.</p><p class="ch-reject">Reject: an exact 4-digit count — cap at <code>99+</code>, never let the pill grow.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Static only — never interactive.</b> No hover, active, focus, or disabled; the anchor (button, row, avatar) owns interaction and focus. The badge inherits context state and never promises an action.</p><p class="ch-reject">Reject: a focusable or clickable badge — the anchor owns interaction.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Overlap draws its own ring.</b> <code>badge-wrap</code> (relative anchor) + <code>badge--overlap</code> pins top-right via <code>translate(50%,-50%)</code>; the pill border is the separation ring — no extra halo token exists; five tones are closed.</p><p class="ch-reject">Reject: a sixth tone — map every count to neutral / success / warning / danger / brand.</p></div></li>
+</ul>
+</div>

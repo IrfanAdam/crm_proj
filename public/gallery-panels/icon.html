@@ -1,0 +1,41 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — sizes · token only, no custom</h3>
+<p class="spec-note">Five sizes — xs 12 to xl 32 — cover prefixes to hero glyphs. md 20 is the base with no modifier. Any off-scale size is a spec violation.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>icon--xs / --sm</code></td><td>prefix, adornment</td><td>12px xs / 16px sm</td></tr>
+<tr><td><code>icon--md</code> (base)</td><td>default glyph</td><td>20px, no modifier</td></tr>
+<tr><td><code>icon--lg / --xl</code></td><td>emphasis / hero</td><td>24px / 32px</td></tr>
+<tr><td>thin / light / regular / bold / fill / duotone</td><td>stroke state</td><td>1px / 1.2 / 1.5 / 2 / fill / duotone via <code>Icon.jsx</code></td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>icon-size.xs / sm / md / lg / xl</code>; muted <code>text.muted</code>, subtle <code>text.dim</code>.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note"><code>.icon</code> frame is inline-flex centered; svg fills 100% and inherits <code>currentColor</code>. Weight is set via <code>Icon.jsx</code> <code>weight</code> prop or CDN <code>ph-thin / ph-fill</code> class. Gap to text is <code>spacing.1–2</code> from parent; icon never sets its own margin.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Icon has no hover/active/disabled — the control owns it. Decorative stays <code>aria-hidden</code>; semantic exposes an accessible name via control or <code>role="img"</code> + <code>aria-label</code>. Fill marks selected; bold marks high emphasis.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Decorative</td><td>hidden from AT</td><td><code>aria-hidden="true"</code></td></tr>
+<tr><td>Semantic</td><td>exposed with name</td><td><code>role="img"</code> + <code>aria-label</code></td></tr>
+<tr><td>Selected</td><td>fill weight + signal ink</td><td><code>weight="fill"</code> / <code>ph-fill</code></td></tr>
+<tr><td>Muted / Subtle</td><td>steps hierarchy</td><td><code>icon--muted</code> / <code>icon--subtle</code></td></tr>
+</tbody></table>
+<p class="meta">Never carries meaning by color alone; contrast follows parent text pair.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">One foundry — Phosphor only. Do: registry via <code>Icon.jsx</code>, inherit <code>currentColor</code>, reserve fill for selected. Don't: sprite.svg in new work, hand-swapped svg, off-scale sizes.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;span class="icon icon--sm" aria-hidden="true"&gt;&lt;i class="ph ph-bell"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;span class="icon icon--lg" role="img" aria-label="Home, selected"&gt;&lt;i class="ph-fill ph-house"&gt;&lt;/i&gt;&lt;/span&gt;</code>
+<p class="meta">Related — Avatar never an icon frame · StatusPill icon prefix host · Full: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</details>
+</section>
+</div>

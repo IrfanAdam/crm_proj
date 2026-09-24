@@ -1,0 +1,28 @@
+<section class="specimen">
+<h3>Playground — configure one TabBar dock</h3>
+<div class="nlab" data-nlab="tabbar">
+<div class="nlab__bar">
+<div class="nlab__group" role="group" aria-label="Items"><span class="nlab__label">Items</span><input class="nlab__select" data-nlab-count value="3" maxlength="1" style="min-width:60px"><span class="nlab__label">Active</span><select class="nlab__select" data-nlab-active><option value="0" selected>0 Home</option><option value="1">1 Leads</option><option value="2">2 Reports</option></select></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Options"><label class="nlab__check"><input type="checkbox" data-nlab-glass checked> Glass</label></div>
+</div>
+<div class="nlab__stage" data-nlab-stage data-surface="glass" data-theme="light">
+<div data-nlab-preview style="width:320px"></div>
+<p class="nlab__hint meta" data-nlab-note>Icon-only · 44px targets · one signal dot on active · badge separate</p>
+</div>
+<div class="nlab__bar nlab__bar--foot">
+<div class="nlab__group" role="group" aria-label="Stage surface"><span class="nlab__label">Stage</span><button class="nlab__pill" data-nlab-surface="canvas">Canvas</button><button class="nlab__pill" data-nlab-surface="surface">Surface</button><button class="nlab__pill is-on" data-nlab-surface="glass">Glass</button></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Color scheme"><span class="nlab__label">Scheme</span><button class="nlab__pill is-on" data-nlab-scheme="light">Light</button><button class="nlab__pill" data-nlab-scheme="dark">Dark</button></div>
+</div>
+<div class="nlab__edit">
+<label class="nlab__field">Items (1–3)<input data-nlab-count value="3" maxlength="1"></label>
+<label class="nlab__field">Active index<select data-nlab-active><option value="0" selected>0</option><option value="1">1</option><option value="2">2</option></select></label>
+<label class="nlab__check"><input type="checkbox" data-nlab-glass checked> Glass bar</label>
+</div>
+<div class="nlab__code">
+<pre><code class="tp-code" data-nlab-code></code></pre>
+<span class="nlab__ratio" data-nlab-ratio>Aa — · —</span>
+<button class="nlab__copy" data-nlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Thumb-first dock — icon-only, 44px+ targets, max three homes; one signal dot on active. Reject: dock plus tab row together, or badge and signal on one item.</p>
+</section>

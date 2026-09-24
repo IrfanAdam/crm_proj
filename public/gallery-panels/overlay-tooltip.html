@@ -1,0 +1,39 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — tooltip placements</h3>
+<p class="spec-note">One name, pointer only — names a button after a beat, never the only accessible name, never holds buttons.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>data-placement=top/bottom</code></td><td>vertical</td><td>translateY ± --spacing-1</td></tr>
+<tr><td><code>data-placement=left/right</code></td><td>horizontal (future)</td><td>auto-flip at viewport edge</td></tr>
+<tr><td><code>.tooltip--wrap</code></td><td>touch long-press</td><td>white-space normal, max-width wrap</td></tr>
+</tbody></table>
+<p class="meta">Dark surface --primitive-neutral-dark-700 + white ink · --radius-sm · --z-index-modal · --transition-fast.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<p class="spec-note">.tooltip is absolute, single line by default, padded --spacing-1 vertical + --spacing-2 horizontal, xs type, pointer-events none, sits above the trigger via the .ov-anchor.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Hidden by default; hover or focus-within shows with opacity 1 after --motion-duration-xs delay; Esc dismisses. Never focusable, never traps.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover / focus-within</td><td>opacity 1</td><td><code>.tooltip--visible</code> after delay</td></tr>
+<tr><td>Esc</td><td>hidden</td><td>keyboard dismiss</td></tr>
+<tr><td>Reduced motion</td><td>no delay</td><td>prefers-reduced-motion → 0s</td></tr>
+</tbody></table>
+<p class="meta">Tokens --primitive-neutral-dark-700 / --primitive-gray-white / --radius-sm / --z-index-modal / --transition-fast. A11y role=tooltip + aria-describedby, never the only name, pointer-events none.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use to name an icon-only button or clarify a label. Never a tooltip holding buttons or as the sole name.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;button class="btn btn--secondary btn--icon-only" aria-label="Save this view" aria-describedby="tip"&gt;&lt;i class="ph ph-bookmark-simple" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;span class="tooltip tooltip--visible" role="tooltip" data-placement="top" id="tip"&gt;Save this view&lt;/span&gt;</code>
+<p class="meta">Related — Popover for rich detail · Menu for actions · Full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
+</div>

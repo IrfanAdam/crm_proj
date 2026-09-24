@@ -1,0 +1,87 @@
+/* ADAM/DS — src/ds/code-highlight.css · code syntax chrome · [plan:2026-09-21_000000-lump-sum-builds.md#phase-2] */
+/* Chrome: ds-code block + hl tokens via var(--color-code-*) only */
+
+/* — Block — */
+.ds-code {
+  position: relative;
+  background: var(--color-code-bg);
+  color: var(--color-code-fg);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3);
+  overflow: auto;
+  margin-top: var(--spacing-2);
+}
+.ds-code::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: var(--spacing-2);
+  left: var(--spacing-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--font-tracking-wide);
+}
+.blab__code::before {
+  content: 'HTML';
+  position: absolute;
+  top: var(--spacing-2);
+  left: var(--spacing-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--font-tracking-wide);
+}
+.ds-code pre {
+  margin: 0;
+  padding: 0;
+  background: var(--color-code-bg);
+}
+.ds-code code.hl {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-leading-relaxed);
+  color: var(--color-code-fg);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* — Legacy tp-code upgraded to hl — */
+code.tp-code.hl {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-leading-relaxed);
+  background: var(--color-code-bg);
+  color: var(--color-code-fg);
+  border: var(--border-width-thin) solid var(--border-thin);
+}
+
+/* — Tokens — */
+.hl-comm {
+  color: var(--color-code-comm);
+  font-style: italic;
+}
+.hl-str {
+  color: var(--color-code-str);
+}
+.hl-tag {
+  color: var(--color-code-tag);
+}
+.hl-attr {
+  color: var(--color-code-attr);
+}
+.hl-kw {
+  color: var(--color-code-kw);
+  font-weight: var(--font-weight-semibold);
+}
+.hl-var {
+  color: var(--color-code-var);
+}
+.hl-num {
+  color: var(--color-code-num);
+}
+.hl-punct {
+  color: var(--color-code-punct);
+}

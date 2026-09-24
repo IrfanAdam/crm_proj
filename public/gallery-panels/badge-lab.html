@@ -1,0 +1,57 @@
+<section class="specimen">
+<h3>Playground — configure one badge</h3>
+<div class="ilab" data-ilab="badge">
+<div class="ilab__bar">
+<div class="ilab__group" role="group" aria-label="Hue and tone">
+<label class="ilab__label" for="badge-hue">Tone</label>
+<select class="ilab__select" id="badge-hue" data-ilab-hue-select>
+<option value="default" selected>Brand · Sapphire</option>
+<option value="neutral">Neutral</option>
+<option value="success">Success</option>
+<option value="warning">Warning</option>
+<option value="danger">Danger</option>
+<option value="dot">Dot</option>
+</select>
+</div>
+<div class="ilab__group ilab__group--right" role="group" aria-label="Size">
+<span class="ilab__label">Size</span>
+<button class="ilab__pill is-on" data-ilab-size="">MD</button>
+<button class="ilab__pill" data-ilab-size="badge--sm">SM</button>
+<button class="ilab__pill" data-ilab-size="badge--dot">Dot</button>
+</div>
+</div>
+<div class="ilab__stage" data-ilab-stage data-surface="canvas" data-theme="light">
+<label class="ilab__check"><input type="checkbox" data-ilab-capsule> Concentric</label>
+<div class="ilab__tune" data-ilab-tune hidden>
+<label class="ilab__range"><span>Pad</span><input type="range" data-ilab-pad min="8" max="48" step="4" value="12"><output data-ilab-pad-val>12px</output></label>
+<label class="ilab__range"><span>Radius</span><input type="range" data-ilab-radius min="8" max="48" step="4" value="32"><output data-ilab-radius-val>32px</output></label>
+</div>
+<div data-ilab-preview data-ilab-hue="default"></div>
+<p class="ilab__hint meta" data-ilab-note></p>
+</div>
+<div class="ilab__bar ilab__bar--foot">
+<div class="ilab__group" role="group" aria-label="Stage surface">
+<span class="ilab__label">Stage</span>
+<button class="ilab__pill is-on" data-ilab-surface="canvas">Canvas</button>
+<button class="ilab__pill" data-ilab-surface="surface">Surface</button>
+<button class="ilab__pill" data-ilab-surface="wash">Wash</button>
+</div>
+<div class="ilab__group ilab__group--right" role="group" aria-label="Color scheme">
+<span class="ilab__label">Scheme</span>
+<button class="ilab__pill is-on" data-ilab-scheme="light">Light</button>
+<button class="ilab__pill" data-ilab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="ilab__edit">
+<label class="ilab__field ilab__field--sm">Count<input data-ilab-count value="3" maxlength="4"></label>
+<label class="ilab__check"><input type="checkbox" data-ilab-max> 99+ cap</label>
+<label class="ilab__check"><input type="checkbox" data-ilab-overlap> Overlap avatar</label>
+</div>
+<div class="ilab__code">
+<pre><code class="tp-code" data-ilab-code></code></pre>
+<span class="ilab__ratio" data-ilab-ratio>Aa — · —</span>
+<button class="ilab__copy" data-ilab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Badge counts — static only, never interactive. Cap at <code>99+</code>; dot omits text and gets <code>aria-label</code>; overlap pins to avatar corner.</p>
+</section>

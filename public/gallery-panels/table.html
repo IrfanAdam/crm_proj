@@ -1,0 +1,54 @@
+<div class="pad">
+<section class="specimen">
+<h3>Table — comfortable, sortable + selected</h3>
+<div class="row">
+<div class="table__wrap">
+<table class="table table--comfortable">
+<thead><tr><th class="table__cell--select" scope="col"><input type="checkbox" aria-label="Select all"></th><th scope="col" aria-sort="ascending" tabindex="0">Deal</th><th scope="col">Stage</th><th scope="col">Value</th></tr></thead>
+<tbody><tr><td class="table__cell--select"><input type="checkbox" aria-label="Select Acme"></td><td>Acme</td><td>Negotiation</td><td>$48k</td></tr>
+<tr class="table__row--selected" aria-selected="true"><td class="table__cell--select"><input type="checkbox" checked aria-label="Select Globex"></td><td>Globex</td><td>Closed</td><td>$32k</td></tr></tbody>
+</table>
+</div>
+</div>
+<p class="spec-note">One sorted column at a time via <code>aria-sort</code>; selection pairs wash with sapphire rail.</p>
+<details class="spec-more"><summary>Spec · sort + select</summary><p class="meta">Default comfortable density; sortable header has sapphire ↑/↓ and keyboard Enter/Space; checkbox column + row <code>aria-selected</code>.</p></details>
+</section>
+<section class="specimen">
+<h3>Table — compact + sticky header</h3>
+<div class="row">
+<div class="table__wrap" style="max-height:120px;overflow:auto">
+<table class="table table--compact table--sticky">
+<thead><tr><th scope="col" aria-sort="descending" tabindex="0">Rep</th><th scope="col">Quota</th><th scope="col">Closed</th></tr></thead>
+<tbody><tr><td>A. Rao</td><td>$100k</td><td>$82k</td></tr><tr><td>J. Diaz</td><td>$100k</td><td>$64k</td></tr><tr><td>K. Osei</td><td>$80k</td><td>$71k</td></tr></tbody>
+</table>
+</div>
+</div>
+<p class="spec-note">Compact goes dense, never striped; sticky pinned inside <code>.table__wrap</code> with <code>z-index.sticky</code>.</p>
+</section>
+<section class="specimen">
+<h3>Table — empty + skeleton + footer</h3>
+<div class="row">
+<div class="table__wrap">
+<table class="table">
+<thead><tr><th scope="col">Deal</th><th scope="col">Stage</th></tr></thead>
+<tbody><tr class="table__empty"><td colspan="2">No deals match this filter.</td></tr>
+<tr aria-busy="true"><td><div class="table__skeleton-bar"></div></td><td><div class="table__skeleton-bar"></div></td></tr></tbody>
+</table>
+<div class="table__footer"><span>0 of 0</span><span>Pagination slot</span></div>
+</div>
+</div>
+<p class="spec-note">Empty is a real centered row; loading shimmers with <code>aria-busy</code> and never focuses.</p>
+</section>
+<section class="specimen">
+<h3>Table — striped (non-compact)</h3>
+<div class="row">
+<div class="table__wrap">
+<table class="table table--striped">
+<thead><tr><th scope="col">Deal</th><th scope="col">Stage</th><th scope="col">Value</th></tr></thead>
+<tbody><tr><td>Acme</td><td>Proposal</td><td>$48k</td></tr><tr><td>Globex</td><td>Closed</td><td>$32k</td></tr><tr><td>Initech</td><td>Paused</td><td>$12k</td></tr></tbody>
+</table>
+</div>
+</div>
+<p class="spec-note">Striping on even rows uses <code>bg.interactive</code>; never combine with <code>table--compact</code>.</p>
+</section>
+</div>

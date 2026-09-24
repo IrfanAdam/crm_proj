@@ -1,0 +1,53 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>GemReward — sapphire · single iframe</h3>
+<div class="row"><div class="gem-reward gem-reward--sapphire" style="flex:1;min-width:260px"><iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Sapphire" loading="lazy"></iframe><div class="gem-reward__title">Rock Solid Goals</div><div class="gem-reward__capsule">+Rs 4lakh · Beyond Target</div><div class="gem-reward__copy">data in here don’t lie</div></div></div>
+<p class="spec-note">One iframe <code>my.spline.design/gem-embed</code> + hue-rotate API.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>frame <code>bg.surface</code> · <code>radius.2xl</code> · <code>border.thin</code></td></tr>
+<tr><td>spline 140px · <code>bg.interactive</code> · <code>radius.lg</code></td></tr>
+<tr><td>capsule <code>amethyst.100</code> / <code>700</code> · <code>radius.full</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Four hue filters</h3>
+<div class="row">
+<div class="gem-reward gem-reward--citrine" style="flex:1"><iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Citrine" loading="lazy"></iframe><div class="gem-reward__capsule">Citrine · 38° + 1.1</div></div>
+<div class="gem-reward gem-reward--amethyst" style="flex:1"><iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Amethyst" loading="lazy"></iframe><div class="gem-reward__capsule">Amethyst · 265° + 1.2</div></div>
+<div class="gem-reward gem-reward--redberyl" style="flex:1"><iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Red Beryl" loading="lazy"></iframe><div class="gem-reward__capsule">Red Beryl · 310° + 1.2</div></div>
+</div>
+<p class="spec-note">Sapphire 0° · citrine 38° +1.1 · red-beryl 310° +1.2 · amethyst 265° +1.2 — never four embeds.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Filter map</th></tr></thead><tbody>
+<tr><td>sapphire <code>hue-rotate(0deg)</code></td></tr>
+<tr><td>citrine <code>hue-rotate(38deg) saturate(1.1)</code></td></tr>
+<tr><td>red-beryl <code>hue-rotate(310deg) saturate(1.2)</code></td></tr>
+<tr><td>amethyst <code>hue-rotate(265deg) saturate(1.2)</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Quarantine — never Operate chrome</h3>
+<div class="row"><div class="gem-reward gem-reward--sapphire" style="flex:1;opacity:0.6"><iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Quarantined"></iframe><div class="gem-reward__capsule">ceremony only</div></div><span class="meta">mood never enters Operate/Monitor</span></div>
+<p class="spec-note">Gems live only in achievement moments; KPI fills and measure visuals never borrow gem hues.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Quarantine law</th></tr></thead><tbody>
+<tr><td>ceremony-only — not inside Operate/Monitor</td></tr>
+<tr><td>reject: gem beside KPI or inside operate screen</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y + reduced motion</h3>
+<div class="row"><div class="gem-reward gem-reward--sapphire" style="flex:1"><iframe class="gem-reward__spline" src="https://my.spline.design/gem-embed" title="Rock Solid"></iframe><div class="gem-reward__title">Accessible title</div></div></div>
+<p class="spec-note">Iframe carries title per category; fallback SVG when Spline fails; reduced-motion drops filter + entrance.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td>iframe <code>title</code> per category · fallback SVG slot</td></tr>
+<tr><td><code>prefers-reduced-motion</code> → <code>filter: none</code></td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

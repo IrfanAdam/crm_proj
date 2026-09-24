@@ -1,0 +1,37 @@
+<section class="specimen">
+<h3>Playground — configure one Tabs row</h3>
+<div class="nlab" data-nlab="tabs">
+<div class="nlab__bar">
+<div class="nlab__group" role="group" aria-label="Variant">
+<span class="nlab__label">Variant</span>
+<button class="nlab__pill is-on" data-nlab-variant="underline">Underline</button>
+<button class="nlab__pill" data-nlab-variant="contained">Contained</button>
+</div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Active">
+<span class="nlab__label">Active</span>
+<select class="nlab__select" data-nlab-active><option value="0" selected>0 Pipeline</option><option value="1">1 Won</option><option value="2">2 Archive</option></select>
+<label class="nlab__label" for="tabs-dis">Disabled</label>
+<select class="nlab__select" id="tabs-dis" data-nlab-disabled><option value="none" selected>None</option><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+</div>
+</div>
+<div class="nlab__stage" data-nlab-stage data-surface="canvas" data-theme="light">
+<div data-nlab-preview></div>
+<p class="nlab__hint meta" data-nlab-note>ArrowLeft/Right moves · Home/End jumps · disabled skipped</p>
+</div>
+<div class="nlab__bar nlab__bar--foot">
+<div class="nlab__group" role="group" aria-label="Stage surface"><span class="nlab__label">Stage</span><button class="nlab__pill is-on" data-nlab-surface="canvas">Canvas</button><button class="nlab__pill" data-nlab-surface="surface">Surface</button><button class="nlab__pill" data-nlab-surface="wash">Wash</button></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Color scheme"><span class="nlab__label">Scheme</span><button class="nlab__pill is-on" data-nlab-scheme="light">Light</button><button class="nlab__pill" data-nlab-scheme="dark">Dark</button></div>
+</div>
+<div class="nlab__edit">
+<label class="nlab__field">Tab 0<input data-nlab-l0 value="Pipeline" maxlength="16"></label>
+<label class="nlab__field">Tab 1<input data-nlab-l1 value="Won" maxlength="16"></label>
+<label class="nlab__field">Tab 2<input data-nlab-l2 value="Archive" maxlength="16"></label>
+</div>
+<div class="nlab__code">
+<pre><code class="tp-code" data-nlab-code></code></pre>
+<span class="nlab__ratio" data-nlab-ratio>Aa — · —</span>
+<button class="nlab__copy" data-nlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">One row of peer views — underline by default, contained segments; one tab stop, arrows do the rest. Reject: a second dock for same views, or every tab in tab order.</p>
+</section>

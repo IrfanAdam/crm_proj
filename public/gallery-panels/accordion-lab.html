@@ -1,0 +1,29 @@
+<section class="specimen">
+<h3>Playground — configure one Accordion</h3>
+<div class="nlab" data-nlab="accordion">
+<div class="nlab__bar">
+<div class="nlab__group" role="group" aria-label="Count"><span class="nlab__label">Items</span><input class="nlab__select" data-nlab-count value="3" maxlength="1" style="min-width:60px"><span class="nlab__label">Open</span><input class="nlab__select" data-nlab-open value="0" placeholder="0,1" style="min-width:80px"></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Options"><label class="nlab__check"><input type="checkbox" data-nlab-leading> Chevron leading</label></div>
+</div>
+<div class="nlab__stage" data-nlab-stage data-surface="canvas" data-theme="light">
+<div data-nlab-preview></div>
+<p class="nlab__hint meta" data-nlab-note>aria-expanded mirrors open · grid-rows 0fr→1fr · disabled skipped</p>
+</div>
+<div class="nlab__bar nlab__bar--foot">
+<div class="nlab__group" role="group" aria-label="Stage surface"><span class="nlab__label">Stage</span><button class="nlab__pill is-on" data-nlab-surface="canvas">Canvas</button><button class="nlab__pill" data-nlab-surface="surface">Surface</button><button class="nlab__pill" data-nlab-surface="wash">Wash</button></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Color scheme"><span class="nlab__label">Scheme</span><button class="nlab__pill is-on" data-nlab-scheme="light">Light</button><button class="nlab__pill" data-nlab-scheme="dark">Dark</button></div>
+</div>
+<div class="nlab__edit">
+<label class="nlab__field">Items (1–4)<input data-nlab-count value="3" maxlength="1"></label>
+<label class="nlab__field">Open indexes<input data-nlab-open value="0" placeholder="e.g. 0,2"></label>
+<label class="nlab__field">Disabled indexes<input data-nlab-disabled value="" placeholder="e.g. 2"></label>
+<label class="nlab__check"><input type="checkbox" data-nlab-leading> Chevron leading (order:-1)</label>
+</div>
+<div class="nlab__code">
+<pre><code class="tp-code" data-nlab-code></code></pre>
+<span class="nlab__ratio" data-nlab-ratio>Aa — · —</span>
+<button class="nlab__copy" data-nlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Stacked detail on demand — trigger answers for its panel via aria-expanded/controls; single vs multi is JS. Reject: pixel-height keyframes, or motion surviving reduced-motion.</p>
+</section>

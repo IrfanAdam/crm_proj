@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="src/ds/kpi-lab.css">
+<section class="specimen">
+<h3>Playground — configure one KPI</h3>
+<div class="dlab" data-dlab="kpi">
+<div class="dlab__bar">
+<div class="dlab__group" role="group" aria-label="Delta">
+<span class="dlab__label">Delta</span>
+<button class="dlab__pill is-on" data-kpi-delta="up">Up</button>
+<button class="dlab__pill" data-kpi-delta="down">Down</button>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Size">
+<span class="dlab__label">Size</span>
+<button class="dlab__pill" data-kpi-size="">Default</button>
+<button class="dlab__pill" data-kpi-size="kpi--sm">SM</button>
+<button class="dlab__pill is-on" data-kpi-size="kpi--lg">LG</button>
+<label class="dlab__check"><input type="checkbox" data-kpi-spark checked> Spark</label>
+</div>
+</div>
+<div class="dlab__stage" data-dlab-stage data-surface="canvas" data-theme="light">
+<div data-dlab-preview></div>
+<p class="dlab__hint meta" data-dlab-note></p>
+</div>
+<div class="dlab__bar dlab__bar--foot">
+<div class="dlab__group" role="group" aria-label="Stage surface">
+<span class="dlab__label">Stage</span>
+<button class="dlab__pill is-on" data-dlab-surface="canvas">Canvas</button>
+<button class="dlab__pill" data-dlab-surface="surface">Surface</button>
+<button class="dlab__pill" data-dlab-surface="wash">Wash</button>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Color scheme">
+<span class="dlab__label">Scheme</span>
+<button class="dlab__pill is-on" data-dlab-scheme="light">Light</button>
+<button class="dlab__pill" data-dlab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="dlab__edit">
+<label class="dlab__field">Value <input data-kpi-value value="$182k"></label>
+<label class="dlab__field">Total <input data-kpi-total value="/ $240k"></label>
+<label class="dlab__field">Delta <input data-kpi-delta-val value="+2%"></label>
+<label class="dlab__field">Spark size <select data-kpi-spark-size><option value="sparkline--sm">SM 24px</option><option value="">MD 40px</option><option value="sparkline--lg" selected>LG 56px</option></select></label>
+</div>
+<div class="dlab__code">
+<pre><code class="tp-code" data-dlab-code></code></pre>
+<span class="dlab__ratio" data-dlab-ratio>—</span>
+<button class="dlab__copy" data-dlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Value · total · signed delta read as one sentence, spark trailing. Up green-700/100, down red-700/100; sizes scale number never drop total.</p>
+</section>
+<script src="src/ds/kpi-lab.js"></script>

@@ -1,57 +1,43 @@
-/* ADAM/DS — src/ds/button-lab-tune.css · concentric pad/radius bar */
-/* Exports: .blab__tune, .blab__tune-row, track visuals */
+/* ADAM/DS — src/ds/button-lab-tune.css · concentric pad/radius sliders */
+/* Exports: .blab__tune anchored below concentric pill */
 .blab__tune {
+  position: absolute;
+  top: calc(var(--spacing-2) + 26px + var(--spacing-2));
+  left: var(--spacing-2);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--spacing-4);
-  border-top: var(--border-width-thin) solid var(--border-thin);
+  padding: var(--spacing-2) var(--spacing-3);
   background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 .blab__tune[hidden] {
   display: none !important;
 }
-.blab__tune-row {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  flex-wrap: wrap;
-}
 .blab__range {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-1);
+  gap: var(--spacing-2);
   font-size: var(--font-size-xs);
   color: var(--text-muted);
 }
+.blab__range span {
+  min-width: 42px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-tracking-wide);
+  text-transform: uppercase;
+}
 .blab__range input[type="range"] {
-  width: 92px;
+  width: 132px;
   accent-color: var(--role-action);
 }
 .blab__range output {
-  min-width: 28px;
+  min-width: 32px;
   font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
-}
-.blab__dash {
-  color: var(--text-muted);
-  font-size: var(--font-size-xs);
-}
-.blab__tune-bar {
-  flex: 1;
-  min-width: 72px;
-  height: 6px;
-  border-radius: var(--radius-full);
-  background: var(--bg-interactive);
-  position: relative;
-  overflow: hidden;
-}
-.blab__tune-bar i {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  border-radius: var(--radius-full);
-  background: var(--role-action);
 }
 [data-blab-preview] {
   width: 100%;
@@ -71,4 +57,7 @@
 }
 .blab-box[data-full="1"] .btn {
   flex: 1;
+}
+.blab__concentric input {
+  accent-color: var(--role-action);
 }

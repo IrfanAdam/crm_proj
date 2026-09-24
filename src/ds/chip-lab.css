@@ -1,0 +1,3 @@
+/* ADAM/DS — src/ds/chip-lab.css · chip hue = none (token respect) */
+[data-ilab="chip"] [data-ilab-preview] .chip{border-radius:var(--radius-full)}
+[data-ilab="chip"] .ilab-box{border-radius:var(--radius-full)}

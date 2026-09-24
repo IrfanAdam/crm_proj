@@ -1,0 +1,31 @@
+/* ADAM/DS — src/ds/identity-lab.css · shared ilab shell (mirrors blab) */
+.ilab{border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-surface)}
+.ilab__bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--spacing-2);padding:var(--spacing-3) var(--spacing-4);border-bottom:var(--border-width-thin) solid var(--border-thin)}
+.ilab__bar--foot{border-bottom:var(--border-width-thin) solid var(--color-transparent);border-top:var(--border-width-thin) solid var(--border-thin)}
+.ilab__group{display:flex;align-items:center;flex-wrap:wrap;gap:var(--spacing-2)}
+.ilab__label{font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-tracking-wide);text-transform:uppercase;color:var(--text-muted)}
+.ilab__pill{border:var(--border-width-thin) solid var(--border-thin);background:var(--color-transparent);color:var(--text-secondary);border-radius:var(--radius-full);padding:var(--spacing-1) var(--spacing-3);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);cursor:pointer}
+.ilab__pill.is-on{background:var(--bg-interactive);color:var(--text-primary);border-color:var(--border-strong)}
+.ilab__select{border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);background:var(--bg-surface);color:var(--text-primary);font-size:var(--font-size-xs);padding:var(--spacing-1) var(--spacing-2);min-width:168px}
+.ilab__stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--spacing-2);min-height:var(--spacing-16);padding:var(--spacing-6) var(--spacing-4)}
+.ilab__stage[data-surface="canvas"]{background:var(--bg-primary)}
+.ilab__stage[data-surface="surface"]{background:var(--bg-surface)}
+.ilab__stage[data-surface="wash"]{background:var(--bg-interactive)}
+.ilab__hint{min-height:var(--spacing-4)}
+.ilab__tune{position:absolute;top:calc(var(--spacing-2) + 26px + var(--spacing-2));left:var(--spacing-2);z-index:2;display:flex;flex-direction:column;gap:var(--spacing-2);padding:var(--spacing-2) var(--spacing-3);background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+.ilab__tune[hidden]{display:none !important}
+.ilab__range{display:inline-flex;align-items:center;gap:var(--spacing-2);font-size:var(--font-size-xs);color:var(--text-muted)}
+.ilab__range span{min-width:42px;font-weight:var(--font-weight-semibold);letter-spacing:var(--font-tracking-wide);text-transform:uppercase}
+.ilab__range input[type="range"]{width:132px;accent-color:var(--role-action)}
+.ilab__range output{min-width:32px;font-weight:var(--font-weight-semibold);color:var(--text-primary)}
+.ilab__edit{display:flex;flex-wrap:wrap;align-items:end;gap:var(--spacing-3);padding:var(--spacing-3) var(--spacing-4);border-top:var(--border-width-thin) solid var(--border-thin)}
+.ilab__field{display:flex;flex-direction:column;gap:var(--spacing-1);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);color:var(--text-muted)}
+.ilab__field input,.ilab__field select{border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);background:var(--bg-surface);color:var(--text-primary);font-size:var(--font-size-sm);padding:var(--spacing-1) var(--spacing-2);min-width:var(--spacing-16)}
+.ilab__field--sm input{max-width:var(--spacing-12)}
+.ilab__check{display:flex;align-items:center;gap:var(--spacing-1);font-size:var(--font-size-sm);color:var(--text-secondary)}
+.ilab__code{position:relative;background:var(--color-code-bg);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-8) var(--spacing-3) var(--spacing-3);overflow:hidden;margin-top:var(--spacing-2)}
+.ilab__code pre{margin:var(--spacing-0);overflow:auto}
+.ilab__code [data-ilab-copy]{position:absolute;top:var(--spacing-2);right:var(--spacing-2);width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);color:var(--text-secondary);cursor:pointer}
+.ilab__ratio{display:none}
+[data-ilab-preview]{width:100%;display:flex;justify-content:center;min-height:44px;align-items:center}
+.ilab-box{display:inline-flex;padding:var(--spacing-3);background:var(--bg-interactive);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-full)}

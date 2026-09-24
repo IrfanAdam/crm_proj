@@ -1,0 +1,51 @@
+<section class="specimen">
+<h3>Playground — configure one OpportunityCard</h3>
+<div class="carlab" data-carlab="opportunitycard">
+<div class="carlab__bar">
+<div class="carlab__group" role="group" aria-label="Stage">
+<span class="carlab__label">Stage</span>
+<button class="carlab__pill is-on" data-opp-stage="Negotiate">Negotiate</button>
+<button class="carlab__pill" data-opp-stage="Qualified">Qualified</button>
+<button class="carlab__pill" data-opp-stage="Proposal">Proposal</button>
+<button class="carlab__pill" data-opp-stage="Closed">Closed</button>
+</div>
+<div class="carlab__group" role="group" aria-label="Segments">
+<span class="carlab__label">Segs</span>
+<select data-opp-segs aria-label="Segments"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select>
+<label class="carlab__label" for="opp-contacts">Contacts</label>
+<select data-opp-contacts id="opp-contacts"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select>
+</div>
+</div>
+<div class="carlab__stage" data-carlab-stage data-surface="canvas" data-theme="light">
+<div data-carlab-preview></div>
+</div>
+<div class="carlab__bar carlab__bar--foot">
+<div class="carlab__group" role="group" aria-label="Stage surface">
+<span class="carlab__label">Stage</span>
+<button class="carlab__pill is-on" data-carlab-surface="canvas">Canvas</button>
+<button class="carlab__pill" data-carlab-surface="surface">Surface</button>
+<button class="carlab__pill" data-carlab-surface="wash">Wash</button>
+</div>
+<div class="carlab__group" role="group" aria-label="Color scheme">
+<span class="carlab__label">Scheme</span>
+<button class="carlab__pill is-on" data-carlab-scheme="light">Light</button>
+<button class="carlab__pill" data-carlab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="carlab__edit">
+<label class="carlab__field">Logo<input data-opp-logo value="NS" maxlength="3"></label>
+<label class="carlab__field">Name<input data-opp-name value="Nova Steel" maxlength="24"></label>
+<label class="carlab__field">Product<input data-opp-product value="Pipe retrofit · Q3" maxlength="28"></label>
+<label class="carlab__field">Chance<input data-opp-chance value="65%" maxlength="5"></label>
+<label class="carlab__field">Value<input data-opp-value value="$48,200" maxlength="12"></label>
+<label class="carlab__field">Foot meta<input data-opp-foot value="Updated 2h ago" maxlength="24"></label>
+<label class="carlab__field">Distance<input data-opp-dist value="1.2 km away" maxlength="16"></label>
+</div>
+<div class="carlab__code">
+<pre><code class="hl" data-carlab-code></code></pre>
+<span class="carlab__ratio" data-carlab-ratio>Aa —</span>
+<button class="carlab__copy" data-carlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Logo · who · stage rail (sapphire-400) · chance red-beryl · value sapphire · segs · contacts stack · foot dist citrine. Hairline frame, zero shadow — only action buttons take wash.</p>
+</section>

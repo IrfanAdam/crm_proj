@@ -1,0 +1,29 @@
+<section class="specimen">
+<h3>Playground — configure one Pagination</h3>
+<div class="nlab" data-nlab="pagination">
+<div class="nlab__bar">
+<div class="nlab__group" role="group" aria-label="Page"><span class="nlab__label">Page</span><input class="nlab__select" data-nlab-page value="1" maxlength="2" style="min-width:60px"><span class="nlab__label">Total</span><input class="nlab__select" data-nlab-total value="8" maxlength="2" style="min-width:60px"></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Options"><label class="nlab__check"><input type="checkbox" data-nlab-compact> Compact</label><label class="nlab__check"><input type="checkbox" data-nlab-status checked> Status</label></div>
+</div>
+<div class="nlab__stage" data-nlab-stage data-surface="canvas" data-theme="light">
+<div data-nlab-preview></div>
+<p class="nlab__hint meta" data-nlab-note>Ends disable in place · ellipsis compresses · status stays</p>
+</div>
+<div class="nlab__bar nlab__bar--foot">
+<div class="nlab__group" role="group" aria-label="Stage surface"><span class="nlab__label">Stage</span><button class="nlab__pill is-on" data-nlab-surface="canvas">Canvas</button><button class="nlab__pill" data-nlab-surface="surface">Surface</button><button class="nlab__pill" data-nlab-surface="wash">Wash</button></div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Color scheme"><span class="nlab__label">Scheme</span><button class="nlab__pill is-on" data-nlab-scheme="light">Light</button><button class="nlab__pill" data-nlab-scheme="dark">Dark</button></div>
+</div>
+<div class="nlab__edit">
+<label class="nlab__field">Page<input data-nlab-page value="1" maxlength="2"></label>
+<label class="nlab__field">Total pages<input data-nlab-total value="8" maxlength="2"></label>
+<label class="nlab__check"><input type="checkbox" data-nlab-compact> Compact (prev/next strip)</label>
+<label class="nlab__check"><input type="checkbox" data-nlab-status checked> Show status</label>
+</div>
+<div class="nlab__code">
+<pre><code class="tp-code" data-nlab-code></code></pre>
+<span class="nlab__ratio" data-nlab-ratio>Aa — · —</span>
+<button class="nlab__copy" data-nlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Position in a list — every control pairs with a status line, ends disable in place and never vanish. Reject: numbers with no status, or hiding Prev on page one.</p>
+</section>

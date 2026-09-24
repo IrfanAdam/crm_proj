@@ -1,0 +1,58 @@
+<section class="specimen">
+<h3>Playground — TextInput</h3>
+<div class="flab" data-flab="textinput">
+<div class="flab__bar">
+<div class="flab__group" role="group" aria-label="Variant">
+<span class="flab__label">Variant</span>
+<button class="flab__pill is-on" data-flab-variant="outlined">Outlined</button>
+<button class="flab__pill" data-flab-variant="filled">Filled</button>
+</div>
+<div class="flab__group" role="group" aria-label="Size">
+<span class="flab__label">Size</span>
+<button class="flab__pill" data-flab-size="sm">SM</button>
+<button class="flab__pill is-on" data-flab-size="md">MD</button>
+<button class="flab__pill" data-flab-size="lg">LG</button>
+</div>
+<div class="flab__group" role="group" aria-label="State">
+<span class="flab__label">State</span>
+<button class="flab__pill is-on" data-flab-state="default">Default</button>
+<button class="flab__pill" data-flab-state="focus">Focus</button>
+<button class="flab__pill" data-flab-state="error">Error</button>
+<button class="flab__pill" data-flab-state="success">Success</button>
+<button class="flab__pill" data-flab-state="disabled">Disabled</button>
+<button class="flab__pill" data-flab-state="readonly">Readonly</button>
+</div>
+</div>
+<div class="flab__stage" data-flab-stage data-surface="canvas" data-theme="light">
+<div class="flab__preview" data-flab-preview></div>
+</div>
+<div class="flab__bar flab__bar--foot">
+<div class="flab__group" role="group" aria-label="Stage surface">
+<span class="flab__label">Stage</span>
+<button class="flab__pill is-on" data-flab-surface="canvas">Canvas</button>
+<button class="flab__pill" data-flab-surface="surface">Surface</button>
+<button class="flab__pill" data-flab-surface="wash">Wash</button>
+</div>
+<div class="flab__group" role="group" aria-label="Color scheme">
+<span class="flab__label">Scheme</span>
+<button class="flab__pill is-on" data-flab-scheme="light">Light</button>
+<button class="flab__pill" data-flab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="flab__edit">
+<label class="flab__field">Label<input data-flab-label value="Amount"></label>
+<label class="flab__field">Placeholder<input data-flab-ph value="0.00"></label>
+<label class="flab__field">Value<input data-flab-value value=""></label>
+<label class="flab__field flab__field--sm">Prefix<input data-flab-prefix value="Rs"></label>
+<label class="flab__field flab__field--sm">Suffix<input data-flab-suffix value="L"></label>
+<label class="flab__field">Help<input data-flab-help value="In lakhs"></label>
+<label class="flab__field">Error<input data-flab-error value="Enter a valid amount."></label>
+</div>
+<div class="flab__code">
+<pre><code class="tp-code" data-flab-code></code></pre>
+<span class="flab__ratio" data-flab-ratio>Aa —</span>
+<button class="flab__copy" data-flab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Variant × size × state — outlined vs filled at 44px md, affixes keep Rs/L apart. Edit label, placeholder, prefix/suffix, help/error; error wires <code>aria-invalid</code>.</p>
+</section>

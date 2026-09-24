@@ -1,0 +1,55 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>FunnelCard — glyph + title + stamp + strip</h3>
+<div class="row">
+<article class="funnel-card" style="flex:1"><span class="funnel-card__glyph"><i class="ph-bold ph-funnel" aria-hidden="true"></i></span><div class="funnel-card__body"><div class="funnel-card__title">Pipeline health</div><div class="funnel-card__meta">Last refreshed 9:41 AM</div><div class="funnel-card__metrics"><span class="funnel-card__metric">CR 24%</span><span class="funnel-card__metric">RR 61%</span><span class="funnel-card__metric">CSAT 4.8</span><span class="funnel-card__metric">NPS 52</span></div></div></article>
+</div>
+<p class="spec-note">Glyph 48 sapphire-100/500 · title · stamp · strip row of metric chips.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>frame <code>bg.surface</code> · <code>radius.lg</code> · <code>border.thin</code></td></tr>
+<tr><td>glyph 48px <code>primitive.sapphire-ui.100</code> / <code>500</code> · <code>radius.lg</code></td></tr>
+<tr><td>title <code>text.primary</code> · meta <code>text.muted</code> · metric <code>bg.interactive</code> + <code>border.thin</code> · <code>radius.full</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Metric density — wrap behavior</h3>
+<div class="row">
+<article class="funnel-card" style="flex:1"><span class="funnel-card__glyph"><i class="ph-bold ph-chart-bar" aria-hidden="true"></i></span><div class="funnel-card__body"><div class="funnel-card__title">Throughput</div><div class="funnel-card__meta">Last refreshed 8:12 AM</div><div class="funnel-card__metrics"><span class="funnel-card__metric">CR 18%</span><span class="funnel-card__metric">RR 54%</span></div></div></article>
+</div>
+<p class="spec-note">Two to four metrics wrap inside strip; never scattered outside.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Strip variants</th></tr></thead><tbody>
+<tr><td>single variant — content is strip density</td></tr>
+<tr><td>reject: metric outside __metrics</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Static posture — hairline zero shadow</h3>
+<div class="row">
+<article class="funnel-card" style="flex:1"><span class="funnel-card__glyph"><i class="ph-bold ph-check" aria-hidden="true"></i></span><div class="funnel-card__body"><div class="funnel-card__title">Flat by law</div><div class="funnel-card__meta">border only · box-shadow: none</div></div></article>
+</div>
+<p class="spec-note">Frame is static — no hover lift, no press state.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Surface law</th></tr></thead><tbody>
+<tr><td><code>border.thin</code> on <code>bg.surface</code> · <code>box-shadow: none</code></td></tr>
+<tr><td>reject: interactive treatment on frame</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y — decorative glyph</h3>
+<div class="row">
+<article class="funnel-card" style="flex:1"><span class="funnel-card__glyph" aria-hidden="true"><i class="ph-bold ph-funnel" aria-hidden="true"></i></span><div class="funnel-card__body"><div class="funnel-card__title">Stale stamp</div><div class="funnel-card__meta">Last refreshed yesterday</div></div></article>
+</div>
+<p class="spec-note">Glyph aria-hidden; stale is stamp text only; metrics plain text never color-only.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td>glyph <code>aria-hidden</code> — decorative</td></tr>
+<tr><td>metrics plain text · static card takes no focus</td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

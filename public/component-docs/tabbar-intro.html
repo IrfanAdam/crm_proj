@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 05 TabBar</p>
+<h2 class="ch-hero">Three icons home. Never a fourth wheel.</h2>
+<p class="ch-lede meta">TabBar is the mobile dock — icon-only Phosphor glyphs with 44px+ targets that jump between top-level homes. It docks and signals; it never labels. At three or fewer tabs it supersedes Tabs — never render both.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Icon-only dock, fat targets.</b> Glyphs only, no labels; each <code>.tabbar__item</code> clears 44px (<code>--spacing-10</code> min) inside a <code>--bg-surface-glass</code> bar. Active is <code>.tabbar__item--active</code> mirrored by <code>aria-current="page"</code>.</p><p class="ch-reject">Reject: labelled dock items or sub-44px targets — thumb-first, text-free.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>One signal dot, ever.</b> Single <code>.tabbar__signal</code> dot in <code>--role-action</code> on active only. Counts live in separate <code>.tabbar__badge</code> pill (<code>--role-score</code>), omitted at zero — badge and signal never twin.</p><p class="ch-reject">Reject: badge plus signal on one item — one item, one mark.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Three tabs kill the tab row.</b> At ≤3 tabs on mobile the dock supersedes Tabs for same views. Two switchers for one set is disorientation with extra steps.</p><p class="ch-reject">Reject: dock and tab row side by side — pick the dock, drop the row.</p></div></li>
+</ul>
+</div>

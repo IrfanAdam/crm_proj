@@ -1,15 +1,7 @@
-<div class="pad">
+<div class="pad spec-grid">
 <section class="specimen">
-<h3>Variants — one emphasis per row</h3>
-<div class="row">
-<button class="btn btn--primary">Primary</button>
-<button class="btn btn--secondary">Secondary</button>
-<button class="btn btn--tonal">Tonal</button>
-<button class="btn btn--ghost">Ghost</button>
-<button class="btn btn--destructive">Destructive</button>
-<button class="btn btn--danger-ghost">Delete</button>
-</div>
-<p class="spec-note">Emphasis is a ladder, not a palette — primary → secondary → tonal → ghost. Sapphire acts; red destroys only. Reject: two primaries side by side, or a shadow added to "pop".</p>
+<h3>Spec — emphasis ladder</h3>
+<p class="spec-note">Emphasis is a ladder, not a palette — primary → secondary → tonal → ghost. Sapphire acts; red destroys only. Try every step live in the playground above. Reject: two primaries side by side, or a shadow added to "pop".</p>
 <details class="spec-more"><summary>Spec · variants + tokens</summary>
 <table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
 <tr><td><code>btn--primary</code></td><td>the row's one commitment</td><td><code>role.action</code> fill, white ink; hover <code>strong</code></td></tr>
@@ -22,38 +14,12 @@
 </details>
 </section>
 <section class="specimen">
-<h3>With icons — leading + icon-only</h3>
-<div class="row">
-<button class="btn btn--primary"><i class="ph-bold ph-plus" aria-hidden="true"></i>New deal</button>
-<button class="btn btn--secondary"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i>Next</button>
-<button class="btn btn--primary btn--icon-only" aria-label="Add"><i class="ph-bold ph-plus" aria-hidden="true"></i></button>
-<button class="btn btn--secondary btn--icon-only" aria-label="Search"><i class="ph-bold ph-magnifying-glass" aria-hidden="true"></i></button>
-<button class="btn btn--ghost btn--icon-only" aria-label="Close"><i class="ph-bold ph-x" aria-hidden="true"></i></button>
-</div>
-<p class="spec-note">Anatomy — 44px frame · label · icon · spinner. Label never wraps; icon-only is square and needs <code>aria-label</code>. Reject: a button that changes width when loading starts.</p>
-<details class="spec-more"><summary>Spec · anatomy</summary>
-<p class="meta">44px frame holds size across variants with a transparent 1px border; optional leading <code>.btn__icon</code>; loading swaps in <code>.btn__spinner</code> without moving the frame. Glyphs: Icon only — see Identity.</p>
-</details>
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note">44px frame holds size across variants with a transparent 1px border; optional leading <code>.btn__icon</code>; loading swaps in <code>.btn__spinner</code> without moving the frame. <code>btn--sm / md / lg</code> map to 32 / 44 / 48px frames, xs / sm / md type — md and up keep the 44px target. Label never wraps; icon-only is square and needs <code>aria-label</code>.</p>
 </section>
 <section class="specimen">
-<h3>Sizes — sm / md / lg</h3>
-<div class="row">
-<button class="btn btn--primary btn--sm">Small</button>
-<button class="btn btn--primary btn--md">Medium</button>
-<button class="btn btn--primary btn--lg">Large</button>
-</div>
-<p class="spec-note">Density — <code>btn--sm / md / lg</code> map to 32 / 44 / 48px frames, xs / sm / md type. md and up keep the 44px minimum target.</p>
-</section>
-<section class="specimen">
-<h3>States — disabled / aria-disabled / loading / focus</h3>
-<div class="row">
-<button class="btn btn--primary" disabled>Disabled</button>
-<button class="btn btn--secondary" aria-disabled="true">Aria-disabled</button>
-<button class="btn btn--primary" data-loading>Loading</button>
-<button class="btn btn--primary" data-loading="1" aria-busy="true"><span class="btn__spinner" aria-hidden="true"></span>Loading…</button>
-<a href="#" class="btn btn--secondary">Link button</a>
-</div>
-<p class="spec-note">States speak before words do — hover deepens one step, active one more, focus always rings (Tab for the 2px ring). Loading holds the frame and announces <code>aria-busy</code>. Reject: grey-on-grey with no ring.</p>
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">States speak before words do — hover deepens one step, active one more, focus always rings (Tab for the 2px ring). Loading holds the frame and announces <code>aria-busy</code>. Tune every state live above; the Aa badge reports the live pair. Reject: grey-on-grey with no ring.</p>
 <details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
 <table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
 <tr><td>Hover / Active</td><td>one step deeper, then pressed depth, no lift</td><td><code>:hover</code> / <code>:active</code></td></tr>
@@ -66,10 +32,9 @@
 </details>
 </section>
 <section class="specimen">
-<h3>Full width + contract</h3>
-<button class="btn btn--secondary btn--full-width">Full-width secondary</button>
-<p class="spec-note">Form / sheet commitment — stretches, label centered. Do: one primary per row, hold the frame while loading. Don't: shadow to "pop", ghost a primary, wrap the label.</p>
-<details class="spec-more"><summary>Spec · snippet + related</summary>
+<h3>Spec — contract</h3>
+<p class="spec-note">Form / sheet commitment — full-width stretches, label centered. Do: one primary per row, hold the frame while loading. Don't: shadow to "pop", ghost a primary, wrap the label.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
 <code class="tp-code">&lt;button class="btn btn--primary" data-loading&gt;Save deal&lt;/button&gt;
 &lt;button class="btn btn--ghost btn--icon-only" aria-label="Close"&gt;…&lt;/button&gt;</code>
 <p class="meta">Related — Chip filters, never commits · StatusPill flags stages, never actions · Full article: <a href="prototype/gallery/actions.md">actions.md</a></p>

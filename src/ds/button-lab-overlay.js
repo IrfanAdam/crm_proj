@@ -1,4 +1,5 @@
 /* ADAM/DS — src/ds/button-lab-overlay.js · dev-mode highlights */
+/* Exports: blabOverlayFor, blabPlace, blabChip, blabZone */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-4] · layer + zones.
 // — Section —
 function blabOverlayFor(stage) {
@@ -23,15 +24,26 @@ function blabPlace(el, stage, rect) {
   el.style.width = rect.width + 'px';
   el.style.height = rect.height + 'px';
 }
-function blabChip(ov, stage, x, y, text) {
+function blabChip(ov, stage, rect, text) {
   const chip = ov.querySelector('.blab-chip');
   chip.textContent = text;
   chip.hidden = false;
+  chip.dataset.below = '';
   const s = stage.getBoundingClientRect();
-  let cx = x - s.left + 12;
-  let cy = y - s.top - 32;
-  if (cx < 4) cx = 4;
-  if (cy < 4) cy = y - s.top + 18;
+  const chipW = chip.offsetWidth || 84;
+  const chipH = chip.offsetHeight || 18;
+  let cx = rect.left - s.left + rect.width / 2;
+  let cy = rect.top - s.top - chipH - 10;
+  let below = false;
+  if (cy < 4) {
+    cy = rect.top - s.top + rect.height + 10;
+    below = true;
+  }
+  chip.dataset.below = below ? '1' : '';
+  const minC = chipW / 2 + 4;
+  const maxC = stage.clientWidth - chipW / 2 - 4;
+  if (cx < minC) cx = minC;
+  if (cx > maxC) cx = maxC;
   chip.style.left = cx + 'px';
   chip.style.top = cy + 'px';
 }

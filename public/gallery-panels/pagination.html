@@ -1,0 +1,37 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — full vs compact</h3>
+<p class="spec-note">Full paging for tables, compact prev/next strip for narrow slots; ellipsis compresses, never deletes orientation.</p>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>full (base)</td><td>tables and lists</td><td>prev + numbers + next + ellipsis + status</td></tr>
+<tr><td><code>.pagination--compact</code></td><td>narrow slots</td><td>joined prev/next only, no numbers</td></tr>
+<tr><td><code>.pagination__nav</code> labels</td><td>explicit direction</td><td>nav buttons may carry text alongside glyphs</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — states</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Active page</td><td>action fill, stays put</td><td><code>.pagination__btn--active</code> + <code>aria-current="page"</code></td></tr>
+<tr><td>Hover</td><td>interactive wash</td><td><code>--bg-interactive-hover</code></td></tr>
+<tr><td>Disabled nav</td><td>dims in place</td><td><code>disabled</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring per button</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — tokens</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>active fill / page size</td><td><code>--role-action</code> / <code>--icon-size-xl</code> (32px)</td></tr>
+<tr><td>hover / disabled</td><td><code>--bg-interactive-hover</code> / <code>--opacity-disabled</code></td></tr>
+<tr><td>status ink / focus</td><td><code>--text-secondary</code> / <code>--focus-ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Position in a list — every control pairs with status, ends disable never vanish.</p>
+<code class="tp-code">&lt;nav class="pagination" aria-label="Pagination"&gt;
+&lt;button class="pagination__btn pagination__btn--active" aria-current="page"&gt;1&lt;/button&gt;
+&lt;span class="pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;
+&lt;span class="pagination__status"&gt;1–20 of 96&lt;/span&gt;&lt;/nav&gt;</code>
+<p class="meta">Related — Breadcrumbs is ancestry, not pages · Tabs is views, not pages · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</section>
+</div>

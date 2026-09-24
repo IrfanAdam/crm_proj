@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Navigation · 04 Accordion</p>
+<h2 class="ch-hero">Stacked detail on demand. Never hidden chrome.</h2>
+<p class="ch-lede meta">Accordion expands sections in place — record detail blocks, grouped filters, help text. It reveals and collapses; it never navigates. Use single-expand for exclusive sections, multi-expand for independent ones.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — trigger · icon · panel.</b> <code>.accordion__trigger</code> carries <code>aria-expanded</code> + <code>aria-controls</code>; <code>.accordion__panel</code> is <code>hidden</code> when shut. Chevron <code>.accordion__icon</code> trails, leads under <code>.accordion--chevron-leading</code>.</p><p class="ch-reject">Reject: a panel with no labelled trigger — every region answers to its header.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Single or multi, same CSS.</b> Single-expand closes siblings in JS; multi-expand leaves items independent. Mode is behaviour, never a second stylesheet.</p><p class="ch-reject">Reject: two accordion skins for two modes — behaviour varies, chrome does not.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Motion earns its keep.</b> Panels animate <code>grid-template-rows 0fr ↔ 1fr</code> over <code>--motion-duration-md</code>; chevrons rotate 180°. Under <code>prefers-reduced-motion</code> it snaps instantly.</p><p class="ch-reject">Reject: pixel-height keyframes — snap, don't slide.</p></div></li>
+</ul>
+</div>

@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 04 Select</p>
+<h2 class="ch-hero">Native lists. Never faked dropdowns.</h2>
+<p class="ch-lede meta">Select holds 4+ mutually exclusive options where the current value stays visible — Stage from Prospecting to Closed. Native select keeps keyboard and mobile sheets free; ≤3 options is Radio, multi is Checkbox, suggestions is Search.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — anchor · native input · chevron · option.</b> <code>.select</code> relative anchor; native <code>.select__input</code> at 44px / <code>radius.md</code> with right pad for the 16px <code>.select__chevron</code> (<code>pointer-events:none</code>); <code>option</code> inherits surface and primary ink.</p><p class="ch-reject">Reject: a div-faked select — native semantics are the feature.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>The chevron answers the open.</b> <code>:focus-within</code> tints the chevron <code>role.action</code> and rotates 180° — CSS proxy for open since native exposes none; reduced-motion flips instantly.</p><p class="ch-reject">Reject: a hidden chevron, or a pill select — pill is Search-only.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Frames map 1:1 to TextInput.</b> Outlined default, <code>--filled</code> wash, sm 32px / lg 48px; hover deepens, focus rings sapphire, error and success swap the outline — same tokens, same widths.</p><p class="ch-reject">Reject: a select skin that drifts from the input scale.</p></div></li>
+</ul>
+</div>

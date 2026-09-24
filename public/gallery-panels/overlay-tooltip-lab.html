@@ -1,0 +1,43 @@
+<section class="specimen">
+<h3>Playground — configure one tooltip</h3>
+<div class="olab" data-olab="tooltip">
+<div class="olab__bar">
+<div class="olab__group" role="group" aria-label="Placement">
+<span class="olab__label">Placement</span>
+<button class="olab__pill is-on" data-olab-size="top">Top</button>
+<button class="olab__pill" data-olab-size="bottom">Bottom</button>
+<button class="olab__pill" data-olab-size="left">Left</button>
+<button class="olab__pill" data-olab-size="right">Right</button>
+</div>
+<div class="olab__group" role="group" aria-label="Wrap">
+<label class="olab__check"><input type="checkbox" data-olab-wrap> Wrap (touch)</label>
+</div>
+</div>
+<div class="olab__stage" data-olab-stage data-surface="canvas" data-theme="light">
+<div data-olab-preview></div>
+<p class="olab__hint meta">Hover or focus — names one thing, fades out on leave, never traps focus.</p>
+</div>
+<div class="olab__bar olab__bar--foot">
+<div class="olab__group" role="group" aria-label="Stage surface">
+<span class="olab__label">Stage</span>
+<button class="olab__pill is-on" data-olab-surface="canvas">Canvas</button>
+<button class="olab__pill" data-olab-surface="surface">Surface</button>
+<button class="olab__pill" data-olab-surface="wash">Wash</button>
+</div>
+<div class="olab__group" role="group" aria-label="Color scheme">
+<span class="olab__label">Scheme</span>
+<button class="olab__pill is-on" data-olab-scheme="light">Light</button>
+<button class="olab__pill" data-olab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="olab__edit">
+<label class="olab__field">Label<input data-olab-tip value="Save this view" maxlength="48"></label>
+</div>
+<div class="olab__code">
+<pre><code class="tp-code" data-olab-code></code></pre>
+<span class="olab__ratio meta" data-olab-ratio>tooltip · top</span>
+<button class="olab__copy" data-olab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">One name, pointer only — auto-flips at the viewport edge, Esc dismisses, never focusable, never the only accessible name.</p>
+</section>

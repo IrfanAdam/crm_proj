@@ -1,0 +1,40 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — tones · stage truth, not action</h3>
+<p class="spec-note">Six tones close the set — accepted, progress, review, new, warning, danger. No seventh; map new stages to these. Review stays distinct via sapphire wash + border.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>--accepted / --progress / --review</code></td><td>won / in flight / needs eyes</td><td>green-300 ink / sapphire-500 white / sapphire-100 + 300 border sapphire-600 ink</td></tr>
+<tr><td><code>--new / --warning / --danger</code></td><td>fresh / caution / blocked</td><td>neutral-dark white / orange-400 ink / red-400 white</td></tr>
+<tr><td><code>--sm / __icon / __dot / --clickable</code></td><td>compact / prefixes / action</td><td>dense pad / 12px icon / 8px dot / pointer + ring</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>radius.full</code>, <code>font-size.xs</code> semibold <code>tracking.wide</code>, uppercase.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note">Full pill with transparent 1px border, leading <code>status-pill__icon</code> (Phosphor 12px) or <code>status-pill__dot</code> (currentColor 8px) then uppercase label. <code>--sm</code> tightens pad to <code>spacing.1 / 2</code>; base is 6px vertical. Label never wraps.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Plain pills have no hover; <code>--clickable</code> adds pointer + <code>opacity.subtle</code> hover and is the only state with hover. Focus always rings 2px sapphire; disabled dims via <code>opacity.disabled</code>.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting fill per tone</td><td>—</td></tr>
+<tr><td>Hover</td><td>subtle dim, clickable only</td><td><code>--clickable:hover</code></td></tr>
+<tr><td>Focus</td><td>2px sapphire ring, 3px offset</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims via <code>opacity.disabled</code></td><td><code>disabled</code></td></tr>
+</tbody></table>
+<p class="meta">Clickable pills are native <code>&lt;button&gt;</code>; plain pills are <code>&lt;span&gt;</code> with label text.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Table / card stage flag — one pill per record state label. Do: keep label present in every state, use prefix for scan speed. Don't: hue alone, seventh hue, hover on non-clickable.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;span class="status-pill status-pill--progress"&gt;In Progress&lt;/span&gt;
+&lt;span class="status-pill status-pill--accepted status-pill--sm"&gt;&lt;span class="status-pill__dot"&gt;&lt;/span&gt;Accepted&lt;/span&gt;</code>
+<p class="meta">Related — Badge counts · Chip filters · Full: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</details>
+</section>
+</div>

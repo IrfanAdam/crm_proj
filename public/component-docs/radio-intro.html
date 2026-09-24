@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 02 Radio</p>
+<h2 class="ch-hero">Exactly one of n. Never a lone boolean.</h2>
+<p class="ch-lede meta">Radio is the exclusive-choice control: 2–7 visible options where options need comparison text. One shared name, one checked at a time, a sane default pre-selected. Use it when choice is exclusive; use Checkbox for multi-select, Switch for instant settings.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — group · label · dot.</b> <code>fieldset.radio-group</code> (+ <code>legend</code>) holds <code>label.radio</code> rows: native <code>input[type=radio][name=shared]</code> + <code>.radio__dot</code> (20px circle, inner <code>::after</code> dot at 50% scaling 0.6 to 1) + <code>.radio__label</code>.</p><p class="ch-reject">Reject: radios without a shared name or without fieldset + legend — a group must read as a group.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Groups lay out two ways.</b> <code>radio-group--vertical</code> is the default (tight gap); <code>radio-group--horizontal</code> is a wrapping row (wide gap) for short options on wide screens.</p><p class="ch-reject">Reject: horizontal layout on narrow screens — stack when space runs out.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Focus is the shared ring law.</b> <code>input:focus-visible + .radio__dot</code> paints <code>box-shadow: var(--focus-ring)</code>; checked is an accent ring plus a scaling dot, never hue alone.</p><p class="ch-reject">Reject: checked signalled by color without the dot — selection must survive no-color rendering.</p></div></li>
+</ul>
+</div>

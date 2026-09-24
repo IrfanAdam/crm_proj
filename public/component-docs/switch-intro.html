@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Choice · 03 Switch</p>
+<h2 class="ch-hero">Instant effect on toggle. Never submit-gated.</h2>
+<p class="ch-lede meta">Switch is the instant binary setting: notifications, dark mode, availability — the effect applies on toggle and reverses inline. Use it when flipping takes effect now; use Checkbox for anything Review-then-Submit, Radio for exclusive choice.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>Anatomy — label · track · thumb · icon.</b> <code>label.switch</code> wraps <code>input[type=checkbox][role=switch]</code> + <code>.switch__track</code> (44 by 26, full pill) + <code>.switch__thumb</code> (20px, travels 18px via translate) + optional <code>.switch__icon</code> + <code>.switch__label</code>.</p><p class="ch-reject">Reject: a thumb animated by anything but the spring token — travel is always the spring.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Two faces, one track.</b> Without icon is the default; with icon nests <code>.switch__icon</code> in the thumb, fading in only when on. <code>switch--sm</code> shrinks to a 36 by 22 track, 16px thumb, 14px travel.</p><p class="ch-reject">Reject: icon-only with no text label — the governed thing must be named.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Focus is the shared ring law.</b> <code>input:focus-visible + .switch__track</code> paints <code>box-shadow: var(--focus-ring)</code>; off presses to the active wash, on presses to action-strong, so pressed never equals focus.</p><p class="ch-reject">Reject: pressed styled the same as focus — the two must read apart.</p></div></li>
+</ul>
+</div>

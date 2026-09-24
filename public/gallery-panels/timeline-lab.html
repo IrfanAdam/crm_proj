@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="src/ds/timeline-lab.css">
+<section class="specimen">
+<h3>Playground — configure one timeline</h3>
+<div class="dlab" data-dlab="timeline">
+<div class="dlab__bar">
+<div class="dlab__group" role="group" aria-label="Axis">
+<span class="dlab__label">Axis</span>
+<button class="dlab__pill is-on" data-tl-axis="vertical">Vertical</button>
+<button class="dlab__pill" data-tl-axis="horizontal">Horizontal</button>
+<label class="dlab__check"><input type="checkbox" data-tl-compact> Compact</label>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Done">
+<span class="dlab__label">Done</span>
+<button class="dlab__pill" data-tl-done="0">Todo</button>
+<button class="dlab__pill is-on" data-tl-done="1">Done</button>
+<button class="dlab__pill" data-tl-done="2">Mixed</button>
+</div>
+</div>
+<div class="dlab__stage" data-dlab-stage data-surface="canvas" data-theme="light">
+<div data-dlab-preview></div>
+<p class="dlab__hint meta" data-dlab-note></p>
+</div>
+<div class="dlab__bar dlab__bar--foot">
+<div class="dlab__group" role="group" aria-label="Stage surface">
+<span class="dlab__label">Stage</span>
+<button class="dlab__pill is-on" data-dlab-surface="canvas">Canvas</button>
+<button class="dlab__pill" data-dlab-surface="surface">Surface</button>
+<button class="dlab__pill" data-dlab-surface="wash">Wash</button>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Color scheme">
+<span class="dlab__label">Scheme</span>
+<button class="dlab__pill is-on" data-dlab-scheme="light">Light</button>
+<button class="dlab__pill" data-dlab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="dlab__edit">
+<label class="dlab__field">Items <input type="number" data-tl-items value="3" min="1" max="5"></label>
+<label class="dlab__field">Status <select data-tl-status><option value="">Sapphire</option><option value="timeline__item--success">Success</option><option value="timeline__item--warning">Warning</option><option value="timeline__item--danger" selected>Danger</option></select></label>
+<label class="dlab__field">Label <input data-tl-label value="Blocked"></label>
+</div>
+<div class="dlab__code">
+<pre><code class="tp-code" data-dlab-code></code></pre>
+<span class="dlab__ratio" data-dlab-ratio>—</span>
+<button class="dlab__copy" data-dlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Rail in <code>::before</code> · hollow todo, filled done · three status tones · DOM order equals time order even horizontal. Geometry 10px/6px pixel-identical.</p>
+</section>
+<script src="src/ds/timeline-lab.js"></script>

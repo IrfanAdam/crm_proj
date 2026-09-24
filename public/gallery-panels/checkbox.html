@@ -1,0 +1,56 @@
+<div class="pad">
+<section class="specimen">
+<h3>Checkbox — unchecked / checked / indeterminate / disabled / error</h3>
+<div class="row">
+<label class="check"><input type="checkbox"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Unchecked</span></label>
+<label class="check"><input type="checkbox" checked><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Checked</span></label>
+<label class="check"><input type="checkbox" id="spec-cb-ind"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="check__label">Indeterminate</span></label>
+<label class="check check--disabled"><input type="checkbox" disabled><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Disabled</span></label>
+<label class="check check--error"><input type="checkbox" aria-invalid="true"><span class="check__box"><svg class="check__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check__label">Error</span></label>
+</div>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>check--sm</code></td><td>dense lists</td><td>16px box</td></tr>
+<tr><td>default</td><td>standard form rows</td><td>20px box</td></tr>
+<tr><td><code>check--lg</code></td><td>emphasis rows</td><td>24px box</td></tr>
+<tr><td>indeterminate</td><td>partial “select all”</td><td>dash glyph, set in JS</td></tr>
+<tr><td><code>check--error</code></td><td>failed validation</td><td>danger border + strong label</td></tr>
+<tr><td><code>check--disabled</code></td><td>unavailable</td><td>dims box, muted label</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>States — every frame</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>surface face, strong border</td><td>—</td></tr>
+<tr><td>Hover</td><td>accent border + hover wash</td><td><code>:hover</code></td></tr>
+<tr><td>Checked</td><td>action fill, white tick</td><td><code>:checked</code></td></tr>
+<tr><td>Indeterminate</td><td>action fill, dash glyph</td><td><code>:indeterminate</code></td></tr>
+<tr><td>Active / pressed</td><td>active wash / action-strong</td><td><code>:active</code></td></tr>
+<tr><td>Focus</td><td>shared 2px ring on box</td><td><code>:focus-visible</code></td></tr>
+<tr><td>Disabled</td><td>dims, muted label</td><td><code>disabled</code></td></tr>
+<tr><td>Error</td><td>danger border/fill</td><td><code>check--error</code> + <code>aria-invalid</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Tokens — nothing else may paint it</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>box face / resting border</td><td><code>bg.surface</code> / <code>border.strong</code></td></tr>
+<tr><td>checked fill / pressed fill</td><td><code>role.action</code> / <code>role.action-strong</code></td></tr>
+<tr><td>tick / label / disabled label</td><td><code>primitive.gray-white</code> / <code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>error border / error label</td><td><code>role.danger</code> / <code>role.danger-strong</code></td></tr>
+<tr><td>corner / gap / focus / motion</td><td><code>radius.sm</code> / <code>spacing.2</code> / <code>focus.ring</code> / <code>transition.fast</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Accessibility + snippet</h3>
+<table class="ch-roles"><thead><tr><th>Rule</th><th>How</th></tr></thead><tbody>
+<tr><td>Native control</td><td><code>input[type=checkbox]</code> wrapped in <code>label.check</code></td></tr>
+<tr><td>Keyboard</td><td><code>Space</code> toggles; <code>el.indeterminate=true</code> in JS</td></tr>
+<tr><td>Focus</td><td>shared <code>focus.ring</code> on <code>.check__box</code></td></tr>
+<tr><td>Label</td><td>always visible <code>.check__label</code>, 44px row</td></tr>
+<tr><td>Forced colors</td><td>maps fill to <code>Highlight</code></td></tr>
+<tr><td>Snippet</td><td><code>&lt;label class="check"&gt;&lt;input type="checkbox"&gt;…&lt;/label&gt;</code></td></tr>
+</tbody></table>
+<p class="meta">Do: wrap input in label, partial only for indeterminate. Don't: fake with divs, shrink below 16px.</p>
+</section>
+<script>document.getElementById('spec-cb-ind').indeterminate=true</script>
+</div>

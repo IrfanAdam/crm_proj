@@ -1,0 +1,38 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — chrome + density</h3>
+<p class="spec-note">Underline is default, contained segments on --bg-interactive. Reject: both chromes for same views.</p>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>.tabs</code> underline</td><td>default view switch</td><td><code>--role-action</code> bar under active</td></tr>
+<tr><td><code>.tabs--contained</code></td><td>segmented switch</td><td>pill on <code>--bg-interactive</code>, active lifts <code>--bg-surface</code> + <code>--shadow-sm</code></td></tr>
+<tr><td><code>.tab__trigger--active</code></td><td>selected tab</td><td>mirrors <code>aria-selected="true"</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">One tab stop, arrows move. Disabled leaves roving order. Try live in playground above.</p>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Selected</td><td>underline / pill lift + primary ink</td><td><code>aria-selected</code> + <code>--active</code></td></tr>
+<tr><td>Hover</td><td>ink warms toward primary</td><td><code>--text-primary</code></td></tr>
+<tr><td>Disabled</td><td>dims, skipped in arrow nav</td><td><code>--text-dim</code> + <code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring on roving tab</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — tokens</h3>
+<p class="spec-note">Tokens only — no raw hues. Playground reports live Aa.</p>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>selected signal / pill fill</td><td><code>--role-action</code> / <code>--bg-interactive</code> + <code>--bg-surface</code></td></tr>
+<tr><td>ink / dim</td><td><code>--text-primary</code> / <code>--text-dim</code></td></tr>
+<tr><td>lift / focus / disabled</td><td><code>--shadow-sm</code> / <code>--focus-ring</code> / <code>--opacity-disabled</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Peer views in place; tab row scrolls, never wraps. One signal, one stop.</p>
+<code class="tp-code">&lt;div class="tabs" role="tablist" aria-label="Deal views"&gt;
+&lt;button class="tab__trigger tab__trigger--active" role="tab" aria-selected="true" tabindex="0"&gt;Pipeline&lt;/button&gt;
+&lt;button class="tab__trigger" role="tab" aria-selected="false" tabindex="-1"&gt;Activity&lt;/button&gt;&lt;/div&gt;</code>
+<p class="meta">Related — TabBar supersedes at ≤3 · Accordion stacks detail, not peer views · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</section>
+</div>

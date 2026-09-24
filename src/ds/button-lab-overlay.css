@@ -1,0 +1,79 @@
+/* ADAM/DS — src/ds/button-lab-overlay.css · highlight outlines + chip */
+/* Exports: .blab-overlay, .blab-hl, .blab-dot, .blab-chip */
+[data-inspect="1"] .btn {
+  outline: 1.5px dashed var(--border-strong);
+  outline-offset: 3px;
+  cursor: help;
+}
+.blab-overlay {
+  position: absolute;
+  inset: var(--spacing-0);
+  pointer-events: none;
+  z-index: 2;
+}
+.blab-hl {
+  position: absolute;
+  pointer-events: none;
+  border: 1.5px solid var(--role-action);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--bg-surface);
+}
+.blab-hl[data-hl="outer"] {
+  border-style: dashed;
+  border-color: var(--border-strong);
+  border-width: 1.5px;
+  background: transparent;
+  border-radius: var(--radius-md);
+}
+.blab-hl[data-hl="inner"] {
+  border-style: solid;
+  border-color: var(--role-action);
+  border-width: 1.5px;
+  background: rgba(33, 138, 234, 0.07);
+  border-radius: 4px;
+}
+.blab-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: var(--radius-full);
+  background: var(--role-action);
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+}
+.blab-dot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  opacity: 0.9;
+}
+.blab-chip {
+  position: absolute;
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  color: var(--role-action-ink);
+  background: var(--role-action);
+  padding: 4px 7px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transform: translateX(-50%);
+}
+.blab-chip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 6px;
+  height: 6px;
+  background: var(--role-action);
+  transform: translateX(-50%) rotate(45deg);
+}
+.blab-chip[data-below="1"]::after {
+  bottom: auto;
+  top: -3px;
+}

@@ -1,0 +1,49 @@
+<section class="specimen">
+<h3>Playground — configure one drawer</h3>
+<div class="olab" data-olab="drawer">
+<div class="olab__bar">
+<div class="olab__group" role="group" aria-label="Side">
+<span class="olab__label">Side</span>
+<button class="olab__pill is-on" data-olab-side="right">Right</button>
+<button class="olab__pill" data-olab-side="left">Left</button>
+</div>
+<div class="olab__group" role="group" aria-label="Width">
+<span class="olab__label">Width</span>
+<button class="olab__pill" data-olab-size="narrow">Narrow</button>
+<button class="olab__pill is-on" data-olab-size="wide">Wide</button>
+</div>
+<div class="olab__group" role="group" aria-label="Persistence">
+<label class="olab__check"><input type="checkbox" data-olab-persist> Persistent</label>
+</div>
+</div>
+<div class="olab__stage" data-olab-stage data-surface="canvas" data-theme="light">
+<div data-olab-preview></div>
+<p class="olab__hint meta">Slides in over --transition-spring · Esc or ✕ slides it back, page behind stays visible.</p>
+</div>
+<div class="olab__bar olab__bar--foot">
+<div class="olab__group" role="group" aria-label="Stage surface">
+<span class="olab__label">Stage</span>
+<button class="olab__pill is-on" data-olab-surface="canvas">Canvas</button>
+<button class="olab__pill" data-olab-surface="surface">Surface</button>
+<button class="olab__pill" data-olab-surface="wash">Wash</button>
+</div>
+<div class="olab__group" role="group" aria-label="Color scheme">
+<span class="olab__label">Scheme</span>
+<button class="olab__pill is-on" data-olab-scheme="light">Light</button>
+<button class="olab__pill" data-olab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="olab__edit">
+<label class="olab__field">Title<input data-olab-title value="Filters" maxlength="32"></label>
+<label class="olab__field">Body<input data-olab-body value="Stage · Owner · Close date — body scrolls, footer sticks." maxlength="96"></label>
+<label class="olab__field">Footer 1<input data-olab-act1 value="Reset" maxlength="16"></label>
+<label class="olab__field">Footer 2<input data-olab-act2 value="Apply" maxlength="16"></label>
+</div>
+<div class="olab__code">
+<pre><code class="tp-code" data-olab-code></code></pre>
+<span class="olab__ratio meta" data-olab-ratio>drawer · right · wide</span>
+<button class="olab__copy" data-olab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Context panel for filters and long forms — body scrolls, footer sticks, reduced-motion snaps. Reject: modal where drawer keeps context, or wider than --wide.</p>
+</section>

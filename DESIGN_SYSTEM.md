@@ -49,3 +49,7 @@ Check: uses existing components/tokens, no duplication, no one-off styling, prom
 ## Governance
 
 New refs → `design-system/references/ref-NN-slug.png` + `REGISTRY.md` row → dated polish pass on affected `docs/phase-N-*.md` + `DESIGN.md` (`npx lint`) → commit with `[plan:<file>#anchor]` + `Shipped in <sha>`. Every flow should make the DS more capable, not more fragmented.
+
+## Agent Skills
+
+- **Component docs** (`ds-component-docs` skill): intro (3 laws) · lab (`public/gallery-panels/<name>-lab.html` + `src/ds/<name>-lab*` — bar/stage/edit/code, hue `measure/score/streak`, concentric 8→48, `min-width:172px` lock) · exploration (`public/gallery-panels/<name>.html` spec appendix, `pad spec-grid` single-column, no `.row` demos) → wired in `gallery.html` + `src/ds/gallery-shell.js` (`[data-doc]` fetch). Extends `design-system-builder` + `gallery-delivery` + `design-system-lab`.

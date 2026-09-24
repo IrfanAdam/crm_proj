@@ -1,7 +1,7 @@
 /* ADAM/DS — src/ds/button-lab-tone.js · tertiary ink resolver */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-1] · one ink map for lab+inspect.
 // — Section —
-const BLAB_TONE_ROLE = { accent: 'action', 'core-red': 'score', 'core-yellow': 'streak' };
+const BLAB_TONE_ROLE = { accent: 'action', measure: 'measure', score: 'score', streak: 'streak', 'core-red': 'score', 'core-yellow': 'streak' };
 const BLAB_TONE_SEM = { success: 'success', destructive: 'danger', warning: 'warning' };
 function blabTonePrefix(hue) {
   return BLAB_TONE_ROLE[hue] || BLAB_TONE_SEM[hue] || '';

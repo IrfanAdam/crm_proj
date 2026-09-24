@@ -1,0 +1,40 @@
+<section class="specimen">
+<h3>Playground — configure one menu</h3>
+<div class="olab" data-olab="menu">
+<div class="olab__bar">
+<div class="olab__group" role="group" aria-label="Placement">
+<span class="olab__label">Anchor</span>
+<button class="olab__pill is-on" data-olab-size="bottom">Bottom</button>
+<button class="olab__pill" data-olab-size="top">Top</button>
+</div>
+</div>
+<div class="olab__stage" data-olab-stage data-surface="canvas" data-theme="light">
+<div data-olab-preview></div>
+<p class="olab__hint meta">Arrows rove items · select or outside click dismisses and refocuses the trigger.</p>
+</div>
+<div class="olab__bar olab__bar--foot">
+<div class="olab__group" role="group" aria-label="Stage surface">
+<span class="olab__label">Stage</span>
+<button class="olab__pill is-on" data-olab-surface="canvas">Canvas</button>
+<button class="olab__pill" data-olab-surface="surface">Surface</button>
+<button class="olab__pill" data-olab-surface="wash">Wash</button>
+</div>
+<div class="olab__group" role="group" aria-label="Color scheme">
+<span class="olab__label">Scheme</span>
+<button class="olab__pill is-on" data-olab-scheme="light">Light</button>
+<button class="olab__pill" data-olab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="olab__edit">
+<label class="olab__field">Item 1<input data-olab-act1 value="Rename" maxlength="24"></label>
+<label class="olab__field">Item 2 (selected)<input data-olab-act2 value="Assign" maxlength="24"></label>
+<label class="olab__field">Item 3<input data-olab-act3 value="Archive" maxlength="24"></label>
+</div>
+<div class="olab__code">
+<pre><code class="tp-code" data-olab-code></code></pre>
+<span class="olab__ratio meta" data-olab-ratio>menu · bottom</span>
+<button class="olab__copy" data-olab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Anchored action list — fades + scales from the anchor over --transition-fast, flips to fit. Reject: submenus past one level or icon-only items.</p>
+</section>

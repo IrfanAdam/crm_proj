@@ -1,0 +1,36 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — item + marks</h3>
+<p class="spec-note">Icon-only, 44px targets, glass bar; one signal dot on active, badge separate.</p>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>.tabbar__item</code> base</td><td>one home</td><td>icon-only, 44px target, glass bar</td></tr>
+<tr><td><code>--active</code> + signal</td><td>current home</td><td>action-ink item + one <code>--role-action</code> dot</td></tr>
+<tr><td><code>.tabbar__badge</code></td><td>unread count</td><td><code>--role-score</code> pill, separate slot, hidden at zero</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — states</h3>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Active</td><td>action ink + signal shows</td><td><code>--active</code> + <code>aria-current="page"</code></td></tr>
+<tr><td>Hover</td><td>interactive wash</td><td><code>--bg-interactive</code></td></tr>
+<tr><td>Disabled</td><td>dims, no action</td><td><code>--opacity-disabled</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — tokens</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>bar / signal / badge</td><td><code>--bg-surface-glass</code> / <code>--role-action</code> / <code>--role-score</code> + <code>--role-score-ink</code></td></tr>
+<tr><td>active ink / target</td><td><code>--role-action</code> / <code>--spacing-10</code> min</td></tr>
+<tr><td>focus / disabled</td><td><code>--focus-ring</code> / <code>--opacity-disabled</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">At ≤3 tabs dock supersedes Tabs — never render both.</p>
+<code class="tp-code">&lt;nav class="tabbar" role="tablist" aria-label="Primary"&gt;
+&lt;button class="tabbar__item tabbar__item--active" aria-current="page" aria-label="Deals"&gt;◆&lt;span class="tabbar__signal"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button class="tabbar__item" aria-label="Inbox"&gt;◆&lt;span class="tabbar__badge"&gt;3&lt;/span&gt;&lt;/button&gt;&lt;/nav&gt;</code>
+<p class="meta">Related — Tabs is row twin, superseded at ≤3 · Toolbar is actions, not homes · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</section>
+</div>

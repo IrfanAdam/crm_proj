@@ -1,0 +1,44 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — modal sizes + placement</h3>
+<p class="spec-note">Blocking confirm only — one primary action. Width locks to the content card, not the scrim. Top sheets, center modals, bottom sheets all share the same trap and return-focus.</p>
+<details class="spec-more"><summary>Spec · variants</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>overlay__content--sm</code></td><td>tight confirm</td><td>5 × --spacing-16 · one line + two buttons</td></tr>
+<tr><td><code>overlay__content--md</code></td><td>default</td><td>7 × --spacing-16 · header/body/footer</td></tr>
+<tr><td><code>overlay__content--lg</code></td><td>rich confirm / short form</td><td>10 × --spacing-16 · may scroll body</td></tr>
+<tr><td><code>overlay__content--full</code></td><td>immersive</td><td>100% - --spacing-8 · use sparingly, never auto-open</td></tr>
+</tbody></table>
+<p class="meta">Placement <code>.overlay--top</code> / center / <code>--bottom</code> — scrim still covers full inset.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<p class="spec-note">Scrim (.overlay) owns the inset and the --achievement-overlay-bg wash; .overlay__content owns radius, shadow, and padding. Header rows title + close, body is one paragraph, footer right-aligns actions. The card never grows beyond 85vh.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Open = scrim fade + content rise over --transition-fast; closing adds .is-closing to opacity 0 then hidden. Persistent ignores scrim + Esc and needs an explicit close.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Open</td><td>fade + rise, focus moves in</td><td><code>.overlay--open</code> + --transition-fast</td></tr>
+<tr><td>Closing</td><td>exit to 0 then hidden, focus returns</td><td><code>.is-closing</code> over --motion-duration-sm</td></tr>
+<tr><td>Persistent</td><td>ignores Esc + scrim</td><td><code>.overlay--persistent</code></td></tr>
+<tr><td>Reduced motion</td><td>snaps</td><td>prefers-reduced-motion disables transition</td></tr>
+</tbody></table>
+<p class="meta">Tokens --bg-surface / --border-thin / --shadow-lg / --radius-lg / --z-index-modal / --focus-ring. A11y labelledby, focus in on open, Tab wrap, Esc, return-focus, background inert.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use for deletes and confirms only. Drawer over modal for filters and long forms. Never nest modal-on-modal.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;div class="overlay overlay--open"&gt;&lt;div class="overlay__content overlay__content--md" role="dialog" aria-modal="true" aria-labelledby="t1"&gt;
+  &lt;div class="overlay__header"&gt;&lt;h2 class="overlay__title" id="t1"&gt;Delete deal?&lt;/h2&gt;&lt;/div&gt;
+  &lt;p class="overlay__body"&gt;Removes Acme from the pipeline.&lt;/p&gt;
+  &lt;div class="overlay__footer"&gt;&lt;button class="btn btn--secondary"&gt;Cancel&lt;/button&gt;&lt;button class="btn btn--primary"&gt;Delete&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</code>
+<p class="meta">Related — Drawer keeps context · Toast confirms past acts without blocking · Full spec <a href="prototype/gallery/overlays.md">overlays.md</a></p>
+</details>
+</section>
+</div>

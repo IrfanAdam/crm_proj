@@ -7,8 +7,9 @@
 <select class="blab__select" id="blab-hue" data-blab-hue-select>
 <option value="neutral">Neutral</option>
 <option value="accent" selected>Accent</option>
-<option value="core-red">Core red</option>
-<option value="core-yellow">Core yellow</option>
+<option value="measure">Measure · Amethyst</option>
+<option value="score">Score · Red Beryl</option>
+<option value="streak">Streak · Citrine</option>
 <option value="success">Success</option>
 <option value="destructive">Destructive</option>
 <option value="warning">Warning</option>
@@ -33,25 +34,14 @@
 </div>
 </div>
 <div class="blab__stage" data-blab-stage data-surface="canvas" data-theme="light">
+<label class="blab__concentric"><input type="checkbox" data-blab-capsule> Concentric</label>
 <button class="blab__pill blab__inspect" data-blab-inspect aria-pressed="false">Inspect</button>
+<div class="blab__tune" data-blab-tune hidden>
+<label class="blab__range"><span>Pad</span><input type="range" data-blab-pad min="8" max="48" step="4" value="12"><output data-blab-pad-val>12px</output></label>
+<label class="blab__range"><span>Radius</span><input type="range" data-blab-radius min="8" max="48" step="4" value="32"><output data-blab-radius-val>32px</output></label>
+</div>
 <div data-blab-preview data-blab-hue="accent"></div>
 <p class="blab__hint meta" data-blab-note></p>
-</div>
-<div class="blab__tune" data-blab-tune hidden>
-<div class="blab__tune-row">
-<span class="blab__label">Pad</span>
-<label class="blab__range"><span>Min</span><input type="range" data-blab-pad-min min="0" max="24" step="4" value="8"><output data-blab-pad-min-val>8px</output></label>
-<span class="blab__dash">—</span>
-<label class="blab__range"><span>Max</span><input type="range" data-blab-pad-max min="0" max="24" step="4" value="12"><output data-blab-pad-max-val>12px</output></label>
-<span class="blab__tune-bar" aria-hidden="true"><i data-blab-pad-track></i></span>
-</div>
-<div class="blab__tune-row">
-<span class="blab__label">Radius</span>
-<label class="blab__range"><span>Min</span><input type="range" data-blab-radius-min min="4" max="32" step="4" value="12"><output data-blab-radius-min-val>12px</output></label>
-<span class="blab__dash">—</span>
-<label class="blab__range"><span>Max</span><input type="range" data-blab-radius-max min="4" max="32" step="4" value="32"><output data-blab-radius-max-val>32px</output></label>
-<span class="blab__tune-bar" aria-hidden="true"><i data-blab-radius-track></i></span>
-</div>
 </div>
 <div class="blab__bar blab__bar--foot">
 <div class="blab__group" role="group" aria-label="Stage surface">
@@ -79,7 +69,6 @@
 </select></label>
 <label class="blab__check"><input type="checkbox" data-blab-icononly> Icon-only</label>
 <label class="blab__check"><input type="checkbox" data-blab-full> Full-width</label>
-<label class="blab__check"><input type="checkbox" data-blab-capsule> Concentric</label>
 <label class="blab__check"><input type="checkbox" data-blab-badge> Badge</label>
 <label class="blab__field blab__field--sm">Count<input data-blab-count value="3" maxlength="4"></label>
 <label class="blab__field">Badge tone<select data-blab-tone>
@@ -93,7 +82,7 @@
 <div class="blab__code">
 <pre><code class="tp-code" data-blab-code></code></pre>
 <span class="blab__ratio" data-blab-ratio>Aa — · —</span>
-<button class="btn btn--secondary btn--sm" data-blab-copy>Copy snippet</button>
+<button class="blab__copy" data-blab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
 </div>
 </div>
-<p class="spec-note">Hue × emphasis — pick a hue, then primary / secondary / tertiary. Concentric nests the capsule button in its container (demo only). Pad min–max sets nest gap (y/x); Radius min–max sets button/box corners (brand max 32). Hit Inspect and hover padding, corners, glyphs; the Aa badge reports the live pair.</p></section>
+<p class="spec-note">Hue × emphasis — pick a hue, then primary / secondary / tertiary. Concentric nests the button in its container — concentric radii (container 8–48, pad 8–48; button never below 8). Toggle top-left, sliders appear right below it; slide to tune nest gap + corners. Hit Inspect and hover padding, corners, glyphs; the Aa badge reports the live pair.</p></section>

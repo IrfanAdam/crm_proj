@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="src/ds/sparkline-lab.css">
+<section class="specimen">
+<h3>Playground — configure one sparkline</h3>
+<div class="dlab carlab" data-dlab="sparkline" data-carlab="sparkline">
+<div class="dlab__bar">
+<div class="dlab__group" role="group" aria-label="Size">
+<span class="dlab__label">Size</span>
+<button class="dlab__pill" data-sp-size="sparkline--sm">SM</button>
+<button class="dlab__pill is-on" data-sp-size="">MD</button>
+<button class="dlab__pill" data-sp-size="sparkline--lg">LG</button>
+<label class="dlab__check"><input type="checkbox" data-sp-stroke> Stroke</label>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Peak">
+<span class="dlab__label">Peak</span>
+<button class="dlab__pill" data-sp-peak="">None</button>
+<button class="dlab__pill" data-sp-peak="accent">Accent</button>
+<button class="dlab__pill is-on" data-sp-peak="gem">Gem</button>
+</div>
+</div>
+<div class="dlab__stage" data-dlab-stage data-surface="canvas" data-theme="light">
+<div data-dlab-preview></div>
+<p class="dlab__hint meta" data-dlab-note></p>
+</div>
+<div class="dlab__bar dlab__bar--foot">
+<div class="dlab__group" role="group" aria-label="Stage surface">
+<span class="dlab__label">Stage</span>
+<button class="dlab__pill is-on" data-dlab-surface="canvas">Canvas</button>
+<button class="dlab__pill" data-dlab-surface="surface">Surface</button>
+<button class="dlab__pill" data-dlab-surface="wash">Wash</button>
+</div>
+<div class="dlab__group dlab__group--right" role="group" aria-label="Color scheme">
+<span class="dlab__label">Scheme</span>
+<button class="dlab__pill is-on" data-dlab-scheme="light">Light</button>
+<button class="dlab__pill" data-dlab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="dlab__edit">
+<label class="dlab__field">Bars <input type="number" data-sp-bars value="5" min="3" max="7"></label>
+<label class="dlab__field">Label <input data-sp-label value="Up 12% over 7 days"></label>
+<label class="dlab__check"><input type="checkbox" data-sp-semantic checked> Semantic</label>
+</div>
+<div class="dlab__code">
+<pre><code class="tp-code" data-dlab-code></code></pre>
+<span class="dlab__ratio" data-dlab-ratio>—</span>
+<button class="dlab__copy" data-dlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Amethyst 300 base · 500 accent · 700 gem crowns peak · stroke is transparent + medium ring · decorative <code>aria-hidden</code>, semantic <code>role=img</code>.</p>
+</section>
+<script src="src/ds/sparkline-lab.js"></script>

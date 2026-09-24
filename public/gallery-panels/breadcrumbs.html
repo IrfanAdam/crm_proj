@@ -1,0 +1,37 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — collapsed vs full</h3>
+<p class="spec-note">Collapse middle behind … , keep Home and current. Truncate long labels, never trail.</p>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>expanded (base)</td><td>full trail</td><td>every item visible, separators between</td></tr>
+<tr><td><code>.breadcrumbs--collapsed</code></td><td>narrow or deep</td><td>middle hides behind <code>…</code> toggle</td></tr>
+<tr><td><code>--truncated</code> item</td><td>one long label</td><td>ellipsis at <code>--spacing-16</code>, title keeps full text</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — states</h3>
+<p class="spec-note">Current is plain text with aria-current, never a link; … is 44px.</p>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Current</td><td>plain text, emphasis ink, no hover</td><td><code>.breadcrumbs__current</code> + <code>aria-current="page"</code></td></tr>
+<tr><td>Hover (links)</td><td>underline + primary ink</td><td><code>a:hover</code></td></tr>
+<tr><td>Focus</td><td>sapphire ring on links and …</td><td><code>:focus-visible</code> + <code>--focus-ring</code></td></tr>
+<tr><td>Collapsed toggle</td><td>… expands in place</td><td><code>.breadcrumbs__collapse</code> 44px target</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — tokens</h3>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>link / current / separators</td><td><code>--text-secondary</code> / <code>--text-emphasis</code> / <code>--text-muted</code></td></tr>
+<tr><td>truncation cap / target</td><td><code>--spacing-16</code> max-width, 44px collapse button</td></tr>
+<tr><td>focus</td><td><code>--focus-ring</code></td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Ancestry, not action — plain-text current marks arrival.</p>
+<code class="tp-code">&lt;nav aria-label="Breadcrumb"&gt;&lt;ol class="breadcrumbs"&gt;
+&lt;li class="breadcrumbs__item"&gt;&lt;a href="/deals"&gt;Deals&lt;/a&gt;&lt;span class="breadcrumbs__sep" aria-hidden="true"&gt;/&lt;/span&gt;&lt;/li&gt;
+&lt;li class="breadcrumbs__item"&gt;&lt;span class="breadcrumbs__current" aria-current="page"&gt;Acme&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;</code>
+<p class="meta">Related — Pagination is list position, not ancestry · Tabs is peer views · Full spec: <a href="prototype/gallery/navigation.md">navigation.md</a></p>
+</section>
+</div>

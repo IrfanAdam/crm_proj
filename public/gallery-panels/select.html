@@ -1,0 +1,46 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — variants</h3>
+<p class="spec-note">Outlined default vs filled wash; chevron is muted and rotates on open. Sizes map 1:1 to TextInput.</p>
+<details class="spec-more" open><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>outlined (default)</td><td>default choice</td><td><code>bg.surface</code>, <code>border.thin</code> hairline</td></tr>
+<tr><td><code>select__input--filled</code></td><td>dense / filter chrome</td><td><code>bg.interactive</code> wash, transparent border</td></tr>
+<tr><td><code>select__input--sm / --lg</code></td><td>density</td><td>32px xs type / 48px md type (md 44px)</td></tr>
+<tr><td>themed <code>option</code></td><td>readable rows</td><td>surface wash + primary ink, both themes</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note"><code>.select</code> relative anchor; native <code>.select__input</code> at 44px / <code>radius.md</code> with right calc pad for 16px <code>.select__chevron</code> (<code>pointer-events:none</code>).</p>
+<details class="spec-more"><summary>Spec · anatomy</summary>
+<table class="ch-roles"><thead><tr><th>Part</th><th>Token</th><th>Note</th></tr></thead><tbody>
+<tr><td>anchor + input</td><td><code>radius.md</code> / 44px / <code>bg.surface</code></td><td>appearance none, native semantics</td></tr>
+<tr><td>chevron pad + icon</td><td><code>calc(spacing.3 + icon-size.sm + spacing.2)</code> / <code>text.muted</code></td><td>rotates 180° on <code>:focus-within</code></td></tr>
+<tr><td>sizes</td><td>sm <code>spacing.8</code>, lg <code>spacing.12</code></td><td>44px holds md target</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Hover deepens border, focus rings sapphire and tints chevron <code>role.action</code>; error never ships without described text.</p>
+<details class="spec-more" open><summary>Spec · states + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Hover / Focus-open</td><td>deeper border / sapphire ring + chevron <code>role.action</code> 180°</td><td><code>:hover</code> / <code>:focus-within</code></td></tr>
+<tr><td>Disabled</td><td>dims, no pointer</td><td>native <code>disabled</code> + <code>opacity.disabled</code></td></tr>
+<tr><td>Error / Success</td><td>danger / success border, outline on focus</td><td><code>aria-invalid</code> + <code>aria-describedby</code> → id</td></tr>
+</tbody></table>
+<p class="meta">A11y — native select announces options + count, chevron <code>aria-hidden</code>, 44px target, forced-colors <code>CanvasText</code>, reduced-motion instant flip.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Use for 4+ mutually exclusive visible values; ≤3 is Radio. Never fake with divs, never hide chevron, never pill.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;label class="field__label" for="stage"&gt;Stage&lt;/label&gt;
+&lt;div class="select"&gt;&lt;select id="stage" class="select__input"&gt;&lt;option&gt;Prospecting&lt;/option&gt;&lt;option&gt;Closed&lt;/option&gt;&lt;/select&gt;&lt;i class="ph-bold ph-caret-down select__chevron" aria-hidden="true"&gt;&lt;/i&gt;&lt;/div&gt;</code>
+<p class="meta">Related — TextInput free text · Search suggestions with listbox · Radio ≤3 options · Full spec: <a href="prototype/gallery/form.md">form.md</a></p>
+</details>
+</section>
+</div>

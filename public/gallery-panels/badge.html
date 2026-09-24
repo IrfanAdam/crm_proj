@@ -1,0 +1,41 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — tones · count, not action</h3>
+<p class="spec-note">Five tones close the set — brand sapphire is the default headline; neutral mutes; success / warning / danger signal via tinted fill. No sixth tone; map counts to these.</p>
+<details class="spec-more"><summary>Spec · variants + tokens</summary>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td>default (brand)</td><td>headline count</td><td>sapphire-100 wash, sapphire-700 ink, sapphire-200 border</td></tr>
+<tr><td><code>badge--neutral</code></td><td>muted count</td><td><code>bg.interactive</code> + <code>border.thin</code>, <code>text.secondary</code></td></tr>
+<tr><td><code>badge--success / --warning / --danger</code></td><td>signal count</td><td>green / orange / red 100 + 200 border + 700 ink</td></tr>
+<tr><td><code>badge--sm / --dot / --max / --overlap</code></td><td>dense / presence / cap / anchor</td><td>16px / 8px circle / <code>99+</code> / pinned corner</td></tr>
+</tbody></table>
+<p class="meta">Tokens — <code>radius.full</code>, <code>spacing.1–2</code>, <code>font-size.xs</code> bold tabular-nums.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy + density</h3>
+<p class="spec-note">20px pill (min-width 20px) with bold micro numeral; <code>--sm</code> is 16px for icon anchors; <code>--dot</code> is fixed 8px circle with no text. Text stays single-line; tabular-nums freeze width under animation.</p>
+</section>
+<section class="specimen">
+<h3>Spec — states + a11y</h3>
+<p class="spec-note">Static only — badge inherits anchor state; no hover, active, or focus of its own. Standalone badge is inline beside its label; overlap is absolute pinned with its own border as ring. Forced-colors flattens to Canvas / CanvasText.</p>
+<details class="spec-more"><summary>Spec · states + tokens + a11y</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Standalone</td><td>flows inline</td><td><code>.badge</code></td></tr>
+<tr><td>Overlap</td><td>pinned <code>translate(50%,-50%)</code></td><td><code>.badge-wrap</code> + <code>.badge--overlap</code></td></tr>
+<tr><td>Capped</td><td>freezes at <code>99+</code></td><td><code>.badge--max</code></td></tr>
+<tr><td>Forced-colors</td><td>Canvas / CanvasText</td><td><code>@media (forced-colors:active)</code></td></tr>
+</tbody></table>
+<p class="meta">Redundant badge is <code>aria-hidden</code>; standalone gets <code>aria-label="3 new"</code>. No tab stop.</p>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">Inline annotator — beside labels or anchored. Do: cap large counts, hide redundant labels, keep one tone per count. Don't: make badge clickable, invent a sixth tone, let pill grow.</p>
+<details class="spec-more"><summary>Snippet + related</summary>
+<code class="tp-code">&lt;span class="badge badge--success"&gt;9&lt;/span&gt;
+&lt;span class="badge-wrap"&gt;&lt;span class="avatar avatar--sm"&gt;OA&lt;/span&gt;&lt;span class="badge badge--overlap"&gt;3&lt;/span&gt;&lt;/span&gt;</code>
+<p class="meta">Related — Chip filters · StatusPill flags stages · Full: <a href="prototype/gallery/identity.md">identity.md</a></p>
+</details>
+</section>
+</div>

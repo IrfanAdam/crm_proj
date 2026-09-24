@@ -1,0 +1,48 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>GoalBar — default 28px · label/value</h3>
+<div class="goal-bar" style="width:100%"><div class="goal-bar__fill" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Q3 quota" style="width:60%"><span class="goal-bar__label">Q3 quota</span><span class="goal-bar__value">60%</span></div></div>
+<p class="spec-note">Pill track · fill width % · label-left value-right.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>track <code>primitive.amethyst.100</code> · fill <code>400</code> · <code>radius.full</code> · 28px</td></tr>
+<tr><td>ink <code>primitive.gray-white</code> · <code>font-size.xs</code> semibold</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Sizes — sm 20 · lg 36 · gem quarantined</h3>
+<div class="goal-bar goal-bar--sm" style="width:100%"><div class="goal-bar__fill" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" aria-label="Calls" style="width:35%"><span class="goal-bar__label">Calls</span><span class="goal-bar__value">35%</span></div></div>
+<div class="goal-bar goal-bar--lg" style="width:100%;margin-top:8px"><div class="goal-bar__fill" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Annual" style="width:82%"><span class="goal-bar__label">Annual</span><span class="goal-bar__value">82%</span></div></div>
+<div class="goal-bar goal-bar--gem" style="width:100%;margin-top:8px"><div class="goal-bar__fill" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Ceremony milestone" style="width:100%"><span class="goal-bar__label">Milestone · ceremony only</span><span class="goal-bar__value">100%</span></div></div>
+<p class="spec-note">Sm dense · lg hero · gem amethyst-700 + ◇ quarantined to ceremony.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Variants</th></tr></thead><tbody>
+<tr><td>default 28 · sm 20 · lg 36 · gem quarantined 700 + ◇</td></tr>
+<tr><td>reject: --gem outside ceremony</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Motion — spring with exit</h3>
+<div class="goal-bar" style="width:100%"><div class="goal-bar__fill" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" aria-label="Weekly" style="width:48%"><span class="goal-bar__label">Weekly</span><span class="goal-bar__value">48%</span></div></div>
+<p class="spec-note">Width animates on transition.spring; reduced-motion jumps instantly.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Motion law</th></tr></thead><tbody>
+<tr><td><code>transition.spring</code> on width</td></tr>
+<tr><td><code>prefers-reduced-motion</code> → <code>transition: none</code></td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y — progressbar</h3>
+<div class="goal-bar" style="width:100%"><div class="goal-bar__fill" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Quota" style="width:90%"><span class="goal-bar__label">Quota</span><span class="goal-bar__value">90%</span></div></div>
+<p class="spec-note">Live fill needs progressbar + aria-valuenow + aria-label.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td><code>role=progressbar</code> · <code>aria-valuenow</code> · <code>aria-label</code></td></tr>
+<tr><td>white on amethyst-400 is large/bold only; small labels use strong</td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

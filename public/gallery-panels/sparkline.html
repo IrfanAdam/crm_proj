@@ -1,0 +1,45 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Sparkline — base + accent + gem peak</h3>
+<div class="row"><span class="sparkline" role="img" aria-label="Up 12% over 7 days"><span class="sparkline__bar" style="height:25%"></span><span class="sparkline__bar" style="height:45%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:70%"></span><span class="sparkline__bar sparkline__bar--gem" style="height:90%"></span></span></div>
+<p class="spec-note">Amethyst 300 base · 500 accent · 700 gem crowns peak.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
+<tr><td>bars <code>primitive.amethyst.300</code> / <code>500</code> / <code>700</code></td></tr>
+<tr><td>gap <code>spacing.1</code> · caps <code>radius.xs</code> · 40px default</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Sizes + stroke</h3>
+<div class="row"><span class="sparkline sparkline--sm" aria-hidden="true"><span class="sparkline__bar" style="height:30%"></span><span class="sparkline__bar" style="height:60%"></span><span class="sparkline__bar sparkline__bar--accent" style="height:80%"></span></span><span class="sparkline sparkline--lg sparkline--stroke" aria-hidden="true"><span class="sparkline__bar" style="height:35%"></span><span class="sparkline__bar" style="height:75%"></span></span></div>
+<p class="spec-note">Sm 24 · lg 56 · stroke transparent + amethyst-400 medium ring for overlays.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Variants</th></tr></thead><tbody>
+<tr><td><code>--sm</code> 24 · <code>--lg</code> 56 · <code>--stroke</code> transparent + <code>border-width.medium</code> ring</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Gem quarantine</h3>
+<div class="row"><span class="sparkline" aria-hidden="true"><span class="sparkline__bar" style="height:20%"></span><span class="sparkline__bar sparkline__bar--gem" style="height:85%"></span></span><span class="meta">gem hues only here, never chrome</span></div>
+<p class="spec-note">Gem hues quarantined to viz — never as fills or text ink.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Quarantine law</th></tr></thead><tbody>
+<tr><td>amethyst bars live only in sparkline</td></tr>
+<tr><td>reject: gem bar outside viz</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>A11y — decorative vs semantic</h3>
+<div class="row"><span class="sparkline" role="img" aria-label="Peak at 90%"><span class="sparkline__bar" style="height:40%"></span><span class="sparkline__bar sparkline__bar--gem" style="height:90%"></span></span><span class="meta">semantic: role=img + aria-label</span></div>
+<p class="spec-note">Decorative aria-hidden + data fallback; semantic role=img + trend label.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
+<tr><td>decorative <code>aria-hidden</code> + fallback table</td></tr>
+<tr><td>semantic <code>role=img</code> + <code>aria-label</code> trend</td></tr>
+</tbody></table>
+</details>
+</section>
+</div>

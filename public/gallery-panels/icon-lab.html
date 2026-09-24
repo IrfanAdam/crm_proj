@@ -1,0 +1,55 @@
+<section class="specimen">
+<h3>Playground — configure one icon</h3>
+<div class="ilab" data-ilab="icon">
+<div class="ilab__bar">
+<div class="ilab__group" role="group" aria-label="Weight">
+<label class="ilab__label" for="icon-weight">Weight</label>
+<select class="ilab__select" id="icon-weight" data-ilab-weight>
+<option value="thin">Thin</option>
+<option value="light">Light</option>
+<option value="regular" selected>Regular</option>
+<option value="bold">Bold</option>
+<option value="fill">Fill</option>
+<option value="duotone">Duotone</option>
+</select>
+</div>
+<div class="ilab__group ilab__group--right" role="group" aria-label="Size">
+<span class="ilab__label">Size</span>
+<button class="ilab__pill" data-ilab-size="icon--xs">XS</button>
+<button class="ilab__pill" data-ilab-size="icon--sm">SM</button>
+<button class="ilab__pill is-on" data-ilab-size="">MD</button>
+<button class="ilab__pill" data-ilab-size="icon--lg">LG</button>
+<button class="ilab__pill" data-ilab-size="icon--xl">XL</button>
+</div>
+</div>
+<div class="ilab__stage" data-ilab-stage data-surface="canvas" data-theme="light">
+<div data-ilab-preview data-ilab-hue="neutral"></div>
+<p class="ilab__hint meta" data-ilab-note></p>
+</div>
+<div class="ilab__bar ilab__bar--foot">
+<div class="ilab__group" role="group" aria-label="Hue">
+<span class="ilab__label">Hue</span>
+<button class="ilab__pill is-on" data-ilab-hue="neutral">Neutral</button>
+<button class="ilab__pill" data-ilab-hue="measure">Measure</button>
+<button class="ilab__pill" data-ilab-hue="score">Score</button>
+<button class="ilab__pill" data-ilab-hue="streak">Streak</button>
+</div>
+<div class="ilab__group ilab__group--right" role="group" aria-label="Color scheme">
+<span class="ilab__label">Scheme</span>
+<button class="ilab__pill is-on" data-ilab-scheme="light">Light</button>
+<button class="ilab__pill" data-ilab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="ilab__edit">
+<label class="ilab__field">Icon<select data-ilab-icon><option value="ph-house" selected>House</option><option value="ph-bell">Bell</option><option value="ph-magnifying-glass">Search</option><option value="ph-users">Users</option><option value="ph-handshake">Handshake</option><option value="ph-chart-line-up">Chart</option><option value="ph-gear">Gear</option><option value="ph-funnel-simple">Funnel</option></select></label>
+<label class="ilab__check"><input type="checkbox" data-ilab-muted> Muted</label>
+<label class="ilab__check"><input type="checkbox" data-ilab-subtle> Subtle</label>
+</div>
+<div class="ilab__code">
+<pre><code class="tp-code" data-ilab-code></code></pre>
+<span class="ilab__ratio" data-ilab-ratio>Aa — · —</span>
+<button class="ilab__copy" data-ilab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Phosphor only — weight via <code>ph-thin/light/regular/bold/fill/duotone</code> or <code>Icon.jsx</code>; hue maps to <code>role.measure / score / streak</code>; inherits <code>currentColor</code>.</p>
+</section>

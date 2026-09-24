@@ -1,0 +1,10 @@
+<div class="tp">
+<p class="ch-kicker">Components · Form · 05 Search</p>
+<h2 class="ch-hero">Pill filters. Never data capture.</h2>
+<p class="ch-lede meta">Search filters within the dataset — opportunities, list rows — with a clear action. The 44px pill affordance for filtering; capture is TextInput, navigation is links, ⏎ submits while clear resets.</p>
+<ul class="ch-laws">
+<li class="ch-law"><span class="ch-num">01</span><div><p><b>One pill, no sizes.</b> <code>.search__input</code> is always <code>radius.full</code> at 44px with left pad for the 16px leading <code>.search__icon</code>; sm/lg absent — search is always the filter affordance.</p><p class="ch-reject">Reject: a 12px-radius search, or help text inside the pill.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Clear only when there is text.</b> 24px round <code>.search__clear</code> on interactive wash, hovers to primary ink on active wash, sapphire <code>:focus-visible</code> outline — real button with name Clear.</p><p class="ch-reject">Reject: a permanent clear on empty field, or a clear no keyboard can reach.</p></div></li>
+<li class="ch-law"><span class="ch-num">03</span><div><p><b>Loading stays honest.</b> <code>search--loading</code> spins the icon with <code>motion-duration.md</code> linear infinite (<code>aria-busy</code>) and holds text cursor; error and success borders mark verdicts, counts via live region.</p><p class="ch-reject">Reject: a spin with no reduced-motion stop, or silence when results land.</p></div></li>
+</ul>
+</div>

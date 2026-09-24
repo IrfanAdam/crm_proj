@@ -1,0 +1,30 @@
+<div class="pad">
+<section class="specimen">
+<h3>Timeline — vertical</h3>
+<div class="row">
+<ol class="timeline"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Qualified</span><span class="timeline__time">Mon</span></li><li class="timeline__item"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Legal review</span><span class="timeline__time">Tue</span></li></ol>
+</div>
+<p class="spec-note">Vertical is default: left rail via <code>::before</code>, hollow todo, filled done sapphire.</p>
+</section>
+<section class="specimen">
+<h3>Timeline — horizontal</h3>
+<div class="row">
+<ol class="timeline timeline--horizontal"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Lead</span><span class="timeline__time">S1</span></li><li class="timeline__item timeline__item--danger"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Blocked</span><span class="timeline__time">S2</span></li></ol>
+</div>
+<p class="spec-note">Top rail, items in columns; DOM order still equals time order.</p>
+</section>
+<section class="specimen">
+<h3>Timeline — status tones</h3>
+<div class="row">
+<ol class="timeline"><li class="timeline__item timeline__item--done timeline__item--success"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Won</span><span class="timeline__time">Mon</span></li><li class="timeline__item timeline__item--warning"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Waiting</span><span class="timeline__time">Tue</span></li><li class="timeline__item timeline__item--danger"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Blocked</span><span class="timeline__time">Wed</span></li></ol>
+</div>
+<p class="spec-note">Green/orange/red 500 rings and done fills; no fourth hue.</p>
+</section>
+<section class="specimen">
+<h3>Timeline — compact</h3>
+<div class="row">
+<ol class="timeline timeline--compact"><li class="timeline__item timeline__item--done"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Call logged</span><span class="timeline__time">9:41</span></li><li class="timeline__item"><span class="timeline__dot" aria-hidden="true"></span><span class="timeline__label">Follow-up</span><span class="timeline__time">10:02</span></li></ol>
+</div>
+<p class="spec-note">Dense rows use <code>spacing.1</code> padding; geometry 10px/6px stays off-scale.</p>
+</section>
+</div>

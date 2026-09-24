@@ -1,0 +1,40 @@
+<section class="specimen">
+<h3>Playground — configure one GoalBar</h3>
+<div class="carlab" data-carlab="goalbar">
+<div class="carlab__bar">
+<div class="carlab__group" role="group" aria-label="Size">
+<span class="carlab__label">Size</span>
+<select data-goal-size aria-label="Size"><option value="default" selected>Default 28px</option><option value="sm">SM 20px</option><option value="lg">LG 36px</option></select>
+</div>
+<div class="carlab__group" role="group" aria-label="Gem">
+<label class="carlab__field" style="flex-direction:row;align-items:center">Gem<input type="checkbox" data-goal-gem></label>
+</div>
+</div>
+<div class="carlab__stage" data-carlab-stage data-surface="canvas" data-theme="light">
+<div data-carlab-preview style="width:100%;max-width:420px"></div>
+</div>
+<div class="carlab__bar carlab__bar--foot">
+<div class="carlab__group" role="group" aria-label="Stage surface">
+<span class="carlab__label">Stage</span>
+<button class="carlab__pill is-on" data-carlab-surface="canvas">Canvas</button>
+<button class="carlab__pill" data-carlab-surface="surface">Surface</button>
+<button class="carlab__pill" data-carlab-surface="wash">Wash</button>
+</div>
+<div class="carlab__group" role="group" aria-label="Color scheme">
+<span class="carlab__label">Scheme</span>
+<button class="carlab__pill is-on" data-carlab-scheme="light">Light</button>
+<button class="carlab__pill" data-carlab-scheme="dark">Dark</button>
+</div>
+</div>
+<div class="carlab__edit">
+<label class="carlab__field">Label<input data-goal-label value="Q3 quota" maxlength="24"></label>
+<label class="carlab__field carlab__field--sm">Fill %<input data-goal-value value="60" type="number" min="0" max="100"></label>
+</div>
+<div class="carlab__code">
+<pre><code class="hl" data-carlab-code></code></pre>
+<span class="carlab__ratio" data-carlab-ratio>Aa —</span>
+<button class="carlab__copy" data-carlab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">Label-left / value-right fill · 28/20/36 px · gem quarantined (amethyst-700 + ◇) · progressbar + reduced-motion.</p>
+</section>

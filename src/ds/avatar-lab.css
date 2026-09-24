@@ -1,0 +1,3 @@
+/* ADAM/DS — src/ds/avatar-lab.css · avatar round + hue */
+[data-ilab="avatar"] [data-ilab-preview] .avatar{border-radius:var(--radius-full)}
+[data-ilab="avatar"] .ilab-box{border-radius:var(--radius-full);background:var(--bg-interactive)}
