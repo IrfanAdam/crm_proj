@@ -51,8 +51,15 @@ graph TD
   end
   subgraph components
     components_Button_button[button.js]
+    components_GemReward_gem-cut[gem-cut.js]
+    components_GemReward_gem-env[gem-env.js]
+    components_GemReward_gem-fallback[gem-fallback.js]
     components_GemReward_gem-reward[gem-reward.js]
+    components_GemReward_gem-scene[gem-scene.js]
+    components_GemReward_gem3d[gem3d.js]
     components_Icon_Icon[Icon.jsx]
+    components_Overlay_overlay-behavior[overlay-behavior.js]
+    components_Overlay_overlay-exit[overlay-exit.js]
     components_Overlay_overlay[overlay.js]
   end
   subgraph motion
@@ -62,7 +69,47 @@ graph TD
   arch_atlas --> arch_atlas-state
   arch_atlas --> arch_lens-truth
   arch_atlas --> js_mechanics_graph
+  components_Overlay_overlay --> components_Overlay_overlay-exit
+  components_Overlay_overlay --> components_Overlay_overlay-behavior
   device_frame --> os_status-bar
+  ds_labs --> ds_chip-lab
+  ds_labs --> ds_badge-lab
+  ds_labs --> ds_statuspill-lab
+  ds_labs --> ds_avatar-lab
+  ds_labs --> ds_icon-lab
+  ds_labs --> ds_textinput-lab
+  ds_labs --> ds_select-lab
+  ds_labs --> ds_search-lab
+  ds_labs --> ds_textarea-lab
+  ds_labs --> ds_checkbox-lab
+  ds_labs --> ds_radio-lab
+  ds_labs --> ds_switch-lab
+  ds_labs --> ds_slider-lab
+  ds_labs --> ds_tabs-lab
+  ds_labs --> ds_breadcrumbs-lab
+  ds_labs --> ds_pagination-lab
+  ds_labs --> ds_accordion-lab
+  ds_labs --> ds_tabbar-lab
+  ds_labs --> ds_toolbar-lab
+  ds_labs --> ds_overlay-lab
+  ds_labs --> ds_overlay-modal-lab
+  ds_labs --> ds_overlay-drawer-lab
+  ds_labs --> ds_overlay-menu-lab
+  ds_labs --> ds_overlay-popover-lab
+  ds_labs --> ds_overlay-tooltip-lab
+  ds_labs --> ds_overlay-toast-lab
+  ds_labs --> ds_table-lab
+  ds_labs --> ds_listrow-lab
+  ds_labs --> ds_kpi-lab
+  ds_labs --> ds_timeline-lab
+  ds_labs --> ds_sparkline-lab
+  ds_labs --> ds_opportunitycard-lab
+  ds_labs --> ds_funnelcard-lab
+  ds_labs --> ds_profilecard-lab
+  ds_labs --> ds_goalbar-lab
+  ds_labs --> ds_funnelglyph-lab
+  ds_labs --> ds_gemreward-lab
+  ds_specimens_markup --> ds_code-highlight
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
   glass_BottomDock --> glass_dock-track

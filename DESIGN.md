@@ -228,7 +228,7 @@ capsules are the only organic forms.
 `button-primary` and `filter-chip` are the only high-emphasis tappables per
 row. `goal-bar` is always full-pill with label-left/value-right. Status pills
 are solid fill + white text, never outline. `gem-reward-sapphire` recolors per
-category via hue-rotate filter, never via separate assets. All now reference `{colors.signal}` via the swap-slot.
+category via its gem token, never via a CSS filter or separate assets. All now reference `{colors.signal}` via the swap-slot.
 
 ## Do's and Don'ts
 
