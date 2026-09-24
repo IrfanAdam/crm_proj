@@ -1,7 +1,7 @@
 /* ADAM/DS — src/ds/gallery-shell.js · gallery frames: language + docs fetch, tabs, sort, accordion, tooltip, signal */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-3] · shell behavior extracted from gallery.html (Task 9).
 // — Language frame (served from public/ at root by Vite) —
-fetch('language-panel.html?v='+Date.now()).then(r=>r.text()).then(h=>{document.getElementById('stage').insertAdjacentHTML('afterbegin',h);if(location.hash)dsTab(location.hash.slice(1))});
+fetch('language-panel.html?v='+Date.now()).then(r=>r.text()).then(h=>{document.getElementById('stage').insertAdjacentHTML('afterbegin',h);const lh=location.hash.slice(1).split('-')[0];if(lh&&document.querySelector('[data-panel="'+lh+'"]'))dsTab(lh)});
 // — Foundation articles —
 document.querySelectorAll('[data-doc]').forEach(el=>{fetch(el.dataset.doc+'?v='+Date.now()).then(r=>r.text()).then(h=>{el.innerHTML=h;document.dispatchEvent(new Event('ds:doc'))})});
 // — Sortable tables (delegated — covers fetched panels) —
@@ -44,12 +44,16 @@ document.addEventListener('DOMContentLoaded',()=>{[0,250,700].forEach(ms=>setTim
 const dsTab=name=>{
 document.querySelectorAll('.dnav__item').forEach(x=>x.classList.toggle('dnav__item--active',x.dataset.tab===name));
 document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==name});
+document.querySelectorAll('.dnav__sub').forEach(s=>{s.hidden=s.dataset.subnav!==name});
+document.querySelectorAll('.dnav__subitem').forEach(x=>x.classList.remove('dnav__subitem--active'));
 };
 document.querySelectorAll('.dnav__item').forEach(b=>b.addEventListener('click',()=>{
 dsTab(b.dataset.tab);
 history.replaceState(null,'','#'+b.dataset.tab);
 }));
-if(location.hash)dsTab(location.hash.slice(1));
+// — Sub-tabs live in gallery-subnav.js; hash maps to its panel —
+const dsHash=location.hash.slice(1).split('-')[0];
+if(dsHash&&document.querySelector('[data-panel="'+dsHash+'"]'))dsTab(dsHash);
 // — Accordions —
 document.querySelectorAll('.accordion__trigger').forEach(b=>b.addEventListener('click',()=>{
 const it=b.closest('.accordion__item');

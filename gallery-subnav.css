@@ -1,0 +1,30 @@
+/* ADAM/DS — gallery-subnav.css · Identity left sub-tabs */
+.dnav__sub{
+display:flex;
+flex-direction:column;
+gap:2px;
+margin:2px 0 4px var(--spacing-3);
+padding-left:var(--spacing-2);
+border-left:2px solid var(--border-thin);
+}
+.dnav__subitem{
+text-align:left;
+background:transparent;
+border:none;
+padding:var(--spacing-1) var(--spacing-3);
+border-radius:var(--radius-md);
+font-size:var(--font-size-xs);
+font-weight:500;
+color:var(--text-muted);
+cursor:pointer;
+}
+.dnav__subitem:hover{
+color:var(--text-primary);
+}
+.dnav__subitem--active{
+background:var(--bg-interactive);
+color:var(--text-primary);
+}
+.frame [id^="identity-"]{
+scroll-margin-top:var(--spacing-4);
+}
