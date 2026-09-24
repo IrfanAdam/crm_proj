@@ -47,7 +47,7 @@ m.thickness = 0.9;
 m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.3);
 m.attenuationDistance = 0.6;
 m.onBeforeCompile = function (s) {
-s.fragmentShader = s.fragmentShader.replace(/vec4 transmitted = getIBLVolumeRefraction\([\s\S]*?\);/, 'vec4 t0 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 0.975, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t1 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t2 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 1.025, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 transmitted = vec4(t0.r, t1.g, t2.b, t1.a);');
+if (window.GEM_ENV && window.GEM_ENV.dispersion) s.fragmentShader = window.GEM_ENV.dispersion(s.fragmentShader);
 };
 }
 return m;
