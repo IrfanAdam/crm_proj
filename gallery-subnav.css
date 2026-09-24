@@ -28,3 +28,10 @@ color:var(--text-primary);
 .frame [id^="identity-"]{
 scroll-margin-top:var(--spacing-4);
 }
+.dnav{
+position:sticky;
+top:24px;
+max-height:calc(100vh - 48px);
+overflow-y:auto;
+overscroll-behavior:contain;
+}
