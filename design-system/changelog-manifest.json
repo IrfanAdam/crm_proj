@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T17:32:16.722Z",
+  "generated": "2026-09-24T17:40:14.058Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "271c05e",
+      "full": "271c05e80ea4eebe85f050e06678b47ee4d28b0e",
+      "date": "2026-09-24",
+      "subject": "chore(ds): regen manifest after gem stage backdrop",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "8440494",
       "full": "844049478332caf2427cb2117bd679ddd15d52d2",
@@ -1823,5 +1831,16 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M prototype/gems/render_gems.py",
+    "M prototype/gems/soft_render.py",
+    "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-scene.js",
+    "M src/ds/gemreward-lab.js",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "?? prototype/gems/gem_optics.py"
+  ]
 }

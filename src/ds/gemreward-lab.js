@@ -24,7 +24,7 @@ if(rat)rat.textContent="Aa — · quarantine "+cat;
 root.addEventListener("click",e=>{
 const s=e.target.closest("[data-carlab-surface]");if(s){stage.dataset.surface=s.dataset.carlabSurface;Array.from(root.querySelectorAll("[data-carlab-surface]")).forEach(b=>b.classList.toggle("is-on",b===s));return;}
 const t=e.target.closest("[data-carlab-scheme]");if(t){stage.dataset.theme=t.dataset.carlabScheme;Array.from(root.querySelectorAll("[data-carlab-scheme]")).forEach(b=>b.classList.toggle("is-on",b===t));if(window.GEM3D&&window.GEM3D.restage)window.GEM3D.restage();return;}
-const p=e.target.closest("[data-gem-photo]");if(p){const on=!p.classList.contains("is-on");p.classList.toggle("is-on",on);if(window.GEM3D)window.GEM3D.bg(on?"/gem-demo-bg.jpg":null);return;}
+const p=e.target.closest("[data-gem-photo]");if(p){const mode=((Number(p.dataset.gemPhoto)||0)+1)%3;p.dataset.gemPhoto=String(mode);p.textContent=["Demo bg: off","Demo bg: photo","Demo bg: chart"][mode];p.classList.toggle("is-on",mode>0);if(window.GEM3D)window.GEM3D.bg(mode===0?null:mode===1?"/gem-demo-bg.jpg":"/gem-demo-chart.png");return;}
 if(e.target.closest("[data-carlab-copy]"))navigator.clipboard.writeText(code.textContent);
 });
 root.addEventListener("input",render);root.addEventListener("change",render);render();

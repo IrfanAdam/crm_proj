@@ -4,7 +4,7 @@
 // — Surface: MeshPhysicalMaterial flatShading; ior per stone from CATEGORIES; transmission on GPU, off on software (?gem=high) —
 // — Cut: faces rewound outward, so no GEM_CUT winding can punch a hole in a facet —
 // — Frame: camera sits so the gem fills FILL of the stage height, centred, stage stays 140px —
-// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft, ior) · stage(renderer, color, cut, aspect, ior)
+// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft, ior) · inner(color, ior) far-side facets · stage(renderer, color, cut, aspect, ior)
 (function () {
 const api = {};
 const FILL = 0.75;
@@ -47,10 +47,14 @@ m.thickness = 0.9;
 m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.3);
 m.attenuationDistance = 0.6;
 m.onBeforeCompile = function (s) {
-s.fragmentShader = s.fragmentShader.replace(/vec4 transmitted = getIBLVolumeRefraction\([\s\S]*?\);/, 'vec4 t0 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 0.985, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t1 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t2 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 1.015, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 transmitted = vec4(t0.r, t1.g, t2.b, t1.a);');
+s.fragmentShader = s.fragmentShader.replace(/vec4 transmitted = getIBLVolumeRefraction\([\s\S]*?\);/, 'vec4 t0 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 0.975, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t1 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 t2 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * 1.025, material.thickness, material.attenuationColor, material.attenuationDistance);\nvec4 transmitted = vec4(t0.r, t1.g, t2.b, t1.a);');
 };
 }
 return m;
+};
+api.inner = function (color, ior) {
+const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: T.BackSide, transparent: true, opacity: 0.5, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.1, emissive: color.clone().multiplyScalar(0.1) });
+return b;
 };
 api.stage = function (renderer, color, cut, aspect, ior) {
 const geo = api.geometry(cut);
@@ -72,6 +76,9 @@ key.position.set(3, 5, 4);
 scene.add(key);
 scene.add(new T.AmbientLight(0xffffff, 0.12));
 const group = new T.Group();
+const inner = new T.Mesh(geo, api.inner(color, ior));
+inner.renderOrder = -1;
+group.add(inner);
 group.add(new T.Mesh(geo, api.surface(color, soft, ior)));
 scene.add(group);
 return { scene: scene, camera: camera, group: group, stageBg: scene.background };
