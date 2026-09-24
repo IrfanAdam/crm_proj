@@ -4,7 +4,7 @@
 // — Surface: MeshPhysicalMaterial flatShading; ior per stone from CATEGORIES; transmission on GPU, off on software (?gem=high) —
 // — Cut: faces rewound outward, so no GEM_CUT winding can punch a hole in a facet —
 // — Frame: camera sits so the gem fills FILL of the stage height, centred, stage stays 140px —
-// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft, ior) · inner(color, ior) far-side facets · stage(renderer, color, cut, aspect, ior)
+// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft, ior) · inner(color, ior, side, opacity) · ghost(geo, color, ior, side, scale, opacity) internal shells · stage(renderer, color, cut, aspect, ior)
 (function () {
 const api = {};
 const FILL = 0.75;
@@ -52,10 +52,11 @@ s.fragmentShader = s.fragmentShader.replace(/vec4 transmitted = getIBLVolumeRefr
 }
 return m;
 };
-api.inner = function (color, ior) {
-const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: T.BackSide, transparent: true, opacity: 0.62, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.1, emissive: color.clone().multiplyScalar(0.12) });
+api.inner = function (color, ior, side, opacity) {
+const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: side || T.BackSide, transparent: true, opacity: opacity || 0.72, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.5, emissive: color.clone().multiplyScalar(0.18) });
 return b;
 };
+api.ghost = function (geo, color, ior, side, scale, opacity) { const m = new T.Mesh(geo, api.inner(color, ior, side, opacity)); m.renderOrder = -1; m.scale.setScalar(scale); return m; };
 api.stage = function (renderer, color, cut, aspect, ior) {
 const geo = api.geometry(cut);
 const bb = geo.boundingBox;
@@ -84,10 +85,8 @@ cm.renderOrder = -1;
 scene.add(cm);
 }
 const group = new T.Group();
-const inner = new T.Mesh(geo, api.inner(color, ior));
-inner.renderOrder = -1;
-inner.scale.setScalar(0.955);
-group.add(inner);
+group.add(api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66));
+group.add(api.ghost(geo, color, ior, T.FrontSide, 0.9, 0.26));
 group.add(new T.Mesh(geo, api.surface(color, soft, ior)));
 scene.add(group);
 return { scene: scene, camera: camera, group: group, stageBg: scene.background };
