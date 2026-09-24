@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T19:00:42.622Z",
+  "generated": "2026-09-24T19:13:57.017Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "490d7f8",
+      "full": "490d7f8091192b2cc328bf732768c8b011271b96",
+      "date": "2026-09-25",
+      "subject": "feat(ds): gem — per-facet emissive zoning on the internal shells + richer absorption (tint 0.15)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "01feb31",
+      "full": "01feb31eff6371576f54d6a506fab5b5b8ebafa9",
+      "date": "2026-09-25",
+      "subject": "chore(ds): regen manifest after contact shadow",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "901e300",
       "full": "901e300783d047c5be8e37dd3122cde4e6f4c649",
