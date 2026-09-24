@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T16:49:07.310Z",
+  "generated": "2026-09-24T16:57:31.810Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "0288ff8",
+      "full": "0288ff839f66b800400b7b613e0f72978d072ee2",
+      "date": "2026-09-24",
+      "subject": "chore(ds): regen manifest after gem smooth tier ship",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "b429559",
       "full": "b42955992a653a3eeb57f185d0d45cf8097c8548",
@@ -1775,5 +1783,9 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-env.js",
+    "M src/components/GemReward/gem-scene.js"
+  ]
 }
