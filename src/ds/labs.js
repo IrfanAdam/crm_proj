@@ -36,3 +36,4 @@ import './profilecard-lab.js';
 import './goalbar-lab.js';
 import './funnelglyph-lab.js';
 import './gemreward-lab.js';
+import './gemreward-spec.js';

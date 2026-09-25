@@ -1,37 +1,27 @@
 <div class="pad spec-grid">
-<section class="specimen">
-<h3>GemReward — sapphire · single cut</h3>
-<div class="row"><div class="gem-reward gem-reward--sapphire" style="flex:1;min-width:260px"><canvas class="gem-reward__spline" data-gem="sapphire" width="640" height="280"></canvas><div class="gem-reward__title">Rock Solid Goals</div><div class="gem-reward__capsule">+Rs 4lakh · Beyond Target</div><div class="gem-reward__copy">data in here don’t lie</div></div></div>
-<p class="spec-note">One procedural cut (<code>gem-cut.js</code>, no embeds) + token color per category.</p>
+<section class="specimen" data-gemspec>
+<h3>GemReward — one cut, four token colors</h3>
+<div class="row" data-gemspec-pills>
+<button class="carlab__pill is-on" data-gemspec-cat="sapphire" data-gemspec-capsule="+Rs 4lakh · Beyond Target">sapphire</button>
+<button class="carlab__pill" data-gemspec-cat="citrine" data-gemspec-capsule="Citrine · token color">citrine</button>
+<button class="carlab__pill" data-gemspec-cat="amethyst" data-gemspec-capsule="Amethyst · token color">amethyst</button>
+<button class="carlab__pill" data-gemspec-cat="redberyl" data-gemspec-capsule="Red Beryl · token color">red beryl</button>
+</div>
+<div class="row"><div class="gem-reward gem-reward--sapphire" data-gemspec-card style="flex:1;min-width:260px"><canvas class="gem-reward__spline" data-gem="sapphire" width="640" height="280" role="img" aria-label="sapphire gem ceremony"></canvas><div class="gem-reward__title">Rock Solid Goals</div><div class="gem-reward__capsule">+Rs 4lakh · Beyond Target</div><div class="gem-reward__copy">data in here don’t lie</div></div></div>
+<p class="spec-note">One card, one live canvas — the pills swap the category (token color + cut spin), never a second render. This is the only live gem in these docs; the lab above carries the configurable specimen.</p>
 <details class="spec-more"><summary>Spec</summary>
 <table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
 <tr><td>frame <code>bg.surface</code> · <code>radius.2xl</code> · <code>border.thin</code></td></tr>
 <tr><td>canvas 140px · <code>bg.interactive</code> · <code>radius.lg</code></td></tr>
 <tr><td>capsule <code>amethyst.100</code> / <code>700</code> · <code>radius.full</code></td></tr>
-</tbody></table>
-</details>
-</section>
-<section class="specimen">
-<h3>Four token colors</h3>
-<div class="row">
-<div class="gem-reward gem-reward--citrine" style="flex:1"><canvas class="gem-reward__spline" data-gem="citrine" width="640" height="280"></canvas><div class="gem-reward__capsule">Citrine · token color</div></div>
-<div class="gem-reward gem-reward--amethyst" style="flex:1"><canvas class="gem-reward__spline" data-gem="amethyst" width="640" height="280"></canvas><div class="gem-reward__capsule">Amethyst · token color</div></div>
-<div class="gem-reward gem-reward--redberyl" style="flex:1"><canvas class="gem-reward__spline" data-gem="redberyl" width="640" height="280"></canvas><div class="gem-reward__capsule">Red Beryl · token color</div></div>
-</div>
-<p class="spec-note">Same cut, same canvas — sapphire · citrine · amethyst · red beryl differ by token color only, never by a second render.</p>
-<details class="spec-more"><summary>Spec</summary>
-<table class="ch-roles"><thead><tr><th>Token map</th></tr></thead><tbody>
-<tr><td>sapphire <code>--primitive-sapphire-ui</code></td></tr>
-<tr><td>citrine <code>--primitive-citrine</code></td></tr>
-<tr><td>red-beryl <code>--primitive-red-beryl</code></td></tr>
-<tr><td>amethyst <code>--primitive-amethyst</code></td></tr>
+<tr><td>sapphire <code>--primitive-sapphire-ui</code> · citrine <code>--primitive-citrine</code></td></tr>
+<tr><td>red-beryl <code>--primitive-red-beryl</code> · amethyst <code>--primitive-amethyst</code></td></tr>
 </tbody></table>
 </details>
 </section>
 <section class="specimen">
 <h3>Quarantine — never Operate chrome</h3>
-<div class="row"><div class="gem-reward gem-reward--sapphire" style="flex:1;opacity:0.6"><canvas class="gem-reward__spline" data-gem="sapphire" width="640" height="280"></canvas><div class="gem-reward__capsule">ceremony only</div></div><span class="meta">mood never enters Operate/Monitor</span></div>
-<p class="spec-note">Gems live only in achievement moments; KPI fills and measure visuals never borrow gem hues.</p>
+<p class="spec-note">Gems live only in achievement moments; KPI fills and measure visuals never borrow gem hues. The specimen above is the only live gem here — the law is where a card may appear, not a second canvas.</p>
 <details class="spec-more"><summary>Spec</summary>
 <table class="ch-roles"><thead><tr><th>Quarantine law</th></tr></thead><tbody>
 <tr><td>ceremony-only — not inside Operate/Monitor</td></tr>
@@ -41,8 +31,7 @@
 </section>
 <section class="specimen">
 <h3>A11y + reduced motion</h3>
-<div class="row"><div class="gem-reward gem-reward--sapphire" style="flex:1"><canvas class="gem-reward__spline" data-gem="sapphire" width="640" height="280"></canvas><div class="gem-reward__title">Accessible title</div></div></div>
-<p class="spec-note">Canvas carries <code>data-gem</code> per category; reduced-motion holds a still frame; copy stays real text.</p>
+<p class="spec-note">Canvas carries <code>data-gem</code> per category; reduced-motion holds a still frame; title, capsule and copy stay real DOM text — never painted into the canvas.</p>
 <details class="spec-more"><summary>Spec</summary>
 <table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
 <tr><td>canvas <code>data-gem</code> per category · token color</td></tr>
