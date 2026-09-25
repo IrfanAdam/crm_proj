@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25T06:49:48.217Z",
+  "generated": "2026-09-25T06:59:50.226Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,22 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "4f06f44",
+      "full": "4f06f44b68241ad44a5df13a4084187611e37810",
+      "date": "2026-09-25",
+      "subject": "feat(ds): gem material round 2 — cross-key, per-facet polish variation, tiny low-back glints (pavilion light return without body wash)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "56c19de",
+      "full": "56c19def95a1c852d05a303d400611ecd1f54029",
+      "date": "2026-09-25",
+      "subject": "chore(ds): plan Task 24 (gem docs single card + pills) + manifest",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "b3d2bbc",
       "full": "b3d2bbc1d2a9b921af29257d29ca1c78dec8976c",
