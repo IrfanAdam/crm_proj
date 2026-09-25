@@ -4,12 +4,20 @@
 // —      plus dim broad fill; HDR values >1 survive because PMREM renders with NoToneMapping —
 // — Why small and many: a facet only glints when its mirror direction finds a source, so the —
 // —      tent must cover the sphere; a few big panels just light every facet flat —
-// Export map: GEM_ENV.texture(renderer) → PMREM texture for scene.environment · GEM_ENV.lastMs (stage/caustic textures live in gem-textures.js)
+// Export map: GEM_ENV.texture(renderer) → PMREM texture for scene.environment · GEM_ENV.soft(renderer) detects software GL · GEM_ENV.lastMs (stage/caustic textures live in gem-textures.js)
 (function () {
 if (!window.THREE) return;
 const T = window.THREE;
 const api = {};
 api.lastMs = 0;
+api.soft = function (renderer) {
+try {
+const gl = renderer.getContext();
+const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+const name = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '';
+return /swiftshader|llvmpipe|software|basic render/i.test(String(name));
+} catch (e) { return true; }
+};
 function studio() {
 const s = new T.Scene();
 const shell = new T.MeshBasicMaterial({ color: new T.Color(0.02, 0.02, 0.025), side: T.BackSide });
@@ -28,7 +36,7 @@ s.add(m);
 [[24, 24, 0, 14, 1, 0.08, 0.08, 0.09], [18, 18, 0, -13, 3, 0.3, 0.29, 0.27], [16, 16, -13, 14, 10, 120, 122, 128], [0.6, 12, 13, 12, 5, 85, 84, 82], [0.25, 7, 11, 0, -1, 22, 22, 23], [0.25, 6, -9, -1, 6, 18, 18, 19]].forEach(function (b) {
 lit(b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7]);
 });
-[[0.85, 20, 0, 1.06, 12, 1.5], [0.42, 14, 0.45, 1, 11.6, 1.3], [0.05, 9, 0.9, 0.95, 12.4, 1.15], [-0.45, 9, 1.35, 0.94, 11.2, 1.2]].forEach(function (band, b) {
+[[0.85, 20, 0, 1.06, 12, 1.5], [0.42, 14, 0.45, 1, 11.6, 1.3], [0.05, 9, 0.9, 0.95, 12.4, 1.15], [-0.45, 9, 1.35, 0.94, 11.2, 1.2], [-0.95, 30, 2.4, 1.05, 11, 0.45]].forEach(function (band, b) {
 for (let i = 0; i < 7; i++) {
 const az = ((i + b * 0.37) / 7) * Math.PI * 2 + band[2];
 const rr = band[4] * Math.cos(band[0]) * (0.9 + 0.2 * ((i * 5 + b * 3) % 4) / 3);

@@ -4,19 +4,11 @@
 // — Surface: MeshPhysicalMaterial flatShading; ior per stone from CATEGORIES; transmission on GPU, off on software (?gem=high) —
 // — Cut: faces rewound outward, so no GEM_CUT winding can punch a hole in a facet —
 // — Frame: camera sits so the gem fills FILL of the stage height, centred, stage stays 140px —
-// Export map: GEM_SCENE.soft(renderer) · geometry(cut) · surface(color, soft, ior) · inner(color, ior, side, opacity) · ghost(geo, color, ior, side, scale, opacity) internal shells · stage(renderer, color, cut, aspect, ior)
+// Export map: GEM_SCENE.geometry(cut) · surface(color, soft, ior) · inner(color, ior, side, opacity) · ghost(geo, color, ior, side, scale, opacity) internal shells · stage(renderer, color, cut, aspect, ior) (software-GL detect lives in gem-env.js)
 (function () {
 const api = {};
 const FILL = 0.75;
 const FOV = 32;
-api.soft = function (renderer) {
-try {
-const gl = renderer.getContext();
-const dbg = gl.getExtension('WEBGL_debug_renderer_info');
-const name = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '';
-return /swiftshader|llvmpipe|software|basic render/i.test(String(name));
-} catch (e) { return true; }
-};
 window.GEM_SCENE = api;
 if (!window.THREE) return;
 const T = window.THREE;
@@ -43,7 +35,11 @@ geo.computeBoundingBox();
 return geo;
 };
 api.surface = function (color, soft, ior) {
-const m = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.06, ior: ior || 2.4, clearcoat: 1, clearcoatRoughness: 0.04, flatShading: true, envMapIntensity: 1.6, emissive: color.clone().multiplyScalar(0.12), iridescence: 0.45, iridescenceIOR: 1.9, iridescenceThicknessRange: [120, 640], sheen: 0.12, sheenRoughness: 0.25, sheenColor: new T.Color(1, 1, 1) });
+const m = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.06, ior: ior || 2.4, clearcoat: 1, clearcoatRoughness: 0.04, flatShading: true, envMapIntensity: 1.6, emissive: color.clone().multiplyScalar(0.12), iridescence: 0.45, iridescenceIOR: 1.9, iridescenceThicknessRange: [120, 640], sheen: 0.12, sheenRoughness: 0.25, sheenColor: new T.Color(1, 1, 1), vertexColors: true });
+m.onBeforeCompile = function (s) {
+s.fragmentShader = s.fragmentShader.replace('float roughnessFactor = roughness;', 'float roughnessFactor = roughness * (0.72 + 0.56 * vColor.r);');
+if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader);
+};
 if (!soft) {
 m.transmission = 0.95;
 m.thickness = 0.9;
@@ -75,10 +71,13 @@ camera.lookAt(0, cy - h * 0.02, 0);
 const scene = new T.Scene();
 if (window.GEM_ENV) scene.environment = window.GEM_ENV.texture(renderer);
 if (window.GEM_TEXTURES && window.GEM_TEXTURES.stage) scene.background = window.GEM_TEXTURES.stage(renderer.domElement);
-const soft = !/(\?|&)gem=high/.test(window.location.search) && api.soft(renderer);
+const soft = !/(\?|&)gem=high/.test(window.location.search) && (!window.GEM_ENV || window.GEM_ENV.soft(renderer));
 const key = new T.DirectionalLight(0xfff4e6, 1.2);
 key.position.set(3, 5, 4);
 scene.add(key);
+const cross = new T.DirectionalLight(0xdce8ff, 0.55);
+cross.position.set(-4, 3, -2);
+scene.add(cross);
 scene.add(new T.AmbientLight(0xffffff, 0.12));
 const floor = function (tex, y, scale, order) { const m = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: tex, transparent: true, blending: order === -1 ? T.AdditiveBlending : T.NormalBlending, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.y = y; m.scale.setScalar(scale); m.renderOrder = order; return m; };
 if (window.GEM_TEXTURES && window.GEM_TEXTURES.caustic) {
