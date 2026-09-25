@@ -1,42 +1,73 @@
 <div class="pad spec-grid">
-<section class="specimen" data-gemspec>
-<h3>GemReward — one cut, four token colors</h3>
-<div class="row" data-gemspec-pills>
-<button class="carlab__pill is-on" data-gemspec-cat="sapphire" data-gemspec-capsule="+Rs 4lakh · Beyond Target" data-gemspec-title="Rock Solid Goals" data-gemspec-copy="data in here don’t lie · mood quarantined">sapphire</button>
-<button class="carlab__pill" data-gemspec-cat="citrine" data-gemspec-capsule="+Rs 2.5lakh · Top Closer" data-gemspec-title="Golden Streak" data-gemspec-copy="keep the tempo">citrine</button>
-<button class="carlab__pill" data-gemspec-cat="amethyst" data-gemspec-capsule="+Rs 3lakh · Deep Work" data-gemspec-title="Focus Master" data-gemspec-copy="quiet wins">amethyst</button>
-<button class="carlab__pill" data-gemspec-cat="redberyl" data-gemspec-capsule="+Rs 1.8lakh · Sprint" data-gemspec-title="Momentum" data-gemspec-copy="next one matters">red beryl</button>
-</div>
-<div class="row"><div class="gem-reward gem-reward--sapphire" data-gemspec-card style="flex:1;max-width:560px"><canvas class="gem-reward__spline" data-gem="sapphire" width="640" height="280" role="img" aria-label="sapphire gem ceremony"></canvas><div class="gem-reward__title">Rock Solid Goals</div><div class="gem-reward__capsule">+Rs 4lakh · Beyond Target</div><div class="gem-reward__copy">data in here don’t lie · mood quarantined</div></div></div>
-<p class="spec-note">One card, one live canvas — the pills swap the category (token color + cut spin), never a second render. This is the only live gem in these docs; the lab above carries the configurable specimen.</p>
+<section class="specimen">
+<h3>Variants — one cut, four token colors</h3>
+<p class="spec-note">Reference only — the live specimen is <a href="#gems">Patterns → Gem reward</a>, the interactive one is the lab above. This appendix keeps tables, never a second demo canvas.</p>
 <details class="spec-more"><summary>Spec</summary>
-<table class="ch-roles"><thead><tr><th>Tokens</th></tr></thead><tbody>
-<tr><td>frame <code>bg.surface</code> · <code>radius.2xl</code> · <code>border.thin</code></td></tr>
-<tr><td>canvas 140px · <code>bg.interactive</code> · <code>radius.lg</code></td></tr>
-<tr><td>capsule <code>amethyst.100</code> / <code>700</code> · <code>radius.full</code></td></tr>
-<tr><td>sapphire <code>--primitive-sapphire-ui</code> · citrine <code>--primitive-citrine</code></td></tr>
-<tr><td>red-beryl <code>--primitive-red-beryl</code> · amethyst <code>--primitive-amethyst</code></td></tr>
+<table class="ch-roles"><thead><tr><th>Variant</th><th>Job</th><th>Key differences</th></tr></thead><tbody>
+<tr><td><code>gem-reward--sapphire</code></td><td>default · Rock Solid</td><td><code>--primitive-sapphire-ui</code> · IOR 1.77</td></tr>
+<tr><td><code>gem-reward--citrine</code></td><td>Golden Streak</td><td><code>--primitive-citrine</code> · IOR 1.545</td></tr>
+<tr><td><code>gem-reward--amethyst</code></td><td>Focus Master</td><td><code>--primitive-amethyst</code> · IOR 1.545</td></tr>
+<tr><td><code>gem-reward--redberyl</code></td><td>Momentum</td><td><code>--primitive-red-beryl</code> · IOR 1.577</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Anatomy — canvas · title · capsule stand · copy</h3>
+<p class="spec-note">One gem canvas per card, never four. The category swaps the token and the canvas' <code>data-gem</code>; the rig mounts the fresh canvas and disposes the detached one.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>Part</th><th>Element</th><th>Notes</th></tr></thead><tbody>
+<tr><td>gem canvas</td><td><code>.gem-reward__spline</code> + <code>data-gem</code></td><td>140px spec · 220px lab · <code>gem3d.js</code> rig</td></tr>
+<tr><td>title</td><td><code>.gem-reward__title</code></td><td>real text — never painted into the canvas</td></tr>
+<tr><td>capsule stand</td><td><code>.gem-reward__capsule</code></td><td><code>amethyst.100</code> / <code>700</code> · <code>radius.full</code></td></tr>
+<tr><td>copy</td><td><code>.gem-reward__copy</code></td><td><code>text.muted</code> · the ceremony line</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>States — every frame it can be in</h3>
+<p class="spec-note">Reduced motion holds a still frame; no WebGL falls back to a painted gem — the copy always reads.</p>
+<details class="spec-more"><summary>Spec</summary>
+<table class="ch-roles"><thead><tr><th>State</th><th>What changes</th><th>Code</th></tr></thead><tbody>
+<tr><td>Default</td><td>resting gem on the capsule stand</td><td>—</td></tr>
+<tr><td>Ceremony motion</td><td>spring entrance in situ · the gem glints at every spin phase</td><td><code>transition.spring</code></td></tr>
+<tr><td>Reduced-motion</td><td>no spin, no entrance</td><td><code>prefers-reduced-motion</code> · one still frame</td></tr>
+<tr><td>Renderer unavailable</td><td>no WebGL — fallback paint, copy still reads</td><td><code>gem-fallback.js</code></td></tr>
+<tr><td>Software GL</td><td>transmission off unless <code>?gem=high</code></td><td><code>GEM_ENV.soft(renderer)</code></td></tr>
 </tbody></table>
 </details>
 </section>
 <section class="specimen">
 <h3>Quarantine — never Operate chrome</h3>
-<p class="spec-note">Gems live only in achievement moments; KPI fills and measure visuals never borrow gem hues. The specimen above is the only live gem here — the law is where a card may appear, not a second canvas.</p>
+<p class="spec-note">Gems live only in achievement moments; KPI fills and measure visuals never borrow gem hues.</p>
 <details class="spec-more"><summary>Spec</summary>
 <table class="ch-roles"><thead><tr><th>Quarantine law</th></tr></thead><tbody>
 <tr><td>ceremony-only — not inside Operate/Monitor</td></tr>
-<tr><td>reject: gem beside KPI or inside operate screen</td></tr>
+<tr><td>reject: gem beside a KPI or inside an operate screen</td></tr>
+<tr><td>reject: gem hues as chrome (fills, borders, deltas)</td></tr>
 </tbody></table>
 </details>
 </section>
 <section class="specimen">
-<h3>A11y + reduced motion</h3>
-<p class="spec-note">Canvas carries <code>data-gem</code> per category; reduced-motion holds a still frame; title, capsule and copy stay real DOM text — never painted into the canvas.</p>
+<h3>Tokens + a11y — nothing else may paint it</h3>
+<p class="spec-note">Gem canvas is decorative; category meaning stays in real text; no filter pass — the token is the paint.</p>
 <details class="spec-more"><summary>Spec</summary>
-<table class="ch-roles"><thead><tr><th>Accessibility</th></tr></thead><tbody>
-<tr><td>canvas <code>data-gem</code> per category · token color</td></tr>
-<tr><td><code>prefers-reduced-motion</code> → still frame, no spin</td></tr>
+<table class="ch-roles"><thead><tr><th>Property</th><th>Token</th></tr></thead><tbody>
+<tr><td>gem paint</td><td>token color per category — <code>--primitive-*</code>, never a filter, never a hex literal</td></tr>
+<tr><td>capsule / copy ink</td><td>capsule stand · <code>text.primary</code> / <code>text.muted</code></td></tr>
+<tr><td>motion</td><td><code>transition.spring</code> · <code>motion-duration-*</code></td></tr>
+<tr><td>a11y</td><td>canvas <code>role="img"</code> + category label · reduced-motion still · copy real text</td></tr>
 </tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Contract — the snippet in code</h3>
+<p class="spec-note">Swap <code>data-gem</code> and the <code>--{category}</code> class to change the stone; everything else stays.</p>
+<details class="spec-more"><summary>Spec</summary>
+<code class="tp-code">&lt;div class="gem-reward gem-reward--sapphire"&gt;
+&lt;canvas class="gem-reward__spline" data-gem="sapphire" width="640" height="280"&gt;&lt;/canvas&gt;
+&lt;div class="gem-reward__title"&gt;Rock Solid Goals&lt;/div&gt;
+&lt;div class="gem-reward__capsule"&gt;+Rs 4lakh · Beyond Target&lt;/div&gt;&lt;/div&gt;</code>
+<div class="ch-voice"><div><b>Do</b><p class="meta">One canvas with the token map. Render the cut once, recolor by token. Keep mood quarantined.</p></div><div><b>Don't</b><p class="meta">Never a second canvas per category. Never a CSS filter. Never a gem in Operate/Monitor.</p></div></div>
 </details>
 </section>
 </div>

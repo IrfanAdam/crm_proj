@@ -50,4 +50,11 @@ document.addEventListener('ds:doc',()=>{
 const h=location.hash.slice(1);
 if(h&&h!==dsSubSeen&&document.getElementById(h)){dsSubSeen=h;dsSub(h);}
 });
+window.addEventListener('hashchange',()=>{
+const h=location.hash.slice(1);
+if(!h)return;
+if(document.getElementById(h)&&h!==dsSubSeen){dsSubSeen=h;dsSub(h);return;}
+const p=h.split('-')[0];
+if(document.querySelector('[data-panel="'+p+'"]'))dsTab(p);
+});
 dsSubnavBuild();
