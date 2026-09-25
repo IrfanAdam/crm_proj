@@ -4,6 +4,8 @@
 // — pauses so the stone freezes for inspection. Release: hold the pose HOLD ms, then ease back to — 
 // — the grab pose and resume the spin from the same angle (never a jump). —
 // — Pointer tracking also feeds the resting tilt (GEM_DRAG.at). Reduced motion has no loop, so no drag. —
+// — Click guard: a release after >6px of travel swallows the click (capture phase) so a drag-to-inspect —
+// — never triggers the card's fullscreen overlay; a clean tap still opens it. —
 // Export map: GEM_DRAG.at · GEM_DRAG.apply(rig, now, dt) → true when it posed the rig this frame
 (function () {
 const api = { at: null, hold: 1200, k: 0.011 };
@@ -19,7 +21,7 @@ const cv = e.target && e.target.closest ? e.target.closest('canvas[data-gem]') :
 if (!cv) return;
 const rig = rigOf(cv);
 if (!rig || !rig.group) return;
-rig.drag = { y0: rig.group.rotation.y, x0: rig.group.rotation.x, dx: 0, dy: 0, px: e.clientX, py: e.clientY, held: true, released: 0, settle: false };
+rig.drag = { y0: rig.group.rotation.y, x0: rig.group.rotation.x, dx: 0, dy: 0, px: e.clientX, py: e.clientY, moved: 0, held: true, released: 0, settle: false };
 try { cv.setPointerCapture(e.pointerId); } catch (err) { /* synthetic or lost pointer — drag still tracks */ }
 };
 const moveDrag = function (e) {
@@ -29,6 +31,7 @@ if (!list) return;
 list.forEach(function (r) {
 const d = r.drag;
 if (!d || !d.held) return;
+d.moved += Math.abs(e.clientX - d.px) + Math.abs(e.clientY - d.py);
 d.dx += (e.clientX - d.px) * api.k;
 d.dy += (e.clientY - d.py) * api.k;
 d.px = e.clientX;
@@ -39,7 +42,7 @@ const endDrag = function () {
 const list = rigs();
 if (!list) return;
 list.forEach(function (r) {
-if (r.drag && r.drag.held) { r.drag.held = false; r.drag.released = performance.now(); }
+if (r.drag && r.drag.held) { r.drag.held = false; r.drag.released = performance.now(); if (r.drag.moved > 6) api.suppressAt = performance.now(); }
 });
 };
 api.apply = function (rig, now, dt) {
@@ -60,5 +63,12 @@ window.addEventListener('pointerdown', startDrag, { passive: true });
 window.addEventListener('pointermove', moveDrag, { passive: true });
 window.addEventListener('pointerup', endDrag, { passive: true });
 window.addEventListener('pointercancel', endDrag, { passive: true });
+window.addEventListener('click', function (e) {
+if (api.suppressAt && performance.now() - api.suppressAt < 500) {
+api.suppressAt = 0;
+e.stopPropagation();
+e.preventDefault();
+}
+}, true);
 window.GEM_DRAG = api;
 })();
