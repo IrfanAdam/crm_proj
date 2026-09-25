@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T19:13:57.017Z",
+  "generated": "2026-09-25T06:49:48.217Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,30 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "b3d2bbc",
+      "full": "b3d2bbc1d2a9b921af29257d29ca1c78dec8976c",
+      "date": "2026-09-25",
+      "subject": "feat(ds): gemreward docs — one live gem card + category pills (was six cards; mounted rigs 11 -> 6)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "d3402ce",
+      "full": "d3402ce26a47192c46922e248d9a9d2a8689a159",
+      "date": "2026-09-25",
+      "subject": "refactor(ds): gem — extract the dispersion chunk into gem-shader.js (readable GLSL, no packed line)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "1de4827",
+      "full": "1de48278ad2dbc228b391587eec3960d808e9f42",
+      "date": "2026-09-25",
+      "subject": "chore(ds): regen manifest after zoning + absorption tune",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "490d7f8",
       "full": "490d7f8091192b2cc328bf732768c8b011271b96",
