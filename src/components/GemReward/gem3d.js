@@ -2,13 +2,13 @@
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · canvas mount + motion (Task 22).
 // — Color: category token → getComputedStyle; no CSS filter recolors the canvas any more —
 // — Motion: dt-based spin + float + pointer tilt, eased, no per-frame allocation; paused offscreen, —
-// — hidden tab, reduced motion (one static frame) · Degrade: no THREE → GEM_FALLBACK.paint paints it —
+// — hidden tab, reduced motion (one static frame) · Drag: gem-drag.js owns the pointer (drag-to-inspect) —
+// — Degrade: no THREE → GEM_FALLBACK.paint paints it —
 // Export map: mounts canvas[data-gem] on boot · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) demo backdrop · GEM3D.restage() rebuilds stage backdrop.
 (function () {
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rigs = [];
-const ptr = { at: null };
 let demoBg = null;
 const css = function (name) {
 return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -48,8 +48,10 @@ const dt = Math.min((now - rig.last) / 1000 || 0, 0.05);
 rig.last = now;
 size();
 if (!rig.vis || document.hidden || !canvas.offsetParent) return;
+if (window.GEM_DRAG && window.GEM_DRAG.apply(rig, now, dt)) { renderer.render(rig.scene, rig.camera); return; }
+const at = window.GEM_DRAG && window.GEM_DRAG.at;
 const box = canvas.getBoundingClientRect();
-if (ptr.at && box.width > 1) rig.tiltT = Math.max(-1, Math.min(1, ((ptr.at.clientX - box.left) / box.width - 0.5) * 2)) * 0.14;
+if (at && box.width > 1) rig.tiltT = Math.max(-1, Math.min(1, ((at.clientX - box.left) / box.width - 0.5) * 2)) * 0.14;
 rig.t += dt;
 rig.tilt += (rig.tiltT - rig.tilt) * (1 - Math.pow(0.0005, dt));
 rig.group.rotation.y = rig.cat.spin * rig.t * 0.9;
@@ -88,9 +90,6 @@ const boot = function () { document.querySelectorAll('canvas[data-gem]').forEach
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
 else boot();
 document.addEventListener('ds:doc', boot);
-window.addEventListener('pointermove', function (e) {
-ptr.at = e;
-}, { passive: true });
 if (window.MutationObserver) new MutationObserver(function (list) {
 list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });
 }).observe(document.body, { childList: true, subtree: true });
