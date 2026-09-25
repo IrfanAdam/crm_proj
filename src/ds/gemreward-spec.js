@@ -9,7 +9,8 @@ root.dataset.gemSpecDone = "1";
 const card = root.querySelector("[data-gemspec-card]");
 const pills = root.querySelector("[data-gemspec-pills]");
 if (!card || !pills) return;
-function show(cat, capsule) {
+function show(p) {
+const cat = p.dataset.gemspecCat;
 card.className = "gem-reward gem-reward--" + cat;
 const cv = card.querySelector("canvas[data-gem]");
 if (cv.dataset.gem !== cat) {
@@ -22,8 +23,13 @@ nu.setAttribute("role", "img");
 nu.setAttribute("aria-label", cat + " gem ceremony");
 cv.replaceWith(nu);
 }
-const cap = card.querySelector(".gem-reward__capsule");
-if (cap && capsule) cap.textContent = capsule;
+const swap = function (sel, val) {
+const el = card.querySelector(sel);
+if (el && val) el.textContent = val;
+};
+swap(".gem-reward__capsule", p.dataset.gemspecCapsule);
+swap(".gem-reward__title", p.dataset.gemspecTitle);
+swap(".gem-reward__copy", p.dataset.gemspecCopy);
 }
 pills.addEventListener("click", function (e) {
 const p = e.target.closest("[data-gemspec-cat]");
@@ -31,7 +37,7 @@ if (!p) return;
 Array.from(pills.querySelectorAll("[data-gemspec-cat]")).forEach(function (b) {
 b.classList.toggle("is-on", b === p);
 });
-show(p.dataset.gemspecCat, p.dataset.gemspecCapsule);
+show(p);
 });
 }
 function gemSpecBoot() {
