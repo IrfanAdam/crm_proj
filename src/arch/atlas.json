@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-25T07:20:51.615Z",
+    "generatedAt": "2026-09-25T09:02:50.769Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -44,13 +44,13 @@
       "src/components/Textarea": 1790164876031,
       "src/components/Timeline": 1790164774821,
       "src/components/Toolbar": 1790164696780,
-      "index.html": 1790320842687,
+      "index.html": 1790324958302,
       "src/glass/BottomDock.jsx": 1790063779559,
       "src/patterns/ActivityStrip": 1790154536081,
       "src/patterns/EmptyState": 1790097746429,
       "src/patterns/MonitorScreen": 1789570118710,
       "src/patterns/OperateScreen": 1789627036004,
-      "src/patterns/OppsHome": 1790320841728,
+      "src/patterns/OppsHome": 1790326757201,
       "src/patterns/ReportsMatrix": 1789570122013
     }
   },

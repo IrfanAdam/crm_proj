@@ -20,7 +20,9 @@ nu.dataset.gem = cat;
 nu.width = cv.width;
 nu.height = cv.height;
 nu.setAttribute("role", "img");
-nu.setAttribute("aria-label", cat + " gem ceremony");
+nu.setAttribute("aria-label", cat + " gem ceremony. Activate to open fullscreen.");
+nu.tabIndex = 0;
+nu.dataset.overlayTarget = "gem-screen";
 cv.replaceWith(nu);
 }
 const swap = function (sel, val) {
@@ -31,6 +33,27 @@ swap(".gem-reward__capsule", p.dataset.gemspecCapsule);
 swap(".gem-reward__title", p.dataset.gemspecTitle);
 swap(".gem-reward__copy", p.dataset.gemspecCopy);
 }
+const screen = root.querySelector("[data-gemscreen-stage]");
+function openScreen() {
+const stage = root.querySelector("[data-gemscreen-stage]");
+if (!stage) return;
+const active = pills.querySelector(".is-on") || pills.querySelector("[data-gemspec-cat]");
+const cat = active.dataset.gemspecCat;
+stage.querySelectorAll("canvas").forEach(function (c) { c.remove(); });
+const nu = document.createElement("canvas");
+nu.className = "gem-reward__spline gem-screen__canvas";
+nu.dataset.gem = cat;
+nu.setAttribute("role", "img");
+nu.setAttribute("aria-label", cat + " gem fullscreen");
+stage.appendChild(nu);
+const title = root.querySelector("[data-gemscreen-title]");
+if (title) title.textContent = active.dataset.gemspecTitle;
+const cap = root.querySelector("[data-gemscreen-capsule]");
+if (cap) cap.textContent = active.dataset.gemspecCapsule;
+}
+card.addEventListener("click", function (e) {
+if (e.target.closest("canvas[data-gem]")) openScreen();
+});
 pills.addEventListener("click", function (e) {
 const p = e.target.closest("[data-gemspec-cat]");
 if (!p) return;

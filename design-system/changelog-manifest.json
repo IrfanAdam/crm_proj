@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25T07:14:42.265Z",
+  "generated": "2026-09-25T08:59:44.290Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,30 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "ad3e489",
+      "full": "ad3e4894af9694f00f41ead2e03b73f71a54921d",
+      "date": "2026-09-25",
+      "subject": "chore(ds): regen atlas manifest (gemreward + oppshome sources changed)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "fcadb75",
+      "full": "fcadb7563bf8d67c7c0d80a81754174e50ae9a70",
+      "date": "2026-09-25",
+      "subject": "fix(ds): gem drag swallows the click after a real drag (>6px) so drag-to-inspect never triggers the card's fullscreen overlay",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "0c19b68",
+      "full": "0c19b68673b6846464df85d21feb44652f4e65ac",
+      "date": "2026-09-25",
+      "subject": "chore(ds): regen manifest after gem drag",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "46eee9f",
       "full": "46eee9fac8aa2e5427537f5314a8b1060eb12bb6",
@@ -2072,10 +2096,20 @@
     }
   ],
   "wip": [
+    "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-reward.css",
     "M src/components/Overlay/overlay-base.css",
     "M src/components/Overlay/overlay-dialog.css",
     "M src/ds/gemreward-spec.js",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/patterns/OppsHome/opps-home.js",
+    "?? prototype/gems/hero-gem.png",
     "?? prototype/gems/hero_floor.py",
-    "?? prototype/gems/hero_render.py"
+    "?? prototype/gems/hero_render.py",
+    "?? src/patterns/OppsHome/reward-sheet.css",
+    "?? src/patterns/OppsHome/reward-sheet.js"
   ]
 }

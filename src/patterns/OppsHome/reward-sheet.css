@@ -1,0 +1,37 @@
+/* ADAM/PAGE — src/patterns/OppsHome/reward-sheet.css · peak-bar reward sheet */
+/* Export map: .reward-sheet · __scrim · __panel · __win · __layer · __close · __card */
+/* Mirrors nearby-sheet.css: same clip-window morph contract (see sheet-morph.js) */
+.reward-sheet{position:absolute;inset:0;z-index:8}
+.reward-sheet[hidden]{display:none}
+.reward-sheet__scrim{position:absolute;inset:0;background:var(--achievement-overlay-bg)}
+.reward-sheet__panel{position:absolute;inset:0;overflow:hidden}
+.reward-sheet__win{position:absolute;overflow:hidden}
+.reward-sheet__win{box-shadow:0 0 0 1px rgba(255,255,255,var(--win-ring,0)),0 12px 44px rgba(15,16,21,var(--win-sh,0))} /* lint-allow: morph window — dynamic alpha via var */
+.reward-sheet__layer{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--spacing-4);padding:24px var(--spacing-4) 88px;background:var(--bg-surface)}
+.reward-sheet__layer .gem-reward{position:relative;border:none;background:transparent;box-shadow:none;max-width:340px;width:100%;padding:0;display:flex;flex-direction:column;align-items:center;gap:var(--spacing-3)}
+.reward-sheet__layer .gem-reward__spline{width:100%;height:min(44vh,320px);max-height:340px}
+/* — serialised ceremony: sheet window grows first (morph), then gem scales in, then skeleton cross-fades to text — */
+.gem-stage{width:100%;opacity:0;transform:scale(0.88);will-change:transform,opacity;transition:opacity 380ms cubic-bezier(.16,1,.3,1),transform 520ms cubic-bezier(.16,1,.3,1)}
+.reward-sheet.is-gem-in .gem-stage{opacity:1;transform:scale(1)}
+.gem-reward__text{display:flex;flex-direction:column;align-items:center;gap:var(--spacing-2);opacity:0;transform:translateY(10px);will-change:transform,opacity;transition:opacity 320ms cubic-bezier(.16,1,.3,1) 40ms,transform 420ms cubic-bezier(.16,1,.3,1) 40ms}
+.reward-sheet.is-text-in .gem-reward__text{opacity:1;transform:translateY(0)}
+.reward-sheet__skeleton{position:absolute;left:var(--spacing-4);right:var(--spacing-4);bottom:var(--spacing-3);display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:8px;opacity:1;transition:opacity 200ms ease;pointer-events:none}
+.reward-sheet__skeleton-bar{display:block;height:10px;border-radius:var(--radius-full);background:var(--bg-muted);opacity:0.9}
+.reward-sheet__skeleton-bar--capsule{height:18px;border-radius:var(--radius-full);background:var(--bg-interactive)}
+.reward-sheet__skeleton-bar--copy{height:8px;opacity:0.7}
+.reward-sheet__skeleton-bar{animation:skeleton-pulse 1100ms ease-in-out infinite alternate}
+@keyframes skeleton-pulse{from{opacity:0.55}to{opacity:1}}
+.reward-sheet.is-text-in .reward-sheet__skeleton{opacity:0}
+@media (prefers-reduced-motion: reduce){.gem-stage,.gem-reward__text,.reward-sheet__skeleton{transition:none;animation:none}.gem-stage{opacity:1;transform:none}.gem-reward__text{opacity:1;transform:none}}
+
+.reward-sheet__close{position:absolute;top:60px;right:14px;z-index:1100;flex:0 0 auto;width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface-glass);border:1px solid color-mix(in srgb, white 24%, transparent);color:var(--text-primary);font-size:16px;cursor:pointer;box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42);backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate))} /* lint-allow: glass chrome */
+.reward-sheet__close:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.reward-sheet__card{position:absolute;z-index:1100;left:12px;right:12px;bottom:12px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:max(var(--radius-xl),calc(var(--display-r) - var(--radius-md)));corner-shape:squircle;-webkit-corner-shape:squircle;box-shadow:var(--shadow-md);padding:8px 12px 12px;will-change:transform,opacity}
+.reward-sheet__handle{display:block;width:36px;height:4px;border-radius:var(--radius-full);background:var(--border-medium);margin:0 auto 8px}
+.reward-sheet__head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.reward-sheet__head b{display:block;font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--text-primary)}
+.reward-sheet__head i{display:block;font-style:normal;font-size:var(--font-size-xs);color:var(--text-muted);margin-top:2px}
+.activity-strip__bar[role="button"]{cursor:pointer;transition:transform 120ms ease}
+.activity-strip__bar[role="button"]:hover{transform:translateY(-1px)}
+.activity-strip__bar[role="button"]:active{transform:scale(0.96)}
+.activity-strip__bar[role="button"]:focus-visible{outline:var(--focus-ring);outline-offset:2px;border-radius:var(--radius-full)}

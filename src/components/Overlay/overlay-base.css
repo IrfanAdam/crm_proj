@@ -32,6 +32,9 @@
 .overlay--bottom {
   align-items: flex-end;
 }
+.overlay--screen {
+  padding: 0;
+}
 .overlay :focus-visible {
   outline: var(--focus-ring);
   outline-offset: 2px;

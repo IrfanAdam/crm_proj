@@ -40,6 +40,11 @@
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
 }
+.gem-screen__canvas {
+  display: block;
+  width: min(100%, 720px);
+  height: min(58dvh, 480px);
+}
 .gem-reward__capsule {
   padding: var(--spacing-2) var(--spacing-4);
   background: var(--primitive-amethyst-100);

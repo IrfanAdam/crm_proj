@@ -28,6 +28,19 @@
 .overlay__content--full {
   max-width: calc(100% - var(--spacing-8));
 }
+.overlay__content--screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  border-radius: 0;
+  overflow: auto;
+}
 .overlay__header {
   display: flex;
   align-items: center;
