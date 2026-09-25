@@ -50,7 +50,7 @@ m.thickness = 0.9;
 m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.15);
 m.attenuationDistance = 0.6;
 m.onBeforeCompile = function (s) {
-if (window.GEM_ENV && window.GEM_ENV.dispersion) s.fragmentShader = window.GEM_ENV.dispersion(s.fragmentShader);
+if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader);
 };
 }
 return m;
