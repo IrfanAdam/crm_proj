@@ -66,6 +66,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         app: resolve(__dirname, 'app.html'),
         gallery: resolve(__dirname, 'gallery.html'),
+        pitch: resolve(__dirname, 'pitch.html'),
         preview: resolve(__dirname, 'preview.html'),
       },
     },

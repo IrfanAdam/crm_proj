@@ -1,0 +1,75 @@
+/* ADAM/PAGE — src/pitch/pitch-footer.css · footer strip + pitches */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── FOOTER ── */
+  .footer-strip {
+    background: var(--foot-bg);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .f-label {
+    font-family: var(--font-family-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--foot-muted);
+    margin-bottom: 1rem;
+  }
+  .f-line {
+    font-family: var(--font-family-sans);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--primitive-amethyst-100);
+    line-height: 1.1;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+  }
+  .f-line span {
+    background: linear-gradient(120deg, var(--primitive-amethyst-300), var(--primitive-citrine-300));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .alt-liners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .alt-liner {
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--primitive-amethyst-700);
+    border-radius: var(--radius-md);
+    font-size: 0.82rem;
+    color: var(--foot-muted);
+  }
+  .f-pitches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  @media (max-width: 640px) { .f-pitches { grid-template-columns: 1fr; } }
+
+  .f-pitch {
+    border: 1px solid var(--primitive-amethyst-700);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem;
+  }
+  .f-pitch-label {
+    font-family: var(--font-family-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primitive-amethyst-300);
+    margin-bottom: 0.9rem;
+  }
+  .f-pitch p {
+    font-size: 0.88rem;
+    color: var(--foot-text);
+    line-height: 1.78;
+  }
+

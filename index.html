@@ -5,7 +5,7 @@
 <title>ALPHA CRM — Prototype</title>
 <link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="src/components/TabBar/tabbar.css"/><link rel="stylesheet" href="src/components/Toolbar/toolbar.css"/><link rel="stylesheet" href="src/glass/dock-lens.css"/><link rel="stylesheet" href="src/components/Avatar/avatar.css"/><link rel="stylesheet" href="src/components/OpportunityCard/opportunity-card.css"/><link rel="stylesheet" href="src/patterns/OppsHome/opps-home.css"/><link rel="stylesheet" href="src/patterns/ActivityStrip/activity-strip.css"/><link rel="stylesheet" href="src/patterns/EmptyState/empty-state.css"/><link rel="stylesheet" href="src/patterns/OppsHome/nearby-sheet.css"/>
 <link rel="stylesheet" href="src/patterns/OppsHome/reward-sheet.css"/>
-<link rel="stylesheet" href="src/components/GemReward/gem-reward.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/shell/shell.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="src/styles/mechanics.css"/><link rel="stylesheet" href="src/arch/atlas.css"/><link rel="stylesheet" href="src/arch/atlas-nodes.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+<link rel="stylesheet" href="src/components/GemReward/gem-reward.css"/><link rel="stylesheet" href="app.css"/><link rel="stylesheet" href="src/os/status-bar.css"/><link rel="stylesheet" href="src/os/home-indicator.css"/><link rel="stylesheet" href="src/os/edge-material.css"/><link rel="stylesheet" href="src/device/frame.css"/><link rel="stylesheet" href="src/shell/shell.css"/><link rel="stylesheet" href="src/workspace/workspace.css"/><link rel="stylesheet" href="src/workspace/mobile-fullscreen.css"/><link rel="stylesheet" href="src/pitch/pitch-overlay.css"/><link rel="stylesheet" href="src/styles/mechanics.css"/><link rel="stylesheet" href="src/arch/atlas.css"/><link rel="stylesheet" href="src/arch/atlas-nodes.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 </head><body>
 <div class="workspace">
   <aside class="ws-controls" aria-label="Canvas controls">
@@ -41,7 +41,7 @@
       </div>
       <div class="ws-card ws-card--muted">
         <p class="stage__hint">Center frame = the app (portable architecture — same markup/styles port to any framework). Native chrome is shell-only, not DS logic.</p>
-        <a class="side-link" href="gallery.html">DS Gallery →</a>
+        <a class="side-link" href="gallery.html">DS Gallery →</a> · <a class="side-link" href="pitch.html" data-open-pitch>Pitch →</a>
       </div>
     </div>
     <div id="ws-arch-stack" hidden>
@@ -55,7 +55,7 @@
       <div class="ws-card">
         <h3 class="ws-card__title">Architecture</h3>
         <p class="ws-card__desc">Portable shell — same markup/styles port to any framework. Tokens are single-source, Glass islands wrap chrome.</p>
-        <a class="side-link" href="gallery.html">DS Gallery →</a>
+        <a class="side-link" href="gallery.html">DS Gallery →</a> · <a class="side-link" href="pitch.html" data-open-pitch>Pitch →</a>
       </div>
       <div class="ws-card ws-card--muted">
         <p class="stage__hint">Right panel is the scheme-level Architecture Canvas — pick a lens left, read connectors right. <strong>Decisions</strong> constrains targets (governs), <strong>Schema</strong> shows entity→field→category (contains/governs), <strong>Logic</strong> shows state machines + NEXT chain (signal/governs). Manifest freshness self-checked by <code>verify:mechanics</code>.</p>
@@ -86,5 +86,6 @@
     </div>
   </div>
 </div>
+<div id="pitch-overlay" class="pitch-overlay" hidden role="dialog" aria-modal="true" aria-label="AlphaGems positioning pitch"><div class="pitch-overlay__bar"><span class="pitch-overlay__title">Positioning Bible</span><button id="pitch-close" class="pitch-overlay__close" aria-label="Close pitch">✕</button></div><iframe id="pitch-frame" class="pitch-overlay__frame" data-src="pitch.html" title="AlphaGems — Positioning Bible"></iframe></div>
 <button id="exit-fullscreen" aria-label="Back to workspace">✕ Exit</button>
-<script type="module" src="./src/arch/atlas.js"></script><script type="module" src="./src/os/status-bar.js"></script><script type="module" src="./src/workspace/canvas.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script><script src="src/components/GemReward/gem-cut.js"></script><script src="src/components/GemReward/gem-env.js"></script><script src="src/components/GemReward/gem-shader.js"></script><script src="src/components/GemReward/gem-textures.js"></script><script src="src/components/GemReward/gem-scene.js"></script><script src="src/components/GemReward/gem-drag.js"></script><script src="src/components/GemReward/gem-fallback.js"></script><script src="src/components/GemReward/gem3d.js"></script><script type="module" src="./src/patterns/OppsHome/opps-home.js"></script><script type="module" src="./src/workspace/mobile-fullscreen.js"></script><script type="module" src="./src/glass/main.jsx"></script><script type="module" src="./src/workspace/slowmo.js"></script></body></html>
+<script type="module" src="./src/arch/atlas.js"></script><script type="module" src="./src/os/status-bar.js"></script><script type="module" src="./src/workspace/canvas.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script><script src="src/components/GemReward/gem-cut.js"></script><script src="src/components/GemReward/gem-env.js"></script><script src="src/components/GemReward/gem-shader.js"></script><script src="src/components/GemReward/gem-textures.js"></script><script src="src/components/GemReward/gem-scene.js"></script><script src="src/components/GemReward/gem-drag.js"></script><script src="src/components/GemReward/gem-fallback.js"></script><script src="src/components/GemReward/gem3d.js"></script><script src="src/pitch/pitch-overlay.js"></script><script type="module" src="./src/patterns/OppsHome/opps-home.js"></script><script type="module" src="./src/workspace/mobile-fullscreen.js"></script><script type="module" src="./src/glass/main.jsx"></script><script type="module" src="./src/workspace/slowmo.js"></script></body></html>

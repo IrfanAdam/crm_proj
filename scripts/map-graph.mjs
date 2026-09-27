@@ -17,7 +17,7 @@ for(const f of files){
   }
 }
 // orphan = no edges either way and not an HTML-loaded entry (roots like main.jsx/canvas.js enter via <script>)
-const html=fs.readFileSync(join(root,'index.html'),'utf8')+fs.readFileSync(join(root,'gallery.html'),'utf8');
+const html=fs.readFileSync(join(root,'index.html'),'utf8')+fs.readFileSync(join(root,'gallery.html'),'utf8')+fs.readFileSync(join(root,'pitch.html'),'utf8');
 const orphans=files.filter(f=>incoming[f]===0 && !edges.some(([a])=>a===f) && !html.includes(basename(f).replace(/\.(m?js|jsx)$/,'')));
 // cycle check (DFS on internal edges)
 const adj={}; for(const f of files) adj[f]=[];

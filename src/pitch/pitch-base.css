@@ -1,0 +1,59 @@
+/* ADAM/PAGE — src/pitch/pitch-base.css · tokens, body, divider, mobile padding */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  :root {
+    --violet:      var(--primitive-amethyst-500);
+    --violet-mid:  var(--primitive-amethyst-400);
+    --violet-pale: var(--primitive-amethyst-100);
+    --violet-xs:   var(--primitive-amethyst-50);
+    --ink:         var(--primitive-ink);
+    --ink-2:       var(--text-secondary);
+    --ink-3:       var(--text-muted);
+    --rule:        var(--primitive-amethyst-100);
+    --bg:          var(--bg-primary);
+    --white:       var(--primitive-gray-white);
+    --red-dot:     var(--primitive-red-beryl-500);
+    --gold-dot:    var(--primitive-citrine-500);
+    --foot-bg:     var(--primitive-amethyst-900);
+    --foot-text:   var(--primitive-amethyst-200);
+    --foot-muted:  var(--primitive-amethyst-300);
+    --radius:      var(--radius-lg);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-family-sans);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* highlight — colour only, no weight change */
+  .hl { color: var(--ink); }
+  .hl-foot { color: var(--primitive-amethyst-100); }
+
+  .divider { border: none; border-top: 1px solid var(--rule); }
+
+/* ADAM/PAGE — src/pitch/pitch-base.css · tokens, body, divider, mobile padding */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── MOBILE PADDING OVERRIDES ── */
+  @media (max-width: 640px) {
+    .masthead      { padding: 1.25rem 1rem 0; }
+    .brand-hero    { padding: 2.5rem 1rem 2rem; }
+    .section       { padding: 2.5rem 1rem; }
+    .footer-strip  { padding: 3rem 1rem; }
+    .theme-block   { padding: 1.2rem 1.2rem; }
+    .insight-card,
+    .pos-card,
+    .icp-card,
+    .f-pitch       { padding: 1.1rem; }
+  }
+  .pitch-loading {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+  }
+

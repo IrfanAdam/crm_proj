@@ -1,0 +1,36 @@
+/* ADAM/PAGE — src/pitch/pitch-spine.css · story spine */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── STORY SPINE ── */
+  .spine { display: grid; gap: 0; }
+  .spine-step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 0.6rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .spine-step:last-child { border-bottom: none; }
+  .step-n {
+    font-family: var(--font-family-sans);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--rule);
+    line-height: 1;
+    padding-top: 0.15rem;
+  }
+  .step-body h4 {
+    font-family: var(--font-family-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--violet-mid);
+    margin-bottom: 0.4rem;
+  }
+  .step-body p {
+    font-size: 0.92rem;
+    color: var(--ink-3);
+    line-height: 1.75;
+  }
+

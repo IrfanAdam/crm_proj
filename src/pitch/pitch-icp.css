@@ -1,0 +1,69 @@
+/* ADAM/PAGE — src/pitch/pitch-icp.css · icp grid + mobile carousel wrap */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── ICP MOBILE CAROUSEL ── */
+  .icp-carousel-wrap {
+    display: none;
+  }
+  .icp-cards-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 1rem 0.5rem 0;
+  }
+  .icp-cards-track::-webkit-scrollbar { display: none; }
+  .icp-cards-track .icp-card {
+    flex: 0 0 82vw;
+    max-width: 340px;
+    scroll-snap-align: start;
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 760px) {
+    .icp-grid { display: none !important; }
+    .icp-carousel-wrap { display: block; margin-right: -1rem; }
+  }
+  /* ── ICP ── */
+  .icp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  @media (max-width: 640px) { .icp-grid { grid-template-columns: 1fr; } }
+
+  .icp-card {
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 1.6rem;
+  }
+  .icp-card h3 {
+    font-family: var(--font-family-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .icp-card .role {
+    font-size: 0.74rem;
+    color: var(--ink-3);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+  }
+  .icp-card p {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    line-height: 1.68;
+  }
+  .icp-card .goal {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--violet);
+    font-style: italic;
+    font-weight: 500;
+  }
+

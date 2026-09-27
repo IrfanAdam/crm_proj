@@ -1,0 +1,57 @@
+/* ADAM/SHARED — src/pitch/pitch-overlay.css · fullscreen pitch overlay */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · bar + frame, DS tokens only. */
+/* Export map: .pitch-overlay shell · bar/title/close · full-bleed frame. */
+/* — Shell: fixed fullscreen layer above workspace — */
+.pitch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-modal);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+.pitch-overlay[hidden] {
+  display: none;
+}
+/* — Bar: title left (Positioning Bible), close right — */
+.pitch-overlay__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 var(--spacing-4);
+  flex: none;
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-bottom: var(--border-width-hairline) solid var(--border-default);
+}
+.pitch-overlay__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-tracking-wide);
+  color: var(--text-secondary);
+}
+.pitch-overlay__close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: var(--border-width-hairline) solid var(--border-default);
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+}
+/* — Frame: pitch fills everything under the bar — */
+.pitch-overlay__frame {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border: 0;
+  background: var(--bg-primary);
+}
+/* — Lock workspace scroll while open — */
+body.pitch-open {
+  overflow: hidden;
+}

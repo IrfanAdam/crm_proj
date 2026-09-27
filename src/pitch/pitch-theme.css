@@ -1,0 +1,85 @@
+/* ADAM/PAGE — src/pitch/pitch-theme.css · section shell + theme blocks + insight trio */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── SECTION ── */
+  .section {
+    padding: 4.5rem 2rem;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-family-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--violet-mid);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-family-sans);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.18;
+    margin-bottom: 1.6rem;
+  }
+
+  /* ── THEME BLOCKS ── */
+  .theme-block {
+    border-radius: var(--radius-lg);
+    background: var(--violet-xs);
+    border-left: 3px solid var(--violet);
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .theme-block .theme-title {
+    font-family: var(--font-family-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--violet);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .theme-block p {
+    font-size: 0.93rem;
+    color: var(--ink-3);
+    line-height: 1.78;
+  }
+
+  /* ── INSIGHT TRIO ── */
+  .insight-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 720px) { .insight-trio { grid-template-columns: 1fr; } }
+
+  .insight-card {
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 1.6rem;
+  }
+  .insight-card .num {
+    font-family: var(--font-family-sans);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--violet-pale);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .insight-card h4 {
+    font-family: var(--font-family-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .insight-card p {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    line-height: 1.65;
+  }
+

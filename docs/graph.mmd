@@ -40,6 +40,7 @@ graph TD
     patterns_OppsHome_nearby-sheet[nearby-sheet.js]
     patterns_OppsHome_opps-home[opps-home.js]
     patterns_OppsHome_pill-expand[pill-expand.js]
+    patterns_OppsHome_reward-sheet[reward-sheet.js]
     patterns_OppsHome_sheet-morph[sheet-morph.js]
     patterns_ReportsMatrix_reports-matrix[reports-matrix.js]
   end
@@ -52,10 +53,13 @@ graph TD
   subgraph components
     components_Button_button[button.js]
     components_GemReward_gem-cut[gem-cut.js]
+    components_GemReward_gem-drag[gem-drag.js]
     components_GemReward_gem-env[gem-env.js]
     components_GemReward_gem-fallback[gem-fallback.js]
     components_GemReward_gem-reward[gem-reward.js]
     components_GemReward_gem-scene[gem-scene.js]
+    components_GemReward_gem-shader[gem-shader.js]
+    components_GemReward_gem-textures[gem-textures.js]
     components_GemReward_gem3d[gem3d.js]
     components_Icon_Icon[Icon.jsx]
     components_Overlay_overlay-behavior[overlay-behavior.js]
@@ -109,6 +113,7 @@ graph TD
   ds_labs --> ds_goalbar-lab
   ds_labs --> ds_funnelglyph-lab
   ds_labs --> ds_gemreward-lab
+  ds_labs --> ds_gemreward-spec
   ds_specimens_markup --> ds_code-highlight
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
@@ -166,11 +171,15 @@ graph TD
   patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-map
   patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-sheet
   patterns_OppsHome_opps-home --> patterns_ActivityStrip_activity-strip
+  patterns_OppsHome_opps-home --> patterns_OppsHome_reward-sheet
   patterns_OppsHome_opps-home --> patterns_EmptyState_empty-state
   patterns_OppsHome_pill-expand --> patterns_OppsHome_nearby-map
   patterns_OppsHome_pill-expand --> patterns_OppsHome_morph-timing
   patterns_OppsHome_pill-expand --> patterns_OppsHome_face-handoff
   patterns_OppsHome_pill-expand --> logic_time-scale
+  patterns_OppsHome_reward-sheet --> patterns_ActivityStrip_activity-strip
+  patterns_OppsHome_reward-sheet --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_reward-sheet --> patterns_OppsHome_sheet-morph
   patterns_OppsHome_sheet-morph --> patterns_OppsHome_morph-timing
   patterns_OppsHome_sheet-morph --> logic_time-scale
   shell_top-pills --> glass_optics

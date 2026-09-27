@@ -1,0 +1,66 @@
+/* ADAM/PAGE — src/pitch/pitch-filter.css · filter bar + table/carousel visibility */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+  }
+  .filter-tag {
+    font-family: var(--font-family-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--rule);
+    background: var(--white);
+    color: var(--ink-3);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .filter-tag:hover {
+    border-color: var(--violet);
+    color: var(--violet);
+  }
+  .filter-tag.active {
+    background: var(--violet);
+    border-color: var(--violet);
+    color: var(--primitive-gray-white);
+  }
+  .filter-tag.active::after {
+    content: ' ×';
+    font-size: 0.82rem;
+    opacity: 0.8;
+    margin-left: 0.1rem;
+  }
+  .filter-tag[data-filter="all"].active::after {
+    content: '';
+  }
+
+  /* ── DESKTOP TABLE / MOBILE CAROUSEL VISIBILITY ── */
+  .desktop-table  { display: block; }
+  .mobile-carousel { display: none; }
+
+  @media (max-width: 760px) {
+    .desktop-table   { display: none; }
+    .mobile-carousel { display: block; }
+  }
+
+
+  /* lever as subtext inside card */
+  .pain-card .alpha-pill {
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-family-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--violet-mid);
+    margin-top: 0.25rem;
+    white-space: normal;
+  }

@@ -1,0 +1,62 @@
+/* ADAM/PAGE — src/pitch/pitch-table.css · pain table, dots, pills */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── PAIN TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    background: var(--white);
+  }
+  thead tr { background: var(--violet-xs); }
+  thead th {
+    font-family: var(--font-family-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--violet);
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+  tbody tr { border-bottom: 1px solid var(--primitive-amethyst-100); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--violet-xs); }
+  tbody td {
+    padding: 0.9rem 1.1rem;
+    color: var(--ink-3);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tbody td:first-child { color: var(--ink-2); font-weight: 500; min-width: 180px; }
+
+  .dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 0.45rem;
+    vertical-align: middle;
+  }
+  .dot-high { background: var(--red-dot); }
+  .dot-mid  { background: var(--gold-dot); }
+
+  .alpha-pill {
+    display: inline-block;
+    background: var(--violet-xs);
+    border: 1px solid var(--primitive-amethyst-200);
+    border-radius: var(--radius-md);
+    padding: 0.18rem 0.55rem;
+    font-size: 0.7rem;
+    color: var(--violet);
+    font-family: var(--font-family-sans);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  tbody td:last-child { min-width: 120px; width: 130px; }
+

@@ -1,0 +1,27 @@
+/* ADAM/PAGE — src/pitch/pitch-gem.css · hero gem card */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+  /* ── PITCH GEM (DS GemReward stone) ── */
+  .pitch-gem {
+    margin: 3rem auto 0;
+    max-width: 720px;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2rem 1.4rem;
+  }
+  .pitch-gem__canvas {
+    width: 100%;
+    height: 320px;
+    display: block;
+  }
+  .pitch-gem__cap {
+    margin-top: 0.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+  }
+  @media (max-width: 640px) {
+    .pitch-gem__canvas { height: 220px; }
+  }
+
