@@ -1,27 +1,22 @@
-/* ADAM/PAGE — src/pitch/pitch-gem.css · hero gem card */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
-  /* ── PITCH GEM (DS GemReward stone) ── */
+/* ADAM/PAGE — src/pitch/pitch-gem.css · unboxed hero gem, bled right */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · no card, backdrop stone. */
+  /* ── PITCH GEM (DS GemReward stone, part of the hero backdrop) ── */
   .pitch-gem {
-    margin: 3rem auto 0;
-    max-width: 720px;
-    text-align: center;
-    background: var(--white);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius-lg);
-    padding: 2rem 2rem 1.4rem;
+    margin: 0 -2rem 0 0;
+    min-width: 0;
   }
   .pitch-gem__canvas {
     width: 100%;
-    height: 320px;
+    height: 440px;
     display: block;
   }
   .pitch-gem__cap {
-    margin-top: 0.6rem;
+    margin-top: 0.4rem;
     font-size: 0.78rem;
     letter-spacing: 0.06em;
     color: var(--ink-3);
   }
-  @media (max-width: 640px) {
-    .pitch-gem__canvas { height: 220px; }
+  @media (max-width: 760px) {
+    .pitch-gem { margin: 0; }
+    .pitch-gem__canvas { height: 240px; }
   }
-

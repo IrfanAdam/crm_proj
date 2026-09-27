@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-position.css · positioning cards */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   /* ── POSITIONING CARDS ── */
   .pos-grid {
     display: grid;
@@ -15,7 +15,7 @@
     padding: 1.6rem;
   }
   .pos-card .pos-num {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.65rem;
     font-weight: 600;
     color: var(--violet-mid);
@@ -24,7 +24,7 @@
     margin-bottom: 0.5rem;
   }
   .pos-card h3 {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--ink);

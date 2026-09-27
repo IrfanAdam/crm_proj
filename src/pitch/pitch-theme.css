@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-theme.css · section shell + theme blocks + insight trio */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   /* ── SECTION ── */
   .section {
     padding: 4.5rem 2rem;
@@ -7,7 +7,7 @@
     margin: 0 auto;
   }
   .section-label {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -16,7 +16,7 @@
     margin-bottom: 0.5rem;
   }
   .section-title {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
     color: var(--ink);
@@ -26,14 +26,14 @@
 
   /* ── THEME BLOCKS ── */
   .theme-block {
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-none);
     background: var(--violet-xs);
     border-left: 3px solid var(--violet);
     padding: 2rem 2.2rem;
     margin-bottom: 1.5rem;
   }
   .theme-block .theme-title {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.72rem;
     font-weight: 700;
     color: var(--violet);
@@ -63,7 +63,7 @@
     padding: 1.6rem;
   }
   .insight-card .num {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 800;
     color: var(--violet-pale);
@@ -71,7 +71,7 @@
     margin-bottom: 0.8rem;
   }
   .insight-card h4 {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--ink);

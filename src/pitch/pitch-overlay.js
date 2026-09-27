@@ -1,5 +1,5 @@
 /* ADAM/SHARED — src/pitch/pitch-overlay.js · fullscreen pitch overlay */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · open/close + ?pitch link.
+// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · open/close + ?pitch link.
 // Export map: open/close overlay · Esc + ?pitch=1 deep link · lazy iframe src.
 // — Section: refs —
 var overlay = document.querySelector('#pitch-overlay');
@@ -37,3 +37,7 @@ window.addEventListener('popstate', function () {
   if (!new URL(location.href).searchParams.has(KEY)) close();
 });
 if (new URL(location.href).searchParams.get(KEY) === '1') open();
+// — Section: framed close (masthead ✕ posts from inside the iframe) —
+window.addEventListener('message', function (e) {
+  if (e.data === 'alphagems:close-pitch') close();
+});

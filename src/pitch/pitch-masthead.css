@@ -1,19 +1,31 @@
-/* ADAM/PAGE — src/pitch/pitch-masthead.css · masthead + brand hero */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
-  /* ── MASTHEAD ── */
+/* ADAM/PAGE — src/pitch/pitch-masthead.css · sticky masthead + split brand hero */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · page bar sticks, hero grid. */
+  /* ── MASTHEAD MOUNT (sticks — body-tall parent, the page bar) ── */
+  .masthead-mount {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-index-sticky);
+    background: var(--bg);
+  }
   .masthead {
-    padding: 3rem 2rem 0;
-    max-width: 1060px;
+    padding: 1.1rem 2rem;
+    max-width: 1160px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
   .masthead-brand {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 1rem;
     font-weight: 700;
     color: var(--violet);
+  }
+  .masthead-right {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
   }
   .masthead-tag {
     font-size: 0.72rem;
@@ -22,15 +34,33 @@
     text-transform: uppercase;
     font-weight: 500;
   }
-
-  /* ── BRAND HERO ── */
+  .masthead-close {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-full);
+    background: var(--white);
+    color: var(--ink);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .masthead-close[hidden] {
+    display: none;
+  }
+  /* ── BRAND HERO (copy left, gem bled right) ── */
   .brand-hero {
-    padding: 5rem 2rem 4rem;
-    max-width: 1060px;
+    padding: 4rem 2rem 4rem;
+    max-width: 1160px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: center;
   }
   .brand-eyebrow {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.22em;
@@ -39,18 +69,21 @@
     margin-bottom: 1.4rem;
   }
   .brand-headline {
-    font-family: var(--font-family-sans);
-    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -0.03em;
     color: var(--ink);
-    max-width: 820px;
   }
   .brand-headline span {
-    background: linear-gradient(120deg, var(--violet), var(--primitive-citrine-600));
+    background: linear-gradient(120deg, var(--primitive-red-beryl-400), var(--primitive-amethyst-400));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
+  @media (max-width: 760px) {
+    .masthead { padding: 0.9rem 1rem; }
+    .masthead-tag { display: none; }
+    .brand-hero { grid-template-columns: 1fr; padding: 2.5rem 1rem 2rem; }
+  }

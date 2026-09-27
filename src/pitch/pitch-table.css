@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-table.css · pain table, dots, pills */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   /* ── PAIN TABLE ── */
   .table-wrap {
     overflow-x: auto;
@@ -14,7 +14,7 @@
   }
   thead tr { background: var(--violet-xs); }
   thead th {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -24,7 +24,7 @@
     text-align: left;
     border-bottom: 1px solid var(--rule);
   }
-  tbody tr { border-bottom: 1px solid var(--primitive-amethyst-100); }
+  tbody tr { border-bottom: 1px solid var(--rule); }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--violet-xs); }
   tbody td {
@@ -43,17 +43,17 @@
     vertical-align: middle;
   }
   .dot-high { background: var(--red-dot); }
-  .dot-mid  { background: var(--gold-dot); }
+  .dot-mid  { background: var(--plum-dot); }
 
   .alpha-pill {
     display: inline-block;
     background: var(--violet-xs);
-    border: 1px solid var(--primitive-amethyst-200);
+    border: 1px solid var(--primitive-sapphire-200);
     border-radius: var(--radius-md);
     padding: 0.18rem 0.55rem;
     font-size: 0.7rem;
     color: var(--violet);
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: 0.06em;
     white-space: nowrap;

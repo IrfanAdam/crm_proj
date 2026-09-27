@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-load.js · pitch shell: fetch fragments, pain filter */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · gallery-shell pattern for pitch docs. */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · gallery-shell pattern for pitch docs. */
 // Export map: fetch [data-pitch-docs] in order · inject · init pain filter.
 // — Section: fetch + inject —
 function pitchLoad(el) {
@@ -16,6 +16,7 @@ var pitchJobs = Array.prototype.map.call(pitchMounts, pitchLoad);
 Promise.all(pitchJobs).then(function () {
   document.dispatchEvent(new Event('ds:doc'));
   initPitchFilter();
+  initFramedClose();
 });
 // — Section: pain filter (binds after inject — mounts load async) —
 function initPitchFilter() {
@@ -59,4 +60,14 @@ function initPitchFilter() {
     });
   });
   updateCount();
+}
+// — Section: framed close (masthead ✕ shows only inside the overlay iframe) —
+function initFramedClose() {
+  if (window.self === window.top) return;
+  document.querySelectorAll('[data-pitch-close]').forEach(function (btn) {
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      window.parent.postMessage('alphagems:close-pitch', '*');
+    });
+  });
 }

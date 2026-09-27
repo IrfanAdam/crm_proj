@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-carousel.css · pain mobile carousel + count */
-/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-6] · pitch theme slice. */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   /* ── CAROUSEL ── */
   .carousel-wrap {
     position: relative;
@@ -23,7 +23,7 @@
     background: var(--white);
     border: 1px solid var(--rule);
     border-left: 3px solid var(--violet);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-none);
     padding: 1.2rem;
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     margin-top: 0.35rem;
   }
   .pain-card-title {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.88rem;
     font-weight: 700;
     color: var(--ink-2);
@@ -54,7 +54,7 @@
     gap: 0.15rem;
   }
   .pc-label {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -71,7 +71,7 @@
     font-size: 0.7rem;
     color: var(--ink-3);
     margin-top: 0.75rem;
-    font-family: var(--font-family-sans);
+    font-family: var(--font-display);
     letter-spacing: 0.05em;
   }
 
