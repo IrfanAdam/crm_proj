@@ -1,5 +1,5 @@
 /* ADAM/SHARED — src/components/GemReward/gem3d.js · THREE gem mounts */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · canvas mount + motion (Task 22).
+// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards.
 // — Color: category token → getComputedStyle; no CSS filter recolors the canvas any more —
 // — Motion: dt-based spin + float + pointer tilt, eased, no per-frame allocation; paused offscreen, —
 // — hidden tab, reduced motion (one static frame) · Drag: gem-drag.js owns the pointer (drag-to-inspect) —
@@ -93,5 +93,5 @@ document.addEventListener('ds:doc', boot);
 if (window.MutationObserver) new MutationObserver(function (list) {
 list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });
 }).observe(document.body, { childList: true, subtree: true });
-window.GEM3D = { rigs: rigs, bg: function (url) { if (!THREE_) return; demoBg = url ? new THREE_.TextureLoader().load(url) : null; rigs.forEach(function (r) { if (r.scene) r.scene.background = demoBg || r.stageBg; }); }, restage: function () { rigs.forEach(function (r) { if (!r.stageBg || !window.GEM_TEXTURES || !window.GEM_TEXTURES.stage) return; r.stageBg.dispose(); r.stageBg = window.GEM_TEXTURES.stage(r.canvas); if (!demoBg) r.scene.background = r.stageBg; }); } };
+window.GEM3D = { rigs: rigs, bg: function (url) { if (!THREE_) return; demoBg = url ? new THREE_.TextureLoader().load(url) : null; rigs.forEach(function (r) { if (r.scene) r.scene.background = demoBg || (r.canvas.dataset.gemStage === 'off' ? null : r.stageBg); }); }, restage: function () { rigs.forEach(function (r) { if (!r.stageBg || !window.GEM_TEXTURES || !window.GEM_TEXTURES.stage) return; r.stageBg.dispose(); r.stageBg = window.GEM_TEXTURES.stage(r.canvas); if (!demoBg && r.canvas.dataset.gemStage !== 'off') r.scene.background = r.stageBg; }); } };
 })();

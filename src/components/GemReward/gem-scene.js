@@ -1,5 +1,5 @@
 /* ADAM/SHARED — src/components/GemReward/gem-scene.js · gem cut → camera/surface rig */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · camera/fit/surface builder (Task 22).
+// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · camera/fit/surface builder (Task 22) + bare-stage opt-out.
 // — Env: gem-env.js supplies the PMREM studio; degrade to key+ambient if it is absent —
 // — Surface: MeshPhysicalMaterial flatShading; ior per stone from CATEGORIES; transmission on GPU, off on software (?gem=high) —
 // — Cut: faces rewound outward, so no GEM_CUT winding can punch a hole in a facet —
@@ -70,8 +70,9 @@ camera.position.set(0, cy + h * 0.16, dist);
 camera.lookAt(0, cy - h * 0.02, 0);
 const scene = new T.Scene();
 if (window.GEM_ENV) scene.environment = window.GEM_ENV.texture(renderer);
-if (window.GEM_TEXTURES && window.GEM_TEXTURES.stage) scene.background = window.GEM_TEXTURES.stage(renderer.domElement);
-const soft = !/(\?|&)gem=high/.test(window.location.search) && (!window.GEM_ENV || window.GEM_ENV.soft(renderer));
+const bare = renderer.domElement.dataset.gemStage === 'off';
+if (window.GEM_TEXTURES && window.GEM_TEXTURES.stage && !bare) scene.background = window.GEM_TEXTURES.stage(renderer.domElement);
+const soft = bare || (!/(\?|&)gem=high/.test(window.location.search) && (!window.GEM_ENV || window.GEM_ENV.soft(renderer)));
 const key = new T.DirectionalLight(0xfff4e6, 1.2);
 key.position.set(3, 5, 4);
 scene.add(key);
@@ -89,6 +90,7 @@ group.add(api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66));
 group.add(api.ghost(geo, color, ior, T.FrontSide, 0.9, 0.26));
 group.add(new T.Mesh(geo, api.surface(color, soft, ior)));
 scene.add(group);
+if (bare) group.scale.setScalar(parseFloat(renderer.domElement.dataset.gemScale) || 1);
 return { scene: scene, camera: camera, group: group, stageBg: scene.background };
 };
 })();

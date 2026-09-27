@@ -37,10 +37,27 @@ const pairs=[
 ['lab wash orange-200 ink','#141414','#f8ac72',4.5,'playground secondary wash'],
 ['lab wash red-beryl-200 ink','#141414','#ffaac5',4.5,'playground secondary wash'],
 ['lab wash gray-100 ink','#141414','#e0e0e0',4.5,'playground neutral wash'],
+['pitch brand sapphire-500 on paper','#1666af','#fafafa',4.5,'masthead brand, section titles, pills, CEP quotes'],
+['pitch eyebrow sapphire-500 on paper','#1666af','#fafafa',4.5,'eyebrows, labels, card nums — violet-mid remapped 400→500 for this'],
+['pitch body muted on paper','#737373','#fafafa',4.5,'body copy, captions, table cells'],
+['pitch secondary on paper','#525252','#fafafa',4.5,'card titles, table first col'],
+['pitch hero gradient red-beryl large','#ea005e','#fafafa',3,'AA-large: Alphas. 2.6-4.4rem extrabold'],
+['pitch hero gradient amethyst large','#a54cff','#fafafa',3,'AA-large: Alphas. 2.6-4.4rem extrabold'],
+['pitch theme-block title on wash','#1666af','#f5f9ff',4.5,'sapphire-50 wash'],
+['pitch table head on wash','#1666af','#f5f9ff',4.5,'thead on sapphire-50'],
+['pitch filter active white on sapphire','#ffffff','#1666af',4.5,'active filter tag'],
+['pitch insight numeral decorative','#ebf5fe','#ffffff',0,'decorative: order duplicated by adjacent heading — WCAG 1.4.3 incidental'],
+['pitch spine numeral decorative','#c1e0fd','#fafafa',0,'decorative: step meaning carried by adjacent label — WCAG 1.4.3 incidental'],
+['pitch footer line on deep','#ebf5fe','#011020',4.5,'f-line sapphire-100 on sapphire-900'],
+['pitch footer body on deep','#c1e0fd','#011020',4.5,'foot-text sapphire-200'],
+['pitch footer muted on deep','#7cbefb','#011020',4.5,'foot-muted sapphire-300, alt-liners'],
+['pitch footer gradient red-beryl large','#ff85ab','#011020',3,'AA-large: f-line span 1.8-3rem extrabold'],
+['pitch footer gradient amethyst large','#c48aff','#011020',3,'AA-large: f-line span'],
+['pitch footer pitch-label on deep','#c48aff','#011020',4.5,'f-pitch-label amethyst-300 small caps'],
 ];
 let fails=0;
 for(const [name,fg,bg,need,note] of pairs){
- const r=ratio(fg,bg); const ok = note.includes('exempt') ? r>=3 : r>=need;
+ const r=ratio(fg,bg); const ok = note.includes('decorative') ? true : (note.includes('exempt') ? r>=3 : r>=need);
  console.log(`${ok?'✓':'✗'} ${name} ${fg} on ${bg} → ${r.toFixed(2)} ${V(r)} ${note} ${ok?'':'FAIL need '+need}`);
  if(!ok) fails++;
 }

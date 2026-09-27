@@ -2,7 +2,7 @@
 /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   :root {
     --violet:      var(--primitive-sapphire-500);
-    --violet-mid:  var(--primitive-sapphire-400);
+    --violet-mid:  var(--primitive-sapphire-500);
     --violet-pale: var(--primitive-sapphire-100);
     --violet-xs:   var(--primitive-sapphire-50);
     --ink:         var(--primitive-ink);

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T12:44:57.250Z",
+  "generated": "2026-09-27T12:55:41.417Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "5673d0b",
+      "full": "5673d0bc4c0302e31013fc612d03466f724f7372",
+      "date": "2026-09-27",
+      "subject": "feat(pitch): sticky masthead, hybrid fonts, square accents, bled gem, blue theme",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
     {
       "sha": "5622785",
       "full": "56227859d50ae2855122f5d613b4297a7bafb2c6",
@@ -2121,26 +2129,18 @@
   ],
   "wip": [
     "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-scene.js",
+    "M src/components/GemReward/gem3d.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
     "M src/pitch/pitch-base.css",
-    "M src/pitch/pitch-carousel.css",
-    "M src/pitch/pitch-filter.css",
-    "M src/pitch/pitch-footer.css",
     "M src/pitch/pitch-gem.css",
-    "M src/pitch/pitch-icp.css",
-    "M src/pitch/pitch-load.js",
-    "M src/pitch/pitch-masthead.css",
-    "M src/pitch/pitch-overlay.css",
-    "M src/pitch/pitch-overlay.js",
-    "M src/pitch/pitch-position.css",
-    "M src/pitch/pitch-spine.css",
-    "M src/pitch/pitch-table.css",
-    "M src/pitch/pitch-theme.css",
+    "M tests/contrast.test.mjs",
     "?? prototype/gems/hero-gem.png",
     "?? prototype/gems/hero_floor.py",
-    "?? prototype/gems/hero_render.py"
+    "?? prototype/gems/hero_render.py",
+    "?? src/pitch/pitch-gem-cycle.js"
   ]
 }
