@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T12:55:41.417Z",
+  "generated": "2026-09-27T12:56:01.996Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "835ba20",
+      "full": "835ba2062e253f39f4ce2aae061ecc37e0788304",
+      "date": "2026-09-27",
+      "subject": "feat(pitch): half-scale stageless hero gem with variant cycle + text contrast audit",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
     {
       "sha": "5673d0b",
       "full": "5673d0bc4c0302e31013fc612d03466f724f7372",
@@ -2128,19 +2136,12 @@
     }
   ],
   "wip": [
-    "M src/arch/atlas.json",
-    "M src/components/GemReward/gem-scene.js",
-    "M src/components/GemReward/gem3d.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-base.css",
-    "M src/pitch/pitch-gem.css",
-    "M tests/contrast.test.mjs",
     "?? prototype/gems/hero-gem.png",
     "?? prototype/gems/hero_floor.py",
-    "?? prototype/gems/hero_render.py",
-    "?? src/pitch/pitch-gem-cycle.js"
+    "?? prototype/gems/hero_render.py"
   ]
 }
