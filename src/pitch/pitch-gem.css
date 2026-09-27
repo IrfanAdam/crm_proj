@@ -2,6 +2,7 @@
 /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · no card, backdrop stone. */
   /* ── PITCH GEM (DS GemReward stone, part of the hero backdrop) ── */
   .pitch-gem {
+    position: relative;
     margin: 0 -2rem 0 0;
     min-width: 0;
   }
@@ -11,11 +12,10 @@
     display: block;
     transition: opacity 0.45s ease;
   }
-  .pitch-gem__cap {
-    margin-top: 0.4rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
+  .pitch-gem__canvas--next {
+    position: absolute;
+    inset: 0;
+    height: 100%;
   }
   @media (max-width: 760px) {
     .pitch-gem { margin: 0; }

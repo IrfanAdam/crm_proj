@@ -1,10 +1,10 @@
-/* ADAM/PAGE — src/pitch/pitch-gem-cycle.js · hero stone variant rotator */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · cycles data-gem per dwell.
-// Export map: VARIANTS order · fade swap · reduced-motion/hidden skip.
+/* ADAM/PAGE — src/pitch/pitch-gem-cycle.js · hero stone variant crossfade */
+// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · next variant dissolves over live one.
+// Export map: VARIANTS order · overlap swap, never blank · reduced-motion/hidden skip.
 (function () {
 var VARIANTS = ['sapphire', 'amethyst', 'redberyl', 'citrine'];
 var DWELL = 3000;
-var FADE = 480;
+var DISSOLVE = 700;
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function schedule(canvas, i) {
   setTimeout(function () { next(canvas, i); }, DWELL);
@@ -14,20 +14,23 @@ function next(canvas, i) {
     schedule(canvas, i);
     return;
   }
-  canvas.style.opacity = '0';
+  var fresh = document.createElement('canvas');
+  Array.prototype.forEach.call(canvas.attributes, function (a) {
+    if (a.name === 'data-gem' || a.name === 'data-gem-done') return;
+    fresh.setAttribute(a.name, a.value);
+  });
+  fresh.dataset.gem = VARIANTS[(i + 1) % VARIANTS.length];
+  fresh.classList.add('pitch-gem__canvas--next');
+  fresh.style.opacity = '0';
+  canvas.parentNode.appendChild(fresh);
+  requestAnimationFrame(function () { fresh.style.opacity = '1'; });
   setTimeout(function () {
     if (!canvas.isConnected) return;
-    var fresh = document.createElement('canvas');
-    Array.prototype.forEach.call(canvas.attributes, function (a) {
-      if (a.name === 'data-gem' || a.name === 'data-gem-done') return;
-      fresh.setAttribute(a.name, a.value);
-    });
-    fresh.dataset.gem = VARIANTS[(i + 1) % VARIANTS.length];
-    fresh.style.opacity = '0';
     canvas.parentNode.replaceChild(fresh, canvas);
-    setTimeout(function () { fresh.style.opacity = '1'; }, 60);
+    fresh.classList.remove('pitch-gem__canvas--next');
+    fresh.style.opacity = '';
     schedule(fresh, i + 1);
-  }, FADE);
+  }, DISSOLVE);
 }
 function boot() {
   var canvas = document.querySelector('.pitch-gem__canvas[data-gem]');

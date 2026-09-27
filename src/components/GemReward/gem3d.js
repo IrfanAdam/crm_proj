@@ -57,6 +57,8 @@ rig.tilt += (rig.tiltT - rig.tilt) * (1 - Math.pow(0.0005, dt));
 rig.group.rotation.y = rig.cat.spin * rig.t * 0.9;
 rig.group.rotation.x = rig.tilt;
 rig.group.position.y = Math.sin(rig.t * 0.8) * 0.045;
+const fl = rig.floors;
+if (fl && !rig.stageBg) { fl.caustic.rotation.z = -rig.group.rotation.y * 0.5; fl.caustic.material.opacity = 0.8 - rig.group.position.y * 2.6; }
 renderer.render(rig.scene, rig.camera);
 };
 requestAnimationFrame(loop);
