@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T12:24:02.456Z",
+  "generated": "2026-09-27T12:26:02.588Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,6 +14,14 @@
     "2026-09-23_003000-exhaustive-visual-language.md"
   ],
   "commits": [
+    {
+      "sha": "d9d6147",
+      "full": "d9d6147a5444657c571d2e5b8f51db4d7223bfc6",
+      "date": "2026-09-27",
+      "subject": "feat(pitch): shareable positioning-bible page + workspace fullscreen overlay",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-6"
+    },
     {
       "sha": "d5e1a61",
       "full": "d5e1a61bcbac15bb5002796232891270ae1cf397",
@@ -2104,15 +2112,8 @@
     }
   ],
   "wip": [
-    "M scripts/map-graph.mjs",
-    "M src/arch/atlas.json",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
     "?? prototype/gems/hero-gem.png",
     "?? prototype/gems/hero_floor.py",
-    "?? prototype/gems/hero_render.py",
-    "?? src/pitch/"
+    "?? prototype/gems/hero_render.py"
   ]
 }
