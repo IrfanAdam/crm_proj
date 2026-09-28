@@ -24,6 +24,7 @@ import {
   SquaresFour,
   Diamond,
   Sparkle,
+  SketchLogo,
 } from "@phosphor-icons/react";
 import { GEM_MAP } from "./gem-icons.js";
 import DiamondCut from "./DiamondCut.jsx";
@@ -42,6 +43,11 @@ const MAP = {
   Buildings,
   Diamond,
   Sparkle,
+  // Library gem — Phosphor's own sketch-logo, wired for the reward/gem role
+  SketchLogo,
+  "sketch-logo": SketchLogo,
+  "sketchLogo": SketchLogo,
+  "gem": SketchLogo,
   DiamondCut,
   "diamond-cut": DiamondCut,
   "diamondCut": DiamondCut,
