@@ -65,9 +65,10 @@
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--violet-mid);
+    color: var(--ink-3);            /* quiet base — the brand blue sits on the highlighted phrase */
     margin-bottom: 1.4rem;
   }
+  .brand-eyebrow .hl { color: var(--violet-mid); }
   .brand-headline {
     font-family: var(--font-display);
     font-size: clamp(2.6rem, 6vw, 4.2rem);   /* cap keeps “Turn your sales” on one line in the 482px copy column */
@@ -86,4 +87,6 @@
     .masthead { padding: 0.9rem 1rem; }
     .masthead-tag { display: none; }
     .brand-hero { grid-template-columns: 1fr; padding: 2.5rem 1rem 2rem; }
+    /* the eyebrow is a full sentence now — tighter tracking keeps it to one line on a phone */
+    .brand-eyebrow { letter-spacing: 0.1em; }
   }
