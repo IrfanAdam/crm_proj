@@ -18,6 +18,8 @@ export function buildWorld(lens, src) {
   world.appendChild(cloneFeed(src, "docklens__copy"));
   const band = document.createElement("div");
   band.className = "docklens__band";
+  // stops paint in ladder order (1px first → 7px last): each span fades in at its own
+  // --a and runs solid below, so the strongest stop always wins where the zones overlap
   band.innerHTML = `<i class="docklens__band-fill" aria-hidden="true"></i>${stopsHTML(BOT)}`;
   band.querySelectorAll("span").forEach((s) => s.appendChild(cloneFeed(src, "docklens__band-copy")));
   world.appendChild(band);

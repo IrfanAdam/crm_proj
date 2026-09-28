@@ -8,8 +8,10 @@ export const TOP = [['1.5px', 12, 20], ['3px', 18, 32], ['6px', 26, 44], ['10px'
 export const BOT = [['1px', 16, 32], ['2px', 30, 48], ['3.6px', 44, 64], ['5.2px', 60, 82], ['7px', 76, 100]];
 
 // — Section — Markup —
-// One span per stop; --b blur radius, --a fade-in %, --z solid %. Mask direction
-// lives in the CSS (edge-material.css / dock-lens.css), not here.
-export function stopsHTML(list) {
-  return list.map(([b, a, z]) => `<span style="--b:${b};--a:${a}%;--z:${z}%"></span>`).join('');
+// One span per stop; --b blur radius, --a fade-in %, --z solid %. An optional class
+// lands on the span so the dock mirror (glass) can target its own ladder copies.
+// Mask direction lives in the CSS (edge-material.css / dock-band.css), not here.
+export function stopsHTML(list, cls = "") {
+  const c = cls ? ` class="${cls}"` : "";
+  return list.map(([b, a, z]) => `<span${c} style="--b:${b};--a:${a}%;--z:${z}%"></span>`).join("");
 }

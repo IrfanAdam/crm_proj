@@ -1,8 +1,11 @@
 /* ADAM/GLASS — src/glass/dock-band.css · progressive-edge mirror inside the dock lens
    The dock floats ABOVE the OS edge band, so what sits behind it is the feed already
-   blurred by that band — not the raw feed. The lens copy rebuilds the same stack:
-   one blurred feed clone per stop, masked to the stop's zone. Blur values come from
-   edge-stops.js (the real band's source), the mask ladder from edge-material.css. */
+   blurred by that band — not the raw feed. The lens copy rebuilds that stack with
+   FILTER blur only: one feed clone per stop of the real band's ladder, each softened
+   by that stop's own --b and masked by the stop's own --a/--z. No backdrop-filter in
+   here on purpose — WebKit drops it inside the lens' SVG filter instead of matching
+   what the screen shows outside the glass. Blur values come from edge-stops.js (the
+   real band's source), the stop masks from edge-material.css. */
 .device .docklens__band{position:absolute;pointer-events:none}
 .device .docklens__band-fill{position:absolute;inset:0;display:block;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg-surface) 48%,transparent) 0%,color-mix(in srgb,var(--bg-surface) 40%,transparent) 48%,transparent 100%)}
 /* stop zone = the stop's own full-height mask: it already fades in above the dock's
