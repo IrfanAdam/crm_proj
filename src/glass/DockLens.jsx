@@ -1,12 +1,14 @@
 import { Fragment, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { makeLensMap } from "./lens-map.js";
 import { LensFilter } from "./lens-filter.jsx";
-import { buildCopy, placeCopy } from "./lens-copy.jsx";
+import { buildWorld, placeWorld } from "./lens-copy.jsx";
 import { OPTICS } from "./optics.js";
 import { getZoom } from "./rect-zoom.js";
 
 /* The dock's material. A live copy of the screen content is parked inside the dock,
    clamped to its shape, and slid 1:1 with the scroll — then the SVG lens refracts it.
+   The copy is a backdrop world: the feed plus the OS progressive-blur band it sits
+   above, so the glass refracts what is actually behind it, not the raw feed.
    React never re-renders for this; geometry is written straight to the DOM so the
    glass tracks scroll at 60fps. Base offsets are measured on layout changes only —
    a getBoundingClientRect per frame would force a layout in the scroll path. */
@@ -14,7 +16,6 @@ export default function DockLens({ source = "#app-content" }) {
   const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
   const hostRef = useRef(null);
   const lensRef = useRef(null);
-  const copyRef = useRef(null);
   const frame = useRef(0);
   const [box, setBox] = useState({ w: 0, h: 0 });
   const [map, setMap] = useState(null);
@@ -31,14 +32,22 @@ export default function DockLens({ source = "#app-content" }) {
       const w = Math.round(r.width / z) + OPTICS.bleed * 2;
       const h = Math.round(r.height / z) + OPTICS.bleed * 2;
       setBox((p) => (p.w === w && p.h === h ? p : { w, h }));
-      placeCopy(copyRef.current, lensRef.current, document.querySelector(source));
+      placeWorld(lensRef.current, document.querySelector(source));
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(host);
     window.addEventListener("resize", measure);
-    return () => { ro.disconnect(); window.removeEventListener("resize", measure); };
-  }, []);
+    const zoomCtl = document.getElementById("ws-proto-stack");
+    zoomCtl?.addEventListener("input", measure);
+    zoomCtl?.addEventListener("click", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+      zoomCtl?.removeEventListener("input", measure);
+      zoomCtl?.removeEventListener("click", measure);
+    };
+  }, [gen]);
   useEffect(() => {
     if (!box.w) return;
     const radius = Math.round((box.h - OPTICS.bleed * 2) / 2);
@@ -47,15 +56,12 @@ export default function DockLens({ source = "#app-content" }) {
     setGen((g) => g + 1);      // new id + remount below: WebKit resolves a filter once
   }, [box]);
   useLayoutEffect(() => {
-    const copy = copyRef.current, lens = lensRef.current, src = document.querySelector(source);
-    if (!copy || !lens || !src) return;
-    const rebuild = () => {
-      buildCopy(copy, src);
-      placeCopy(copy, lens, src);
-    };
+    const lens = lensRef.current, src = document.querySelector(source);
+    if (!lens || !src) return;
+    const rebuild = () => { buildWorld(lens, src); placeWorld(lens, src); };
     rebuild();
     setArmed(true);      // filter is only switched on once the copy exists (WebKit)
-    const slide = () => { frame.current = 0; copy.style.transform = `translateY(${-src.scrollTop}px)`; };
+    const slide = () => { frame.current = 0; placeWorld(lens, src); };
     const queue = () => { if (!frame.current) frame.current = requestAnimationFrame(slide); };
     src.addEventListener("scroll", queue, { passive: true });
     window.addEventListener("resize", queue);
@@ -81,7 +87,7 @@ export default function DockLens({ source = "#app-content" }) {
       <Fragment key={gen}>
         <LensFilter id={id} map={map} w={box.w} h={box.h} />
         <div className="docklens__lens" ref={lensRef} style={{ filter: armed && map ? `url(#${id})` : undefined, visibility: map ? "visible" : "hidden" }}>
-          <div className="docklens__copy" ref={copyRef} />
+          <div className="docklens__world" />
         </div>
       </Fragment>
     </div>

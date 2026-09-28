@@ -6,6 +6,7 @@ graph TD
     workspace_slowmo[slowmo.js]
   end
   subgraph device
+    device_edge-stops[edge-stops.js]
     device_frame[frame.js]
   end
   subgraph os
@@ -52,6 +53,7 @@ graph TD
   end
   subgraph components
     components_Button_button[button.js]
+    components_GemReward_gem-bare[gem-bare.js]
     components_GemReward_gem-cut[gem-cut.js]
     components_GemReward_gem-drag[gem-drag.js]
     components_GemReward_gem-env[gem-env.js]
@@ -60,6 +62,7 @@ graph TD
     components_GemReward_gem-scene[gem-scene.js]
     components_GemReward_gem-shader[gem-shader.js]
     components_GemReward_gem-textures[gem-textures.js]
+    components_GemReward_gem-tint[gem-tint.js]
     components_GemReward_gem3d[gem3d.js]
     components_Icon_Icon[Icon.jsx]
     components_Overlay_overlay-behavior[overlay-behavior.js]
@@ -76,6 +79,7 @@ graph TD
   components_Overlay_overlay --> components_Overlay_overlay-exit
   components_Overlay_overlay --> components_Overlay_overlay-behavior
   device_frame --> os_status-bar
+  device_frame --> device_edge-stops
   ds_labs --> ds_chip-lab
   ds_labs --> ds_badge-lab
   ds_labs --> ds_statuspill-lab
@@ -131,6 +135,7 @@ graph TD
   glass_dock-track --> glass_rect-zoom
   glass_dock-track --> components_Icon_Icon
   glass_lens-copy --> glass_rect-zoom
+  glass_lens-copy --> device_edge-stops
   glass_lens-filter --> glass_optics
   glass_main --> shell_top-pills
   glass_main --> glass_BottomDock

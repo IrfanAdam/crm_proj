@@ -13,6 +13,7 @@
    outside the shape; the dock clips the result back to the capsule outline */
 .device .docklens{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none;transform:translateZ(0)}
 .device .docklens__lens{position:absolute;inset:-18px;transform:translateZ(0)}
+.device .docklens__world{position:absolute;inset:0;overflow:hidden}
 .device .docklens__copy{position:absolute;left:0;top:0;will-change:transform}
 .device .docklens__defs{position:absolute;width:0;height:0;pointer-events:none}
 /* glass body: clear crystal with a whisper of frost (30% tint + 4.5px capsule blur) — not milky.
