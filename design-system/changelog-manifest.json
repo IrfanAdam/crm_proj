@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T07:26:05.285Z",
+  "generated": "2026-09-28T07:26:53.167Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "63c9eac",
+      "full": "63c9eac7a1b20dd252845884366ab818f7dbaf55",
+      "date": "2026-09-28",
+      "subject": "fix(pitch): gem shadow line, light-cast floors, in-place retint, mobile pass, self-hosted type",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "1d432e9",
       "full": "1d432e968107a1bc150df09dfb7e96665522874e",
@@ -2161,27 +2169,8 @@
     }
   ],
   "wip": [
-    "M src/arch/atlas.json",
-    "M src/components/GemReward/gem-bare.js",
-    "M src/components/GemReward/gem-scene.js",
-    "M src/components/GemReward/gem3d.js",
-    "M src/ds/changelog-names.json",
-    "M src/ds/gemreward-spec.js",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-base.css",
-    "M src/pitch/pitch-carousel.css",
-    "M src/pitch/pitch-filter.css",
-    "M src/pitch/pitch-gem-cycle.js",
-    "M src/pitch/pitch-gem.css",
-    "M src/pitch/pitch-icp.css",
-    "M src/pitch/pitch-masthead.css",
     "?? prototype/gems/hero-gem.png",
     "?? prototype/gems/hero_floor.py",
-    "?? prototype/gems/hero_render.py",
-    "?? src/components/GemReward/gem-tint.js",
-    "?? src/pitch/pitch-fonts.css"
+    "?? prototype/gems/hero_render.py"
   ]
 }
