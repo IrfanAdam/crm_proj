@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T11:02:55.919Z",
+  "generated": "2026-09-28T12:06:45.367Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "4a5a3a6",
+      "full": "4a5a3a62586a987ba8b2464b75eb6bb2e47bcd68",
+      "date": "2026-09-28",
+      "subject": "chore(ds): close phase-1 tasks 13-14 — stamping 41e885c",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "41e885c",
       "full": "41e885c850604d5d5bb29444ab05342c19d2d0f3",
@@ -2281,10 +2289,16 @@
     }
   ],
   "wip": [
+    "M gallery.css",
     "M public/foundations/iconography.html",
+    "M public/foundations/motion.html",
+    "M src/arch/atlas.json",
     "M src/components/Icon/Icon.jsx",
     "M src/ds/icon-lab.js",
     "M src/ds/icon-playground.js",
+    "M src/ds/overlay-demo.css",
+    "M src/ds/overlay-lab.css",
+    "M src/ds/overlay-lab.js",
     "M src/glass/DockSlices.jsx",
     "M src/glass/lens-copy.jsx",
     "M src/js/mechanics/graphData.decisions.js",
@@ -2292,8 +2306,12 @@
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
     "?? src/components/Icon/DiamondCut.jsx",
+    "?? src/components/Icon/GemFriendly.jsx",
     "?? src/components/Icon/SketchCut.jsx",
     "?? src/components/Icon/gem-icons.js",
-    "?? src/glass/band-mirror.js"
+    "?? src/ds/icon-derivative-svgs.js",
+    "?? src/ds/motion-lab.js",
+    "?? src/glass/band-mirror.js",
+    "?? src/motion/motion-page.css"
   ]
 }

@@ -25,6 +25,10 @@ import {
   Diamond,
   Sparkle,
 } from "@phosphor-icons/react";
+import { GEM_MAP } from "./gem-icons.js";
+import DiamondCut from "./DiamondCut.jsx";
+import SketchCut from "./SketchCut.jsx";
+import GemFriendly from "./GemFriendly.jsx";
 
 /* Phosphor icon registry — single source for the DS.
    Weight "regular" = 1.5px stroke (matches DS iconography spec).
@@ -38,6 +42,18 @@ const MAP = {
   Buildings,
   Diamond,
   Sparkle,
+  DiamondCut,
+  "diamond-cut": DiamondCut,
+  "diamondCut": DiamondCut,
+  "gem-cut": DiamondCut,
+  SketchCut,
+  "sketch-cut": SketchCut,
+  "sketchCut": SketchCut,
+  "diamonds-cut": SketchCut,
+  GemFriendly,
+  "gem-friendly": GemFriendly,
+  "gemFriendly": GemFriendly,
+  ...GEM_MAP,
   // Legacy sprite IDs → Phosphor (keeps old gallery code working)
   "i-search": MagnifyingGlass,
   "i-check": Check,

@@ -12,10 +12,20 @@ function iconInit(root){
     const muted=q("[data-ilab-muted]").checked;
     const subtle=q("[data-ilab-subtle]").checked;
     let cls=["icon"]; if(st.size) cls.push(st.size); if(muted) cls.push("icon--muted"); if(subtle) cls.push("icon--subtle");
+    const style=' style="color:'+HUE_MAP[st.hue]+'"';
+    // — ADAM cut icons (diamond-cut · sketch-cut · gem-friendly) render from the shared SVG source
+    if(window.ICON_DERIVS&&window.ICON_DERIVS.LIST.includes(icon.slice(3))){
+      const n=icon.slice(3), ds=window.ICON_DERIVS;
+      const html='<span class="'+cls.join(" ")+'"'+style+' aria-hidden="true">'+ds.svg(n,st.weight,'100%')+"</span>";
+      preview.dataset.ilabHue=st.hue; preview.innerHTML=html;
+      const pretty='<span class="'+cls.join(" ")+'" aria-hidden="true">\n  <!-- '+ds.note(n)+' -->\n  <Icon name="'+n+'" weight="'+st.weight+'" />\n</span>';
+      if(window.highlight){code.innerHTML=window.highlight(pretty); code.classList.add("hl"); code.dataset.hlDone="1";} else code.textContent=pretty;
+      q("[data-ilab-note]").textContent=st.weight==="fill"?"Fill: solid stone + glazed facets.":"Regular is default 1.5px — the cut stays at all weights.";
+      return;
+    }
     const weightCls=st.weight==="regular" ? "ph" : st.weight==="fill" ? "ph-fill" : "ph-"+st.weight;
     // CDN path via ph classes: ph ph-* etc. Use mapping: icon class ph + variant
     const inner='<i class="'+weightCls+" "+icon+'" aria-hidden="true"></i>';
-    const style=' style="color:'+HUE_MAP[st.hue]+'"';
     const html='<span class="'+cls.join(" ")+'"'+style+' aria-hidden="true">'+inner+"</span>";
     preview.dataset.ilabHue=st.hue; preview.innerHTML=html;
     const pretty='<span class="'+cls.join(" ")+'" aria-hidden="true">\n  <i class="'+weightCls+" "+icon+'"></i>\n</span>';

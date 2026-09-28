@@ -1,6 +1,10 @@
 /* ADAM/DS — src/ds/icon-playground.js · icon explorer */
 // [plan:2026-09-23_002500-design-system-consolidation.md#phase-2] · weight + search + copy.
 const IG_W={thin:'ph-thin',light:'ph-light',regular:'ph',bold:'ph-bold',fill:'ph-fill',duotone:'ph-duotone'};
+const IG_SW={thin:1,light:1.2,regular:1.5,bold:2,fill:1.5,duotone:1.5};
+// — ADAM cut icons + copy lines come from the shared SVG source (src/ds/icon-derivative-svgs.js)
+const {LIST:DERIVATIVE_ICONS,svg:igDerivSvg,code:igDerivCode}=window.ICON_DERIVS||{LIST:[],svg:()=>'',code:()=>''};
+// — Core set + Gems & Facets shelf (diamonds · sparkles · facets · rewards) · diamond-cut / sketch-cut / gem-friendly are the ADAM cuts (sketch-logo family).
 const IG_ICONS=[
 'house','house-line','users','users-three','user','handshake','magnifying-glass','funnel-simple',
 'bell','gear','chart-line-up','chart-bar','chart-pie-slice','chart-polar','trend-up','presentation-chart',
@@ -8,8 +12,8 @@ const IG_ICONS=[
 'calendar-blank','calendar-check','clock','timer','hourglass','map-pin','map-trifold','compass',
 'check','check-circle','plus','x','caret-down','arrow-right','arrows-clockwise','download','upload',
 'export','share-network','trash','pencil-simple','note-pencil','file-text','file-plus','bookmark',
-'target','trophy','medal','diamond','sparkle','crown','rocket','flag','tag','heart','thumbs-up',
-'smiley','star','lock','eye','eye-slash','info','question','warning-circle','sliders-horizontal','list',
+'target','trophy','medal','medal-military','diamond','diamond-cut','gem-friendly','diamonds-four','sketch-cut','warning-diamond','sparkle','star','star-four','shooting-star','crown','crown-simple','crown-cross','hexagon','octagon','warning-octagon','cube','cube-focus','cube-transparent','rocket','flag','tag','heart','thumbs-up',
+'smiley','lock','eye','eye-slash','info','question','warning-circle','sliders-horizontal','list',
 'kanban','squares-four','dots-three','dots-three-vertical','gauge','wifi-high','bank','wallet',
 'hand-coins','briefcase','microphone','camera','image','image-square','coffee','sun','moon',
 'cloud','laptop','device-mobile','archive','folder'
@@ -17,6 +21,7 @@ const IG_ICONS=[
 const igState={q:'',w:'regular',s:24};
 const igMatch=n=>!igState.q||n.includes(igState.q);
 const igCell=n=>{
+  if(DERIVATIVE_ICONS.includes(n)) return '<button type="button" class="ig-cell" data-n="'+n+'" aria-label="'+n+'">'+igDerivSvg(n,igState.w,igState.s)+'<small>'+n+' · ADAM</small></button>';
   const cls=IG_W[igState.w]+' ph-'+n;
   return '<button type="button" class="ig-cell" data-n="'+n+'" aria-label="'+n+'">'
     +'<i class="'+cls+'" style="font-size:'+igState.s+'px"></i><small>'+n+'</small></button>';
@@ -26,10 +31,27 @@ const igRender=host=>{
   host.innerHTML=list.map(igCell).join('')||'<p class="meta">no match</p>';
   const note=document.querySelector('[data-ig-note]');
   if(note)note.textContent=list.length+' of '+IG_ICONS.length+' · '+igState.w+' · '+igState.s+'px — click to copy';
+  // — Derivative playground set below Playground (sketch-logo family)
+  const dHost=document.querySelector('[data-ig-grid-derivative]');
+  if(dHost){
+    const dList=DERIVATIVE_ICONS.filter(igMatch);
+    dHost.innerHTML=dList.map(igCell).join('')||'<p class="meta">no derivative match — try diamond, sketch</p>';
+    const dNote=document.querySelector('[data-ig-note-derivative]');
+    if(dNote) dNote.textContent=dList.length+' of '+DERIVATIVE_ICONS.length+' derivatives · '+igState.w+' · '+igState.s+'px — click to copy';
+    if(!dHost.dataset.done){
+      dHost.dataset.done='1';
+      dHost.addEventListener('click',e=>{
+        const c=e.target.closest('[data-n]');
+        if(c)igCopy(c.dataset.n);
+      });
+    }
+  }
 };
 const igCopy=n=>{
   const note=document.querySelector('[data-ig-note]');
-  const cls='<i class="'+IG_W[igState.w]+' ph-'+n+'"></i>';
+  let cls;
+  if(DERIVATIVE_ICONS.includes(n)) cls=igDerivCode(n,igState.w,igState.s);
+  else cls='<i class="'+IG_W[igState.w]+' ph-'+n+'"></i>';
   const done=()=>{if(note)note.textContent='copied '+cls};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(cls).then(done,done);
   else done();

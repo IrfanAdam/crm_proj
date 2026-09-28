@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-28T09:38:38.868Z",
+    "generatedAt": "2026-09-28T11:57:02.996Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -21,9 +21,9 @@
       "src/components/Chip": 1790164764688,
       "src/components/FunnelCard": 1790164683655,
       "src/components/FunnelGlyph": 1790164774810,
-      "src/components/GemReward": 1790588254302,
+      "src/components/GemReward": 1790592141325,
       "src/components/GoalBar": 1790164683680,
-      "src/components/Icon": 1790164747245,
+      "src/components/Icon": 1790596592126,
       "src/components/KpiStat": 1790164767740,
       "src/components/ListRow": 1790164767729,
       "src/components/OpportunityCard": 1790164802893,
@@ -44,7 +44,7 @@
       "src/components/Textarea": 1790164876031,
       "src/components/Timeline": 1790164774821,
       "src/components/Toolbar": 1790164696780,
-      "index.html": 1790583027701,
+      "index.html": 1790593174181,
       "src/glass/BottomDock.jsx": 1790063779559,
       "src/patterns/ActivityStrip": 1790154536081,
       "src/patterns/EmptyState": 1790097746429,

@@ -16,6 +16,7 @@ graph TD
     glass_BottomDock[BottomDock.jsx]
     glass_DockLens[DockLens.jsx]
     glass_DockSlices[DockSlices.jsx]
+    glass_band-mirror[band-mirror.js]
     glass_dock-track[dock-track.jsx]
     glass_engine[engine.js]
     glass_lens-copy[lens-copy.jsx]
@@ -64,7 +65,11 @@ graph TD
     components_GemReward_gem-textures[gem-textures.js]
     components_GemReward_gem-tint[gem-tint.js]
     components_GemReward_gem3d[gem3d.js]
+    components_Icon_DiamondCut[DiamondCut.jsx]
+    components_Icon_GemFriendly[GemFriendly.jsx]
     components_Icon_Icon[Icon.jsx]
+    components_Icon_SketchCut[SketchCut.jsx]
+    components_Icon_gem-icons[gem-icons.js]
     components_Overlay_overlay-behavior[overlay-behavior.js]
     components_Overlay_overlay-exit[overlay-exit.js]
     components_Overlay_overlay[overlay.js]
@@ -76,6 +81,10 @@ graph TD
   arch_atlas --> arch_atlas-state
   arch_atlas --> arch_lens-truth
   arch_atlas --> js_mechanics_graph
+  components_Icon_Icon --> components_Icon_gem-icons
+  components_Icon_Icon --> components_Icon_DiamondCut
+  components_Icon_Icon --> components_Icon_SketchCut
+  components_Icon_Icon --> components_Icon_GemFriendly
   components_Overlay_overlay --> components_Overlay_overlay-exit
   components_Overlay_overlay --> components_Overlay_overlay-behavior
   device_frame --> os_status-bar
@@ -131,11 +140,14 @@ graph TD
   glass_DockLens --> glass_rect-zoom
   glass_DockSlices --> glass_slices-spec
   glass_DockSlices --> glass_slice-bands
+  glass_DockSlices --> glass_band-mirror
   glass_DockSlices --> glass_rect-zoom
+  glass_band-mirror --> glass_rect-zoom
+  glass_band-mirror --> device_edge-stops
   glass_dock-track --> glass_rect-zoom
   glass_dock-track --> components_Icon_Icon
   glass_lens-copy --> glass_rect-zoom
-  glass_lens-copy --> device_edge-stops
+  glass_lens-copy --> glass_band-mirror
   glass_lens-filter --> glass_optics
   glass_main --> shell_top-pills
   glass_main --> glass_BottomDock
