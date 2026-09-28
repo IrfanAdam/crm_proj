@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T11:00:18.736Z",
+  "generated": "2026-09-28T11:02:55.919Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "41e885c",
+      "full": "41e885c850604d5d5bb29444ab05342c19d2d0f3",
+      "date": "2026-09-28",
+      "subject": "feat(pitch): v2 concise thesis, priorities panel, header blur fix, caustic tracking",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "0c2fb8a",
       "full": "0c2fb8ac8febd56bb292780277f88029e9e7b615",
@@ -2274,7 +2282,6 @@
   ],
   "wip": [
     "M public/foundations/iconography.html",
-    "M src/components/GemReward/gem-tint.js",
     "M src/components/Icon/Icon.jsx",
     "M src/ds/icon-lab.js",
     "M src/ds/icon-playground.js",
@@ -2284,10 +2291,6 @@
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-base.css",
-    "M src/pitch/pitch-header-blur.css",
-    "M src/pitch/pitch-loop-detail.css",
-    "M src/pitch/pitch-loop.css",
     "?? src/components/Icon/DiamondCut.jsx",
     "?? src/components/Icon/SketchCut.jsx",
     "?? src/components/Icon/gem-icons.js",
