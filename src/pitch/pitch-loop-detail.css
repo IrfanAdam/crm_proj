@@ -3,26 +3,16 @@
  /* — Section: example mapping — */
  .loop-example {
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr;
-   gap: 1rem;
-   padding: 1.4rem;
-   background: var(--violet-xs);
-   border-left: 3px solid var(--violet);
-   border-radius: var(--radius-none);
+   grid-template-columns: repeat(4, 1fr);
+   gap: 1.2rem;
    margin-bottom: 1.6rem;
  }
  .loop-example__col {
+   background: var(--white);
+   border: 1px solid var(--rule);
+   border-radius: var(--radius-lg);
+   padding: 1.6rem;
    min-width: 0;
- }
- .loop-example__tag {
-   grid-column: 1 / -1;
-   font-family: var(--font-display);
-   font-size: 0.62rem;
-   font-weight: 700;
-   letter-spacing: 0.16em;
-   text-transform: uppercase;
-   color: var(--violet);
-   margin-bottom: 0.2rem;
  }
  .loop-example__label {
    font-family: var(--font-display);
@@ -30,7 +20,7 @@
    font-weight: 700;
    letter-spacing: 0.12em;
    text-transform: uppercase;
-   color: var(--ink-3);
+   color: var(--violet);
    margin-bottom: 0.5rem;
  }
  .loop-example__text {
@@ -53,12 +43,6 @@
  .loop-foot strong {
    color: var(--ink);
    font-weight: 600;
- }
- @media (min-width: 901px) {
-   .loop-example__col + .loop-example__col {
-     border-left: 1px solid var(--rule);
-     padding-left: 1rem;
-   }
  }
  @media (max-width: 900px) {
    .loop-diagram {

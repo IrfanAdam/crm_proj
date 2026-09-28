@@ -4,7 +4,7 @@ body{font-family:var(--font-family-sans);background:var(--bg-primary);color:var(
 /* — tabs live in left panel (.ws-tabs — see src/shell/shell.css) — right panel is full-height from top — */
 .stage__hint{font-size:var(--font-size-xs);color:var(--text-muted);text-align:left;line-height:1.6}
 .side-link{font-size:var(--font-size-xs);font-weight:600;color:var(--primitive-sapphire-ui-500);text-decoration:none}
-.side-link+.side-link{margin-left:12px}
+.side-link+.side-link{margin-left:0}
 .device-meta{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:11px;line-height:1;color:var(--text-muted);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:8px 12px}
 .device-meta b{font-weight:600;color:var(--text-secondary)}
 .device-meta__dot{width:3px;height:3px;border-radius:50%;background:var(--border-thin);display:inline-block}
