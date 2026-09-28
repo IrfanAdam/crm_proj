@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T12:43:09.195Z",
+  "generated": "2026-09-28T12:43:38.081Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "17e781b",
+      "full": "17e781b5d2134da4be12eb4f74b63724d497b120",
+      "date": "2026-09-28",
+      "subject": "feat(ds): motion specimens live, overlays wired, dock mirror extracted",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "f223308",
       "full": "f2233083d197559aa23aede5dd3ced20db055f50",
@@ -2304,20 +2312,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M gallery.css",
-    "M public/foundations/motion.html",
-    "M src/ds/overlay-demo.css",
-    "M src/ds/overlay-lab.css",
-    "M src/ds/overlay-lab.js",
-    "M src/glass/DockSlices.jsx",
-    "M src/glass/lens-copy.jsx",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "?? src/ds/motion-lab.js",
-    "?? src/glass/band-mirror.js",
-    "?? src/motion/motion-page.css"
-  ]
+  "wip": []
 }
