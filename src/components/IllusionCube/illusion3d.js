@@ -43,7 +43,11 @@ else rig.camera.aspect = w / h;
 if (!rig.resize) rig.camera.updateProjectionMatrix();
 };
 size();
+if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.arm();
+if (!still && window.ILLUSION_CTL) window.ILLUSION_CTL.attach(rig, canvas);
 if (still) {
+window.ILLUSION_DRESS.still(rig);
+rig.frames = 1;
 renderer.render(rig.scene, rig.camera);
 return;
 }
@@ -52,6 +56,7 @@ const loop = function () {
 if (rig.gone || !canvas.isConnected) {
 rig.gone = true;
 rigs.splice(rigs.indexOf(rig), 1);
+if (window.ILLUSION_CTL) window.ILLUSION_CTL.detach(rig);
 if (rig.renderer) { rig.renderer.dispose(); rig.renderer.forceContextLoss(); }
 return;
 }
@@ -62,6 +67,8 @@ rig.last = now;
 size();
 if (!rig.vis || document.hidden || !canvas.offsetParent) return;
 window.ILLUSION_DRESS.step(rig, dt);
+if (window.ILLUSION_CTL) window.ILLUSION_CTL.step(rig, now);
+rig.frames = (rig.frames || 0) + 1;
 renderer.render(rig.scene, rig.camera);
 };
 requestAnimationFrame(loop);
@@ -70,7 +77,7 @@ requestAnimationFrame(loop);
 function mount(canvas) {
 if (canvas.dataset.illusionDone) return;
 canvas.dataset.illusionDone = '1';
-const rig = { canvas: canvas, vis: false, t: 0, last: 0, w: 0, h: 0, gone: false };
+const rig = { canvas: canvas, vis: false, t: 0, clock: 0, frames: 0, last: 0, w: 0, h: 0, gone: false };
 rigs.push(rig);
 if (!THREE_ || !window.ILLUSION_SCENE || !window.ILLUSION_FORM || !window.ILLUSION_DRESS) { fallback(canvas); return; }
 if (!window.IntersectionObserver) { rig.vis = true; start(rig); return; }

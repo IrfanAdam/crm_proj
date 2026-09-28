@@ -23,6 +23,24 @@ body{background:var(--primitive-sapphire-ui-50);color:var(--text-primary);font-f
 <canvas data-illusion role="img" aria-label="Illusion cube — gray rounded box on plinth, native three.js scaffold"></canvas>
 </div>
 <p class="cube-stage__caption">Illusion cube — Spline illusioncube recreated natively · three r160</p>
+<p class="cube-stage__caption"><button id="illusion-sound" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Sound: on</button> <span id="illusion-status">armed</span></p>
+<script>
+(function () {
+var b = document.getElementById('illusion-sound');
+var s = document.getElementById('illusion-status');
+if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.arm();
+var paint = function () {
+if (!window.ILLUSION_AUDIO || !b || !s) return;
+var st = window.ILLUSION_AUDIO.status();
+s.textContent = st;
+b.textContent = 'Sound: ' + (st === 'muted' ? 'off' : 'on');
+b.setAttribute('aria-pressed', st === 'muted' ? 'false' : 'true');
+};
+if (b) b.addEventListener('click', function () { if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.toggle(); paint(); });
+setInterval(paint, 1000);
+paint();
+})();
+</script>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <script src="src/components/IllusionCube/illusion-form.js"></script>
@@ -38,6 +56,13 @@ body{background:var(--primitive-sapphire-ui-50);color:var(--text-primary);font-f
 <script src="src/components/IllusionCube/illusion-base.js"></script>
 <script src="src/components/IllusionCube/illusion-prism.js"></script>
 <script src="src/components/IllusionCube/illusion-overlay.js"></script>
+<script src="src/components/IllusionCube/illusion-timeline.js"></script>
+<script src="src/components/IllusionCube/illusion-motion.js"></script>
+<script src="src/components/IllusionCube/illusion-tween.js"></script>
+<script src="src/components/IllusionCube/illusion-chain.js"></script>
+<script src="src/components/IllusionCube/illusion-ctl.js"></script>
+<script src="src/components/IllusionCube/illusion-audio-engine.js"></script>
+<script src="src/components/IllusionCube/illusion-audio.js"></script>
 <script src="src/components/IllusionCube/illusion-stage.js"></script>
 <script src="src/components/IllusionCube/illusion-dress.js"></script>
 <script src="src/components/IllusionCube/illusion3d.js"></script>
