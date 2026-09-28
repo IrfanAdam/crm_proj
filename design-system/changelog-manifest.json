@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T13:47:48.858Z",
+  "generated": "2026-09-28T14:28:38.575Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,38 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "a908a4d",
+      "full": "a908a4d4828c45e7d7ace2ead369d81cbf3c67b2",
+      "date": "2026-09-28",
+      "subject": "feat(ds): cube reference parity — hue migration, grid floor + live caustic pools, dolly-in",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "8e17217",
+      "full": "8e17217ef85f4cb1ffff853cf4a8ab84b39c3d9b",
+      "date": "2026-09-28",
+      "subject": "fix(ds): pill click swaps only the category class (kept the card's resize modifier) + add the gem rubric instrument",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "026e1f5",
+      "full": "026e1f5f9e58b0f8cb98a3eef8d4650d7289e060",
+      "date": "2026-09-28",
+      "subject": "feat(ds): gem drag-release settles on an underdamped spring (overshoot 7.6%, alive not mechanical)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-6"
+    },
+    {
+      "sha": "24c2b88",
+      "full": "24c2b88a164daa502ccebd18f13d3bdf2092ecf5",
+      "date": "2026-09-28",
+      "subject": "chore(ds): regen manifest after intel cube",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "a549402",
       "full": "a549402f3a1f7db0f64024adf12185515f94449f",
@@ -2380,12 +2412,15 @@
     "M gallery.css",
     "M public/foundations/motion.html",
     "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-env.js",
     "M src/ds/gallery-subnav.js",
     "M src/ds/motion-lab.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/motion/motion-page.css"
+    "M src/motion/motion-page.css",
+    "?? prototype/gems/rubric-shots/",
+    "?? src/components/GemReward/gem-bloom.js"
   ]
 }
