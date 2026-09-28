@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T07:26:53.167Z",
+  "generated": "2026-09-28T07:32:16.854Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "e0bb62d",
+      "full": "e0bb62d78e5f5da3bffd335153567c35839d64b0",
+      "date": "2026-09-28",
+      "subject": "chore(ds): track phase-1 commits in the changelog manifest",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "63c9eac",
       "full": "63c9eac7a1b20dd252845884366ab818f7dbaf55",
