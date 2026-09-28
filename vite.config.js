@@ -70,6 +70,7 @@ export default defineConfig({
         preview: resolve(__dirname, 'preview.html'),
         cube: resolve(__dirname, 'cube.html'),
         cubespline: resolve(__dirname, 'cube-spline.html'),
+        illusion: resolve(__dirname, 'cube-illusion.html'),
       },
     },
   },
