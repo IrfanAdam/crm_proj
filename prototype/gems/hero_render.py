@@ -2,8 +2,8 @@
 # [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · the physics the three r160 WebGL
 # build cannot do: real per-wavelength dispersion (R/G/B marched at ior × DISP so the paths
 # separate), multi-bounce total internal reflection with Beer-Lambert absorption, and a
-# photon-mapped caustic pool. Deterministic — no RNG. Simplifications: internal Fresnel is
-# TIR-only, the floor is Lambertian, the tent radiance is hero_floor.SCALE × env, F broadcasts.
+# photon-mapped caustic pool. Deterministic — no RNG. Simplifications: TIR-only internal
+# Fresnel, Lambertian floor, tent radiance = hero_floor.SCALE × env, F broadcasts.
 # Run: python3 prototype/gems/hero_render.py → hero-gem.png (sapphire, 800×800, ~2 min)
 import os, time
 
@@ -16,8 +16,8 @@ from render_gems import hex_rgb, token
 from soft_render import camera
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SIZE, SPP, CHUNK, NB, NBP = 800, 2, 6144, 6, 6     # px/side · samples · batch · bounces
-NDIR, NPOS, NLIT, ELEV, AZIM, FIT, BIAS, BACK = 48, 3000, 4, 38.0, -34.0, 0.50, 0.20, 5.0
+SIZE, SPP, CHUNK, NB, NBP = 800, 4, 6144, 6, 6     # px/side · samples · batch · bounces
+NDIR, NPOS, NLIT, ELEV, AZIM, FIT, BIAS, BACK = 96, 6000, 4, 38.0, -34.0, 0.50, 0.20, 5.0
 
 def planes(positions, cells):
     """Deduped outward facet planes of the convex cut → (normals, offsets)."""
@@ -77,7 +77,7 @@ def main():
     caustic = FL.caustic(march, ior0 * np.asarray(DISP), tint, N, O, NDIR, NPOS, NBP)
     print("planes %d · %d photons · pool %s" % (len(O), NDIR * NPOS, np.round([float(g.max()) for g in caustic], 2)))
     gy, gx = (np.mgrid[0:SIZE, 0:SIZE] + 0.5).reshape(2, -1)
-    px, py = np.concatenate([gx + j for j in (-0.25, 0.25)]), np.concatenate([gy + j for j in (-0.25, 0.25)])
+    px, py = np.concatenate([gx + j for j in (-0.375, -0.125, 0.125, 0.375)]), np.concatenate([gy + j for j in (-0.375, -0.125, 0.125, 0.375)])
     ldir, lflux = FL.tent(NLIT)
     img = np.zeros((len(px), 3))
     for s in range(0, len(px), CHUNK):
@@ -89,8 +89,9 @@ def main():
         gi, fi = np.nonzero(gem)[0], np.nonzero(~gem)[0]
         for j in range(3):
             glint, ep, ed, ew = march(o[gi], F, ior0 * DISP[j], tint[j], N, O)
-            img[gi + s] += glint + ew[:, None] * FL.exit_rad(ep, ed, caustic[j], np.zeros((len(ep), 3)), BG)
-            img[fi + s] += FL.exit_rad(o[fi], F, caustic[j], lit[fi], BG)
+            if j == 0: img[gi + s] += glint
+            img[gi + s, j] += ew * FL.exit_rad(ep, ed, caustic[j], np.zeros((len(ep), 3)), BG)[:, j]
+            img[fi + s, j] += FL.exit_rad(o[fi], F, caustic[j], lit[fi], BG)[:, j]
     out = (np.clip(srgb(aces(img.reshape(SPP, SIZE, SIZE, 3).mean(0))), 0, 1) * 255 + 0.5).astype(np.uint8)
     Image.fromarray(out).save(os.path.join(HERE, "hero-gem.png"))
     print("hero-gem.png %dx%d %.1fs px %d/%.1f/%d" % (SIZE, SIZE, time.time() - t0, out.min(), out.mean(), out.max()))

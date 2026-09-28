@@ -3,21 +3,22 @@
 # Lambertian floor, the gem_optics tent emitter (band + 7-lobe speckle, vectorised here for
 # the ray march) as a deterministic golden-ratio photon beam, and the photon-mapped caustic
 # pool the WebGL build fakes with a texture. No RNG anywhere.
-# Export map: FLOOR_Y · ALB · GRID · SPAN · env() · tent() · photons() · caustic() · splat()
-#   · blur() · exit_rad() · direct()
+# Export map: FLOOR_Y · ALB · GRID · SPAN · env() · tent() · photons() · caustic() · splat() · blur() · exit_rad() · direct()
 import numpy as np
 from gem_optics import ENV_HI, ENV_LO, bilin
 
 FLOOR_Y, GRID, SPAN = -0.86, 224, 3.6      # floor height · caustic cells/side · half-extent
-ALB, AMB = np.array([0.60, 0.60, 0.62]), 0.02        # floor albedo · ambient studio bounce
-SCALE, Y_LO, Y_HI = 0.16, 0.55, 1.0        # tent radiance scale · sampled band [y_lo, y_hi]
+ALB, AMB = np.array([0.60, 0.60, 0.62]), 0.05        # floor albedo · ambient studio bounce
+SCALE, Y_LO, Y_HI = 0.60, 0.45, 1.0        # tent radiance scale · sampled band [y_lo, y_hi]
 CELL, R2 = (2.0 * SPAN / GRID) ** 2, 0.7548776662466927    # cell area · R2 sequence stride
 
 def env(d):
     """Vectorised gem_optics.envdir — studio shell + tent band + 7-lobe speckle."""
     b = np.exp(-((np.clip(d[:, 1], 0.0, 1.0) - 0.85) / 0.22) ** 2)
-    s = np.clip(np.cos(np.arctan2(d[:, 2], d[:, 0]) * 7.0), 0.0, 1.0) ** 8
-    return ENV_LO + ENV_HI * b[:, None] * (0.05 + 0.95 * s)[:, None]
+    b2 = np.exp(-((np.clip(d[:, 1], -0.3, 1.0) - 0.38) / 0.14) ** 2)
+    b3 = np.exp(-((np.clip(d[:, 1], 0.0, 1.0) - 0.97) / 0.06) ** 2)
+    s = np.clip(np.cos(np.arctan2(d[:, 2], d[:, 0]) * 7.0), 0.0, 1.0) ** 5
+    return ENV_LO * 2.2 + ENV_HI * (b * (0.03 + 1.25 * s) + 0.35 * b2 + 0.9 * b3)[:, None]
 
 def tent(n):
     """Deterministic tent directions + per-direction flux (radiance × solid angle)."""
@@ -95,5 +96,5 @@ def caustic(march, iors, tints, N, O, n_dir=48, n_pos=3000, nb=6, chunk=6144):
             t = (FLOOR_Y - ep[:, 1]) / np.where(ed[:, 1] < -1e-6, ed[:, 1], 1.0)
             k = (ew > 0.0) & (ed[:, 1] < -1e-6) & (t > 0.0)
             splat(g, ep[k, 0] + t[k] * ed[k, 0], ep[k, 2] + t[k] * ed[k, 2], flux[s:s + chunk][k] * ew[k][:, None])
-        out.append(blur(g))
+        out.append(blur(g, 3))
     return out
