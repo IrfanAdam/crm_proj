@@ -14,9 +14,10 @@ node prototype/gems/gem-shot.mjs 'http://127.0.0.1:5176/gallery.html?gem=high#ge
 ```
 
 * Viewport 1500×1200, `--scale 1`, card canvas box **pinned to 510×223** (`c.style.flex='0 0 auto';
-  c.style.height='223px'`). The pin is required: a category-pill click overwrites the card
-  `className` and drops `gem-reward--resize`, so the canvas box jumps 223 px → 140 px and the stage
-  clip 501 px → 418 px. Without the pin, cross-category shots are not pixel-comparable.
+  `c.style.height='223px'`). The pin was required while the category-pill handler overwrote the card
+  `className` (dropping `gem-reward--resize`, canvas box 223 px → 140 px); that handler was fixed in
+  `gemreward-spec.js` (it now swaps only the category class), so the pin is belt-and-braces — keep it
+  for reproducible absolute geometry, but cross-category shots are now comparable without it.
 * Frozen pose: `rg.cat.spin=0; rg.t=0;` then capture — rotation.y is forced to 0 every frame and the
   pointer tilt eases to 0, so the pose is deterministic. The float (`sin(t*0.8)*0.03`) is still live;
   because the freeze happens at eval+2500 ms and the capture at eval+~3100 ms, `t_capture ≈ 0.6 s` in
