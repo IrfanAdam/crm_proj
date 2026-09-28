@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T13:40:09.295Z",
+  "generated": "2026-09-28T13:45:09.500Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,22 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "9aada13",
+      "full": "9aada13d0d5dda5b95c4b356099f7886e3e3a22e",
+      "date": "2026-09-28",
+      "subject": "feat(ds): gem card gets draggable east/south/corner edges (accent handles on hover, live rig re-size)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "b201bfc",
+      "full": "b201bfc2ed11571c545baa7b9e3716a843b2b0cd",
+      "date": "2026-09-28",
+      "subject": "chore(ds): regen manifest after gems panel controls",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "36c7b04",
       "full": "36c7b04c2b5dd1534568dd89151a067620fc634d",
