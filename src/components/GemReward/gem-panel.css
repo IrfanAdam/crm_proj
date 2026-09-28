@@ -15,10 +15,7 @@
 .gem-stage[data-surface="wash"] {
   background: var(--bg-interactive);
 }
-/* — Resizable card: drag the bottom-right corner; the rig re-sizes every frame — */
-.gem-reward--resize {
-  resize: both;
-}
+/* — Resizable card: edge/corner grips (gem-resize.js); the rig re-sizes every frame — */
 .gem-reward--resize .gem-reward__spline {
   flex: 1;
   height: auto;
