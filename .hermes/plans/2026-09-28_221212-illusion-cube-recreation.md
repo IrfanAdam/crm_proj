@@ -239,6 +239,8 @@ Compare **landmarks, never the whole image**: the reference hero is a different 
 
 ## Phase 3 — Materials & textures: the surface stack {#phase-3}
 
+*Shipped in 09fc321 · Tasks 15–24 · phase-3.*
+
 *Surface work for the illusion cube: one repeatable texture-extraction script (the decoded `.splinecode` carries six embedded JPEGs as raw buffers — proven end-to-end, 2,329,712-byte payload → 6 files), a single declared palette group so no colour literal ever reaches JS, and six custom `ShaderMaterial`s that collapse the eleven decoded Spline layer stacks into rig materials — `transmission` never used for the shell, `renderOrder` explicit, every animation handle left as a uniform for the motion phase.*
 
 *Tags: Component, Design System, Function, Tooling*
@@ -256,7 +258,7 @@ Compare **landmarks, never the whole image**: the reference hero is a different 
 | 23 | `illusion-prism.js` — prism streak floor material | Masked vector gradient × matcap × sheen reads as a soft blue streak on the grid, `uRot` at −227° |
 | 24 | Phase-3 parity proof + material-mapping doc | `docs/illusioncube-material-parity.md` records every layer→shader→uniform mapping and the 4 approximations; captures sit beside the reference frames; all gates green |
 
-### Task 15: Illusion palette tokens — one declared group, zero new literals in JS
+### Task 15: Illusion palette tokens — one declared group, zero new literals in JS ✓ done
 
 **Objective:** Every colour the surface stack needs resolves to a token before any shader is written. The decoded palette splits cleanly: **brand blue `#1666AF` is `--primitive-sapphire-ui-500` exactly** (S-Main `rgb(0.0863, 0.4, 0.6863)` → d=0), and the inner-cube gradient stops are **already DS primitives** — Cube L1 stop 0 `#A54CFF` = `--primitive-amethyst-400`, L2 stop 1 `#FFB01E` = `--primitive-citrine-400`, L3 stop 0 `#EA005E` = `--primitive-red-beryl-400`, all d=0. The scene background `#C2DCFA` is `--primitive-sapphire-ui-200` (d=5), the matcap_5 tint `#48484D` is `--primitive-neutral-dark-400` (d=15), Cube L3 stop 1 `#BD004B` snaps to `--primitive-red-beryl-500` (d=30). What has **no** DS home are the three electric blues and the three off-scale accents — declare them once, in a group, so `lint:tokens` stays green and no `'#hex'` ever appears in a JS line.
 
@@ -285,7 +287,7 @@ Add to `tokens/primitives.json`:
 
 **Verify:** `npm run build` prints a line count and `grep -c 'primitive-illusion-' design-system/tokens.css` returns 14; `npm run lint:tokens` → `0 raw leaks, 0 over-limit`; `npm test` green. Confirm `--primitive-illusion-brand-blue` resolves to `#1666AF` in the browser (`getComputedStyle(document.documentElement).getPropertyValue('--primitive-illusion-crimson').trim() === '#c21645'`).
 
-### Task 16: Texture extraction script + the six committed JPEGs
+### Task 16: Texture extraction script + the six committed JPEGs ✓ done
 
 **Objective:** Make the embedded textures reproducible instead of hand-copied. The recipe is proven: fetch the page (8,296,658 bytes), slice the `app.start([…])` numeric array, `Buffer.from(Uint8Array.from(nums))` → a **2,329,712-byte** `illusioncube.splinecode` (head `d4724095` = fixext2), decode with `msgpackr`'s `Unpackr({structuredClone:true, useRecords:true})` plus permissive extension handlers for types 1–6, then read `shared.images[*].data.data` — each value is a **raw JPEG byte array** (`FF D8 FF`), not a URL or a data-URI. Verified output:
 
@@ -304,7 +306,7 @@ Script contract: `node scripts/extract-illusion-textures.mjs` fetches by default
 
 **Verify:** run it fresh with `--from /Users/irfan/.hermes/cache/scratch/mp/illusioncube.splinecode` → 6 files; `file public/cube-illusion/textures/*.jpg` reports 5×1024² + 1×427² + 1×1080² progressive JFIF; totals 139,710/16,456/44,587/42,057/53,103/48,098 bytes match the table; a second run with `--check` exits 0; `npm run lint:tokens` stays green (script is ≤99 lines).
 
-### Task 17: `illusion-textures.js` — texture registry and canvas fallbacks
+### Task 17: `illusion-textures.js` — registry, fallbacks, sRGB ✓ done
 
 **Objective:** One place that turns the six committed JPEGs into `THREE.Texture`s with the right settings, so no material module ever constructs a texture. The decode settles the settings for us: `wrapping 1001`, `minFilter 1008`, `magFilter 1006` are **three.js's own defaults** (`ClampToEdgeWrapping`, `LinearMipmapLinearFilter`, `LinearFilter` — confirmed against r160 `src/constants.js`), and `repeat [1,1]` / `offset [0,0]` are identity, so the loader sets `colorSpace = T.SRGBColorSpace`, `anisotropy = renderer.capabilities.getMaxAnisotropy()`, and nothing else. The one real conversion: **Spline stores texture rotation in degrees** (39°, 181°, −227°) while three and our shaders want radians — expose `ILLUSION_TEX.rad(deg)` and use it at every call site.
 
@@ -314,7 +316,7 @@ Export map: `ILLUSION_TEX.load(renderer) → {photo, sheen, matcap0, matcap4, ma
 
 **Verify:** on `:5174` the console shows no `THREE.WebGLRenderer: Texture marked for update but no image data found` / 404 warnings; `ILLUSION_TEX.load(...)` returns 6 textures with `colorSpace === 'srgb'`; renaming one JPEG still yields a render (fallback path) with 0 console errors; `node --check src/components/IllusionCube/illusion-textures.js` clean.
 
-### Task 18: `illusion-gl.js` — shared GLSL chunk library
+### Task 18: `illusion-gl.js` — the shared GLSL chunk set ✓ done
 
 **Objective:** One set of chunks so six materials can't drift apart. `NOISE` copies the `hash`/`noise`/`fbm` trio **verbatim** from `cube-core.js` (family parity: same value-noise, same 0.6/0.29/0.11 octave weights). On top of it:
 
@@ -329,7 +331,7 @@ Export map: `ILLUSION_TEX.load(renderer) → {photo, sheen, matcap0, matcap4, ma
 
 **Verify:** `node --check` clean; `grep -c 'float fbm(' src/components/IllusionCube/illusion-gl.js` is 1 and `cube-core.js`'s copy is byte-identical after whitespace normalisation; every material module's header names `ILLUSION_GL` as its chunk source.
 
-### Task 19: `illusion-shell.js` — Main Material as one alpha-glass ShaderMaterial
+### Task 19: `illusion-shell.js` — Main Material as one alpha-glass ShaderMaterial ✓ done
 
 **Objective:** The scene's real engine, reproduced layer for layer. The decoded **Main** stack is nine layers, not the three the summary implied:
 
@@ -353,7 +355,7 @@ Invariants, non-negotiable — the reason the illusion works at all: `T.ShaderMa
 
 **Verify:** `node --check` clean; `grep -c 'transmission' src/components/IllusionCube/illusion-shell.js` is 0 (comment mentions only); on `:5174` the shell shows iridescent cyan/magenta/violet bands, a bright rim on the **top perimeter and nearest vertical edge** (matching `hero-assembled.png`), and the inner cubes are visible through it; `--eval` probe hiding the inner cubes leaves the shell reading identically to the isolation capture.
 
-### Task 20: `illusion-inner.js` — inner-cube depth-gradient material
+### Task 20: `illusion-inner.js` — the four cubes' depth gradients ✓ done
 
 **Objective:** The four hidden cubes carry the colour bands, so this material *is* the illusion's payload. The shared Cube Material (id `74b2b277`, cloned per instance) decodes to three 2-stop **object-space vector** gradients, all with `direction [1,0,0]`, `isVector true`, `isWorldSpace false`, `smooth true`:
 
@@ -371,7 +373,7 @@ Invariants, non-negotiable — the reason the illusion works at all: `T.ShaderMa
 
 **Verify:** `node --check` clean; four materials instantiated with independent uniform objects (`mat[0].uniforms.uL1Stop !== mat[1].uniforms.uL1Stop`); setting `uL3Stop.value = [0.9, 0.98]` at runtime sweeps that band with no recompile (no `THREE.WebGLProgram` warning in console); a shell-hidden capture shows the interpenetrating cube cluster with the decoded gradient hues.
 
-### Task 21: `illusion-base.js` — base/plinth material with sheen rotation
+### Task 21: `illusion-base.js` — base/plinth material with sheen rotation ✓ done
 
 **Objective:** The plinth is the matte grey-white slab the whole composite stands on, and the only object with an authored idle animation. Decoded Base stack, seven layers: fresnel **black** (mode 3, intensity 2, bias 0.1) → `61a09fba` matcap (mode 3, α 0.6, rotation **181°**) → `matcap_0` (mode 2, α 1) → `matcap_5` tinted `sheen-gray` (mode 2, α 0.5) → colour `base-gray` (mode 1, α 0.32) → phong (mode 3, α 0.6, shininess 10) → **transmission** `rgb(0,0.424,1)` with a 3-stop ramp (thickness **360**, ior 1.16).
 
@@ -381,7 +383,7 @@ Recreation: the first six layers compose as written; layer 6 becomes an **alpha-
 
 **Verify:** `node --check` clean; both endpoints render distinctly — capture at `uSheenRot = rad(181)` and at `rad(87)` and confirm the sheen moves along the slab rather than the slab re-lighting; the plinth reads matte grey-white with a soft blue rim, and the microcopy band stays legible against it.
 
-### Task 22: `illusion-overlay.js` — wordmark, subtext, blurb canvas textures
+### Task 22: `illusion-overlay.js` — wordmark, subtext, blurb canvas textures ✓ done
 
 **Objective:** The three floating text objects, as canvas-texture planes. The decoded Logo Material (`55ab9a41`, on the five extruded letters) is `7b83617b` matcap α 0.6 (mode 2) + phong α 0.6 with **`alphaOverride 0.9`** + white α 0.9 (mode 2) — the override is why the wordmark reads as solid chrome rather than a translucent fill, so the recreation multiplies the canvas alpha by `0.9` instead of using it raw.
 
@@ -397,7 +399,7 @@ Shared: canvases sized against `devicePixelRatio`, built **after `await document
 
 **Verify:** `node --check` clean; on `:5174` all three strings render crisply at the correct scale (no fallback-face metrics — compare a capture against `hero-assembled.png`); `blurb` mesh is invisible at boot and becomes fully legible after driving `material.uniforms.uAlpha.value = 1` by hand in the console; console shows 0 missing-font / missing-texture warnings.
 
-### Task 23: `illusion-prism.js` — prism streak floor material
+### Task 23: `illusion-prism.js` — prism streak floor material ✓ done
 
 **Objective:** The soft blue light streak on the grid floor, decoded as three layers: a `depth` layer with **`isMask: true`** (`gradientType 1`, vector, `origin [143.9266,0,0]`, `direction [1,0,0]`, `near 11.3091`, `far 214.4368`, stops `[0,1]`, colours `[1,1,1,1] → [1,1,1,0]`) → `7b83617b` matcap (mode 2, rotation **−227°**) → phong α 0.6 (mode 0) with **`alphaOverride 0.32`**. The mask is the alpha: the gradient cuts a soft edge across the 921 × 1082 plane so the streak fades out along the vector instead of ending in a hard rectangle.
 
@@ -407,7 +409,7 @@ Recreation: `VECGRAD` supplies the mask (white → transparent along the origin 
 
 **Verify:** `node --check` clean; the streak renders as a soft blue smear fading along its axis (never a hard-edged quad), sits **under** the plinth and shell in the composite, and a shell+base-hidden capture isolates it cleanly; rotating `uRot` by 90° visibly re-sweeps the matcap band (proves the uniform is live).
 
-### Task 24: Phase-3 parity proof + material-mapping doc
+### Task 24: Phase-3 parity proof + material-mapping doc ✓ done
 
 **Objective:** Close the phase on evidence, not on "it looks right" — and pin down the four deliberate approximations so phase 6's parity pass doesn't rediscover them. Write `docs/illusioncube-material-parity.md` (≤99 lines, matching the house `docs/figma-parity.md` habit) containing: the **layer → shader term → uniform → token** table for all eleven decoded stacks (Main 9, Cube 5, Base 7, Logo 3, Subtext 3, Blurb 2, Prism 3, Plane 2 — noting Plane is phase 2's), the token mapping from Task 15 with the source hex per entry, and the approximations list: **(1)** transmission → alpha glass (r160's transmission pass collects only opaque geometry; thickness/ior survive only as rim-falloff tuning), **(2)** `matcap_reflection`'s `projection 1 / size [80,20] / axis y` recreated as an anisotropic band, **(3)** Azeret Mono not bundled → system mono stack, **(4)** Spline's integer blend modes mapped as 0 normal / 1 multiply / 2 screen / 3 overlay — inferred, and corrected in `illusion-gl.js` if the captured chroma disagrees.
 

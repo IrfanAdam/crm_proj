@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T18:01:31.782Z",
+  "generated": "2026-09-28T18:29:36.477Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -16,6 +16,22 @@
     "2026-09-28_221212-illusion-cube-recreation.md"
   ],
   "commits": [
+    {
+      "sha": "09fc321",
+      "full": "09fc321b763df6fde22d220dd0bec1e8dd649d38",
+      "date": "2026-09-28",
+      "subject": "feat(illusion): phase 3 materials — palette, textures, glass/gradient/plinth/text shaders",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-3}"
+    },
+    {
+      "sha": "82be6b9",
+      "full": "82be6b9e661efb0f165df7ed8c7b714cdddf1dc6",
+      "date": "2026-09-28",
+      "subject": "chore(illusion): close phase 2 — stamping 57766e8",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "57766e8",
       "full": "57766e84f0902afcfcb59dd18b4057c5211ff5b2",
@@ -2602,10 +2618,6 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
     "?? prototype/gems/rubric-shots/"
   ]
 }
