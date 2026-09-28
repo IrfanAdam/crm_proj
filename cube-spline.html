@@ -1,0 +1,32 @@
+<!-- ADAM/PAGE — cube-spline.html · Spline-hosted amorphous block pattern -->
+<!-- [plan:2026-09-28_000000-lump-sum-builds.md#phase-4] · Task 19: ortho rig + loader -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ALPHA CRM — Amorphous Block (Spline)</title>
+<link rel="stylesheet" href="design-system/tokens.css"/>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-family-sans)}
+.cube-stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--spacing-4)}
+.cube-stage__frame{width:min(92vmin,880px);aspect-ratio:16/10;position:relative}
+.cube-stage__frame canvas{width:100%;height:100%;display:block}
+.cube-stage__caption{font-size:var(--font-size-xs);letter-spacing:var(--font-tracking-wide);text-transform:uppercase;color:var(--text-muted)}
+.cube-stage__note{font-size:var(--font-size-sm);color:var(--text-secondary)}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/","three/examples/jsm/":"https://unpkg.com/three@0.160.0/examples/jsm/","@splinetool/loader":"https://unpkg.com/@splinetool/loader@1.9.28/build/SplineLoader.js"}}
+</script>
+</head>
+<body>
+<main class="cube-stage">
+<div class="cube-stage__frame" data-spline-stage></div>
+<p class="cube-stage__caption">Amorphous block — Spline pattern · ortho rig</p>
+<p class="cube-stage__note" data-spline-note>Loading Spline scene…</p>
+</main>
+<script type="module" src="/cube-spline/spline-rig.js"></script>
+</body>
+</html>
