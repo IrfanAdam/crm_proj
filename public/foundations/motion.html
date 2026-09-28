@@ -1,29 +1,63 @@
 <p class="ch-kicker">Chapter 2 · Foundations · 06 Motion</p>
 <h2 class="ch-hero">Fast for response. Spring for delight.</h2>
-<p class="ch-lede meta">Motion answers touch in 150ms — anything slower feels broken. Delight gets the spring: overshoot, tilt, elastic scroll, and only in visualizations and ceremony. Chrome moves instantly or not at all, and every animation surrenders to reduced-motion.</p>
+<p class="ch-lede meta">Motion answers touch in 150ms — anything slower feels broken. Delight gets the spring: overshoot, elastic scroll, and only in visualizations and ceremony. Chrome moves instantly or not at all, and every animation surrenders to reduced-motion.</p>
 <ul class="ch-laws">
 <li class="ch-law"><span class="ch-num">01</span><div><p><b>Respond in 150</b> — presses, toggles, tab switches ride <code>transition.fast</code>.</p><p class="ch-reject">Reject: a 400ms button press — feedback that arrives late is noise.</p></div></li>
-<li class="ch-law"><span class="ch-num">02</span><div><p><b>Spring is earned</b> — overshoot and elastic belong to funnel, gems and ceremony.</p><p class="ch-reject">Reject: a springy dropdown — delight spent on chrome is delight wasted.</p></div></li>
+<li class="ch-law"><span class="ch-num">02</span><div><p><b>Spring is earned</b> — overshoot and elastic belong to scroll, gems and ceremony.</p><p class="ch-reject">Reject: a springy dropdown — delight spent on chrome is delight wasted.</p></div></li>
 <li class="ch-law"><span class="ch-num">03</span><div><p><b>One easing family</b> — standard in, spring out; elastic only for scroll edges and tilt.</p><p class="ch-reject">Reject: a custom cubic-bezier per component — motion must rhyme.</p></div></li>
-<li class="ch-law"><span class="ch-num">04</span><div><p><b>Reduced-motion wins</b> — instant states, no tilt, no overshoot when preferred.</p><p class="ch-reject">Reject: any animation that cannot be switched off — access is not optional.</p></div></li>
+<li class="ch-law"><span class="ch-num">04</span><div><p><b>Reduced-motion wins</b> — instant states, no overshoot when preferred.</p><p class="ch-reject">Reject: any animation that cannot be switched off — access is not optional.</p></div></li>
 </ul>
-<h3>Token table</h3>
-<p class="meta">Same names as code, dashed: <code>transition.fast</code> → <code>--transition-fast</code>.</p>
+<h3>Time — the 100→600 scale</h3>
+<p class="meta">Five steps, fixed jobs. Dashes: <code>motion.duration.sm</code> → <code>--motion-duration-sm</code>. Transitions alias them: <code>transition.fast 150</code> · <code>normal 250</code> · <code>spring 400</code>.</p>
+<div class="mot-rail" aria-hidden="true"><div class="mot-rail__track"></div><span class="mot-rail__dot" style="--d:100ms"><i></i><b>xs</b><s>100</s></span><span class="mot-rail__dot" style="--d:150ms"><i></i><b>sm</b><s>150</s></span><span class="mot-rail__dot" style="--d:250ms"><i></i><b>md</b><s>250</s></span><span class="mot-rail__dot" style="--d:400ms"><i></i><b>lg</b><s>400</s></span><span class="mot-rail__dot" style="--d:600ms"><i></i><b>xl</b><s>600</s></span></div>
 <table class="ch-roles"><thead><tr><th>Token</th><th>Renders as</th><th>Where used</th></tr></thead><tbody>
 <tr><td><code>transition.fast</code></td><td>150 standard</td><td>presses, toggles, tabs</td></tr>
 <tr><td><code>transition.normal</code></td><td>250 standard</td><td>panels, expands</td></tr>
-<tr><td><code>transition.spring</code></td><td>400 spring</td><td>ceremony, funnel, gems</td></tr>
+<tr><td><code>transition.spring</code></td><td>400 spring</td><td>ceremony, scroll, gems</td></tr>
 <tr><td><code>motion.duration.xs–xl</code></td><td>100 / 150 / 250 / 400 / 600</td><td>raw scale behind transitions</td></tr>
 <tr><td><code>motion.easing.standard / spring / elastic</code></td><td>0.4,0,0.2,1 / 0.25,1,0.5,1 / overshoot</td><td>the only three curves</td></tr>
 <tr><td><code>motion.translate.elastic-overshoot</code></td><td>12px</td><td>scroll-edge overshoot</td></tr>
 </tbody></table>
-<h3>Specimens — the three speeds</h3>
-<div class="row" style="margin-top:4px"><button class="btn btn--primary" style="transition:var(--transition-fast)">fast 150</button><button class="btn btn--secondary" style="transition:var(--transition-normal)">normal 250</button><button class="btn btn--primary" style="transition:var(--transition-spring)">spring 400</button><span class="meta">press and feel the difference</span></div>
-<h3>Contrast — motion buttons carry text</h3>
-<p class="meta">Demo buttons above are white on <code>role.action</code> 5.91 AA — motion never excuses an unreadable state.</p>
-<h3>Demos — spring in situ</h3>
-<div class="row" style="margin-top:4px"><div class="elastic-scroll" style="width:48%;height:180px;overflow-y:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-lg)"><div class="elastic-scroll__indicator" style="width:35%"></div><div class="elastic-scroll__content">Elastic scroll — pull at top overshoots 12px (spring 400) · swipe down at 0. Instant if prefers-reduced-motion.</div></div><div class="tilt-card" style="width:48%;position:relative;height:180px"><strong>Funnel card — tilt 12°</strong><p class="meta">perspective 600px · mousemove tilts X/Y · hover resets. Reduced-motion: no tilt.</p><div class="tilt-card__shine"></div></div></div>
+<h3>Curves — one family, three voices</h3>
+<div class="mot-curves">
+<div class="mot-curve"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0 100 C40 100 60 0 100 0"/><circle cx="0" cy="100" r="2"/><circle cx="100" cy="0" r="2"/></svg><b>standard</b><code>0.4,0,0.2,1</code><span>press, toggle — arrives, stays</span></div>
+<div class="mot-curve"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0 100 C25 100 20 0 100 0"/><circle cx="0" cy="100" r="2"/><circle cx="100" cy="0" r="2"/></svg><b>spring</b><code>0.25,1,0.5,1</code><span>scroll, gem — overshoot then settle</span></div>
+<div class="mot-curve"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0 100 C60 100 40 -20 100 0"/><circle cx="0" cy="100" r="2"/><circle cx="100" cy="0" r="2"/></svg><b>elastic</b><code>0.6,0.1,0.1,1</code><span>scroll edge — pull then snap</span></div>
+</div>
+<h3>Specimens — the three speeds, live</h3>
+<div class="mot-play"><button class="btn btn--primary mot-play__btn" data-mot="fast" style="transition:var(--transition-fast)">fast 150</button><button class="btn btn--secondary mot-play__btn" data-mot="normal" style="transition:var(--transition-normal)">normal 250</button><button class="btn btn--primary mot-play__btn" data-mot="spring" style="transition:var(--transition-spring)">spring 400</button><button class="btn btn--ghost mot-play__replay" data-mot-replay aria-label="Replay all">↻ Replay</button><span class="meta">click any — feel the delta. Focus rings ride <code>fast</code>.</span></div>
+<h3>Orchestra — stagger, not scatter</h3>
+<p class="meta">Lists enter at <code>40ms</code> stagger. One curve, one timing, sequence does the work — no cascade of durations.</p>
+<div class="mot-stagger" data-mot-stagger><span></span><span></span><span></span><span></span><span></span><button class="btn btn--ghost mot-play__replay" data-stagger-replay>↻ Replay stagger</button></div>
+<h3>Scroll — elastic edge, spring back</h3>
+<p class="meta">The only chrome that overshoots. Pull past the top and the surface travels <code>12px</code> on <code>spring 400</code> (<code>motion.translate.elastic-overshoot</code>) then snaps — a tactile edge, not a bounce. Progress rides <code>scaleX</code> on <code>transition.fast</code>. At <code>prefers-reduced-motion</code> there is no travel.</p>
+<div class="mot-scroll" aria-label="Elastic scroll demo">
+<div class="mot-scroll__head"><span>Opportunities · 12 in view</span><span class="meta">pull ↓ at top</span></div>
+<div class="elastic-scroll" style="height:212px">
+<div class="elastic-scroll__indicator" style="transform:scaleX(0.38)"></div>
+<div class="elastic-scroll__content" style="border:0;border-radius:0;min-height:auto;padding:0;background:var(--bg-surface)">
+<div class="mot-scroll__list">
+<div class="mot-scroll__row"><span>Acme · Proposal · M</span><b>73</b></div>
+<div class="mot-scroll__row"><span>Northwind · Discovery · W</span><b>41</b></div>
+<div class="mot-scroll__row"><span>Contoso · Negotiation · D</span><b>88</b></div>
+<div class="mot-scroll__row"><span>Fabrikam · Qualification · Q</span><b>52</b></div>
+<div class="mot-scroll__row"><span>AdventureWorks · Closed · Y</span><b>19</b></div>
+<div class="mot-scroll__row"><span>Tailspin · Proposal · M</span><b>67</b></div>
+<div class="mot-scroll__row"><span>Wingtip · Discovery · W</span><b>36</b></div>
+</div>
+</div>
+</div>
+<div class="mot-scroll__foot meta">Swipe down at <code>scrollTop 0</code> adds <code>elastic-scroll--pull</code> → <code>translateY(12px)</code>. Indicator tracks <code>scrollTop / (scrollHeight - clientHeight)</code> via <code>scaleX</code>.</div>
+</div>
+<h3>Reduced motion — the instant fallback</h3>
+<div class="mot-reduced"><div class="mot-reduced__track"><span class="mot-reduced__dot"></span><span class="meta">with motion — spring 400, hover to run</span></div><div class="mot-reduced__track mot-reduced--off"><span class="mot-reduced__dot"></span><span class="meta">prefers-reduced-motion — instant, no travel</span></div><p class="meta" style="margin-top:6px">Every transition and elastic checks <code>prefers-reduced-motion: reduce</code> → no transform, no overshoot, static end-state.</p></div>
+<h3>Choreography</h3>
+<ul class="ch-laws" style="margin-top:0">
+<li class="ch-law"><span class="ch-num">→</span><div><p><b>Transform + opacity only</b> — layout never moves, only composite properties. No width/height keyframes.</p></div></li>
+<li class="ch-law"><span class="ch-num">✦</span><div><p><b>Enter 150, exit 100, spring for ceremony</b> — chrome fast, delight slow. Exits beat entrances.</p></div></li>
+<li class="ch-law"><span class="ch-num">◐</span><div><p><b>Stagger 40ms, max 5</b> — after that, group fades. The eye tracks sequence, not scatter.</p></div></li>
+</ul>
 <h3>Snippet</h3>
-<p class="meta"><code>transition:var(--transition-fast)</code> for response · <code>transition:var(--transition-spring)</code> for delight</p>
+<p class="meta"><code>transition:var(--transition-fast)</code> for response · <code>transition:var(--transition-spring)</code> for delight · <code>transform:translateZ(0)</code> to promote</p>
 <h3>Related</h3>
-<p class="meta">Funnel and Elastic scroll — spring in situ · Reduced-motion — the instant fallback · Gems — ceremony timing</p>
+<p class="meta">Elastic scroll — spring in situ · Reduced-motion — the instant fallback · Gems — ceremony timing · <code>src/motion/*</code> + <code>src/motion/motion-page.css</code></p>

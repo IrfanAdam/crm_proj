@@ -1,19 +1,17 @@
 import { useLayoutEffect, useRef } from "react";
 import { SLICES, transformFor } from "./slices-spec.js";
 import { buildCopies } from "./slice-bands.jsx";
+import { buildBand, placeBand } from "./band-mirror.js";
 import { getZoom, toLayout } from "./rect-zoom.js";
 
-/* WebKit's glass. Safari won't run the SDF displacement filter on this element, so the
-   same bevel is built from what every engine always renders: transform + mask. The
-   strip of content is drawn once per rim depth, each copy slid outward by the
-   displacement the SDF would apply there and feathered into the next — a stepped lens
-   over the live copy, no SVG filter involved. SLICES carries both the straight rims
-   (vertical refraction) and the capsule's rounded ends (horizontal refraction), so the
-   whole outline lenses instead of only the middle of the top and bottom edges. */
+/* WebKit's glass: no SDF filter here — the bevel is transform + mask over the live
+   copy, each rim-depth copy slid outward as the SDF would displace it and feathered
+   into the next. SLICES covers straight rims + rounded ends; no SVG filter involved. */
 export default function DockSlices({ source = "#app-content" }) {
   const hostRef = useRef(null);
   const lensRef = useRef(null);
   const copies = useRef([]);
+  const band = useRef(null);
   const frame = useRef(0);
   const base = useRef({ l: 0, t: 0, w: 0 });
 
@@ -25,6 +23,7 @@ export default function DockSlices({ source = "#app-content" }) {
     copies.current.forEach((el, i) => {
       if (el) el.style.transform = transformFor(SLICES[i - 1], baseY);
     });
+    placeBand(band.current, lensRef.current, src);
   };
 
   const place = () => {
@@ -46,17 +45,20 @@ export default function DockSlices({ source = "#app-content" }) {
     if (!lens || !src) return;
     lens.textContent = "";
     copies.current = buildCopies(lens, src);
+    band.current = buildBand(src);
+    lens.appendChild(band.current);
     place();
     const rebuild = () => {
       lens.textContent = "";
       copies.current = buildCopies(lens, src);
+      band.current = buildBand(src);
+      lens.appendChild(band.current);
       place();
     };
     window.addEventListener("app-tab", rebuild);
     const queue = () => { if (!frame.current) frame.current = requestAnimationFrame(slide); };
-    // base geometry depends on layout + canvas zoom: re-place (which re-slides),
-    // and re-place once more after the .18s zoom scale transition settles, when
-    // getBoundingClientRect() and --zoom agree again.
+    // base geometry depends on layout + zoom: re-place (which re-slides), plus once
+    // more after the .18s zoom transition settles, when rects and --zoom agree again.
     const queuePlace = () => { if (!frame.current) frame.current = requestAnimationFrame(place); };
     let settleT = 0;
     const queuePlaceSettled = () => { queuePlace(); clearTimeout(settleT); settleT = setTimeout(place, 230); };

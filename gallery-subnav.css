@@ -28,6 +28,18 @@ color:var(--text-primary);
 .frame [id^="identity-"]{
 scroll-margin-top:var(--spacing-4);
 }
+.dnav__brand{
+font-size:var(--font-size-lg);
+font-weight:700;
+letter-spacing:-.01em;
+color:var(--text-primary);
+padding:var(--spacing-2) var(--spacing-3) 0;
+}
+.dnav__back{
+display:block;
+font-size:var(--font-size-sm);
+padding:2px var(--spacing-3) var(--spacing-2);
+}
 .dnav{
 position:sticky;
 top:24px;

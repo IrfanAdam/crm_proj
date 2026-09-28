@@ -1,0 +1,59 @@
+/* ADAM/MOTION — src/motion/motion-page.css · Motion foundation playground */
+.mot-rail{display:flex;align-items:end;gap:var(--spacing-2);position:relative;padding:var(--spacing-4) 0 var(--spacing-2);margin-top:var(--spacing-2);border:1px solid var(--border-thin);border-radius:var(--radius-lg);background:var(--bg-surface);overflow:hidden}
+.mot-rail__track{position:absolute;left:var(--spacing-4);right:var(--spacing-4);bottom:32px;height:2px;background:var(--border-thin);border-radius:var(--radius-full)}
+.mot-rail__dot{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.mot-rail__dot i{display:block;width:14px;height:14px;border-radius:var(--radius-full);background:var(--role-action);transform:scale(1);animation:mot-pulse var(--d) var(--motion-easing-spring) infinite alternate;transform-origin:center}
+.mot-rail__dot:nth-child(2) i{animation-delay:0ms;background:var(--role-action)}
+.mot-rail__dot:nth-child(3) i{animation-delay:120ms;background:var(--role-action)}
+.mot-rail__dot:nth-child(4) i{animation-delay:240ms;background:var(--role-measure)}
+.mot-rail__dot:nth-child(5) i{animation-delay:360ms;background:var(--role-measure-strong)}
+.mot-rail__dot:nth-child(6) i{animation-delay:540ms;background:var(--role-score)}
+.mot-rail__dot b{font-size:var(--font-size-xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-primary)}
+.mot-rail__dot s{text-decoration:none;font-size:10px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.mot-rail__dot s::after{content:'ms'}
+@keyframes mot-pulse{from{transform:scale(1)}to{transform:scale(1.55)}}
+.mot-curves{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-3);margin-top:var(--spacing-2)}
+.mot-curve{border:1px solid var(--border-thin);border-radius:var(--radius-lg);background:var(--bg-surface);padding:var(--spacing-3)}
+.mot-curve svg{width:100%;height:72px;display:block}
+.mot-curve svg path{fill:none;stroke:var(--role-action);stroke-width:2;stroke-linecap:round}
+.mot-curve:nth-child(2) svg path{stroke:var(--role-measure)}
+.mot-curve:nth-child(3) svg path{stroke:var(--role-score)}
+.mot-curve svg circle{fill:var(--bg-surface);stroke:var(--border-strong);stroke-width:1.2}
+.mot-curve b{display:block;margin-top:var(--spacing-2);font-size:var(--font-size-sm);font-weight:600;color:var(--text-primary)}
+.mot-curve code{display:block;font-size:10px;color:var(--text-muted);margin-top:2px}
+.mot-curve span{display:block;font-size:var(--font-size-xs);color:var(--text-secondary);margin-top:2px;line-height:1.4}
+.mot-play{display:flex;gap:var(--spacing-2);flex-wrap:wrap;align-items:center;margin-top:var(--spacing-2)}
+.mot-play__btn{transition:transform var(--transition-fast), box-shadow var(--transition-fast)}
+.mot-play__btn:active{transform:scale(0.96)}
+.mot-play__btn--pop{transform:scale(1.08)}
+.mot-play__replay{font-size:var(--font-size-xs);padding:6px 10px;border-radius:var(--radius-full);border:1px solid var(--border-thin);background:var(--bg-surface);cursor:pointer;color:var(--text-secondary)}
+.mot-play__replay:hover{border-color:var(--border-strong);color:var(--text-primary)}
+.mot-stagger{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--spacing-2);align-items:center;margin-top:var(--spacing-2);padding:var(--spacing-3);border:1px solid var(--border-thin);border-radius:var(--radius-lg);background:var(--bg-surface)}
+.mot-stagger span{height:36px;border-radius:var(--radius-md);background:var(--bg-interactive);border:1px solid var(--border-thin);transform:translateY(8px);opacity:0;animation:mot-in 520ms var(--motion-easing-spring) forwards}
+.mot-stagger span:nth-child(1){animation-delay:0ms}
+.mot-stagger span:nth-child(2){animation-delay:40ms}
+.mot-stagger span:nth-child(3){animation-delay:80ms}
+.mot-stagger span:nth-child(4){animation-delay:120ms}
+.mot-stagger span:nth-child(5){animation-delay:160ms}
+.mot-stagger--replay span{animation:none}
+@keyframes mot-in{to{transform:translateY(0);opacity:1}}
+.mot-scroll{border:1px solid var(--border-thin);border-radius:var(--radius-lg);background:var(--bg-surface);overflow:hidden;margin-top:var(--spacing-2)}
+.mot-scroll__head{display:flex;justify-content:space-between;align-items:center;padding:10px var(--spacing-4);border-bottom:1px solid var(--border-thin);font-size:var(--font-size-sm);font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
+.mot-scroll__head .meta{font-weight:400;letter-spacing:0}
+.mot-scroll .elastic-scroll{height:212px}
+.mot-scroll .elastic-scroll__indicator{height:3px;background:var(--role-action)}
+.mot-scroll__list{display:grid}
+.mot-scroll__row{display:flex;justify-content:space-between;align-items:center;padding:11px var(--spacing-4);border-bottom:1px solid var(--border-thin);font-size:var(--font-size-sm);background:var(--bg-surface)}
+.mot-scroll__row:last-child{border-bottom:0}
+.mot-scroll__row span{color:var(--text-secondary);font-size:var(--font-size-xs);letter-spacing:0.01em}
+.mot-scroll__row b{font-size:var(--font-size-sm);font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;min-width:28px;text-align:right}
+.mot-scroll__row b::after{content:'%';font-weight:400;color:var(--text-muted);margin-left:1px}
+.mot-scroll__foot{padding:var(--spacing-2) var(--spacing-4);font-size:var(--font-size-xs);color:var(--text-muted);border-top:1px solid var(--border-thin);background:var(--bg-interactive);line-height:1.5}
+.mot-reduced{display:grid;gap:var(--spacing-2);margin-top:var(--spacing-2)}
+.mot-reduced__track{display:flex;align-items:center;gap:var(--spacing-3);padding:var(--spacing-3);border:1px solid var(--border-thin);border-radius:var(--radius-lg);background:var(--bg-surface)}
+.mot-reduced__dot{width:32px;height:12px;border-radius:var(--radius-full);background:var(--role-action);transform:translateX(0);transition:transform var(--transition-spring)}
+.mot-reduced__track:hover .mot-reduced__dot{transform:translateX(56px)}
+.mot-reduced--off .mot-reduced__dot{transition:none}
+.mot-reduced--off:hover .mot-reduced__dot{transform:none}
+@media(max-width:700px){.mot-curves{grid-template-columns:1fr}.mot-scroll .elastic-scroll{height:192px}.mot-rail__track{bottom:28px}}
+@media(prefers-reduced-motion:reduce){.mot-rail__dot i{animation:none}.mot-stagger span{animation:none;transform:none;opacity:1}.mot-reduced__dot{transition:none}}
