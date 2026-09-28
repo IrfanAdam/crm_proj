@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T14:28:38.575Z",
+  "generated": "2026-09-28T14:38:52.657Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,38 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "0f3431a",
+      "full": "0f3431aa07c815549ba7398ba60d4b7f55b843e1",
+      "date": "2026-09-28",
+      "subject": "docs(ds): rubric instrument note — the pill className fix made the canvas pin optional",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "82dd878",
+      "full": "82dd878e38a993b007db55f6a3b350ebc16408be",
+      "date": "2026-09-28",
+      "subject": "fix(ds): rubric sat_mean_bright unit (0-255, not 0-1) — the metal-tell read was a false negative; re-measured 26.7/27.8",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "6dfc50c",
+      "full": "6dfc50c6d311b1cb0bd5d639640de917c3801f9e",
+      "date": "2026-09-28",
+      "subject": "feat(ds): trim the gem studio ambient (softbox 120->46, band heights halved) — edge +12%, blown -1.6pt, cube core reads better",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "d1aeaa3",
+      "full": "d1aeaa3d058ffdecf215107cf28ee6f4ef4637a0",
+      "date": "2026-09-28",
+      "subject": "chore(ds): track refresh — link cube parity commit",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "a908a4d",
       "full": "a908a4d4828c45e7d7ace2ead369d81cbf3c67b2",
@@ -2412,7 +2444,6 @@
     "M gallery.css",
     "M public/foundations/motion.html",
     "M src/arch/atlas.json",
-    "M src/components/GemReward/gem-env.js",
     "M src/ds/gallery-subnav.js",
     "M src/ds/motion-lab.js",
     "M src/js/mechanics/graphData.decisions.js",
