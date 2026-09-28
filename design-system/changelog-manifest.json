@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T09:55:44.113Z",
+  "generated": "2026-09-28T11:00:18.736Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "0c2fb8a",
+      "full": "0c2fb8ac8febd56bb292780277f88029e9e7b615",
+      "date": "2026-09-28",
+      "subject": "feat(pitch): progressive top blur on sticky header, replaces static bg",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "345101e",
       "full": "345101e6d2f65e55f47ba783ad56c2c839db792f",
@@ -2265,10 +2273,24 @@
     }
   ],
   "wip": [
+    "M public/foundations/iconography.html",
+    "M src/components/GemReward/gem-tint.js",
+    "M src/components/Icon/Icon.jsx",
+    "M src/ds/icon-lab.js",
+    "M src/ds/icon-playground.js",
+    "M src/glass/DockSlices.jsx",
+    "M src/glass/lens-copy.jsx",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "?? src/pitch/pitch-header-blur.css"
+    "M src/pitch/pitch-base.css",
+    "M src/pitch/pitch-header-blur.css",
+    "M src/pitch/pitch-loop-detail.css",
+    "M src/pitch/pitch-loop.css",
+    "?? src/components/Icon/DiamondCut.jsx",
+    "?? src/components/Icon/SketchCut.jsx",
+    "?? src/components/Icon/gem-icons.js",
+    "?? src/glass/band-mirror.js"
   ]
 }

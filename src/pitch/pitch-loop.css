@@ -14,7 +14,7 @@
  }
  .loop-lead strong {
    color: var(--ink);
-   font-weight: 600;
+   font-weight: inherit;
  }
  /* — Loop diagram: 5 stages with connectors — */
  .loop-diagram {

@@ -6,12 +6,15 @@
    grid-template-columns: repeat(4, 1fr);
    gap: 1.2rem;
    margin-bottom: 1.6rem;
+   background: none;
+   border: none;
+   padding: 0;
  }
  .loop-example__col {
    background: var(--white);
    border: 1px solid var(--rule);
-   border-radius: var(--radius-lg);
-   padding: 1.6rem;
+   border-radius: var(--radius);
+   padding: 1.2rem 1.3rem;
    min-width: 0;
  }
  .loop-example__label {
@@ -30,7 +33,7 @@
  }
  .loop-example__text strong {
    color: var(--ink);
-   font-weight: 600;
+   font-weight: inherit;
  }
  .loop-foot {
    font-size: 0.84rem;
@@ -42,7 +45,7 @@
  }
  .loop-foot strong {
    color: var(--ink);
-   font-weight: 600;
+   font-weight: inherit;
  }
  @media (max-width: 900px) {
    .loop-diagram {

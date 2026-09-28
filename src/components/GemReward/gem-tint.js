@@ -2,8 +2,8 @@
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · one stone, recoloured in place.
 // — Same canvas, same cut, same rig: apply() retargets the mounted materials and step() eases — 
 // — colour, ior, and the spin rate across together, so a variant change never remounts anything, — 
-// — never blanks a frame, never restarts the spin and never drops a drag in flight. The caustic — 
-// — map is swapped once the colour has arrived, so the pool never disagrees with the stone. — 
+// — never blanks a frame, never restarts the spin and never drops a drag in flight. The caustic —
+// — map is re-textured from the live colour as it travels, so the pool never lags the stone. —
 // Export map: GEM_TINT.apply(canvas, name) retarget · GEM_TINT.step(rig, dt) eased commit.
 (function () {
 const api = {};
@@ -49,6 +49,7 @@ api.step = function (rig, dt) {
   const t = rig.tint;
   if (!t) return;
   t.t = Math.min(1, t.t + dt / DUR);
+  t.n = (t.n || 0) + 1;
   const k = t.t * t.t * t.t * (t.t * (t.t * 6 - 15) + 10);   // smootherstep: no step at either end
   rig.cat.spin = t.spin0 + (t.spin1 - t.spin0) * k;
   rig.cat.ior = t.ior0 + (t.ior1 - t.ior0) * k;
@@ -58,6 +59,7 @@ api.step = function (rig, dt) {
     if (m.attenuationColor) m.attenuationColor.copy(m.color).lerp(one(window.THREE), 0.15);
     if (m.ior) m.ior = rig.cat.ior;
   });
+  if (t.t < 1 && t.n % 2 === 0) pool(rig, rig.mats[0].color);
   if (t.t === 1) {
     rig.cat = t.cat;
     pool(rig, t.to);

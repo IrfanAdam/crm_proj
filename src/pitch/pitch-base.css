@@ -54,6 +54,7 @@
     body .section       { padding: 2.5rem 1rem; }
     body .footer-strip  { padding: 3rem 1rem; }
     body .theme-block   { padding: 1.2rem; }
+    body .loop-example__col { padding: 1.1rem; }
     body .insight-card,
     body .pos-card,
     body .icp-card,

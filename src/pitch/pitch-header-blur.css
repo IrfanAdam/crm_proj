@@ -1,34 +1,48 @@
 /* ADAM/PAGE — src/pitch/pitch-header-blur.css · progressive top blur for the sticky pitch header */
 /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · flair: blur the scrolled content, never paint over it. */
-/* Export map: .masthead-mount tint + base blur · ::before top-weighted blur · ::after bleed fade. */
-/* — Section: bar tint + base blur — */
+/* Export map: .masthead-mount tint only (no own blur — nested backdrop-filters drop) · text above the blur layers · ::before bar blur · ::after bleed fade. */
+/* — Section: bar tint — the blur lives in the layers below, never on this box — */
 .masthead-mount {
   background: color-mix(in srgb, var(--bg) 72%, transparent);
-  -webkit-backdrop-filter: blur(10px) saturate(1.25);
-  backdrop-filter: blur(10px) saturate(1.25);
 }
-/* — Section: top-weighted layer — strongest at the viewport edge — */
+/* — Section: text stays crisp — the blur layers sit under the masthead copy — */
+.masthead-mount .masthead {
+  position: relative;
+  z-index: 1;
+}
+/* — Section: bar blur — strongest at the viewport edge, easing down the bar — */
 .masthead-mount::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 45%, transparent 100%);
-  mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 45%, transparent 100%);
+  transform: translateZ(0);
+  -webkit-backdrop-filter: blur(12px) saturate(1.25);
+  backdrop-filter: blur(12px) saturate(1.25);
+  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 35%, transparent 88%);
+  mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 35%, transparent 88%);
 }
-/* — Section: bleed fade — blur dissolves into the page below the bar — */
+/* — Section: bleed fade — blur dissolves to zero before the trail's box edge — */
 .masthead-mount::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 100%;
-  height: 64px;
+  height: 110px;
+  z-index: 0;
   pointer-events: none;
+  transform: translateZ(0);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink), transparent);
-  mask-image: linear-gradient(to bottom, var(--primitive-ink), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, transparent 72%);
+  mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, transparent 72%);
+}
+/* — Section: mobile — the blur field pads past the copy, top and bottom — */
+@media (max-width: 760px) {
+  .masthead-mount {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 }
