@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T08:16:58.037Z",
+  "generated": "2026-09-28T09:08:46.866Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,22 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "9db74d9",
+      "full": "9db74d95a3c5c7b865b52dcc7b3d24aa3d7b89fd",
+      "date": "2026-09-28",
+      "subject": "fix(glass): band mirror blurs via filter — backdrop-filter is dropped inside the lens",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "fdec5dc",
+      "full": "fdec5dcc97e1d11f6553f39a69262a1c259cf5c2",
+      "date": "2026-09-28",
+      "subject": "chore(ds): close phase-1 task 8 — stamping 01dae0a",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "01dae0a",
       "full": "01dae0a94f888914e766e54abac64c469e276758",
@@ -2208,5 +2224,14 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/pitch/pitch-load.js",
+    "?? src/pitch/pitch-loop-detail.css",
+    "?? src/pitch/pitch-loop.css",
+    "?? src/pitch/pitch-version.css"
+  ]
 }

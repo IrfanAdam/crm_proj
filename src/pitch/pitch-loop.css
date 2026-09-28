@@ -1,0 +1,78 @@
+/* ADAM/PAGE — src/pitch/pitch-loop.css · v2 thesis loop visual between hero and theme */
+ /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · diagram slice. */
+ /* — Section: loop shell — */
+ .section--loop {
+   padding-top: 3.2rem;
+   padding-bottom: 3.2rem;
+ }
+ .loop-lead {
+   font-size: 0.98rem;
+   color: var(--ink-3);
+   line-height: 1.75;
+   max-width: 720px;
+   margin-bottom: 2.4rem;
+ }
+ .loop-lead strong {
+   color: var(--ink);
+   font-weight: 600;
+ }
+ /* — Loop diagram: 5 stages with connectors — */
+ .loop-diagram {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   gap: 0;
+   position: relative;
+   margin-bottom: 2.2rem;
+   border: 1px solid var(--rule);
+   border-radius: var(--radius-lg);
+   overflow: hidden;
+   background: var(--white);
+ }
+ .loop-node {
+   padding: 1.6rem 1.25rem 1.4rem;
+   position: relative;
+   text-align: left;
+   border-right: 1px solid var(--rule);
+ }
+ .loop-node:last-child {
+   border-right: none;
+ }
+ .loop-node__kicker {
+   font-family: var(--font-display);
+   font-size: 0.6rem;
+   font-weight: 700;
+   letter-spacing: 0.14em;
+   text-transform: uppercase;
+   color: var(--violet-mid);
+   margin-bottom: 0.45rem;
+ }
+ .loop-node__title {
+   font-family: var(--font-display);
+   font-size: 0.88rem;
+   font-weight: 700;
+   color: var(--ink);
+   line-height: 1.25;
+   margin-bottom: 0.35rem;
+ }
+ .loop-node__desc {
+   font-size: 0.78rem;
+   color: var(--ink-3);
+   line-height: 1.5;
+ }
+ .loop-node--accent {
+   background: var(--violet-xs);
+ }
+ .loop-node--accent .loop-node__title {
+   color: var(--violet);
+ }
+ .loop-node:not(:last-child)::after {
+   content: "→";
+   position: absolute;
+   right: -0.55rem;
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 0.9rem;
+   font-weight: 600;
+   color: var(--violet);
+   z-index: 1;
+ }

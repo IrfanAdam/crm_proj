@@ -1,0 +1,55 @@
+/* ADAM/PAGE — src/pitch/pitch-version.css · version switcher dropdown in masthead */
+ /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · additive version toggle. */
+ /* — Section: version dropdown — */
+ .masthead-version {
+   position: relative;
+   display: inline-flex;
+   align-items: center;
+ }
+ .masthead-version__select {
+   appearance: none;
+   -webkit-appearance: none;
+   padding: 7px 32px 7px 14px;
+   border: 1px solid var(--rule);
+   border-radius: var(--radius-full);
+   background: var(--white);
+   font-family: var(--font-body);
+   font-size: 0.76rem;
+   font-weight: 600;
+   letter-spacing: 0.02em;
+   color: var(--ink);
+   cursor: pointer;
+   line-height: 1;
+   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+ }
+ .masthead-version__select:hover {
+   border-color: var(--violet-pale);
+ }
+ .masthead-version__select:focus {
+   outline: none;
+   border-color: var(--violet);
+   box-shadow: 0 0 0 3px color-mix(in srgb, var(--violet) 14%, transparent);
+ }
+ .masthead-version__chevron {
+   position: absolute;
+   right: 12px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 12px;
+   height: 12px;
+   pointer-events: none;
+   color: var(--ink-3);
+   display: grid;
+   place-items: center;
+ }
+ .masthead-version__chevron svg {
+   width: 12px;
+   height: 12px;
+   display: block;
+ }
+ @media (max-width: 760px) {
+   .masthead-version__select {
+     padding: 6px 28px 6px 11px;
+     font-size: 0.72rem;
+   }
+ }
