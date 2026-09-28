@@ -68,6 +68,8 @@ export default defineConfig({
         gallery: resolve(__dirname, 'gallery.html'),
         pitch: resolve(__dirname, 'pitch.html'),
         preview: resolve(__dirname, 'preview.html'),
+        cube: resolve(__dirname, 'cube.html'),
+        cubespline: resolve(__dirname, 'cube-spline.html'),
       },
     },
   },
