@@ -1,0 +1,99 @@
+/* ADAM/SHARED — src/components/GemReward/gem-panel.css · pattern-panel controls + detach window */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-4] · stage surfaces, resizable card, detach window.
+   gallery.html only; the shipped card keeps gem-reward.css untouched. Map: .gem-stage[data-surface] ·
+   .gem-reward--resize · .gem-panel · .gem-detach window */
+.gem-stage {
+  padding: var(--spacing-4);
+  border-radius: var(--radius-2xl);
+}
+.gem-stage[data-surface="canvas"] {
+  background: var(--bg-primary);
+}
+.gem-stage[data-surface="surface"] {
+  background: var(--bg-surface);
+}
+.gem-stage[data-surface="wash"] {
+  background: var(--bg-interactive);
+}
+/* — Resizable card: drag the bottom-right corner; the rig re-sizes every frame — */
+.gem-reward--resize {
+  resize: both;
+}
+.gem-reward--resize .gem-reward__spline {
+  flex: 1;
+  height: auto;
+  min-height: 120px;
+}
+.gem-panel {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+.gem-panel__label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.gem-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+.gem-panel__field input {
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-1) var(--spacing-2);
+}
+/* — Detach: a resizable, movable window; its canvas mounts through gem3d's own observer — */
+.gem-detach {
+  position: fixed;
+  top: 88px;
+  right: 24px;
+  width: 720px;
+  height: 520px;
+  min-width: 320px;
+  min-height: 240px;
+  max-width: 92vw;
+  max-height: 88vh;
+  resize: both;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-thin);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--text-primary) 22%, transparent);
+  z-index: 70;
+}
+.gem-detach[hidden] {
+  display: none;
+}
+.gem-detach__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-bottom: var(--border-width-thin) solid var(--border-thin);
+  cursor: move;
+}
+.gem-detach__body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--spacing-2);
+}
+.gem-detach .gem-reward__spline {
+  width: 100%;
+  height: 100%;
+}
+.gem-detach__foot {
+  padding: 0 var(--spacing-3) var(--spacing-3);
+  text-align: center;
+}
