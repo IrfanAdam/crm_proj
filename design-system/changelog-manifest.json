@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T14:38:52.657Z",
+  "generated": "2026-09-28T14:40:15.077Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,30 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "d69c32a",
+      "full": "d69c32a63b87c72f7d0dd4583d3e35fa73aaf933",
+      "date": "2026-09-28",
+      "subject": "chore(ds): stamp tasks 27-28 shas + regen manifest",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
+    {
+      "sha": "48f4a66",
+      "full": "48f4a66e2b7be83e4f9f0e3ae5f70dfd9b41c9f0",
+      "date": "2026-09-28",
+      "subject": "feat(ds): gem bloom post-pass, pill-toggleable + regen manifest",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
+    {
+      "sha": "0695714",
+      "full": "0695714521fc8dd36bcd708209d53d529b5c3954",
+      "date": "2026-09-28",
+      "subject": "feat(ds): motion specimens replayable, anchored, reduced-motion simulatable",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "0f3431a",
       "full": "0f3431aa07c815549ba7398ba60d4b7f55b843e1",
@@ -2441,17 +2465,6 @@
     }
   ],
   "wip": [
-    "M gallery.css",
-    "M public/foundations/motion.html",
-    "M src/arch/atlas.json",
-    "M src/ds/gallery-subnav.js",
-    "M src/ds/motion-lab.js",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/motion/motion-page.css",
-    "?? prototype/gems/rubric-shots/",
-    "?? src/components/GemReward/gem-bloom.js"
+    "?? prototype/gems/rubric-shots/"
   ]
 }
