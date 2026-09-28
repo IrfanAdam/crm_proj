@@ -12,9 +12,10 @@ const pills = root.querySelector("[data-gemspec-pills]");
 if (!card || !pills) return;
 function show(p) {
 const cat = p.dataset.gemspecCat;
-card.className = "gem-reward gem-reward--" + cat;
 const cv = card.querySelector("canvas[data-gem]");
-if (cv.dataset.gem !== cat) {
+if (cv) card.classList.remove("gem-reward--" + cv.dataset.gem);
+card.classList.add("gem-reward--" + cat);
+if (cv && cv.dataset.gem !== cat) {
 const label = cat + " gem ceremony. Activate to open fullscreen.";
 if (window.GEM_TINT && window.GEM_TINT.apply(cv, cat)) {
 cv.setAttribute("aria-label", label);
