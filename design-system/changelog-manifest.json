@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T14:41:07.867Z",
+  "generated": "2026-09-28T14:41:35.408Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "123459a",
+      "full": "123459a2f187769049f3c10ab31e769baabff086",
+      "date": "2026-09-28",
+      "subject": "chore(ds): regen manifest after tasks 27-28 stamp",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
     {
       "sha": "905f098",
       "full": "905f098d253df26c7afe03f88fe83673fa617da2",
@@ -2473,6 +2481,7 @@
     }
   ],
   "wip": [
+    "M src/arch/atlas.json",
     "?? prototype/gems/rubric-shots/"
   ]
 }
