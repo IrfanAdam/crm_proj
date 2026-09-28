@@ -83,7 +83,7 @@ const cross = new T.DirectionalLight(0xdce8ff, 0.55);
 key.position.set(3, 5, 4);
 cross.position.set(-4, 3, -2);
 scene.add(key, cross, new T.AmbientLight(0xffffff, 0.12));
-const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy * gscale) : null;
+const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy * gscale, cut) : null;
 const group = new T.Group();
 const far = api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66);
 const near = api.ghost(geo, color, ior, T.FrontSide, 0.9, 0.26);
