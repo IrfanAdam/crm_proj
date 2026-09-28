@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T13:45:09.500Z",
+  "generated": "2026-09-28T13:47:48.858Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,22 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "a549402",
+      "full": "a549402f3a1f7db0f64024adf12185515f94449f",
+      "date": "2026-09-28",
+      "subject": "feat(ds): intelligence cube — glass block with an amorphous glowing core",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "b5b5f04",
+      "full": "b5b5f0454ee6bd50e7d07a5cd0a3516b3bd24f51",
+      "date": "2026-09-28",
+      "subject": "chore(ds): regen manifest after draggable edges",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "9aada13",
       "full": "9aada13d0d5dda5b95c4b356099f7886e3e3a22e",
@@ -2370,7 +2386,6 @@
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/motion/motion-page.css",
-    "?? src/components/IntelCube/"
+    "M src/motion/motion-page.css"
   ]
 }
