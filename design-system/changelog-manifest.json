@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T09:09:02.241Z",
+  "generated": "2026-09-28T09:40:13.634Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,22 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "730bf10",
+      "full": "730bf10fdf876cfc9668b4c3f082a1281efe636a",
+      "date": "2026-09-28",
+      "subject": "fix(pitch): hero-gem contact shadow softer — wider spread, lighter weight (bare stage)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "5a1be5d",
+      "full": "5a1be5dcfaf1fd8faf8951326d1cd1d0627d0b18",
+      "date": "2026-09-28",
+      "subject": "chore(ds): close phase-1 tasks 10-11 — stamping 603acb3",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "603acb3",
       "full": "603acb3e2909f6d40d3ca752f06f809fb42655ce",
@@ -2232,5 +2248,11 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/pitch/pitch-loop-detail.css"
+  ]
 }
