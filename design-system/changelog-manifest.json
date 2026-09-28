@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T08:07:04.685Z",
+  "generated": "2026-09-28T08:08:19.493Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "9ce3f1a",
+      "full": "9ce3f1ac063ff21fe44c8ca1173cb40b4d21355f",
+      "date": "2026-09-28",
+      "subject": "fix(pitch): hero eyebrow says the positioning line, highlight on \"performance layer\"",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "8a19d01",
       "full": "8a19d01b2f2a742ed47105fa536c5fe4e03d2e07",
@@ -2189,7 +2197,6 @@
     "M src/glass/DockLens.jsx",
     "M src/glass/dock-lens.css",
     "M src/glass/lens-copy.jsx",
-    "M src/pitch/pitch-masthead.css",
     "?? prototype/glass/",
     "?? src/device/edge-stops.js",
     "?? src/glass/dock-band.css"
