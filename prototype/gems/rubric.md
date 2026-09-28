@@ -195,7 +195,12 @@ did not move — as predicted, they are the renderer ceiling.
 
 Flags for the next round:
 1. **#7c was re-defined, not fixed by the bloom.** Measured on v2 `card-sapphire`: bright cores (p99 band) mean sat **27.8**/255 — warm, not achromatic; the 1-px halo ring mean sat **103**/255. The script's old `sat_mean_bright` (thr = 255.0) selected only fully-clipped pixels, whose saturation is 0 by construction — an unsatisfiable anchor, not a real regression. New metric (halo ring chroma, anchor ≥40) passes with margin.
-2. **`card-sapphire-nodisp` is a suspected no-op in v2** — its diff vs plain is mean 0.16 / frac_gt8 0.0,
-   where v1 moved 38 % of pixels by >8. Re-shoot with the eval verified (dispersion off should change
-   the glints) before scoring #3 from it.
+2. **`card-sapphire-nodisp` is inconclusive in v2 — #3's on/off evidence (d) is void.** Forensics: three r160's
+   `customProgramCacheKey()` returns `this.onBeforeCompile.toString()`, so wiping the hook + `needsUpdate` does
+   force an unpatched recompile — the mechanism is sound. But v2's shot-to-shot noise floor (repeat shot vs plain:
+   mean 0.7, **2.67 % of pixels >8**, max 80.7 — the live float phase at capture) is larger than the probe's whole
+   effect (mean 0.16, 0.0 % >8). The dispersion patch's removal now moves fewer pixels than the run-to-run jitter,
+   so the probe cannot be read either way; v1's "moves 38 % of pixels" was itself float-phase noise, not dispersion.
+   Score #3 from its direct terms (a–c: `fire_px_frac`, hue spread) only — do not cite (d) until a probe with a
+   frozen float exists (e.g. capture inside a single rAF after pausing the loop).
 3. `sat_mean_bright` scale: the script prints the 0–1 scale (v1 0.1 = 25.5/255); anchors are 0–255.
