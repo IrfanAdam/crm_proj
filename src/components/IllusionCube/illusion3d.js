@@ -38,13 +38,9 @@ if (rig.w === w && rig.h === h) return;
 rig.w = w;
 rig.h = h;
 renderer.setSize(w, h, false);
-const a = w / h;
-const v = rig.view || 260;
-rig.camera.left = -v * a;
-rig.camera.right = v * a;
-rig.camera.top = v;
-rig.camera.bottom = -v;
-rig.camera.updateProjectionMatrix();
+if (rig.resize) rig.resize(w, h);
+else rig.camera.aspect = w / h;
+if (!rig.resize) rig.camera.updateProjectionMatrix();
 };
 size();
 if (still) {

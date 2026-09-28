@@ -17,6 +17,8 @@ return css(n) || fb;
 };
 // — Stage —
 api.stage = function (renderer, aspect) {
+const cv = renderer.domElement || {};
+if (window.ILLUSION_STAGE) return window.ILLUSION_STAGE.build(renderer, cv.clientWidth || 480, cv.clientHeight || 480);
 const scene = new T.Scene();
 scene.background = new T.Color(api.tok('--primitive-sapphire-ui-200', 0xc2dcfa));
 scene.fog = null;
