@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T09:48:59.573Z",
+  "generated": "2026-09-28T09:55:44.113Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "345101e",
+      "full": "345101e6d2f65e55f47ba783ad56c2c839db792f",
+      "date": "2026-09-28",
+      "subject": "feat(pitch): v2 ontology+orchestration messaging, drop pos numbers, side-link indent fix",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "8bfd477",
       "full": "8bfd477d4434bb4fbe6a0e026f73d42bda5650f0",
@@ -2261,6 +2269,6 @@
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-loop-detail.css"
+    "?? src/pitch/pitch-header-blur.css"
   ]
 }

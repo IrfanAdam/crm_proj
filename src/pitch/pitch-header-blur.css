@@ -1,0 +1,34 @@
+/* ADAM/PAGE — src/pitch/pitch-header-blur.css · progressive top blur for the sticky pitch header */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · flair: blur the scrolled content, never paint over it. */
+/* Export map: .masthead-mount tint + base blur · ::before top-weighted blur · ::after bleed fade. */
+/* — Section: bar tint + base blur — */
+.masthead-mount {
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(10px) saturate(1.25);
+  backdrop-filter: blur(10px) saturate(1.25);
+}
+/* — Section: top-weighted layer — strongest at the viewport edge — */
+.masthead-mount::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 45%, transparent 100%);
+}
+/* — Section: bleed fade — blur dissolves into the page below the bar — */
+.masthead-mount::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 64px;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink), transparent);
+  mask-image: linear-gradient(to bottom, var(--primitive-ink), transparent);
+}
