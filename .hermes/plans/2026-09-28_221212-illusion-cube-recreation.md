@@ -96,6 +96,8 @@ Read the `--eval` block, not gem-shot's built-in probe: that probe counts `canva
 
 ## Phase 2 — Staging: forms, camera, lights, floors {#phase-2}
 
+*Shipped in 57766e8 · Tasks 7–14 · phase-2.*
+
 *Six bodies, one orthographic camera, one light rig and a fogged grid floor, every number lifted from the decoded `illusioncube` payload and re-checked against a live probe of the real Spline runtime at 1600x1200 - the pose, the projection matrix and the assembly's on-screen silhouette all reproduce to within ~4 px.*
 
 *Tags: Component, Layout, Tooling*
@@ -117,7 +119,9 @@ Read the `--eval` block, not gem-shot's built-in probe: that probe counts `canva
 | 13 | `illusion-stage.js` - composer + renderer/background | page renders with zero console errors; `?graybox=1` = six flat bodies, floor+prism hidden; `ILLUSION_STAGE.rig()` returns camera+bodies |
 | 14 | graybox silhouette capture vs `hero-assembled.png` | eval returns `x [650,925] y [524,803]` +-4 px; capture landmarks match the reference at apex (778, 524) vs (778, 528), left corner (650, 580) vs (658, 578) - landmarks only, never a pixel diff |
 
-### Task 7: `illusion-form.js` - the two body primitives
+### Task 7: `illusion-form.js` - the two body primitives ✓ done
+
+*Note 2026-09-28: chamfer builds the geometrically complete 44-tri version (132 verts, 24 unique) — the plan's "96 verts" undercounts the 12 edge bands as 1 tri each, which would leave half of every band open. Bbox ±60.0428/±55.7127, 24 unique positions and hard axis normals verify exact.*
 
 **Objective:** fork `IntelCube/cube-form.js` (justification above) into a module with exactly two builders plus the decoded constants.
 
@@ -135,7 +139,7 @@ node <scratch>/gem-shot.mjs "http://localhost:5174/cube-illusion.html" <scratch>
 ```
 Expected: Main bbox `z ∈ [0, 149.0701]` (vertex count is Spline's own tessellation - 1990 verts / 1640 unique live - so do not chase it); distinct z `[0, 0.3045, 1.1716, 2.4693, 4, 145.0701, 146.6009, 147.8986, 148.7657, 149.0701]` (a 4-segment quarter-round of radius 4); cube 96 verts / 24 unique (the core box `±(1/2·dim − 27)` plus three arc points per corner).
 
-### Task 8: `illusion-bodies.js` - the six bodies at the decoded transforms
+### Task 8: `illusion-bodies.js` - the six bodies at the decoded transforms ✓ done
 
 **Objective:** build `Cubes` (`THREE.Group` at `0.5654364373828571, 97.03507571802716, 6.795859237940917`) and parent the six meshes to it with the decoded local transforms; `castShadow`/`receiveShadow` true on all six; leave `matrixAutoUpdate` on (Phase 4 tweens these objects in place).
 
@@ -157,7 +161,7 @@ The rotation order matters: three's default `XYZ` reproduces the decoded local o
 - `Base` `x -99.43..100.57, y 0..45, z -99..101`;
 - cube centres `Cube 1 (-7.956, 73.480, 15.247)`, `Cube 2 (54.006, 150.666, 9.777)`, `Cube 3 (-53.386, 40.869, -69.153)`, `Small Cube (52.779, 20.404, -74.032)`.
 
-### Task 9: `illusion-camera.js` - the orthographic rig
+### Task 9: `illusion-camera.js` - the orthographic rig ✓ done
 
 **Objective:** reproduce the play camera exactly. Live values read off the runtime at 1600x1200: `OrthographicCamera`, position `530.4659993893731, 489.4357008603547, 592.3466628005328`, rotation `-28.260539356656103, 37.39447137109556, 18.079664962162802` degrees, `zoom 0.9753499582310595`, frustum `l -800 r 800 t 600 b -600`, `near -100000`, `far 100000`, `up (0,1,0)`, `targetOffset 1000`.
 
@@ -170,7 +174,7 @@ The rotation order matters: three's default `XYZ` reproduces the decoded local o
 
 **Verify:** `--eval` printing `camera.projectionMatrix.elements[0]` = `0.00121919`, `[5]` = `0.00162558` (at 1600x1200 - byte-matches the live runtime), `Math.abs(camera.matrixWorld.elements[1]) < 1e-6`, and the six landmark px of Task 14's table +-4 px. Then resize the canvas and confirm the landmark px scale linearly (composition preserved).
 
-### Task 10: `illusion-lights.js` - ambient, key light, three pools
+### Task 10: `illusion-lights.js` - ambient, key light, three pools ✓ done
 
 **Objective:** the decoded rig, exactly (note: there is **no hemisphere light** anywhere in the payload - the page ambient is a flat colour):
 
@@ -183,7 +187,7 @@ The rotation order matters: three's default `XYZ` reproduces the decoded local o
 
 **Verify:** `--eval` prints the five lights' `type/position/intensity/distance/decay` and `renderer.shadowMap.type`; `ILLUSION_LIGHTS.toState()` then the capture shows three drifting pools on the grid and the key shadow left of the plinth. Confirm `distance`/`decay` reach three unchanged (they drive the pool radius at this scale - do not substitute defaults).
 
-### Task 11: `illusion-floor.js` - the fogged grid plane
+### Task 11: `illusion-floor.js` - the fogged grid plane ✓ done
 
 **Objective:** adapt (do not reuse) `CUBE_FLOOR`: its 32-px diamond weave and `--primitive-*` tints are the IntelCube's look, while the decoded plane is two crossed `pattern` layers, style `lines`, `frequency [1, 50]`, `size 0.01`, `colorA rgba(0, 0.24313725490196078, 1, 0.3)`, `colorB rgba(1,1,1,0)` transparent, one layer `rotation 90` and one `0`.
 
@@ -195,7 +199,7 @@ The rotation order matters: three's default `XYZ` reproduces the decoded local o
 
 **Verify:** capture reads as a faint blue weave of 200-unit cells: the two families are one screen-horizontal set (world-X lines, screen direction `(0.755, 0)`) and one running down-right at ~23 deg (world-Z lines, `(-0.655, -0.284)`), with ~142 px perpendicular spacing (a 200-unit step projects to 151 px across and 55 px down) - both faintly present beside and below the plinth, both gone above y 538 px; `--eval` returns the fog band `[761, 538]`.
 
-### Task 12: `illusion-prism.js` - the floor light streak
+### Task 12: `illusion-prism.js` - the floor light streak ✓ done
 
 **Objective:** `PlaneGeometry(921.2535744979286, 1082.0878980260457, 8, 8)` at `-194.01257223931134, 0.7191718729590956, -8.388145252858408`, `rotation.x = -PI/2`, `receiveShadow` true, `castShadow` false; Phase 2 ships the **mask geometry** already exact and a flat matcap stand-in, so placement and falloff are verifiable before Phase 3 paints it: an object-space gradient along `+x` from `origin.x = 143.92656438504127` in `direction (1,0,0)`, white `1 -> 0` across `near 11.309148816992257` / `far 214.4367741248982` (`isWorldSpace false` - get the space wrong and the streak shears off the plane). Phase 3 replaces the stand-in with the masked `7b83617b` matcap (rotation -227) + phong (`alphaOverride 0.32`) stack.
 
@@ -203,7 +207,7 @@ The rotation order matters: three's default `XYZ` reproduces the decoded local o
 
 **Verify:** capture shows a soft bright smear to the left of the base between x ~556-660 px (the reference's own render places its streak there) whose brightness dies before the plane's own edges - the mask must make the quad boundary invisible. `--eval` prints the plane's world corners and the mask origin.
 
-### Task 13: `illusion-stage.js` - the composer
+### Task 13: `illusion-stage.js` - the composer ✓ done
 
 **Objective:** stitch the rig: `scene.background = new THREE.Color(0xC2DCFA)` (decoded `0.7607843137/0.8627450980/0.9803921569`), the Task 11 fog, then Task 8's group, Task 10's lights, Task 11's floor, Task 12's prism and Task 9's camera; renderer `{ antialias: true, alpha: false }`, `toneMapping = THREE.NoToneMapping` and `outputColorSpace = THREE.SRGBColorSpace` (**not** the IntelCube's ACES: the reference's background is byte-exactly `0xC2DCFA`, so nothing may roll it off); `?graybox=1` swaps the six bodies to flat `MeshLambertMaterial(0x9aa4b0)` and hides the floor + prism so Task 14 can measure the silhouette alone; expose `ILLUSION_STAGE.build(renderer, cssW, cssH)` -> rig `{ scene, camera, bodies, lights, floor, prism, graybox }` and a no-op `step(dt)` that Phase 4/5 fill in.
 
@@ -211,7 +215,7 @@ The rotation order matters: three's default `XYZ` reproduces the decoded local o
 
 **Verify:** `node --check` all seven Phase 2 files + `wc -l` each <=99; load `cube-illusion.html` and `cube-illusion.html?graybox=1` on :5174 with `--eval` returning `console` with zero errors and `ILLUSION_STAGE.rig()` non-null in both; confirm the `prefers-reduced-motion` branch renders one static frame (no `step` ticks) so Phase 4's loop wiring keeps a headless-safe path.
 
-### Task 14: graybox silhouette capture - the phase acceptance
+### Task 14: graybox silhouette capture - the phase acceptance ✓ done
 
 **Objective:** prove staging before any material work. Copy the instrument (`cp prototype/gems/gem-shot.mjs <scratch>/ && ln -s "$PWD/node_modules" <scratch>/node_modules`) and capture the graybox at the reference's exact frame:
 
