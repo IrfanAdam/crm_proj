@@ -204,3 +204,25 @@ Flags for the next round:
    Score #3 from its direct terms (a–c: `fire_px_frac`, hue spread) only — do not cite (d) until a probe with a
    frozen float exists (e.g. capture inside a single rAF after pausing the loop).
 3. `sat_mean_bright` scale: the script prints the 0–1 scale (v1 0.1 = 25.5/255); anchors are 0–255.
+
+## Re-score — after the studio env (dimmed emitters), Task 29
+
+Third instrument run (shots in `scratch/gemrubric-v3/`; the v3 `card-sapphire` clip is pixel-identical
+to the port-verification shot — mean diff 0.04, 0.1 % of pixels >8 — so the capture is trustworthy).
+
+Robust moves (threshold-independent): interior **p1 69.8 → 44.3**, **stops 1.83 → 2.16** (deeper shadow
+path), **sat_mean 161.2 → 227.2** (a richer body — matches the comparative read "deeper, richer royal
+blue"), tx-off mean 50.1 → 38.8 (less ambient through, expected with dimmer emitters). #2 moves 4 → 6.
+
+**#5 is unresolved across masks — fifth instrument lesson.** Three recipes disagree on the v3 glint
+structure: the subagent's eroded-silhouette instrument says n_cc 6–8 / largest_frac 0.284 (better); the
+analyze script says 1 / 0.994; a fixed-threshold spot check with a saturation mask says 10 / 0.605 (at
+THR 210) where v2 read 21 / 0.163. The cause is mask scope: the new env produces a brighter continuous
+**girdle/rim line** (praised by the comparative read as "separate bright glints along the girdle"), which
+one mask merges into a single huge component and another (eroded) excludes. Until #5 is re-defined with
+a mask-robust recipe (fixed absolute threshold + rim exclusion + a stated erosion radius), score it
+**provisionally 6** and do not cite n_cc across builds.
+
+Also for the next recipe revision: percentile thresholds are not comparable across looks — a dimmer image
+gets a lower p99, which selects a larger pixel set and merges components. Fixed absolute thresholds or
+per-image normalisation only.
