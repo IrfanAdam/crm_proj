@@ -1,14 +1,15 @@
 /* ADAM/SHARED — src/components/GemReward/gem-drag.js · drag-to-inspect + settle back */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-5] · pointer input for the gem rigs (Task 22).
 // — Drag: hold a rig and rotate it by the pointer delta (y free, x clamped ±0.9 rad); the spin clock — 
-// — pauses so the stone freezes for inspection. Release: hold the pose HOLD ms, then ease back to — 
-// — the grab pose and resume the spin from the same angle (never a jump). —
+// — pauses so the stone freezes for inspection. Release: hold the pose HOLD ms, then a damped — 
+// — SPRING (underdamped → it overshoots and settles, never a dead fade) returns it to the grab — 
+// — pose and resumes the spin from the same angle (never a jump). —
 // — Pointer tracking also feeds the resting tilt (GEM_DRAG.at). Reduced motion has no loop, so no drag. —
 // — Click guard: a release after >6px of travel swallows the click (capture phase) so a drag-to-inspect —
 // — never triggers the card's fullscreen overlay; a clean tap still opens it. —
 // Export map: GEM_DRAG.at · GEM_DRAG.apply(rig, now, dt) → true when it posed the rig this frame
 (function () {
-const api = { at: null, hold: 1200, k: 0.011 };
+const api = { at: null, hold: 1200, k: 0.011, spring: { w: 8, z: 0.58 } };
 const rigs = function () { return (window.GEM3D && window.GEM3D.rigs) || null; };
 const rigOf = function (canvas) {
 const list = rigs();
@@ -50,10 +51,14 @@ const d = rig.drag;
 if (!d) return false;
 if (!d.held && !d.settle && now - d.released > api.hold) d.settle = true;
 if (d.settle) {
-const k = Math.pow(0.02, dt);
-d.dx *= k;
-d.dy *= k;
-if (Math.abs(d.dx) < 0.002 && Math.abs(d.dy) < 0.002) { rig.drag = null; return false; }
+const step = Math.min(dt, 0.05);
+const w = api.spring.w, c = 2 * api.spring.z * w, k = w * w;
+d.vx = (d.vx || 0) + (-k * d.dx - c * (d.vx || 0)) * step;
+d.vy = (d.vy || 0) + (-k * d.dy - c * (d.vy || 0)) * step;
+d.dx += d.vx * step;
+d.dy += d.vy * step;
+const calm = Math.abs(d.dx) < 0.002 && Math.abs(d.dy) < 0.002;
+if (calm && Math.abs(d.vx || 0) < 0.02 && Math.abs(d.vy || 0) < 0.02) { rig.drag = null; return false; }
 }
 rig.group.rotation.y = d.y0 + d.dx;
 rig.group.rotation.x = Math.max(-0.9, Math.min(0.9, d.x0 + d.dy));
