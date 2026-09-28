@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T12:45:46.915Z",
+  "generated": "2026-09-28T13:40:09.295Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,30 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "36c7b04",
+      "full": "36c7b04c2b5dd1534568dd89151a067620fc634d",
+      "date": "2026-09-28",
+      "subject": "feat(ds): gems panel — stage surfaces, floor on/off, resizable card, detachable gem window",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "0950cd3",
+      "full": "0950cd38ac182a2cf89fa6f1d5fd3094038ecf87",
+      "date": "2026-09-28",
+      "subject": "feat(ds): path-traced gem hero render — real dispersion, 6-bounce TIR, photon caustics",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "effd63e",
+      "full": "effd63e78959c7e37e8ad02d9851956563a5609c",
+      "date": "2026-09-28",
+      "subject": "feat(ds): wire ph-sketch-logo as sketch-logo / gem for the reward role",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "929c791",
       "full": "929c7916467df635a239ef1aa384474cf94492ff",
@@ -2321,9 +2345,16 @@
     }
   ],
   "wip": [
-    "M public/foundations/iconography.html",
-    "M src/components/Icon/Icon.jsx",
-    "M src/ds/icon-playground.js",
-    "M src/motion/motion-page.css"
+    "M gallery.css",
+    "M public/foundations/motion.html",
+    "M src/arch/atlas.json",
+    "M src/ds/gallery-subnav.js",
+    "M src/ds/motion-lab.js",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/motion/motion-page.css",
+    "?? src/components/IntelCube/"
   ]
 }
