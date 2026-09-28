@@ -42,19 +42,13 @@ plinth.position.y = -total / 2 + B.ph / 2;
 body.renderOrder = 4;
 plinth.renderOrder = 4;
 group.add(body, plinth);
-const main = new T.Mesh(window.CUBE_FORM.blob(0.3, 4), window.CUBE_CORE.blob([tok.cool, tok.core, tok.warm], { amp: 0.14, freq: 1.25, seed: 3.1, alpha: 0.95 }));
+const main = new T.Mesh(window.CUBE_FORM.blob(0.32, 4), window.CUBE_CORE.blob([tok.cool, tok.core, tok.warm], { amp: 0.14, freq: 1.25, seed: 3.1, alpha: 0.92 }));
 main.position.set(0.08, 0.05, 0.02);
 main.renderOrder = 2;
 const small = new T.Mesh(window.CUBE_FORM.blob(0.17, 3), window.CUBE_CORE.blob([tok.cool, tok.violet, tok.core], { amp: 0.08, freq: 2.0, seed: 7.4, alpha: 0.5 }));
 small.position.set(-0.16, 0.2, -0.12);
 small.renderOrder = 2;
 group.add(main, small);
-if (window.GEM_TEXTURES) {
-const ground = new T.Mesh(new T.PlaneGeometry(2.2, 1.4), new T.MeshBasicMaterial({ map: window.GEM_TEXTURES.shadow(), transparent: true, opacity: 0.5, depthWrite: false }));
-ground.rotation.x = -Math.PI / 2;
-ground.position.y = -total / 2 - 0.006;
-scene.add(ground);
-}
 scene.add(group);
 const key = new T.DirectionalLight(0xffffff, 1.0);
 key.position.set(3, 5, 4);
@@ -68,9 +62,9 @@ const dist = Math.max(h / FILL / (2 * tan), rad / (0.72 * tan * Math.max(aspect,
 const camera = new T.PerspectiveCamera(FOV, aspect, 0.1, 60);
 camera.position.set(0, dist * 0.44, dist);
 camera.lookAt(0, 0.02, 0);
-const rig = { scene: scene, camera: camera, group: group, fov: FOV, cores: [], halos: [], motes: null, clock: 0 };
-rig.cores.push({ mesh: main, mat: main.material, phase: 0 });
-rig.cores.push({ mesh: small, mat: small.material, phase: 11 });
+const rig = { scene: scene, camera: camera, group: group, fov: FOV, dist: dist, cores: [], halos: [], motes: null, clock: 0 };
+rig.cores.push({ mesh: main, mat: main.material, phase: 0, bx: main.position.x, bz: main.position.z });
+rig.cores.push({ mesh: small, mat: small.material, phase: 11, bx: small.position.x, bz: small.position.z });
 const sprite = window.CUBE_CORE.sprite();
 const halo = function (hex, scale, x, y, z, op, phase) {
 const s = new T.Sprite(new T.SpriteMaterial({ map: sprite, color: new T.Color(hex), transparent: true, opacity: op, depthWrite: false, toneMapped: false }));
@@ -87,6 +81,7 @@ const motes = new T.Points(window.CUBE_FORM.motes(40), window.CUBE_CORE.motes(to
 motes.renderOrder = 3;
 group.add(motes);
 rig.motes = motes;
+if (window.CUBE_FLOOR) window.CUBE_FLOOR.dress(scene, rig, total);
 return rig;
 };
 window.CUBE_SCENE = api;
