@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T18:29:36.477Z",
+  "generated": "2026-09-28T18:49:08.989Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -16,6 +16,30 @@
     "2026-09-28_221212-illusion-cube-recreation.md"
   ],
   "commits": [
+    {
+      "sha": "d201374",
+      "full": "d201374347be0763c08955c1922c5798e0c03c86",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): phase 5 interaction+audio — reveal machine, chain, sound layer, wiring",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-5}"
+    },
+    {
+      "sha": "4ead21a",
+      "full": "4ead21a2648c40ae5c3618cc1cd2cf1b5d005943",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): phase 4 motion — timeline tables, steppers, clock dispatch, still frame",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "b508bd4",
+      "full": "b508bd46edc3a25faad301fbae8aa5e56717359d",
+      "date": "2026-09-28",
+      "subject": "chore(illusion): close phase 3 — stamping 09fc321",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-3}"
+    },
     {
       "sha": "09fc321",
       "full": "09fc321b763df6fde22d220dd0bec1e8dd649d38",
@@ -2618,6 +2642,12 @@
     }
   ],
   "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "?? prototype/gems/illusion-probe.mjs",
+    "?? prototype/gems/illusion-sheet.mjs",
     "?? prototype/gems/rubric-shots/"
   ]
 }

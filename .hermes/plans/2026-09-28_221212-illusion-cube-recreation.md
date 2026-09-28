@@ -425,6 +425,8 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 ## Phase 4 — Motion: the living loops {#phase-4}
 
+*Shipped in 4ead21a · Tasks 25–29 · phase-4.*
+
 *One monotonic clock in the mount's rAF loop, a pure decoded-table module beside it, four per-frame steppers that write into records they already own — the inner cubes' 16 s spread↔converge sweep (Cube 2 delayed 8 s), Main's material-only churn, Base's one-shot 181°→87° sheen, three point lights (1 s fade, 8 s hold, 4 s move, 12/8/6 s drift term), Prism idle — with the house gates: pause offscreen, one static frame under reduced motion, zero per-frame allocation.*
 
 *Tags: Motion, Component*
@@ -437,7 +439,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 | 28 | Point lights — intensity ramp, 8 s hold, 4 s move to state pose, drift term | light pose trace hits the decoded endpoints on time |
 | 29 | The clock and the house gates: pause offscreen/hidden, reduced-motion still frame, no per-frame allocation | gates proven by probes; step bodies allocate nothing |
 
-### Task 25: `illusion-timeline.js` — the tiny timeline system
+### Task 25: `illusion-timeline.js` — the tiny timeline system ✓ done
 
 **Objective:** A DOM-free, THREE-free classic-script module (IntelCube lane convention: IIFE, `window.ILLUSION_TIMELINE`, ≤99 content lines, no raw hex) that owns the clock maths and every decoded number the Phase 4/5 steppers read, so no stepper hard-codes a timing. Members: `inOutCubic` (Spline `easing 4`); `bezier(x1,y1,x2,y2)` (Newton root find, as `src/patterns/OppsHome/morph-timing.js`); `leg(t, delay, ms)` → eased 0–1, clamped, 0 before the delay; `osc(t, delay, legMs)` → 0 at spread, 1 at converged, triangle with an eased leg each way (period `2*legMs`); `pose(out, a, b, w)` and `scaleOf`/`rotOf` writers that mutate caller-owned arrays; `drift01(t, period)`. Decoded tables: `CUBES` — C1 spread (−7.9, 73.5, 15.2)/rot(75.7, 59, 164.2)/s1 ↔ converged (28.2, 84.1, 21.1)/rot(31, −14.7, −11.9)/s0.7; C2 (54, 150.7, 9.8)/rot(0,0,0)/s0.3 ↔ (−36.4, 65.4, −45.4)/rot(−98.3, 25.7, −87.2)/s0.7 with `delay: 8000`; C3 (−53.4, 40.9, −69.1)/rot(−180, −4.8, −106.6)/s0.3 ↔ (−11.4, 140, 44.3)/rot(−98.4, 25.7, −152.2)/s0.7; Small (52.7, 20.4, −74)/rot(0,0,−17.1)/s0.3 ↔ (−27.7, 21.1, 62.6)/rot(10, 20, −10)/s0.4; every leg 8000 ms, every delay 0 except C2. `MAIN` — layer A `{scale 1.37, move 4.1, alpha 0.32}`, layer B `{scale 1.78, move −0.04, alpha 0.32}` → state `{1.44 / 6.39 / 0.54}` and `{2.58 / 0.03 / 0.46}`, 8000 ms, plus a 1000 ms dither. `BASE` — `{sheen: 181 → 87, duration: 4000, once: true}`. `LIGHTS` — per light `{from, to, intensity, fade: 1000, delay: 8000, duration: 4000, drift}`. `PRISM` — matcap rotation −227 → −169, 8000 ms pingpong. `CAMERA`/`REVEAL`/`CHAIN` for Phase 5 (Task 30/31 read them, they are defined here once).
 
@@ -445,7 +447,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 **Verify:** `node --check` clean; the test asserts `inOutCubic(0)=0`, `(1)=1`, `(0.5)=0.5`, `f(0.25)+f(0.75)=1`; `osc(0)=0`, `osc(8000)=1`, `osc(16000)=0`, `osc(7999)<1`, and `osc(t<8000)` is exactly 0 for the C2 record while C1's is >0; the bezier's endpoints are exact, values stay in [0,1] and are monotone, with `bezier(0.5)` strictly ≠ 0.5 (the decoded curve is asymmetric — assert the inequality, never a magic midpoint); every table value equals the decoded literal (so a later edit can't drift silently); `npm test` and `npm run lint:tokens` green.
 
-### Task 26: the four inner cubes — spread ↔ converge
+### Task 26: the four inner cubes — spread ↔ converge ✓ done
 
 **Objective:** `ILLUSION_DRESS.step(rig, dt)` advances `rig.clock` and drives each inner cube from its record: `w = TL.osc(t, cube.delay, 8000)` at 0 for spread and 1 for converged, then in-place writes of position, rotation and uniform scale — scale lerps spread→converged (C1 1→0.7, C2 0.3→0.7, C3 0.3→0.7, Small 0.3→0.4), so the scale pulse falls out of the pose, and rotations lerp the decoded triples, giving the big sweeps (C1 z 164.2°→−11.9° ≈ 176°, C3 x −180°→−98.4°). Cube 2's whole envelope is delayed 8000 ms, so it holds its spread pose rigidly for the first 8 s (sample-verified: transform identical t=2.9→8.5). The same `w` sweeps the three `depth` gradient layers' stop positions and origin vectors (the band sweep that reads through Main), reading the pair of ends from the table Task 25 holds; if the lane recovered only the authored set, animate with the measured spread from the two noise-material states and record the deviation — do not invent an end value. Hot path: read the preallocated record, write `mesh.position/rotation/scale` and the uniform scalars directly; allocate nothing; skip the material writes when `w` is unchanged since the last frame.
 
@@ -453,7 +455,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 **Verify:** a scratch CDP sampler (variant of `prototype/gems/gem-shot.mjs`, `--eval` reading `window.ILLUSION3D.rigs[0]`) samples every 0.4 s for 28 s against the dev server on **:5174** and dumps JSON to scratch; diffed against `~/.hermes/cache/scratch/anim_samples_raw.txt`: C1 converged at t≈8.5 within ±3 u and ±2° of (28.2, 84.1, 21.1)/rot(31, −14.7, −11.9), spread at t≈16.9 within the same tolerance, scales landing on the decoded endpoints (C2 0.3→0.7, Small 0.3→0.4); C2 unchanged for t<8 s; a 34 s capture shows frame t and t+16 s matching within tolerance; console clean.
 
-### Task 27: Main's churn, Base's sheen, Prism idle
+### Task 27: Main's churn, Base's sheen, Prism idle ✓ done
 
 **Objective:** Main's transform is never written — only its two noise-layer uniforms, tweened between the decoded material states (layer 1: scale 1.37→1.44, move 4.1→6.39, alpha 0.32→0.54; layer 2: 1.78→2.58, −0.04→0.03, 0.32→0.46) over an 8000 ms eased leg, with the decoded 1000 ms pingpong-rewind dither riding on top (the fine shimmer in the sample) and `uTime` advancing at the decoded `move` rate. Base: the layer-`43f4d81c` matcap texture rotation goes 181°→87° over 4000 ms **once** (Spline `runMode: Once`, easing 4) and then holds — it must not loop; the 1000 ms pingpong-rewind idle only dithers it, and having no separate trace in the sample, ship it off and record the choice. Prism Effect: idle only — matcap rotation −227→−169 over 8000 ms pingpong plus the 1 s idle; the floor/plane idle belongs to the staging lane's step and is called, not owned.
 
@@ -461,7 +463,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 **Verify:** probe Main's uniforms at t=2/6/10/14 — they must traverse A→B→A inside a 16 s window and never leave 1.37–2.58 / −0.04–6.39 / 0.32–0.54; Base's rotation reads ≈181 at t=0, ≈87 at t≥4.2 and still 87 at t=20 (proof it is one-shot, not looping); `clip-1.png` of the floor streak compared frame-to-frame against `docs/assets/illusioncube/keyframes-filmstrip.png` reads as a drift, not a jump; console clean.
 
-### Task 28: the three point lights
+### Task 28: the three point lights ✓ done
 
 **Objective:** All three lights are authored at intensity 0; each ramps to its state intensity over 1000 ms at t=0 (Point Light 1.705, Point Light 2 1.0, Point Light 3 0.8), holds its authored position for 8000 ms, then moves to its state pose over 4000 ms with easing 4 — Point Light (−121.504, 11.354, 68.476) → (−88.683, 24.006, 27.695); Point Light 2 (−113.542, 16.529, −39.705) → (−126.125, 16.529, −72.070); Point Light 3 (57.050, 12.200, 112.451) → (32.773, 8.406, 109.847). Distance/decay 990/10, 801/7, 4564/10; shadows on with 1024 maps, penumbra 0.5. The decoded drift tweens (`pingpong-rewind`, 12000/8000/6000 ms) point at state ids that are **not defined** anywhere in the payload, and the 28 s sample shows each light holding its state pose exactly for the 16 s after the move — so implement the drift as a parameterized, default-off term (`driftAmp = 0` → hold; when enabled it oscillates between the arrived pose and the authored pose) and record whichever amplitude ships. The visible drifting pools come from the 8→12 s move, not from the drift.
 
@@ -469,7 +471,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 **Verify:** probe position + intensity at t=2 (intensity at state), t=8.4 (still authored pose, no drift), t=12.9 (±1.5 u of the state pose — the sample reaches it at 12.9), t=20 (held, no oscillation); a late-frame clip diff shows the light pools where the filmstrip's late frames show them; `npm run lint:tokens` green.
 
-### Task 29: the clock and the house gates
+### Task 29: the clock and the house gates ✓ done
 
 **Objective:** The mount's rAF loop owns the only clock: `dt = Math.min((performance.now() - last) / 1000, 0.05)`, and returns before any step when `!rig.vis || document.hidden || !canvas.offsetParent`. Mount/start stays behind `IntersectionObserver` with `rootMargin: '160px'` (with an immediate-start fallback when the observer is missing). `prefers-reduced-motion: reduce` renders exactly one frame at a chosen timeline time — the converged pose around t≈8 s, so the assembly reads assembled — and never schedules rAF; the `still` branch is checked once at mount and must survive later refactors. Every stepper allocates nothing per frame: scratch vectors and pose records live on the rig, uniform writes are guarded by a cached previous value, and no `new`, array literal, `.map` or closure appears inside a step body.
 
@@ -478,6 +480,8 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 **Verify:** `node --check` on all four; `grep -nE 'new |\.map\(|=>' illusion-dress.js illusion-lights.js` shows matches only outside the `step` bodies; a 600-frame `--eval` probe reports a constant `rig.cubes.length` and heap growth under 4 MB (a smoke signal, not a gate); a scratch variant of the shot rig that sends `Emulation.setEmulatedMedia` with `prefers-reduced-motion: reduce` yields one non-blank frame equal to the t≈8 s pose and a frozen frame counter; scrolling the canvas out of view freezes the counter while offscreen.
 
 ## Phase 5 — Interaction: the click reveal and the audio bed {#phase-5}
+
+*Shipped in d201374 · Tasks 30–32 · phase-5.*
 
 *One canvas `pointerup` toggles an ortho camera between the two decoded poses (6000 ms on the custom bezier, 1000 ms back on easing 4) and flips the directional light over 8000 ms; arriving in the far state is a Spline state condition, so it fires the chain — whoosh at +4 s, the "Only CRM stack you need" blurb after a 3 s delay and 3 s fade to z 101.10, a second bed copy at +8 s — and every timer is cleared on toggle-back. The audio bed is the repo's first AudioContext: sound on, created inside the first user gesture, every play path unlock-safe, silence reported rather than thrown.*
 
@@ -489,7 +493,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 | 31 | The conditional chain on arrival — whoosh +4 s, blurb +3 s/+3 s, bed copy +8 s, reset on toggle-back | blurb reaches alpha 1 by click+12.2 s; toggle-back clears it in 1 s |
 | 32 | Audio layer — vendored bed + whoosh, gesture unlock, sound-on default, graceful silence | status walks `armed`→`playing`; cue log order correct; both files non-silent |
 
-### Task 30: the reveal state machine
+### Task 30: the reveal state machine ✓ done
 
 **Objective:** One `pointerup` listener on the canvas (Spline's event is `MouseUp`, `mode: "Canvas"` — press and release on the canvas, which also covers tap) flips `rig.reveal.state` A↔B. On the way out (A→B) the orthographic camera tweens over **6000 ms** with the decoded cubic-bezier controls `(0.6690234375, 0.2228515625)` / `(0.3199739583333333, 1)` from pos (530.466, 489.436, 592.347) / rot (−28.261°, 37.394°, 18.080°) / zoom 0.97535 to pos (−671.356, 471.105, 641.647) / rot (−31.288°, −41.968°, −22.116°) / zoom 2.45548, and the Directional Light tweens from (966.415, 529.266, 254.882) to (889.080, 443.083, 432.592) over **8000 ms** with the same bezier (both decoded as `runMode: Toggle`). The way back (B→A) is the decoded "off" tween: **1000 ms with easing 4 and no bezier and no target state** — it returns to the authored pose, so the retreat is a quiet snap, not a 6 s reverse. Rotation is Euler XYZ exactly as decoded (the ~18° roll is part of the look); zoom is `camera.zoom` + `updateProjectionMatrix()`, never a dolly. Because the source tween is a toggle with a `state: null` prefix, a click mid-tween retargets from the current interpolated pose: snapshot the live pose into scratch values at retarget time (no jump), and cancel/reschedule the chain (Task 31). Completion at B is what raises the chain — a state condition is true when the camera *is* there, not when the click happened.
 
@@ -497,7 +501,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 **Verify:** a scratch CDP driver derived from `prototype/gems/gem-shot.mjs` sends `Input.dispatchMouseEvent` pressed+released at the canvas centre on **:5174** (a trusted event — an in-page `el.click()` is untrusted and cannot prove this path); sampling the pose at click+0/1.5/3/4.5/6 s shows a monotone approach and arrival at B within ±1 u / ±0.1° / ±0.005 zoom; at click+3 s the zoom is *not* the linear midpoint (assert the asymmetry, not a number); a second click at click+8 s lands back on the authored pose within 1.2 s; a click at click+2 s retargets with a frame-to-frame delta no larger than the opening slope; rapid double clicks leave no console error.
 
-### Task 31: the conditional chain
+### Task 31: the conditional chain ✓ done
 
 **Objective:** When the camera **arrives** in B, run the decoded Conditional event 1:1 — whoosh audio play at `+4000 ms` (volume 0.3), the discreet ambient re-entry at `+8000 ms` (volume 0.2, looping, the same bed bytes the Base plays), and the Blurb transition, which is a *pair* of tweens fired from the same instant: a 1000 ms reset toward the authored pose (alpha 0, z 98.6648) plus a transition to the decoded state with `delay 3000 ms`, `duration 3000 ms`, easing 4, driving material `layer2.alpha` 0→1 and `position.z` 98.6648→101.1018 (2.437 units toward the camera). Net, in absolute time from the click: camera arrives at 6 s, whoosh at 10 s, the heading is fully readable at 12 s. All timers live in `rig.reveal.timers` and are cleared on any toggle: a second click inside the window resets the blurb to alpha 0 / z 98.6648 over 1000 ms and drops the pending whoosh and bed re-entry, so a fast double click never leaves a half-faded heading or a late whoosh. The blurb mesh itself belongs to the overlay lane (Phase 3): a centred two-line plane at (−30.585, 110.030, 98.665), text "Only CRM stack you\nneed" (Inter 600 / 15). The decoded state also morphs the TextGeometry `depth 2 → 0`; a flat plane cannot express an extrusion morph — record that deviation rather than faking it. Under `prefers-reduced-motion` the rig is a single static frame, so the reveal is inert: a click is a no-op, the blurb stays at alpha 0, no timers and no audio are scheduled, and the mount exposes a `reveal()` hook so a later gallery/lab lane can force the B state as a still.
 
@@ -505,7 +509,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 **Verify:** with the trusted-click driver, probe the blurb's alpha and `position.z` at click+2/6/9/10/12/13 s: 0 until ≈9 s, ~0.5 at 10.5 s, exactly 1 by 12.2 s, z monotone 98.6648→101.1018; the Task-32 cue log shows the whoosh scheduled within 0.15 s of click+10 s and the bed re-entry within 0.15 s of click+14 s; a toggle-back at click+7 s drops alpha to 0 within 1.2 s and produces no whoosh afterwards; under emulated `prefers-reduced-motion` a click changes nothing and the console stays empty.
 
-### Task 32: the audio layer
+### Task 32: the audio layer ✓ done
 
 **Objective:** Vendor the two extracted MP3s into the app as space-free names — `public/cube-illusion/audio/ambient.mp3` (206.94 s, 1.66 MB) and `public/cube-illusion/audio/whoosh.mp3` (4.152 s, 132 KB) — copied from `docs/assets/illusioncube/`; the module then decodes each **once** from a copy (`decodeAudioData(ab.slice(0))` — decoding the cached buffer itself detaches it and every later play of that file fails silently) and plays them through `AudioBufferSourceNode` + gain, with `loop = true` on the bed. House rules, all of them load-bearing: **sound is ON by default**; the AudioContext is created *only inside a user gesture* (the first `pointerdown`/`keydown`), never at mount, on hover or on a timer, because a pre-gesture context stays permanently silent on Safari even when `resume()` reports `running`; the bed is *armed* at load and starts on that first gesture (browsers block pre-gesture playback, so the reference's "plays at t=0" becomes "plays at the first gesture"), at the decoded bed gain 0.5 through one master gain, with the whoosh at 0.3 and the bed re-entry at 0.2; every play path is unlock-safe — `await ctx.resume()`, re-check `state === 'running'`, then schedule; any missing file, failed decode or absent AudioContext degrades to `status() === 'silent'` with no throw and no console noise. Gates: a persisted `illusion-sound` on/off plus `prefers-reduced-motion`, with an explicit stored `'on'` beating reduced motion (otherwise Android's "remove animations" silently overrules the user's deliberate choice); `status()` reports the reason for silence (`armed` / `playing` / `muted` / `reduced` / `blocked` / `silent`) so a quiet page is diagnosable. The whoosh is one-shot here even though the payload carries `loop: 1` on it — flag that for A/B against the reference. The specimen page carries one token-styled toggle and a status line.
 
