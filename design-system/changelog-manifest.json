@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T08:16:20.433Z",
+  "generated": "2026-09-28T08:16:58.037Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,6 +15,14 @@
     "2026-09-28_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "01dae0a",
+      "full": "01dae0a94f888914e766e54abac64c469e276758",
+      "date": "2026-09-28",
+      "subject": "fix(glass): dock lens refracts the progressive edge band, not the raw feed",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "4544409",
       "full": "45444093f04ae98ff86a08029eff7a2841a1db52",
@@ -2200,13 +2208,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M src/arch/atlas.json",
-    "M src/device/frame.js",
-    "M src/glass/DockLens.jsx",
-    "M src/glass/dock-lens.css",
-    "M src/glass/lens-copy.jsx",
-    "?? src/device/edge-stops.js",
-    "?? src/glass/dock-band.css"
-  ]
+  "wip": []
 }
