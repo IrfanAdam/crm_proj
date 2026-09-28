@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T14:41:35.408Z",
+  "generated": "2026-09-28T17:45:22.043Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -12,9 +12,114 @@
     "2026-09-22_190645-visual-language.md",
     "2026-09-23_002500-design-system-consolidation.md",
     "2026-09-23_003000-exhaustive-visual-language.md",
-    "2026-09-28_000000-lump-sum-builds.md"
+    "2026-09-28_000000-lump-sum-builds.md",
+    "2026-09-28_221212-illusion-cube-recreation.md"
   ],
   "commits": [
+    {
+      "sha": "c4adce9",
+      "full": "c4adce98297c691a37365cdeddb7754690012e5a",
+      "date": "2026-09-28",
+      "subject": "feat(illusion): phase 1 scaffold — page, rig seam, audio, harness",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "4c62065",
+      "full": "4c6206514df6b48d641d0755a0e3fb8630be7a29",
+      "date": "2026-09-28",
+      "subject": "feat(ds): card floors — pitch sync (aim runs staged), CARD_SOFT/SPREAD shadow, cut-shaped caustic from GEM_CSHAPE",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "7e222ff",
+      "full": "7e222ffd00a01895575772b491973f39a8a6af21",
+      "date": "2026-09-28",
+      "subject": "fix(ds): rubric #6 root cause corrected — backdrop IS in the transmission sampler; wall proven dead end, ceiling is material/sampling",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "0b46597",
+      "full": "0b465979fd941e3fffdcd7975fb6dc923458319a",
+      "date": "2026-09-28",
+      "subject": "chore(ds): regen atlas after fire shader",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "905dd2c",
+      "full": "905dd2c20e7b6bf27b9a9bd516874a9ed9337386",
+      "date": "2026-09-28",
+      "subject": "feat(ds): chromatic fire — spectrum from the mirror vector, sampler was flat white",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "9b20368",
+      "full": "9b203686caf49873760f99e6bd086f29382c5a98",
+      "date": "2026-09-28",
+      "subject": "fix(ds): rubric #5 mask-robust recipe settled — v3 n_cc 3/largest 0.468 vs v2 1/1.000 at fixed THR215 on eroded interior; #5=6",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "73465fd",
+      "full": "73465fdf7670ee9a4d124873588d84757a93f8b9",
+      "date": "2026-09-28",
+      "subject": "docs(ds): rubric v3 re-score — #2 4→6 (p1 44.3, stops 2.16), sat_mean 227; #5 unresolved across masks (5th instrument lesson)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "14025ba",
+      "full": "14025ba8fce56e3d43a957087afd94787a8fcf0b",
+      "date": "2026-09-28",
+      "subject": "feat(ds): gem studio env — dimmed blue emitters below ACES clipping (n_cc 5→6-8, largest 0.63→0.28, satbr 0→28.9)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "a3c0817",
+      "full": "a3c08171fb043ac321d9026df72fffed00331f14",
+      "date": "2026-09-28",
+      "subject": "docs(ds): rubric #3 on/off probe void — noise floor (2.67% >8) exceeds the probe effect; cache-key mechanism verified sound in r160",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "21582b6",
+      "full": "21582b60bb7d604f9ba86b1dea5f02c62c44827e",
+      "date": "2026-09-28",
+      "subject": "fix(ds): rubric #7c redefined on halo-ring chroma (103/255 measured) — the old bright-px anchor selected only clipped pixels, unsatisfiable by construction",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "66fb934",
+      "full": "66fb934d5e5264ab6dde7ea1b4c36463c48f59de",
+      "date": "2026-09-28",
+      "subject": "docs(ds): rubric re-score v2 — dim+bloom moved #2/#5, #7c regressed via bloom whitening; sapphire 4.7→~5.1",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "4a5d5ff",
+      "full": "4a5d5ff71f5fcb3786832c476c4882c6ef607411",
+      "date": "2026-09-28",
+      "subject": "chore(ds): refresh GemReward hash in atlas after bloom",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
+    {
+      "sha": "b25e2d5",
+      "full": "b25e2d567c8a5a80e5d4152f9b95d3583c8c9392",
+      "date": "2026-09-28",
+      "subject": "chore(ds): regen manifest after gem bloom ship",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
     {
       "sha": "123459a",
       "full": "123459a2f187769049f3c10ab31e769baabff086",
@@ -2481,7 +2586,6 @@
     }
   ],
   "wip": [
-    "M src/arch/atlas.json",
     "?? prototype/gems/rubric-shots/"
   ]
 }
