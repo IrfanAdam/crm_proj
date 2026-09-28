@@ -170,3 +170,33 @@ vision number as a composition read and this sheet as the optics read. Anchors f
 were calibrated from the two current builds plus the two ceiling probes (`envchart`, `dark`) and are
 provisional until a known-good reference (a real photograph of the same cut, or the best path-traced
 frame in `prototype/gems/`) is scored against them.
+
+## Re-score — after the ambient trim + bloom (2026-09-28)
+
+Second full instrument run against the shipped build (env ambient trim `cccfbf2` + bloom `48f4a66`),
+same recipes, shots re-captured into `scratch/gemrubric-v2/` with `analyze-v2.py` (same script, ROOT
+re-pointed). Apples-to-apples: probe JSONs confirm identical geometry (canvas 510×223, stage 1174×501).
+
+| | sapphire v1 → v2 | citrine v1 → v2 | read |
+|---|---|---|---|
+| #2 tone range: interior `p1` | **88.1 → 69.8** | 147 → 132 | darker shadow path ✓ |
+| #2 `stops` (anchor 3.0) | **1.49 → 1.83** | 0.70 → 0.81 | still short, moving right way |
+| #5 glints: `n_cc` (anchor ≥6) | **2 → 5** | 2 → 5 | sheen breaking into glints ✓ |
+| #5 `largest_frac` (anchor ≤0.35) | **0.732 → 0.619** | 0.749 → 0.594 | ✓ |
+| #7c `sat_mean_bright` (0–1 scale) | 0.1 → **0.0** | 1.4 → 0.0 | ✗ bloom whitens the glints |
+| #6 backdrop tell: `hp_interior` chart−plain | −0.01 → **+0.88** | (v1 not recorded) → +4.7 | interior still ~blind (T≈0.04) |
+| #4 tx-off mean | 57.8 → 50.14 | 45.4 → 31.33 | less ambient passes through (expected) |
+| crown edge / blown / std (my crop) | 2.08→2.38 · 34.1→31.8 · 46.3→54.3 | — | shipped deltas all positive |
+
+Preliminary sapphire ≈ **5.1** (from 4.7): #2 4→6, #5 4→6, #7 6→6 (a,b pass, c regressed to achromatic),
+#1/#8 hold. Two of the three ranked gaps improved; the structural ones (#3 fire, #4/#6 interior vision)
+did not move — as predicted, they are the renderer ceiling.
+
+Flags for the next round:
+1. **#7c regression is the bloom's side effect** — threshold 0.95 selects the already-near-white glints
+   and the additive blur saturates them. Fix directions: tint the bloom by source chroma, or lower
+   threshold + lower intensity so the halo carries colour.
+2. **`card-sapphire-nodisp` is a suspected no-op in v2** — its diff vs plain is mean 0.16 / frac_gt8 0.0,
+   where v1 moved 38 % of pixels by >8. Re-shoot with the eval verified (dispersion off should change
+   the glints) before scoring #3 from it.
+3. `sat_mean_bright` scale: the script prints the 0–1 scale (v1 0.1 = 25.5/255); anchors are 0–255.
