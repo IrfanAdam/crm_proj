@@ -4,7 +4,7 @@ const j=p=>JSON.parse(fs.readFileSync(join(root,p),'utf8'));
 const p=j('tokens/primitives.json'), L=j('tokens/semantic-light.json'), D=j('tokens/semantic-dark.json'); let motion=null; try{motion=j('tokens/motion.json')}catch{}
 let compat=null; try{compat=j('tokens/mechanics-compat.json')}catch{}
 const g=(pre,obj)=>Object.entries(obj).map(([k,v])=>`--${pre}-${k}:${v};`).join(' ');
-const ag=p['aliases-gray'], as=p['aliases-sapphire'], agm=p['aliases-gem'];
+const ag=p['aliases-gray'], as=p['aliases-sapphire'], agm=p['aliases-gem'], ail=p['aliases-illusion'];
 const font=`--font-family-sans:${p.font['family-sans']}; `+g('font-size',{xs:p.font.xs,sm:p.font.sm,md:p.font.md,lg:p.font.lg,xl:p.font.xl,'2xl':p.font['2xl'],'3xl':p.font['3xl']})+' '+g('font-weight',{regular:p.font.regular,medium:p.font.medium,semibold:p.font.semibold,bold:p.font.bold})+' '+g('font-leading',{tight:p.font['leading-tight'],snug:p.font['leading-snug'],normal:p.font['leading-normal'],relaxed:p.font['leading-relaxed']})+' '+g('font-tracking',{tight:p.font['tracking-tight'],normal:p.font['tracking-normal'],wide:p.font['tracking-wide']});
 let out=`/* GENERATED — do not hand-edit. Source: tokens/*.json. Regenerate: npm run build. */\n:root{\n`;
 out+=` ${font}\n`;
@@ -28,6 +28,7 @@ out+=` ${Object.entries(as).map(([k,v])=>`--primitive-sapphire-${k}:${v};`).join
 out+=` ${g('primitive-citrine',p.citrine)} ${g('primitive-red-beryl',p['red-beryl'])} ${g('primitive-amethyst',p.amethyst)}\n`;
 out+=` ${g('primitive-orange',p.orange)} ${g('primitive-red',p.red)} ${g('primitive-green',p.green)}\n`;
 out+=` ${Object.entries(agm).filter(([k,v])=>v!==`var(--primitive-${k})`).map(([k,v])=>`--primitive-${k}:${v};`).join(' ')} --primitive-ink:${p.ink}; --primitive-dim:${p.dim}; --signal:${p.signal.default}; --signal-amber:${p.signal.amber}; --signal-teal:${p.signal.teal};\n`;
+out+=` ${Object.entries(ail).map(([k,v])=>`--primitive-illusion-${k}:${v};`).join(' ')}\n`;
 const cleanCompat=s=>s.split(';').filter(x=>{const m=x.match(/--([\w-]+):(.+)/);return !m||m[2].trim()!=='var(--'+m[1]+')'}).join(';');
 if(compat){
   const emit=(pre,obj)=>Object.entries(obj).map(([k,v])=>`--${pre}-${k}:${v};`).join(' ');

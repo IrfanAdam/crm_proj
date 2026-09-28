@@ -226,6 +226,22 @@
     "green-accent": "var(--primitive-green-300)",
     "orange-accent": "var(--primitive-orange-400)"
   },
+  "aliases-illusion": {
+    "brand-blue": "var(--primitive-sapphire-ui-500)",
+    "crimson": "#c21645",
+    "amber": "#c69e14",
+    "magenta": "#c11d88",
+    "rim-blue": "#0051e3",
+    "glass-lo": "#003bff",
+    "glass-mid": "#00edff",
+    "glass-hi": "#b500ff",
+    "grid-blue": "#003eff",
+    "plum": "#a50b7e",
+    "bg": "var(--primitive-sapphire-ui-200)",
+    "base-gray": "var(--primitive-neutral-light-400)",
+    "sheen-gray": "var(--primitive-neutral-dark-400)",
+    "glyph-ink": "var(--primitive-sapphire-ui-700)"
+  },
   "signal": {
     "default": "var(--primitive-sapphire-ui-500)",
     "amber": "var(--primitive-citrine-500)",
