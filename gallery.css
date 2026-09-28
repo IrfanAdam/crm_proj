@@ -13,8 +13,8 @@ h3{font-size:var(--font-size-sm);font-weight:600;color:var(--text-muted);margin:
 a{color:var(--primitive-sapphire-ui-500);text-decoration:none}
 [hidden]{display:none!important}
 .ch-kicker{font-size:var(--font-size-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
-.ch-hero{font-size:var(--font-size-3xl);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-top:var(--spacing-2);max-width:26ch}
-.ch-lede{margin-top:var(--spacing-2);max-width:62ch}
+.ch-hero{font-size:var(--font-size-3xl);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-top:var(--spacing-2)}
+.ch-lede{margin-top:var(--spacing-2)}
 .ch-laws{list-style:none;margin-top:var(--spacing-2)}
 .ch-law{display:grid;grid-template-columns:48px 1fr;gap:var(--spacing-3);padding:var(--spacing-3) 0;border-bottom:1px solid var(--border-thin)}
 .ch-law:last-child{border-bottom:none}

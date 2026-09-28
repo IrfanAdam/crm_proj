@@ -4,6 +4,7 @@
 // — Build: insert .dnav__sub after each panel button —
 // — Jump: dsSub shows panel + scrolls; deep hash scrolls once —
 const DS_SUBNAV={
+motion:['Time','Curves','Specimens','Orchestra','Scroll','Reduced','Choreography'],
 identity:['Chip','Badge','Status pill','Avatar','Icon'],
 text:['Text input','Select','Search','Textarea'],
 choice:['Checkbox','Radio','Switch','Slider'],
