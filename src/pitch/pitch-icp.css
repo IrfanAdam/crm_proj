@@ -9,9 +9,10 @@
     gap: 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;   /* keeps the leading gutter after a snap — see pain-cards */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0 1rem 0.5rem 0;
+    padding: 0 1rem 0.5rem;
   }
   .icp-cards-track::-webkit-scrollbar { display: none; }
   .icp-cards-track .icp-card {
@@ -22,7 +23,7 @@
   }
   @media (max-width: 760px) {
     .icp-grid { display: none !important; }
-    .icp-carousel-wrap { display: block; margin-right: -1rem; }
+    .icp-carousel-wrap { display: block; margin-inline: -1rem; }
   }
   /* ── ICP ── */
   .icp-grid {

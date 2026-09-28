@@ -1,18 +1,22 @@
 /* ADAM/PAGE — src/pitch/pitch-carousel.css · pain mobile carousel + count */
 /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   /* ── CAROUSEL ── */
+  /* Edge bleed: the wrap eats the section's 1rem gutters so the track runs the full device
+     width, and the track's own inline padding keeps card 1 and the last card off the edges —
+     the row reads as continuing past the screen instead of being clipped at the section box. */
   .carousel-wrap {
     position: relative;
-    margin-right: -1rem;
+    margin-inline: -1rem;
   }
   .pain-cards {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;   /* without this the mandatory snap eats the track's own padding and card 1 sits flush */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0 1rem 0.5rem 0;
+    padding: 0 1rem 0.5rem;
   }
   .pain-cards::-webkit-scrollbar { display: none; }
 
@@ -36,10 +40,6 @@
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
-  }
-  .pain-card-top .dot {
-    flex-shrink: 0;
-    margin-top: 0.35rem;
   }
   .pain-card-title {
     font-family: var(--font-display);

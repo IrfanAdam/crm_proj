@@ -17,14 +17,17 @@
     --foot-text:   var(--primitive-sapphire-200);
     --foot-muted:  var(--primitive-sapphire-300);
     --radius:      var(--radius-lg);
-    --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-    --font-body: 'DM Sans', 'Inter', system-ui, sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
   body {
+    /* The pitch's two families sit here and not on :root: a build emits tokens.css *after* this
+       bundle, and tokens.css sets --font-display/--font-body on :root too. An inherited value on
+       the nearer ancestor wins for everything inside the body, whatever the sheet order. */
+    --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    --font-body: 'DM Sans', 'Inter', system-ui, sans-serif;
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-body);
@@ -42,16 +45,19 @@
 /* ADAM/PAGE — src/pitch/pitch-base.css · tokens, body, divider, mobile padding */
 /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · pitch theme slice. */
   /* ── MOBILE PADDING OVERRIDES ── */
+  /* The section sheets (theme/position/icp/footer) load AFTER this file, so a bare `.section`
+     rule here loses the cascade. `body` raises specificity to 0-1-1 and keeps one source of
+     truth for the mobile gutters: 1rem, the same as the hero. */
   @media (max-width: 640px) {
-    .masthead      { padding: 1.25rem 1rem 0; }
-    .brand-hero    { padding: 2.5rem 1rem 2rem; }
-    .section       { padding: 2.5rem 1rem; }
-    .footer-strip  { padding: 3rem 1rem; }
-    .theme-block   { padding: 1.2rem 1.2rem; }
-    .insight-card,
-    .pos-card,
-    .icp-card,
-    .f-pitch       { padding: 1.1rem; }
+    body .masthead      { padding: 1.25rem 1rem 0; }
+    body .brand-hero    { padding: 2.5rem 1rem 2rem; }
+    body .section       { padding: 2.5rem 1rem; }
+    body .footer-strip  { padding: 3rem 1rem; }
+    body .theme-block   { padding: 1.2rem; }
+    body .insight-card,
+    body .pos-card,
+    body .icp-card,
+    body .f-pitch       { padding: 1.1rem; }
   }
   .pitch-loading {
     padding: 2rem;

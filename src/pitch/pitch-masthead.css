@@ -9,7 +9,7 @@
   }
   .masthead {
     padding: 1.1rem 2rem;
-    max-width: 1160px;
+    max-width: 1060px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -49,10 +49,10 @@
   .masthead-close[hidden] {
     display: none;
   }
-  /* ── BRAND HERO (copy left, gem bled right) ── */
+  /* ── BRAND HERO (copy left, gem bled right — the same content column as .section) ── */
   .brand-hero {
     padding: 4rem 2rem 4rem;
-    max-width: 1160px;
+    max-width: 1060px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -70,7 +70,7 @@
   }
   .brand-headline {
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);   /* cap keeps “Turn your sales” on one line in the 482px copy column */
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -0.03em;

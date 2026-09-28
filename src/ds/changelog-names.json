@@ -38,5 +38,9 @@
   "2026-09-21_000000-lump-sum-builds.md": {
     "title": "Lump-sum builds \u2014 week of Sep 21 (button lab + component docs loop)",
     "purpose": "weekly catch-all + per-component labs"
+  },
+  "2026-09-28_000000-lump-sum-builds.md": {
+    "title": "Lump-sum builds \u2014 week of Sep 28 (pitch hero gem + mobile pass)",
+    "purpose": "weekly catch-all + hero gem"
   }
 }

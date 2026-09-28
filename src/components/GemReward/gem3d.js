@@ -1,18 +1,15 @@
 /* ADAM/SHARED — src/components/GemReward/gem3d.js · THREE gem mounts */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards.
-// — Color: category token → getComputedStyle; no CSS filter recolors the canvas any more —
+// — Color: category token → getComputedStyle; gem-tint.js recolours the stone in place, no CSS filter —
 // — Motion: dt-based spin + float + pointer tilt, eased, no per-frame allocation; paused offscreen, —
-// — hidden tab, reduced motion (one static frame) · Drag: gem-drag.js owns the pointer (drag-to-inspect) —
-// — Degrade: no THREE → GEM_FALLBACK.paint paints it —
+// — hidden tab, reduced motion (one static frame) · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK paints —
 // Export map: mounts canvas[data-gem] on boot · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) demo backdrop · GEM3D.restage() rebuilds stage backdrop.
 (function () {
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rigs = [];
 let demoBg = null;
-const css = function (name) {
-return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-};
+const css = function (name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
 function start(rig) {
 const canvas = rig.canvas;
 const renderer = new THREE_.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -48,7 +45,12 @@ const dt = Math.min((now - rig.last) / 1000 || 0, 0.05);
 rig.last = now;
 size();
 if (!rig.vis || document.hidden || !canvas.offsetParent) return;
-if (window.GEM_DRAG && window.GEM_DRAG.apply(rig, now, dt)) { renderer.render(rig.scene, rig.camera); return; }
+if (window.GEM_TINT) window.GEM_TINT.step(rig, dt);
+if (window.GEM_DRAG && window.GEM_DRAG.apply(rig, now, dt)) {
+if (window.GEM_BARE && window.GEM_BARE.aim) window.GEM_BARE.aim(rig);
+renderer.render(rig.scene, rig.camera);
+return;
+}
 const at = window.GEM_DRAG && window.GEM_DRAG.at;
 const box = canvas.getBoundingClientRect();
 if (at && box.width > 1) rig.tiltT = Math.max(-1, Math.min(1, ((at.clientX - box.left) / box.width - 0.5) * 2)) * 0.14;
@@ -56,9 +58,8 @@ rig.t += dt;
 rig.tilt += (rig.tiltT - rig.tilt) * (1 - Math.pow(0.0005, dt));
 rig.group.rotation.y = rig.cat.spin * rig.t * 0.9;
 rig.group.rotation.x = rig.tilt;
-rig.group.position.y = Math.sin(rig.t * 0.8) * 0.045;
-const fl = rig.floors;
-if (fl && !rig.stageBg) { fl.caustic.rotation.z = -rig.group.rotation.y * 0.5; fl.caustic.material.opacity = 0.8 - rig.group.position.y * 2.6; }
+rig.group.position.y = Math.sin(rig.t * 0.8) * 0.03;
+if (window.GEM_BARE && window.GEM_BARE.aim) window.GEM_BARE.aim(rig);
 renderer.render(rig.scene, rig.camera);
 };
 requestAnimationFrame(loop);
@@ -89,8 +90,7 @@ if (rig.vis && !rig.renderer) start(rig);
 }, { rootMargin: '160px' }).observe(canvas);
 }
 const boot = function () { document.querySelectorAll('canvas[data-gem]').forEach(mount); };
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-else boot();
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 document.addEventListener('ds:doc', boot);
 if (window.MutationObserver) new MutationObserver(function (list) {
 list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });

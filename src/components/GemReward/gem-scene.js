@@ -1,10 +1,9 @@
 /* ADAM/SHARED — src/components/GemReward/gem-scene.js · gem cut → camera/surface rig */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · camera/fit/surface builder (Task 22) + bare-stage opt-out.
 // — Env: gem-env.js supplies the PMREM studio; degrade to key+ambient if it is absent —
-// — Surface: MeshPhysicalMaterial flatShading; ior per stone from CATEGORIES; transmission on GPU, off on software (?gem=high) —
-// — Cut: faces rewound outward, so no GEM_CUT winding can punch a hole in a facet —
-// — Frame: camera sits so the gem fills FILL of the stage height, centred, stage stays 140px —
-// Export map: GEM_SCENE.geometry(cut) · surface(color, soft, ior) · inner(color, ior, side, opacity) · ghost(geo, color, ior, side, scale, opacity) internal shells · stage(renderer, color, cut, aspect, ior) (software-GL detect lives in gem-env.js)
+// — Surface: MeshPhysicalMaterial flatShading; ior per stone; transmission on GPU, off on software (?gem=high) —
+// — Cut: faces rewound outward (no winding hole) · Frame: fills FILL of the stage, centred, dropY re-aims it —
+// Export map: GEM_SCENE.geometry(cut) · surface(color, soft, ior) · inner(...) · ghost(...) internal shells · frame(rig) drop · stage(renderer, color, cut, aspect, ior) → rig (software-GL detect lives in gem-env.js)
 (function () {
 const api = {};
 const FILL = 0.75;
@@ -57,6 +56,11 @@ b.onBeforeCompile = function (s) { s.fragmentShader = s.fragmentShader.replace('
 return b;
 };
 api.ghost = function (geo, color, ior, side, scale, opacity) { const m = new T.Mesh(geo, api.inner(color, ior, side, opacity)); m.renderOrder = -1; m.scale.setScalar(scale); return m; };
+api.frame = function (rig) {
+const drop = rig.dropY || 0;
+rig.camera.position.set(0, rig.baseCamY + drop, rig.camera.position.z);
+rig.camera.lookAt(0, rig.baseLookY + drop, 0);
+};
 api.stage = function (renderer, color, cut, aspect, ior) {
 const geo = api.geometry(cut);
 const bb = geo.boundingBox;
@@ -75,19 +79,20 @@ if (window.GEM_ENV) scene.environment = window.GEM_ENV.texture(renderer);
 if (window.GEM_TEXTURES && window.GEM_TEXTURES.stage && !bare) scene.background = window.GEM_TEXTURES.stage(renderer.domElement);
 const soft = !/(\?|&)gem=high/.test(window.location.search) && (!window.GEM_ENV || window.GEM_ENV.soft(renderer));
 const key = new T.DirectionalLight(0xfff4e6, 1.2);
-key.position.set(3, 5, 4);
-scene.add(key);
 const cross = new T.DirectionalLight(0xdce8ff, 0.55);
+key.position.set(3, 5, 4);
 cross.position.set(-4, 3, -2);
-scene.add(cross);
-scene.add(new T.AmbientLight(0xffffff, 0.12));
-const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale) : null;
+scene.add(key, cross, new T.AmbientLight(0xffffff, 0.12));
+const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy * gscale) : null;
 const group = new T.Group();
-group.add(api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66));
-group.add(api.ghost(geo, color, ior, T.FrontSide, 0.9, 0.26));
-group.add(new T.Mesh(geo, api.surface(color, soft, ior)));
+const far = api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66);
+const near = api.ghost(geo, color, ior, T.FrontSide, 0.9, 0.26);
+const body = new T.Mesh(geo, api.surface(color, soft, ior));
+group.add(far, near, body);
 scene.add(group);
 if (bare) group.scale.setScalar(gscale);
-return { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors };
+const rig = { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors, mats: [body.material, far.material, near.material], baseCamY: cy + h * 0.16, baseLookY: cy - h * 0.02, dropY: 0 };
+api.frame(rig);
+return rig;
 };
 })();

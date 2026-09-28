@@ -1,0 +1,29 @@
+/* ADAM/PAGE — src/pitch/pitch-fonts.css · the pitch's two families, self-hosted */
+/* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · Space Grotesk + DM Sans, no CDN. */
+/* The pitch used to borrow its type from fonts.googleapis.com. A deployment that blocks or
+   cannot reach that origin silently falls back to system-ui, so the hero loses its face while a
+   dev machine keeps it. These three variable files ship in public/fonts/ and are served from the
+   same origin as the page, so the pitch renders its own type anywhere dist/ is hosted.
+
+   Public API: none — @font-face only. Add a weight range here if a family grows a new axis. */
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('/fonts/space-grotesk-var.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('/fonts/dm-sans-var.woff2') format('woff2');
+    font-weight: 300 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('/fonts/dm-sans-var-italic.woff2') format('woff2');
+    font-weight: 300 500;
+    font-style: italic;
+    font-display: swap;
+  }
