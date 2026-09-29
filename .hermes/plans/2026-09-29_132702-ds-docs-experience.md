@@ -32,7 +32,7 @@ Findings (verified 2026-09-29):
 - Mobile contract: ≤700px gets top bar (menu button, section title, search entry) + slide-over nav drawer + sticky sub-rail as horizontal chip scroller; no 10-col grids, no full tables — ramps become 5-col, tables become card lists (CSS-only reflow, same DOM).
 - Desktop contract: sidebar gains search filter + collapsible groups + persistent active trail; stage gains max reading width (~68ch) for prose while labs/specimens stay full-bleed.
 
-*Shipped in pending · Tasks 1–2 · phase-1.*
+*Shipped in c895dc4 · Tasks 1–2 · phase-1.*
 
 ## Phase 2 — Presentation + navigation rewrite (desktop) {#phase-2}
 
@@ -57,7 +57,7 @@ Rules: ≤100 lines/file (extract partials, never pack lines); tokens only (`des
 
 Acceptance: keyboard-only user can find any of the ~20 sections in ≤5 keystrokes of search; deep link survives reload.
 
-*Shipped in pending · Tasks 3–4 · phase-2.*
+*Shipped in c895dc4 · Tasks 3–4 · phase-2.*
 
 ## Phase 3 — Mobile optimisation {#phase-3}
 
@@ -80,7 +80,7 @@ Acceptance (all verified at 360×800 + 768×1024): no horizontal page scroll; dr
 
 Acceptance: zero-overflow check in the Phase-4 gate (scrollWidth ≤ clientWidth + 1px on every panel at 360px).
 
-*Shipped in pending · Tasks 5–6 · phase-3.*
+*Shipped in c895dc4 · Tasks 5–6 · phase-3.*
 
 ## Phase 4 — Self-rating verification engine {#phase-4}
 
@@ -104,13 +104,13 @@ Output: per-axis score + top 3 fixes, e.g. `docs-experience 92/100 (read 28 · n
 
 Run gate on current shell first (expect ~45–55), commit baseline score in the test header comment, then each subsequent phase must not lower the total and must raise it (target ≥85 to close).
 
-*Shipped in pending · Tasks 7–8 · phase-4.*
+*Shipped in c895dc4 · Tasks 7–8 · phase-4.*
 
 ## Phase 5 — Subagent fanout (no asking) + ship {#phase-5}
 
 *Tags: Component*
 
-### Task 9: Dispatch rules — agents go without Irfan being asked
+### Task 9: Dispatch rules — agents go without Irfan being asked ✓ done
 
 Executor (not this plan) fans out with `delegate_task` immediately after plan approval:
 - Agent A: Phase 2 chrome + sidebar (Task 3–4).
@@ -118,11 +118,13 @@ Executor (not this plan) fans out with `delegate_task` immediately after plan ap
 - Agent C: Phase 4 gate (Task 7–8) — lands FIRST so A/B get scored on every iteration.
 - Merge rule: C's gate is the reconciler; A/B don't mark done until gate ≥85 and `npm test` green. No mid-run questions to Irfan — agents decide copy/layout details within the contracts above and log deviations in the commit body.
 
-### Task 10: Plan hygiene + verify + report
+### Task 10: Plan hygiene + verify + report ✓ done
 
 - `src/ds/changelog-names.json` entry for this plan BEFORE any implementation commit (`npm run plan:names` must pass).
 - Commits carry `[plan:2026-09-29_132702-ds-docs-experience.md#phase-N]` trailers; `npm run ds:track` 0 wip; `npm test` green; `/gallery.html` smoke on desktop + 360px.
 - Report back in <150 tokens: what changed, score delta, what's left. No push without explicit `y`.
+
+*Shipped in c895dc4 · Tasks 9–10 · phase-5.*
 
 ---
 
