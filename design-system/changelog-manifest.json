@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T08:35:44.219Z",
+  "generated": "2026-09-29T10:44:14.199Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -15,9 +15,66 @@
     "2026-09-28_000000-lump-sum-builds.md",
     "2026-09-28_221212-illusion-cube-recreation.md",
     "2026-09-29_132702-ds-docs-experience.md",
-    "2026-09-29_135509-illusion-cube-surface-revision.md"
+    "2026-09-29_135509-illusion-cube-surface-revision.md",
+    "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "72dac1c",
+      "full": "72dac1ce8d524b56cc4a0c38ddb76c1f9a01974b",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): frosted shell — backdrop blur, calm grain, metal lobes, plinth tone nudge",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "f3656d5",
+      "full": "f3656d5c501c2dd648e602f4b0a8989188b12c59",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): morphing goo blobs + halos + retinted bleed lights",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "{#phase-3}"
+    },
+    {
+      "sha": "f7aa02a",
+      "full": "f7aa02a4ddb993b9b7eca60088f1e36e5e175365",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): one grounded floor — mint surface + grid + wash/contact pool, prism retired",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "c606efc",
+      "full": "c606efcf9f3af1470ffe66d0f16d62d77323c602",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): vector ALPHA wordmark + decoded text anchors + scene fonts",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "{#phase-5}"
+    },
+    {
+      "sha": "062ade4",
+      "full": "062ade42068505b2d394222d823ac61a92955ef9",
+      "date": "2026-09-29",
+      "subject": "chore(illusion): alpha vector extractor + scene letter data + probe hardening",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "d996d31",
+      "full": "d996d31703c9a1be9786db6e351c41b171d4f22e",
+      "date": "2026-09-29",
+      "subject": "fix(ds): header — back before ALPHA DS, no subtext/search, fixed",
+      "plan": "2026-09-29_143500-ds-docs-delight.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "26f172e",
+      "full": "26f172e7cb16907a7bd74db7f85c74459f67b840",
+      "date": "2026-09-29",
+      "subject": "chore(manifest): sync after hero dedupe",
+      "plan": "2026-09-29_132702-ds-docs-experience.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "1135dcb",
       "full": "1135dcb7f27e63a28acd969a40261d7012defdbc",
@@ -2731,5 +2788,10 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
