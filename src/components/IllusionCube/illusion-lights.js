@@ -1,8 +1,8 @@
 /* ADAM/SHARED — src/components/IllusionCube/illusion-lights.js · decoded light rig + gooey bleed */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · ambient + key + pools + bleed (Task C).
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · [plan:2026-09-29_135509-illusion-cube-surface-revision.md#{#phase-3}] · ambient + key + pools + bleed (Task C).
 // — Key: 1024 shadow over a 3811-unit footprint; radius set though honoured only under PCF —
 // — Pools: three point lights at decoded starts; toState jumps the moved hero pose —
-// — Bleed: three small colored points at the inners' spread homes (Task-A hues); —
+// — Bleed: three small colored points at the inners' spread homes (blob hues); —
 // —   rig.lights.bleed is owned here only — lightsStep poses .points, never .bleed —
 // Export map: ILLUSION_LIGHTS.build(scene) → { ambient, key, points, bleed } · .toState(lights)
 (function () {
@@ -40,11 +40,13 @@ scene.add(p);
 return p;
 });
 scene.add(ambient, key);
-// — Bleed: gooey inners leak light; parked at the TL.CUBES spread homes —
-// —   short range + decay 2 keeps the pool local; no shadows, never stepped —
+// — Bleed: gooey inners leak light; parked at the TL.CUBES spread homes and —
+// —   hue-matched 1:1 to the blob that lives there (light i = HUES[i]: sapphire, —
+// —   citrine, amethyst) so the leaked tint agrees with the goo — short range + —
+// —   decay 2 keeps the pool local; no shadows, never stepped —
 const homes = [[-7.9, 73.5, 15.2], [54, 150.7, 9.8], [-53.4, 40.9, -69.1]];
-const hues = [['--primitive-illusion-glass-hi', 0xb500ff],
-['--primitive-illusion-glass-lo', 0x003bff], ['--primitive-illusion-amber', 0xc69e14]];
+const hues = [['--primitive-sapphire-400', 0x218aea],
+['--primitive-citrine-400', 0xffb01e], ['--primitive-amethyst-400', 0xa54cff]];
 const bleed = hues.map(function (h, i) {
 const b = new T.PointLight(tint(h[0], h[1]), 8000, 550, 2);
 b.position.set(homes[i][0], homes[i][1], homes[i][2]);
