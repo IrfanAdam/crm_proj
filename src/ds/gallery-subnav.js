@@ -1,8 +1,5 @@
-/* ADAM/DS — src/ds/gallery-subnav.js · quick-jump left rails */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-3] · rails from map (Task 10).
-// — Map: panel → rail labels (slug = anchor id suffix) —
-// — Build: insert .dnav__sub after each panel button —
-// — Jump: dsSub shows panel + scrolls; deep hash scrolls once —
+/* ADAM/DS — src/ds/gallery-subnav.js · quick-jump rails + active trail */
+ // [plan:2026-09-29_132702-ds-docs-experience.md#phase-2]
 const DS_SUBNAV={
 motion:['Time','Curves','Specimens','Orchestra','Scroll','Reduced','Choreography'],
 identity:['Chip','Badge','Status pill','Avatar','Icon'],
@@ -20,15 +17,15 @@ dsTab(panel);
 history.replaceState(null,'','#'+name);
 document.querySelectorAll('.dnav__subitem').forEach(x=>x.classList.toggle('dnav__subitem--active',x.dataset.subtab===name));
 const el=document.getElementById(name);
-if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function dsSubnavBuild(){
 const nav=document.querySelector('.dnav');
-if(!nav||nav.dataset.subnavDone)return;
+if(!nav||nav.dataset.subnavDone) return;
 nav.dataset.subnavDone='1';
 Object.entries(DS_SUBNAV).forEach(([panel,labels])=>{
 const btn=nav.querySelector('.dnav__item[data-tab="'+panel+'"]');
-if(!btn)return;
+if(!btn) return;
 const box=document.createElement('div');
 box.className='dnav__sub';
 box.dataset.subnav=panel;
@@ -41,21 +38,22 @@ b.textContent=label;
 b.addEventListener('click',()=>dsSub(b.dataset.subtab));
 box.appendChild(b);
 });
-btn.after(box);
+const grp=btn.closest('.dnav__group');
+if(grp) grp.appendChild(box); else btn.after(box);
 });
-const h=location.hash.slice(1);
-if(h)nav.querySelectorAll('.dnav__subitem').forEach(x=>x.classList.toggle('dnav__subitem--active',x.dataset.subtab===h));
+const h=location.hash.slice(1).replace(/^\//,'');
+if(h) nav.querySelectorAll('.dnav__subitem').forEach(x=>x.classList.toggle('dnav__subitem--active',x.dataset.subtab===h));
 }
 let dsSubSeen='';
 document.addEventListener('ds:doc',()=>{
-const h=location.hash.slice(1);
+const h=location.hash.slice(1).replace(/^\//,'');
 if(h&&h!==dsSubSeen&&document.getElementById(h)){dsSubSeen=h;dsSub(h);}
 });
 window.addEventListener('hashchange',()=>{
-const h=location.hash.slice(1);
-if(!h)return;
+const h=location.hash.slice(1).replace(/^\//,'');
+if(!h) return;
 if(document.getElementById(h)&&h!==dsSubSeen){dsSubSeen=h;dsSub(h);return;}
-const p=h.split('-')[0];
-if(document.querySelector('[data-panel="'+p+'"]'))dsTab(p);
+const p=h.split('/')[0].split('-')[0];
+if(document.querySelector('[data-panel="'+p+'"]')) dsTab(p);
 });
 dsSubnavBuild();

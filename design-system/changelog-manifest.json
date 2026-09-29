@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T05:10:44.393Z",
+  "generated": "2026-09-29T08:19:43.084Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -13,9 +13,26 @@
     "2026-09-23_002500-design-system-consolidation.md",
     "2026-09-23_003000-exhaustive-visual-language.md",
     "2026-09-28_000000-lump-sum-builds.md",
-    "2026-09-28_221212-illusion-cube-recreation.md"
+    "2026-09-28_221212-illusion-cube-recreation.md",
+    "2026-09-29_132702-ds-docs-experience.md"
   ],
   "commits": [
+    {
+      "sha": "90a4327",
+      "full": "90a4327e8a4c1d852f98e04a226f3e0f2e723575",
+      "date": "2026-09-29",
+      "subject": "chore: add illusioncube scene analysis assets + gem rubric shots",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "1ed6a88",
+      "full": "1ed6a8831028318d746f5bdb1ab576ce8e3ed955",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): phase 7 frosted goo + explore — amorphous inners, milky shell, bleed, orbit/pan/zoom",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-7}"
+    },
     {
       "sha": "91b2ba3",
       "full": "91b2ba36c2bba1983ea2e954de8d635dbee4f4a7",
@@ -2674,14 +2691,20 @@
     }
   ],
   "wip": [
-    "M src/components/IllusionCube/illusion-dress.js",
-    "M src/components/IllusionCube/illusion-floor.js",
-    "M src/components/IllusionCube/illusion-inner.js",
-    "M src/components/IllusionCube/illusion-lights.js",
-    "M src/components/IllusionCube/illusion-shell.js",
-    "M src/components/IllusionCube/illusion-stage.js",
-    "M src/components/IllusionCube/illusion3d.js",
-    "?? prototype/gems/rubric-shots/",
-    "?? src/components/IllusionCube/illusion-explore.js"
+    "M gallery.css",
+    "M src/ds/changelog-names.json",
+    "M src/ds/gallery-shell.js",
+    "M src/ds/gallery-subnav.js",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "?? src/ds/gallery-behavior.js",
+    "?? src/ds/gallery-chrome.css",
+    "?? src/ds/gallery-drawer.js",
+    "?? src/ds/gallery-filter.js",
+    "?? src/ds/gallery-hero.js",
+    "?? src/ds/gallery-lab-bundle.css",
+    "?? tests/ds-docs-experience.test.mjs"
   ]
 }
