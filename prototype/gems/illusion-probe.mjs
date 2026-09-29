@@ -2,7 +2,7 @@
 // [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-6}] · proof harness (Tasks 33,36,39,40).
 // — Run: node prototype/gems/illusion-probe.mjs <url> <out> [--at 0..15] [--click ms] [--sample "expr"] [--still] [--clip sel] [--size WxH] [--scale 1] [--wait ms]
 // — Out: <out>/fNN.png + JSON {frames, series, gaps, consoleErrors, elapsedMs} on stdout.
-// — Map: flag · wsUrl · send · readJSON · jump/raf/shot · click (Input.dispatchMouseEvent) · gaps · main.
+// — Map: flag · wsUrl · send (retries once on nav-kill/timeout except Input.*) · readJSON · jump/raf/shot · click · gaps · main · cleanup kills chrome on crash.
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import WebSocket from 'ws';
@@ -21,6 +21,8 @@ mkdirSync(out, { recursive: true });
 const t0 = Date.now();
 const port = 9200 + Math.floor(Math.random() * 600), profile = `/tmp/illusion-probe-${port}`;
 const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--enable-unsafe-swiftshader', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', '--mute-audio', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+const cleanup = () => { try { chrome.kill('SIGKILL'); } catch {} try { rmSync(profile, { recursive: true, force: true }); } catch {} process.exit(1); };
+process.on('uncaughtException', cleanup); process.on('unhandledRejection', cleanup);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function wsUrl() { for (let i = 0; i < 60; i++) { try { const r = await fetch(`http://127.0.0.1:${port}/json/version`); return (await r.json()).webSocketDebuggerUrl; } catch { await sleep(250); } } throw new Error('chrome did not boot'); }
 const ws = new WebSocket(await wsUrl(), { perMessageDeflate: false });
@@ -28,7 +30,11 @@ await new Promise((r) => ws.on('open', r));
 let seq = 0; const pending = new Map(); const consoleErrors = [];
 ws.on('message', (raw) => { const m = JSON.parse(raw.toString()); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); return; } if (m.method === 'Log.entryAdded' && m.params.entry.level === 'error') consoleErrors.push(m.params.entry.text.slice(0, 200)); if (m.method === 'Runtime.exceptionThrown') consoleErrors.push(String(m.params.exceptionDetails.text).slice(0, 200)); });
 let session = null;
-const send = (method, params = {}, timeout = 20000) => new Promise((resolve, reject) => { const id = ++seq; const t = setTimeout(() => { pending.delete(id); reject(new Error(method + ' timeout')); }, timeout); pending.set(id, (m) => { clearTimeout(t); m.error ? reject(new Error(method + ': ' + m.error.message)) : resolve(m.result); }); ws.send(JSON.stringify(session ? { id, sessionId: session, method, params } : { id, method, params })); });
+const send = (method, params = {}, timeout = 20000) => new Promise((resolve, reject) => {
+const again = (n) => n > 0 && !method.startsWith('Input.');
+const attempt = (n) => { const id = ++seq; const t = setTimeout(() => { pending.delete(id); if (again(n)) setTimeout(() => attempt(n - 1), 400); else reject(new Error(method + ' timeout')); }, timeout); pending.set(id, (m) => { clearTimeout(t); if (!m.error) { resolve(m.result); } else if (again(n)) { setTimeout(() => attempt(n - 1), 400); } else { reject(new Error(method + ': ' + m.error.message)); } }); ws.send(JSON.stringify(session ? { id, sessionId: session, method, params } : { id, method, params })); };
+attempt(1);
+});
 const readJSON = async (expr, timeout) => { const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, timeout); return r.result && r.result.value; };
 await send('Target.createTarget', { url: 'about:blank' }).then(async (t) => { session = (await send('Target.attachToTarget', { targetId: t.targetId, flatten: true })).sessionId; });
 await send('Page.enable'); await send('Runtime.enable'); await send('Log.enable');
