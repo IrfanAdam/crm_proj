@@ -1,65 +1,66 @@
-/* ADAM/SHARED — src/components/IllusionCube/illusion-inner.js · cube depth gradients */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-3}] · Task 20: payload bands.
-// — Bands: three object-space vector gradients; leading-stop alpha 0 fades each in —
-// —   fresh uniforms per cube (shared uuid, cloned per instance — phase 4 tweens them) —
-// Export map: ILLUSION_INNER.material(tex) → ShaderMaterial (opaque, order set on mesh)
+/* ADAM/SHARED — src/components/IllusionCube/illusion-inner.js · gooey amorphous inners */
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · frosted-gooey redesign.
+// — Blobs: vertex-noise-displaced organic forms; 4 crystal hues; lit-from-within emissive —
+// Export map: ILLUSION_INNER.material() → ShaderMaterial · .materialFor(i) per-cube hue
 (function () {
 if (!window.THREE || !window.ILLUSION_GL) return;
 const T = window.THREE;
 const G = window.ILLUSION_GL;
-const COLS = [['--primitive-amethyst-400', 0xa54cff], ['--primitive-illusion-plum', 0xa50b7e]];
-COLS.push(['--primitive-citrine-400', 0xffb01e], ['--primitive-red-beryl-400', 0xea005e]);
-COLS.push(['--primitive-red-beryl-500', 0xbd004b], ['--primitive-illusion-brand-blue', 0x1666af]);
-// — Vertex: object pos + view normal —
+// — Hues: sapphire / citrine / amethyst / rose crystal families (token + fallback) —
+const HUES = [
+['--primitive-sapphire-400', 0x218aea, '--primitive-sapphire-200', 0xc1e0fd],
+['--primitive-citrine-400', 0xffb01e, '--primitive-citrine-200', 0xffe0a3],
+['--primitive-amethyst-400', 0xa54cff, '--primitive-amethyst-200', 0xdebeff],
+['--primitive-red-beryl-400', 0xea005e, '--primitive-red-beryl-200', 0xffaac5]];
+// — PER-FRAME: caller sets mat.uniforms.uTime.value = t each frame (mutate the —
+// —   scalar in place; never reassign uniform objects — zero per-frame allocation). —
+// —   uSeed / uAmp / uColA / uColB / uGlow are static per cube; only uTime animates. —
+// — Vertex: trig-noise goo displacement along the normal (rounded organic wobble) —
 const VERT = [
-'varying vec3 vObj; varying vec3 vN;',
-'void main(){vObj=position;vN=normalize(normalMatrix*normal);',
-'gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}'].join('\n');
-// — Fragment: three vector bands, phong lift, fresnel white wash —
-const FRAG = [G.VECGRAD, G.BLEND, G.FRESNEL,
-'uniform vec3 uO1,uO2,uO3,uC1a,uC1b,uC2a,uC2b,uC3a,uC3b;',
-'uniform float uN1,uF1,uN2,uF2,uN3,uF3;',
-'uniform vec2 uS1,uS2,uS3;',
-'varying vec3 vObj; varying vec3 vN;',
+'uniform float uTime; uniform float uSeed; uniform float uAmp;',
+'varying vec3 vN; varying float vWob;',
 'void main(){',
-'vec3 X=vec3(1.0,0.0,0.0);',
-'float g1=vecgrad(vObj,uO1,X,uN1,uF1,uS1.x,uS1.y);',
-'float g2=vecgrad(vObj,uO2,X,uN2,uF2,uS2.x,uS2.y);',
-'float g3=vecgrad(vObj,uO3,X,uN3,uF3,uS3.x,uS3.y);',
-'vec3 col=mix(uC1a,uC1b,g1);',
-'col=mix(col,mix(uC2a,uC2b,g2),g2);',
-'col=blendm(col,mix(uC3a,uC3b,g3),g3,1.0);',
+'float w=sin(position.x*1.7+uTime*1.3+uSeed)*sin(position.y*2.3-uTime*1.1+uSeed*1.7);',
+'w*=sin(position.z*1.9+uTime*0.9+uSeed*2.3);',
+'float w2=sin(position.y*3.1+uTime*1.7+uSeed*3.1)*0.5+sin(position.x*2.2-uTime*1.3+uSeed)*0.5;',
+'vec3 p=position+normal*(w*uAmp+w2*uAmp*0.35);',
+'vWob=w*0.5+0.5; vN=normalize(normalMatrix*normal);',
+'gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}'].join('\n');
+// — Fragment: hue gradient by wobble, emissive core, spec lift, hue fresnel rim —
+const FRAG = [G.FRESNEL,
+'uniform vec3 uColA,uColB,uGlow;',
+'uniform float uTime;',
+'varying vec3 vN; varying float vWob;',
+'void main(){',
 'vec3 N=normalize(vN); vec3 V=vec3(0.0,0.0,1.0);',
+'vec3 col=mix(uColA,uColB,vWob);',
+'col+=uGlow*(0.35+0.25*vWob);',
 'vec3 L=normalize(vec3(0.83,0.46,0.22)); vec3 H=normalize(L+V);',
 'col+=vec3(1.0)*pow(max(dot(N,H),0.0),10.0)*0.5;',
-'col+=vec3(1.0)*fres(N,V,0.1,1.0,1.0)*0.35;',
+'col+=uColB*fres(N,V,0.1,1.0,1.0)*0.45;',
 'gl_FragColor=vec4(col,1.0);',
 '#include <colorspace_fragment>',
 '}'].join('\n');
-// — Material: fresh block per cube so phase 4 owns each band —
+// — Material: fresh uniforms per cube so phase 4 tweens each blob alone —
 const api = {};
-api.material = function () {
-const C = function (i) { return new T.Color(ILLUSION_SCENE.tok(COLS[i][0], COLS[i][1])); };
-const U = { uO1: { value: new T.Vector3(-2, -15, 10) }, uN1: { value: 61.15 } };
-U.uF1 = { value: 200 };
-U.uS1 = { value: new T.Vector2(0.1038, 0.2546) };
-U.uC1a = { value: C(0) };
-U.uC1b = { value: C(1) };
-U.uO2 = { value: new T.Vector3(14, 17, -2) };
-U.uN2 = { value: 45.15 };
-U.uF2 = { value: 200 };
-U.uS2 = { value: new T.Vector2(0.1038, 0.3462) };
-U.uC2a = { value: new T.Color(1, 1, 1) };
-U.uC2b = { value: C(2) };
-U.uO3 = { value: new T.Vector3(9, -14, -67) };
-U.uN3 = { value: 94.15 };
-U.uF3 = { value: 199 };
-U.uS3 = { value: new T.Vector2(0.2615, 0.373) };
-U.uC3a = { value: C(3) };
-U.uC3b = { value: C(4) };
+api.materialFor = function (i) {
+const k = ((i || 0) % 4 + 4) % 4;
+const h = HUES[k];
+const S = window.ILLUSION_SCENE;
+const U = { uTime: { value: 0 } };
+U.uSeed = { value: 0.3 + k * 1.7 };
+U.uAmp = { value: 1.6 };
+U.uColA = { value: new T.Color(S.tok(h[0], h[1])) };
+U.uColB = { value: new T.Color(S.tok(h[2], h[3])) };
+U.uGlow = { value: new T.Color(S.tok(h[0], h[1])) };
 const m = new T.ShaderMaterial({ uniforms: U, vertexShader: VERT, fragmentShader: FRAG });
 m.toneMapped = false;
 return m;
+};
+api.material = function () { return api.materialFor(0); };
+// — Touch: zero-alloc per-frame driver — parent calls touch(cubeMats, t) in step —
+api.touch = function (mats, t) {
+for (let k = 0; k < mats.length; k++) { mats[k].uniforms.uTime.value = t; }
 };
 window.ILLUSION_INNER = api;
 })();

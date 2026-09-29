@@ -1,8 +1,8 @@
-/* ADAM/SHARED — src/components/IllusionCube/illusion-shell.js · Main alpha glass */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-3}] · Task 19: 9-layer stack.
-// — Alpha glass, never transmission: r160's transmission pass drops transparent interiors —
-// —   renderOrder 4 (mesh), after the inner cubes at 2; handles stay live for phase 4 —
-// Export map: ILLUSION_SHELL.material(tex) → ShaderMaterial (uTime…uOpacity live)
+/* ADAM/SHARED — src/components/IllusionCube/illusion-shell.js · thick frosted shell */
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · Task B: frosted-gooey.
+// — Thick frosted glass: noise-perturbed normals + fresnel milky rim + uOpacity 0.85 —
+// — Mesh gradient: DS token ramp drifting on uTime*uDrift across the frost surface —
+// Export map: ILLUSION_SHELL.material(tex) → ShaderMaterial (uTime…uMilky live)
 (function () {
 if (!window.THREE || !window.ILLUSION_GL) return;
 const T = window.THREE;
@@ -17,30 +17,42 @@ const VERT = [
 'varying vec3 vObj; varying vec3 vN;',
 'void main(){vObj=position;vN=normalize(normalMatrix*normal);',
 'gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}'].join('\n');
-// — Fragment: noise ramp x2, rim, matcaps, band, sheen, glass wash —
+// — Fragment: frost-perturbed normals, drifting mesh gradient, milky fresnel rim —
+// — Driven uniforms (mainStep): uTime uScaleA uMoveA uAlphaA uScaleB uMoveB uAlphaB —
+// — New uniforms (parent may drive; else defaults hold): uFrost frost strength —
+// —   uDrift mesh-gradient hue-drift speed, uMilky milk wash + rim strength —
 const FRAG = [G.NOISE, G.WARP, G.RAMP4, G.BLEND, G.FRESNEL, G.MATCAP,
 'uniform float uTime,uMoveA,uMoveB,uScaleA,uScaleB,uAlphaA,uAlphaB,uMatRot,uOpacity;',
+'uniform float uFrost,uDrift,uMilky;',
 'uniform vec3 uPal[9]; uniform sampler2D uPhoto,uM4,uM5,uRefl;',
 'varying vec3 vObj; varying vec3 vN;',
 'void main(){',
-'vec3 V=vec3(0.0,0.0,1.0); vec3 N=normalize(vN);',
-'float nA=fbm(warpPos(vObj*uScaleA,uTime*uMoveA));',
-'float nB=fbm(warpPos(vObj*uScaleB+7.3,uTime*uMoveB));',
-'vec3 rA=ramp4(nA,uPal[0],uPal[1],uPal[2],uPal[3]);',
-'vec3 rB=ramp4(nB,uPal[0],uPal[1],uPal[2],uPal[3]);',
+'vec3 V=vec3(0.0,0.0,1.0);',
+'vec3 N=normalize(vN);',
+'vec3 fp=warpPos(vObj*uScaleB*2.0,uTime*uMoveB*2.0);',
+'float f1=fbm(fp);',
+'float f2=fbm(fp+13.1);',
+'N=normalize(N+vec3(f1-0.5,f2-0.5,(f1-f2)*0.5)*uFrost);',
+'vec3 dp=warpPos(vObj*uScaleA*0.45+vec3(0.0,uTime*uDrift,0.0),uTime*0.05);',
+'float d1=fbm(dp);',
+'vec3 dq=warpPos(vObj*uScaleB*0.4+vec3(uTime*uDrift*0.7,3.7,0.0),-uTime*0.04);',
+'float d2=fbm(dq);',
+'vec3 rA=ramp4(d1,uPal[0],uPal[1],uPal[2],uPal[3]);',
+'vec3 rB=ramp4(d2,uPal[5],uPal[6],uPal[7],uPal[3]);',
 'vec3 col=blendm(rB,rA,uAlphaA,2.0);',
-'float fr=fres(N,V,0.1,1.0,2.0);',
-'col+=uPal[4]*fr;',
 'vec2 muv=matUV(N.xy,uMatRot);',
-'col+=texture2D(uPhoto,muv).rgb*0.24+texture2D(uM4,muv).rgb*0.54;',
-'col+=texture2D(uM5,muv).rgb*uPal[8]*0.24;',
-'float band=smoothstep(-70.0,-30.0,vObj.y)*(1.0-smoothstep(30.0,70.0,vObj.y));',
-'col+=texture2D(uRefl,muv).rgb*band;',
-'vec3 L=normalize(vec3(0.83,0.46,0.22)); vec3 H=normalize(L+V);',
-'col+=vec3(1.0)*pow(max(dot(N,H),0.0),40.0)*0.6;',
-'vec3 glass=mix(uPal[5],mix(uPal[6],uPal[7],nB),clamp(fr,0.0,1.0));',
-'col=mix(col,glass,clamp(fr*uOpacity,0.0,1.0));',
-'gl_FragColor=vec4(col,uOpacity);',
+'muv+=(vec2(f1,f2)-0.5)*uFrost*0.6;',
+'col+=texture2D(uPhoto,muv).rgb*0.10+texture2D(uM4,muv).rgb*0.18;',
+'col+=texture2D(uM5,muv).rgb*uPal[8]*0.10;',
+'float fr=fres(N,V,0.1,1.0,2.0);',
+'col+=texture2D(uRefl,muv).rgb*0.06*fr;',
+'vec3 milk=blendm(uPal[8],vec3(1.0),0.85,2.0);',
+'col=mix(col,milk,clamp(uMilky*(0.22+0.78*fr),0.0,1.0));',
+'vec3 L=normalize(vec3(0.83,0.46,0.22));',
+'vec3 H=normalize(L+V);',
+'col+=milk*pow(max(dot(N,H),0.0),24.0)*0.35;',
+'float alpha=clamp(uOpacity+fr*uMilky*0.4,0.0,1.0);',
+'gl_FragColor=vec4(col,alpha);',
 '#include <colorspace_fragment>',
 '}'].join('\n');
 // — Material: one fresh ShaderMaterial, animation handles live —
@@ -52,7 +64,10 @@ U.uScaleB = { value: 1.78 };
 U.uAlphaA = { value: 0.32 };
 U.uAlphaB = { value: 0.32 };
 U.uMatRot = { value: window.ILLUSION_TEX.rad(39) };
-U.uOpacity = { value: 0.55 };
+U.uOpacity = { value: 0.7 };
+U.uFrost = { value: 1.4 };
+U.uDrift = { value: 0.05 };
+U.uMilky = { value: 0.5 };
 U.uPal = { value: PAL.map(function (e) { return new T.Color(ILLUSION_SCENE.tok(e[0], e[1])); }) };
 U.uPhoto = { value: tex.photo };
 U.uM4 = { value: tex.matcap4 };

@@ -16,6 +16,8 @@ M.mainStep(rig);
 M.baseStep(rig);
 M.prismStep(rig);
 M.lightsStep(rig);
+if (window.ILLUSION_INNER && rig.innerMats)
+window.ILLUSION_INNER.touch(rig.innerMats, rig.clock || 0);
 };
 // — Still: converged pose for reduced motion —
 api.still = function (rig) {
@@ -27,6 +29,8 @@ M.mainStep(rig);
 M.baseStep(rig);
 M.prismStep(rig);
 M.lightsStep(rig);
+if (window.ILLUSION_INNER && rig.innerMats)
+window.ILLUSION_INNER.touch(rig.innerMats, rig.clock || 0);
 };
 window.ILLUSION_DRESS = api;
 })();

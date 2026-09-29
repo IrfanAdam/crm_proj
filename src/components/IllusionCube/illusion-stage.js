@@ -19,7 +19,7 @@ const bodies = window.ILLUSION_BODIES.build();
 const tex = window.ILLUSION_TEX.load(renderer);
 bodies.main.material = window.ILLUSION_SHELL.material(tex);
 bodies.main.renderOrder = 4;
-bodies.cubes.forEach(function (m) { m.material = window.ILLUSION_INNER.material(); });
+const innerMats = bodies.cubes.map(function (m, i) { const mt = window.ILLUSION_INNER.materialFor(i); m.material = mt; return mt; });
 bodies.cubes.forEach(function (m) { m.renderOrder = 2; });
 bodies.base.material = window.ILLUSION_BASE.material(tex);
 bodies.base.renderOrder = 3;
@@ -38,7 +38,7 @@ floor.plane.visible = false;
 prism.visible = false;
 overlay.visible = false;
 }
-current = { scene: scene, camera: camera, bodies: bodies, lights: lights, floor: floor, prism: prism, overlay: overlay, graybox: graybox };
+current = { scene: scene, camera: camera, bodies: bodies, innerMats: innerMats, lights: lights, floor: floor, prism: prism, overlay: overlay, graybox: graybox };
 current.renderer = renderer;
 current.resize = function (w, h) { window.ILLUSION_CAMERA.resize(camera, w, h); };
 return current;

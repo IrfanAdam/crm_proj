@@ -1,12 +1,16 @@
-/* ADAM/SHARED — src/components/IllusionCube/illusion-lights.js · decoded light rig */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-2}] · ambient + key + pools (Task 10).
+/* ADAM/SHARED — src/components/IllusionCube/illusion-lights.js · decoded light rig + gooey bleed */
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · ambient + key + pools + bleed (Task C).
 // — Key: 1024 shadow over a 3811-unit footprint; radius set though honoured only under PCF —
 // — Pools: three point lights at decoded starts; toState jumps the moved hero pose —
-// Export map: ILLUSION_LIGHTS.build(scene) → { ambient, key, points } · .toState(lights)
+// — Bleed: three small colored points at the inners' spread homes (Task-A hues); —
+// —   rig.lights.bleed is owned here only — lightsStep poses .points, never .bleed —
+// Export map: ILLUSION_LIGHTS.build(scene) → { ambient, key, points, bleed } · .toState(lights)
 (function () {
 if (!window.THREE) return;
 const T = window.THREE;
 const api = {};
+const SC = window.ILLUSION_SCENE;
+const tint = function (n, fb) { return new T.Color(SC ? SC.tok(n, fb) : fb); };
 // — Build —
 api.build = function (scene) {
 const ambient = new T.AmbientLight(0xd3d3d3, 0.75);
@@ -36,9 +40,21 @@ scene.add(p);
 return p;
 });
 scene.add(ambient, key);
-return { ambient: ambient, key: key, points: points };
+// — Bleed: gooey inners leak light; parked at the TL.CUBES spread homes —
+// —   short range + decay 2 keeps the pool local; no shadows, never stepped —
+const homes = [[-7.9, 73.5, 15.2], [54, 150.7, 9.8], [-53.4, 40.9, -69.1]];
+const hues = [['--primitive-illusion-glass-hi', 0xb500ff],
+['--primitive-illusion-glass-lo', 0x003bff], ['--primitive-illusion-amber', 0xc69e14]];
+const bleed = hues.map(function (h, i) {
+const b = new T.PointLight(tint(h[0], h[1]), 8000, 550, 2);
+b.position.set(homes[i][0], homes[i][1], homes[i][2]);
+scene.add(b);
+return b;
+});
+return { ambient: ambient, key: key, points: points, bleed: bleed };
 };
 // — Moved state: the t~14 s hero pose Phase 4 will tween toward —
+// —   owns .points only; .bleed holds still so the goo keeps glowing —
 api.toState = function (lights) {
 const moved = [
 [32.77265692860964, 8.405533059820298, 109.84670048246309, 0.8],

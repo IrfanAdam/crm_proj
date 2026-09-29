@@ -638,3 +638,25 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 **Verify:** `npm test` green (lint:tokens 0 leaks, plan:names 12 phased plans, ds-track `0 wip`); the changelog card for the plan shows the aggregated phase count with each phase's `d/t` complete and its commit badges present; no phase is left reading `0/N`; every commit that touched a DS path carries the phase trailer on its subject.
 
 ---
+
+## Phase 7 — Frosted goo + explore mode {#phase-7}
+
+*Shipped in [phase7] · Tasks 43–46 · phase-7.*
+
+*User correction 2026-09-29: inners were helpers — intelligence is amorphous goo in token hues; shell is thick frosted glass (blurred interior); goo light bleeds outside; mesh-gradient color dances on the frost; preset animation gets an on/off toggle with pan/zoom explore; frame fills the container.*
+
+*Tags: Component, Motion*
+
+| # | Task | Done when |
+| --- | --- | --- |
+| 43 | Gooey amorphous inners (`illusion-inner.js` + `materialFor` wiring) | 4 distinct token-hued organic blobs, gently emissive |
+| 44 | Frosted shell + surface mesh gradient (`illusion-shell.js`) | Milky blur hides interior; slow hue drift on frost; uniform names kept |
+| 45 | Goo light bleed (`illusion-lights.js`, `illusion-floor.js`) | Colored glow pools on floor; decoded lights/stepper untouched |
+| 46 | Explore mode: preset toggle + pan/zoom + fill layout (`cube-illusion.html`, `illusion3d.js`) | Toggle on/off labelled; drag-pan + wheel-zoom only when preset off; reveal clicks unaffected; frame edge-to-edge with refit |
+
+### Task 43: Gooey amorphous inners ✓ done
+### Task 44: Frosted shell + surface mesh gradient ✓ done
+### Task 45: Goo light bleed ✓ done
+### Task 46: Explore mode ✓ done
+
+---

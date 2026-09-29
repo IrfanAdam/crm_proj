@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T04:48:45.932Z",
+  "generated": "2026-09-29T05:10:44.393Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -16,6 +16,14 @@
     "2026-09-28_221212-illusion-cube-recreation.md"
   ],
   "commits": [
+    {
+      "sha": "91b2ba3",
+      "full": "91b2ba36c2bba1983ea2e954de8d635dbee4f4a7",
+      "date": "2026-09-29",
+      "subject": "feat(illusion): phase 6 proof — harness, acceptance, webkit parity, favicon",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-6}"
+    },
     {
       "sha": "a24ef0b",
       "full": "a24ef0bc5268c598b7767343ccd8bd6fa7d98741",
@@ -2666,8 +2674,14 @@
     }
   ],
   "wip": [
-    "?? prototype/gems/illusion-probe.mjs",
-    "?? prototype/gems/illusion-sheet.mjs",
-    "?? prototype/gems/rubric-shots/"
+    "M src/components/IllusionCube/illusion-dress.js",
+    "M src/components/IllusionCube/illusion-floor.js",
+    "M src/components/IllusionCube/illusion-inner.js",
+    "M src/components/IllusionCube/illusion-lights.js",
+    "M src/components/IllusionCube/illusion-shell.js",
+    "M src/components/IllusionCube/illusion-stage.js",
+    "M src/components/IllusionCube/illusion3d.js",
+    "?? prototype/gems/rubric-shots/",
+    "?? src/components/IllusionCube/illusion-explore.js"
   ]
 }

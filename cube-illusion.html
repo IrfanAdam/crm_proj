@@ -1,5 +1,5 @@
 <!-- ADAM/PAGE — cube-illusion.html · native illusion-cube specimen -->
-<!-- [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-1}] -->
+<!-- [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +13,8 @@
 html,body{height:100%}
 body{background:var(--primitive-sapphire-ui-50);color:var(--text-primary);font-family:var(--font-family-sans)}
 .cube-stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--spacing-6);padding:var(--spacing-8) 0}
-.cube-stage__frame{width:min(82vmin,760px);aspect-ratio:1}
-.cube-stage canvas{width:100%;height:100%;display:block}
+.cube-stage__frame{width:100%;flex:1;min-height:60vh;position:relative}
+.cube-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .cube-stage__caption{font-size:var(--font-size-xs);letter-spacing:var(--font-tracking-wide);text-transform:uppercase;color:var(--text-muted)}
 </style>
 </head>
@@ -24,7 +24,7 @@ body{background:var(--primitive-sapphire-ui-50);color:var(--text-primary);font-f
 <canvas data-illusion role="img" aria-label="Illusion cube — gray rounded box on plinth, native three.js scaffold"></canvas>
 </div>
 <p class="cube-stage__caption">Illusion cube — Spline illusioncube recreated natively · three r160</p>
-<p class="cube-stage__caption"><button id="illusion-sound" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Sound: on</button> <span id="illusion-status">armed</span></p>
+<p class="cube-stage__caption"><button id="illusion-sound" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Sound: on</button> <button id="illusion-preset" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Preset: on</button> <span id="illusion-status">armed</span></p>
 <script>
 (function () {
 var b = document.getElementById('illusion-sound');
@@ -38,6 +38,19 @@ b.textContent = 'Sound: ' + (st === 'muted' ? 'off' : 'on');
 b.setAttribute('aria-pressed', st === 'muted' ? 'false' : 'true');
 };
 if (b) b.addEventListener('click', function () { if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.toggle(); paint(); });
+var p = document.getElementById('illusion-preset');
+var presetOn = true;
+var paintPreset = function () {
+if (!p) return;
+p.textContent = 'Preset: ' + (presetOn ? 'on' : 'off');
+p.setAttribute('aria-pressed', presetOn ? 'true' : 'false');
+};
+if (p) p.addEventListener('click', function () {
+presetOn = !presetOn;
+if (window.ILLUSION_EXPLORE) window.ILLUSION_EXPLORE.setPreset(presetOn);
+paintPreset();
+});
+paintPreset();
 setInterval(paint, 1000);
 paint();
 })();
@@ -66,6 +79,7 @@ paint();
 <script src="src/components/IllusionCube/illusion-audio.js"></script>
 <script src="src/components/IllusionCube/illusion-stage.js"></script>
 <script src="src/components/IllusionCube/illusion-dress.js"></script>
+<script src="src/components/IllusionCube/illusion-explore.js"></script>
 <script src="src/components/IllusionCube/illusion3d.js"></script>
 </body>
 </html>
