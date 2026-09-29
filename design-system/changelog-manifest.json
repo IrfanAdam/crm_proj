@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T08:21:43.043Z",
+  "generated": "2026-09-29T08:25:21.326Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -17,6 +17,14 @@
     "2026-09-29_132702-ds-docs-experience.md"
   ],
   "commits": [
+    {
+      "sha": "5da60d5",
+      "full": "5da60d584c12bd6d0854673e8f60c8f2a12efda1",
+      "date": "2026-09-29",
+      "subject": "chore(mechanics): refresh generated graphs",
+      "plan": "2026-09-29_132702-ds-docs-experience.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "c895dc4",
       "full": "c895dc40731bfc2181302bd6ac7c53f90d0c2083",
