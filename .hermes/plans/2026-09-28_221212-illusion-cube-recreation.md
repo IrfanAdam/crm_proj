@@ -519,7 +519,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 ## Phase 6 — Proof + integration decision {#phase-6}
 
-*Shipped in [closeout] · Tasks 33–40 · phase-6. Task 41 awaits the user's explicit `y`.*
+*Shipped in 91b2ba3 · Tasks 33–40 · phase-6. Task 41 awaits the user's explicit `y`.*
 
 *Closes the build on evidence: a deterministic 16-frame parity loop against the decoded reference, headless interaction and audio proof of the click reveal, an acceptance table against the scene analysis, reduced-motion and perf passes, a Safari replay, and an integration decision that stops and waits for an explicit `y` before any shipped surface is rewired.*
 
