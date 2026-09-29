@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T18:49:08.989Z",
+  "generated": "2026-09-29T04:48:45.932Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -16,6 +16,30 @@
     "2026-09-28_221212-illusion-cube-recreation.md"
   ],
   "commits": [
+    {
+      "sha": "a24ef0b",
+      "full": "a24ef0bc5268c598b7767343ccd8bd6fa7d98741",
+      "date": "2026-09-29",
+      "subject": "fix(illusion): cubesStep wrote world poses into group-local slots, double-riding the +97 cue",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-6}"
+    },
+    {
+      "sha": "182a83b",
+      "full": "182a83be0599d3f437716e5686320c60403e0827",
+      "date": "2026-09-29",
+      "subject": "feat(ds): cube panel Cube",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "9c19da6",
+      "full": "9c19da69da42a67a9dd07d4487bbd99e2bff47c0",
+      "date": "2026-09-29",
+      "subject": "chore(illusion): close phases 4+5 — stamping 4ead21a/d201374",
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-4}"
+    },
     {
       "sha": "d201374",
       "full": "d201374347be0763c08955c1922c5798e0c03c86",
@@ -2642,10 +2666,6 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
     "?? prototype/gems/illusion-probe.mjs",
     "?? prototype/gems/illusion-sheet.mjs",
     "?? prototype/gems/rubric-shots/"
