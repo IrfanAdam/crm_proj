@@ -76,3 +76,17 @@
    color: var(--violet);
    z-index: 1;
  }
+ /* — Section: intelligence cube frame — */
+ .loop-cube-frame {
+   margin: 0 0 2.2rem;
+   border: 1px solid var(--rule);
+   border-radius: var(--radius-lg);
+   overflow: hidden;
+   background: var(--white);
+ }
+ .loop-cube-frame iframe {
+   width: 100%;
+   height: 420px;
+   border: 0;
+   display: block;
+ }
