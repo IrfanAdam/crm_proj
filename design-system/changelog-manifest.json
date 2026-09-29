@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T08:25:21.326Z",
+  "generated": "2026-09-29T08:28:20.117Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -14,9 +14,18 @@
     "2026-09-23_003000-exhaustive-visual-language.md",
     "2026-09-28_000000-lump-sum-builds.md",
     "2026-09-28_221212-illusion-cube-recreation.md",
-    "2026-09-29_132702-ds-docs-experience.md"
+    "2026-09-29_132702-ds-docs-experience.md",
+    "2026-09-29_135509-illusion-cube-surface-revision.md"
   ],
   "commits": [
+    {
+      "sha": "5af15dc",
+      "full": "5af15dcc8879f6e9046031028d495b5e933fcf37",
+      "date": "2026-09-29",
+      "subject": "chore(mechanics): refresh after nav brand dedupe",
+      "plan": "2026-09-29_132702-ds-docs-experience.md",
+      "anchor": "phase-5"
+    },
     {
       "sha": "5da60d5",
       "full": "5da60d584c12bd6d0854673e8f60c8f2a12efda1",
@@ -2707,10 +2716,6 @@
     }
   ],
   "wip": [
-    "M src/arch/atlas.json",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js"
+    "M src/ds/changelog-names.json"
   ]
 }
