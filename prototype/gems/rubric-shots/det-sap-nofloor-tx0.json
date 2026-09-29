@@ -1,0 +1,10 @@
+file:///Users/irfan/Documents/Portfolio%20Redo/crm_proj/prototype/gems/gem-shot.mjs:54
+  const t = setTimeout(() => { pending.delete(id); reject(new Error(method + ' timeout')); }, timeout);
+                                                          ^
+
+Error: Runtime.evaluate timeout
+    at Timeout._onTimeout (file:///Users/irfan/Documents/Portfolio%20Redo/crm_proj/prototype/gems/gem-shot.mjs:54:59)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+
+Node.js v20.11.1

@@ -1,0 +1,12 @@
+{
+  "probe": {
+    "revision": "160",
+    "gems": 2,
+    "mounted": 2,
+    "notFound": [],
+    "title": "ALPHA CRM — DS Gallery"
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

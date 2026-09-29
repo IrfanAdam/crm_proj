@@ -1,0 +1,588 @@
+==== Page | 'Scene' | a218fcc3-276b-49b9-b485-49037fd14f5f ====
+  type: "Page"
+  visible: true
+  raycastLock: false
+  physics: {"enabled": "visibility", "fusedBody": false, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+  pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+  position: [0, 0, 0]
+  rotation: [0, 0, 0]
+  scale: [1, 1, 1]
+  hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+  cloner: null
+  backgroundColor: {"r": 0.7607843137254902, "g": 0.8627450980392157, "b": 0.9803921568627451, "a": 1}
+  postprocessing: {"enabled": true, "pixelation": {"opacity": 1, "blendFunction": 16, "enabled": false, "granularity": 15}, "bloom": {"opacity": 1, "blendFunction": 9, "enabled": true, "intensity": 0.3, "blurScale": 0.91, "luminanceThreshold": 0.257, "luminanceSmoothing": 0.167}, "chromaticAberration": {"opacity": 1, "blendFunction": 13, "enabled": false, "offset": [2, 2]}, "vignette": {"opacity": 1, "blendFunction... [879 chars]
+  fog: {"enabled": true, "useBackgroundColor": true, "color": {"r": 1, "g": 1, "b": 1}, "near": 1423.758, "far": 1987.781}
+  globalPhysics: {"usePhysics": false, "gravity": -10}
+  ambient: {"enabled": true, "color": {"r": 0.8274509803921568, "g": 0.8274509803921568, "b": 0.8274509803921568}, "intensity": 0.75}
+  ao: {"occlusion": false, "aoFullRes": true, "radius": 8, "bias": 0.911, "aoColor": {"r": 0.36191595873786414, "g": 0.36191595873786414, "b": 0.36191595873786414}}
+  shadow: {"softShadowQuality": "medium"}
+  publish: {"playCamera": "474c04ff-8637-4d1e-97fd-572a71c8430c", "gameControlObject": null}
+  camera: {"position": [-636.2672842122687, 525.4916129846283, 605.3402524862981], "scale": [1, 1, 1], "rotation": [-35.83446437581613, -39.99924087184857, -24.89948969725574], "hiddenMatrix": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1], "name": "", "visible": true, "raycastLock": false, "states": [], "events": [], "far": 100000, "type": "OrthographicCamera", "perspective": {"near": 5, "fov": 45, "zoom... [539 chars]
+  name: "Scene"
+  ==== Mesh | 'Subtext' | ee018d80-45d2-474a-97fa-86e158a2d887 ====
+    visible: true
+    type: "Mesh"
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [-4.67042297636263, 18.733398437500014, 101.0939895519962]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    flatShading: false
+    wireframe: false
+    side: 0
+    castShadow: true
+    receiveShadow: true
+    geometry: {"type": "TextGeometry", "width": 136.6591540472747, "height": 14.533203124999986, "depth": 0, "horizontalAlign": 1, "verticalAlign": 1, "fontSize": 9, "lineHeight": 1, "letterSpacing": -0.04, "text": {"textValue": "data in here don't lie"}, "textTransform": 1, "font": "Azeret Mono_500", "editable": false, "extrudeBevelSize": 0, "extrudeBevelSegments": 1}
+    material.layers: [{"fi": -0.4670646754586286, "id": "6aaf3a52-1165-4d24-a698-45053ba96fbf", "data": {"alpha": 0.6, "mode": 2, "isMask": false, "visible": true, "type": "matcap", "texture": {"image": "7b83617b-037e-49b5-8c02-9f88e3fb82cf", "wrapping": 1001, "repeat": [1, 1], "offset": [0, 0], "rotation": 0, "minFilter": 1008, "magFilter": 1006}}}, {"fi": 0, "data": {"mode": 2, "isMask": false, "visible": true, "bumpMapIntensity": 5, "alphaOverride": 1, "category": "phong", "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 5, "type": "light", "occlusion": true, "alpha": 0.6}, "id": "layer1"}, {"fi": 1, "data": {"alpha": 0.6, "mode": "3", "isMask": false, "visible": true, "type": "color", "color": {"r": 0.1493454123320909, "g": 0.23258191429711342, "b": 0.3158184162621359}}, "id": "layer2"}]
+    material.name: "Subtext Material"
+    name: "Subtext"
+  ==== Mesh | 'Blurb' | 089fc023-cd30-49a2-9029-bf495a816946 ====
+    visible: true
+    type: "Mesh"
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [-30.58474375808499, 110.03010329138462, 98.66477613230134]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    flatShading: false
+    wireframe: false
+    side: 0
+    castShadow: true
+    receiveShadow: true
+    geometry: {"type": "TextGeometry", "width": 84.83051248382999, "height": 47.87682666665273, "depth": 2, "horizontalAlign": 1, "verticalAlign": 1, "fontSize": 15, "lineHeight": 1, "letterSpacing": 0, "text": {"textValue": "Only CRM stack you\nneed"}, "textTransform": 1, "font": "Inter_600", "editable": false, "extrudeBevelSize": 0, "extrudeBevelSegments": 1}
+    material.layers: [{"fi": 0, "data": {"mode": 0, "isMask": false, "visible": false, "bumpMapIntensity": 5, "alphaOverride": 1, "category": "phong", "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 5, "type": "light", "occlusion": true, "alpha": 0.6}, "id": "layer1"}, {"fi": 1, "data": {"alpha": 0, "mode": 0, "isMask": false, "visible": true, "type": "color", "color": {"r": 1, "g": 1, "b": 1}}, "id": "layer2"}]
+    material.name: "Blurb Material"
+    name: "Blurb"
+    STATE id=276f8186-fbcd-48c4-9c28-580c09bfbb4d name='State'
+      geometry: {"depth": 0}
+      material: {"layers": {"$ext": 6, "value": {"layer2": {"$ext": 6, "value": {"color": {"r": 1, "g": 1, "b": 1}, "alpha": 1}}}}}
+      position: [-30.58474375808499, 110.03010329138462, 101.10181465590475]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    EVENT id=ff7d39f2-2b9b-42f4-88c5-1ee2320c600f type=Conditional
+      disabled: false
+      actions: [{"fi": -0.10798088478890111, "id": "c68beb75-5d1e-4473-b6eb-ca9d2e79f479", "data": {"type": "Audio", "interaction": "play", "delay": 8000, "volume": 0.2, "loop": 1, "audio": {"data": {"type": "Buffer", "data": [255, 251, 212, 68, 0, 14, 228, 161, 55, 180, 139, 111, 75, 112, 145, 38, 230, 128, 111, 9, 110, 87, 25, 80, 236, 78, 225, 15, 218, 154, 46, 30, 77, 204, 33, 185, 0, 78, 169, 96, 195, 217, 206, 21, 228, 204, 197, 133, 153, 77, 29, 36, 195, 64, 0, 65, 137, 242, 95, 19, 19, 13, 107, 203, 237, 69, 131, 0, 4, 252, 219, 88, 80, 55, 156, 232, 91, 198, 195, 65, 149, 15, 101, 114, 80, 55, 183, 41, 82, 225, 80, 65, 64, 96, 19, 241, 254, 210, 2, 224, 52, 14, 116, 88, 23, 192, 96, 82, 156, 224, 55, 144, 162, 74, 41, 102, 65, 214, 175, 19, 241, 158, 128, 56, 194, 24, 120, 168, 223, 212, 86, 217, 1, 130, 54, 133, 7, 68, 132, 111, 243, 166, 47, 91, 166, 45, 181, 24, 191, 12, 146, 4, 246, 9, 180... [598124 chars]
+      inActions: [{"fi": 0.09702012886374178, "id": "377f3297-b308-4d42-90dd-3b3d0a50167a", "data": {"type": "Audio", "interaction": "play", "delay": 4000, "volume": 0.3, "loop": 1, "audio": "bf58f459-ff3b-47c0-af8e-5dce9ffccc41"}}, {"fi": 0.5082267484794651, "id": "17414f86-db48-4d7c-a5d7-f66955595bbe", "data": {"type": "Transition", "runMode": "Once", "object": "089fc023-cd30-49a2-9029-bf495a816946", "tweens": {"$ext": 2, "value": [{"id": "6883da63-c0b7-463d-9d1a-0d30a16f6cdc", "data": {"state": null, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "93158e25-fbe4-4184-b94a-b29ca51d89cb", "data": {"state": "276f8186-fbcd-48c4-9c28-580c09bfbb4d", "repeat": 0, "delay": 3000, "delayDirection": "start-once", "direction": "normal", "duration": 3000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-on... [929 chars]
+      outActions: []
+      condition: {"type": "State", "object": "474c04ff-8637-4d1e-97fd-572a71c8430c", "state": "7eb41845-a8d7-4830-b6af-89ae38063f82"}
+  ==== Empty | 'ALPHA' | d4616316-898c-46b4-8344-bac09b18fe39 ====
+    type: "Empty"
+    visible: true
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [-72.99999999999999, 75.39, 101.0939895519962]
+    rotation: [0, 0, 0]
+    scale: [0.044340229494009085, 0.044340229494009085, 1.0000000000009097]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    name: "ALPHA"
+    ==== Mesh | 'Shape 0' | 0b4dfb7c-f39a-4d3c-9e7b-9d8fc64b5850 ====
+      type: "Mesh"
+      visible: true
+      raycastLock: false
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      position: [1160.29, 0, 0]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+      cloner: null
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      name: "Shape 0"
+      geometry: type=shape points=[{"fi": 0, "id": "079798c4-0125-45c5-9688-120a7d44c9f0", "data": {"roundness": 0, "position": [10.63000000000011, -227.85], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [10.63000000000011, -227.85]}, "controlNext": {"position": [6.579999999999927, -227.85]}}}, {"fi": 1, "id": "e4e39008-8c36-48be-8f2d-ad51c4fe108d", "data": {"roundness": 0, "position": [1.2200000000000273, -222.989], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [3.4400000000000546, -226.23]}, "controlNext": {"position": [-1.009999999999991, -219.749]}}}, {"fi": 2, "id": "8d4e489a-3963-408a-a266-50412777e758", "data": {"roundness": 0, "position": [0, -212.356], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [-1.4200000000000728, -216.204]}, "controlNext": {"position": [0, -212.356]}}}, {"fi": 3, "id": "81b5f6d8-224d-4211-a46b-d05bb8e68816", "data": {"roundness": 0, "position": [77.47000000000003, -11.2406], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [77.47000000000003, -11.2406]}, "controlNext": {"position": [78.69000000000005, -7.79754]}}}, {"fi": 4, "id": "1b28b040-8cad-4090-a85d-6804e4598e66", "data": {"roundness": 0, "position": [83.54999999999995, -3.03802], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [80.71000000000004, -5.06335]}, "controlNext": {"position": [86.57999999999993, -1.01267]}}}, {"fi": 5, "id": "1de45a6c-baf4-4457-80c3-b9fb0747e728", "data": {"roundness": 0, "position": [93.26999999999998, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [89.82999999999993, 0]}, "controlNext": {"position": [93.26999999999998, 0]}}}, {"fi": 6, "id": "0f66a7d4-319a-4fe5-83ef-41f03144f40d", "data": {"roundness": 0, "position": [183.19000000000005, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [183.19000000000005, 0]}, "controlNext": {"position": [186.6400000000001, 0]}}}, {"fi": 7, "id": "69775e49-1301-45ce-a7c9-1a34910a81b3", "data": {"roundness": 0, "position": [192.61000000000013, -3.03802], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [189.77999999999997, -1.01267]}, "controlNext": {"position": [195.6500000000001, -5.06335]}}}, {"fi": 8, "id": "06279804-20ac-4ea7-8351-bd02ece88bd3", "data": {"roundness": 0, "position": [198.99, -11.2406], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [197.77999999999997, -7.79754]}, "controlNext": {"position": [198.99, -1... [8490 chars]
+      material: "55ab9a41-095e-43d9-a2eb-2b2984298b32"
+    ==== Mesh | 'Shape 1' | 79c2d2e2-0196-46b3-9602-7b1a9a8b1064 ====
+      type: "Mesh"
+      visible: true
+      raycastLock: false
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      position: [863.562, 0, 0.01]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+      cloner: null
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      name: "Shape 1"
+      geometry: type=shape points=[{"fi": 0, "id": "f8520eae-8801-4951-852f-2b7ce89776d9", "data": {"roundness": 0, "position": [11.240999999999985, -227.85], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [11.240999999999985, -227.85]}, "controlNext": {"position": [8.202999999999975, -227.85]}}}, {"fi": 1, "id": "1589932f-33f9-4e6c-b6d0-d8789475b9de", "data": {"roundness": 0, "position": [3.3419999999999845, -224.508], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [5.569999999999936, -226.736]}, "controlNext": {"position": [1.1140000000000327, -222.28]}}}, {"fi": 2, "id": "3636bbbd-f481-4399-8346-774562d8c9ed", "data": {"roundness": 0, "position": [0, -216.609], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [0, -219.647]}, "controlNext": {"position": [0, -216.609]}}}, {"fi": 3, "id": "f0522cd0-6762-490e-bd32-53c117358444", "data": {"roundness": 0, "position": [0, -11.5444], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [0, -11.5444]}, "controlNext": {"position": [0, -8.30387]}}}, {"fi": 4, "id": "ee982ff2-2b3e-4aa0-a9b1-6b866debfa91", "data": {"roundness": 0, "position": [3.3419999999999845, -3.34181], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [1.1140000000000327, -5.56967]}, "controlNext": {"position": [5.569999999999936, -1.11394]}}}, {"fi": 5, "id": "338f708e-27fd-4c8b-8efc-4b3357176caf", "data": {"roundness": 0, "position": [11.240999999999985, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [8.202999999999975, 0]}, "controlNext": {"position": [11.240999999999985, 0]}}}, {"fi": 6, "id": "502a8db4-1534-4510-977c-5fa808112c3c", "data": {"roundness": 0, "position": [45.571000000000026, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [45.571000000000026, 0]}, "controlNext": {"position": [48.811000000000035, 0]}}}, {"fi": 7, "id": "eed9ee63-7c00-4c61-b875-75de36d73b24", "data": {"roundness": 0, "position": [53.46899999999994, -3.34181], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [51.44399999999996, -1.11394]}, "controlNext": {"position": [55.697, -5.56967]}}}, {"fi": 8, "id": "0e5d2f7d-8c99-439f-9907-550e43d482b3", "data": {"roundness": 0, "position": [56.811000000000035, -11.5444], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [56.811000000000035, -8.30387]}, "controlNext": {"position": [56.811000000000035, -11.5444]}}}, {"fi": 9, "id": "9e319b72-d08f-4f29-8... [3322 chars]
+      material: "55ab9a41-095e-43d9-a2eb-2b2984298b32"
+    ==== Mesh | 'Shape 1' | 9adafa33-a9f8-4803-bcd7-1a8e5ecd0e22 ====
+      type: "Mesh"
+      visible: true
+      raycastLock: false
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      position: [941.335, 0, 0.02]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+      cloner: null
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      name: "Shape 1"
+      geometry: type=shape points=[{"fi": 0, "id": "2623d422-927c-4ff5-8f7c-c8df75ca3b10", "data": {"roundness": 0, "position": [11.544999999999959, -136.102], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [11.544999999999959, -136.102]}, "controlNext": {"position": [8.303999999999974, -136.102]}}}, {"fi": 1, "id": "0f995b48-6b4d-4aee-8d2c-8a809b1e5f23", "data": {"roundness": 0, "position": [3.3419999999999845, -133.064], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [5.569999999999936, -135.09]}, "controlNext": {"position": [1.113999999999919, -130.837]}}}, {"fi": 2, "id": "1a6e59ae-1314-4b87-ab02-905c683c40ef", "data": {"roundness": 0, "position": [0, -124.862], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [0, -128.102]}, "controlNext": {"position": [0, -124.862]}}}, {"fi": 3, "id": "879ffc77-5f6b-4737-ae60-0f5740f3aac0", "data": {"roundness": 0, "position": [0, -96.3046], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [0, -96.3046]}, "controlNext": {"position": [0, -93.0641]}}}, {"fi": 4, "id": "5619d03c-81d7-4e3c-abed-97d530316571", "data": {"roundness": 0, "position": [3.3419999999999845, -88.4058], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [1.113999999999919, -90.4312]}, "controlNext": {"position": [5.569999999999936, -86.178]}}}, {"fi": 5, "id": "ba8bac79-5be9-4ba6-b6af-079c444aa0bc", "data": {"roundness": 0, "position": [11.544999999999959, -85.064], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [8.303999999999974, -85.064]}, "controlNext": {"position": [11.544999999999959, -85.064]}}}, {"fi": 6, "id": "908b6be8-6ee2-4463-b759-d210f652d208", "data": {"roundness": 0, "position": [101.77499999999986, -85.064], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [101.77499999999986, -85.064]}, "controlNext": {"position": [105.01499999999987, -85.064]}}}, {"fi": 7, "id": "6b98cc2d-9dc2-446a-b060-e61fc5e71d97", "data": {"roundness": 0, "position": [109.97499999999991, -81.7222], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [107.74499999999989, -83.9501]}, "controlNext": {"position": [112.20499999999993, -79.4944]}}}, {"fi": 8, "id": "1192e581-0ac0-4b13-9c0c-42bcb79ecbf3", "data": {"roundness": 0, "position": [113.31500000000005, -73.5196], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [113.31500000000005, -76.7602]}, "controlNext": {"position": [113.31500000000005, -... [6724 chars]
+      material: "55ab9a41-095e-43d9-a2eb-2b2984298b32"
+    ==== Mesh | 'Shape 2' | ce14bccb-998d-4625-b9cb-207268b62363 ====
+      type: "Mesh"
+      visible: true
+      raycastLock: false
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      position: [576.473, 0, 0.02]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+      cloner: null
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      name: "Shape 2"
+      geometry: type=shape points=[{"fi": 0, "id": "466dabe2-2842-4fd3-a506-2223082ca8f4", "data": {"roundness": 0, "position": [234.53300000000002, -118.786], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [231.6980000000001, -125.672]}, "controlNext": {"position": [237.57100000000003, -111.9]}}}, {"fi": 1, "id": "df90c9a7-6e7a-4c64-b5a3-dd788f7b90d4", "data": {"roundness": 0, "position": [239.09000000000003, -96.6084], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [239.09000000000003, -104.507]}, "controlNext": {"position": [239.09000000000003, -96.6084]}}}, {"fi": 2, "id": "2d784fbb-ac9e-4239-af5a-cfda65e24dd0", "data": {"roundness": 0, "position": [239.09000000000003, -57.1144], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [239.09000000000003, -57.1144]}, "controlNext": {"position": [239.09000000000003, -49.2156]}}}, {"fi": 3, "id": "8dc376cc-272f-4f88-853f-74e79cefdca1", "data": {"roundness": 0, "position": [234.53300000000002, -34.937], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [237.57100000000003, -41.8231]}, "controlNext": {"position": [231.6980000000001, -27.8483]}}}, {"fi": 4, "id": "07bea442-5afc-41ce-837c-8fcd4d5b1fa4", "data": {"roundness": 0, "position": [222.38100000000009, -16.709], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [227.64700000000005, -21.7723]}, "controlNext": {"position": [217.3180000000001, -11.4431]}}}, {"fi": 5, "id": "8711a3ad-45f8-4e2a-94d1-070dff6c6858", "data": {"roundness": 0, "position": [204.457, -4.55701], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [211.34300000000007, -7.39248]}, "controlNext": {"position": [197.57100000000003, -1.51901]}}}, {"fi": 6, "id": "67a56be1-5c8e-4897-a2f8-e327b89ac6ec", "data": {"roundness": 0, "position": [182.2800000000001, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [190.178, 0]}, "controlNext": {"position": [182.2800000000001, 0]}}}, {"fi": 7, "id": "e56437b8-dc6d-46ba-8758-f1219364f3d1", "data": {"roundness": 0, "position": [11.240000000000009, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [11.240000000000009, 0]}, "controlNext": {"position": [8.201999999999998, 0]}}}, {"fi": 8, "id": "761d3b4b-7c77-4924-99bc-b0073cecb44e", "data": {"roundness": 0, "position": [3.341000000000008, -3.34181], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [5.569000000000074, -1.11394]}, "controlNe... [10174 chars]
+      material: "55ab9a41-095e-43d9-a2eb-2b2984298b32"
+    ==== Mesh | 'Shape 3' | 690f12a4-4a96-43e2-8eae-ea01d3dc6189 ====
+      type: "Mesh"
+      visible: true
+      raycastLock: false
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      position: [326.141, 0, 0.03]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+      cloner: null
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      name: "Shape 3"
+      geometry: type=shape points=[{"fi": 0, "id": "6e239e4f-7c12-4fe7-901a-8ae0c061d0e7", "data": {"roundness": 0, "position": [11.239999999999952, -227.85], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [11.239999999999952, -227.85]}, "controlNext": {"position": [8.201999999999998, -227.85]}}}, {"fi": 1, "id": "cc90fd61-1442-4d8c-8006-ef8d81252bc0", "data": {"roundness": 0, "position": [3.341000000000008, -224.508], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [5.56899999999996, -226.736]}, "controlNext": {"position": [1.113999999999976, -222.28]}}}, {"fi": 2, "id": "0dc6e54a-2cc2-479c-8523-6c54d9a5d024", "data": {"roundness": 0, "position": [0, -216.609], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [0, -219.647]}, "controlNext": {"position": [0, -216.609]}}}, {"fi": 3, "id": "51a40058-f3ac-4705-a418-c36f46fed149", "data": {"roundness": 0, "position": [0, -11.5444], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [0, -11.5444]}, "controlNext": {"position": [0, -8.30387]}}}, {"fi": 4, "id": "3745e2bd-93d7-493d-b625-1b1bb8d2ad7a", "data": {"roundness": 0, "position": [3.341000000000008, -3.34181], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [1.113999999999976, -5.56967]}, "controlNext": {"position": [5.56899999999996, -1.11394]}}}, {"fi": 5, "id": "32ab40f8-4702-41a6-9972-b4532a731560", "data": {"roundness": 0, "position": [11.239999999999952, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [8.201999999999998, 0]}, "controlNext": {"position": [11.239999999999952, 0]}}}, {"fi": 6, "id": "4bc57096-3b2c-46e8-8c3e-98388f04da98", "data": {"roundness": 0, "position": [45.56999999999999, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [45.56999999999999, 0]}, "controlNext": {"position": [48.81, 0]}}}, {"fi": 7, "id": "85fa78e3-820d-42ba-a693-edc47c42ef3e", "data": {"roundness": 0, "position": [53.46799999999996, -3.34181], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [51.442999999999984, -1.11394]}, "controlNext": {"position": [55.69599999999997, -5.56967]}}}, {"fi": 8, "id": "8054bcba-f1a8-41fd-8e4c-d220729d9e64", "data": {"roundness": 0, "position": [56.81, -11.5444], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [56.81, -8.30387]}, "controlNext": {"position": [56.81, -11.5444]}}}, {"fi": 9, "id": "18c46948-6e17-439b-b404-6ea9a9c738e7", "data": {"roundness": 0, "pos... [5000 chars]
+      material: "55ab9a41-095e-43d9-a2eb-2b2984298b32"
+    ==== Mesh | 'Shape 4' | 9443bd42-6b9d-4e7e-80e9-17bc5bf211ec ====
+      type: "Mesh"
+      visible: true
+      raycastLock: false
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      position: [0.854355, 0, 0.04]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+      cloner: null
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      name: "Shape 4"
+      geometry: type=shape points=[{"fi": 0, "id": "c5f161f9-df0e-467c-a6bb-8e56894b8eef", "data": {"roundness": 0, "position": [10.633045, -227.85], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [10.633045, -227.85]}, "controlNext": {"position": [6.582335, -227.85]}}}, {"fi": 1, "id": "cced485f-fec5-4a4f-905e-303862bd18c6", "data": {"roundness": 0, "position": [1.215205, -222.989], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [3.443065, -226.23]}, "controlNext": {"position": [-1.012667, -219.749]}}}, {"fi": 2, "id": "6fede949-a1ff-4f5f-8d13-e3f10af46eab", "data": {"roundness": 0, "position": [0, -212.356], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [-1.4177339999999998, -216.204]}, "controlNext": {"position": [0, -212.356]}}}, {"fi": 3, "id": "2dfbafcd-17e0-496d-b946-5ddc865b3572", "data": {"roundness": 0, "position": [77.46904500000001, -11.2406], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [77.46904500000001, -11.2406]}, "controlNext": {"position": [78.684245, -7.79754]}}}, {"fi": 4, "id": "bc1cabf0-da44-4bef-bf8a-2900470810cb", "data": {"roundness": 0, "position": [83.545045, -3.03802], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [80.709545, -5.06335]}, "controlNext": {"position": [86.583045, -1.01267]}}}, {"fi": 5, "id": "0efc87cc-25cd-4495-84d8-a61b9d051840", "data": {"roundness": 0, "position": [93.266645, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [89.823545, 0]}, "controlNext": {"position": [93.266645, 0]}}}, {"fi": 6, "id": "d31793b1-0b90-4ef7-9c51-57882acc466a", "data": {"roundness": 0, "position": [183.191645, 0], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [183.191645, 0]}, "controlNext": {"position": [186.634645, 0]}}}, {"fi": 7, "id": "509b964a-c551-4ac3-a42f-703bda448c95", "data": {"roundness": 0, "position": [192.609645, -3.03802], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [189.773645, -1.01267]}, "controlNext": {"position": [195.647645, -5.06335]}}}, {"fi": 8, "id": "6a6aae9b-a295-44df-9cb9-726646783b17", "data": {"roundness": 0, "position": [198.988645, -11.2406], "areControlsDirectionsMirrored": true, "controlPrevious": {"position": [197.773645, -7.79754]}, "controlNext": {"position": [198.988645, -11.2406]}}}, {"fi": 9, "id": "fba2e70c-64cf-40a9-99a0-51c88b71b6a7", "data": {"roundness": 0, "position": [276.457645, -212.356], "areControlsDirectionsMirro... [8012 chars]
+      material: "55ab9a41-095e-43d9-a2eb-2b2984298b32"
+  ==== PointLight | 'Point Light 3' | 4f734ab1-56ff-4702-9018-03db1c84e8d7 ====
+    visible: true
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [57.049979656199255, 12.199857180006802, 112.45136454567444]
+    rotation: [0, 51.06871594840127, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    type: "PointLight"
+    color: {"r": 1, "g": 1, "b": 1, "a": 1}
+    intensity: 0
+    distance: 4564
+    decay: 10
+    shadows: true
+    shadowResolution: 1024
+    shadowRadius: 1
+    penumbraSize: 0.5
+    depth: 100000
+    name: "Point Light 3"
+    STATE id=9af79c9b-0f12-4e1c-b3f4-e1ddcfc12626 name='State'
+      intensity: 0.8
+      position: [32.77265692860964, 8.405533059820298, 109.84670048246309]
+      rotation: [0, 51.06871594840127, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    EVENT id=7f72c274-6890-4e28-9545-159630416126 type=Start
+      disabled: false
+      actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "4f734ab1-56ff-4702-9018-03db1c84e8d7", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "9af79c9b-0f12-4e1c-b3f4-e1ddcfc12626", "repeat": 0, "delay": 8000, "delayDirection": "start-once", "direction": "normal", "duration": 4000, "easing": 4}, "fi": 11}, {"fi": 11.431390441370649, "id": "134e4c7b-ab73-47e8-8d14-a4b4d699e6b7", "data": {"state": "44ab0071-b2b0-4690-aa57-2214441ca7a6", "repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong-rewind", "duration": 6000, "easing": 4}}]}, "repeat": 0, "delay": 0, "delayDirection": "sta... [953 chars]
+  ==== PointLight | 'Point Light 2' | 74c61a6b-6200-4835-88b5-b29adc914041 ====
+    visible: true
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [-113.54237269267794, 16.528549605580338, -39.705123501394496]
+    rotation: [0, 51.06871594840127, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    type: "PointLight"
+    color: {"r": 1, "g": 1, "b": 1, "a": 1}
+    intensity: 0
+    distance: 801
+    decay: 7
+    shadows: true
+    shadowResolution: 1024
+    shadowRadius: 1
+    penumbraSize: 0.5
+    depth: 100000
+    name: "Point Light 2"
+    STATE id=0ff73359-4b11-4089-804d-2c588fd47f96 name='State'
+      intensity: 1
+      position: [-126.12543356866746, 16.528549605580338, -72.06981022075522]
+      rotation: [0, 51.06871594840127, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    EVENT id=d3633bd6-5003-479f-b954-f735ee73fc5d type=Start
+      disabled: false
+      actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "74c61a6b-6200-4835-88b5-b29adc914041", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "0ff73359-4b11-4089-804d-2c588fd47f96", "repeat": 0, "delay": 8000, "delayDirection": "start-once", "direction": "normal", "duration": 4000, "easing": 4}, "fi": 11}, {"fi": 11.606098601013894, "id": "b383e8ca-6481-4f65-8d99-430984c3e5ae", "data": {"state": "ee867fee-d7e4-4426-be8f-60771c0559df", "repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong-rewind", "duration": 8000, "easing": 4}}]}, "repeat": 0, "delay": 0, "delayDirection": "sta... [953 chars]
+  ==== PointLight | 'Point Light' | 4879dc84-ade2-4059-891e-9bd899dfc44c ====
+    visible: true
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [-121.50410125112523, 11.353790460176242, 68.47555138330435]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    type: "PointLight"
+    color: {"r": 1, "g": 1, "b": 1, "a": 1}
+    intensity: 0
+    distance: 990
+    decay: 10
+    shadows: true
+    shadowResolution: 1024
+    shadowRadius: 1
+    penumbraSize: 0.5
+    depth: 100000
+    name: "Point Light"
+    STATE id=dd89e591-4a27-4125-aaa9-f0214be68b22 name='State'
+      intensity: 1.705
+      position: [-88.6826038462716, 24.006305882438028, 27.694865485336862]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    EVENT id=1f7d61de-136d-4809-b02c-7aaf503e7f8e type=Start
+      disabled: false
+      actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "4879dc84-ade2-4059-891e-9bd899dfc44c", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "dd89e591-4a27-4125-aaa9-f0214be68b22", "repeat": 0, "delay": 8000, "delayDirection": "start-once", "direction": "normal", "duration": 4000, "easing": 4}, "fi": 11}, {"fi": 11.426159141307066, "id": "1b01b849-f00c-4198-9fec-778182c08858", "data": {"state": "4d14e4a1-7d34-4c58-a549-7d4bacec2245", "repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong-rewind", "duration": 12000, "easing": 4}}]}, "repeat": 0, "delay": 0, "delayDirection": "st... [954 chars]
+  ==== Empty | 'Cubes' | 8a6cf55f-fbc6-46fa-a75b-9e362900add8 ====
+    name: "Cubes"
+    type: "Empty"
+    visible: true
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [0.5654364373828571, 97.03507571802716, 6.795859237940917]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    cloner: null
+    ==== Mesh | 'Small Cube' | c6510e3f-3ace-4e2f-9c88-857ebff5718e ====
+      visible: true
+      type: "Mesh"
+      raycastLock: false
+      position: [52.21399409751854, -76.63084669032627, -80.82798331060346]
+      rotation: [0, 0, -17.10904552531857]
+      scale: [0.30000000000000004, 0.29999999999999905, 0.3]
+      hiddenMatrix: [0.9999999999999998, 5.551115123125783e-17, 0, 0, 2.7755575615628914e-17, 0.9999999999999997, 0, 0, 0, 0, 0.9999999999999999, 0, 1.4210854715202004e-14, -2.842170943040401e-14, 0, 1]
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      cloner: null
+      booleanExclude: null
+      geometry: {"width": 120.08558997993715, "widthSegments": 1, "heightSegments": 1, "depthSegments": 1, "cornerRadius": 27, "cornerSegments": 1, "height": 111.42530848890283, "depth": 120.08558997993715, "type": "CubeGeometry"}
+      material.layers: [{"fi": -0.41083131483089086, "data": {"type": "matcap", "alpha": 1, "visible": true, "mode": 0, "color": {"r": 0.2823529411764706, "g": 0.2823529411764706, "b": 0.30196078431372547}, "gradientType": 0, "smooth": false, "isVector": true, "isWorldSpace": true, "origin": [238.88196062401403, 0, 0], "direction": [1, 0, 0], "colors": [[0, 0.9699999999999998, 1, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1], [1, 0.5700000000000001, 0, 1]], "steps": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1], "near": 39.071321161327646, "far": 86.24073345149384, "num": 2, "angle": 0, "offset": [0, 0], "morph": [0, 0], "cnormal": [1, 1, 1], "size": [128, 128], "axis": "x", "side": 2, "projection": 0, "texture": {"image": {"data": {"type": "Buffer", "data": [255, 216, 255, 224, 0, 16, 74, 70, 73, 70, 0, 1, 1, 1, 0, 72, 0, 72, 0, 0, 255, 219, 0, 67, 0, 6, 4, 5, 6, 5, 4, 6, 6, 5, 6, 7, 7, 6, 8, 10, 16, 10, 10, 9, 9, 10, 20, 14, 15, 12, 16, 23, 20, 24, 24, 23, 20, 22, 22, 26, 29, 37, 31, 26, 27, 35, 28, 22, 22, 32, 44, 32, 35, 38, 39, 41, 42, 41, 25, 31, 45, 48, 45, 40, 48, 37, 40, 41, 40, 255, 219, 0, 67, 1, 7, 7, 7, 10, 8, 10, 19, 10, 10, 19, 40, 26, 22, 26, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 255, 194, 0, 17, 8, 1, 171, 1, 171, 3, 1, 34, 0, 2, 17, 1, 3, 17, 1, 255, 196, 0, 26, 0, 0, 3, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 255, 196, 0, 25, 1, 0, 3, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 0, 4, 5, 255, 218, 0, 12, 3, 1, 0, 2, 16, 3, 16, 0, 0, 1, 251, 16, 22, 192, 27, 0, 28, 1, 176, 6, 192, 27, 3, 54, 77, 247, 97, 231, 245, 250, 117, 147, 159, 162, 50, 19, 232, 142, 92, 212, 118, 30, 122, 27, 209, 60, 224, ... [76017 chars]
+      material.name: "Small Cube Material"
+      name: "Small Cube"
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      STATE id=57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e name='State'
+        geometry: {}
+        material: {"layers": {"$ext": 6, "value": {}}}
+        position: [-28.330902908304907, -75.94477731077843, 55.87736184247817]
+        rotation: [10, 20, -10]
+        scale: [0.4, 0.39999999999999886, 0.4]
+        hiddenMatrix: [1.0000000000000002, 5.551115123125783e-17, -1.6653345369377348e-16, 0, 2.7755575615628914e-17, 1.0000000000000002, -1.3877787807814457e-17, 0, 0, -2.7755575615628914e-17, 1, 0, 7.105427357601002e-15, 1.4210854715202004e-14, -2.1316282072803006e-14, 0.9999999999999996]
+      EVENT id=f902ca54-d760-48e7-a5f2-43a00f9f3bc0 type=Start
+        disabled: false
+        actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "c6510e3f-3ace-4e2f-9c88-857ebff5718e", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "runMode": "Once"}}]
+    ==== Mesh | 'Cube 3' | 159b1b27-6d36-4793-a3ac-60e6d7b5f79e ====
+      visible: true
+      type: "Mesh"
+      raycastLock: false
+      position: [-53.95107247711458, -56.16648277719783, -75.94923676944363]
+      rotation: [-180, -4.783690037707766, -106.5582912807981]
+      scale: [0.3, 0.29999999999999905, 0.29999999999999993]
+      hiddenMatrix: [1, -2.7755575615628914e-17, -1.3877787807814457e-17, 0, -5.551115123125783e-17, 1.0000000000000002, -5.551115123125783e-17, 0, 0, 0, 1.0000000000000004, 0, 0, -3.552713678800501e-15, -7.105427357601002e-15, 1]
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      cloner: null
+      booleanExclude: null
+      geometry: {"width": 120.08558997993715, "widthSegments": 1, "heightSegments": 1, "depthSegments": 1, "cornerRadius": 27, "cornerSegments": 1, "height": 111.42530848890283, "depth": 120.08558997993715, "type": "CubeGeometry"}
+      material.layers: [{"fi": -1.429975538055979, "id": "68f3519a-db2f-4759-b013-f83b331928f8", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [-2, -15, 10], "direction": [1, 0, 0], "colors": [[0.6470588235294118, 0.2980392156862745, 1, 0], [0.645384557038835, 0.041450195211819814, 0.4944009665820812, 1]], "steps": [0.10376320422535211, 0.2546489876760563], "near": 61.15, "far": 200}}, {"fi": -1.000990271506485, "id": "9617364c-7afb-4f56-911e-dd72a25123f5", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [14, 17, -2], "direction": [1, 0, 0], "colors": [[1, 1, 1, 0], [1, 0.6901960784313725, 0.11764705882352941, 1]], "steps": [0.10376320422535211, 0.34619828345070425], "near": 45.15, "far": 200}}, {"fi": -0.4832970473907805, "id": "4d5eb14c-287f-4882-a8ef-ce5a0a36bcdd", "data": {"alpha": 1, "mode": 1, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [9, -14, -67], "direction": [1, 0, 0], "colors": [[0.9176470588235294, 0, 0.3686274509803922, 0], [0.7421685376213591, 0.0013791815209134456, 0.29473176653668987, 1]], "steps": [0.2614986795774648, 0.3729643485915493], "near": 94.15, "far": 199}}, {"fi": 0, "data": {"type": "light", "category": "phong", "alpha": 1, "visible": true, "mode": 2, "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 10, "isMask": false, "occlusion": true, "bumpMapIntensity": 5, "alphaOverride": 1}, "id": "layer1"}, {"fi": 0.4934355317165211, "id": "839d012e-bbb1-4b9b-b7cf-d40eb9ed7449", "data": {"type": "color", "alpha": 1, "visible": true, "mode": 0, "color": {"r": 1, "g": 1, "b": 1}, "isMask": false}}]
+      material.name: "Cube 3 Material"
+      name: "Cube 3"
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      STATE id=57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e name='State'
+        geometry: {}
+        material: {"layers": {"$ext": 6, "value": {"9617364c-7afb-4f56-911e-dd72a25123f5": {"$ext": 6, "value": {"colors": [[1, 1, 1, 0], [1, 0.6901960784313725, 0.11764705882352941, 1]], "steps": [0.10376320422535211, 0.351012323943662]}}, "68f3519a-db2f-4759-b013-f83b331928f8": {"$ext": 6, "value": {"colors": [[0.6470588235294118, 0.2980392156862745, 1, 0], [0.645384557038835, 0.041450195211819814, 0.4944009665820812, 1]], "steps": [0.10376320422535211, 0.18271346830985916]}}, "4d5eb14c-287f-4882-a8ef-ce5a0a36bcdd": {"$ext": 6, "value": {"colors": [[0.9176470588235294, 0, 0.3686274509803922, 0], [0.7421685376213591, 0.0013791815209134456, 0.29473176653668987, 1]], "steps": [0.2614986795774648, 0.37940140845070425], "origin": [-48, 4, -72], "near": 114.15}}}}}
+        scale: [0.7, 0.6999999999999977, 0.6999999999999998]
+        position: [-11.932574539964172, 42.97422375703555, 37.58022377503382]
+        rotation: [-98.34798271176001, 25.73922918616875, -152.18116023567657]
+        hiddenMatrix: [1, -2.7755575615628914e-17, -1.3877787807814457e-17, 0, -5.551115123125783e-17, 1.0000000000000002, -5.551115123125783e-17, 0, 0, 0, 1.0000000000000004, 0, 0, -3.552713678800501e-15, -7.105427357601002e-15, 1]
+      EVENT id=f902ca54-d760-48e7-a5f2-43a00f9f3bc0 type=Start
+        disabled: false
+        actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "159b1b27-6d36-4793-a3ac-60e6d7b5f79e", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong", "duration": 1000, "easing": 4, "state": null}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "runMode": "Once"}}]
+    ==== Mesh | 'Cube 2' | 61eabec5-9625-4568-8c4d-e46b06222f00 ====
+      visible: true
+      type: "Mesh"
+      raycastLock: false
+      position: [53.440546456278305, 53.63087821913799, 2.981193736583908]
+      rotation: [0, 0, 0]
+      scale: [0.3, 0.29999999999999905, 0.29999999999999993]
+      hiddenMatrix: [1, -2.7755575615628914e-17, -1.3877787807814457e-17, 0, -5.551115123125783e-17, 1.0000000000000002, -5.551115123125783e-17, 0, 0, 0, 1.0000000000000004, 0, 0, -3.552713678800501e-15, -7.105427357601002e-15, 1]
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      cloner: null
+      booleanExclude: null
+      geometry: {"width": 120.08558997993715, "widthSegments": 1, "heightSegments": 1, "depthSegments": 1, "cornerRadius": 27, "cornerSegments": 1, "height": 111.42530848890283, "depth": 120.08558997993715, "type": "CubeGeometry"}
+      material.layers: [{"fi": -1.429975538055979, "id": "68f3519a-db2f-4759-b013-f83b331928f8", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [-2, -15, 10], "direction": [1, 0, 0], "colors": [[0.6470588235294118, 0.2980392156862745, 1, 0], [0.645384557038835, 0.041450195211819814, 0.4944009665820812, 1]], "steps": [0.10376320422535211, 0.2546489876760563], "near": 61.15, "far": 200}}, {"fi": -1.000990271506485, "id": "9617364c-7afb-4f56-911e-dd72a25123f5", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [14, 17, -2], "direction": [1, 0, 0], "colors": [[1, 1, 1, 0], [1, 0.6901960784313725, 0.11764705882352941, 1]], "steps": [0.10376320422535211, 0.34619828345070425], "near": 45.15, "far": 200}}, {"fi": -0.4832970473907805, "id": "4d5eb14c-287f-4882-a8ef-ce5a0a36bcdd", "data": {"alpha": 1, "mode": 1, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [9, -14, -67], "direction": [1, 0, 0], "colors": [[0.9176470588235294, 0, 0.3686274509803922, 0], [0.7421685376213591, 0.0013791815209134456, 0.29473176653668987, 1]], "steps": [0.2614986795774648, 0.3729643485915493], "near": 94.15, "far": 199}}, {"fi": 0, "data": {"type": "light", "category": "phong", "alpha": 1, "visible": true, "mode": 2, "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 10, "isMask": false, "occlusion": true, "bumpMapIntensity": 5, "alphaOverride": 1}, "id": "layer1"}, {"fi": 0.4934355317165211, "id": "839d012e-bbb1-4b9b-b7cf-d40eb9ed7449", "data": {"type": "color", "alpha": 1, "visible": true, "mode": 0, "color": {"r": 1, "g": 1, "b": 1}, "isMask": false}}]
+      material.name: "Cube 2 Material"
+      name: "Cube 2"
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      STATE id=57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e name='State'
+        geometry: {}
+        material: {"layers": {"$ext": 6, "value": {"9617364c-7afb-4f56-911e-dd72a25123f5": {"$ext": 6, "value": {"colors": [[1, 1, 1, 0], [1, 0.6901960784313725, 0.11764705882352941, 1]], "steps": [0.10376320422535211, 0.351012323943662]}}, "68f3519a-db2f-4759-b013-f83b331928f8": {"$ext": 6, "value": {"colors": [[0.6470588235294118, 0.2980392156862745, 1, 0], [0.645384557038835, 0.041450195211819814, 0.4944009665820812, 1]], "steps": [0.10376320422535211, 0.18271346830985916]}}, "4d5eb14c-287f-4882-a8ef-ce5a0a36bcdd": {"$ext": 6, "value": {"colors": [[0.9176470588235294, 0, 0.3686274509803922, 0], [0.7421685376213591, 0.0013791815209134456, 0.29473176653668987, 1]], "steps": [0.2614986795774648, 0.37940140845070425], "origin": [-48, 4, -72], "near": 114.15}}}}}
+        scale: [0.7, 0.6999999999999977, 0.6999999999999998]
+        position: [-36.99579664516651, -31.687975788248465, -52.18072129645293]
+        rotation: [-98.34798271176001, 25.73922918616875, -87.20296845879113]
+        hiddenMatrix: [1, -2.7755575615628914e-17, -1.3877787807814457e-17, 0, -5.551115123125783e-17, 1.0000000000000002, -5.551115123125783e-17, 0, 0, 0, 1.0000000000000004, 0, 0, -3.552713678800501e-15, -7.105427357601002e-15, 1]
+      EVENT id=f902ca54-d760-48e7-a5f2-43a00f9f3bc0 type=Start
+        disabled: false
+        actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "61eabec5-9625-4568-8c4d-e46b06222f00", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"state": null, "repeat": -1, "delay": 8000, "delayDirection": "start-once", "direction": "pingpong", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "runMode": "Once"}}]
+    ==== Mesh | 'Cube 1' | 50d0d016-069e-41d5-a843-28773e00c7bd ====
+      visible: true
+      type: "Mesh"
+      raycastLock: false
+      position: [-8.521374173569408, -23.55471326715809, 8.451133961074877]
+      rotation: [75.74512496206512, 59.061047822396276, 164.28674521569314]
+      scale: [1, 0.9999999999999968, 0.9999999999999998]
+      hiddenMatrix: [1, -2.7755575615628914e-17, -1.3877787807814457e-17, 0, -5.551115123125783e-17, 1.0000000000000002, -5.551115123125783e-17, 0, 0, 0, 1.0000000000000004, 0, 0, -3.552713678800501e-15, -7.105427357601002e-15, 1]
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      cloner: null
+      booleanExclude: null
+      geometry: {"width": 120.08558997993715, "widthSegments": 1, "heightSegments": 1, "depthSegments": 1, "cornerRadius": 27, "cornerSegments": 1, "height": 111.42530848890283, "depth": 120.08558997993715, "type": "CubeGeometry"}
+      material.layers: [{"fi": -1.429975538055979, "id": "68f3519a-db2f-4759-b013-f83b331928f8", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [-2, -15, 10], "direction": [1, 0, 0], "colors": [[0.6470588235294118, 0.2980392156862745, 1, 0], [0.645384557038835, 0.041450195211819814, 0.4944009665820812, 1]], "steps": [0.10376320422535211, 0.2546489876760563], "near": 61.15, "far": 200}}, {"fi": -1.000990271506485, "id": "9617364c-7afb-4f56-911e-dd72a25123f5", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [14, 17, -2], "direction": [1, 0, 0], "colors": [[1, 1, 1, 0], [1, 0.6901960784313725, 0.11764705882352941, 1]], "steps": [0.10376320422535211, 0.34619828345070425], "near": 45.15, "far": 200}}, {"fi": -0.4832970473907805, "id": "4d5eb14c-287f-4882-a8ef-ce5a0a36bcdd", "data": {"alpha": 1, "mode": 1, "isMask": false, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [9, -14, -67], "direction": [1, 0, 0], "colors": [[0.9176470588235294, 0, 0.3686274509803922, 0], [0.7421685376213591, 0.0013791815209134456, 0.29473176653668987, 1]], "steps": [0.2614986795774648, 0.3729643485915493], "near": 94.15, "far": 199}}, {"fi": 0, "data": {"type": "light", "category": "phong", "alpha": 1, "visible": true, "mode": 2, "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 10, "isMask": false, "occlusion": true, "bumpMapIntensity": 5, "alphaOverride": 1}, "id": "layer1"}, {"fi": 0.4934355317165211, "id": "839d012e-bbb1-4b9b-b7cf-d40eb9ed7449", "data": {"type": "color", "alpha": 1, "visible": true, "mode": 0, "color": {"r": 1, "g": 1, "b": 1}, "isMask": false}}]
+      material.name: "Cube 1 Material"
+      name: "Cube 1"
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      STATE id=57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e name='State'
+        geometry: {}
+        material: {"layers": {"$ext": 6, "value": {"9617364c-7afb-4f56-911e-dd72a25123f5": {"$ext": 6, "value": {"colors": [[1, 1, 1, 0], [1, 0.6901960784313725, 0.11764705882352941, 1]], "steps": [0.10376320422535211, 0.351012323943662]}}, "68f3519a-db2f-4759-b013-f83b331928f8": {"$ext": 6, "value": {"colors": [[0.6470588235294118, 0.2980392156862745, 1, 0], [0.645384557038835, 0.041450195211819814, 0.4944009665820812, 1]], "steps": [0.10376320422535211, 0.18271346830985916]}}, "4d5eb14c-287f-4882-a8ef-ce5a0a36bcdd": {"$ext": 6, "value": {"colors": [[0.9176470588235294, 0, 0.3686274509803922, 0], [0.7421685376213591, 0.0013791815209134456, 0.29473176653668987, 1]], "steps": [0.2614986795774648, 0.37940140845070425], "origin": [-48, 4, -72], "near": 114.15}}}}}
+        scale: [0.7, 0.6999999999999977, 0.6999999999999998]
+        position: [27.638288476632088, -12.901865839605591, 14.281117409814982]
+        rotation: [30.93332999752167, -14.748803683124864, -11.971734490938477]
+        hiddenMatrix: [1, -2.7755575615628914e-17, -1.3877787807814457e-17, 0, -5.551115123125783e-17, 1.0000000000000002, -5.551115123125783e-17, 0, 0, 0, 1.0000000000000004, 0, 0, -3.552713678800501e-15, -7.105427357601002e-15, 1]
+      EVENT id=f902ca54-d760-48e7-a5f2-43a00f9f3bc0 type=Start
+        disabled: false
+        actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "50d0d016-069e-41d5-a843-28773e00c7bd", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"state": null, "repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "57a8cefc-ccc6-4b7e-8b9b-3a27ae80570e", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "runMode": "Once"}}]
+    ==== Mesh | 'Main' | a2a65140-714d-483d-8270-2c5c96bc232a ====
+      visible: true
+      type: "Mesh"
+      raycastLock: false
+      position: [0, -52.4, -5.795859237940908]
+      rotation: [-89.99999999999999, 0, 0]
+      scale: [1, 1.000000000000014, 1.000000000000014]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, -5.551115123125783e-17, 0, 0, 5.551115123125783e-17, 1, 0, 0, 0, -1.7763568394002505e-15, 1]
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      cloner: null
+      booleanExclude: null
+      geometry: {"width": 200, "depth": 149.07015143605216, "cornerRadius": [16, 16, 16, 16], "cornerType": 1, "extrudeBevelSize": 4, "extrudeBevelSegments": 4, "height": 200, "type": "RectangleGeometry"}
+      material.layers: [{"fi": -4.436023129450467, "id": "36341168-146c-468d-a2b0-bcf4ce3fb99e", "data": {"alpha": 0.32, "mode": 2, "isMask": false, "visible": true, "type": "noise", "colorA": "b54560b0-ceaa-44c2-88d9-aeb65721fed8", "colorB": {"r": 0.760889103982301, "g": 0.08557635162494545, "b": 0.27196267127557544, "a": 1}, "size": [100, 100, 100], "smoothness": 0.3, "noiseType": 4, "scale": 1.37, "move": 4.1, "colorC": {"r": 0.777516592920354, "g": 0.6199267356670008, "b": 0.08021633958693299, "a": 1}, "colorD": {"r": 0.7558075221238938, "g": 0.11203341589004609, "b": 0.5330616813669824, "a": 1}, "distortion": [3.97, -2.1], "fA": [3.78, 9.2], "fB": [8.3, 2.8], "voronoiStyle": 0, "highCut": 1, "lowCut": 0, "seed": 0, "quality": 1}}, {"fi": -4.082944849699721, "id": "21a14e46-4550-4874-945f-d9d80d31742a", "data": {"alpha": 0.32, "mode": 3, "isMask": false, "visible": true, "type": "noise", "colorA": "b54560b0-ceaa-44c2-88d9-aeb65721fed8", "colorB": {"r": 0.760889103982301, "g": 0.08557635162494545, "b": 0.27196267127557544, "a": 1}, "size": [100, 100, 100], "smoothness": 0.3, "noiseType": 4, "scale": 1.78, "move": -0.04, "colorC": {"r": 0.777516592920354, "g": 0.6199267356670008, "b": 0.08021633958693299, "a": 1}, "colorD": {"r": 0.7558075221238938, "g": 0.11203341589004609, "b": 0.5330616813669824, "a": 1}, "distortion": [3.97, -2.1], "fA": [3.78, 9.2], "fB": [8.3, 2.8], "voronoiStyle": 0, "highCut": 1, "lowCut": 0, "seed": 0, "quality": 1}}, {"fi": -3.469530799787286, "id": "a1dd4c5e-93f4-4037-9cda-fd6736ae294b", "data": {"type": "fresnel", "alpha": 1, "visible": true, "mode": 2, "color": {"r": 0, "g": 0.3181878456858408, "b": 0.8887928650442478, "a": 1}, "bias": 0.1, "scale": 1, "intensity": 2, "factor": 1, "isMask": false}}, {"fi": -3.0340581221911713, "id": "b04013db-5ddc-4e34-b6b9-883494415bca", "data": {"alpha": 0.24, "mode": 3, "isMask": false, "visible": true, "type": "matcap", "texture": {"image": "7b83617b-037e-49b5-8c02-9f88e3fb82cf", "wrapping": 1001, "repeat": [1, 1], "off... [4001 chars]
+      material.name: "Main Material"
+      name: "Main"
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      STATE id=49391770-041f-4979-a547-24daac434675 name='State'
+        geometry: {}
+        material: {"layers": {"$ext": 6, "value": {"21a14e46-4550-4874-945f-d9d80d31742a": {"$ext": 6, "value": {"alpha": 0.46, "scale": 2.58, "move": 0.03}}, "36341168-146c-468d-a2b0-bcf4ce3fb99e": {"$ext": 6, "value": {"alpha": 0.54, "scale": 1.44, "move": 6.39}}}}}
+      EVENT id=9959ae25-bc5c-448a-b222-a2d678c7a3e0 type=Start
+        disabled: false
+        actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "a2a65140-714d-483d-8270-2c5c96bc232a", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong", "duration": 1000, "easing": 4, "state": null}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "49391770-041f-4979-a547-24daac434675", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "runMode": "Once"}}]
+    ==== Mesh | 'Base' | 9db3068d-de9c-4745-9cc8-1fd6fcac38ed ====
+      visible: true
+      type: "Mesh"
+      raycastLock: false
+      position: [0, -97.03507571802716, -5.795859237940917]
+      rotation: [-90, 0, 0]
+      scale: [1.0000000000000018, 1.0000000000000036, 1.000000000000009]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, -5.551115123125783e-17, 0, 0, -1.1102230246251565e-16, 0.9999999999999998, 0, 0, -1.4210854715202004e-14, -7.105427357601002e-15, 1]
+      flatShading: false
+      wireframe: false
+      side: 0
+      castShadow: true
+      receiveShadow: true
+      cloner: null
+      booleanExclude: null
+      geometry: {"width": 200, "depth": 45, "cornerRadius": [16, 16, 16, 16], "cornerType": 1, "extrudeBevelSize": 4, "extrudeBevelSegments": 4, "height": 200, "type": "RectangleGeometry"}
+      material.layers: [{"fi": -4.0459407536803695, "id": "a1dd4c5e-93f4-4037-9cda-fd6736ae294b", "data": {"type": "fresnel", "alpha": 1, "visible": true, "mode": 3, "color": {"r": 0, "g": 0, "b": 0, "a": 1}, "bias": 0.1, "scale": 1, "intensity": 2, "factor": 1, "isMask": false}}, {"fi": -3.665507599443921, "id": "43f4d81c-ef36-4e73-8472-b56d3b335483", "data": {"alpha": 0.6, "mode": 3, "isMask": false, "visible": true, "type": "matcap", "texture": {"image": "61a09fba-b94f-4145-ae08-eca8fc42eb93", "wrapping": 1001, "repeat": [1, 1], "offset": [0, 0], "rotation": 181, "minFilter": 1008, "magFilter": 1006}}}, {"fi": -3.2636791328086026, "id": "6834ffea-f209-46e0-b5b7-6ef184c9a355", "data": {"alpha": 1, "mode": 2, "isMask": false, "visible": true, "type": "matcap", "texture": {"image": "matcap_0", "wrapping": 1001, "repeat": [1, 1], "offset": [0, 0], "rotation": 0, "minFilter": 1008, "magFilter": 1006}}}, {"fi": -1.0801977865714332, "id": "64b9544d-168c-4d15-982b-d8d49293e108", "data": {"type": "matcap", "alpha": 0.5, "visible": true, "mode": 2, "color": {"r": 0.2823529411764706, "g": 0.2823529411764706, "b": 0.30196078431372547}, "texture": {"image": "matcap_5", "wrapping": 1001, "repeat": [1, 1], "offset": [0, 0]}, "isMask": false}}, {"fi": 0.34437323563897126, "id": "9d432d0e-aec6-44e7-93ef-7d4081ff0e67", "data": {"alpha": 0.32, "mode": "1", "isMask": false, "visible": true, "type": "color", "color": {"r": 0.7803921568627451, "g": 0.8196078431372549, "b": 0.7568627450980392}}}, {"fi": 1.4968488946516614, "data": {"type": "light", "category": "phong", "alpha": 0.6, "visible": true, "mode": 3, "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 10, "isMask": false, "occlusion": true, "bumpMapIntensity": 5, "alphaOverride": 1}, "id": "layer1"}, {"fi": 1.9953398643424882, "data": {"type": "transmission", "alpha": 1, "visible": true, "mode": 0, "isMask": false, "color": {"r": 0, "g": 0.4240000000000004, "b": 1}, "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": true, "or... [2289 chars]
+      material.name: "Base Material"
+      name: "Base"
+      pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+      physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+      STATE id=9494db04-acb9-4cd7-9ece-9ddc6b135bbd name='State'
+        geometry: {}
+        material: {"layers": {"$ext": 6, "value": {"43f4d81c-ef36-4e73-8472-b56d3b335483": {"$ext": 6, "value": {"texture": {"$ext": 6, "value": {"rotation": 87}}}}}}}
+      EVENT id=938fa4cf-3aa4-41d6-8743-c1fd48454e8f type=Start
+        disabled: false
+        actions: [{"fi": -0.0772321949955393, "id": "f65fd085-4b07-4127-b2f5-7f5be8538588", "data": {"type": "Transition", "runMode": "Once", "object": "9db3068d-de9c-4745-9cc8-1fd6fcac38ed", "tweens": {"$ext": 2, "value": [{"id": "94379019-5f31-483e-8ae8-2e624a6146f9", "data": {"repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong-rewind", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "92313052-f73d-4850-9444-674853a5fab2", "data": {"state": "9494db04-acb9-4cd7-9ece-9ddc6b135bbd", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 4000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal"}}, {"fi": 0.431211740105748, "id": "5e97a43b-379e-4568-9bb1-c3fd9c7d635b", "data": {"type": "Audio", "interaction": "play", "delay": 0, "volume": 0.5, "loop": null, "audio": "b33427af-727b-4357-a... [920 chars]
+  ==== Mesh | 'Prism Effect' | 21be4568-e226-49f7-ad41-fb49c0e843de ====
+    visible: true
+    type: "Mesh"
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [-194.01257223931134, 0.7191718729590956, -8.388145252858408]
+    rotation: [-90, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 6.8833827526759706e-15, 0, 1]
+    cloner: null
+    flatShading: false
+    wireframe: false
+    side: 0
+    castShadow: false
+    receiveShadow: true
+    geometry: {"width": 921.2535744979286, "depth": 0, "widthSegments": 8, "heightSegments": 8, "height": 1082.0878980260457, "type": "PlaneGeometry"}
+    material.layers: [{"fi": -1.0457791956657614, "id": "9e240e60-b382-47ac-afc8-249b509d4c9f", "data": {"alpha": 1, "mode": 0, "isMask": true, "visible": true, "type": "depth", "gradientType": 1, "smooth": true, "isVector": true, "isWorldSpace": false, "origin": [143.92656438504127, 0, 0], "direction": [1, 0, 0], "colors": [[1, 1, 1, 1], [1, 1, 1, 0]], "steps": [0, 1], "near": 11.309148816992257, "far": 214.4367741248982}}, {"fi": -0.5807150770123821, "id": "d3a3c826-26e7-4bdc-a0a1-434a3b9ffa08", "data": {"alpha": 1, "mode": 2, "isMask": false, "visible": true, "type": "matcap", "texture": {"image": "7b83617b-037e-49b5-8c02-9f88e3fb82cf", "wrapping": 1001, "repeat": [1, 1], "offset": [0, 0], "rotation": -227, "minFilter": 1008, "magFilter": 1006}}}, {"fi": 0, "data": {"mode": 0, "isMask": false, "visible": true, "bumpMapIntensity": 5, "alphaOverride": 0.32, "category": "phong", "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 5, "type": "light", "occlusion": true, "alpha": 0.6}, "id": "layer1"}]
+    material.name: "Prism Effect Material"
+    name: "Prism Effect"
+    STATE id=f5ebe66a-d2a4-45e8-bf77-495d41b6e095 name='State'
+      geometry: {}
+      material: {"layers": {"$ext": 6, "value": {"d3a3c826-26e7-4bdc-a0a1-434a3b9ffa08": {"$ext": 6, "value": {"texture": {"$ext": 6, "value": {"rotation": -169}}}}}}}
+    EVENT id=1408e66f-ccf9-421b-970c-2c78ef1e2114 type=Start
+      disabled: false
+      actions: [{"fi": 0.4321509165346108, "id": "c7c2671b-dc7f-4204-93f0-273607fb5bb1", "data": {"type": "Transition", "object": "21be4568-e226-49f7-ad41-fb49c0e843de", "tweens": {"$ext": 2, "value": [{"id": "47697723-77ae-46a9-b496-e9b0578f1eb5", "data": {"state": null, "repeat": -1, "delay": 0, "delayDirection": "start-once", "direction": "pingpong", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "7164fdd8-1d7a-44fb-979d-67cf97b8057f", "data": {"state": "f5ebe66a-d2a4-45e8-bf77-495d41b6e095", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 4}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "runMode": "Once"}}]
+  ==== Mesh | 'Plane' | 3273a623-1b18-475d-8c52-9c38f3e8691c ====
+    visible: true
+    type: "Mesh"
+    raycastLock: false
+    position: [0, -199.45374099951238, -4.085620730620576e-14]
+    rotation: [-90, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    flatShading: true
+    wireframe: false
+    side: 0
+    castShadow: true
+    receiveShadow: true
+    cloner: null
+    booleanExclude: null
+    geometry: type=shape points=[{"id": "2aa9853b-3e3f-46a2-9df2-ca967e7de68b", "fi": 0, "data": {"position": [-5000, 5000], "controlNext": {"position": [-5000, 5000]}, "controlPrevious": {"position": [-5000, 5000]}, "areControlsDirectionsMirrored": true, "roundness": 0}}, {"id": "1d593b78-533c-4fb2-8faf-e90d11ff2237", "fi": 1, "data": {"position": [5000, 5000], "controlNext": {"position": [5000, 5000]}, "controlPrevious": {"position": [5000, 5000]}, "areControlsDirectionsMirrored": true, "roundness": 0}}, {"id": "474b06b0-49bb-4f54-a5bd-2937415f26c2", "fi": 2, "data": {"position": [5000, -5000], "controlNext": {"position": [5000, -5000]}, "controlPrevious": {"position": [5000, -5000]}, "areControlsDirectionsMirrored": true, "roundness": 0}}, {"id": "27dfdc56-92f8-4cb4-9b1c-b0ccbb862525", "fi": 3, "data": {"position": [-5000, -5000], "controlNext": {"position": [-5000, -5000]}, "controlPrevious": {"position": [-5000, -5000]}, "areControlsDirectionsMirrored": true, "roundness": 0}}]
+    material.layers: [{"fi": -1.9559955656209866, "id": "86d68b2f-a327-452d-9694-cb49057e1b67", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "pattern", "style": 6, "projection": 0, "axis": "y", "blending": 0, "offset": [0, 0], "colorA": {"r": 0, "g": 0.24313725490196078, "b": 1, "a": 0.3}, "colorB": {"r": 1, "g": 1, "b": 1, "a": 0}, "frequency": [1, 50], "size": 0.01, "variation": 0, "smoothness": 0.5, "zigzag": 0, "rotation": 90, "vertical": [0, 1], "horizontal": [0, 1], "sides": 6}}, {"fi": -1.7174585828006856, "id": "b0e8fe4a-00cc-4f94-8fea-a7d6eb6192b4", "data": {"alpha": 1, "mode": 0, "isMask": false, "visible": true, "type": "pattern", "style": 6, "projection": 0, "axis": "y", "blending": 0, "offset": [0, 0], "colorA": {"r": 0, "g": 0.24313725490196078, "b": 1, "a": 0.3}, "colorB": {"r": 1, "g": 1, "b": 1, "a": 0}, "frequency": [1, 50], "size": 0.01, "variation": 0, "smoothness": 0.5, "zigzag": 0, "rotation": 0, "vertical": [0, 1], "horizontal": [0, 1], "sides": 6}}, {"fi": 0, "data": {"type": "light", "category": "phong", "alpha": 1, "visible": true, "mode": 2, "specular": {"r": 0.2, "g": 0.2, "b": 0.2}, "shininess": 10, "isMask": false, "occlusion": true, "bumpMapIntensity": 5, "alphaOverride": 1}, "id": "l1"}, {"fi": 0.6177422075609293, "id": "b4a1f79e-cd6f-4112-bac7-6331dee970cc", "data": {"type": "texture", "alpha": 0.2, "visible": false, "mode": 0, "color": {"r": 0.2823529411764706, "g": 0.2823529411764706, "b": 0.30196078431372547}, "size": [50, 50], "axis": "z", "side": 0, "projection": 1, "texture": {"image": {"data": {"type": "Buffer", "data": [82, 73, 70, 70, 208, 0, 0, 0, 87, 69, 66, 80, 86, 80, 56, 88, 10, 0, 0, 0, 16, 0, 0, 0, 199, 0, 0, 199, 0, 0, 65, 76, 80, 72, 50, 0, 0, 0, 1, 23, 32, 144, 77, 238, 47, 213, 178, 140, 136, 208, 64, 28, 73, 134, 182, 132, 43, 10, 233, 16, 233, 218, 47, 238, 34, 250, 63, 1, 160, 135, 65, 254, 251, 111, 24, 20, 221, 179, 228, 59, 64, 15, 131, 252, 247, 223, 48, 0, 86, 80, 56, 32, 120, 0, 0, 0, 144, 12, 0, ... [2791 chars]
+    material.name: "Plane Material"
+    name: "Plane"
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+  ==== OrthographicCamera | 'Camera' | 474c04ff-8637-4d1e-97fd-572a71c8430c ====
+    visible: true
+    raycastLock: false
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    position: [530.4659993893731, 489.4357008603547, 592.3466628005328]
+    rotation: [-28.260539356656103, 37.39447137109556, 18.079664962162802]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 5.551115123125783e-17, 0, 0, 5.551115123125783e-17, 1, 0, 0, -5.684341886080802e-14, -1.1368683772161603e-13, 1]
+    cloner: null
+    far: 100000
+    type: "OrthographicCamera"
+    perspective: {"near": 70, "fov": 45, "zoom": 1}
+    orthographic: {"near": -100000, "zoom": 0.9753499582310595}
+    up: [0, 1, 0]
+    isUpVectorFlipped: false
+    targetOffset: 1000
+    name: "Camera"
+    STATE id=7eb41845-a8d7-4830-b6af-89ae38063f82 name='State'
+      perspective: {}
+      orthographic: {"zoom": 2.4554753263096507}
+      position: [-671.3559959493228, 471.1052742834315, 641.6470086192007]
+      rotation: [-31.28810152840715, -41.96763448939535, -22.116447491631682]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 5.551115123125783e-17, 0, 0, 5.551115123125783e-17, 1, 0, 0, -5.684341886080802e-14, -1.1368683772161603e-13, 1]
+      targetOffset: 1000
+      isUpVectorFlipped: false
+    EVENT id=2b717f7a-ff4d-40bb-80ed-fa41881fae3e type=MouseUp
+      disabled: false
+      actions: [{"fi": 0.4230492805430361, "id": "8cfdcc8e-b9f4-4f24-8b76-7d8f8e37b66c", "data": {"type": "Transition", "runMode": "Toggle", "object": "474c04ff-8637-4d1e-97fd-572a71c8430c", "tweens": {"$ext": 2, "value": [{"id": "aa7200b6-d2d0-47b3-a417-81973e5ef63b", "data": {"state": null, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "11637f25-dbb1-46f0-8810-58d1205965b1", "data": {"state": "7eb41845-a8d7-4830-b6af-89ae38063f82", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 6000, "easing": 5, "control1": [0.6690234375, 0.22285156250000004], "control2": [0.3199739583333333, 1]}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal"}}]
+      mode: "Canvas"
+  ==== DirectionalLight | 'Directional Light' | cd831dc2-08c2-49da-a2f2-a609cb15c736 ====
+    visible: true
+    raycastLock: true
+    position: [966.4148249280238, 529.2659896330395, 254.882440683175]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+    hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    type: "DirectionalLight"
+    color: {"r": 1, "g": 1, "b": 1, "a": 1}
+    intensity: 0.8
+    shadows: true
+    size: 3811.132
+    depth: 100000
+    helper: false
+    name: "Directional Light"
+    shadowResolution: 1024
+    shadowRadius: 0.81
+    booleanExclude: null
+    pathSnapping: {"pathId": null, "slide": 0, "offset": 0, "orientation": "tangential"}
+    penumbraSize: 0.839
+    physics: {"enabled": "visibility", "fusedBody": true, "rigidBody": "positioned", "density": 1, "pointMass": 0, "gravityScale": 1, "friction": 0.5, "damping": 0, "restitution": 0.2, "colliderType": "convex", "enabledRotation": [true, true, true], "enabledTranslation": [true, true, true]}
+    STATE id=28189280-d353-4552-b857-b34e110cd514 name='State'
+      position: [889.0796563425733, 443.08317413149666, 432.5920953129148]
+      rotation: [0, 0, 0]
+      scale: [1, 1, 1]
+      hiddenMatrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    EVENT id=9d207987-093b-4a89-a6e5-bcbd4b2e1111 type=MouseUp
+      disabled: false
+      actions: [{"fi": 0.4230492805430361, "id": "8cfdcc8e-b9f4-4f24-8b76-7d8f8e37b66c", "data": {"type": "Transition", "runMode": "Toggle", "object": "cd831dc2-08c2-49da-a2f2-a609cb15c736", "tweens": {"$ext": 2, "value": [{"id": "aa7200b6-d2d0-47b3-a417-81973e5ef63b", "data": {"state": null, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 1000, "easing": 4}, "fi": 10}, {"id": "11637f25-dbb1-46f0-8810-58d1205965b1", "data": {"state": "28189280-d353-4552-b857-b34e110cd514", "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal", "duration": 8000, "easing": 5, "control1": [0.6690234375, 0.22285156250000004], "control2": [0.3199739583333333, 1]}, "fi": 11}]}, "repeat": 0, "delay": 0, "delayDirection": "start-once", "direction": "normal"}}]
+      mode: "Canvas"

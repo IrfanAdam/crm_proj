@@ -1,0 +1,13 @@
+{
+  "probe": {
+    "revision": "160",
+    "gems": 2,
+    "mounted": 2,
+    "notFound": [],
+    "title": "ALPHA CRM — DS Gallery"
+  },
+  "fps": "{\"cat\":\"citrine\",\"nogem\":true,\"canvas\":{\"x\":41,\"y\":49,\"w\":510,\"h\":223}}",
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}
