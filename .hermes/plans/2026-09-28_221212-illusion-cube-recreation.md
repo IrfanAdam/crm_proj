@@ -641,7 +641,7 @@ Gates: `npm run lint:tokens` (`0 raw leaks, 0 over-limit` — it counts the trai
 
 ## Phase 7 — Frosted goo + explore mode {#phase-7}
 
-*Shipped in [phase7] · Tasks 43–46 · phase-7.*
+*Shipped in 1ed6a88 · Tasks 43–46 · phase-7.*
 
 *User correction 2026-09-29: inners were helpers — intelligence is amorphous goo in token hues; shell is thick frosted glass (blurred interior); goo light bleeds outside; mesh-gradient color dances on the frost; preset animation gets an on/off toggle with pan/zoom explore; frame fills the container.*
 
