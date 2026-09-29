@@ -1,5 +1,5 @@
 /* ADAM/SHARED — src/components/IllusionCube/illusion3d.js · canvas[data-illusion] mounts */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · mount + loop (Task 4) + explore hook (Task D).
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-7}] · [plan:2026-09-29_135509-illusion-cube-surface-revision.md#{#phase-4}] · mount + loop + explore hook.
 // — Mount: renderer alpha false, DPR cap 2, NoToneMapping, ortho resize —
 // —         one static frame under reduced motion · no THREE → painted stand-in —
 // Export map: mounts canvas[data-illusion] on boot · ds:doc · DOM insert · ILLUSION3D.rigs · ILLUSION3D.still
@@ -47,7 +47,7 @@ if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.arm();
 if (!still && window.ILLUSION_CTL) window.ILLUSION_CTL.attach(rig, canvas);
 if (still) {
 window.ILLUSION_DRESS.still(rig);
-rig.frames = 1;
+rig.frames = 1; if (window.ILLUSION_FROST) window.ILLUSION_FROST.update(rig);
 renderer.render(rig.scene, rig.camera);
 return;
 }
@@ -67,7 +67,7 @@ rig.last = now;
 size();
 if (!rig.vis || document.hidden || !canvas.offsetParent) return;
 if (rig.preset !== false) window.ILLUSION_DRESS.step(rig, dt);
-if (window.ILLUSION_CTL) window.ILLUSION_CTL.step(rig, now);
+if (window.ILLUSION_CTL) window.ILLUSION_CTL.step(rig, now); if (window.ILLUSION_FROST) window.ILLUSION_FROST.update(rig);
 rig.frames = (rig.frames || 0) + 1;
 renderer.render(rig.scene, rig.camera);
 };
