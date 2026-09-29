@@ -1,14 +1,14 @@
 /* ADAM/SHARED — src/components/IllusionCube/illusion-motion.js · Phase 4 steppers */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-4}] · Tasks 26-28 steps.
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-4}] · Tasks 26-28 steps · [plan:2026-09-29_135509-illusion-cube-surface-revision.md#{#phase-2}]
 // — Steps: rig.clock seconds in, transforms + uniforms out, zero per-frame alloc —
-// Export map: ILLUSION_MOTION.cubesStep · .mainStep · .baseStep · .prismStep · .lightsStep
+// Export map: ILLUSION_MOTION.cubesStep · .mainStep · .baseStep · .floorStep · .lightsStep
 (function () {
 const TL = window.ILLUSION_TIMELINE;
 const api = {};
 function cache(rig) {
 if (rig._mot) return rig._mot;
 const g = rig.bodies.cubes[0].parent.position;
-rig._mot = { cw: [-1, -1, -1, -1], main: -1, base: -1, prism: -1, ox: g.x, oy: g.y, oz: g.z };
+rig._mot = { cw: [-1, -1, -1, -1], main: -1, base: -1, floor: -1, ox: g.x, oy: g.y, oz: g.z };
 return rig._mot;
 }
 api.cubesStep = function (rig) {
@@ -36,7 +36,7 @@ const ph = t % 16000;
 const w = ph < 8000 ? TL.leg(ph, 0, M.legMs) : 1 - TL.leg(ph - 8000, 0, M.legMs);
 const shim = (TL.drift01(t, M.ditherMs * 2) - 0.5) * 2;
 const env = w * (1 - w) * 0.04;
-const u = rig.bodies.main.material.uniforms;
+const u = rig.bodies.main.material.uniforms; if (!u) return;
 u.uScaleA.value = TL.mix(M.a0.scale, M.a1.scale, w) + shim * env;
 u.uMoveA.value = TL.mix(M.a0.move, M.a1.move, w);
 u.uAlphaA.value = TL.mix(M.a0.alpha, M.a1.alpha, w);
@@ -53,16 +53,16 @@ const c = cache(rig);
 const w = TL.leg(t, 0, B.ms);
 if (w === c.base) return;
 c.base = w;
-rig.bodies.base.material.uniforms.uSheenRot.value = TL.rad(TL.mix(B.sheen0, B.sheen1, w));
+const um = rig.bodies.base.material.uniforms; if (um) um.uSheenRot.value = TL.rad(TL.mix(B.sheen0, B.sheen1, w));
 };
-api.prismStep = function (rig) {
+api.floorStep = function (rig) {
 const t = (rig.clock || 0) * 1000;
 const P = TL.PRISM;
 const c = cache(rig);
 const w = TL.osc(t, 0, P.ms);
-if (w === c.prism) return;
-c.prism = w;
-rig.prism.material.uniforms.uRot.value = TL.rad(TL.mix(P.rot0, P.rot1, w));
+if (w === c.floor) return;
+c.floor = w;
+rig.floor.wash(w);
 };
 api.lightsStep = function (rig) {
 const t = (rig.clock || 0) * 1000;

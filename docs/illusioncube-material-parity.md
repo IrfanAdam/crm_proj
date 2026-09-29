@@ -25,7 +25,7 @@ Pictures: `.hermes/tmp/illusion-parity/pass-3full/clip-0.png` (composite),
 | Base sheen matcap (rot 181→87, overlay, α .6) | illusion-base.js | uSheen, uSheenRot 181° |
 | Base matcap 0 (screen, α 1) / matcap 5 × sheen-gray (screen, α .5) | illusion-base.js | uM0, uM5, uTint |
 | Base gray body (multiply, α .32) | illusion-base.js | uGray |
-| Prism mask × photo matcap (rot −227, α .32) | illusion-prism.js | uTex, uRot −227°, uAlpha .32 |
+| Prism (retired 2026-09-29) — streak folded into the one grounded floor | illusion-floor.js | uWash .30 idle (driven by the TL.PRISM osc in motion.floorStep) |
 | Wordmark ALPHA (5 glyphs, α .9) / subtext (α .6) / blurb (α 0) | illusion-overlay.js | material.uniforms.uAlpha |
 
 ## Proven
@@ -42,8 +42,10 @@ Pictures: `.hermes/tmp/illusion-parity/pass-3full/clip-0.png` (composite),
 - Blend modes 0/1/2/3 → normal/multiply/screen/overlay is INFERRED.
 - Shell band y position and white inner layer (as fresnel lift) placed by eye.
 - uOpacity .55 tuned by eye (no decoded final-surface value).
-- Overlay: 51.44 pitch exact; glyph size/row height by eye; system mono
-  stands in for Azeret Mono (needs a font-file follow-up).
+- Overlay: decoded anchors — wordmark = the payload's own VectorGeometry beziers
+  (six shapes), subtext/blurb rows at their decoded boxes; all flush-left at
+  world x −73; the scene's own fonts (Inter 600 / Azeret Mono 500) bundled —
+  closed 2026-09-29.
 - Custom shaders neither receive shadows nor tone-map; the key light shapes
   them through analytic terms only (shadow-receive is a follow-up).
 - Fixes this phase: MATCAP chunk takes vec2 (vec2→vec3 never converts —

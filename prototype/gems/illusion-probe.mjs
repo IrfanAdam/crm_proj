@@ -28,7 +28,7 @@ async function wsUrl() { for (let i = 0; i < 60; i++) { try { const r = await fe
 const ws = new WebSocket(await wsUrl(), { perMessageDeflate: false });
 await new Promise((r) => ws.on('open', r));
 let seq = 0; const pending = new Map(); const consoleErrors = [];
-ws.on('message', (raw) => { const m = JSON.parse(raw.toString()); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); return; } if (m.method === 'Log.entryAdded' && m.params.entry.level === 'error') consoleErrors.push(m.params.entry.text.slice(0, 200)); if (m.method === 'Runtime.exceptionThrown') consoleErrors.push(String(m.params.exceptionDetails.text).slice(0, 200)); });
+ws.on('message', (raw) => { const m = JSON.parse(raw.toString()); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); return; } if (m.method === 'Log.entryAdded' && m.params.entry.level === 'error') consoleErrors.push(m.params.entry.text.slice(0, 200)); if (m.method === 'Runtime.consoleAPICalled' && m.params.type === 'error') consoleErrors.push((m.params.args || []).map((a) => String(a.value ?? a.description ?? '')).join(' ').slice(0, 300)); if (m.method === 'Runtime.exceptionThrown') consoleErrors.push(String(m.params.exceptionDetails.text).slice(0, 200)); });
 let session = null;
 const send = (method, params = {}, timeout = 20000) => new Promise((resolve, reject) => {
 const again = (n) => n > 0 && !method.startsWith('Input.');

@@ -1,6 +1,6 @@
 /* ADAM/SHARED — src/components/IllusionCube/illusion-stage.js · rig composer */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-2}] · staging composer (Task 13).
-// — Compose: flat sky + fog, six bodies, lights, floor, prism, decoded camera —
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-2}] · staging composer (Task 13) · [plan:2026-09-29_135509-illusion-cube-surface-revision.md#{#phase-2}]
+// — Compose: flat sky + fog, six bodies, lights, the one grounded floor, decoded camera —
 // —   NoToneMapping + sRGB keep the background byte-exact; never ACES here —
 // Export map: ILLUSION_STAGE.build(renderer, w, h) → rig · .rig() · .step(dt) no-op to Phase 4
 (function () {
@@ -26,7 +26,6 @@ bodies.base.renderOrder = 3;
 scene.add(bodies.group);
 const lights = window.ILLUSION_LIGHTS.build(scene);
 const floor = window.ILLUSION_FLOOR.build(scene);
-const prism = window.ILLUSION_PRISM.build(scene, tex);
 const overlay = window.ILLUSION_TEXT.build(tex);
 scene.add(overlay);
 const camera = window.ILLUSION_CAMERA.frame(cssW, cssH);
@@ -35,10 +34,9 @@ if (graybox) {
 const flat = new T.MeshLambertMaterial({ color: 0x9aa4b0 });
 bodies.all.forEach(function (m) { m.material = flat; });
 floor.plane.visible = false;
-prism.visible = false;
 overlay.visible = false;
 }
-current = { scene: scene, camera: camera, bodies: bodies, innerMats: innerMats, lights: lights, floor: floor, prism: prism, overlay: overlay, graybox: graybox };
+current = { scene: scene, camera: camera, bodies: bodies, innerMats: innerMats, lights: lights, floor: floor, overlay: overlay, graybox: graybox };
 current.renderer = renderer;
 current.resize = function (w, h) { window.ILLUSION_CAMERA.resize(camera, w, h); };
 return current;
