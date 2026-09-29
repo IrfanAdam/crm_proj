@@ -7,7 +7,8 @@ const TL = window.ILLUSION_TIMELINE;
 const api = {};
 function cache(rig) {
 if (rig._mot) return rig._mot;
-rig._mot = { cw: [-1, -1, -1, -1], main: -1, base: -1, prism: -1 };
+const g = rig.bodies.cubes[0].parent.position;
+rig._mot = { cw: [-1, -1, -1, -1], main: -1, base: -1, prism: -1, ox: g.x, oy: g.y, oz: g.z };
 return rig._mot;
 }
 api.cubesStep = function (rig) {
@@ -20,6 +21,9 @@ const w = TL.osc(t, rec.delay, rec.ms);
 if (w === m.cw[i]) continue;
 m.cw[i] = w;
 TL.pose(cs[i].position, rec.p0, rec.p1, w);
+// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-6}] · table poses are
+// world-span; the Cubes cue already lifts locals, so un-apply the parent ride —
+cs[i].position.x -= m.ox; cs[i].position.y -= m.oy; cs[i].position.z -= m.oz;
 TL.rotOf(cs[i].rotation, rec.r0, rec.r1, w);
 TL.scaleOf(cs[i], rec.s0, rec.s1, w);
 }
