@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T08:19:43.084Z",
+  "generated": "2026-09-29T08:21:43.043Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -17,6 +17,14 @@
     "2026-09-29_132702-ds-docs-experience.md"
   ],
   "commits": [
+    {
+      "sha": "c895dc4",
+      "full": "c895dc40731bfc2181302bd6ac7c53f90d0c2083",
+      "date": "2026-09-29",
+      "subject": "feat(ds): docs chrome, drawer + gate — 100/100",
+      "plan": "2026-09-29_132702-ds-docs-experience.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "90a4327",
       "full": "90a4327e8a4c1d852f98e04a226f3e0f2e723575",
@@ -2691,20 +2699,10 @@
     }
   ],
   "wip": [
-    "M gallery.css",
-    "M src/ds/changelog-names.json",
-    "M src/ds/gallery-shell.js",
-    "M src/ds/gallery-subnav.js",
+    "M src/arch/atlas.json",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "?? src/ds/gallery-behavior.js",
-    "?? src/ds/gallery-chrome.css",
-    "?? src/ds/gallery-drawer.js",
-    "?? src/ds/gallery-filter.js",
-    "?? src/ds/gallery-hero.js",
-    "?? src/ds/gallery-lab-bundle.css",
-    "?? tests/ds-docs-experience.test.mjs"
+    "M src/js/mechanics/graphData.schema.js"
   ]
 }
