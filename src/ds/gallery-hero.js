@@ -2,21 +2,12 @@
 // Exports: dsHero, dsPager (globals, consumed by gallery-shell.js)
 const dsHero = (name) => {
   const f = document.querySelector('[data-panel="' + name + '"]');
-  const h = document.getElementById('dhero');
-  if (!f || !h) return;
-  const k = h.querySelector('[data-hero-kicker]');
-  const t = h.querySelector('[data-hero-title]');
-  const c = h.querySelector('[data-hero-copy]');
-  const title = f.querySelector('.ch-hero,h1,h3')?.textContent?.trim() || name;
-  const lede = f.querySelector('.ch-lede,.meta,p')?.textContent?.trim() || '';
-  if (k) k.textContent = name;
-  if (t) t.textContent = title;
-  if (c) c.textContent = lede.slice(0, 160);
-  h.hidden = false;
+  if (!f) return;
   const ph = f.querySelector('[data-panel-hero] h1');
-  if (ph) ph.textContent = title;
-  const kf = f.querySelector('[data-panel-hero]');
-  if (kf) kf.hidden = false;
+  const box = f.querySelector('[data-panel-hero]');
+  if (!ph || !box) return;
+  if (!ph.textContent) ph.textContent = name;
+  box.hidden = false;
 };
 const dsPager = (name) => {
   const p = document.getElementById('dpager');
