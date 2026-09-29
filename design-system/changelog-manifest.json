@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T10:44:14.199Z",
+  "generated": "2026-09-29T11:06:47.786Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "b9eb1df",
+      "full": "b9eb1dfa5d386a60b076d22073b1d8decc2ca640",
+      "date": "2026-09-29",
+      "subject": "chore(plan): close out illusion surface revision — marks, shipped shas, track",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "{#phase-6}"
+    },
     {
       "sha": "72dac1c",
       "full": "72dac1ce8d524b56cc4a0c38ddb76c1f9a01974b",
