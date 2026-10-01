@@ -6,7 +6,7 @@ a.masthead-brand{text-decoration:none}
 .cl-link{font-size:var(--font-size-changelog-link);font-weight:500;color:var(--text-secondary);text-decoration:none;white-space:nowrap}
 .cl-link:hover{color:var(--accent-brand)}
 .ds-crumb{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-ink-muted);margin:0 0 var(--space-12)}
-.ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:var(--type-hero-clamp);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0}
+.ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:min(var(--type-hero-clamp),12vw);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
 .ds-hr{border:none;border-top:var(--border-hairline);margin:var(--space-14) 0}
 .ds-chips{display:flex;gap:var(--space-8);flex-wrap:wrap;margin:0 0 var(--space-12)}
 .ds-chip{font-family:var(--font-display);background:var(--color-surface);color:var(--color-ink-muted);border:var(--border-hairline);padding:var(--spacing-changelog-chip-y) var(--spacing-changelog-chip-x);border-radius:var(--radius-md);font-weight:600;letter-spacing:0.06em;font-size:var(--font-size-changelog-chip);cursor:pointer}

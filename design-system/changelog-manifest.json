@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T13:57:57.253Z",
+  "generated": "2026-10-01T14:15:14.993Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "c42d9a3",
+      "full": "c42d9a3d77177e829c6ff9bc73054d91ea7035da",
+      "date": "2026-10-01",
+      "time": "19:28",
+      "subject": "fix(deploy): ship .hermes/plans to Vercel so changelog builds with entries",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "11c7716",
       "full": "11c7716c3ed469f017ab7f4958f7ed3495190603",
@@ -3042,5 +3051,11 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/pitch/changelog/paint-plan.js",
+    "M src/pitch/pitch-changelog-cal.css",
+    "M src/pitch/pitch-changelog-cards.css",
+    "M src/pitch/pitch-changelog-drawer.css",
+    "M src/pitch/pitch-changelog.css"
+  ]
 }

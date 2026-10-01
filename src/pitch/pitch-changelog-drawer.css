@@ -30,7 +30,6 @@
 .ds-pick small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--space-2); }
 .ds-pick.on { background: var(--color-panel); box-shadow: inset var(--space-2) 0 0 var(--color-accent); }
 .ds-pick.on small { color: var(--color-ink-muted); }
-.ds-pick.is-open .ds-num { color: var(--color-ink-muted); }
 .ds-hero.wide .lede { max-width: none; }
 .ds-commits { font-family: var(--font-mono); font-size: var(--text-micro); line-height: 1.7; color: var(--color-ink-muted); word-break: break-all; }
 .ds-commits a { color: var(--color-ink); text-decoration: underline; text-underline-offset: var(--space-2); }

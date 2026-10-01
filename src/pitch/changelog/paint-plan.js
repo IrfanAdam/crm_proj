@@ -45,25 +45,28 @@ export function paintPlan(root, ctx){
     }
     const stBit = st ? ' ' + st : '';
     const endBit = endTxt ? ' ' + endTxt.trim() : '';
-    const line1 = [sd + stBit + endBit, [
-      p.sprints.length,
-      ` phases`,
-    ].join(''), frac].filter(Boolean).join(' \u00b7 ');
+    const dateTxt = sd + stBit + endBit;
+    const stateTxt = [
+      [p.sprints.length, ` phases`].join(''),
+      frac,
+    ].filter(Boolean).join(' \u00b7 ');
     return [
       `<button class="ds-pick`,
       i === sel[0] ? ' on' : '',
       isDone(frac) ? '' : ' is-open',
       `" data-tip="`,
       esc(clip(p.goal, 100) || p.purpose || p.title),
-      `"><span class="ds-row"><span class="ds-num">`,
+      `"><span class="ds-num">`,
       num,
-      `</span><b>`,
+      `</span><span class="ds-main"><b>`,
       esc(p.title),
-      `</b><span class="ds-tags">`,
+      `</b><small><span class="ds-date">`,
+      dateTxt,
+      `</span><span class="ds-state">`,
+      stateTxt,
+      `</span></small></span><span class="ds-tags">`,
       p.tags.join(' \u00b7 '),
-      `</span></span><small>`,
-      line1,
-      `</small></button>`,
+      `</span></button>`,
     ].join('');
   }).join('');
   return true;
