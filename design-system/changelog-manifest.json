@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T10:44:46.908Z",
+  "generated": "2026-10-01T10:49:59.394Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,24 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "38646a9",
+      "full": "38646a95cd399721e9445c3980c094b54b474881",
+      "date": "2026-10-01",
+      "time": "16:19",
+      "subject": "fix(changelog): timeline vertical alignment — dot centered on dotted spine, shared text edge, no h-scroll",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
+    {
+      "sha": "ec12e68",
+      "full": "ec12e689af1b10713df0963128ce3c96c57e788e",
+      "date": "2026-10-01",
+      "time": "16:15",
+      "subject": "chore(mechanics): refresh graphs — dotted timeline",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "122b406",
       "full": "122b40649ab0d3624461f3fdda6bee15458a5723",
