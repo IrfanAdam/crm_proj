@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:07:40.079Z",
+  "generated": "2026-10-01T09:31:18.260Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,22 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "660d391",
+      "full": "660d3915a815626fd2f4c2a3e848ae0059b69f14",
+      "date": "2026-10-01",
+      "subject": "feat(changelog): rename to changelog.html + modular split",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-8}"
+    },
+    {
+      "sha": "1535d37",
+      "full": "1535d376ec7a32ecae29db9c7f9138d35aae6e46",
+      "date": "2026-10-01",
+      "subject": "chore(plan): mark pitch changelog shipped",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "46dab48",
       "full": "46dab48b463efed3ede309535e01b51047a2e873",
@@ -3021,10 +3037,7 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
+    "M scripts/ds-track.mjs",
     "?? scripts/pattern-capture.mjs"
   ]
 }
