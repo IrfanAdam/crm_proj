@@ -6,15 +6,15 @@
 .ds-drawer {
   position: fixed; top: 0; right: 0; bottom: 0; width: min(50vw, var(--size-ds-drawer));
   box-sizing: border-box; background: var(--color-bg); border-left: var(--border-hairline);
-  z-index: var(--z-ds-drawer); overflow-y: auto; padding: var(--space-18) var(--space-16) var(--space-30);
+  z-index: var(--z-ds-drawer); overflow: hidden; padding: var(--space-18) var(--space-16) var(--space-30);
   box-shadow: var(--shadow-viewer); display: flex; gap: var(--space-14); align-items: stretch;
 }
-.ds-rail { flex: 0 0 36%; min-width: 0; min-height: 0; overflow: visible; border-right: var(--border-hairline); padding-right: var(--space-12); display: flex; flex-direction: column; }
+.ds-rail { flex: 0 0 36%; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; border-right: var(--border-hairline); padding-right: var(--space-12); display: flex; flex-direction: column; }
 .ds-rail .ds-pick { padding: var(--space-8); font-size: 0.86em; }
 .ds-rail .ds-pick small { display: block; }
 .ds-rail [data-prov] { margin: auto 0 var(--space-6); }
 .ds-rail-foot { padding-top: var(--space-10); border-top: var(--border-hairline); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-ink-muted); }
-.ds-task { flex: 1 1 auto; min-width: 0; min-height: 0; overflow: visible; }
+.ds-task { flex: 1 1 auto; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; }
 .ds-drawer:not([hidden]) { animation: ds-drawer-in var(--dur-glide) var(--ease-signature); }
 @keyframes ds-drawer-in { from { transform: translateX(var(--space-30)); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes ds-scrim-in { from { opacity: 0; } to { opacity: 1; } }
@@ -47,7 +47,6 @@
 .ds-timeline-item a{font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink);text-decoration:underline;text-underline-offset:var(--space-1);font-weight:600;margin-right:var(--space-4)}
 .ds-timeline-item span{font-size:var(--text-ds-body);color:var(--color-ink);overflow-wrap:anywhere}
 .ds-timeline-item small{display:block;font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted);margin-top:var(--space-1);line-height:var(--leading-mono)}
-.ds-task{overflow:visible}
 .ds-md{overflow-wrap:anywhere}
 .ds-md table{width:100%;table-layout:fixed;border-collapse:collapse}
 .ds-md th,.ds-md td{overflow-wrap:anywhere;vertical-align:top}
