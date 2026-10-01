@@ -39,7 +39,7 @@
 .cl-scrim, .cl-drawer, .cl-d-label, .cl-d-title, .cl-d-row, .cl-sib, .cl-close { display: none; }
 
 .ds-timeline{position:relative;margin:var(--space-8) 0 0 var(--space-2);padding-left:var(--space-12);border-left:var(--space-1) dotted var(--color-border)}
-.ds-timeline-date{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-ink-muted);margin:var(--space-8) 0 var(--space-4);position:relative}
+.ds-timeline-date{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-accent);margin:var(--space-8) 0 var(--space-4);position:relative}
 .ds-timeline-date:first-child{margin-top:0}
 .ds-timeline-date::before{content:"";position:absolute;left:calc(-1 * var(--space-12) - var(--space-4));top:50%;transform:translateY(-50%);width:var(--space-6);height:var(--space-6);background:var(--color-panel);border:var(--border-hairline);border-radius:50%;box-sizing:border-box}
 .ds-timeline-item{position:relative;padding:var(--space-2) 0;margin-bottom:var(--space-4);min-width:0;overflow-wrap:anywhere}
