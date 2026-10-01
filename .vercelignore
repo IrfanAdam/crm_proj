@@ -1,3 +1,6 @@
-.hermes
+.hermes/*
+!.hermes/plans
+!.hermes/plan-links.json
+!.hermes/continuation.json
 tests
 node_modules
