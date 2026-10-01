@@ -27,8 +27,6 @@ import {
   SketchLogo,
 } from "@phosphor-icons/react";
 import { GEM_MAP } from "./gem-icons.js";
-import DiamondCut from "./DiamondCut.jsx";
-import SketchCut from "./SketchCut.jsx";
 import GemFriendly from "./GemFriendly.jsx";
 
 /* Phosphor icon registry — single source for the DS.
@@ -48,14 +46,6 @@ const MAP = {
   "sketch-logo": SketchLogo,
   "sketchLogo": SketchLogo,
   "gem": SketchLogo,
-  DiamondCut,
-  "diamond-cut": DiamondCut,
-  "diamondCut": DiamondCut,
-  "gem-cut": DiamondCut,
-  SketchCut,
-  "sketch-cut": SketchCut,
-  "sketchCut": SketchCut,
-  "diamonds-cut": SketchCut,
   GemFriendly,
   "gem-friendly": GemFriendly,
   "gemFriendly": GemFriendly,

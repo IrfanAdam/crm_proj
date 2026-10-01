@@ -13,7 +13,7 @@ function iconInit(root){
     const subtle=q("[data-ilab-subtle]").checked;
     let cls=["icon"]; if(st.size) cls.push(st.size); if(muted) cls.push("icon--muted"); if(subtle) cls.push("icon--subtle");
     const style=' style="color:'+HUE_MAP[st.hue]+'"';
-    // — ADAM cut icons (diamond-cut · sketch-cut · gem-friendly) render from the shared SVG source
+    // — the ADAM cut icon (gem-friendly) renders from the shared SVG source
     if(window.ICON_DERIVS&&window.ICON_DERIVS.LIST.includes(icon.slice(3))){
       const n=icon.slice(3), ds=window.ICON_DERIVS;
       const html='<span class="'+cls.join(" ")+'"'+style+' aria-hidden="true">'+ds.svg(n,st.weight,'100%')+"</span>";
