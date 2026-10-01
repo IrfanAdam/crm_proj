@@ -14,7 +14,7 @@
       o: 'M16 2.5 29.5 16 16 29.5 2.5 16Z',
       lines: ['M16 9 22.5 16 16 23 9.5 16Z', 'M16 2.5 16 9M29.5 16 22.5 16M16 29.5 16 23M2.5 16 9.5 16'],
       shadeInk: '<path d="M16 9 22.5 16 16 23 9.5 16Z" opacity="0.2" fill="currentColor" stroke="none"/>',
-      fillInk: '<path d="M16 9 22.5 16 16 23 9.5 16Z" fill="white" fill-opacity="0.28" stroke="white" stroke-opacity="0.45" stroke-width="2" stroke-linejoin="round"/><path d="M16 2.5 16 9M29.5 16 22.5 16M16 29.5 16 23M2.5 16 9.5 16" stroke="white" stroke-opacity="0.55" stroke-width="2" stroke-linecap="butt"/>',
+      maskCut: '<path d="M16 2.5 16 9M29.5 16 22.5 16M16 29.5 16 23M2.5 16 9.5 16" stroke="black" stroke-width="2" stroke-linecap="butt"/><path d="M16 9 22.5 16 16 23 9.5 16Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/>',
       note: 'ADAM derivative — same stroke API as Phosphor',
     },
     'sketch-cut': {
@@ -27,7 +27,7 @@
       linesDuo: ['M16 6 19.5 9.5 16 13 12.5 9.5Z', 'M22.5 12.5 26 16 22.5 19.5 19 16Z', 'M16 19 19.5 22.5 16 26 12.5 22.5Z', 'M9.5 12.5 13 16 9.5 19.5 6 16Z'],
       shadeInk: '<g opacity="0.22" fill="currentColor" stroke="none"><path d="M16 6 19.5 9.5 16 13 12.5 9.5Z"/><path d="M22.5 12.5 26 16 22.5 19.5 19 16Z"/><path d="M16 19 19.5 22.5 16 26 12.5 22.5Z"/><path d="M9.5 12.5 13 16 9.5 19.5 6 16Z"/></g>',
       shadePost: '<path d="M16 13 19 16 16 19.5 13 16Z" opacity="0.14" fill="currentColor" stroke="none"/>',
-      fillInk: '<path d="M16 6 19.5 9.5 16 13 12.5 9.5Z" fill="white" fill-opacity="0.32" stroke="white" stroke-opacity="0.5" stroke-width="2"/><path d="M22.5 12.5 26 16 22.5 19.5 19 16Z" fill="white" fill-opacity="0.32" stroke="white" stroke-opacity="0.5" stroke-width="2"/><path d="M16 19 19.5 22.5 16 26 12.5 22.5Z" fill="white" fill-opacity="0.32" stroke="white" stroke-opacity="0.5" stroke-width="2"/><path d="M9.5 12.5 13 16 9.5 19.5 6 16Z" fill="white" fill-opacity="0.32" stroke="white" stroke-opacity="0.5" stroke-width="2"/><path d="M16 13 19 16 16 19.5 12.5 16Z" fill="white" fill-opacity="0.18"/>',
+      maskCut: '<path d="M16 6 19.5 9.5 16 13 12.5 9.5Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/><path d="M22.5 12.5 26 16 22.5 19.5 19 16Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/><path d="M16 19 19.5 22.5 16 26 12.5 22.5Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12.5 13 16 9.5 19.5 6 16Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/><path d="M16 13 19 16 16 19.5 12.5 16Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/>',
       note: 'ADAM sketch-logo derivative — cluster-cut',
     },
     // sketch-logo silhouette with friendlier edges: rounded table corners, girdle bulges and culet —
@@ -36,8 +36,7 @@
       o: 'M12.2 3.7L19.8 3.7Q22.4 3.7 24.25 5.53L28.21 9.43Q30.91 12.1 28.36 14.92L18.55 25.74Q16 28.56 13.45 25.74L3.64 14.92Q1.09 12.1 3.79 9.43L7.75 5.53Q9.6 3.7 12.2 3.7Z',
       lines: ['M2.4 12.1L29.6 12.1', 'M14.2 3.7L10 12.1L16 27.15M17.8 3.7L22 12.1L16 27.15'],
       shadeInk: '<path d="M14.2 3.7L17.8 3.7L22 12.1L10 12.1Z" opacity="0.18" fill="currentColor" stroke="none"/><path d="M10 12.1L22 12.1L16 27.15Z" opacity="0.18" fill="currentColor" stroke="none"/>',
-      fillInk: '<path d="M2.4 12.1L29.6 12.1" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="butt"/><path d="M14.2 3.7L10 12.1L16 27.15M17.8 3.7L22 12.1L16 27.15" stroke="white" stroke-opacity="0.7" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round"/>',
-      fillOuter: '<path d="M12.2 3.7L19.8 3.7Q22.4 3.7 24.25 5.53L28.21 9.43Q30.91 12.1 28.36 14.92L18.55 25.74Q16 28.56 13.45 25.74L3.64 14.92Q1.09 12.1 3.79 9.43L7.75 5.53Q9.6 3.7 12.2 3.7Z" fill="currentColor"/>',
+      maskCut: '<path d="M2.4 12.1L29.6 12.1" stroke="black" stroke-width="2" stroke-linecap="butt"/><path d="M14.2 3.7L10 12.1L16 27.15M17.8 3.7L22 12.1L16 27.15" stroke="black" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round"/>',
       note: 'ADAM sketch-logo derivative — friendly gem',
     },
   };
@@ -45,8 +44,11 @@
     const d = D[n];
     if (!d) return '';
     if (w === 'fill') {
-      const id = 'adf' + (++UID);
-      return OPEN(s) + 'aria-hidden="true"><clipPath id="' + id + '"><path d="' + d.o + '"/></clipPath>' + (d.fillOuter || '<path d="' + d.o + '" fill="currentColor"/>') + '<g clip-path="url(#' + id + ')">' + d.fillInk + '</g></svg>';
+      // Pure library-fill language: solid silhouette + transparency cuts (mask).
+      // No white paint anywhere — it renders gray over the dark solid.
+      if (!d.maskCut) return OPEN(s) + 'aria-hidden="true"><path d="' + d.o + '" fill="currentColor"/></svg>';
+      const id = 'adm' + (++UID);
+      return OPEN(s) + 'aria-hidden="true"><mask id="' + id + '"><path d="' + d.o + '" fill="white"/>' + d.maskCut + '</mask><path d="' + d.o + '" fill="currentColor" mask="url(#' + id + ')"/></svg>';
     }
     const head = OPEN(s) + STROKE(w) + '><path d="' + d.o + '"/>';
     if (w === 'bold' && d.boldLines) return head + d.boldLines.map((p) => '<path d="' + p + '" fill="currentColor" stroke="none"/>').join('') + '</svg>';

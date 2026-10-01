@@ -26,19 +26,17 @@ export default function GemFriendly({
     "aria-hidden": "true",
     ...props,
   };
-  // — Fill: pure solid stone (no outline stroke — Phosphor fill convention) +
-  // glazed knockout seams at the regular width, so the gem keeps its cut when filled.
+  // — Fill: solid stone, facet seams punched as TRUE transparency (mask) — the
+  // library-fill language. White paint would render gray over the dark solid.
   if (weight === "fill") {
     return (
       <svg {...common} fill="none">
-        <clipPath id={clipId}>
-          <path d={P.outer} />
-        </clipPath>
-        <path d={P.outer} fill={color} />
-        <g clipPath={`url(#${clipId})`}>
-          <path d={P.girdle} stroke="white" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="butt" />
-          <path d={P.seams} stroke="white" strokeOpacity="0.7" strokeWidth="2" strokeLinecap="butt" strokeLinejoin="round" />
-        </g>
+        <mask id={clipId}>
+          <path d={P.outer} fill="white" />
+          <path d={P.girdle} stroke="black" strokeWidth="2" strokeLinecap="butt" />
+          <path d={P.seams} stroke="black" strokeWidth="2" strokeLinecap="butt" strokeLinejoin="round" />
+        </mask>
+        <path d={P.outer} fill={color} mask={`url(#${clipId})`} />
       </svg>
     );
   }

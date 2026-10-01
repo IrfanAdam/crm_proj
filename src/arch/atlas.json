@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-01T13:00:11.033Z",
+    "generatedAt": "2026-10-01T13:12:44.117Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -23,7 +23,7 @@
       "src/components/FunnelGlyph": 1790164774810,
       "src/components/GemReward": 1790614707677,
       "src/components/GoalBar": 1790164683680,
-      "src/components/Icon": 1790859450061,
+      "src/components/Icon": 1790859923558,
       "src/components/KpiStat": 1790164767740,
       "src/components/ListRow": 1790164767729,
       "src/components/OpportunityCard": 1790164802893,
