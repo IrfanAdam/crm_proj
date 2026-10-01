@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:31:18.260Z",
+  "generated": "2026-10-01T09:51:24.598Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "9fcca79",
+      "full": "9fcca7906ad0127b4a144620ca2ff2ea14514710",
+      "date": "2026-10-01",
+      "subject": "chore(ds): track refresh — stamp 660d391, watch changelog.html",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-8}"
+    },
     {
       "sha": "660d391",
       "full": "660d3915a815626fd2f4c2a3e848ae0059b69f14",
@@ -116,14 +124,6 @@
       "anchor": "phase-2"
     },
     {
-      "sha": "26f172e",
-      "full": "26f172e7cb16907a7bd74db7f85c74459f67b840",
-      "date": "2026-09-29",
-      "subject": "chore(manifest): sync after hero dedupe",
-      "plan": "2026-09-29_132702-ds-docs-experience.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "1135dcb",
       "full": "1135dcb7f27e63a28acd969a40261d7012defdbc",
       "date": "2026-09-29",
@@ -176,8 +176,8 @@
       "full": "90a4327e8a4c1d852f98e04a226f3e0f2e723575",
       "date": "2026-09-29",
       "subject": "chore: add illusioncube scene analysis assets + gem rubric shots",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_221212-illusion-cube-recreation.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "1ed6a88",
@@ -207,9 +207,9 @@
       "sha": "182a83b",
       "full": "182a83be0599d3f437716e5686320c60403e0827",
       "date": "2026-09-29",
-      "subject": "feat(ds): cube panel Cube",
-      "plan": null,
-      "anchor": null
+      "subject": "feat(ds): cube panel Cube|Preview tabs framing cube-illusion.html",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
     },
     {
       "sha": "9c19da6",
@@ -300,14 +300,6 @@
       "anchor": "phase-4"
     },
     {
-      "sha": "0b46597",
-      "full": "0b465979fd941e3fffdcd7975fb6dc923458319a",
-      "date": "2026-09-28",
-      "subject": "chore(ds): regen atlas after fire shader",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-4"
-    },
-    {
       "sha": "905dd2c",
       "full": "905dd2c20e7b6bf27b9a9bd516874a9ed9337386",
       "date": "2026-09-28",
@@ -364,30 +356,6 @@
       "anchor": "phase-4"
     },
     {
-      "sha": "4a5d5ff",
-      "full": "4a5d5ff71f5fcb3786832c476c4882c6ef607411",
-      "date": "2026-09-28",
-      "subject": "chore(ds): refresh GemReward hash in atlas after bloom",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-7"
-    },
-    {
-      "sha": "b25e2d5",
-      "full": "b25e2d567c8a5a80e5d4152f9b95d3583c8c9392",
-      "date": "2026-09-28",
-      "subject": "chore(ds): regen manifest after gem bloom ship",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-7"
-    },
-    {
-      "sha": "123459a",
-      "full": "123459a2f187769049f3c10ab31e769baabff086",
-      "date": "2026-09-28",
-      "subject": "chore(ds): regen manifest after tasks 27-28 stamp",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-7"
-    },
-    {
       "sha": "905f098",
       "full": "905f098d253df26c7afe03f88fe83673fa617da2",
       "date": "2026-09-28",
@@ -436,14 +404,6 @@
       "anchor": "phase-4"
     },
     {
-      "sha": "d1aeaa3",
-      "full": "d1aeaa3d058ffdecf215107cf28ee6f4ef4637a0",
-      "date": "2026-09-28",
-      "subject": "chore(ds): track refresh — link cube parity commit",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "a908a4d",
       "full": "a908a4d4828c45e7d7ace2ead369d81cbf3c67b2",
       "date": "2026-09-28",
@@ -484,14 +444,6 @@
       "anchor": "phase-6"
     },
     {
-      "sha": "24c2b88",
-      "full": "24c2b88a164daa502ccebd18f13d3bdf2092ecf5",
-      "date": "2026-09-28",
-      "subject": "chore(ds): regen manifest after intel cube",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "a549402",
       "full": "a549402f3a1f7db0f64024adf12185515f94449f",
       "date": "2026-09-28",
@@ -500,26 +452,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "b5b5f04",
-      "full": "b5b5f0454ee6bd50e7d07a5cd0a3516b3bd24f51",
-      "date": "2026-09-28",
-      "subject": "chore(ds): regen manifest after draggable edges",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-4"
-    },
-    {
       "sha": "9aada13",
       "full": "9aada13d0d5dda5b95c4b356099f7886e3e3a22e",
       "date": "2026-09-28",
       "subject": "feat(ds): gem card gets draggable east/south/corner edges (accent handles on hover, live rig re-size)",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-4"
-    },
-    {
-      "sha": "b201bfc",
-      "full": "b201bfc2ed11571c545baa7b9e3716a843b2b0cd",
-      "date": "2026-09-28",
-      "subject": "chore(ds): regen manifest after gems panel controls",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
       "anchor": "phase-4"
     },
@@ -692,14 +628,6 @@
       "anchor": "phase-1"
     },
     {
-      "sha": "e0bb62d",
-      "full": "e0bb62d78e5f5da3bffd335153567c35839d64b0",
-      "date": "2026-09-28",
-      "subject": "chore(ds): track phase-1 commits in the changelog manifest",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-1"
-    },
-    {
       "sha": "63c9eac",
       "full": "63c9eac7a1b20dd252845884366ab818f7dbaf55",
       "date": "2026-09-28",
@@ -756,14 +684,6 @@
       "anchor": "phase-7"
     },
     {
-      "sha": "5622785",
-      "full": "56227859d50ae2855122f5d613b4297a7bafb2c6",
-      "date": "2026-09-27",
-      "subject": "chore(ds): ds-track manifest after phase-6 close",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-6"
-    },
-    {
       "sha": "d9d6147",
       "full": "d9d6147a5444657c571d2e5b8f51db4d7223bfc6",
       "date": "2026-09-27",
@@ -780,26 +700,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "ad3e489",
-      "full": "ad3e4894af9694f00f41ead2e03b73f71a54921d",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen atlas manifest (gemreward + oppshome sources changed)",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "fcadb75",
       "full": "fcadb7563bf8d67c7c0d80a81754174e50ae9a70",
       "date": "2026-09-25",
       "subject": "fix(ds): gem drag swallows the click after a real drag (>6px) so drag-to-inspect never triggers the card's fullscreen overlay",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "0c19b68",
-      "full": "0c19b68673b6846464df85d21feb44652f4e65ac",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after gem drag",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -836,34 +740,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "5488840",
-      "full": "54888402e0561f63d17343d376e3b5a9c4a05e06",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after gem parity fix",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "495a05b",
-      "full": "495a05b69f2f37e3dc295f6ac3e38117a6188feb",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after gems panel pills",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "22c8434",
       "full": "22c8434eda07a7aa5cf163bf048ff0bd8ba88e01",
       "date": "2026-09-25",
       "subject": "feat(ds): gems panel — four category cards to one card + pills (token/title/capsule/copy swap)",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "447a35e",
-      "full": "447a35eae67603a88695f6bc99233af33cff1c22",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after gem material round 2",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -900,26 +780,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "1de4827",
-      "full": "1de48278ad2dbc228b391587eec3960d808e9f42",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after zoning + absorption tune",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "490d7f8",
       "full": "490d7f8091192b2cc328bf732768c8b011271b96",
       "date": "2026-09-25",
       "subject": "feat(ds): gem — per-facet emissive zoning on the internal shells + richer absorption (tint 0.15)",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "01feb31",
-      "full": "01feb31eff6371576f54d6a506fab5b5b8ebafa9",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after contact shadow",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -932,14 +796,6 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "f8bcde6",
-      "full": "f8bcde6443e99f657e924d3394862bd0ce230d8b",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after dispersion spread tune",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "521ee2d",
       "full": "521ee2dd020a8709c92fc6a4b2f107291f1cec75",
       "date": "2026-09-25",
@@ -948,26 +804,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "0ecd61d",
-      "full": "0ecd61d685d66f0ed09c9958bd6c83857289dfb7",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after dispersion fix",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "23750a7",
       "full": "23750a7c5c4880ced119278fd97a43e50f6c7567",
       "date": "2026-09-25",
       "subject": "fix(ds): gem — dispersion was inert (onBeforeCompile sees unresolved includes); replace #include <transmission_fragment> with a 3-sample chunk, spread 2.5->7%",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "d3a872c",
-      "full": "d3a872c7eef0ea6a20d78505e250423568961b18",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after ghost shells",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -996,26 +836,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "64ca717",
-      "full": "64ca717cdf7e0e9d243f1924a39f7dabb014b056",
-      "date": "2026-09-25",
-      "subject": "chore(ds): regen manifest after gem caustic pool",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "42f5180",
       "full": "42f518095cfa0b0e2e15a08cff5369dbda7c7491",
       "date": "2026-09-25",
       "subject": "feat(ds): gem — caustic light pool under the stone (faceted-irregular, additive) + gem-textures module extraction",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "46d64ce",
-      "full": "46d64ce6ef1f1faa3336b3cb01032ed8a36ef7bd",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after far-side shell offset",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -1028,26 +852,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "03402e0",
-      "full": "03402e002614daa59f9f1a8ef9628a324224ac81",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem far-side pass",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "1fe2d88",
       "full": "1fe2d88ee818963b9612b8b0466af742bbc50e7c",
       "date": "2026-09-24",
       "subject": "feat(ds): gem — far-side facet pass + wider dispersion + demo refraction chart",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "271c05e",
-      "full": "271c05e80ea4eebe85f050e06678b47ee4d28b0e",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem stage backdrop",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -1060,26 +868,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "f0ca8e3",
-      "full": "f0ca8e320e87f0eb5505b4ad5466d112d3ae86c4",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem IOR + transparency",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "41bca8d",
       "full": "41bca8d3386e72475284aaae7250e751361345dd",
       "date": "2026-09-24",
       "subject": "feat(ds): gem — real per-stone IOR, gem-transparent material, demo photo backdrop",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "1f1f81a",
-      "full": "1f1f81abbc2f2886e04df7c9702db9c2837158dc",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem crystalline tier",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -1092,30 +884,6 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "0288ff8",
-      "full": "0288ff839f66b800400b7b613e0f72978d072ee2",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem smooth tier ship",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "b429559",
-      "full": "b42955992a653a3eeb57f185d0d45cf8097c8548",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem smooth tier ship",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
-      "sha": "17f714a",
-      "full": "17f714a7f772bca3d4b9ca354750edac7c4de0ce",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after gem smooth tier ship",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "86abb4b",
       "full": "86abb4b5232943e03cf562ebf6c4f677d75d57c2",
       "date": "2026-09-24",
@@ -1124,26 +892,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "bc55912",
-      "full": "bc559122c4c6bfa9e7f20d332449660bbbebf9a3",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after nav IA ship",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-4"
-    },
-    {
       "sha": "9f1874a",
       "full": "9f1874af9e9f2df852057ae43793bc7a2d993741",
       "date": "2026-09-24",
       "subject": "feat(ds): nav IA — gems to patterns, motion dedupe, rail scroll",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-4"
-    },
-    {
-      "sha": "0055e0f",
-      "full": "0055e0fb75b7a53195cb42254d34dd6c526b671e",
-      "date": "2026-09-24",
-      "subject": "chore(ds): regen manifest after quick-jump ship",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-4"
     },
@@ -1216,14 +968,6 @@
       "full": "a56fe25ceca443f56eff84eafff29f42e8174458",
       "date": "2026-09-23",
       "subject": "chore(ds): record the focus-scroll fix, refresh manifest",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "9aa879b",
-      "full": "9aa879b307c1fbbed8a8973ef1407ae1a12aa41c",
-      "date": "2026-09-23",
-      "subject": "chore(ds): regenerate atlas for the overlay focus fix",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-4}"
     },
@@ -1332,14 +1076,6 @@
       "anchor": "{#phase-4}"
     },
     {
-      "sha": "cb93cce",
-      "full": "cb93cceda76918248f147b8c8c2c3a1e39fc76aa",
-      "date": "2026-09-23",
-      "subject": "chore(ds): refresh changelog manifest — register 12J shipments",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
       "sha": "363a58d",
       "full": "363a58de68f5801e151973ea36d30a0d81da3cd6",
       "date": "2026-09-23",
@@ -1420,34 +1156,10 @@
       "anchor": "{#phase-4}"
     },
     {
-      "sha": "d2c3dd5",
-      "full": "d2c3dd5292d09211f02c96884a8268cace3cfb2e",
-      "date": "2026-09-23",
-      "subject": "chore(ds): refresh changelog manifest — intros restored",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "08dc81b",
-      "full": "08dc81b429245bbc6b9c3d997205a20f396a0e48",
-      "date": "2026-09-23",
-      "subject": "chore(ds): refresh changelog manifest — contextual specimens in situ",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
       "sha": "5b53d45",
       "full": "5b53d45904c1c45daea49b5bce11024f24b213a3",
       "date": "2026-09-23",
       "subject": "feat(ds): contextual specimens, actions exemplar",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "bc6ac9a",
-      "full": "bc6ac9a9c744844b4224c397384ee5e7a80fd79f",
-      "date": "2026-09-23",
-      "subject": "chore(ds): refresh changelog manifest — pairings in situ linked",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-4}"
     },
@@ -1664,14 +1376,6 @@
       "full": "1391cf6ea7e8748a8ff6b92bd80348deb98029a5",
       "date": "2026-09-23",
       "subject": "fix(ds): playground families — action to Neutral, citrine to Core, warning to orange",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
-    },
-    {
-      "sha": "3a9e7fe",
-      "full": "3a9e7fe83e1a31fd21f07a8e727d87d8bc9556c1",
-      "date": "2026-09-23",
-      "subject": "chore(manifest): refresh after color foundations build",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-2}"
     },
@@ -1932,14 +1636,6 @@
       "anchor": "{#phase-1}"
     },
     {
-      "sha": "5ff5102",
-      "full": "5ff5102a46415a8f3a1baf2cc0c7f42d46b8b443",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track visual-language close",
-      "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-5}"
-    },
-    {
       "sha": "df6223c",
       "full": "df6223c7bb09a9b622538c39b7a0605dc2c2f5d1",
       "date": "2026-09-22",
@@ -2068,14 +1764,6 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "5fd7790",
-      "full": "5fd77905188a660ec664f63b67dcd124cc09b5bc",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_155000-architecture-mechanics.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "3bf2bd9",
       "full": "3bf2bd900875c435aac244998b31b36bbd08985d",
       "date": "2026-09-22",
@@ -2084,26 +1772,10 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "5d47800",
-      "full": "5d478008092e952ed26acc048a9d059eb8514d04",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-2"
-    },
-    {
       "sha": "3a52feb",
       "full": "3a52febb610155555996849d0c3129c5c2b4d423",
       "date": "2026-09-22",
       "subject": "fix: atlas canvas uncapped to full width, zoom owns scale",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-2"
-    },
-    {
-      "sha": "6c28ed2",
-      "full": "6c28ed251a976a52a42dac15c8704dc4d33baa2b",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
       "plan": "2026-09-22_082844-arch-atlas.md",
       "anchor": "phase-2"
     },
@@ -2116,140 +1788,60 @@
       "anchor": "phase-2"
     },
     {
-      "sha": "f78cffb",
-      "full": "f78cffb5a2a9d75a0eb79cd8d22e4d0c321d890b",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "889e064",
       "full": "889e064b2237dac858136a772462b2d9452f00e8",
       "date": "2026-09-22",
       "subject": "fix: drop tab-switch shadow pulse that read as resize nudge",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "5412450",
-      "full": "5412450906d75c43f191607f9277003748ecd189",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "64b5df3",
       "full": "64b5df30e0cb41d400920c0d9d9a2efdc0771f15",
       "date": "2026-09-22",
       "subject": "fix: dynamic viewport units stop Safari toolbar resize nudging layout",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "10a5e58",
-      "full": "10a5e58d5d5ba7be802dcd9114945109e91f5c8b",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "ab2fb68",
       "full": "ab2fb6848b6bc97f429d824020315e6b418a82fd",
       "date": "2026-09-22",
       "subject": "fix: arch panel matches prototype dotted viewport, stable scrollbar gutter",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "3fee21a",
-      "full": "3fee21a2547e7a306d5c821a84c300ea7f3aa218",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "2b33509",
       "full": "2b33509eff53e8d99d006e041e2825de4db218b3",
       "date": "2026-09-22",
       "subject": "fix: atlas canvas borderless single panel, graph capped to design size",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "99ccfe2",
-      "full": "99ccfe225b3d66acf9c6abe8244136226205b22c",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "9ad213c",
       "full": "9ad213c399fd07bf13db7803883f2a3b1b995915",
       "date": "2026-09-22",
       "subject": "refactor: atlas right side is one container swapping per tab, no nested cards",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "729a8dd",
-      "full": "729a8dd517a2bcf42fcc018fdea6ec47473ff671",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "9bae36b",
       "full": "9bae36b976413980bd964500ff9fea61a2867a79",
       "date": "2026-09-22",
       "subject": "feat: atlas Code Truth becomes fourth lens tab rendering in canvas",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "1295b7d",
-      "full": "1295b7dfabcc34aad7679cae2abaf6c95311076f",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "{#phase-3}"
     },
     {
       "sha": "170e1f0",
       "full": "170e1f0f8c4bd924f6fe544b3128a3130160dfcd",
       "date": "2026-09-22",
       "subject": "fix: atlas code truth moves to left rail as tab, full-width lens nav",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "208f0d0",
-      "full": "208f0d0c06a15f258476bd8e6a9817c75427d21b",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-4"
-    },
-    {
-      "sha": "593aad2",
-      "full": "593aad28a98d66afdde75ef0ce9c5135000387e2",
-      "date": "2026-09-22",
-      "subject": "chore(atlas): restamp sources after A/B probe",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-4"
-    },
-    {
-      "sha": "be8a272",
-      "full": "be8a272f76bdbf3d2dad274a2715378110ea3bf2",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-4"
+      "anchor": "{#phase-3}"
     },
     {
       "sha": "0fa9721",
@@ -2260,28 +1852,12 @@
       "anchor": "phase-4"
     },
     {
-      "sha": "945d2dc",
-      "full": "945d2dcd13f61b204cfca7bf644f834ee4db2939",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-3"
-    },
-    {
       "sha": "23108ee",
       "full": "23108ee7ed1fd1236200bd5c9b65c1fdfe644794",
       "date": "2026-09-22",
       "subject": "feat: atlas Phase 3 depth lenses — logic states, usage, IA contracts",
       "plan": "2026-09-22_082844-arch-atlas.md",
       "anchor": "phase-3"
-    },
-    {
-      "sha": "ce7f728",
-      "full": "ce7f728b21c8ff2e1ccae61955fa657e85600482",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-2"
     },
     {
       "sha": "9d60816",
@@ -2292,28 +1868,12 @@
       "anchor": "phase-2"
     },
     {
-      "sha": "6b09426",
-      "full": "6b094262add3f619cbd9e1cd494bfa39998b5475",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-2"
-    },
-    {
       "sha": "50e08b5",
       "full": "50e08b5627da884719e6faaa0db056f048843ca1",
       "date": "2026-09-22",
       "subject": "feat: atlas shell with nav + SVG essence canvas",
       "plan": "2026-09-22_082844-arch-atlas.md",
       "anchor": "phase-2"
-    },
-    {
-      "sha": "3c8afde",
-      "full": "3c8afdecef034337859d602c15fbf59fe44b76b2",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "phase-1"
     },
     {
       "sha": "b69b1b4",
@@ -2332,14 +1892,6 @@
       "anchor": "phase-1"
     },
     {
-      "sha": "56ed59c",
-      "full": "56ed59cf89fd95bcf27832f2a478a8c34f82c5fe",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest [gallery back-link]",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "da8abaf",
       "full": "da8abaf66b8f82de9279d6b9a96bfc8d983ce8d5",
       "date": "2026-09-22",
@@ -2348,20 +1900,12 @@
       "anchor": "phase-9"
     },
     {
-      "sha": "ced2627",
-      "full": "ced2627e94d1ef8c431e3ccddbc730edc8e6eed8",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest [phase 9 handoff]",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "66bab6c",
       "full": "66bab6c4def47f2d0c19d2f19a886cc3094112e9",
       "date": "2026-09-22",
       "subject": "Phase 9: record ship SHAs in plan",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-9}"
     },
     {
       "sha": "cb8c595",
@@ -2372,20 +1916,12 @@
       "anchor": "phase-9"
     },
     {
-      "sha": "b5901a7",
-      "full": "b5901a7aebab8ccd8525fa5155e265081ebb23ed",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest [phase 8 perf pass]",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "52a9b0d",
       "full": "52a9b0dc5df209b0fd3e6c5a0a6711895b5af234",
       "date": "2026-09-22",
       "subject": "Phase 8: record ship SHAs in plan",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-8}"
     },
     {
       "sha": "b7b12dc",
@@ -2404,20 +1940,12 @@
       "anchor": "phase-8"
     },
     {
-      "sha": "dcb6ca6",
-      "full": "dcb6ca6c0154117f479d537f901a9a40b9fc195f",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest [phase 7 logic tests]",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "2bc8d71",
       "full": "2bc8d71e1f996fdf520ef721abd858a9ccdddc9f",
       "date": "2026-09-22",
       "subject": "Phase 7: record ship SHAs in plan",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-7}"
     },
     {
       "sha": "0d7f5dc",
@@ -2436,14 +1964,6 @@
       "anchor": "phase-7"
     },
     {
-      "sha": "ca7e7b5",
-      "full": "ca7e7b5b54eb006cdc6fd416645f83f5e4bd901a",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest [phase 6 ds dedupe]",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "eab220e",
       "full": "eab220e371958cb34c89ae170c9e886a09fe5c3b",
       "date": "2026-09-22",
@@ -2452,308 +1972,212 @@
       "anchor": "phase-6"
     },
     {
-      "sha": "08b4cce",
-      "full": "08b4cce34fbec60915bb973c91ec8c4a9323869c",
-      "date": "2026-09-22",
-      "subject": "chore(ds): track refresh — manifest [phase 5 glass budget]",
-      "plan": null,
-      "anchor": null
-    },
-    {
       "sha": "877fe0d",
       "full": "877fe0d2fa01795e51413b0a9e31fdb52fcb1a2e",
       "date": "2026-09-22",
       "subject": "Phase 5: record ship SHAs in plan",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "63f6777",
       "full": "63f6777ef1305b1f391a404222d34152ebdcada3",
       "date": "2026-09-22",
       "subject": "Phase 5 Task 3: lens-copy + dock-track splits, dead DeviceAppBar removal",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "1379724",
       "full": "1379724d0b8b41796d915328f0a6e4497e4f6740",
       "date": "2026-09-22",
       "subject": "Phase 5 Task 2: DockSlices engine + slice-bands extraction (95/33 lines)",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "4c1d451",
       "full": "4c1d4513b2ae38e84a60f83c79093390980f579b",
       "date": "2026-09-22",
       "subject": "Phase 5 Task 1: shared optics.js + rect-zoom.js, single getZoom/toLayout source",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "ac87d35",
       "full": "ac87d354997ba662e3a4c9a685337b33853cef5f",
       "date": "2026-09-22",
       "subject": "index.html becomes app entry (/), app.html redirect shim preserving query+hash",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-4}"
     },
     {
       "sha": "0680ddb",
       "full": "0680ddb6bab76195de2fba4a38bd2f70d2f56d28",
       "date": "2026-09-22",
       "subject": "Phase 4 Task 2: shell.css extraction, dead stage/float-tabs removal",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-4}"
     },
     {
       "sha": "c1ea0f0",
       "full": "c1ea0f0d8836dbabdd5f7286f6924a2531420acf",
       "date": "2026-09-22",
       "subject": "Phase 4 Task 1: TopPills to shell scope, drop dual clock writer",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-4}"
     },
     {
       "sha": "983f51b",
       "full": "983f51bf9290e88521c69978d25e0c84c64e0590",
       "date": "2026-09-22",
       "subject": "Phase 3: device frame module (frameVars, buildFrame, mounts-only index)",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-3}"
     },
     {
       "sha": "6753512",
       "full": "6753512088af6b61de0e19ec2e96df561b1bf890",
       "date": "2026-09-22",
       "subject": "Phase 2: OS layer extraction (status bar, notch, indicator, edges)",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "fbcb2c7",
       "full": "fbcb2c78dfa05f845b4feb9af3fd97a25e18305a",
       "date": "2026-09-22",
       "subject": "Phase 1: module inventory, dependency graph, baselines",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "e851817",
-      "full": "e851817487ac8c554c5646219172868137c41074",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [avatar flight character]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "43b05fa",
       "full": "43b05fac4731024d5bef2e4a90c0661538597eaa",
       "date": "2026-09-21",
       "subject": "fix(map): compositor avatar flights — centre swoop, count morph, early return",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "6985a8b",
-      "full": "6985a8b57dd5630a6a1c74d96192a5794d821064",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [avatar landing polish]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "be88022",
       "full": "be88022bf7a8963dbcd61e11889c7d4dcaebe4d8",
       "date": "2026-09-21",
       "subject": "polish(map): softer landing spring, count dissolves in place, buffered last-blob reveal",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "7471df4",
-      "full": "7471df444a9f3b3c3da6945cb6b56eae86de785c",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [avatar landing crossfade]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "6c418db",
       "full": "6c418dbf49a6a12390dabc8310f857236958cdea",
       "date": "2026-09-21",
       "subject": "fix(map): seamless avatar landing — blob scales up in place, clone crossfades, pill hidden on close",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "d905e1e",
-      "full": "d905e1ed4482305db5663a0429b4fde7518097e4",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [card handoff]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "bcb8788",
       "full": "bcb8788ff99aa05686513cbd31997946b9883f3d",
       "date": "2026-09-21",
       "subject": "fix(map): smooth card handoff — aligned ghost/card windows, easeOutCubic, 12px lift",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "3292c9b",
-      "full": "3292c9b16ee1b23c43faaf4239a3fae9d79e99a4",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [avatar smoothing]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "95847c1",
       "full": "95847c1c55b3c41d0d14e1cdf71df96a5c7882d3",
       "date": "2026-09-21",
       "subject": "fix(map): smooth avatar flights — proportional arc, per-segment spring + interrupt clean-up",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "fde04f8",
-      "full": "fde04f8630c13e2b9740e8515e9c8ccc28935d7b",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [avatar landing fix]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "2e452a7",
       "full": "2e452a72f13a808ae069c4ad19aab4a872504ad5",
       "date": "2026-09-21",
       "subject": "fix(map): delay blob pop until clone landing",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "29173ee",
-      "full": "29173ee94ead0ebe79f760225d9d7939b037736c",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [live map morph + flights] (include c4236b6)",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "c4236b6",
-      "full": "c4236b686c5dd15fe7df1068c6d21d6724e578be",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [live map morph + flights]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "82cb183",
       "full": "82cb183dd8223a8bef82f1a06b59a52b87656b85",
       "date": "2026-09-21",
       "subject": "feat(map): live tiles, window morph, concentric card + avatar flights",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "de9cce4",
-      "full": "de9cce43b8459fe4661793918dabcdb7cf31e5fe",
-      "date": "2026-09-21",
-      "subject": "chore(ds): track refresh — manifest [map sheet, dock bridge, device groups]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "8ee8c82",
       "full": "8ee8c82f4cfef60cd480768c5fddb0be8dd17363",
       "date": "2026-09-21",
       "subject": "Workspace device groups + sheet CSS wiring",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "2d0b9fd",
       "full": "2d0b9fd06ad399450c05f0440f4822ee36b51c94",
       "date": "2026-09-21",
       "subject": "Dock follows tab switches, defaults to Opps",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_155000-architecture-mechanics.md",
+      "anchor": "{#phase-2}"
     },
     {
       "sha": "8abe292",
       "full": "8abe2920504e3b4023635ba1d34468c1823ada24",
       "date": "2026-09-21",
       "subject": "Opps nearby map: fullscreen sheet morph with avatar continuity",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "ecd77fd",
       "full": "ecd77fd1258f2852d430242ce0a97a6342cf8875",
       "date": "2026-09-20",
       "subject": "Glass scroll-tracking fix (lens frame-flag reset), fullscreen dock safe margin",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-4}"
     },
     {
       "sha": "55143f9",
       "full": "55143f96a8b38707f1d6281dc649413af299e672",
       "date": "2026-09-20",
       "subject": "Vercel prod fix: vite build to dist, PWA via public/, exit gesture hardening",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-4}"
     },
     {
       "sha": "8d28635",
       "full": "8d2863594d773a23cd2ad59091a5c5071afca4f6",
       "date": "2026-09-20",
       "subject": "Mobile fullscreen prototype, PWA install, Vercel static config",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "e36642e",
-      "full": "e36642e16554944b5d7ae65684e635027cb89ffc",
-      "date": "2026-09-17",
-      "subject": "chore(ds): track refresh — manifest [wip: glass dock]",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "55ae4d8",
       "full": "55ae4d826f4d43bda83d435d7603685a049b8109",
       "date": "2026-09-17",
       "subject": "feat(glass): liquid-glass dock prototype (app.html, bottom dock, lens) + glass tabbar/toolbar",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "62d33ba",
       "full": "62d33bad7a97a197af7320589515ae09961f7e10",
       "date": "2026-09-17",
       "subject": "ds: glass token group (blur blur-sm saturate) + build-tokens emission",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "df2e075",
       "full": "df2e075c039bfc77e2966f1038719ab53fdb20d3",
       "date": "2026-09-17",
       "subject": "deps: React 19 + plugin-react + ws; app.html entry page; .gitignore node_modules",
-      "plan": null,
-      "anchor": null
-    },
-    {
-      "sha": "cc51bdf",
-      "full": "cc51bdff47f5c9f4ddbea3cb1e622d41a54965c6",
-      "date": "2026-09-16",
-      "subject": "chore(ds): track refresh — manifest",
-      "plan": "2026-09-16_203500-ds-polish.md",
-      "anchor": "phase-3"
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "{#phase-5}"
     },
     {
       "sha": "bf8d8d1",
@@ -2858,14 +2282,6 @@
       "subject": "Phase 11: screen patterns & data logic — Operate/Monitor templates + funnel 7-state machine + transient/temporal + ReportsMatrix blob/Goals",
       "plan": "2026-09-16_193500-full-publishable-design-system.md",
       "anchor": "phase-11"
-    },
-    {
-      "sha": "69f2e3e",
-      "full": "69f2e3e6718ffd16fe8dbd030062f374b227166f",
-      "date": "2026-09-16",
-      "subject": "chore(ds): track refresh — manifest + foundations 4ffe113",
-      "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "phase-1"
     },
     {
       "sha": "4ffe113",
@@ -3016,8 +2432,8 @@
       "full": "9891f1d5441ce5bcc6d56a12f79410574f27f558",
       "date": "2026-09-16",
       "subject": "Fresh CRM design system exercise: plan, DESIGN.md, phase docs, references",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "d69c32a",
@@ -3038,6 +2454,11 @@
   ],
   "wip": [
     "M scripts/ds-track.mjs",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/pitch/pitch-changelog-cal.css",
     "?? scripts/pattern-capture.mjs"
   ]
 }

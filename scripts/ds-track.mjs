@@ -3,10 +3,13 @@ const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 const DS=['DESIGN.md','design-system','tokens','src','prototype','preview.html','scripts','tests','gallery.css','public/foundations','public/language-panel.html','index.html','gallery.html','pitch.html','pitch-changelog.html','changelog.html','vite.config.js','public/pitch','public/pitch-v2'];
 let log=''; try{log=execSync(`git log --format='%H|%h|%ad|%s' --date=short -- ${DS.join(' ')}`,{encoding:'utf8'})}catch{log=''}
 const TAG=/\[plan:([^\]#\s]+)(?:#([^\]]+))?\]/;
-let commits=log.trim()? log.trim().split('\n').map(l=>{const [full,sha,date,subject]=l.split('|'); const m=subject.match(TAG); return {full,sha,date,subject,m,plan:m?.[1]||null,anchor:m?.[2]||null}}):[];
+let commits=log.trim()? log.trim().split('\n').map(l=>{const p=l.split('|'); const full=p[0],sha=p[1],date=p[2],subject=p.slice(3).join('|'); const m=subject.match(TAG); return {full,sha,date,subject,m,plan:m?.[1]||null,anchor:m?.[2]||null}}):[];
 try{const prev=JSON.parse(fs.readFileSync(join(root,'design-system/changelog-manifest.json'),'utf8')); const seen=new Set(commits.map(c=>c.sha)); for(const c of prev.commits||[]) if(!seen.has(c.sha)) commits.push(c)}catch{}
 let plans=[]; try{plans=fs.readdirSync(join(root,'.hermes/plans')).filter(f=>f.endsWith('.md')).sort()}catch{}
 let wip=[]; try{const s=execSync(`git status --short -- ${DS.join(' ')}`,{encoding:'utf8'}); wip=s.trim()? s.trim().split('\n').map(l=>l.trim()).filter(l=>!l.includes('changelog-manifest.json')):[]}catch{}
+const GENERATED=new Set(['design-system/changelog-manifest.json','src/arch/atlas.json','src/arch/arch-atlas.json']);
+function isPlumbing(sha){ try{ const files=execSync(`git show --name-only --format="" ${sha}`,{encoding:'utf8'}).trim().split('\n').filter(Boolean); if(!files.length) return false; return files.every(f=>GENERATED.has(f)); }catch{ return false; } }
+commits=commits.filter(c=>!isPlumbing(c.sha));
 let retro={}; try{retro=JSON.parse(fs.readFileSync(join(root,'.hermes/plan-links.json'),'utf8'))}catch{} for(const c of commits) if(retro[c.sha]){c.plan=retro[c.sha].plan; c.anchor=retro[c.sha].anchor;}
 let cont='20260909_145218_9888b1'; try{cont=JSON.parse(fs.readFileSync(join(root,'.hermes/continuation.json'),'utf8')).continuation||cont}catch{}
 let linked=commits.filter(c=>c.plan).length;

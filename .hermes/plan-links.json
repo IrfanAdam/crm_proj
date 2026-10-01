@@ -1,1 +1,217 @@
-{"8eeebc5":{"plan":"2026-09-16_180000-crm-design-system.md","anchor":"#phase-1","note":"Phase 1 tokens · primitives housed"},"8eb6000":{"plan":"2026-09-16_180000-crm-design-system.md","anchor":"#phase-2","note":"Phase 2 hierarchy & layout"},"f0175f5":{"plan":"2026-09-16_180000-crm-design-system.md","anchor":"#phase-3","note":"Phase 3 components"},"698a536":{"plan":"2026-09-16_180000-crm-design-system.md","anchor":"#phase-4","note":"Phases 4+5 patterns+motion (spans P4/P5) -> badged P4"}}
+{
+  "0680ddb": {
+    "anchor": "{#phase-4}",
+    "note": "Phase 4 Task 2: shell.css extraction",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "1379724": {
+    "anchor": "{#phase-5}",
+    "note": "Phase 5 Task 2: DockSlices engine + slice-bands",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "170e1f0": {
+    "anchor": "{#phase-3}",
+    "note": "fix: atlas Code Truth to left rail",
+    "plan": "2026-09-22_082844-arch-atlas.md"
+  },
+  "2b33509": {
+    "anchor": "{#phase-2}",
+    "note": "fix: atlas canvas borderless single panel",
+    "plan": "2026-09-22_082844-arch-atlas.md"
+  },
+  "2bc8d71": {
+    "anchor": "{#phase-7}",
+    "note": "Phase 7: record ship SHAs \u2014 logic tests",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "2d0b9fd": {
+    "anchor": "{#phase-2}",
+    "note": "Dock follows tab switches \u2014 scheme taxonomy (mechanics Phase 2)",
+    "plan": "2026-09-22_155000-architecture-mechanics.md"
+  },
+  "2e452a7": {
+    "anchor": "{#phase-1}",
+    "note": "fix(map): delay blob pop until clone landing",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "43b05fa": {
+    "anchor": "{#phase-1}",
+    "note": "fix(map): avatar flights \u2014 centre swoop (Map & baseline)",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "4c1d451": {
+    "anchor": "{#phase-5}",
+    "note": "Phase 5 Task 1: shared optics.js + rect-zoom.js",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "52a9b0d": {
+    "anchor": "{#phase-8}",
+    "note": "Phase 8: record ship SHAs \u2014 perf pass",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "55143f9": {
+    "anchor": "{#phase-4}",
+    "note": "Vercel prod fix: vite build to dist, PWA",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "55ae4d8": {
+    "anchor": "{#phase-5}",
+    "note": "feat(glass): liquid-glass dock prototype",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "62d33ba": {
+    "anchor": "{#phase-5}",
+    "note": "ds: glass token group \u2014 motion & gamification",
+    "plan": "2026-09-16_180000-crm-design-system.md"
+  },
+  "63f6777": {
+    "anchor": "{#phase-5}",
+    "note": "Phase 5 Task 3: lens-copy + dock-track splits (glass dock budget)",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "64b5df3": {
+    "anchor": "{#phase-2}",
+    "note": "fix: viewport units \u2014 OS layer layout (museum Phase 2)",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "66bab6c": {
+    "anchor": "{#phase-9}",
+    "note": "Phase 9: record ship SHAs in plan \u2014 handoff book",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "6753512": {
+    "anchor": "{#phase-2}",
+    "note": "Phase 2: OS layer extraction",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "698a536": {
+    "anchor": "#phase-4",
+    "note": "Phases 4+5 patterns+motion (spans P4/P5) -> badged P4",
+    "plan": "2026-09-16_180000-crm-design-system.md"
+  },
+  "6c418db": {
+    "anchor": "{#phase-1}",
+    "note": "fix(map): seamless avatar landing",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "82cb183": {
+    "anchor": "{#phase-1}",
+    "note": "feat(map): live tiles, window morph, concentric card + avatar flights",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "877fe0d": {
+    "anchor": "{#phase-5}",
+    "note": "Phase 5: record ship SHAs \u2014 glass budget",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "8850eb4": {
+    "anchor": "{#phase-1}",
+    "note": "Chore: drop dev artifacts \u2014 Map & baseline cleanup",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "889e064": {
+    "anchor": "{#phase-2}",
+    "note": "fix: atlas shell shadow pulse \u2014 timeline+semantic match to atlas shell",
+    "plan": "2026-09-22_082844-arch-atlas.md"
+  },
+  "8abe292": {
+    "anchor": "{#phase-1}",
+    "note": "Opps nearby map: fullscreen sheet morph",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "8d28635": {
+    "anchor": "{#phase-5}",
+    "note": "Mobile fullscreen prototype, PWA install",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "8eb6000": {
+    "anchor": "#phase-2",
+    "note": "Phase 2 hierarchy & layout",
+    "plan": "2026-09-16_180000-crm-design-system.md"
+  },
+  "8ee8c82": {
+    "anchor": "{#phase-1}",
+    "note": "Workspace device groups + sheet CSS wiring",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "8eeebc5": {
+    "anchor": "#phase-1",
+    "note": "Phase 1 tokens \u00b7 primitives housed",
+    "plan": "2026-09-16_180000-crm-design-system.md"
+  },
+  "90a4327": {
+    "anchor": "{#phase-1}",
+    "note": "chore: add illusioncube scene analysis assets \u2014 scaffold assets lane",
+    "plan": "2026-09-28_221212-illusion-cube-recreation.md"
+  },
+  "95847c1": {
+    "anchor": "{#phase-1}",
+    "note": "fix(map): smooth avatar flights \u2014 proportional arc",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "983f51b": {
+    "anchor": "{#phase-3}",
+    "note": "Phase 3: device frame module",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "9891f1d": {
+    "anchor": "{#phase-1}",
+    "note": "Fresh CRM design system exercise \u2014 initial plan, DESIGN.md, phase docs",
+    "plan": "2026-09-16_180000-crm-design-system.md"
+  },
+  "9ad213c": {
+    "anchor": "{#phase-2}",
+    "note": "refactor: atlas right side container swapping",
+    "plan": "2026-09-22_082844-arch-atlas.md"
+  },
+  "9bae36b": {
+    "anchor": "{#phase-3}",
+    "note": "feat: atlas Code Truth fourth lens",
+    "plan": "2026-09-22_082844-arch-atlas.md"
+  },
+  "ab2fb68": {
+    "anchor": "{#phase-2}",
+    "note": "fix: arch panel matches prototype dotted viewport",
+    "plan": "2026-09-22_082844-arch-atlas.md"
+  },
+  "ac87d35": {
+    "anchor": "{#phase-4}",
+    "note": "index.html becomes app entry \u2014 workspace shell separation",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "bcb8788": {
+    "anchor": "{#phase-1}",
+    "note": "fix(map): smooth card handoff",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "be88022": {
+    "anchor": "{#phase-1}",
+    "note": "polish(map): softer landing spring",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "c1ea0f0": {
+    "anchor": "{#phase-4}",
+    "note": "Phase 4 Task 1: TopPills to shell scope",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "df2e075": {
+    "anchor": "{#phase-5}",
+    "note": "deps: React 19 + plugin-react \u2014 glass dock scaffolding",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "ecd77fd": {
+    "anchor": "{#phase-4}",
+    "note": "Glass scroll-tracking fix \u2014 workspace shell separation",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "f0175f5": {
+    "anchor": "#phase-3",
+    "note": "Phase 3 components",
+    "plan": "2026-09-16_180000-crm-design-system.md"
+  },
+  "fbcb2c7": {
+    "anchor": "{#phase-1}",
+    "note": "Phase 1: module inventory, dependency graph",
+    "plan": "2026-09-22_122850-museum-refactor.md"
+  }
+}

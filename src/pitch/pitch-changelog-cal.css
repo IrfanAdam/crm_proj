@@ -7,7 +7,7 @@
 .ds-dows span { height: var(--space-16); display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 .ds-week { display: flex; flex-direction: column; gap: var(--space-4); }
 .ds-month { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); min-height: 1.2em; margin-bottom: var(--space-2); white-space: nowrap; overflow: visible; flex: none; }
-.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: transparent; padding: 0; }
+.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: transparent; padding: 0; border-radius: var(--radius-xs); }
 button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
 button.ds-day.lv1 { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
 button.ds-day.lv2 { background: color-mix(in srgb, var(--color-accent) 50%, transparent); }
