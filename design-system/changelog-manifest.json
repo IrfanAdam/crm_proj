@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:51:24.598Z",
+  "generated": "2026-10-01T09:52:27.336Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "fd5bd42",
+      "full": "fd5bd420a3aa37b5b60be276a99cbca7b04a9881",
+      "date": "2026-10-01",
+      "subject": "chore(changelog): audit retro links + plumbing exclusion — 0 untracked",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-8}"
+    },
     {
       "sha": "9fcca79",
       "full": "9fcca7906ad0127b4a144620ca2ff2ea14514710",
@@ -2453,12 +2461,10 @@
     }
   ],
   "wip": [
-    "M scripts/ds-track.mjs",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-changelog-cal.css",
     "?? scripts/pattern-capture.mjs"
   ]
 }
