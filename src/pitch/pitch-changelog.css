@@ -1,26 +1,26 @@
 /* ADAM/PAGE — pitch-changelog.css · shell + bridging · DS tokens */
 :root { --color-ink:var(--text-primary); --color-ink-muted:var(--text-muted); --color-bg:var(--bg-primary); --color-surface:var(--bg-surface); --color-panel:var(--bg-interactive); --color-accent:var(--accent-brand); --color-viewer-shade:var(--achievement-scrim); --border-hairline:var(--border-thin); --z-ds-scrim:var(--z-index-overlay); --z-ds-drawer:var(--z-index-modal); --z-ds-controls:var(--z-index-dropdown); --z-ds-side:var(--z-index-sticky); --shadow-viewer:var(--shadow-lg); --size-ds-drawer:var(--spacing-drawer); --font-mono:var(--font-family-mono); --text-micro:var(--font-size-micro); --text-h2:var(--font-size-xl); --text-h3:var(--font-size-md); --text-ds-body:var(--font-size-ds-body); --text-ds-table:var(--font-size-ds-table); --tracking-heading:var(--font-tracking-heading); --tracking-mono:var(--font-tracking-mono); --tracking-label:var(--font-tracking-label); --leading-prose:var(--font-leading-prose); --leading-mono:var(--font-leading-mono); --radius-none:var(--radius-none); --dur-soft:var(--motion-duration-soft); --dur-glide:var(--motion-duration-glide); --ease-standard:var(--motion-easing-standard); --ease-signature:var(--motion-easing-spring); }
-:root { --space-1:var(--spacing-odd-1); --space-2:var(--spacing-odd-2); --space-3:var(--spacing-odd-3); --space-4:var(--spacing-1); --space-5:var(--spacing-odd-5); --space-6:var(--spacing-odd-6); --space-7:var(--spacing-odd-7); --space-8:var(--spacing-2); --space-9:var(--spacing-odd-9); --space-10:var(--spacing-odd-10); --space-11:var(--spacing-odd-11); --space-12:var(--spacing-3); --space-14:var(--spacing-odd-14); --space-16:var(--spacing-4); --space-18:var(--spacing-odd-18); --space-20:var(--spacing-5); --space-22:var(--spacing-odd-22); --space-26:var(--spacing-odd-26); --space-28:var(--spacing-odd-28); --space-30:var(--spacing-odd-30); --space-32:var(--spacing-8); --space-36:var(--spacing-odd-36); --space-60:var(--spacing-odd-60); --space-90:var(--spacing-odd-90); }
+:root { --cl-1:var(--spacing-odd-1); --cl-2:var(--spacing-odd-2); --cl-3:var(--spacing-odd-3); --cl-4:var(--spacing-1); --cl-5:var(--spacing-odd-5); --cl-6:var(--spacing-odd-6); --cl-7:var(--spacing-odd-7); --cl-8:var(--spacing-2); --cl-9:var(--spacing-odd-9); --cl-10:var(--spacing-odd-10); --cl-11:var(--spacing-odd-11); --cl-12:var(--spacing-3); --cl-14:var(--spacing-odd-14); --cl-16:var(--spacing-4); --cl-18:var(--spacing-odd-18); --cl-20:var(--spacing-5); --cl-22:var(--spacing-odd-22); --cl-26:var(--spacing-odd-26); --cl-28:var(--spacing-odd-28); --cl-30:var(--spacing-odd-30); --cl-32:var(--spacing-8); --cl-36:var(--spacing-odd-36); --cl-60:var(--spacing-odd-60); --cl-90:var(--spacing-odd-90); }
 a.masthead-brand{text-decoration:none}
 .cl-links{gap:var(--spacing-changelog-gap)}
 .cl-link{font-size:var(--font-size-changelog-link);font-weight:500;color:var(--text-secondary);text-decoration:none;white-space:nowrap}
 .cl-link:hover{color:var(--accent-brand)}
-.ds-crumb{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-ink-muted);margin:0 0 var(--space-12)}
-#cl-root{padding-top:var(--space-22);padding-bottom:var(--space-32)}
+.ds-crumb{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-ink-muted);margin:0 0 var(--cl-12)}
+#cl-root{padding-top:var(--cl-22);padding-bottom:var(--cl-32)}
 #cl-root .ds-hero h1{font-size:clamp(2rem,4.5vw,2.9rem)}
 .ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:min(var(--type-hero-clamp),12vw);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
-.ds-hr{border:none;border-top:var(--border-hairline);margin:var(--space-14) 0}
-.ds-chips{display:flex;gap:var(--space-8);flex-wrap:wrap;margin:0 0 var(--space-12)}
+.ds-hr{border:none;border-top:var(--border-hairline);margin:var(--cl-14) 0}
+.ds-chips{display:flex;gap:var(--cl-8);flex-wrap:wrap;margin:0 0 var(--cl-12)}
 .ds-chip{font-family:var(--font-display);background:var(--color-surface);color:var(--color-ink-muted);border:var(--border-hairline);padding:var(--spacing-changelog-chip-y) var(--spacing-changelog-chip-x);border-radius:var(--radius-md);font-weight:600;letter-spacing:0.06em;font-size:var(--font-size-changelog-chip);cursor:pointer}
 .ds-chip.on{background:var(--color-accent);color:var(--primitive-gray-white);border-color:var(--color-accent)}
 .ds-md{font-size:var(--text-ds-body);line-height:var(--leading-prose)}
-.ds-md h1{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--space-8)}
-.ds-md h2{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:var(--space-22) 0 var(--space-8)}
-.ds-md h3{font-size:var(--text-h3);font-weight:600;margin:var(--space-16) 0 var(--space-6)}
-.ds-md ul{padding-left:var(--space-18);margin:var(--space-8) 0}
-.ds-md li{margin-bottom:var(--space-4)}
-.ds-md code{font-family:var(--font-mono);font-size:var(--text-micro);background:var(--color-panel);border:var(--border-hairline);padding:var(--space-1) var(--space-5)}
-.ds-md pre{background:var(--color-surface);border:var(--border-hairline);padding:var(--space-10) var(--space-12);overflow-x:auto}
+.ds-md h1{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--cl-8)}
+.ds-md h2{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:var(--cl-22) 0 var(--cl-8)}
+.ds-md h3{font-size:var(--text-h3);font-weight:600;margin:var(--cl-16) 0 var(--cl-6)}
+.ds-md ul{padding-left:var(--cl-18);margin:var(--cl-8) 0}
+.ds-md li{margin-bottom:var(--cl-4)}
+.ds-md code{font-family:var(--font-mono);font-size:var(--text-micro);background:var(--color-panel);border:var(--border-hairline);padding:var(--cl-1) var(--cl-5)}
+.ds-md pre{background:var(--color-surface);border:var(--border-hairline);padding:var(--cl-10) var(--cl-12);overflow-x:auto}
 .ds-md pre code{background:none;border:none;padding:0}
 .ds-md a{color:inherit}
 .cl-count{display:none}

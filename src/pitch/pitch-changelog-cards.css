@@ -1,8 +1,8 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-cards.css · build rows · compact list */
  /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · ds-pick row + tasks + tip */
-.ds-plan-grid { display: flex; gap: var(--space-12); align-items: flex-start; flex-wrap: wrap; }
+.ds-plan-grid { display: flex; gap: var(--cl-12); align-items: flex-start; flex-wrap: wrap; }
 .ds-plan-grid .ds-col { flex: 1 1 100%; }
-.ds-row { display: flex; align-items: baseline; gap: var(--space-8); min-width: 0; }
+.ds-row { display: flex; align-items: baseline; gap: var(--cl-8); min-width: 0; }
 .ds-row b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 0 1 auto; }
 .ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); }
 .ds-row .ds-num { flex: 0 0 auto; white-space: nowrap; }
@@ -11,11 +11,11 @@
 .ds-plan-grid .ds-pick {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  column-gap: var(--space-8);
-  row-gap: var(--space-2);
+  column-gap: var(--cl-8);
+  row-gap: var(--cl-2);
   align-items: baseline;
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
+  padding-top: var(--cl-6);
+  padding-bottom: var(--cl-6);
 }
 .ds-plan-grid .ds-num { min-width: 7ch; font-variant-numeric: tabular-nums; }
 .ds-plan-grid .ds-main, .ds-plan-grid .ds-main small { display: contents; }
@@ -40,18 +40,18 @@
   .ds-plan-grid .ds-state { grid-column: 1 / -1; justify-self: start; }
   .ds-plan-grid .ds-tags { grid-column: 1 / -1; white-space: normal; }
 }
-.ds-rail-foot { display: block; margin-top: var(--space-6); font-size: 0.92em; line-height: var(--leading-prose); color: var(--color-ink-muted); }
+.ds-rail-foot { display: block; margin-top: var(--cl-6); font-size: 0.92em; line-height: var(--leading-prose); color: var(--color-ink-muted); }
 .ds-cursor-tip {
   position: fixed; z-index: var(--z-ds-controls); max-width: min(40ch, 60vw);
   font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--font-leading-relaxed);
-  color: var(--color-bg); background: var(--color-ink); padding: var(--space-8) var(--space-10); border-radius: var(--radius-xs); box-shadow: var(--shadow-sm);
+  color: var(--color-bg); background: var(--color-ink); padding: var(--cl-8) var(--cl-10); border-radius: var(--radius-xs); box-shadow: var(--shadow-sm);
   pointer-events: none; overflow: hidden; overflow-wrap: break-word; transition: opacity var(--motion-duration-sm) var(--motion-easing-standard);
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; box-sizing: border-box;
 }
 .ds-cursor-tip[hidden] { display: none !important; }
 /* tasks checkboxes */
 .ds-md ul:has(input[type="checkbox"]) { list-style: none; padding-left: 0; }
-.ds-md input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: var(--space-14); height: var(--space-14); border: var(--border-hairline); border-radius: var(--radius-none); background: var(--color-surface); vertical-align: middle; margin: 0 var(--space-8) 0 0; position: relative; display: inline-grid; place-items: center; }
+.ds-md input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: var(--cl-14); height: var(--cl-14); border: var(--border-hairline); border-radius: var(--radius-none); background: var(--color-surface); vertical-align: middle; margin: 0 var(--cl-8) 0 0; position: relative; display: inline-grid; place-items: center; }
 .ds-md input[type="checkbox"]:checked { background: var(--color-ink); border-color: var(--color-ink); }
 .ds-md input[type="checkbox"]:checked::after { content: "✓"; color: var(--color-bg); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; line-height: 1; }
 .ds-md li:has(.ds-cancelled) input[type="checkbox"]:checked { background: var(--color-surface); border-color: var(--border-hairline); }

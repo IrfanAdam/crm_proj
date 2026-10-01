@@ -30,7 +30,7 @@ export function graph({ plans, day }) {
   const labels = spans.map((s) => [
     `<span class="ds-month" style="width: calc(`,
     s.n,
-    ` * (var(--space-16) + var(--space-4)) - var(--space-4))">`,
+    ` * (var(--cl-16) + var(--cl-4)) - var(--cl-4))">`,
     MONTHS[s.mo],
     `</span>`,
   ].join('')).join('');
