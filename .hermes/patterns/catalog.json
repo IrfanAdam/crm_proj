@@ -1,0 +1,66 @@
+{
+  "patterns": {
+    "map-widget": {
+      "components": [],
+      "docs": {
+        "intro": null,
+        "lab": null,
+        "spec": null
+      },
+      "hexLeaks": [],
+      "interactions": [],
+      "location": "opportunities tab",
+      "status": "pending",
+      "tokens": [],
+      "updated": null
+    },
+    "opportunity-card": {
+      "status": "captured",
+      "location": "opportunities tab",
+      "components": [],
+      "tokens": [
+        "bg-surface",
+        "border-width-thin",
+        "border-thin",
+        "radius-xl",
+        "spacing-4",
+        "spacing-3",
+        "spacing-2",
+        "radius-full",
+        "bg-interactive",
+        "font-weight-bold",
+        "font-size-lg",
+        "text-secondary",
+        "font-size-md",
+        "text-primary",
+        "font-tracking-tight",
+        "font-size-sm",
+        "text-muted",
+        "spacing-1",
+        "font-weight-semibold",
+        "primitive-sapphire-ui-400",
+        "border-width-thick",
+        "primitive-sapphire-ui-200",
+        "primitive-red-beryl-400",
+        "primitive-sapphire-ui-500",
+        "primitive-sapphire-ui-100",
+        "border-width-medium",
+        "primitive-citrine-700",
+        "radius-md",
+        "icon-size-md",
+        "bg-interactive-hover",
+        "bg-interactive-active",
+        "focus-ring"
+      ],
+      "hexLeaks": [],
+      "interactions": [],
+      "docs": {
+        "intro": null,
+        "lab": null,
+        "spec": null
+      },
+      "updated": "2026-10-01T08:46:18.218Z"
+    }
+  },
+  "version": 1
+}

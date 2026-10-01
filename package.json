@@ -5,7 +5,7 @@
   "description": "ALPHA CRM design system — DTCG token source + generated CSS + gates",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-tokens.mjs && vite build",
+    "build": "node scripts/build-tokens.mjs && node scripts/ds-track.mjs && vite build",
     "lint:tokens": "node scripts/lint-tokens.mjs",
     "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node tests/funnel-machine.test.mjs && node tests/morph-timing.test.mjs && node tests/temporal.test.mjs && node tests/illusion-timeline.test.mjs && node tests/arch-atlas.test.mjs && node tests/atlas-shell.test.mjs && node tests/ds-docs-experience.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs && node scripts/generate-arch-atlas.mjs --check && node scripts/generate-mechanics-graph.js --check",
     "gen:mechanics": "node scripts/generate-mechanics-graph.js",
@@ -14,6 +14,7 @@
     "verify:atlas": "node scripts/generate-arch-atlas.mjs --check",
     "ds:track": "node scripts/ds-track.mjs",
     "plan:names": "node scripts/plan-names.mjs",
+    "predev": "node scripts/ds-track.mjs || true",
     "dev": "vite --port 5173 --host 0.0.0.0",
     "preview": "vite preview --port 4173"
   },
