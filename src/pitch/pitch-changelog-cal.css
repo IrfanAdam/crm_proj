@@ -1,0 +1,50 @@
+/* ADAM/PAGE — src/pitch/pitch-changelog-cal.css · Mon–Sun heat graph, day filter */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · token wash levels, outline pick. */
+/* Export map: .cl-cal grid · .cl-dow head · .cl-day levels · .cl-blank. */
+/* — Section: week grid — */
+.cl-cal {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 1.4rem;
+}
+.cl-dow {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  text-align: center;
+  padding-bottom: 2px;
+}
+/* — Section: day cells (wash = volume, outline = selection) — */
+.cl-day {
+  aspect-ratio: 1;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  cursor: pointer;
+  padding: 0;
+}
+.cl-day.l1 {
+  background: color-mix(in srgb, var(--violet) 14%, var(--white));
+}
+.cl-day.l2 {
+  background: color-mix(in srgb, var(--violet) 32%, var(--white));
+}
+.cl-day.l3 {
+  background: color-mix(in srgb, var(--violet) 58%, var(--white));
+}
+.cl-day.l4 {
+  background: color-mix(in srgb, var(--violet) 85%, var(--white));
+}
+.cl-day:hover {
+  border-color: var(--violet);
+}
+.cl-day[aria-pressed="true"] {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+.cl-blank {
+  aspect-ratio: 1;
+}

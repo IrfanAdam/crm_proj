@@ -1,0 +1,54 @@
+/* ADAM/PAGE — src/pitch/pitch-changelog.css · log shell: nav links, count, day chip */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · pitch column + sapphire type. */
+/* Export map: .cl-links row · .cl-link · .cl-count · .cl-dayrow/.cl-chip. */
+/* — Section: masthead nav — */
+a.masthead-brand {
+  text-decoration: none;
+}
+.cl-links {
+  gap: 1.1rem;
+}
+.cl-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.cl-link:hover {
+  color: var(--violet);
+}
+/* — Section: count + day chip — */
+.cl-count {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin: -0.8rem 0 0;
+}
+.cl-dayrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.cl-dayrow:empty {
+  display: none;
+}
+.cl-chip {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-full);
+  padding: 0.32rem 0.85rem;
+  cursor: pointer;
+}
+.cl-chip:hover {
+  border-color: var(--violet);
+}
+.cl-note {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin-top: 2rem;
+}

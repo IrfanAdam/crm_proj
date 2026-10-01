@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T12:57:57.050Z",
+  "generated": "2026-10-01T09:07:25.414Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "623dd7d",
+      "full": "623dd7d59904809df388282db5eeeb9da63eb1f8",
+      "date": "2026-09-29",
+      "subject": "feat(pitch): v2 intelligence layer section, layer gallery, footer line",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "7508019",
       "full": "75080199d10ebef96830f59a20b2268a783c18b3",
@@ -112,6 +120,14 @@
       "full": "5af15dcc8879f6e9046031028d495b5e933fcf37",
       "date": "2026-09-29",
       "subject": "chore(mechanics): refresh after nav brand dedupe",
+      "plan": "2026-09-29_132702-ds-docs-experience.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "727296c",
+      "full": "727296ca73ca12d637fdf27f847844285c1f1260",
+      "date": "2026-09-29",
+      "subject": "fix(ds): remove duplicate ALPHA DS brand from left nav",
       "plan": "2026-09-29_132702-ds-docs-experience.md",
       "anchor": "phase-5"
     },
@@ -412,12 +428,28 @@
       "anchor": "phase-5"
     },
     {
+      "sha": "2defab9",
+      "full": "2defab9ecd020b388fe5eea78a140244d237f518",
+      "date": "2026-09-28",
+      "subject": "fix(ds): cube caption inside pad — no border clip",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
       "sha": "8e17217",
       "full": "8e17217ef85f4cb1ffff853cf4a8ab84b39c3d9b",
       "date": "2026-09-28",
       "subject": "fix(ds): pill click swaps only the category class (kept the card's resize modifier) + add the gem rubric instrument",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
       "anchor": "phase-4"
+    },
+    {
+      "sha": "00b4f83",
+      "full": "00b4f83d6eb77c101dcb19b07b8cd5ed5fa4ab38",
+      "date": "2026-09-28",
+      "subject": "feat(ds): cube pattern in gallery after gems — tab, panel, scripts",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
     },
     {
       "sha": "026e1f5",
@@ -650,6 +682,14 @@
       "subject": "fix(pitch): gem shadow line, light-cast floors, in-place retint, mobile pass, self-hosted type",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
       "anchor": "phase-1"
+    },
+    {
+      "sha": "cc62643",
+      "full": "cc62643b03f0796080a5ff1ce846bd33f51410ee",
+      "date": "2026-09-27",
+      "subject": "fix(workspace): drop wrapping link separator, space pair via CSS",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
     },
     {
       "sha": "1d432e9",
@@ -1140,6 +1180,14 @@
       "anchor": "{#phase-4}"
     },
     {
+      "sha": "2a77584",
+      "full": "2a77584df4e3336900bf6731b2ae57b9cd9f11e7",
+      "date": "2026-09-23",
+      "subject": "fix(build): copy raw source refs into dist so the gallery's classic scripts load",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
       "sha": "a56fe25",
       "full": "a56fe25ceca443f56eff84eafff29f42e8174458",
       "date": "2026-09-23",
@@ -1292,10 +1340,26 @@
       "anchor": "{#phase-4}"
     },
     {
+      "sha": "18d5e97",
+      "full": "18d5e971358b36edf3c583cd0496553a05bce4d8",
+      "date": "2026-09-23",
+      "subject": "feat(ds): contextual specimens, final 4 frames",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
       "sha": "3ebdef1",
       "full": "3ebdef1203e4f432285a02ec26cb4c4ff99d1131",
       "date": "2026-09-23",
       "subject": "chore(ds): close Task 12H — shipped 88a2c96, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "88a2c96",
+      "full": "88a2c963b0fb325a10439e8b86df3ffc663902e1",
+      "date": "2026-09-23",
+      "subject": "feat(ds): contextual specimens, choice frame",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-4}"
     },
@@ -1308,10 +1372,26 @@
       "anchor": "{#phase-4}"
     },
     {
+      "sha": "744386f",
+      "full": "744386fb17a465aac13e76db8b07ddb8c4462974",
+      "date": "2026-09-23",
+      "subject": "feat(ds): contextual specimens, form frame",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
       "sha": "0cec697",
       "full": "0cec697b4e56c65604c4c644a05832a4850b6b2d",
       "date": "2026-09-23",
       "subject": "chore(ds): close Task 12F — shipped 29bf342, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "29bf342",
+      "full": "29bf342368e4abc67ac66c5313048704eca4ca01",
+      "date": "2026-09-23",
+      "subject": "feat(ds): contextual specimens, identity frame",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-4}"
     },
@@ -1372,10 +1452,58 @@
       "anchor": "{#phase-4}"
     },
     {
+      "sha": "6cfb6fd",
+      "full": "6cfb6fd16857dbdf390c48215b123844a1a124ee",
+      "date": "2026-09-23",
+      "subject": "fix(ds): split opening articles into intro cards, specimens right after tenets",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "1308c82",
+      "full": "1308c82913716ba56c8b1cc5fbcc58d7e63b1d3f",
+      "date": "2026-09-23",
+      "subject": "fix(ds): live specimens right after opening article in all 8 frames",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "95117f6",
+      "full": "95117f66a959cf80cf75eb4637e409711d070a83",
+      "date": "2026-09-23",
+      "subject": "fix(ds): spec articles above live specimens in all 8 frames",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
       "sha": "0771cba",
       "full": "0771cbab2fe298895a6c1ea2b8bb8d6b9b871374",
       "date": "2026-09-23",
       "subject": "fix(ds): dnav rename kills tabs collision, load toolbar+textarea css, stack nav demos",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "35158d2",
+      "full": "35158d2ad3ca83c56ebcd9052b728a49a580ef6e",
+      "date": "2026-09-23",
+      "subject": "feat(ds): all 32 component articles wired into gallery frames",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "9acce60",
+      "full": "9acce605524aebd465a51ec2100cd059385cb8f3",
+      "date": "2026-09-23",
+      "subject": "feat(ds): button+chip full articles exemplar, plan Task 12C",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-4}"
+    },
+    {
+      "sha": "d44d32a",
+      "full": "d44d32a4607935a998b5f4330894ce58590d0a01",
+      "date": "2026-09-23",
+      "subject": "feat(ds): gallery showcases remaining variants",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-4}"
     },
@@ -1668,6 +1796,14 @@
       "anchor": "{#phase-2}"
     },
     {
+      "sha": "16f8d8f",
+      "full": "16f8d8fa56fb1a012ac234146644098dcb5ef1c1",
+      "date": "2026-09-23",
+      "subject": "fix(ds): run foundation doc loader after frames exist — color tab renders",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
       "sha": "2a7bcdb",
       "full": "2a7bcdb596158729fd391f03193d8620407dd3f0",
       "date": "2026-09-23",
@@ -1680,6 +1816,14 @@
       "full": "98fe52f5fbf09e4c6e054c27585b912f9de3f5ba",
       "date": "2026-09-23",
       "subject": "feat(tooling): lint foundation drift",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "93a8993",
+      "full": "93a899362b35e7b700d7cdfa148cb856b2d11d2d",
+      "date": "2026-09-23",
+      "subject": "feat(ds): foundations documented — tokens, contrast, code",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
       "anchor": "{#phase-2}"
     },
@@ -2172,6 +2316,14 @@
       "anchor": null
     },
     {
+      "sha": "da8abaf",
+      "full": "da8abaf66b8f82de9279d6b9a96bfc8d983ce8d5",
+      "date": "2026-09-22",
+      "subject": "Gallery header links back to prototype",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-9"
+    },
+    {
       "sha": "ced2627",
       "full": "ced2627e94d1ef8c431e3ccddbc730edc8e6eed8",
       "date": "2026-09-22",
@@ -2244,6 +2396,14 @@
       "anchor": null
     },
     {
+      "sha": "0d7f5dc",
+      "full": "0d7f5dc6fa0e88791b2bddb4f16d30e3ab2c02b9",
+      "date": "2026-09-22",
+      "subject": "Phase 7 Task 2: flow diagrams + layered Architecture panel",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-7"
+    },
+    {
       "sha": "8867a49",
       "full": "8867a4940be70b31455ecd7e793d17da23eee6b7",
       "date": "2026-09-22",
@@ -2304,6 +2464,14 @@
       "full": "4c1d4513b2ae38e84a60f83c79093390980f579b",
       "date": "2026-09-22",
       "subject": "Phase 5 Task 1: shared optics.js + rect-zoom.js, single getZoom/toLayout source",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "ac87d35",
+      "full": "ac87d354997ba662e3a4c9a685337b33853cef5f",
+      "date": "2026-09-22",
+      "subject": "index.html becomes app entry (/), app.html redirect shim preserving query+hash",
       "plan": null,
       "anchor": null
     },
@@ -2548,6 +2716,14 @@
       "anchor": null
     },
     {
+      "sha": "df2e075",
+      "full": "df2e075c039bfc77e2966f1038719ab53fdb20d3",
+      "date": "2026-09-17",
+      "subject": "deps: React 19 + plugin-react + ws; app.html entry page; .gitignore node_modules",
+      "plan": null,
+      "anchor": null
+    },
+    {
       "sha": "cc51bdf",
       "full": "cc51bdff47f5c9f4ddbea3cb1e622d41a54965c6",
       "date": "2026-09-16",
@@ -2560,6 +2736,14 @@
       "full": "bf8d8d11bdfea2413d33b8cf901205d9be3bfc88",
       "date": "2026-09-16",
       "subject": "chore(ds): track refresh — manifest + lock",
+      "plan": "2026-09-16_203500-ds-polish.md",
+      "anchor": "phase-3"
+    },
+    {
+      "sha": "6449015",
+      "full": "644901555a722201afc6ab3f66bc874be15d2f26",
+      "date": "2026-09-16",
+      "subject": "chore(ds): Vite live (5174) + signal live without reload",
       "plan": "2026-09-16_203500-ds-polish.md",
       "anchor": "phase-3"
     },
@@ -2700,6 +2884,30 @@
       "anchor": "phase-9"
     },
     {
+      "sha": "39d0866",
+      "full": "39d08664f88d21c97ca4fefe1d338725e706a30e",
+      "date": "2026-09-16",
+      "subject": "fix(gallery): component sections full-width — frame width 100% not 390 panel",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-8"
+    },
+    {
+      "sha": "2a54fd3",
+      "full": "2a54fd328d5b05a75aad07b7d6582f394296b774",
+      "date": "2026-09-16",
+      "subject": "fix(gallery): DS full-width (wrap none) while prototype stays 390px mobile frame",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-8"
+    },
+    {
+      "sha": "4b703f8",
+      "full": "4b703f8bdceb92a73d4e416a1bdc6e704b7b613c",
+      "date": "2026-09-16",
+      "subject": "fix(gallery): desktop DS left tabs host mobile-frame prototypes — split single scroll into tabbed panels",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-8"
+    },
+    {
       "sha": "d3eee8e",
       "full": "d3eee8ec313b258d68d06afdf97328723591e0ab",
       "date": "2026-09-16",
@@ -2805,7 +3013,25 @@
     }
   ],
   "wip": [
-    "M src/pitch/pitch-loop.css",
-    "?? src/pitch/pitch-layers.css"
+    "M gallery.html",
+    "M index.html",
+    "M scripts/ds-track.mjs",
+    "M src/arch/atlas.json",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M vite.config.js",
+    "?? pitch-changelog.html",
+    "?? scripts/pattern-capture.mjs",
+    "?? src/pitch/pitch-changelog-cal.css",
+    "?? src/pitch/pitch-changelog-cal.js",
+    "?? src/pitch/pitch-changelog-cards.css",
+    "?? src/pitch/pitch-changelog-data.js",
+    "?? src/pitch/pitch-changelog-drawer.css",
+    "?? src/pitch/pitch-changelog-drawer.js",
+    "?? src/pitch/pitch-changelog-list.js",
+    "?? src/pitch/pitch-changelog.css",
+    "?? src/pitch/pitch-changelog.js"
   ]
 }

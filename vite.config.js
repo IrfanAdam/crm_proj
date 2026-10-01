@@ -67,6 +67,7 @@ export default defineConfig({
         app: resolve(__dirname, 'app.html'),
         gallery: resolve(__dirname, 'gallery.html'),
         pitch: resolve(__dirname, 'pitch.html'),
+        changelog: resolve(__dirname, 'pitch-changelog.html'),
         preview: resolve(__dirname, 'preview.html'),
         cube: resolve(__dirname, 'cube.html'),
         cubespline: resolve(__dirname, 'cube-spline.html'),

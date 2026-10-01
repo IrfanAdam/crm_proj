@@ -1,0 +1,91 @@
+/* ADAM/PAGE — src/pitch/pitch-changelog-drawer.css · scrim + detail panel */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · fixed rail, token z scale. */
+/* Export map: .cl-scrim · .cl-drawer · .cl-d rows · .cl-sib list. */
+/* — Section: scrim + panel — */
+.cl-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-overlay);
+  background: var(--achievement-scrim);
+}
+.cl-scrim[hidden] {
+  display: none;
+}
+.cl-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(430px, 92vw);
+  z-index: var(--z-index-modal);
+  overflow-y: auto;
+  background: var(--bg);
+  border-left: 1px solid var(--rule);
+  padding: 1.8rem 1.6rem 2.5rem;
+}
+.cl-drawer[hidden] {
+  display: none;
+}
+/* — Section: detail rows — */
+.cl-d-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violet-mid);
+}
+.cl-d-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+  margin: 0.5rem 0 1.2rem;
+}
+.cl-d-row {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+.cl-d-row strong {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.cl-d-sha {
+  font-family: ui-monospace, monospace;
+  font-size: 0.72rem;
+  word-break: break-all;
+}
+.cl-close {
+  float: right;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-full);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+}
+/* — Section: same-day siblings — */
+.cl-sib {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.cl-sib:hover {
+  border-color: var(--violet);
+}
