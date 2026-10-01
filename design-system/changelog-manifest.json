@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T14:48:35.542Z",
+  "generated": "2026-10-01T14:48:48.019Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "31ee01e",
+      "full": "31ee01e970294e42a1543a8c80af6471888a96df",
+      "date": "2026-10-01",
+      "time": "20:18",
+      "subject": "fix(changelog): compact density — smaller hero, 14px heatmap cells, tight rhythm",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "8424046",
       "full": "8424046ee7c38ebb3d7246f564d6e3b0264f7367",
@@ -3078,8 +3087,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M src/pitch/pitch-changelog-cal.css",
-    "M src/pitch/pitch-changelog.css"
-  ]
+  "wip": []
 }
