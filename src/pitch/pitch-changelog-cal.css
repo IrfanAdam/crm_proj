@@ -1,6 +1,6 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-cal.css · week-columns graph · pitch palette */
  /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · Sun-Sat rows, month spans, lv tints */
-.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-12); }
+.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-12); --space-16: 14px; --space-4: 3px; }
 .ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }
 .ds-graph-row { display: flex; gap: var(--space-4); width: max-content; }
 .ds-dows { display: flex; flex-direction: column; gap: var(--space-4); width: var(--space-26); flex: none; }
