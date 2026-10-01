@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:54:30.595Z",
+  "generated": "2026-10-01T09:55:29.872Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "363ce86",
+      "full": "363ce8623b6bed0c70821678ef6952670acb0cc4",
+      "date": "2026-10-01",
+      "subject": "fix(changelog): ds-track plumbing + pipe-safe parse + timestamp stable",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-8}"
+    },
     {
       "sha": "fd5bd42",
       "full": "fd5bd420a3aa37b5b60be276a99cbca7b04a9881",
@@ -2461,7 +2469,6 @@
     }
   ],
   "wip": [
-    "M scripts/ds-track.mjs",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
