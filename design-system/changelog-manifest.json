@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T12:16:27.413Z",
+  "generated": "2026-10-01T13:40:10.719Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,51 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "7e1b213",
+      "full": "7e1b2136cf86e71651057bb27610652e80ee5a3e",
+      "date": "2026-10-01",
+      "time": "19:10",
+      "subject": "fix(ds): gem fill top-edge papercut — fill-only extended seams",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "41e3871",
+      "full": "41e387160d75a0ba581150ea03a2386afaa55bf6",
+      "date": "2026-10-01",
+      "time": "18:51",
+      "subject": "chore(ds): remove diamond-cut + sketch-cut families, gem-friendly stands alone",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "9004d98",
+      "full": "9004d98cae7d5eb99ac87ae366f7a55dfe25fed7",
+      "date": "2026-10-01",
+      "time": "18:42",
+      "subject": "fix(ds): fill negatives go true-transparent via mask",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "a8cc939",
+      "full": "a8cc939b37dfc919f752f4fab5e59416094efed5",
+      "date": "2026-10-01",
+      "time": "18:31",
+      "subject": "fix(ds): true Phosphor weight bands + clipped fill knockouts",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "9298f0d",
+      "full": "9298f0d279ef6fcea39b42387c061c658e057225",
+      "date": "2026-10-01",
+      "time": "17:46",
+      "subject": "chore(lump-sum): stamp task 38 — gem icon junctions shipped in 80fd22e",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "80fd22e",
       "full": "80fd22e83e2cc411d80d6acb92e9199ce41f798d",
@@ -2989,6 +3034,12 @@
     }
   ],
   "wip": [
+    "M gallery.css",
+    "M src/ds/gallery-chrome.css",
+    "M src/ds/gallery-drawer.js",
+    "M src/ds/gallery-filter.js",
+    "M src/ds/gallery-shell.js",
+    "M src/ds/gallery-subnav.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",

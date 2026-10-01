@@ -58,6 +58,7 @@ const dsTab = (name) => {
   document.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== name; });
   document.querySelectorAll('.dnav__sub').forEach((s) => { s.hidden = s.dataset.subnav !== name; });
   document.querySelectorAll('.dnav__subitem').forEach((x) => x.classList.remove('dnav__subitem--active'));
+  document.querySelectorAll('.dnav__branch.is-open').forEach((br)=>{if(br.dataset.branch!==name){br.classList.remove('is-open');const bb=br.querySelector('.dnav__item--has-sub');if(bb) bb.setAttribute('aria-expanded','false');}});
   const ht = document.getElementById('dheader-title');
   if (ht) ht.textContent = name;
   history.replaceState(null, '', '#' + name);

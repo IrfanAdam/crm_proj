@@ -1,17 +1,28 @@
 /* ADAM/DS — gallery-subnav.css · drawer + rails [plan:2026-09-29_132702-ds-docs-experience.md#phase-3] */
-.dnav__sub{display:flex;flex-direction:column;gap:2px;margin:2px 0 4px var(--spacing-3);padding-left:var(--spacing-2);border-left:2px solid var(--border-thin)}
-.dnav__subitem{text-align:left;background:transparent;border:none;padding:8px var(--spacing-3);border-radius:var(--radius-md);font-size:var(--font-size-xs);font-weight:500;color:var(--text-muted);cursor:pointer;min-height:32px;display:flex;align-items:center}
+.dnav__branch{position:relative}
+.dnav__sub{display:flex;flex-direction:column;gap:1px;margin:1px 0 2px 8px;padding-left:8px;border-left:1px solid var(--border-thin)}
+.dnav__subitem{text-align:left;background:transparent;border:none;padding:5px 8px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;min-height:26px;display:flex;align-items:center;transition:background var(--transition-fast),color var(--transition-fast)}
 .dnav__subitem:hover{color:var(--text-primary);background:var(--bg-interactive)}
-.dnav__subitem--active{background:var(--bg-interactive);color:var(--text-primary)}
+.dnav__subitem--active{background:var(--bg-interactive);color:var(--text-primary);font-weight:600}
 .frame [id^="identity-"]{scroll-margin-top:var(--spacing-4)}
+@media(width >= 701px){
+.dnav__branch .dnav__sub{position:absolute;left:calc(100% + 8px);top:-6px;margin:0;padding:6px;width:168px;max-width:190px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:12px;box-shadow:var(--shadow-md);gap:1px;z-index:40;opacity:0;visibility:hidden;transform:translateX(-4px);transition:opacity var(--transition-fast),transform var(--transition-fast),visibility var(--transition-fast);pointer-events:none;border-left:1px solid var(--border-thin)}
+.dnav__branch .dnav__sub::before{content:"";position:absolute;left:-8px;top:0;bottom:0;width:8px}
+.dnav__branch:hover .dnav__sub,.dnav__branch:focus-within .dnav__sub,.dnav__branch.is-open .dnav__sub{opacity:1;visibility:visible;transform:translateX(0);pointer-events:auto}
+.dnav__branch:hover .dnav__sub[hidden],.dnav__branch:focus-within .dnav__sub[hidden],.dnav__branch.is-open .dnav__sub[hidden]{display:flex!important}
+.dnav__branch .dnav__subitem{padding:6px 8px;border-radius:8px;font-size:12.5px;min-height:28px;white-space:nowrap}
+.dnav__branch .dnav__subitem:hover{background:var(--bg-interactive)}
+}
 @media(max-width:700px){
 .gscrim[hidden]{display:none!important}
 .gscrim:not([hidden]){display:block}
-.dnav__sub{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:var(--spacing-2);margin:var(--spacing-2) 0;padding:0 var(--spacing-2) var(--spacing-2);border-left:none;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.dnav__sub{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:6px;margin:4px 0;padding:0 8px 8px;border-left:none;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
 .dnav__sub::-webkit-scrollbar{display:none}
-.dnav__subitem{flex:none;white-space:nowrap;background:var(--bg-interactive);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:10px var(--spacing-3);scroll-snap-align:start}
+.dnav__subitem{flex:none;white-space:nowrap;background:var(--bg-interactive);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:6px 12px;min-height:32px;scroll-snap-align:start;font-size:13px}
 .dnav__subitem--active{background:var(--text-primary);color:var(--bg-surface);border-color:var(--text-primary)}
 .dnav__sub[hidden]{display:none!important}
+.dnav__branch{position:static}
+.dnav__branch .dnav__sub{position:static;opacity:1;visibility:visible;transform:none;pointer-events:auto;box-shadow:none;border:none;background:transparent;min-width:0;max-width:none}
 }
 .tp-code[data-lang]{position:relative}
 .tp-code[data-lang]::before{content:attr(data-lang);position:absolute;top:var(--spacing-2);right:var(--spacing-2);font-size:var(--font-size-xs);color:var(--text-muted)}

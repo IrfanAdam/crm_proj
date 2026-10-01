@@ -22,7 +22,7 @@ if (gtop) gtop.addEventListener('click', () => {
 if (scrim) scrim.addEventListener('click', gClose);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') gClose(); });
 // auto-close on nav click at ≤700px (enhancement, shell also handles dsTab)
-document.querySelectorAll('.dnav__item').forEach((b) => {
+document.querySelectorAll('.dnav__item,.dnav__subitem').forEach((b) => {
   b.addEventListener('click', () => {
     if (window.matchMedia('(max-width:700px)').matches) gClose();
   });
