@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T11:53:32.865Z",
+  "generated": "2026-10-01T12:05:05.536Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "998297c",
+      "full": "998297c4162f6b81df7d1a936c90b0262be4606a",
+      "date": "2026-10-01",
+      "time": "17:23",
+      "subject": "chore(ds): close phase-10 — Task 36 shipped in 50f9ecd",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "50f9ecd",
       "full": "50f9ecd3824eb239b32c900ff246ecd75c40c54a",
@@ -2935,6 +2944,15 @@
     }
   ],
   "wip": [
+    "M gallery.css",
+    "M public/foundations/iconography.html",
+    "M src/arch/atlas.json",
+    "M src/components/Icon/GemFriendly.jsx",
+    "M src/ds/gallery-chrome.css",
+    "M src/ds/icon-derivative-svgs.js",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js"
   ]
 }

@@ -14,7 +14,10 @@
 .dnav__search{position:sticky;top:0;z-index:1;background:var(--bg-surface);padding:var(--spacing-1);margin-bottom:var(--spacing-1)}
 .dnav__group{border:none;padding:0;margin:0}
 .dnav__group[open] summary{color:var(--text-primary)}
-.dnav__group summary{list-style:none;cursor:pointer}
+.dnav__group summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:var(--spacing-2);border-radius:var(--radius-md)}
+.dnav__group summary:hover{background:var(--bg-interactive)}
+.dnav__group summary::after{content:"";flex:none;width:7px;height:7px;margin-left:auto;margin-right:var(--spacing-1);border-right:2px solid var(--text-muted);border-bottom:2px solid var(--text-muted);transform:rotate(45deg);transition:transform var(--motion-duration-md) var(--motion-easing-standard)}
+.dnav__group[open] summary::after{transform:rotate(225deg);border-color:var(--text-primary)}
 .dnav__group summary::-webkit-details-marker{display:none}
 .dnav__group .dnav__item{margin-left:var(--spacing-2)}
 .dhero{padding:var(--spacing-6);border-bottom:1px solid var(--border-thin);background:var(--bg-surface)}
