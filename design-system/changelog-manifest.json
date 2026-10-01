@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T11:01:30.634Z",
+  "generated": "2026-10-01T11:04:40.852Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "973ec97",
+      "full": "973ec97df84bb5ff75d50fe47e6e47ad41f02f28",
+      "date": "2026-10-01",
+      "time": "16:34",
+      "subject": "fix(changelog): two independent scrollers — rail + task scroll, shell static, no inner scroll in phase",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "d44a2d7",
       "full": "d44a2d734b436f2811d3102dc33ca1d755671993",
