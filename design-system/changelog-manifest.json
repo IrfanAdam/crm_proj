@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:52:27.336Z",
+  "generated": "2026-10-01T09:54:30.595Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -2461,6 +2461,7 @@
     }
   ],
   "wip": [
+    "M scripts/ds-track.mjs",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
