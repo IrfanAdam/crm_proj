@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T11:04:40.852Z",
+  "generated": "2026-10-01T11:14:41.924Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "0d543f4",
+      "full": "0d543f429e109bcf3506e208c09cd64c7afe620c",
+      "date": "2026-10-01",
+      "time": "16:44",
+      "subject": "fix(changelog): exact dot-on-spine alignment — 7px node shares spine coordinate, zero delta at any zoom",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "973ec97",
       "full": "973ec97df84bb5ff75d50fe47e6e47ad41f02f28",
@@ -2899,10 +2908,6 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
     "?? scripts/pattern-capture.mjs"
   ]
 }
