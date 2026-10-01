@@ -1,50 +1,25 @@
-/* ADAM/PAGE — src/pitch/pitch-changelog-cal.css · Mon–Sun heat graph, day filter */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · token wash levels, outline pick. */
-/* Export map: .cl-cal grid · .cl-dow head · .cl-day levels · .cl-blank. */
-/* — Section: week grid — */
-.cl-cal {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-top: 1.4rem;
-}
-.cl-dow {
-  font-family: var(--font-display);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--ink-3);
-  text-align: center;
-  padding-bottom: 2px;
-}
-/* — Section: day cells (wash = volume, outline = selection) — */
-.cl-day {
-  aspect-ratio: 1;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-sm);
-  background: var(--white);
-  cursor: pointer;
-  padding: 0;
-}
-.cl-day.l1 {
-  background: color-mix(in srgb, var(--violet) 14%, var(--white));
-}
-.cl-day.l2 {
-  background: color-mix(in srgb, var(--violet) 32%, var(--white));
-}
-.cl-day.l3 {
-  background: color-mix(in srgb, var(--violet) 58%, var(--white));
-}
-.cl-day.l4 {
-  background: color-mix(in srgb, var(--violet) 85%, var(--white));
-}
-.cl-day:hover {
-  border-color: var(--violet);
-}
-.cl-day[aria-pressed="true"] {
-  outline: 2px solid var(--violet);
-  outline-offset: 2px;
-}
-.cl-blank {
-  aspect-ratio: 1;
-}
+/* ADAM/PAGE — src/pitch/pitch-changelog-cal.css · week-columns graph · pitch palette */
+ /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · Sun-Sat rows, month spans, lv tints */
+.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-28); }
+.ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }
+.ds-graph-row { display: flex; gap: var(--space-4); width: max-content; }
+.ds-dows { display: flex; flex-direction: column; gap: var(--space-4); width: var(--space-26); flex: none; }
+.ds-dows span { height: var(--space-16); display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.ds-week { display: flex; flex-direction: column; gap: var(--space-4); }
+.ds-month { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); min-height: 1.2em; margin-bottom: var(--space-2); white-space: nowrap; overflow: visible; flex: none; }
+.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: transparent; padding: 0; }
+button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
+button.ds-day.lv1 { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+button.ds-day.lv2 { background: color-mix(in srgb, var(--color-accent) 50%, transparent); }
+button.ds-day.lv3 { background: color-mix(in srgb, var(--color-accent) 75%, transparent); }
+button.ds-day.lv4 { background: var(--color-accent); }
+.ds-day.on { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
+button.ds-day:hover { outline: var(--space-1) solid var(--color-ink); outline-offset: var(--space-1); }
+.ds-day.is-today { position: relative; border-color: var(--color-ink); }
+.ds-day.is-today::before { content: ""; position: absolute; inset: calc(var(--space-12) * -1); }
+.ds-day.is-future { opacity: .6; }
+/* cl-* compat kept hidden */
+.cl-cal { display: none; }
+.cl-dow { display: none; }
+.cl-day { display: none; }
+.cl-blank { display: none; }
