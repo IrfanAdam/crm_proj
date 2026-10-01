@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:59:41.288Z",
+  "generated": "2026-10-01T09:59:58.223Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "d505a83",
+      "full": "d505a83dbdafef735b207890e7abbd575d63de8e",
+      "date": "2026-10-01",
+      "subject": "fix(changelog): hide triage when no untracked commits — wip no longer shows as Unlinked",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-8}"
+    },
     {
       "sha": "363ce86",
       "full": "363ce8623b6bed0c70821678ef6952670acb0cc4",
@@ -2473,7 +2481,6 @@
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/changelog-links.js",
     "?? scripts/pattern-capture.mjs"
   ]
 }
