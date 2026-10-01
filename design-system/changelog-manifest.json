@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T12:05:56.518Z",
+  "generated": "2026-10-01T12:09:02.029Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -20,10 +20,10 @@
   ],
   "commits": [
     {
-      "sha": "1cb30cf",
-      "full": "1cb30cf1674c5aa205f924c219d36ea05dcbc195",
+      "sha": "ea18b84",
+      "full": "ea18b84c122a538369ed8dc360cf888fdeea5442",
       "date": "2026-10-01",
-      "time": "17:35",
+      "time": "17:38",
       "subject": "chore(ds): close Task 37 shipped in bc39728",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
       "anchor": "phase-10"
@@ -2945,6 +2945,24 @@
       "anchor": "{#phase-1}"
     },
     {
+      "sha": "35dbcf3",
+      "full": "35dbcf3f946ca87fab0b02517b90c42f9e2ef351",
+      "date": "2026-10-01",
+      "time": "17:36",
+      "subject": "chore(lump-sum): stamp task 38 — gem icon junctions (shipped in 1cb30cf)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-2}"
+    },
+    {
+      "sha": "1cb30cf",
+      "full": "1cb30cf1674c5aa205f924c219d36ea05dcbc195",
+      "date": "2026-10-01",
+      "time": "17:35",
+      "subject": "chore(ds): close Task 37 shipped in bc39728",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-10"
+    },
+    {
       "sha": "d69c32a",
       "full": "d69c32a63b87c72f7d0dd4583d3e35fa73aaf933",
       "date": "2026-09-28",
@@ -2962,6 +2980,10 @@
     }
   ],
   "wip": [
+    "M public/foundations/iconography.html",
+    "M src/arch/atlas.json",
+    "M src/components/Icon/GemFriendly.jsx",
+    "M src/ds/icon-derivative-svgs.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
