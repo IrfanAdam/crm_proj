@@ -1,13 +1,13 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-cal.css · week-columns graph · pitch palette */
  /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · Sun-Sat rows, month spans, lv tints */
-.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-28); }
+.ds-graph { margin: 0; overflow-x: auto; padding: var(--space-4) var(--space-4) var(--space-12); }
 .ds-graph-labels { display: flex; gap: var(--space-4); width: max-content; margin: 0 0 var(--space-2) calc(var(--space-26) + var(--space-4)); }
 .ds-graph-row { display: flex; gap: var(--space-4); width: max-content; }
 .ds-dows { display: flex; flex-direction: column; gap: var(--space-4); width: var(--space-26); flex: none; }
 .ds-dows span { height: var(--space-16); display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 .ds-week { display: flex; flex-direction: column; gap: var(--space-4); }
 .ds-month { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); min-height: 1.2em; margin-bottom: var(--space-2); white-space: nowrap; overflow: visible; flex: none; }
-.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface)); padding: 0; border-radius: var(--radius-xs); }
+.ds-day { width: var(--space-16); height: var(--space-16); border: var(--border-hairline); background: color-mix(in srgb, var(--color-ink) 7%, transparent); padding: 0; border-radius: var(--radius-xs); }
 button.ds-day { cursor: pointer; background: var(--color-accent); border-color: transparent; }
 button.ds-day.lv1 { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
 button.ds-day.lv2 { background: color-mix(in srgb, var(--color-accent) 50%, transparent); }

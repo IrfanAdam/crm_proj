@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T14:15:14.993Z",
+  "generated": "2026-10-01T14:35:41.837Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "2b46386",
+      "full": "2b463866c4ce12466789c577a3b994e6eb453b47",
+      "date": "2026-10-01",
+      "time": "19:45",
+      "subject": "fix(changelog): strict row grid, phases flush-right, mobile stacking, visible heatmap cells",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "c42d9a3",
       "full": "c42d9a3d77177e829c6ff9bc73054d91ea7035da",
@@ -3052,10 +3061,7 @@
     }
   ],
   "wip": [
-    "M src/pitch/changelog/paint-plan.js",
     "M src/pitch/pitch-changelog-cal.css",
-    "M src/pitch/pitch-changelog-cards.css",
-    "M src/pitch/pitch-changelog-drawer.css",
     "M src/pitch/pitch-changelog.css"
   ]
 }
