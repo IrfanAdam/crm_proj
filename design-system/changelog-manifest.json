@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T12:09:02.029Z",
+  "generated": "2026-10-01T12:16:27.413Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,15 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "80fd22e",
+      "full": "80fd22e83e2cc411d80d6acb92e9199ce41f798d",
+      "date": "2026-10-01",
+      "time": "17:46",
+      "subject": "fix(ds): gem-friendly — seams join the culet, girdle chord spans the widest points",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-2}"
+    },
     {
       "sha": "ea18b84",
       "full": "ea18b84c122a538369ed8dc360cf888fdeea5442",
@@ -2980,10 +2989,6 @@
     }
   ],
   "wip": [
-    "M public/foundations/iconography.html",
-    "M src/arch/atlas.json",
-    "M src/components/Icon/GemFriendly.jsx",
-    "M src/ds/icon-derivative-svgs.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
