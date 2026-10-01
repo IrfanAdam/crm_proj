@@ -22,7 +22,18 @@
     "leading-relaxed": "1.5",
     "tracking-tight": "-0.01em",
     "tracking-normal": "0",
-    "tracking-wide": "0.04em"
+    "tracking-wide": "0.04em",
+    "family-mono": "ui-monospace, \"SF Mono\", Menlo, monospace",
+    "micro": "10.5px",
+    "ds-body": "13px",
+    "ds-table": "12.5px",
+    "tracking-heading": "-0.02em",
+    "tracking-mono": "0.1em",
+    "tracking-label": "0.12em",
+    "leading-prose": "1.6",
+    "leading-mono": "1.3",
+    "changelog-link": "0.78rem",
+    "changelog-chip": "0.7rem"
   },
   "spacing": {
     "1": "0.25rem",
@@ -35,7 +46,29 @@
     "12": "3rem",
     "0": "0",
     "10": "2.5rem",
-    "16": "4rem"
+    "16": "4rem",
+    "odd-1": "1px",
+    "odd-2": "2px",
+    "odd-3": "3px",
+    "odd-5": "5px",
+    "odd-6": "6px",
+    "odd-7": "7px",
+    "odd-9": "9px",
+    "odd-10": "10px",
+    "odd-11": "11px",
+    "odd-14": "14px",
+    "odd-18": "18px",
+    "odd-22": "22px",
+    "odd-26": "26px",
+    "odd-28": "28px",
+    "odd-30": "30px",
+    "odd-36": "36px",
+    "odd-60": "60px",
+    "odd-90": "90px",
+    "drawer": "1100px",
+    "changelog-gap": "1.1rem",
+    "changelog-chip-y": "0.3rem",
+    "changelog-chip-x": "0.75rem"
   },
   "radius": {
     "xs": "4px",
@@ -297,6 +330,7 @@
     "card": "var(--font-size-xl)",
     "body": "var(--font-size-md)",
     "meta": "var(--font-size-sm)",
-    "micro": "var(--font-size-xs)"
+    "micro": "var(--font-size-xs)",
+    "hero-clamp": "clamp(2.4rem, 6vw, 3.6rem)"
   }
 }
