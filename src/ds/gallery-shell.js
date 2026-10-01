@@ -64,6 +64,7 @@ const dsTab = (name) => {
   dsHero(name);
   dsPager(name);
   const det = document.querySelector('.dnav__group [data-tab="' + name + '"]')?.closest('details');
+  document.querySelectorAll('.dnav__group').forEach((g) => { if (g !== det) g.open = false; });
   if (det) det.open = true;
 };
 document.querySelectorAll('.dnav__item').forEach((b) => {
