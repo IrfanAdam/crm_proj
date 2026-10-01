@@ -1,9 +1,9 @@
 import fs from 'fs'; import {execSync} from 'child_process'; import {fileURLToPath} from 'url'; import {dirname,join} from 'path';
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 const DS=['DESIGN.md','design-system','tokens','src','prototype','preview.html','scripts','tests','gallery.css','public/foundations','public/language-panel.html','index.html','gallery.html','pitch.html','pitch-changelog.html','changelog.html','vite.config.js','public/pitch','public/pitch-v2'];
-let log=''; try{log=execSync(`git log --format='%H|%h|%ad|%s' --date=short -- ${DS.join(' ')}`,{encoding:'utf8'})}catch{log=''}
+let log=''; try{log=execSync(`git log --format='%H|%h|%ad|%s' --date=iso -- ${DS.join(' ')}`,{encoding:'utf8'})}catch{log=''}
 const TAG=/\[plan:([^\]#\s]+)(?:#([^\]]+))?\]/;
-let commits=log.trim()? log.trim().split('\n').map(l=>{const p=l.split('|'); const full=p[0],sha=p[1],date=p[2],subject=p.slice(3).join('|'); const m=subject.match(TAG); return {full,sha,date,subject,m,plan:m?.[1]||null,anchor:m?.[2]||null}}):[];
+let commits=log.trim()? log.trim().split('\n').map(l=>{const p=l.split('|'); const full=p[0],sha=p[1],raw=p[2],subject=p.slice(3).join('|'); const m=subject.match(TAG); const date=raw ? raw.split(' ')[0] : ''; const time=raw && raw.includes(' ') ? raw.split(' ')[1].slice(0,5) : null; return {full,sha,date,time,subject,m,plan:m?.[1]||null,anchor:m?.[2]||null}}):[];
 try{const prev=JSON.parse(fs.readFileSync(join(root,'design-system/changelog-manifest.json'),'utf8')); const seen=new Set(commits.map(c=>c.sha)); for(const c of prev.commits||[]) if(!seen.has(c.sha)) commits.push(c)}catch{}
 let plans=[]; try{plans=fs.readdirSync(join(root,'.hermes/plans')).filter(f=>f.endsWith('.md')).sort()}catch{}
 let wip=[]; try{const s=execSync(`git status --short -- ${DS.join(' ')}`,{encoding:'utf8'}); wip=s.trim()? s.trim().split('\n').map(l=>l.trim()).filter(l=>!l.includes('changelog-manifest.json')):[]}catch{}
@@ -14,7 +14,7 @@ let retro={}; try{retro=JSON.parse(fs.readFileSync(join(root,'.hermes/plan-links
 let cont='20260909_145218_9888b1'; try{cont=JSON.parse(fs.readFileSync(join(root,'.hermes/continuation.json'),'utf8')).continuation||cont}catch{}
 let linked=commits.filter(c=>c.plan).length;
 let tagged=0; for(const f of plans){ try{const t=fs.readFileSync(join(root,'.hermes/plans',f),'utf8'); if(/\*\*Tags:\*\*/.test(t)) tagged++; }catch{}}
-const manifest={generated:new Date().toISOString(), continuation:cont, plans, commits:commits.map(c=>({sha:c.sha,full:c.full,date:c.date,subject:c.subject.replace(TAG,'').trim(),plan:c.plan,anchor:c.anchor})), wip};
+const manifest={generated:new Date().toISOString(), continuation:cont, plans, commits:commits.map(c=>({sha:c.sha,full:c.full,date:c.date,time:c.time,subject:c.subject.replace(TAG,'').trim(),plan:c.plan,anchor:c.anchor})), wip};
 try{const prev=JSON.parse(fs.readFileSync(join(root,'design-system/changelog-manifest.json'),'utf8')); if(JSON.stringify({plans:manifest.plans,commits:manifest.commits,wip:manifest.wip})===JSON.stringify({plans:prev.plans,commits:prev.commits,wip:prev.wip})) manifest.generated=prev.generated;}catch{}
 fs.mkdirSync(join(root,'design-system'),{recursive:true}); fs.writeFileSync(join(root,'design-system/changelog-manifest.json'),JSON.stringify(manifest,null,2));
 console.log(`✓ ds-track — ${plans.length} plans · ${commits.length} DS commits (${linked} linked) · ${wip.length} wip · cont ${cont} ${tagged}/${plans.length} tagged`);
