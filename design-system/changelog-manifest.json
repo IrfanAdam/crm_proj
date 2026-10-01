@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T10:28:28.191Z",
+  "generated": "2026-10-01T10:38:40.104Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "3abaf77",
+      "full": "3abaf77ece5fb427dfdf4503476eff59740b980c",
+      "date": "2026-10-01",
+      "subject": "fix(changelog): timeline compact — no container, time only, date 25 Mar, 2026, unclipped line+dots",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "327aa5c",
       "full": "327aa5cb431211be59bf767a52b034c3888e72d3",
