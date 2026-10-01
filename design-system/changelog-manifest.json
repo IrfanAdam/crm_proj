@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T09:07:25.414Z",
+  "generated": "2026-10-01T09:07:40.079Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,6 +19,14 @@
     "2026-09-29_143500-ds-docs-delight.md"
   ],
   "commits": [
+    {
+      "sha": "46dab48",
+      "full": "46dab48b463efed3ede309535e01b51047a2e873",
+      "date": "2026-10-01",
+      "subject": "feat(pitch): changelog page — calendar, build cards, drawer, nav links",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
+    },
     {
       "sha": "623dd7d",
       "full": "623dd7d59904809df388282db5eeeb9da63eb1f8",
@@ -3013,25 +3021,10 @@
     }
   ],
   "wip": [
-    "M gallery.html",
-    "M index.html",
-    "M scripts/ds-track.mjs",
-    "M src/arch/atlas.json",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M vite.config.js",
-    "?? pitch-changelog.html",
-    "?? scripts/pattern-capture.mjs",
-    "?? src/pitch/pitch-changelog-cal.css",
-    "?? src/pitch/pitch-changelog-cal.js",
-    "?? src/pitch/pitch-changelog-cards.css",
-    "?? src/pitch/pitch-changelog-data.js",
-    "?? src/pitch/pitch-changelog-drawer.css",
-    "?? src/pitch/pitch-changelog-drawer.js",
-    "?? src/pitch/pitch-changelog-list.js",
-    "?? src/pitch/pitch-changelog.css",
-    "?? src/pitch/pitch-changelog.js"
+    "?? scripts/pattern-capture.mjs"
   ]
 }
