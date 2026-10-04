@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-03T16:03:24.095Z",
+    "generatedAt": "2026-10-04T12:34:09.337Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -21,9 +21,9 @@
       "src/components/Chip": 1790164764688,
       "src/components/FunnelCard": 1790164683655,
       "src/components/FunnelGlyph": 1790164774810,
-      "src/components/GemReward": 1791039253979,
+      "src/components/GemReward": 1791046246623,
       "src/components/GoalBar": 1790164683680,
-      "src/components/Icon": 1791043215190,
+      "src/components/Icon": 1791113917157,
       "src/components/KpiStat": 1790164767740,
       "src/components/ListRow": 1790164767729,
       "src/components/OpportunityCard": 1790164802893,
@@ -44,13 +44,13 @@
       "src/components/Textarea": 1790164876031,
       "src/components/Timeline": 1790164774821,
       "src/components/Toolbar": 1790164696780,
-      "index.html": 1790846767101,
-      "src/glass/BottomDock.jsx": 1791029367643,
-      "src/patterns/ActivityStrip": 1791027002801,
+      "index.html": 1791115704160,
+      "src/glass/BottomDock.jsx": 1791115689386,
+      "src/patterns/ActivityStrip": 1791109230849,
       "src/patterns/EmptyState": 1790097746429,
       "src/patterns/MonitorScreen": 1789570118710,
       "src/patterns/OperateScreen": 1789627036004,
-      "src/patterns/OppsHome": 1790326757201,
+      "src/patterns/OppsHome": 1791114189912,
       "src/patterns/ReportsMatrix": 1789570122013
     }
   },

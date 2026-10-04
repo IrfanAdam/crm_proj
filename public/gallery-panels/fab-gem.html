@@ -1,0 +1,42 @@
+<div class="pad spec-grid">
+<section class="specimen">
+<h3>Spec — feel states</h3>
+<p class="spec-note">Four states, one spring system; every state is a target the integrator chases, never a timeline.</p>
+<table class="ch-roles"><thead><tr><th>State</th><th>What you see</th><th>Driven by</th></tr></thead><tbody>
+<tr><td>Rest</td><td>56px glass circle, gem idle; transform cleared entirely</td><td>no spring running — zero cost</td></tr>
+<tr><td>Press</td><td>widens ~4.5%, flattens ~8% (one squish, no translate)</td><td><code>--fab-squish</code> spring, k 760</td></tr>
+<tr><td>Drag</td><td>blob lags the finger, stretches along the lag vector, cross-axis squashes to half</td><td><code>--fab-elasticity</code> follow, <code>--fab-stretch</code> at 95px lag</td></tr>
+<tr><td>Release</td><td>flies home, one clear overshoot (≈stretch·0.16 damping), settles ≤0.6s</td><td><code>--fab-damping</code> ζ on the same k</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — anatomy</h3>
+<table class="ch-roles"><thead><tr><th>Part</th><th>Detail</th></tr></thead><tbody>
+<tr><td>Shell</td><td><code>.fab-gem</code> 56px circle — <code>--bg-surface</code> 62% + 6px backdrop blur, inset hairline + top veil</td></tr>
+<tr><td>Gem</td><td><code>gem-minimal</code> regular 24 — <code>--primitive-neutral-dark-600</code>, matches dock item resting ink</td></tr>
+<tr><td>Anchor</td><td>device: <code>right 16 / bottom 30</code>, z 6 — beside the dock, same baseline; lab: <code>right 12 / bottom 12</code></td></tr>
+<tr><td>Gesture</td><td><code>touch-action:none</code> · pointer-captured drag · 8px tap/drag threshold · drag's trailing click is swallowed</td></tr>
+<tr><td>Fallback</td><td>reduced motion: no drive, <code>:active</code> scale .96 — same tab-stop, same action</td></tr>
+</tbody></table>
+</section>
+<section class="specimen">
+<h3>Spec — feel contract</h3>
+<p class="spec-note">Four live CSS variables on the element; <code>attachGooey</code> reads them on every press, so the lab retunes the real physics.</p>
+<details class="spec-more"><summary>Variables — defaults, ranges, effect</summary>
+<table class="ch-roles"><thead><tr><th>Variable</th><th>Default · lab range</th><th>Effect</th></tr></thead><tbody>
+<tr><td><code>--fab-elasticity</code></td><td>800 · 300–1800</td><td>Follow stiffness (1/s²) — lag while dragging ≈ v·1.8/ω; ω = √k also sets snap-home tempo</td></tr>
+<tr><td><code>--fab-damping</code></td><td>0.50 · 0.2–1.0</td><td>Release damping ratio ζ — 0.5 = one clear overshoot; 1.0 = dead stop (release only, drag stays 0.9)</td></tr>
+<tr><td><code>--fab-stretch</code></td><td>0.26 · 0.05–0.45</td><td>Max elongation, reached at 95px of lag; cross-axis squashes half of it</td></tr>
+<tr><td><code>--fab-squish</code></td><td>0.08 · 0.02–0.20</td><td>Press compression: +55% of it wide, full it flat; released on an underdamped pop (ζ 0.38)</td></tr>
+</tbody></table>
+</details>
+</section>
+<section class="specimen">
+<h3>Spec — contract</h3>
+<p class="spec-note">One blob, one drive: position lag → stretch axis → press squish, composed in a single per-frame transform.</p>
+<code class="tp-code">&lt;button class="fab-gem" style="--fab-elasticity:800; --fab-damping:.5; --fab-stretch:.26; --fab-squish:.08"&gt;
+  &lt;Icon name="gem-minimal" size={24} weight="regular" /&gt;   &lt;!-- bottom nav: &lt;FabGem /&gt; in the dock --&gt;
+&lt;/button&gt;</code>
+<p class="meta">Related — the dock material is <code>src/glass/dock-lens.css</code>; the DS dock component is Navigation → TabBar. Spring drive: <code>src/glass/fab-spring.js</code> · app mount: <code>FabGem.jsx</code></p>
+</section>
+</div>

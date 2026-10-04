@@ -4,7 +4,7 @@
 const DS_ORDER = [
   'language','color','typography','spacing','radius','shadow','motion',
   'iconography','actions','identity','text','choice','nav','overlays',
-  'data','cards','operate','monitor','reports','gems','cube',
+  'data','cards','operate','monitor','reports','gems','cube','dock',
 ];
 
 // — Language frame —

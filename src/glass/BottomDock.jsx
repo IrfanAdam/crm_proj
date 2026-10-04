@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import DockLens from "./DockLens.jsx";
 import DockSlices from "./DockSlices.jsx";
 import DockTrack from "./dock-track.jsx";
+import FabGem from "./FabGem.jsx";
 import { ENGINE } from "./engine.js";
-import Icon from "../components/Icon/Icon.jsx";
 
 /* Phosphor icon mapping — 3 tabs, icon-only (learned over time). */
 const ITEMS = [
@@ -28,10 +28,8 @@ export default function BottomDock() {
       <span className="tabbar__rim" aria-hidden="true" />
       <DockTrack items={ITEMS} page={page} onSelect={setPage} />
     </div>
-    {/* iOS-style floating gem — right side, above dock */}
-    <button className="fab-gem" type="button" aria-label="Gem search" onClick={() => console.log('gem search')}>
-      <Icon name="gem-minimal" size={24} weight="regular" aria-hidden="true" />
-    </button>
+    {/* iOS-style floating gem — right side, above dock · gooey spring blob */}
+    <FabGem />
     </>
   );
 }

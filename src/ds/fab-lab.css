@@ -1,0 +1,7 @@
+/* ADAM/DS — src/ds/fab-lab.css · floating gem playground shell */
+.fab-lab__range{width:104px;accent-color:var(--role-action)}
+.fab-lab__out{font-size:var(--font-size-xs);color:var(--text-secondary);font-variant-numeric:tabular-nums;min-width:34px}
+.fablab{position:relative;width:100%;max-width:440px;height:200px;border:1px solid var(--border-thin);border-radius:var(--radius-xl);background:var(--bg-primary);overflow:hidden}
+.fablab__dock{position:absolute;left:12px;right:88px;bottom:12px;height:56px;display:flex;align-items:center;justify-content:space-around;border-radius:var(--radius-full);background:color-mix(in srgb,var(--bg-surface) 55%,transparent);backdrop-filter:blur(6px) saturate(130%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 0 0 1px color-mix(in srgb,var(--primitive-ink) 8%,transparent)}
+.fablab__dock i{font-size:20px;color:var(--primitive-neutral-dark-600)}
+.fablab__dock i:first-child{color:var(--signal)}

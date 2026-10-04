@@ -60,6 +60,36 @@
         "spec": null
       },
       "updated": "2026-10-01T08:46:18.218Z"
+    },
+    "fab-gem": {
+      "status": "documented",
+      "location": "prototype dock (bottom nav) · DS gallery Dock",
+      "components": [
+        "Icon"
+      ],
+      "tokens": [
+        "primitive-neutral-dark-600",
+        "bg-surface",
+        "primitive-ink",
+        "primitive-sapphire-ui-400"
+      ],
+      "hexLeaks": [],
+      "interactions": [
+        "press · squish spring (--fab-squish)",
+        "drag · soft follow spring, lag behind pointer (--fab-elasticity)",
+        "lag · elongation along trail vector, cross-axis half (--fab-stretch)",
+        "edges · rubber band beyond offsetParent bounds (1/4 gain)",
+        "release · underdamped fly home, overshoot ∝ ζ (--fab-damping)",
+        "gate · tap-vs-drag 8px, drag swallows trailing click",
+        "reduced-motion · drive off, :active fallback",
+        "slow-mo · dt × time-scale.getScale()"
+      ],
+      "docs": {
+        "intro": "component-docs/fab-gem-intro.html",
+        "lab": "gallery-panels/fab-gem-lab.html",
+        "spec": "gallery-panels/fab-gem.html"
+      },
+      "updated": "2026-10-04T12:34:49.596Z"
     }
   },
   "version": 1

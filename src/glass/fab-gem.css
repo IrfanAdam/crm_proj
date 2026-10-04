@@ -1,0 +1,19 @@
+/* ADAM/GLASS — src/glass/fab-gem.css · floating gem action — gooey spring blob (app + DS lab) */
+/* Moved from dock-lens.css; scope opens to `.fablab` so the DS lab embeds the real component.
+   The four feel vars are read live by fab-spring.js (attachGooey) — the lab retunes them. */
+:is(.device, .fablab) .fab-gem{
+  --fab-elasticity:800;--fab-damping:.5;--fab-stretch:.26;--fab-squish:.08;
+  width:56px;height:56px;border-radius:50%;border:none;cursor:grab;display:grid;place-items:center;color:var(--primitive-neutral-dark-600);
+  background:color-mix(in srgb,var(--bg-surface) 62%,transparent);
+  -webkit-backdrop-filter:blur(6px) saturate(132%);backdrop-filter:blur(6px) saturate(132%);
+  box-shadow:0 6px 16px rgba(15,16,21,.14),0 1px 4px rgba(15,16,21,.08),inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px color-mix(in srgb,var(--primitive-ink) 8%,transparent);
+  transition:box-shadow 160ms ease; /* transform is JS-owned — never transitioned */
+  touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform;
+}
+.device .fab-gem{position:absolute;right:16px;bottom:30px;z-index:6}
+.fablab .fab-gem{position:absolute;right:12px;bottom:12px}
+:is(.device, .fablab) .fab-gem svg path[fill]{fill:currentColor}
+:is(.device, .fablab) .fab-gem[data-fab-drag]{cursor:grabbing}
+/* press fallback — reduced motion (attachGooey no-ops) and the first frame before the spring wakes */
+:is(.device, .fablab) .fab-gem:active{transform:scale(.96);box-shadow:0 4px 10px rgba(15,16,21,.16)}
+:is(.device, .fablab) .fab-gem:focus-visible{outline:none;box-shadow:0 6px 16px rgba(15,16,21,.14),0 0 0 2px var(--primitive-sapphire-ui-400)}

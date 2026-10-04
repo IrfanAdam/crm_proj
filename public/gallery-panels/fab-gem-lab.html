@@ -1,0 +1,28 @@
+<section class="specimen">
+<h3>Playground — one blob, four feel constants</h3>
+<div class="nlab" data-fablab>
+<div class="nlab__bar">
+<div class="nlab__group" role="group" aria-label="Feel">
+<span class="nlab__label">Elasticity</span><input class="fab-lab__range" type="range" data-fab-range="elasticity" min="300" max="1800" step="20" value="800" aria-label="Elasticity"><output class="fab-lab__out" data-fab-out="elasticity">800</output>
+<span class="nlab__label">Damping</span><input class="fab-lab__range" type="range" data-fab-range="damping" min="0.2" max="1" step="0.02" value="0.5" aria-label="Damping"><output class="fab-lab__out" data-fab-out="damping">0.50</output>
+<span class="nlab__label">Stretch</span><input class="fab-lab__range" type="range" data-fab-range="stretch" min="0.05" max="0.45" step="0.01" value="0.26" aria-label="Stretch"><output class="fab-lab__out" data-fab-out="stretch">0.26</output>
+<span class="nlab__label">Squish</span><input class="fab-lab__range" type="range" data-fab-range="squish" min="0.02" max="0.2" step="0.01" value="0.08" aria-label="Squish"><output class="fab-lab__out" data-fab-out="squish">0.08</output>
+</div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Presets">
+<span class="nlab__label">Preset</span><button class="nlab__pill" data-fab-preset="crisp">Crisp</button><button class="nlab__pill is-on" data-fab-preset="apple">Apple</button><button class="nlab__pill" data-fab-preset="jelly">Jelly</button>
+</div>
+</div>
+<div class="nlab__stage" data-surface="surface">
+<div class="fablab" data-fablab-stage>
+<div class="fablab__dock" aria-hidden="true"><i class="ph ph-house"></i><i class="ph ph-users"></i><i class="ph ph-handshake"></i></div>
+</div>
+<p class="nlab__hint meta">Press · drag · release — the blob squishes, lags, stretches along travel and wobbles home. Controls write the same CSS variables the spring reads on the next gesture.</p>
+</div>
+<div class="nlab__code">
+<pre><code class="tp-code" data-fab-code></code></pre>
+<span class="nlab__ratio" data-fab-read>ω — · ζ —</span>
+<button class="nlab__copy" data-fab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">The specimen is the app component — same <code>.fab-gem</code> markup, same spring drive; only the variables differ. Reject: dead controls that flip a class the physics never reads.</p>
+</section>
