@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T12:52:30.905Z",
+  "generated": "2026-10-04T13:25:13.366Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -20,6 +20,15 @@
     "2026-10-03_144222-gem-realism-round2.md"
   ],
   "commits": [
+    {
+      "sha": "c5acc8e",
+      "full": "c5acc8e1ea5943d4c544eed10c31d575b3cfb61c",
+      "date": "2026-10-04",
+      "time": "18:55",
+      "subject": "feat(ds,type): Azeret Mono becomes the product mono — masthead brand + --font-family-mono + code surfaces",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "e483648",
       "full": "e48364832f56cf0893d108db546f226507ae7005",
@@ -3147,6 +3156,7 @@
     "M src/pitch/pitch-layers.css",
     "M src/pitch/pitch-loop-detail.css",
     "M src/pitch/pitch-loop.css",
+    "M src/pitch/pitch-masthead.css",
     "M src/pitch/pitch-position.css",
     "M src/pitch/pitch-spine.css",
     "M src/pitch/pitch-table.css",
