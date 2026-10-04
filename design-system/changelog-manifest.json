@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T12:34:16.454Z",
+  "generated": "2026-10-04T12:36:42.087Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -20,6 +20,15 @@
     "2026-10-03_144222-gem-realism-round2.md"
   ],
   "commits": [
+    {
+      "sha": "f205276",
+      "full": "f205276038ea20f593ad8c2f7b9cd249c88749bd",
+      "date": "2026-10-04",
+      "time": "18:06",
+      "subject": "feat(ds,patterns): floating gem gooey — spring squish, lag-stretch, wobble home + Dock DS panel",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "befbffa",
       "full": "befbffa0a3980b6aa49cd4d06886a02dd6fe2765",
@@ -3108,7 +3117,6 @@
   ],
   "wip": [
     "M gallery.html",
-    "M index.html",
     "M pitch.html",
     "M public/pitch-v2/footer.html",
     "M public/pitch-v2/img/layer-performance.jpg",
@@ -3116,11 +3124,6 @@
     "M src/components/Icon/Icon.jsx",
     "M src/components/IllusionCube/illusion-audio-engine.js",
     "M src/components/IllusionCube/illusion-audio.js",
-    "M src/ds/changelog-names.json",
-    "M src/ds/gallery-shell.js",
-    "M src/ds/labs.css",
-    "M src/glass/BottomDock.jsx",
-    "M src/glass/dock-lens.css",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
@@ -3140,11 +3143,6 @@
     "M src/pitch/pitch-table.css",
     "M src/pitch/pitch-theme.css",
     "?? public/pitch-v2/img/layer-performance-graded-backup.jpg",
-    "?? src/ds/fab-lab.css",
-    "?? src/ds/fab-lab.js",
-    "?? src/glass/FabGem.jsx",
-    "?? src/glass/fab-gem.css",
-    "?? src/glass/fab-spring.js",
     "?? src/pitch/pitch-footer-orchestrion.js",
     "?? tests/illusion-audio.test.mjs"
   ]
