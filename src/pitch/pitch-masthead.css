@@ -1,5 +1,6 @@
 /* ADAM/PAGE — src/pitch/pitch-masthead.css · sticky masthead + split brand hero */
 /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · page bar sticks, hero grid. */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · brand wears --font-brand (Azeret Mono 500). */
   /* ── MASTHEAD MOUNT (sticks — body-tall parent, the page bar) ── */
   .masthead-mount {
     position: sticky;
@@ -8,6 +9,7 @@
     background: var(--bg);
   }
   .masthead {
+    --font-brand: 'Azeret Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     padding: 1.1rem 2rem;
     max-width: 1060px;
     margin: 0 auto;
@@ -17,9 +19,9 @@
     gap: 1rem;
   }
   .masthead-brand {
-    font-family: var(--font-display);
+    font-family: var(--font-brand);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--violet);
   }
   .masthead-right {

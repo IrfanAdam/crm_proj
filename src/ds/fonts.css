@@ -1,0 +1,11 @@
+/* ADAM/DS — src/ds/fonts.css · the DS mono face, self-hosted */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · Azeret Mono 500 — first family of
+   --font-family-mono (code surfaces, changelog mono). File ships in public/fonts/, served
+   same-origin so dist/ renders the real face anywhere it is hosted. */
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url('/fonts/azeret-mono-500.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

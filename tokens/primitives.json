@@ -23,7 +23,7 @@
     "tracking-tight": "-0.01em",
     "tracking-normal": "0",
     "tracking-wide": "0.04em",
-    "family-mono": "ui-monospace, \"SF Mono\", Menlo, monospace",
+    "family-mono": "'Azeret Mono', ui-monospace, \"SF Mono\", Menlo, monospace",
     "micro": "10.5px",
     "ds-body": "13px",
     "ds-table": "12.5px",

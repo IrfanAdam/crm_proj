@@ -40,7 +40,7 @@
   background: var(--color-code-bg);
 }
 .ds-code code.hl {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   line-height: var(--font-leading-relaxed);
   color: var(--color-code-fg);
@@ -50,7 +50,7 @@
 
 /* — Legacy tp-code upgraded to hl — */
 code.tp-code.hl {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   line-height: var(--font-leading-relaxed);
   background: var(--color-code-bg);

@@ -20,6 +20,6 @@
 .flab__code{position:relative;background:var(--color-code-bg);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-8) var(--spacing-3) var(--spacing-3);overflow:hidden;margin:var(--spacing-2) var(--spacing-4) var(--spacing-4)}
 .flab__code::before{content:"HTML";position:absolute;top:var(--spacing-2);left:var(--spacing-2);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);color:var(--text-muted);text-transform:uppercase;letter-spacing:var(--font-tracking-wide)}
 .flab__code pre{margin:var(--spacing-0);overflow:auto}
-.flab__code .tp-code.hl{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--font-size-xs);line-height:1.6;color:var(--color-code-fg);background:transparent;border:none;white-space:pre;overflow-x:auto;tab-size:2}
+.flab__code .tp-code.hl{display:block;font-family:var(--font-family-mono);font-size:var(--font-size-xs);line-height:1.6;color:var(--color-code-fg);background:transparent;border:none;white-space:pre;overflow-x:auto;tab-size:2}
 .flab__code [data-flab-copy]{position:absolute;top:var(--spacing-2);right:var(--spacing-2);width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);color:var(--text-secondary);cursor:pointer}
 .flab__ratio{font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold)}

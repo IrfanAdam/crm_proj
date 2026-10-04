@@ -59,7 +59,7 @@
 }
 .blab__code .tp-code.hl {
   display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   line-height: 1.6;
   color: var(--color-code-fg);

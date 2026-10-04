@@ -16,6 +16,6 @@
 .carlab__field--sm input{max-width:var(--spacing-12)}
 .carlab__code{position:relative;background:var(--color-code-bg);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-8) var(--spacing-3) var(--spacing-3);margin:var(--spacing-2) var(--spacing-4) var(--spacing-4);overflow:hidden}
 .carlab__code pre{margin:var(--spacing-0);overflow:auto}
-.carlab__code code.hl{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--font-size-xs);line-height:1.6;color:var(--color-code-fg);white-space:pre;overflow-x:auto}
+.carlab__code code.hl{display:block;font-family:var(--font-family-mono);font-size:var(--font-size-xs);line-height:1.6;color:var(--color-code-fg);white-space:pre;overflow-x:auto}
 .carlab__ratio{position:absolute;top:var(--spacing-2);left:var(--spacing-2);font-size:var(--font-size-xs);color:var(--text-muted)}
 .carlab__code [data-carlab-copy]{position:absolute;top:var(--spacing-2);right:var(--spacing-2);width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);color:var(--text-secondary);cursor:pointer}

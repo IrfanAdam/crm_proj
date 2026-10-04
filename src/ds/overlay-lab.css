@@ -21,7 +21,7 @@
 .olab__check{display:flex;align-items:center;gap:var(--spacing-1);font-size:var(--font-size-sm);color:var(--text-secondary)}
 .olab__code{position:relative;background:var(--color-code-bg);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);padding:var(--spacing-8) var(--spacing-3) var(--spacing-3);overflow:hidden;margin:var(--spacing-2) var(--spacing-4) var(--spacing-4)}
 .olab__code pre{margin:var(--spacing-0);overflow:auto}
-.olab__code .tp-code.hl{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--font-size-xs);line-height:1.6;color:var(--color-code-fg);background:transparent;border:none;padding:var(--spacing-0);margin:var(--spacing-0);white-space:pre;overflow-x:auto;tab-size:2}
+.olab__code .tp-code.hl{display:block;font-family:var(--font-family-mono);font-size:var(--font-size-xs);line-height:1.6;color:var(--color-code-fg);background:transparent;border:none;padding:var(--spacing-0);margin:var(--spacing-0);white-space:pre;overflow-x:auto;tab-size:2}
 .olab__code [data-olab-copy]{position:absolute;top:var(--spacing-2);right:var(--spacing-2);width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-md);color:var(--text-secondary);cursor:pointer}
 .olab__code [data-olab-copy]:hover{background:var(--bg-interactive);color:var(--text-primary)}
 .olab__stage .ov-stage{width:100%;height:calc(var(--spacing-16)*4);min-height:calc(var(--spacing-16)*4)}
