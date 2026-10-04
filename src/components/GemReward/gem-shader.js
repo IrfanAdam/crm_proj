@@ -1,90 +1,99 @@
-/* ADAM/SHARED — src/components/GemReward/gem-shader.js · chromatic fire patch */
-// [plan:2026-09-28_000000-lump-sum-builds.md#phase-4] · Task 30 · mirrors DISP in prototype/gems/gem_optics.py
-// — three r160 has no `dispersion`, and onBeforeCompile hands the shader over with its `#include` —
-// — directives UNRESOLVED, so the literal refraction call is not in the source yet — patching the —
-// — include itself is the only hook that fires. —
-// — WHAT WAS WRONG (measured): the old patch varied only the IOR handed to getIBLVolumeRefraction, —
-// — whose sample source here is a render target holding the flat white/0.5 alpha clear (three fills —
-// — it with OPAQUE objects only; the stage is scene.background and the ghosts/floors are —
-// — transparent, so the card has none). That target reads lum 234 / chroma 1.2 — uniform white — so —
-// — t0.r==t1.g==t2.b and the patch was a closed-form identity: no spread, sample count or weighting —
-// — can separate a constant (spread 20-40 bit-identical to stock; >=60 degenerates to TIR/NaN; —
-// — nine weighted samples = a uniform 7° global hue shift = the textbook "tint, not fire"). —
-// — THE FIX: the only structured-chroma signal is the PMREM env, which feeds the IBL mirror term. —
-// — R/B sample it at ±off in the facet's tangent plane around the body reflection vector: the delta —
-// — vanishes where the env is flat (no tint) and flips across an emitter edge (fringe at facet —
-// — junctions). Measured: fire_px_frac 0.0157→0.1054, dev_p95 3.6→28.6, hue p90-p10 4.3→43.4; —
-// — 510× edge/facet concentration; 62.6% of interior pixels move <3° while 13.2% move >30°. —
-// — COST CLIFF: do NOT extend to geometryClearcoatNormal (25→14 fps on SwiftShader). Body only. —
-// — Order matters: the chunk replaces #include <transmission_fragment> and sits after —
-// — `vec3 totalSpecular = …`, so totalSpecular / envMap / envMapIntensity are in scope. —
-// Export map: GEM_SHADER.dispersion(src, spread) → fragment source with mirror-vector fire
+/* ADAM/SHARED — src/components/GemReward/gem-shader.js · real gem optics */
+// [plan:2026-09-28_000000-lump-sum-builds.md#phase-4] · Round3: far-side proxy + 3-IOR dispersion.
+// — dispersion(src, spread): swaps <transmission_fragment> for 3 real IOR taps (lo/ior/hi) →
+// —   vec4(t0.r, t1.g, t2.b, t1.a). Default spread is SMALL (~3%): the RT is now structured, so a
+// —   wide split lands the R/G/B taps on different facets → neon channel separation, not dispersion.
+// — farside(opts): opaque BackSide ShaderMaterial for the far-side facets — per-facet Snell
+// —   refract + true TIR (env internal reflection + key-light glint) + projected stage-backdrop
+// —   window (faded out when the projection leaves the backdrop). Being opaque it renders into
+// —   three's transmission RT; the body occludes it in the main pass (no overlay).
 (function () {
 const api = {};
-const FIRE_OFF = 0.12;      // tangent-plane offset magnitude (tan units) ~= 6.8 deg
-const FIRE_AZ = [70, 160];  // offset azimuths in each facet's tangent frame (deg)
-const FIRE_W = 1.0;         // weight on the chromatic delta (1.0 = physical, no amplification)
+window.GEM_SHADER = api;
+const GAIN = 2.6;
+const TIR_BOOST = 1.6;
+const TINT_MIX = 0.3;
+const ENV_BROAD = 0.28;
+const WIN_GAIN = 1.8;
+const SUN_GAIN = 9.0;
 const refract = function (lo, hi) {
-return `	vec4 t0 = getIBLVolumeRefraction(
-		n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90,
-		pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * ${lo}, material.thickness,
-		material.attenuationColor, material.attenuationDistance );
-	vec4 t1 = getIBLVolumeRefraction(
-		n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90,
-		pos, modelMatrix, viewMatrix, projectionMatrix, material.ior, material.thickness,
-		material.attenuationColor, material.attenuationDistance );
-	vec4 t2 = getIBLVolumeRefraction(
-		n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90,
-		pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * ${hi}, material.thickness,
-		material.attenuationColor, material.attenuationDistance );
-	vec4 transmitted = vec4( t0.r, t1.g, t2.b, t1.a );
-	material.transmissionAlpha = mix( material.transmissionAlpha, transmitted.a, material.transmission );
-	totalDiffuse = mix( totalDiffuse, transmitted.rgb, material.transmission );`;
+return `\tfloat face = abs( dot( n, v ) );\n\tvec4 t0 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * mix( 1.0, ${lo}, face ), material.thickness, material.attenuationColor, material.attenuationDistance );\n\tvec4 t1 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior, material.thickness, material.attenuationColor, material.attenuationDistance );\n\tvec4 t2 = getIBLVolumeRefraction(n, v, material.roughness, material.diffuseColor, material.specularColor, material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.ior * mix( 1.0, ${hi}, face ), material.thickness, material.attenuationColor, material.attenuationDistance );\n\tvec4 transmitted = mix( t1, vec4( t0.r, t1.g, t2.b, t1.a ), 0.6 );\n\tfloat graze = 1.0 - face;\n\ttransmitted.rgb *= mix( vec3( 1.0 ), material.attenuationColor * 1.35, graze * 0.5 );\n\tfloat tzdark = 1.0 - clamp( max( transmitted.r, max( transmitted.g, transmitted.b ) ), 0.0, 1.0 );\n\tfloat lowside = smoothstep( 0.15, -0.8, normalize( refract( -v, n, 1.0 / material.ior ) ).y );\n\ttransmitted.rgb += material.diffuseColor * tzdark * mix( 0.22, 0.44, lowside );\n\ttransmitted.rgb += vec3( 0.05 ) * tzdark;\n\ttransmitted.rgb = mix( transmitted.rgb, material.diffuseColor * 1.0, 0.16 * tzdark * lowside );\n\tvec3 bgd = normalize( refract( -v, n, 1.0 / material.ior ) );\n\tvec4 bgcp = projectionMatrix * viewMatrix * vec4( pos + bgd * 3.0, 1.0 );\n\tvec2 bguv = bgcp.xy / max( abs( bgcp.w ), 1e-4 ) * 0.5 + 0.5;\n\tvec3 bg = texture2D( bgTex, clamp( bguv, 0.0, 1.0 ) ).rgb * material.diffuseColor;\n\ttransmitted.rgb = mix( transmitted.rgb, bg, bgOn * mix( 0.60, 0.15, tzdark ) );\n\tmaterial.transmissionAlpha = mix( material.transmissionAlpha, transmitted.a, material.transmission );`;
 };
-const fire = function (off, w) {
-const blocks = FIRE_AZ.map(function (a) {
-const c = Math.cos((a * Math.PI) / 180).toFixed(4), s = Math.sin((a * Math.PI) / 180).toFixed(4);
-return `	{
-		vec3 off = ( bt * ${c} + bn * ${s} ) * ${off.toFixed(4)};
-		vec4 ea = textureCubeUV( envMap, normalize( rwg + off ), material.roughness );
-		vec4 eb = textureCubeUV( envMap, normalize( rwg - off ), material.roughness );
-		fire += vec3( ea.r - midc.r, 0.0, eb.b - midc.b );
-	}`;
-}).join('\n');
-return `	vec3 upv = abs( n.y ) < 0.99 ? vec3( 0.0, 1.0, 0.0 ) : vec3( 1.0, 0.0, 0.0 );
-	vec3 bt = normalize( cross( upv, n ) );
-	vec3 bn = cross( n, bt );
-	vec3 rwg = normalize( mix( reflect( - v, n ), n, material.roughness * material.roughness ) );
-	vec4 midc = textureCubeUV( envMap, rwg, material.roughness );
-	vec3 fire = vec3( 0.0 );
-${blocks}
-	totalSpecular += fire * envMapIntensity * ${w.toFixed(4)};`;
-};
+const HEAD = '\tmaterial.transmission = transmission;\n\tmaterial.transmissionAlpha = 1.0;\n\tmaterial.thickness = thickness;\n\tmaterial.attenuationDistance = attenuationDistance;\n\tmaterial.attenuationColor = attenuationColor;\n\t#ifdef USE_TRANSMISSIONMAP\n\t\tmaterial.transmission *= texture2D( transmissionMap, vTransmissionMapUv ).r;\n\t#endif\n\t#ifdef USE_THICKNESSMAP\n\t\tmaterial.thickness *= texture2D( thicknessMap, vThicknessMapUv ).g;\n\t#endif\n\tvec3 pos = vWorldPosition;\n\tvec3 v = normalize( cameraPosition - pos );\n\tvec3 n = inverseTransformDirection( normal, viewMatrix );\n\tvec3 baseDiffuse = totalDiffuse;';
 const chunk = function (lo, hi) {
-return `#ifdef USE_TRANSMISSION
-	material.transmission = transmission;
-	material.transmissionAlpha = 1.0;
-	material.thickness = thickness;
-	material.attenuationDistance = attenuationDistance;
-	material.attenuationColor = attenuationColor;
-	#ifdef USE_TRANSMISSIONMAP
-		material.transmission *= texture2D( transmissionMap, vTransmissionMapUv ).r;
-	#endif
-	#ifdef USE_THICKNESSMAP
-		material.thickness *= texture2D( thicknessMap, vThicknessMapUv ).g;
-	#endif
-	vec3 pos = vWorldPosition;
-	vec3 v = normalize( cameraPosition - pos );
-	vec3 n = inverseTransformDirection( normal, viewMatrix );
-${refract(lo, hi)}
-${fire(FIRE_OFF, FIRE_W)}
-#endif`;
+return `#ifdef USE_TRANSMISSION\n${HEAD}\n${refract(lo, hi)}\n\ttotalDiffuse = mix( baseDiffuse, transmitted.rgb, material.transmission );\n#endif`;
 };
 api.dispersion = function (src, spread) {
-const d = spread || 12;
+const d = spread == null ? 2 : spread;
 const lo = (1 - d / 100).toFixed(4);
 const hi = (1 + d / 100).toFixed(4);
-return src.replace('#include <transmission_fragment>', chunk(lo, hi));
+return src.replace('#include <transmission_pars_fragment>', '#include <transmission_pars_fragment>\nuniform sampler2D bgTex;\nuniform float bgOn;').replace('#include <transmission_fragment>', chunk(lo, hi));
 };
-window.GEM_SHADER = api;
+if (!window.THREE) return;
+const T = window.THREE;
+const VS = 'varying vec3 vW;\nvarying vec3 vN;\nvoid main() {\n\tvec4 wp = modelMatrix * vec4( position, 1.0 );\n\tvW = wp.xyz;\n\tvN = normalize( mat3( modelMatrix ) * normal );\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}';
+const FS = 'uniform vec3 rampDeep;\nuniform vec3 rampMid;\nuniform vec3 rampLite;\nuniform vec3 rampPink;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform float winGain;\nuniform float stageOn;\nuniform float ior;\nuniform float gain;\nuniform vec3 tint;\nuniform mat4 projectionMatrix;\nvarying vec3 vW;\nvarying vec3 vN;\n#include <cube_uv_reflection_fragment>\nfloat hashf( vec3 q ) {\n\treturn fract( sin( dot( q, vec3( 12.9898, 78.233, 37.719 ) ) ) * 43758.5453 );\n}\nvoid main() {\n' +
+'vec3 n = normalize( vN );\n' +
+'vec3 w = normalize( vW - cameraPosition );\n' +
+'vec3 refr = refract( w, - n, ior );\n' +
+'float tir = 1.0 - step( 1e-4, dot( refr, refr ) );\n' +
+'vec3 dir = normalize( mix( refr, reflect( w, - n ), tir ) );\n' +
+'vec3 wp = vW + dir * 3.0;\n' +
+'vec4 cp = projectionMatrix * viewMatrix * vec4( wp, 1.0 );\n' +
+'vec2 uv = cp.xy / max( abs( cp.w ), 1e-4 ) * 0.5 + 0.5;\n' +
+'float inUv = step( 0.0, uv.x ) * step( uv.x, 1.0 ) * step( 0.0, uv.y ) * step( uv.y, 1.0 );\n' +
+'vec3 stage = texture2D( stageTex, clamp( uv, 0.0, 1.0 ) ).rgb;\n' +
+`vec3 win = stage * winGain;\n` +
+'vec3 bounceSrc = mix( vec3( 0.50, 0.50, 0.52 ), stage, stageOn );\n' +
+'#ifdef ENVMAP_TYPE_CUBE_UV\n' +
+`vec3 env = textureCubeUV( envMap, dir, 0.03 ).rgb + textureCubeUV( envMap, normalize( vN ), 0.6 ).rgb * ${ENV_BROAD.toFixed(2)} + bounceSrc * smoothstep( 0.05, -0.55, dir.y );\n` +
+'#else\n' +
+'vec3 env = vec3( 0.04 ) + bounceSrc * smoothstep( 0.05, -0.55, dir.y );\n' +
+'#endif\n' +
+'vec3 through = mix( env, win, stageOn * ( 1.0 - tir ) * inUv );\n' +
+`float hn = hashf( floor( n * 23.0 ) + floor( vW * 11.0 ) );\n` +
+`float up = dot( n, normalize( vec3( 0.15, 1.0, 0.1 ) ) );\n` +
+`float t1r = smoothstep( -0.9, 1.25, up );\n` +
+`t1r = clamp( t1r + ( hn - 0.5 ) * 0.28 - smoothstep( 0.45, 1.05, up ) * 0.28, 0.0, 1.0 );\n` +
+`t1r = floor( t1r * 6.0 ) / 6.0;\n` +
+`vec3 rampc = mix( rampDeep, rampMid, smoothstep( 0.0, 0.55, t1r ) );\n` +
+`rampc = mix( rampc, rampLite, smoothstep( 0.55, 1.0, t1r ) );\n` +
+`rampc = mix( rampc, rampPink, step( 0.86, hashf( floor( n * 47.0 ) + 3.7 ) ) * 0.85 );\n` +
+'\tthrough *= mix( vec3( 1.0 ), rampc * 1.9, 0.62 );\n' +
+`float gdot = max( dot( dir, normalize( vec3( 3.0, 5.0, 4.0 ) ) ), 0.0 );\n` +
+`float glint = pow( gdot, 150.0 ) * ${SUN_GAIN.toFixed(1)};\n` +
+`float glowMix = smoothstep( 0.88, 0.995, gdot ) * ( 1.0 - clamp( glint, 0.0, 1.0 ) );\n` +
+`vec3 rim = tint * glowMix;\n` +
+`vec3 col = through * gain * mix( vec3( 1.0 ), tint, ${TINT_MIX.toFixed(2)} ) * mix( 1.0, ${TIR_BOOST.toFixed(2)}, tir );\n` +
+'gl_FragColor = vec4( mix( col + rim * 0.55, vec3( 1.0 ), clamp( glint * mix( 0.8, 1.5, tir ), 0.0, 1.0 ) ), 1.0 );\n}';
+
+api.farside = function (opts) {
+const o = opts || {};
+const env = o.envMap && o.envMap.image && o.envMap.image.height ? o.envMap : null;
+const defines = {};
+if (env) {
+const h = env.image.height;
+const maxMip = Math.log2(h) - 2;
+defines.ENVMAP_TYPE_CUBE_UV = '';
+defines.CUBEUV_TEXEL_WIDTH = 1 / (3 * Math.max(Math.pow(2, maxMip), 7 * 16));
+defines.CUBEUV_TEXEL_HEIGHT = 1 / h;
+defines.CUBEUV_MAX_MIP = maxMip + '.0';
+}
+const ramp = o.ramp || {};
+const rc = function (k, d) { return ramp[k] && ramp[k].isColor ? ramp[k] : new T.Color(d[0], d[1], d[2]); };
+const rampDeep = rc('deep', [0.031, 0.09, 0.345]), rampMid = rc('mid', [0.11, 0.29, 0.83]), rampLite = rc('lite', [0.42, 0.47, 0.62]), rampPink = rc('pink', [0.85, 0.48, 0.78]);
+return new T.ShaderMaterial({ side: T.BackSide, defines: defines, uniforms: {
+envMap: { value: env },
+stageTex: { value: o.stageTex || null },
+stageOn: { value: o.stageTex ? 1 : 0 },
+winGain: { value: WIN_GAIN },
+ior: { value: o.ior || 2.4 },
+gain: { value: GAIN },
+tint: { value: (o.tint && o.tint.isColor) ? o.tint : new T.Color(0.11, 0.29, 0.83) },
+rampDeep: { value: rampDeep },
+rampMid: { value: rampMid },
+rampLite: { value: rampLite },
+rampPink: { value: rampPink },
+}, vertexShader: VS, fragmentShader: FS });
+};
 })();

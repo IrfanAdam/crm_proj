@@ -21,6 +21,15 @@ function close() {
   if (!overlay || overlay.hidden) return;
   overlay.hidden = true;
   document.body.classList.remove('pitch-open');
+  try {
+    if (frame && frame.contentWindow) {
+      frame.contentWindow.postMessage('pitch-pause', '*');
+      frame.contentWindow.postMessage('illusion-hush', '*');
+      frame.contentWindow.postMessage('illusion-pause', '*');
+    }
+    document.querySelectorAll('.loop-cube-frame iframe').forEach(function(f){ try{ f.contentWindow.postMessage('illusion-hush','*'); }catch(e){} });
+  } catch(e){}
+  try { if (frame && frame.contentDocument && frame.contentDocument.defaultView && frame.contentDocument.defaultView.ILLUSION_AUDIO && frame.contentDocument.defaultView.ILLUSION_AUDIO.hush) frame.contentDocument.defaultView.ILLUSION_AUDIO.hush(); } catch(e){}
   var u = new URL(location.href);
   u.searchParams.delete(KEY);
   history.replaceState(null, '', u.pathname + u.search + u.hash);
@@ -40,4 +49,21 @@ if (new URL(location.href).searchParams.get(KEY) === '1') open();
 // — Section: framed close (masthead ✕ posts from inside the iframe) —
 window.addEventListener('message', function (e) {
   if (e.data === 'alphagems:close-pitch') close();
+});
+ // — Section: visibility — hush is sticky, pause resumes on visible —
+document.addEventListener('visibilitychange', function(){
+  if (!overlay || overlay.hidden) return;
+  try {
+    if (document.hidden) {
+      if (frame && frame.contentWindow) frame.contentWindow.postMessage('illusion-pause','*');
+    } else {
+      if (frame && frame.contentWindow) frame.contentWindow.postMessage('illusion-play','*');
+    }
+  } catch(e){}
+});
+window.addEventListener('pagehide', function(){
+  try{ if(frame && frame.contentWindow) frame.contentWindow.postMessage('illusion-hush','*'); }catch(e){}
+});
+window.addEventListener('beforeunload', function(){
+  try{ if(frame && frame.contentWindow) frame.contentWindow.postMessage('illusion-hush','*'); }catch(e){}
 });

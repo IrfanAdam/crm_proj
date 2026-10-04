@@ -28,6 +28,8 @@ import {
 } from "@phosphor-icons/react";
 import { GEM_MAP } from "./gem-icons.js";
 import GemFriendly from "./GemFriendly.jsx";
+import GemLite from "./GemLite.jsx";
+import GemMinimal from "./GemMinimal.jsx";
 
 /* Phosphor icon registry — single source for the DS.
    Weight "regular" = 1.5px stroke (matches DS iconography spec).
@@ -49,6 +51,12 @@ const MAP = {
   GemFriendly,
   "gem-friendly": GemFriendly,
   "gemFriendly": GemFriendly,
+  GemLite,
+  "gem-lite": GemLite,
+  "gemLite": GemLite,
+  GemMinimal,
+  "gem-minimal": GemMinimal,
+  "gemMinimal": GemMinimal,
   ...GEM_MAP,
   // Legacy sprite IDs → Phosphor (keeps old gallery code working)
   "i-search": MagnifyingGlass,

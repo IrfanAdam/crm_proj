@@ -14,11 +14,11 @@ const KEY = { x: 3, y: 5, z: 4 };              // gem-scene's key directional �
 const GROUND = { x: -KEY.x / KEY.y, z: -KEY.z / KEY.y };   // ground shift the key throws per unit of height
 const PULL = 0.5;                              // how far the caustic travels for a lift of the stone's own height
 const UMBRA = 0.28;                            // the dark pool barely leaves the contact point — see aim()
-const HERO_SOFT = 0.6;                         // bare hero: the pool carries 0.6 of the card's weight
-const HERO_SPREAD = 1.35;                      // bare hero: same gradient over a wider quad → soft, blurred edge
-const CARD_SOFT = 0.6;                         // staged card: the same weight cut, judged in pixels on a light stage
-const CARD_SPREAD = 1.3;                       // staged card: same gradient over a wider quad → no hard core
-const CARD_AZ = Math.atan2(-GROUND.z, GROUND.x);   // the umbra's ground azimuth (both paths lean alike)
+const HERO_SOFT = 0.48;                        // bare hero: the pool carries less weight → softer penumbra (Task 5)
+const HERO_SPREAD = 1.55;                      // bare hero: wider quad → blurred edge, matches caustic ring softness
+const CARD_SOFT = 0.48;                        // staged card: softened to relax tight penumbra (Task 5)
+const CARD_SPREAD = 1.48;                      // staged card: wider quad → penumbra softness vs caustic ring
+const CARD_AZ = Math.atan2(KEY.z, KEY.x);      // long-axis aligns with key ground azimuth (3,4) → 53.13° (±5° probe)
 function floor(T, tex, y, scale, order) {
   const m = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: tex, transparent: true, blending: order === -1 ? T.AdditiveBlending : T.NormalBlending, depthWrite: false }));
   m.rotation.x = -Math.PI / 2;
@@ -39,13 +39,12 @@ const aim = function (rig) {
   const k = hgt / fl.rest;                             // 1 at rest, >1 lifted, <1 dipped
   const h0 = rig.stageBg ? fl.rest : 0;                // staged: rest height is the neutral pose (no jump at rest)
   const gx = fl.ground.x * (hgt - h0) * fl.k;
-  const gz = fl.ground.z * (hgt - h0) * fl.k * 0.6;    // depth throw damped: on screen it only reads as the pool rising
+  const gz = fl.ground.z * (hgt - h0) * fl.k;          // no 0.6 damping — keeps shadow vector collinear with key (±5°)
   const pitch = Math.sin(Math.max(-0.35, Math.min(0.35, g.rotation.x))) * 0.3;
   fl.shadow.position.x = gx * UMBRA;                   // the stone is a lens: almost no umbra, so the dark pool stays
   fl.shadow.position.z = gz * UMBRA;                   // on the contact point while the cast light lands off-axis below
   fl.shadow.scale.set(fl.base.sx * (0.94 + 0.1 * k), fl.base.sy * (0.94 + 0.1 * k), 1);
   fl.shadow.material.opacity = (fl.so * 0.62) / (0.45 + 0.55 * k);
-  fl.caustic.rotation.z = g.rotation.y;                // the pool turns with the facets casting it
   fl.caustic.position.x = gx;
   fl.caustic.position.z = fl.base.cz + gz + pitch;
   fl.caustic.scale.setScalar(fl.base.cs * (1 + 0.3 * (k - 1)));
@@ -66,7 +65,7 @@ window.GEM_BARE = {
     }
     // the card's pool is the cut's own silhouette (gem-caustic.js) at the plane's existing scale (1:1 on the
     // footprint); the bare hero keeps the texture pool — GEM_CAUSTIC absent → both fall back to it
-    const pool = !bare && cut && window.GEM_CAUSTIC ? window.GEM_CAUSTIC.pool(color, cut) : null;
+    const pool = !bare && cut && window.GEM_CAUSTIC ? (function () { try { return window.GEM_CAUSTIC.pool(color, cut); } catch (e) { return null; } })() : null;
     const shadow = floor(T, GX.shadow(), (bb.min.y - h * 0.12) * s, rad * 1.45 * s, -2);
     const caustic = floor(T, pool || GX.caustic(color), (bb.min.y - h * 0.1) * s, rad * 1.5 * s, -1);
     if (!bare) {
@@ -83,6 +82,7 @@ window.GEM_BARE = {
     scene.add(shadow);
     scene.add(caustic);
     return { shadow: shadow, caustic: caustic, ground: GROUND, rest: rest, k: PULL, so: bare ? HERO_SOFT : CARD_SOFT,
+      poolArgs: { color: color, cut: cut },
       base: { sx: shadow.scale.x, sy: shadow.scale.y, cs: caustic.scale.x, cz: caustic.position.z, cy: caustic.position.y } };
   }
 };

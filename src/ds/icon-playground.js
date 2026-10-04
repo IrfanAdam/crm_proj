@@ -11,7 +11,7 @@ const IG_ICONS=[
 'calendar-blank','calendar-check','clock','timer','hourglass','map-pin','map-trifold','compass',
 'check','check-circle','plus','x','caret-down','arrow-right','arrows-clockwise','download','upload',
 'export','share-network','trash','pencil-simple','note-pencil','file-text','file-plus','bookmark',
-'target','trophy','medal','medal-military','diamond','gem-friendly','sketch-logo','diamonds-four','warning-diamond','sparkle','star','star-four','shooting-star','crown','crown-simple','crown-cross','hexagon','octagon','warning-octagon','cube','cube-focus','cube-transparent','rocket','flag','tag','heart','thumbs-up',
+'target','trophy','medal','medal-military','diamond','gem-friendly','gem-lite','gem-minimal','sketch-logo','diamonds-four','warning-diamond','sparkle','star','star-four','shooting-star','crown','crown-simple','crown-cross','hexagon','octagon','warning-octagon','cube','cube-focus','cube-transparent','rocket','flag','tag','heart','thumbs-up',
 'smiley','lock','eye','eye-slash','info','question','warning-circle','sliders-horizontal','list',
 'kanban','squares-four','dots-three','dots-three-vertical','gauge','wifi-high','bank','wallet',
 'hand-coins','briefcase','microphone','camera','image','image-square','coffee','sun','moon',

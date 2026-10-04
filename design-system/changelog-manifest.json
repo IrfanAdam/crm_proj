@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T15:12:20.978Z",
+  "generated": "2026-10-04T10:12:40.742Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -16,7 +16,8 @@
     "2026-09-28_221212-illusion-cube-recreation.md",
     "2026-09-29_132702-ds-docs-experience.md",
     "2026-09-29_135509-illusion-cube-surface-revision.md",
-    "2026-09-29_143500-ds-docs-delight.md"
+    "2026-09-29_143500-ds-docs-delight.md",
+    "2026-10-03_144222-gem-realism-round2.md"
   ],
   "commits": [
     {
@@ -3096,5 +3097,53 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M design-system/tokens.css",
+    "M gallery.html",
+    "M index.html",
+    "M pitch.html",
+    "M public/foundations/iconography.html",
+    "M public/pitch-v2/loop.html",
+    "M public/pitch-v2/spine.html",
+    "M public/pitch-v2/theme.html",
+    "M public/pitch/spine.html",
+    "M public/pitch/theme.html",
+    "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-bare.js",
+    "M src/components/GemReward/gem-bloom.js",
+    "M src/components/GemReward/gem-caustic.js",
+    "M src/components/GemReward/gem-env.js",
+    "M src/components/GemReward/gem-scene.js",
+    "M src/components/GemReward/gem-shader.js",
+    "M src/components/GemReward/gem-textures.js",
+    "M src/components/GemReward/gem-tint.js",
+    "M src/components/GemReward/gem3d.js",
+    "M src/components/Icon/GemFriendly.jsx",
+    "M src/components/Icon/Icon.jsx",
+    "M src/components/IllusionCube/illusion-audio-engine.js",
+    "M src/components/IllusionCube/illusion-audio.js",
+    "M src/components/IllusionCube/illusion-chain.js",
+    "M src/components/IllusionCube/illusion-ctl.js",
+    "M src/ds/icon-derivative-svgs.js",
+    "M src/ds/icon-playground.js",
+    "M src/glass/BottomDock.jsx",
+    "M src/glass/dock-lens.css",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/patterns/ActivityStrip/activity-strip.js",
+    "M src/patterns/OppsHome/live-map.js",
+    "M src/patterns/OppsHome/nearby-map.js",
+    "M src/patterns/OppsHome/nearby-sheet.js",
+    "M src/patterns/OppsHome/opps-home.css",
+    "M src/pitch/pitch-loop.css",
+    "M src/pitch/pitch-overlay.js",
+    "M tokens/primitives.json",
+    "?? src/components/GemReward/gem-caustic-trace.js",
+    "?? src/components/GemReward/gem-rig.js",
+    "?? src/components/Icon/GemLite.jsx",
+    "?? src/components/Icon/GemMinimal.jsx",
+    "?? src/pitch/pitch-loop-cube.js"
+  ]
 }

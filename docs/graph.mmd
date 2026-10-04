@@ -68,10 +68,9 @@ graph TD
     components_GemReward_gem-textures[gem-textures.js]
     components_GemReward_gem-tint[gem-tint.js]
     components_GemReward_gem3d[gem3d.js]
-    components_Icon_DiamondCut[DiamondCut.jsx]
     components_Icon_GemFriendly[GemFriendly.jsx]
+    components_Icon_GemLite[GemLite.jsx]
     components_Icon_Icon[Icon.jsx]
-    components_Icon_SketchCut[SketchCut.jsx]
     components_Icon_gem-icons[gem-icons.js]
     components_IllusionCube_illusion-audio-engine[illusion-audio-engine.js]
     components_IllusionCube_illusion-audio[illusion-audio.js]
@@ -84,12 +83,13 @@ graph TD
     components_IllusionCube_illusion-explore[illusion-explore.js]
     components_IllusionCube_illusion-floor[illusion-floor.js]
     components_IllusionCube_illusion-form[illusion-form.js]
+    components_IllusionCube_illusion-frost[illusion-frost.js]
     components_IllusionCube_illusion-gl[illusion-gl.js]
     components_IllusionCube_illusion-inner[illusion-inner.js]
     components_IllusionCube_illusion-lights[illusion-lights.js]
+    components_IllusionCube_illusion-logo[illusion-logo.js]
     components_IllusionCube_illusion-motion[illusion-motion.js]
     components_IllusionCube_illusion-overlay[illusion-overlay.js]
-    components_IllusionCube_illusion-prism[illusion-prism.js]
     components_IllusionCube_illusion-scene[illusion-scene.js]
     components_IllusionCube_illusion-shell[illusion-shell.js]
     components_IllusionCube_illusion-stage[illusion-stage.js]
@@ -114,10 +114,10 @@ graph TD
   arch_atlas --> arch_atlas-state
   arch_atlas --> arch_lens-truth
   arch_atlas --> js_mechanics_graph
+  components_Icon_GemLite --> components_Icon_GemFriendly
   components_Icon_Icon --> components_Icon_gem-icons
-  components_Icon_Icon --> components_Icon_DiamondCut
-  components_Icon_Icon --> components_Icon_SketchCut
   components_Icon_Icon --> components_Icon_GemFriendly
+  components_Icon_Icon --> components_Icon_GemLite
   components_Overlay_overlay --> components_Overlay_overlay-exit
   components_Overlay_overlay --> components_Overlay_overlay-behavior
   device_frame --> os_status-bar
@@ -232,6 +232,38 @@ graph TD
   patterns_OppsHome_reward-sheet --> patterns_OppsHome_sheet-morph
   patterns_OppsHome_sheet-morph --> patterns_OppsHome_morph-timing
   patterns_OppsHome_sheet-morph --> logic_time-scale
+  pitch_changelog_graph --> pitch_changelog-links
+  pitch_changelog_graph --> pitch_changelog-parse
+  pitch_changelog_paint-chips --> pitch_changelog-parse
+  pitch_changelog_paint-chips --> pitch_changelog_graph
+  pitch_changelog_paint-detail --> pitch_changelog-links
+  pitch_changelog_paint-detail --> pitch_changelog-titles
+  pitch_changelog_paint-detail --> pitch_changelog-parse
+  pitch_changelog_paint-detail --> pitch_changelog_esc
+  pitch_changelog_paint-plan --> pitch_changelog-parse
+  pitch_changelog_paint-plan --> pitch_changelog-links
+  pitch_changelog_paint-plan --> pitch_changelog-titles
+  pitch_changelog_paint-plan --> pitch_changelog_esc
+  pitch_changelog-links --> design-system_changelog-manifest.json
+  pitch_changelog-links --> pitch_changelog-format
+  pitch_changelog-paint --> pitch_changelog_paint-chips
+  pitch_changelog-paint --> pitch_changelog_paint-plan
+  pitch_changelog-paint --> pitch_changelog_paint-detail
+  pitch_changelog-parse --> pitch_changelog-format
+  pitch_pages-changelog --> pitch_changelog-links
+  pitch_pages-changelog --> pitch_changelog-links
+  pitch_pages-changelog --> pitch_changelog-tags
+  pitch_pages-changelog --> pitch_changelog-titles
+  pitch_pages-changelog --> ds_changelog-names.json
+  pitch_pages-changelog --> pitch_changelog-parse
+  pitch_pages-changelog --> pitch_changelog-paint
+  pitch_pages-changelog --> pitch_changelog-events
+  pitch_pitch-changelog-cal --> pitch_pitch-changelog-data
+  pitch_pitch-changelog-data --> design-system_changelog-manifest.json
+  pitch_pitch-changelog-data --> ds_changelog-names.json
+  pitch_pitch-changelog-drawer --> pitch_pitch-changelog-data
+  pitch_pitch-changelog-list --> pitch_pitch-changelog-data
+  pitch_pitch-changelog --> pitch_pages-changelog
   shell_top-pills --> glass_optics
   workspace_canvas --> workspace_devices
   workspace_canvas --> os_status-bar

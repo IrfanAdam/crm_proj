@@ -11,16 +11,18 @@
 .opps__title{display:inline-block;font-size:var(--type-title);font-weight:var(--font-weight-bold);letter-spacing:var(--type-title-tracking);color:var(--text-primary);transform-origin:left center;will-change:transform,opacity}
 .opps__avatar{position:relative;width:44px;height:44px;border-radius:var(--radius-full);overflow:visible;flex:0 0 auto}
 .opps__avatar img{width:44px;height:44px;border-radius:var(--radius-full);object-fit:cover;display:block}
-.opps__avatar::after{content:"";position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:var(--radius-full);background:var(--primitive-red-beryl-400);border:2px solid var(--bg-primary)}
-.opps__kpi{align-self:center;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:6px 14px;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-primary)}
-.opps__kpi b{color:var(--role-measure)}
+.opps__avatar::after{content:"";position:absolute;right:0;bottom:var(--border-width-medium);width:var(--spacing-3);height:var(--spacing-3);border-radius:var(--radius-full);background:var(--primitive-red-beryl-400);border:var(--border-width-medium) solid var(--bg-primary)}
+.opps__kpi{align-self:center;background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);border-radius:var(--radius-full);padding:var(--spacing-odd-6) var(--spacing-odd-14);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-primary)}
+.opps__kpi b{color:var(--role-measure);font-weight:var(--font-weight-semibold)}
 /* activity-strip moved to src/patterns/ActivityStrip/activity-strip.css */
 .opps__delta{text-align:center;font-size:var(--font-size-xs);color:var(--text-muted)}
 .opps__delta b{color:var(--text-secondary);font-weight:var(--font-weight-semibold)}
-.opps__map{position:relative;z-index:0;height:210px;border-radius:var(--radius-xl);overflow:hidden;background:var(--primitive-sapphire-ui-50);border:1px solid var(--border-thin);touch-action:pan-y;cursor:grab}
+.opps__map{position:relative;z-index:0;height:210px;border-radius:var(--radius-xl);overflow:hidden;background:var(--primitive-sapphire-ui-50);border:var(--border-width-thin) solid var(--border-thin);touch-action:pan-y;cursor:grab}
 .opps__map:active{cursor:grabbing}
-.opps__map{transition:transform .16s ease-out}
-.opps__map[data-pressed="true"]{transform:scale(.965)}
+/* press feedback never transforms the live map host: scaling it under Leaflet's
+   pointer math drags wrong and snaps on release — brightness dents for free */
+.opps__map{transition:filter .16s ease-out}
+.opps__map[data-pressed="true"]{filter:brightness(.96)}
 /* the map's own layers (panes 200-1000, 3D-transformed tiles/pins) live in their own
    stacking context BELOW the overlays — they can never re-order over the pill */
 .opps__map-view{position:absolute;inset:0;z-index:1}
@@ -31,7 +33,7 @@
    badges upright while the tiles turn) */
 .opps__me{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px}
 .opps__me-arrow{display:block;width:26px;height:26px;fill:var(--primitive-sapphire-ui-500);stroke:var(--primitive-gray-white);stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(var(--shadow-mark))}
-.opps__me::after{content:"";position:absolute;inset:0;border-radius:var(--radius-full);border:2px solid var(--primitive-sapphire-ui-400);animation:opps-me 1.8s ease-out infinite;animation-delay:var(--me-delay,0ms)}
+.opps__me::after{content:"";position:absolute;inset:0;border-radius:var(--radius-full);border:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);animation:opps-me 1.8s ease-out infinite;animation-delay:var(--me-delay,0ms)}
 @keyframes opps-me{from{transform:scale(.7);opacity:.9}to{transform:scale(1.6);opacity:0}}
 /* hotspot radius around my position (Leaflet circle, overlay pane sits under the pins) */
 .opps__hotspot{fill:color-mix(in srgb, var(--primitive-sapphire-ui-300) 30%, transparent);stroke:color-mix(in srgb, var(--primitive-sapphire-ui-400) 55%, transparent);stroke-width:1}
@@ -43,26 +45,29 @@
 /* overlays sit on their own composited layer (translateZ) so the map's re-rasterising
    tiles/pins/pulse animation cannot invalidate them — Safari drops a plain abspos
    sibling's layer and it flickers in/out while the map recomposites */
-.opps__nearby{position:absolute;z-index:1100;left:50%;top:12px;transform:translateX(-50%) translateZ(0);will-change:transform;cursor:pointer;font:inherit;display:inline-flex;align-items:center;gap:var(--spacing-2);background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:var(--radius-full);padding:6px 8px 6px 6px;font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--text-primary);box-shadow:var(--shadow-md);white-space:nowrap}
+.opps__nearby{position:absolute;z-index:1100;left:50%;top:var(--spacing-3);transform:translateX(-50%) translateZ(0);will-change:transform;box-shadow:var(--shadow-md);gap:var(--spacing-1)}
 /* facepile — DS avatar-stack (components/Avatar): faces overlap by the DS −8px, and the
    pill's own gap spaces the stack from the label, never between the faces */
-.opps__nearby .avatar{width:24px;height:24px;border:2px solid var(--bg-surface);margin-left:-8px}
+.opps__nearby .avatar{width:var(--icon-size-lg);height:var(--icon-size-lg);border:var(--border-width-medium) solid var(--bg-surface);margin-left:calc(var(--spacing-2) * -1)}
 .opps__nearby .avatar:first-child{margin-left:0}
-.opps__nearby .avatar--count{display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700)}
+.opps__nearby .avatar--count{display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700)}
 .opps__nearby:focus{outline:none}
 .opps__nearby:focus-visible{box-shadow:var(--focus-ring)}
 /* count bubble: a flat pale disc loses edge contrast, so at an equal 24px box it reads
    ~5% smaller than a photo face — oversize the box 2px (22px disc vs 20px face) to match
    optically; the morph's hand-off clone carries these same classes, so both render alike */
-.opps__nearby .avatar.avatar--count{width:26px;height:26px}
-.opps__filters{display:flex;gap:var(--spacing-2);overflow-x:auto;margin:0 calc(var(--spacing-4) * -1);padding:2px var(--spacing-4);scroll-padding:0 var(--spacing-4);scrollbar-width:none}
+.opps__nearby .avatar.avatar--count{width:var(--spacing-odd-26);height:var(--spacing-odd-26)}
+.opps__filters{display:flex;align-items:center;gap:var(--spacing-2);overflow-x:auto;margin:0 calc(var(--spacing-4) * -1);padding:var(--border-width-medium) var(--spacing-4);scroll-padding:0 var(--spacing-4);scrollbar-width:none}
 .opps__filters::-webkit-scrollbar{display:none}
-.opps__tune{flex:0 0 auto;width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface);border:1px solid var(--border-thin);color:var(--text-primary);font-size:20px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+/* filter row targets the 44px touch row (spacing-odd-44): every pill derives its
+   height from that floor + its own padding, never a px height */
+.opps__filters .chip{height:auto;min-height:var(--spacing-odd-44)}
+.opps__tune{flex:0 0 auto;width:var(--spacing-odd-44);height:var(--spacing-odd-44);border-radius:var(--radius-full);background:var(--bg-surface);border:var(--border-width-thin) solid var(--border-thin);color:var(--text-primary);font-size:var(--icon-size-md);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 
 .opps__tune:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.opps__flame{color:var(--primitive-red-beryl-400);font-size:18px}
+.opps__flame{color:var(--primitive-red-beryl-400);font-size:var(--spacing-odd-18)}
 .opps__mini-stack{display:inline-flex}
-.opps__mini-stack i{width:22px;height:22px;border-radius:var(--radius-full);border:2px solid var(--bg-surface);margin-left:-8px;background:var(--bg-interactive);overflow:hidden;display:inline-block}
+.opps__mini-stack i{width:var(--icon-size-lg);height:var(--icon-size-lg);border-radius:var(--radius-full);border:var(--border-width-medium) solid var(--bg-surface);margin-left:calc(var(--spacing-2) * -1);background:var(--bg-interactive);overflow:hidden;display:inline-block}
 .opps__mini-stack i:first-child{margin-left:0}
 .opps__mini-stack img{width:100%;height:100%;object-fit:cover}
 .opps__list{display:flex;flex-direction:column;gap:var(--spacing-3)}

@@ -2,11 +2,17 @@
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · camera/fit/surface builder (Task 22) + bare-stage opt-out.
 // — Env: gem-env.js supplies the PMREM studio; degrade to key+ambient if it is absent —
 // — Surface: MeshPhysicalMaterial flatShading; ior per stone; transmission on GPU, off on software (?gem=high) —
+// — Optics: one uniform facet (no per-tri tint); a BackSide far-side proxy (gem-shader.farside) shades the —
+// —        interior with real refraction/TIR and the body samples it through three's transmission RT. No overlays. —
 // — Cut: faces rewound outward (no winding hole) · Frame: fills FILL of the stage, centred, dropY re-aims it —
-// Export map: GEM_SCENE.geometry(cut) · surface(color, soft, ior) · inner(...) · ghost(...) internal shells · frame(rig) drop · stage(renderer, color, cut, aspect, ior) → rig (software-GL detect lives in gem-env.js)
+// Export map: GEM_SCENE.geometry(cut) · surface(color, soft, ior) · frame(rig) drop · stage(renderer, color, cut, aspect, ior) → rig (software-GL detect lives in gem-env.js)
 (function () {
 const api = {};
 const FILL = 0.75;
+const RAMP = function (t, T) {
+const lite = t.clone().lerp(new T.Color(1, 1, 1), 0.62), deep = t.clone().multiply(new T.Color(0.3, 0.35, 0.7));
+return { lite: lite, mid: t, deep: deep, pink: lite.clone().lerp(new T.Color(1, 0.62, 0.85), 0.75) };
+};
 const FOV = 32;
 window.GEM_SCENE = api;
 if (!window.THREE) return;
@@ -14,48 +20,38 @@ const T = window.THREE;
 api.geometry = function (cut) {
 const p = cut.positions;
 const v = [];
-const fv = [];
-cut.cells.forEach(function (c, ci) {
+cut.cells.forEach(function (c) {
 const a = p[c[0]], b = p[c[1]], d = p[c[2]];
 if (!a || !b || !d) return;
 const nx = (b[1] - a[1]) * (d[2] - a[2]) - (b[2] - a[2]) * (d[1] - a[1]);
 const ny = (b[2] - a[2]) * (d[0] - a[0]) - (b[0] - a[0]) * (d[2] - a[2]);
 const nz = (b[0] - a[0]) * (d[1] - a[1]) - (b[1] - a[1]) * (d[0] - a[0]);
 const ox = (a[0] + b[0] + d[0]) / 3, oy = (a[1] + b[1] + d[1]) / 3, oz = (a[2] + b[2] + d[2]) / 3;
-const f = nx * ox + ny * oy + nz * oz < 0 ? [a, d, b] : [a, b, d];
-const z = 0.8 + 0.4 * (Math.sin(ci * 12.9898) * 43758.5453 % 1 + 1) % 1;
-f.forEach(function (q) { v.push(q[0], q[1], q[2]); fv.push(z, z, z); });
+const s = nx * ox + ny * oy + nz * oz < 0 ? -1 : 1, f = s < 0 ? [a, d, b] : [a, b, d];
+f.forEach(function (q) { v.push(q[0], q[1], q[2]); });
 });
 const geo = new T.BufferGeometry();
 geo.setAttribute('position', new T.BufferAttribute(new Float32Array(v), 3));
-geo.setAttribute('color', new T.BufferAttribute(new Float32Array(fv), 3));
 geo.computeVertexNormals();
 geo.computeBoundingBox();
 return geo;
 };
 api.surface = function (color, soft, ior) {
-const m = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.06, ior: ior || 2.4, clearcoat: 1, clearcoatRoughness: 0.04, flatShading: true, envMapIntensity: 1.6, emissive: color.clone().multiplyScalar(0.12), iridescence: 0.45, iridescenceIOR: 1.9, iridescenceThicknessRange: [120, 640], sheen: 0.12, sheenRoughness: 0.25, sheenColor: new T.Color(1, 1, 1), vertexColors: true });
-m.onBeforeCompile = function (s) {
-s.fragmentShader = s.fragmentShader.replace('float roughnessFactor = roughness;', 'float roughnessFactor = roughness * (0.72 + 0.56 * vColor.r);');
-if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader);
-};
+const white = new T.Color(1, 1, 1);
+const m = new T.MeshPhysicalMaterial({ color: color.clone().lerp(white, 0.45), metalness: 0, roughness: 0.06, ior: ior || 2.4, flatShading: true, envMapIntensity: 1.6, dithering: true });
 if (!soft) {
-m.transmission = 0.95;
+m.transmission = 1.0;
 m.thickness = 0.9;
-m.attenuationColor = color.clone().lerp(new T.Color(1, 1, 1), 0.15);
-m.attenuationDistance = 0.6;
+m.attenuationColor = color.clone().lerp(white, 0.1);
+m.attenuationDistance = 1.45;
 m.onBeforeCompile = function (s) {
 if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader);
+s.uniforms.bgTex = (m.userData.bgU = { value: null });     // the actual backdrop, sampled through the body (demo bg)
+s.uniforms.bgOn = (m.userData.bgOnU = { value: 0 });
 };
 }
 return m;
 };
-api.inner = function (color, ior, side, opacity) {
-const b = new T.MeshPhysicalMaterial({ color: color, metalness: 0, roughness: 0.05, ior: ior || 2.4, flatShading: true, side: side || T.BackSide, transparent: true, opacity: opacity || 0.72, blending: T.AdditiveBlending, depthWrite: false, envMapIntensity: 1.5, emissive: color.clone().multiplyScalar(0.18), vertexColors: true });
-b.onBeforeCompile = function (s) { s.fragmentShader = s.fragmentShader.replace('vec3 totalEmissiveRadiance = emissive;', 'vec3 totalEmissiveRadiance = emissive * vColor;'); };
-return b;
-};
-api.ghost = function (geo, color, ior, side, scale, opacity) { const m = new T.Mesh(geo, api.inner(color, ior, side, opacity)); m.renderOrder = -1; m.scale.setScalar(scale); return m; };
 api.frame = function (rig) {
 const drop = rig.dropY || 0;
 rig.camera.position.set(0, rig.baseCamY + drop, rig.camera.position.z);
@@ -78,20 +74,22 @@ const scene = new T.Scene();
 if (window.GEM_ENV) scene.environment = window.GEM_ENV.texture(renderer);
 if (window.GEM_TEXTURES && window.GEM_TEXTURES.stage && !bare) scene.background = window.GEM_TEXTURES.stage(renderer.domElement);
 const soft = !/(\?|&)gem=high/.test(window.location.search) && (!window.GEM_ENV || window.GEM_ENV.soft(renderer));
-const key = new T.DirectionalLight(0xfff4e6, 1.2);
-const cross = new T.DirectionalLight(0xdce8ff, 0.55);
+const key = new T.DirectionalLight(0xfffdf8, 1.2);
+const cross = new T.DirectionalLight(0xdce8ff, 0.28);
+const bounce = new T.DirectionalLight(0xfffaf4, 0.5);
 key.position.set(3, 5, 4);
 cross.position.set(-4, 3, -2);
-scene.add(key, cross, new T.AmbientLight(0xffffff, 0.12));
+bounce.position.set(-1, -4, 3);
+scene.add(key, cross, bounce, new T.AmbientLight(0xffffff, 0.10));
 const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy * gscale, cut) : null;
 const group = new T.Group();
-const far = api.ghost(geo, color, ior, T.BackSide, 0.955, 0.66);
-const near = api.ghost(geo, color, ior, T.FrontSide, 0.9, 0.26);
 const body = new T.Mesh(geo, api.surface(color, soft, ior));
-group.add(far, near, body);
+group.add(body);
+const proxy = window.GEM_SHADER && window.GEM_SHADER.farside ? new T.Mesh(geo, window.GEM_SHADER.farside({ envMap: scene.environment, ior: ior || 2.4, tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null })) : null;
+if (proxy) { proxy.scale.setScalar(0.997); group.add(proxy); }
 scene.add(group);
 if (bare) group.scale.setScalar(gscale);
-const rig = { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors, mats: [body.material, far.material, near.material], baseCamY: cy + h * 0.16, baseLookY: cy - h * 0.02, dropY: 0 };
+const rig = { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors, mats: [body.material].concat(proxy ? [proxy.material] : []), baseCamY: cy + h * 0.16, baseLookY: cy - h * 0.02, dropY: 0 };
 api.frame(rig);
 return rig;
 };

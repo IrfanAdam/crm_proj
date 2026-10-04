@@ -24,7 +24,7 @@ failed = 'ctx';
 return false;
 }
 master = ctx.createGain();
-master.gain.value = 1;
+try { master.gain.value = window.localStorage.getItem('illusion-sound') === 'off' ? 0 : 1; } catch (e) { master.gain.value = 1; }
 master.connect(ctx.destination);
 return true;
 };
@@ -68,6 +68,14 @@ s.stop(0);
 } catch (e) {}
 });
 live = [];
+};
+api.setMuted=function(m){if(master)master.gain.value=m?0:1;try{window.localStorage.setItem('illusion-sound',m?'off':'on');}catch(e){}return m;};
+api.isMuted=function(){if(master)return master.gain.value===0;try{return window.localStorage.getItem('illusion-sound')==='off';}catch(e){return false;}};
+api.suspend = function () {
+if (ctx && ctx.state === 'running') { try { ctx.suspend(); } catch (e) {} }
+};
+api.resume = function () {
+if (ctx && ctx.state === 'suspended') { try { ctx.resume(); } catch (e) {} }
 };
 api.ready = function () {
 return !!ctx;

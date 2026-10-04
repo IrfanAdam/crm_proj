@@ -1,87 +1,18 @@
 /* ADAM/SHARED — src/components/IllusionCube/illusion-audio.js · cues, gates, gesture arm */
-// [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-5}] · audio layer surface (Task 32).
-// — Bed 0.5 looped · whoosh 0.3 one-shot · bed copy 0.2 — map: arm() · status() · cue(name?) · toggle()
-(function () {
-const api = {};
-const E = window.ILLUSION_AUDIO_ENGINE || null;
-const KEY = 'illusion-sound';
-const BED = 'cube-illusion/audio/ambient.mp3';
-const WHOOSH = 'cube-illusion/audio/whoosh.mp3';
-const log = [];
-let bedOn = false;
-let playing = false;
-// — Gates: stored off mutes; reduced motion gates unless explicitly on —
-function stored() {
-try {
-return window.localStorage.getItem(KEY);
-} catch (e) {
-return null;
-}
-}
-function gate() {
-if (!E) return 'silent';
-if (stored() === 'off') return 'muted';
-try {
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-return stored() === 'on' ? '' : 'reduced';
-}
-} catch (e) {}
-if (E.fail()) return 'silent';
-return '';
-}
-function schedule(name, url, gain, loop) {
-if (gate() || !E.ready()) return Promise.resolve('');
-return E.load(url, name).then(function (buf) {
-if (!buf) return 'silent';
-return E.play(buf, gain, loop);
-}).then(function (ok) {
-if (ok === 'silent') return 'silent';
-if (!ok) {
-if (name === 'bed') bedOn = false;
-return 'blocked';
-}
-log.push({ cue: name, t: E.now() });
-if (name === 'bed') playing = true;
-return name;
-}, function () {
-if (name === 'bed') bedOn = false;
-return 'blocked';
-});
-}
-// — Arm the bed; the context is born only inside a gesture —
-function unlock() {
-if (gate() || bedOn) return;
-if (!E.ensure()) return;
-bedOn = true;
-schedule('bed', BED, 0.5, true);
-}
-api.arm = function () {
-window.addEventListener('pointerdown', unlock, { once: true });
-window.addEventListener('keydown', unlock, { once: true });
-};
-api.status = function () {
-if (gate()) return gate();
-if (playing) return 'playing';
-if (E.ready()) return 'blocked';
-return 'armed';
-};
-api.cue = function (name) {
-if (!name) return log.slice();
-if (name === 'whoosh') return schedule(name, WHOOSH, 0.3, false);
-if (name === 'bed2') return schedule(name, BED, 0.2, true);
-if (name === 'bed') return schedule(name, BED, 0.5, true);
-return Promise.resolve('');
-};
-api.toggle = function () {
-const next = stored() === 'off' ? 'on' : 'off';
-try {
-window.localStorage.setItem(KEY, next);
-} catch (e) {}
-E.hush();
-playing = false;
-bedOn = false;
-if (next === 'on') unlock();
-return next;
-};
-window.ILLUSION_AUDIO = api;
+/* [plan:2026-09-28_221212-illusion-cube-recreation.md#{#phase-5}] · audio layer (Task 32) — single-bed + pause/hush + visibility */
+(function(){
+const api={};const E=window.ILLUSION_AUDIO_ENGINE||null;const KEY='illusion-sound';const BED='cube-illusion/audio/ambient.mp3';const WHOOSH='cube-illusion/audio/whoosh.mp3';const log=[];let bedOn=false;let playing=false;
+function stored(){try{return window.localStorage.getItem(KEY);}catch(e){return null;}}
+function gate(){if(!E)return 'silent';if(stored()==='off')return 'muted';try{if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return stored()==='on'?'':'reduced';}catch(e){}if(E.fail())return 'silent';return '';}
+function schedule(name,url,gain,loop){if(gate())return Promise.resolve('');if(!E.ensure())return Promise.resolve('');try{E.resume();}catch(e){}return E.load(url,name).then(function(buf){if(!buf)return 'silent';var playNow=function(){try{return E.play(buf,gain,loop);}catch(e){return false;}};if(E.state&&E.state()!=='running'){return new Promise(function(res){setTimeout(function(){res(playNow());},400);});}return playNow();}).then(function(ok){if(ok==='silent')return 'silent';if(!ok){if(name==='bed')bedOn=false;return 'blocked';}log.push({cue:name,t:E.now()});if(name==='bed')playing=true;return name;},function(){if(name==='bed')bedOn=false;return 'blocked';});}
+function unlock(){if(gate())return;if(!E.ensure())return;try{E.resume();}catch(e){}if(playing||bedOn)return;bedOn=true;schedule('bed',BED,0.5,true);}
+api.arm=function(){window.addEventListener('pointerdown',unlock,{once:true});window.addEventListener('keydown',unlock,{once:true});};
+api.unlock=unlock;
+api.status=function(){if(gate())return gate();if(playing)return 'playing';if(E.ready())return 'blocked';return 'armed';};
+api.cue=function(name){if(!name)return log.slice();if(name==='whoosh')return schedule(name,WHOOSH,0.3,false);if(name==='bed2'){if(playing)return Promise.resolve('already');return schedule(name,BED,0.2,true);}if(name==='bed'){if(bedOn||playing)return Promise.resolve('already');bedOn=true;return schedule(name,BED,0.5,true);}return Promise.resolve('');};
+api.toggle=function(){const next=stored()==='off'?'on':'off';try{window.localStorage.setItem(KEY,next);}catch(e){}E.hush();playing=false;bedOn=false;if(next==='on')unlock();return next;};
+api.pause=function(){try{if(E&&E.suspend)E.suspend();}catch(e){}return 'paused';};
+api.hush=function(){try{if(E)E.hush();}catch(e){}playing=false;bedOn=false;try{if(E&&E.suspend)E.suspend();}catch(e){}return 'hushed';};api.setMuted=function(m){if(E&&E.setMuted)E.setMuted(m);else try{window.localStorage.setItem(KEY,m?'off':'on');}catch(e){}if(!m&&playing)try{E.resume()}catch(e){}return m;};api.isMuted=function(){return stored()==='off';};api.toggleMute=function(){return api.setMuted(stored()!=='off');};
+(function(){var wasPlaying=false;try{document.addEventListener('visibilitychange',function(){if(!E)return;if(document.hidden){wasPlaying=playing;if(playing)try{E.suspend()}catch(e){}}else{if(wasPlaying&&!gate())try{E.resume()}catch(e){}wasPlaying=false;}});window.addEventListener('pagehide',function(){try{if(E)E.hush();}catch(e){}playing=false;bedOn=false;});window.addEventListener('beforeunload',function(){try{if(E)E.hush();}catch(e){}});window.addEventListener('message',function(ev){if(ev.data==='illusion-pause')try{if(E)E.suspend()}catch(e){};if(ev.data==='illusion-hush'||ev.data==='illusion-stop'){try{if(E)E.hush();}catch(e){}playing=false;bedOn=false;try{if(E&&E.suspend)E.suspend();}catch(e){}}});}catch(e){}})();
+window.ILLUSION_AUDIO=api;
 })();

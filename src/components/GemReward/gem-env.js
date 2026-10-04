@@ -58,6 +58,16 @@ const rr = 12 * Math.cos(p[0]);
 glow(Math.cos(az) * rr, 12 * Math.sin(p[0]), Math.sin(az) * rr, 0.3 * SCALE, p[1], SPOT_TINT);
 });
 });
+// — Task 8: one dominant sun at the key direction (3,5,4) — sized so its specular wraps 1–2 facets.
+// — Tint near-neutral (1.08 ≈ white with a breath of warmth) so facet highlights read clean white,
+// — per the reward-target renders; radius 1.45 at 12 gives ~17.7° angular diameter — one crown main
+// — + part of neighbour. Keep dim ambient tent for contrast.
+(function addSun(){
+const k = { x: 3, y: 5, z: 4 }; const inv = 1/Math.sqrt(k.x*k.x+k.y*k.y+k.z*k.z);
+const kx = k.x*inv*12, ky = k.y*inv*12, kz = k.z*inv*12;
+// primary sun sphere
+glow(kx, ky, kz, 1.45 * SCALE, 22, 1.08);
+})();
 return s;
 }
 api.texture = function (renderer) {

@@ -86,7 +86,13 @@
  }
  .loop-cube-frame iframe {
    width: 100%;
-   height: 420px;
+   height: clamp(560px, 82vh, 840px);
    border: 0;
    display: block;
  }
+ /* — Section: intro: canvas left, title + lead right — */
+ .loop-intro{display:grid;grid-template-columns:1.12fr 1fr;gap:2.4rem;align-items:center;margin-bottom:2.2rem}
+ .loop-intro .loop-cube-frame{margin:0}
+ .loop-intro .loop-cube-frame iframe{height:clamp(440px,62vh,620px)}
+ .loop-intro .loop-lead{margin-bottom:0}
+ @media (max-width:760px){.loop-intro{grid-template-columns:1fr}}

@@ -30,7 +30,7 @@ export default function BottomDock() {
     </div>
     {/* iOS-style floating gem — right side, above dock */}
     <button className="fab-gem" type="button" aria-label="Gem search" onClick={() => console.log('gem search')}>
-      <Icon name="Diamond" size={22} weight="fill" aria-hidden="true" />
+      <Icon name="gem-minimal" size={24} weight="regular" aria-hidden="true" />
     </button>
     </>
   );

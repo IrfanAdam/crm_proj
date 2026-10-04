@@ -59,8 +59,13 @@ api.kick(rig);
 }, 3000));
 api.kick(rig);
 };
-api.reset = function (rig, R) {
-arm(R, api.mesh(rig), 0, BZ0, 1000);
+api.reset = function (rig, R, smooth) {
+arm(R, api.mesh(rig), 0, BZ0, smooth ? 6000 : 1000);
+};
+api.resetHard = function (rig) {
+var m = api.mesh(rig); if (!m) return;
+if (m.material && m.material.uniforms && m.material.uniforms.uAlpha) m.material.uniforms.uAlpha.value = 0;
+m.position.z = BZ0;
 };
 api.stepBlurb = function (rig, R, now) {
 if (!R.fon) return true;

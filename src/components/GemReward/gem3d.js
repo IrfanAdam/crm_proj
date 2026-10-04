@@ -8,7 +8,6 @@
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rigs = [];
-let demoBg = null;
 const css = function (name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
 function start(rig) {
 const canvas = rig.canvas;
@@ -17,16 +16,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.toneMapping = THREE_.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.95;
 Object.assign(rig, window.GEM_SCENE.stage(renderer, new THREE_.Color(rig.paint), GEM.gemCut(GEM.CUT), canvas.clientWidth / Math.max(canvas.clientHeight, 16), rig.cat.ior), { renderer: renderer });
-if (demoBg) rig.scene.background = demoBg;
-const size = function () {
-const w = Math.max(canvas.clientWidth, 16), h = Math.max(canvas.clientHeight, 16);
-if (rig.w === w && rig.h === h) return;
-rig.w = w, rig.h = h;
-renderer.setSize(w, h, false);
-rig.camera.aspect = w / h;
-rig.camera.updateProjectionMatrix();
-};
-size();
+window.GEM_RIG.backdrop(rig);
+window.GEM_RIG.size(rig);
 if (still) {
 rig.group.rotation.y = 0.6;
 renderer.render(rig.scene, rig.camera);
@@ -43,8 +34,9 @@ requestAnimationFrame(loop);
 const now = performance.now();
 const dt = Math.min((now - rig.last) / 1000 || 0, 0.05);
 rig.last = now;
-size();
+window.GEM_RIG.size(rig);
 if (!rig.vis || document.hidden || !canvas.offsetParent) return;
+window.GEM_RIG.tick(rig);   // backdrop + pool law — idempotent, cheap, true even across first compile
 if (window.GEM_TINT) window.GEM_TINT.step(rig, dt);
 if (window.GEM_DRAG && window.GEM_DRAG.apply(rig, now, dt)) {
 if (window.GEM_BARE && window.GEM_BARE.aim) window.GEM_BARE.aim(rig);
@@ -95,5 +87,5 @@ document.addEventListener('ds:doc', boot);
 if (window.MutationObserver) new MutationObserver(function (list) {
 list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });
 }).observe(document.body, { childList: true, subtree: true });
-window.GEM3D = { rigs: rigs, bg: function (url) { if (!THREE_) return; demoBg = url ? new THREE_.TextureLoader().load(url) : null; rigs.forEach(function (r) { if (r.scene) r.scene.background = demoBg || (r.canvas.dataset.gemStage === 'off' ? null : r.stageBg); }); }, restage: function () { rigs.forEach(function (r) { if (!r.stageBg || !window.GEM_TEXTURES || !window.GEM_TEXTURES.stage) return; r.stageBg.dispose(); r.stageBg = window.GEM_TEXTURES.stage(r.canvas); if (!demoBg && r.canvas.dataset.gemStage !== 'off') r.scene.background = r.stageBg; }); } };
+window.GEM3D = { rigs: rigs, bg: function (url) { if (window.GEM_RIG) window.GEM_RIG.bg(url, rigs); }, restage: function () { if (window.GEM_RIG) window.GEM_RIG.restage(rigs); } };
 })();

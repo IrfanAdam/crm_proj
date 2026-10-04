@@ -1,98 +1,99 @@
-/* ADAM/SHARED — src/components/GemReward/gem-caustic.js · cut-shaped additive light pool */
-// [plan:2026-09-28_000000-lump-sum-builds.md#phase-4] · the card's caustic drawn as the stone's own plan
-// — silhouette — girdle polygon, facet spokes, table octagon, dispersive core — instead of free-floating —
-// — bokeh blobs, so the pool reads as the stone's facet image (crisper-edged than the contact shadow) —
-// — Fit: the staged pool plane is rad · 2.4 wide and the girdle spans 2 · rad, so a silhouette at FIT of —
-// —      the canvas half-width lands 1:1 on the footprint at dress's existing scale (no scale change) —
-// — Colour: white core + the stone's own colour; dispersion = small hue offsets taken off that same —
-// —         colour (no new palette values). Additive, so it brightens the light stage, never stains it —
-// — Gain: the card's stage sits at ~0.94 lum, so the pool is drawn well below full white — a hot core —
-// —       only, with the facet grading in the unclipped band — tuned to the stage, not to the hero page —
-// Export map: window.GEM_CAUSTIC.pool(color, cut) → THREE.CanvasTexture (null when the cut shape is absent)
+/* ADAM/SHARED — src/components/GemReward/gem-caustic.js · traced pool driver + graded iso-band PAINT */
+// [round4] PAINT (GEM_CAUSTIC_TRACE.trace output 축→ alpha): smooth STEPPED contours (graded soft edges, not
+// — hard band walls) over a gentle overall field, brighter at the top (beauty over photometry), filament
+// — boost where bands run thin or across cell edges, and spectral wing tints ONLY where channels diverge
+// — (streak ends) — per-cell R/G/B split channels feeding b/ue feathers; confetti speckle suppressed by sum-
+// — threshold gating. ORIENTATION-AWARE trace totals in the kernel; meshes never rigid-spin the pool (world).
+// — MORPH-IN-MOTION: gate removed — the next-interval qstep banking sent to trace keeps the pose in a DRAG
+// — TOURNAMENT cache (every frame: on hit paint immediately + prefetch map qste adjacent traces, on miss hold
+// — LAST TEXTURE — never the wrong-pose flash from before; look-ahead fills the neighbors ahead of the sweep).
+// — Export: GEM_CAUSTIC.{gain, pool(color,cut,pose), live(map,color,cut,pose), lastMs}.
 (function () {
-if (!window.THREE) return;
-const T = window.THREE;
-const S = 128;
-const C = S / 2;
-const FIT = 0.8333;            // girdle radius as a fraction of the canvas half-width — see the header
-const GAIN = 1;                // pool weight: 1 = the tuned card value (the A/B drives this via api.gain)
-const api = { gain: GAIN };
-const rgba = function (c, a, off) {
-const q = c.clone();
-if (off) q.offsetHSL(off, 0, 0);
-return 'rgba(' + Math.round(q.r * 255) + ',' + Math.round(q.g * 255) + ',' + Math.round(q.b * 255) + ',' + a + ')';
+if (!window.THREE || !window.GEM_CAUSTIC_TRACE) return;
+const T = window.THREE, K = window.GEM_CAUSTIC_TRACE;
+const S = K.S, RAYS = K.RAYS, BOUNCES = K.BOUNCES, LRAYS = K.LRAYS, LBOUNCES = K.LBOUNCES;
+const GAIN = 1, QSTEP = 0.05, QFY = 0.02, MAXC = 3, PREFETCH = 2, HOLD = 320;
+const api = { gain: GAIN, lastMs: 0 };
+const CACHE = [], traced = {};
+const cutOf = function (cut) { return cut && cut.positions && cut.cells ? cut : (window.GEM_CUT && window.GEM_CUT.gemCut ? window.GEM_CUT.gemCut(cut) : null); };
+const keyOf = function (G, P) { return K.geomKey(G) + '|' + Math.round(P.yaw / QSTEP) + '|' + Math.round(P.pitch / QSTEP) + '|' + Math.round(P.floorY / QFY); };
+const cacheGet = function (key) { for (let i = 0; i < CACHE.length; i++) if (CACHE[i].key === key) { const e = CACHE.splice(i, 1)[0]; CACHE.unshift(e); return e; } return null; };
+const cachePut = function (key, e) { e.key = key; CACHE.unshift(e); if (CACHE.length > MAXC) CACHE.pop(); };
+const livePoseCache = new Map();   // latest traces for hold-frames
+const livePut = function (k, e) { livePoseCache.clear(); livePoseCache.set(k, e); };   // single-slot
+const traceKeyed = function (G, P, key, gk) {
+const full = !traced[gk], t0 = performance.now();
+const e = K.trace(G, P, full ? RAYS : LRAYS, full ? BOUNCES : LBOUNCES);
+api.lastMs = performance.now() - t0; traced[gk] = 1;
+cachePut(key, e); livePut(key, e); return e;
 };
-api.pool = function (color, cut) {
-if (!window.GEM_CSHAPE || !window.GEM_CSHAPE.shape) return null;
-const s = window.GEM_CSHAPE.shape(cut);
-const g = api.gain;
-const R = C * FIT;
-const P = function (q) { return [C + (q[0] / s.rmax) * R, C + (q[1] / s.rmax) * R]; };
-const path = function (pts) {
-const ctx = c;
-ctx.beginPath();
-pts.forEach(function (q, i) { const p = P(q); if (i) ctx.lineTo(p[0], p[1]); else ctx.moveTo(p[0], p[1]); });
-ctx.closePath();
+const paint = function (cache, color) {
+const cv = document.createElement('canvas'); cv.width = cv.height = S;
+blit(cv.getContext('2d'), cache, color);
+const tex = new T.CanvasTexture(cv); tex.colorSpace = T.SRGBColorSpace; tex.userData.gemCaustic = true; return tex;
 };
-const blob = function (x, y, r, style) {
-const b = c.createRadialGradient(x, y, 0, x, y, r);
-b.addColorStop(0, style);
-b.addColorStop(1, 'rgba(255,255,255,0)');
-c.fillStyle = b;
-c.fillRect(x - r, y - r, r * 2, r * 2);
+const blit = function (ctx, cache, color) {   // graded iso-band paint: soft stepped alpha contours
+const smv = cache.sm, pp = Math.max(1e-6, cache.p || 1);
+const id = ctx.createImageData(S, S), D = id.data, tn = color && color.isColor ? color : null;
+for (let i = 0; i < S * S; i++) {
+const r0 = smv[0][i] / pp, g0 = smv[1][i] / pp, b0 = smv[2][i] / pp, u = Math.max(r0, g0, b0);
+const a4 = i * 4;   // alpha: 4-band stepped smooth (core, mid, lo, ghost)
+let a = 0;
+if (u > 0.74) a = 0.95; else if (u > 0.42) a = 0.44; else if (u > 0.14) a = 0.14; else a = 0.02;   // graded field, near-silent floor
+const sum = r0 + g0 + b0 + 1e-9;
+let r = r0 / sum, g = g0 / sum, b = b0 / sum;
+const mn = Math.min(r, g, b), mx = Math.max(r, g, b); let wing = 0;   // wing = streak-end detector: channel divergence (a small alpha push)
+if (mx > 0.2) wing = Math.max(0, (mx - mn) / (mx + 1e-9)) * Math.min(1, mx); else wing = 0;
+let hr = r, hg = g, hb = b;   // spectral wings: add divergence as channel-lead push (R/G/B winner gets the boost)
+const lead = mx === r ? [0.55, 0.1, 0] : (mx === g ? [0.1, 0.55, 0] : [0, 0.1, 0.55]);
+if (wing > 0.2) { hr = r + lead[0] * wing * 0.5; hg = g + lead[1] * wing * 0.5; hb = b + lead[2] * wing * 0.5; }
+const wk = mx > 0.74 ? 0.94 : 0.3;   // core near-white; body softens toward white 0.3 for smooth grading
+hr = hr + (1 - hr) * wk; hg = hg + (1 - hg) * wk; hb = hb + (1 - hb) * wk;
+const f = u > 0.74 ? 0.06 : 0.18;   // keep the texture pick consistent with the core/body split
+if (tn) { hr = hr * (1 - f) + tn.r * f; hg = hg * (1 - f) + tn.g * f; hb = hb * (1 - f) + tn.b * f; }
+D[a4] = hr * 255; D[a4 + 1] = hg * 255; D[a4 + 2] = hb * 255; D[a4 + 3] = a * 255;
+}
+ctx.putImageData(id, 0, 0);
 };
-const cv = document.createElement('canvas');
-cv.width = cv.height = S;
-const c = cv.getContext('2d');
-const body = c.createRadialGradient(C, C, R * 0.04, C, C, R);
-body.addColorStop(0, 'rgba(255,255,255,' + 0.34 * g + ')');
-body.addColorStop(0.42, rgba(color, 0.2 * g));
-body.addColorStop(0.86, rgba(color, 0.11 * g));
-body.addColorStop(1, 'rgba(255,255,255,0)');
-c.save();
-path(s.girdle);
-c.clip();
-c.fillStyle = body;
-c.fillRect(0, 0, S, S);
-c.globalCompositeOperation = 'destination-out';       // facet divisions cut out of the pool body
-c.lineCap = 'round';
-s.notches.forEach(function (a) {
-c.strokeStyle = 'rgba(0,0,0,0.2)';
-c.lineWidth = 2.4;
-c.beginPath();
-c.moveTo(C, C);
-c.lineTo(C + Math.cos(a) * R * 0.92, C + Math.sin(a) * R * 0.92);
-c.stroke();
-});
-s.spokes.forEach(function (a) {
-c.strokeStyle = 'rgba(0,0,0,0.28)';
-c.lineWidth = 1.3;
-c.beginPath();
-c.moveTo(C, C);
-c.lineTo(C + Math.cos(a) * R, C + Math.sin(a) * R);
-c.stroke();
-});
-c.restore();
-c.lineJoin = 'round';
-c.strokeStyle = 'rgba(255,255,255,' + 0.45 * g + ')';  // the girdle silhouette: crisper than the shadow
-c.lineWidth = 2.6;
-path(s.girdle);
-c.stroke();
-c.strokeStyle = 'rgba(255,255,255,' + 0.6 * g + ')';
-c.lineWidth = 1.4;
-path(s.girdle);
-c.stroke();
-c.strokeStyle = rgba(color, 0.24 * g, 0.04);          // the table octagon: the pool's image of the table
-c.lineWidth = 1;
-path(s.table);
-c.stroke();
-blob(C, C, R * 0.52, 'rgba(255,255,255,' + 0.16 * g + ')');
-blob(C - R * 0.06, C + R * 0.05, R * 0.13, rgba(color, 0.2 * g, 0.13));   // dispersive core: the stone's
-blob(C + R * 0.07, C - R * 0.04, R * 0.1, rgba(color, 0.17 * g, -0.09));  // own colour, split by hue
-blob(C, C, R * 0.06, 'rgba(255,255,255,' + 0.22 * g + ')');
-const t = new T.CanvasTexture(cv);
-t.colorSpace = T.SRGBColorSpace;
-return t;
+api.pool = function (color, cut, poseIn) {
+try {
+const G = cutOf(cut); if (!G || !G.positions || !G.cells || !G.cells.length || !K) return null;
+const P = K.pose(poseIn, G), key = keyOf(G, P), gk = K.geomKey(G);
+let e = cacheGet(key);
+if (!e) { const hp = livePoseCache.get(key); e = hp || traceKeyed(G, P, key, gk); }
+return paint(e, color);
+} catch (err) { return null; }
+};
+api.live = function (map, color, cut, poseIn) {
+try {
+if (!map || !map.userData || !map.userData.gemCaustic || !map.image || !map.image.getContext) return false;
+const ctx = map.image.getContext('2d');
+const G = cutOf(cut); if (!G || !G.positions || !G.cells || !G.cells.length || !K) return false;
+const P = K.pose(poseIn, G), key = keyOf(G, P), gk = K.geomKey(G);
+let e = cacheGet(key);
+if (!e) {
+e = livePoseCache.get(key);   // hold: keep the last texture until THIS pose's trace lands (no wrong-pose flash)
+if (!e) {
+const vr = pending(map, color, G, P, key, gk); if (!vr) return false; e = vr;
+}
+}
+blit(ctx, e, color); map.needsUpdate = true;
+lastYaw = P.yaw; lastPitch = P.pitch; lastLift = poseIn ? (poseIn.lift || 0) : 0; pendingFetch(G);   // remember pose + prefetch ahead
+return true;
+} catch (err) { return false; }
+};
+const pending = function (map, color, G, P, key, gk) {   // trace AND paint in one synchronous frame
+const e = traceKeyed(G, P, key, gk); if (!e) return null;
+return e;
+};
+let prefetchTick = 0, lastYaw = 0, lastPitch = 0, lastLift = 0;
+const pendingFetch = function (G) {   // orientation-ahead prefetch: +QSTEP/+2QSTEP yaw neighbors of the live pose
+if (++prefetchTick % 2) return;   // every other frame — keep interactive frames free
+for (let d = 1; d <= PREFETCH; d++) {
+const pt = { yaw: lastYaw + d * QSTEP, pitch: lastPitch, lift: lastLift };
+const P2 = K.pose(pt, G), k2 = keyOf(G, P2);
+if (!cacheGet(k2) && !livePoseCache.get(k2)) { traceKeyed(G, P2, k2, K.geomKey(G)); return; }   // one per frame
+}
 };
 window.GEM_CAUSTIC = api;
 })();

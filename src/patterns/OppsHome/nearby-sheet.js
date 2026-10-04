@@ -1,6 +1,6 @@
 /* ADAM/PAGE — src/patterns/OppsHome/nearby-sheet.js · sheet + matched morph (live tiles) */
 // Export map: sheetHTML · initSheet · openSheet
-import { createLiveMap, RING_MS } from "./live-map.js";
+import { createLiveMap, RING_MS, REHOME_GLIDE_SLOW_S } from "./live-map.js";
 import { fitLayer, morph } from "./sheet-morph.js";
 import { flyPill, flyPillBack } from "./map-flights.js";
 import { PINS, PROSPECTS, relRect } from "./nearby-map.js";
@@ -59,7 +59,7 @@ function open() {
   if (sheetApi) sheetApi.map.invalidateSize();
   // — ring phase rides the wall clock; re-anchor at unhide so the blip resumes in phase —
   p.layer.style.setProperty("--me-delay", `-${Math.round(performance.now() % RING_MS)}ms`);
-  if (sheetApi && inlineApi) sheetApi.set(inlineApi.get());
+  if (sheetApi && inlineApi) { inlineApi.cancelGlide(); sheetApi.set(inlineApi.get()); }
   if (feed) feed.style.overflow = "hidden";
   placeClose(p.sheet, screen);
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -73,6 +73,9 @@ function close() {
   const openBtn = document.getElementById("nearby-open");
   const { screen, rect } = fromState();
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // — minimise glides the widget home behind the sheet (slow glide: the morph
+  // reveals it mid-flight), so closing visibly settles onto current position —
+  try { if (inlineApi?.glideHome) inlineApi.glideHome(REHOME_GLIDE_SLOW_S); } catch {}
   const finish = () => { p.sheet.hidden = true; if (feed) feed.style.overflow = ""; openBtn?.focus({ preventScroll: true }); };
   if (!reduced) flyPillBack(screen, p.sheet);
   morph(p, rect, -1, finish, reduced);
@@ -87,8 +90,9 @@ export async function initSheet(api) {
   if (sheet.dataset.wired) return;
   sheet.dataset.wired = "1";
   sheetApi = await createLiveMap(sheet.querySelector("#sheet-tiles"), PINS, {});
-  /* while the sheet is open its view is the source of truth, so the widget underneath is
-     already at the landed view when the morph closes — no tile reload during the reveal */
+  /* while the sheet is open its view syncs into the widget underneath; close()
+     re-homes the widget first (hidden behind the sheet), so the morph always
+     reveals current position — no tile reload during the reveal */
   const sync = () => { if (inlineApi) inlineApi.set(sheetApi.get()); };
   sheetApi.map.on("moveend", sync);
   sheetApi.map.on("zoomend", sync);

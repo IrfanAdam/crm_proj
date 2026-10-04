@@ -91,6 +91,7 @@
 .device .tabbar__item[data-hot]{color:var(--signal)}
 .device .tabbar__item .icon{width:24px;height:24px;display:grid;place-items:center;font-size:18px;line-height:1}
 /* iOS-style inline gem — accent circle attached to right of dock (matches screenshot) */
-.device .fab-gem{position:absolute;right:16px;bottom:30px;z-index:6;width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;color:white;background:linear-gradient(180deg,color-mix(in srgb,var(--primitive-amethyst-300) 88%,white),var(--primitive-amethyst-500));box-shadow:0 6px 16px rgba(15,16,21,.14),0 1px 4px rgba(15,16,21,.08),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 1px rgba(0,0,0,.10);transition:transform 160ms ease,box-shadow 160ms ease}
+.device .fab-gem{position:absolute;right:16px;bottom:30px;z-index:6;width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;color:var(--primitive-neutral-dark-600);background:color-mix(in srgb,var(--bg-surface) 62%,transparent);-webkit-backdrop-filter:blur(6px) saturate(132%);backdrop-filter:blur(6px) saturate(132%);box-shadow:0 6px 16px rgba(15,16,21,.14),0 1px 4px rgba(15,16,21,.08),inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px color-mix(in srgb,var(--primitive-ink) 8%,transparent);transition:transform 160ms ease,box-shadow 160ms ease}
+.device .fab-gem svg path[fill]{fill:currentColor}
 .device .fab-gem:active{transform:scale(.96);box-shadow:0 4px 10px rgba(15,16,21,.16)}
 .device .fab-gem:focus-visible{outline:none;box-shadow:0 6px 16px rgba(15,16,21,.14),0 0 0 2px var(--primitive-sapphire-ui-400)}

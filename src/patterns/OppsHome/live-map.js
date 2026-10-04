@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/patterns/OppsHome/live-map.js · real tiles (Leaflet + Esri light grey) */
-// Export map: HOME · ZOOM · HEADING · RING_MS · createLiveMap
+// Export map: HOME · ZOOM · HEADING · RING_MS · REHOME_GLIDE_S · REHOME_GLIDE_SLOW_S · createLiveMap
 import { leaflet, pinIcon, meIcon } from "./leaflet-lazy.js";
 import { getScale } from "../../logic/time-scale.js";
 // Mumbai home — zoomed out to city level (was street-level dummy grid)
@@ -16,6 +16,12 @@ const PULSE_MS = 2600;    // radius breath cycle
 const K_MIN = 0.74;       // the breath contracts to this share of the radius
 const T0 = performance.now();   // one clock for every map's breath + ring, so the widget and
 export const RING_MS = 1800;    // the sheet are in phase when the morph hands over
+// — home-glide length (s): pan + zoom on one monotonic ease-out-expo — fast
+// launch, long soft tail, no overshoot reversal (the reversal read as judder) —
+export const REHOME_GLIDE_S = 0.9;
+// — minimise glides slower: the morph-back covers the first half, so the tail is
+// still playing when the widget is revealed — the settle stays visible —
+export const REHOME_GLIDE_SLOW_S = 1.4;
 // — pin/me icons live in leaflet-lazy.js (they need the loaded Leaflet instance) —
 // — blip = blue heading arrow (inline SVG, so no icon font is needed); CSS cancels the pane
 // — bearing, so the arrow points screen-up = the heading (factory in leaflet-lazy.js) —
@@ -54,6 +60,8 @@ export async function createLiveMap(el, pins, opts = {}) {
     zoomControl: false,
     boxZoom: false,
     keyboard: true,
+    zoomSnap: opts.zoomSnap ?? 1,   // the widget runs free (0) so the home glide
+    zoomDelta: opts.zoomDelta ?? 1, // can ease zoom instead of cutting it
     dragging: opts.dragging ?? true,
     touchZoom: opts.touchZoom ?? true,
     doubleClickZoom: opts.doubleClickZoom ?? true,
@@ -77,5 +85,29 @@ export async function createLiveMap(el, pins, opts = {}) {
     map,
     get() { const c = map.getCenter(); return { center: [c.lat, c.lng], zoom: map.getZoom() }; },
     set(s) { if (s && s.center) map.setView(s.center, s.zoom ?? map.getZoom(), { animate: false }); },
+    // — full home glide: pan AND zoom ease together on one monotonic expo —
+    // per-frame discrete setViews (never Leaflet's internal zoom animation, which
+    // unglues pins under rotation), so everything stays glued the whole way home.
+    // _gliding tells the idle timer to ignore the flight's own moveends —
+    glideHome(durS = REHOME_GLIDE_S) {
+      this.cancelGlide();
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) { map.setView(HOME, ZOOM, { animate: false }); return; }
+      const c = map.getCenter(), z0 = map.getZoom();
+      const dLat = HOME[0] - c.lat, dLng = HOME[1] - c.lng, dZ = ZOOM - z0;
+      if (!dLat && !dLng && !dZ) return;
+      const t0 = performance.now(), dur = durS * 1000;
+      const easeOutExpo = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
+      let raf = 0;
+      map._gliding = true;
+      map._glideCancel = () => { cancelAnimationFrame(raf); map._gliding = null; map._glideCancel = null; };
+      const frame = (now) => {
+        const t = Math.min(1, (now - t0) / dur), k = easeOutExpo(t);
+        map.setView([c.lat + dLat * k, c.lng + dLng * k], z0 + dZ * k, { animate: false });
+        if (t < 1) raf = requestAnimationFrame(frame);
+        else { map._gliding = null; map._glideCancel = null; }
+      };
+      raf = requestAnimationFrame(frame);
+    },
+    cancelGlide() { if (map._glideCancel) map._glideCancel(); },
   };
 }

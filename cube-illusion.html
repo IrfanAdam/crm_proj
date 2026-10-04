@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>ALPHA CRM — Illusion Cube</title>
 <link rel="icon" href="data:,"/>
-<link rel="stylesheet" href="design-system/tokens.css"/>
+<link rel="stylesheet" href="design-system/tokens.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 <style>
 *{box-sizing:border-box;margin:0}
 html,body{height:100%}
@@ -16,43 +16,52 @@ body{background:var(--primitive-sapphire-ui-50);color:var(--text-primary);font-f
 .cube-stage__frame{width:100%;flex:1;min-height:60vh;position:relative}
 .cube-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .cube-stage__caption{font-size:var(--font-size-xs);letter-spacing:var(--font-tracking-wide);text-transform:uppercase;color:var(--text-muted)}
+.cube-stage__tools{font-size:var(--font-size-xs);letter-spacing:var(--font-tracking-wide);text-transform:uppercase;color:var(--text-muted)}
+.cube-stage__tools summary{cursor:pointer;list-style:none;text-align:center}
+.cube-stage__tools summary::-webkit-details-marker{display:none}
+.cube-stage__tools summary::after{content:' +'}
+.cube-stage__tools[open] summary::after{content:' –'}
+.cube-stage__tools-row{margin-top:var(--spacing-2);text-align:center}
+body[data-embed] .cube-stage{min-height:100vh;padding:0;gap:0}
+body[data-embed] .cube-stage__frame{min-height:100vh}
+body[data-embed] .cube-stage__caption,body[data-embed] .cube-stage__tools{display:none}
+.cube-sound-toggle{position:absolute;top:12px;right:12px;z-index:10;width:36px;height:36px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,.5);cursor:pointer;color:var(--text-primary);transition:all .18s}.cube-sound-toggle:hover{background:rgba(255,255,255,.88);transform:scale(1.04)}.cube-sound-toggle i{font-size:18px;line-height:1;display:block}.cube-sound-toggle .icon-off{display:none}.cube-sound-toggle[aria-pressed="false"] .icon-on{display:none}.cube-sound-toggle[aria-pressed="false"] .icon-off{display:block}
 </style>
 </head>
 <body>
 <main class="cube-stage">
 <div class="cube-stage__frame">
 <canvas data-illusion role="img" aria-label="Illusion cube — gray rounded box on plinth, native three.js scaffold"></canvas>
+<button id="cube-sound-toggle" class="cube-sound-toggle" type="button" aria-label="Mute sound" aria-pressed="true"><i class="ph ph-speaker-high icon-on" aria-hidden="true"></i><i class="ph ph-speaker-slash icon-off" aria-hidden="true"></i></button>
 </div>
 <p class="cube-stage__caption">Illusion cube — Spline illusioncube recreated natively · three r160</p>
-<p class="cube-stage__caption"><button id="illusion-sound" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Sound: on</button> <button id="illusion-preset" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Preset: on</button> <span id="illusion-status">armed</span></p>
+<details class="cube-stage__tools"><summary>Controls</summary><p class="cube-stage__tools-row"><button id="illusion-sound" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Sound: on</button> <button id="illusion-preset" type="button" aria-pressed="true" style="font:inherit;color:inherit;background:none;border:1px solid currentColor">Preset: on</button> <span id="illusion-status">armed</span></p></details>
 <script>
 (function () {
-var b = document.getElementById('illusion-sound');
-var s = document.getElementById('illusion-status');
+try { if (window.self !== window.top || new URLSearchParams(location.search).has('embed') || (location.hash || '').indexOf('embed') >= 0) document.body.dataset.embed = '1'; } catch (e) { try { if (new URLSearchParams(location.search).has('embed')) document.body.dataset.embed = '1'; } catch (_e) {} }
+try { if (new URLSearchParams(location.search).get('sound') === 'on') window.localStorage.setItem('illusion-sound', 'on'); } catch (e2) {}
+var b = document.getElementById('illusion-sound'); var s = document.getElementById('illusion-status');
 if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.arm();
 var paint = function () {
 if (!window.ILLUSION_AUDIO || !b || !s) return;
-var st = window.ILLUSION_AUDIO.status();
-s.textContent = st;
-b.textContent = 'Sound: ' + (st === 'muted' ? 'off' : 'on');
-b.setAttribute('aria-pressed', st === 'muted' ? 'false' : 'true');
+var st = window.ILLUSION_AUDIO.status(); s.textContent = st;
+b.textContent = 'Sound: ' + (st === 'muted' ? 'off' : 'on'); b.setAttribute('aria-pressed', st === 'muted' ? 'false' : 'true');
 };
 if (b) b.addEventListener('click', function () { if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.toggle(); paint(); });
-var p = document.getElementById('illusion-preset');
-var presetOn = true;
+var p = document.getElementById('illusion-preset'); var presetOn = true;
 var paintPreset = function () {
 if (!p) return;
-p.textContent = 'Preset: ' + (presetOn ? 'on' : 'off');
-p.setAttribute('aria-pressed', presetOn ? 'true' : 'false');
+p.textContent = 'Preset: ' + (presetOn ? 'on' : 'off'); p.setAttribute('aria-pressed', presetOn ? 'true' : 'false');
 };
-if (p) p.addEventListener('click', function () {
-presetOn = !presetOn;
-if (window.ILLUSION_EXPLORE) window.ILLUSION_EXPLORE.setPreset(presetOn);
-paintPreset();
+if (p) p.addEventListener('click', function () { presetOn = !presetOn; if (window.ILLUSION_EXPLORE) window.ILLUSION_EXPLORE.setPreset(presetOn); paintPreset(); });
+paintPreset(); var autoPlayed=false,playTries=0,pendingPlay=false;function tryPlay(){var rig=(window.ILLUSION3D&&window.ILLUSION3D.rigs&&window.ILLUSION3D.rigs[0])||null;if(rig&&rig.renderer&&window.ILLUSION_CTL){var C=window.ILLUSION_CTL;var r=C.play?C.play(rig):C.toggle(rig);if(r==='already'||r==='playing'){pendingPlay=false;return true;}if(r==='B'){autoPlayed=true;pendingPlay=false;try{window.parent.postMessage('illusion-played','*');}catch(e){}return true;}}return false;}setInterval(function(){if(pendingPlay)tryPlay();},400);try{window.addEventListener('load',function(){try{window.parent.postMessage('illusion-ready','*');}catch(e){}});}catch(e){}setTimeout(function(){try{window.parent.postMessage('illusion-ready','*');}catch(e){}},1500);(function bootReset(){var n=0;var iv=setInterval(function(){var rig=(window.ILLUSION3D&&window.ILLUSION3D.rigs&&window.ILLUSION3D.rigs[0])||null;if(rig&&rig.camera&&window.ILLUSION_CTL&&window.ILLUSION_CTL.resetHard){if(!rig.reveal||rig.reveal.to!=='B')window.ILLUSION_CTL.resetHard(rig);clearInterval(iv);}else if(++n>25)clearInterval(iv);},200);})();var g=document.getElementById('cube-sound-toggle');var paintGlass=function(){if(!g||!window.ILLUSION_AUDIO)return;var st=window.ILLUSION_AUDIO.status();var muted=st==='muted';g.setAttribute('aria-pressed',muted?'false':'true');g.setAttribute('aria-label',muted?'Unmute sound':'Mute sound');};if(g)g.addEventListener('click',function(e){e.stopPropagation();var Au=window.ILLUSION_AUDIO;if(!Au)return;var st=Au.status();if(st==='muted'){if(Au.toggleMute)Au.toggleMute();else Au.toggle();}else if(st==='playing'){if(Au.toggleMute)Au.toggleMute();else Au.toggle();}else{if(Au.isMuted&&Au.isMuted())Au.setMuted(false);if(Au.unlock)Au.unlock();}paint();paintGlass();});setInterval(paintGlass,1000);paintGlass();
+window.addEventListener('message',function(ev){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(ev.data==='illusion-unlock'){if(Au&&Au.unlock)Au.unlock();return;}if(ev.data==='illusion-pause'){if(Au&&Au.pause)Au.pause();else if(Eng&&Eng.suspend)Eng.suspend();return;}if(ev.data==='illusion-hush'||ev.data==='illusion-stop'||ev.data==='pitch-pause'){if(Au&&Au.hush)Au.hush();else if(Eng)Eng.hush();if(Eng&&Eng.suspend)Eng.suspend();return;}if(ev.data==='illusion-reset-smooth'){var rg=(window.ILLUSION3D&&window.ILLUSION3D.rigs&&window.ILLUSION3D.rigs[0])||null;if(rg&&window.ILLUSION_CTL&&window.ILLUSION_CTL.resetSmooth)window.ILLUSION_CTL.resetSmooth(rg);autoPlayed=false;playTries=0;return;}if(ev.data==='illusion-reset-hard'){var rh=(window.ILLUSION3D&&window.ILLUSION3D.rigs&&window.ILLUSION3D.rigs[0])||null;if(rh&&window.ILLUSION_CTL&&window.ILLUSION_CTL.resetHard)window.ILLUSION_CTL.resetHard(rh);autoPlayed=false;playTries=0;return;}if(ev.data!=='illusion-play')return;
+if (window.ILLUSION_EXPLORE) { presetOn = true; window.ILLUSION_EXPLORE.setPreset(true); paintPreset(); }
+if(!tryPlay()){pendingPlay=true;if(++playTries<10)setTimeout(function(){window.postMessage('illusion-play','*');},600);}
+if(Au){try{if(Au.status()!=='muted'&&Au.status()!=='playing'&&Au.unlock)Au.unlock();}catch(e){}Au.cue('bed');}
 });
-paintPreset();
-setInterval(paint, 1000);
-paint();
+document.addEventListener('visibilitychange',function(){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(document.hidden){if(Au&&Au.pause)Au.pause();else if(Eng&&Eng.suspend)Eng.suspend();}else if(Eng&&Eng.resume)try{Eng.resume()}catch(e){}});window.addEventListener('pagehide',function(){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(Au&&Au.hush)Au.hush();else if(Eng)Eng.hush();});window.addEventListener('beforeunload',function(){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(Au&&Au.hush)Au.hush();else if(Eng)Eng.hush();});
+setInterval(paint, 1000); paint();
 })();
 </script>
 </main>
