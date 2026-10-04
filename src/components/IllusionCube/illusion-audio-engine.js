@@ -28,6 +28,15 @@ try { master.gain.value = window.localStorage.getItem('illusion-sound') === 'off
 master.connect(ctx.destination);
 return true;
 };
+// — Drop a pre-gesture context: on Safari it stays silent forever, so the
+// first real gesture always births a fresh in-gesture one (bufs survive) —
+api.discardStale = function () {
+if (ctx && ctx.state !== 'running') {
+try { if (ctx.close) ctx.close(); } catch (e) {}
+ctx = null; master = null; live = [];
+}
+return !ctx;
+};
 // — Decode once from a copy; decoding the cache detaches it —
 api.load = function (url, tag) {
 if (bufs[url]) return Promise.resolve(bufs[url]);
@@ -43,6 +52,24 @@ return buf;
 failed = tag;
 return null;
 });
+};
+// — Gesture-free prefetch: fetch + decode via OfflineAudioContext so the
+// first real unlock plays instantly. Never poisons `failed` (offline/slow
+// networks just mean no cache — the gesture path still tries live) —
+api.prime = function (url, tag) {
+if (!url || bufs[url]) return Promise.resolve(!!bufs[url]);
+const OC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+return fetch(url).then(function (r) {
+if (!r.ok) throw new Error('http');
+return r.arrayBuffer();
+}).then(function (ab) {
+if (OC) { try { return new OC(1, 8, 8000).decodeAudioData(ab.slice(0)); } catch (e) {} }
+if (ctx) { try { return ctx.decodeAudioData(ab.slice(0)); } catch (e) {} }
+return null;
+}).then(function (buf) {
+if (buf) { bufs[url] = buf; return true; }
+return false;
+}, function () { return false; });
 };
 // — Unlock-safe play: resume, re-check running, then schedule —
 api.play = function (buf, gain, loop) {

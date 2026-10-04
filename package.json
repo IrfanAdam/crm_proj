@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node scripts/build-tokens.mjs && node scripts/ds-track.mjs && vite build",
     "lint:tokens": "node scripts/lint-tokens.mjs",
-    "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node tests/funnel-machine.test.mjs && node tests/morph-timing.test.mjs && node tests/temporal.test.mjs && node tests/illusion-timeline.test.mjs && node tests/arch-atlas.test.mjs && node tests/atlas-shell.test.mjs && node tests/ds-docs-experience.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs && node scripts/generate-arch-atlas.mjs --check && node scripts/generate-mechanics-graph.js --check",
+    "test": "node scripts/lint-tokens.mjs && node tests/contrast.test.mjs && node tests/funnel-machine.test.mjs && node tests/morph-timing.test.mjs && node tests/temporal.test.mjs && node tests/illusion-timeline.test.mjs && node tests/illusion-audio.test.mjs && node tests/arch-atlas.test.mjs && node tests/atlas-shell.test.mjs && node tests/ds-docs-experience.test.mjs && node scripts/plan-names.mjs && node scripts/ds-track.mjs && node scripts/generate-arch-atlas.mjs --check && node scripts/generate-mechanics-graph.js --check",
     "gen:mechanics": "node scripts/generate-mechanics-graph.js",
     "verify:mechanics": "node scripts/generate-mechanics-graph.js --check",
     "gen:atlas": "node scripts/generate-arch-atlas.mjs",

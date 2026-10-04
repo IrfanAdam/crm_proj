@@ -17,6 +17,9 @@
     --foot-text:   var(--primitive-sapphire-200);
     --foot-muted:  var(--primitive-sapphire-300);
     --radius:      var(--radius-lg);
+    --pitch-label-size: 0.72rem;
+    --pitch-label-tracking: 0.12em;
+    --pitch-label-weight: 700;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

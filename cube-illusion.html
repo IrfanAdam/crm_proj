@@ -39,7 +39,7 @@ body[data-embed] .cube-stage__caption,body[data-embed] .cube-stage__tools{displa
 <script>
 (function () {
 try { if (window.self !== window.top || new URLSearchParams(location.search).has('embed') || (location.hash || '').indexOf('embed') >= 0) document.body.dataset.embed = '1'; } catch (e) { try { if (new URLSearchParams(location.search).has('embed')) document.body.dataset.embed = '1'; } catch (_e) {} }
-try { if (new URLSearchParams(location.search).get('sound') === 'on') window.localStorage.setItem('illusion-sound', 'on'); } catch (e2) {}
+try { var _q = new URLSearchParams(location.search); var _sv = _q.get('sound'); var _emb = _q.has('embed') || (location.hash || '').indexOf('embed') >= 0; if (_sv === 'on') window.localStorage.setItem('illusion-sound', 'on'); else if (_sv === 'off') window.localStorage.setItem('illusion-sound', 'off'); else if (_emb && window.localStorage.getItem('illusion-sound') == null) window.localStorage.setItem('illusion-sound', 'off'); } catch (e2) {}
 var b = document.getElementById('illusion-sound'); var s = document.getElementById('illusion-status');
 if (window.ILLUSION_AUDIO) window.ILLUSION_AUDIO.arm();
 var paint = function () {
@@ -58,7 +58,7 @@ paintPreset(); var autoPlayed=false,playTries=0,pendingPlay=false;function tryPl
 window.addEventListener('message',function(ev){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(ev.data==='illusion-unlock'){if(Au&&Au.unlock)Au.unlock();return;}if(ev.data==='illusion-pause'){if(Au&&Au.pause)Au.pause();else if(Eng&&Eng.suspend)Eng.suspend();return;}if(ev.data==='illusion-hush'||ev.data==='illusion-stop'||ev.data==='pitch-pause'){if(Au&&Au.hush)Au.hush();else if(Eng)Eng.hush();if(Eng&&Eng.suspend)Eng.suspend();return;}if(ev.data==='illusion-reset-smooth'){var rg=(window.ILLUSION3D&&window.ILLUSION3D.rigs&&window.ILLUSION3D.rigs[0])||null;if(rg&&window.ILLUSION_CTL&&window.ILLUSION_CTL.resetSmooth)window.ILLUSION_CTL.resetSmooth(rg);autoPlayed=false;playTries=0;return;}if(ev.data==='illusion-reset-hard'){var rh=(window.ILLUSION3D&&window.ILLUSION3D.rigs&&window.ILLUSION3D.rigs[0])||null;if(rh&&window.ILLUSION_CTL&&window.ILLUSION_CTL.resetHard)window.ILLUSION_CTL.resetHard(rh);autoPlayed=false;playTries=0;return;}if(ev.data!=='illusion-play')return;
 if (window.ILLUSION_EXPLORE) { presetOn = true; window.ILLUSION_EXPLORE.setPreset(true); paintPreset(); }
 if(!tryPlay()){pendingPlay=true;if(++playTries<10)setTimeout(function(){window.postMessage('illusion-play','*');},600);}
-if(Au){try{if(Au.status()!=='muted'&&Au.status()!=='playing'&&Au.unlock)Au.unlock();}catch(e){}Au.cue('bed');}
+if(Au){try{if(Au.expectBed)Au.expectBed();else if(Au.status()!=='muted'&&Au.status()!=='playing'&&Au.unlock)Au.unlock();}catch(e){}}
 });
 document.addEventListener('visibilitychange',function(){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(document.hidden){if(Au&&Au.pause)Au.pause();else if(Eng&&Eng.suspend)Eng.suspend();}else if(Eng&&Eng.resume)try{Eng.resume()}catch(e){}});window.addEventListener('pagehide',function(){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(Au&&Au.hush)Au.hush();else if(Eng)Eng.hush();});window.addEventListener('beforeunload',function(){var Au=window.ILLUSION_AUDIO,Eng=window.ILLUSION_AUDIO_ENGINE;if(Au&&Au.hush)Au.hush();else if(Eng)Eng.hush();});
 setInterval(paint, 1000); paint();

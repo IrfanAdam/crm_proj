@@ -5,21 +5,40 @@
     background: var(--foot-bg);
     padding: 5rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+    /* full-bleed — no parent max-width can clip the grid */
+    width: 100%;
+    box-sizing: border-box;
   }
+  /* orchestrion canvas — orthogonal node field, mouse-illuminated */
+  .f-orchestrion-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
+  }
+  .footer-strip > *:not(.f-orchestrion-canvas) { position: relative; z-index: 1; }
   .f-label {
     font-family: var(--font-display);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
+    font-size: var(--pitch-label-size);
+    font-weight: var(--pitch-label-weight);
+    letter-spacing: var(--pitch-label-tracking);
     text-transform: uppercase;
-    color: var(--foot-muted);
+    color: var(--primitive-sapphire-300);
     margin-bottom: 1rem;
   }
   .f-line {
     font-family: var(--font-display);
     font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 800;
-    color: var(--primitive-sapphire-100);
+    color: var(--white);
     line-height: 1.1;
+    letter-spacing: -0.06em;
     max-width: 640px;
     margin: 0 auto 2rem;
   }
@@ -38,10 +57,12 @@
   }
   .alt-liner {
     padding: 0.5rem 1.1rem;
-    border: 1px solid var(--primitive-sapphire-700);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: var(--radius-md);
     font-size: 0.82rem;
-    color: var(--foot-muted);
+    color: var(--primitive-gray-100);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(6px);
   }
   .f-pitches {
     display: grid;
@@ -54,22 +75,23 @@
   @media (max-width: 640px) { .f-pitches { grid-template-columns: 1fr; } }
 
   .f-pitch {
-    border: 1px solid var(--primitive-sapphire-700);
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: var(--radius-lg);
     padding: 1.6rem;
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(8px);
   }
   .f-pitch-label {
     font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
+    font-size: var(--pitch-label-size);
+    font-weight: var(--pitch-label-weight);
+    letter-spacing: var(--pitch-label-tracking);
     text-transform: uppercase;
-    color: var(--primitive-amethyst-300);
+    color: var(--primitive-sapphire-300);
     margin-bottom: 0.9rem;
   }
   .f-pitch p {
     font-size: 0.88rem;
-    color: var(--foot-text);
+    color: var(--primitive-gray-100);
     line-height: 1.78;
   }
-

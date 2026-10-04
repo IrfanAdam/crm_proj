@@ -21,9 +21,9 @@
   }
   .step-body h4 {
     font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: var(--pitch-label-size);
+    font-weight: var(--pitch-label-weight);
+    letter-spacing: var(--pitch-label-tracking);
     text-transform: uppercase;
     color: var(--violet-mid);
     margin-bottom: 0.4rem;

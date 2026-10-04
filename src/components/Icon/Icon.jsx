@@ -24,7 +24,7 @@ import {
   SquaresFour,
   Diamond,
   Sparkle,
-  SketchLogo,
+  SketchLogo, Flame,
 } from "@phosphor-icons/react";
 import { GEM_MAP } from "./gem-icons.js";
 import GemFriendly from "./GemFriendly.jsx";
@@ -87,6 +87,7 @@ const MAP = {
   TrendUp,
   Briefcase,
   Kanban,
+  Flame, "flame": Flame,
 };
 
 export default function Icon({ name, size = 20, weight = "regular", color, className = "", ...props }) {

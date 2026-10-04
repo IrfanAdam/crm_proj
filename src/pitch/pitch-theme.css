@@ -8,9 +8,9 @@
   }
   .section-label {
     font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-size: var(--pitch-label-size);
+    font-weight: var(--pitch-label-weight);
+    letter-spacing: var(--pitch-label-tracking);
     text-transform: uppercase;
     color: var(--violet-mid);
     margin-bottom: 0.5rem;
@@ -34,10 +34,10 @@
   }
   .theme-block .theme-title {
     font-family: var(--font-display);
-    font-size: 0.72rem;
-    font-weight: 700;
+    font-size: var(--pitch-label-size);
+    font-weight: var(--pitch-label-weight);
     color: var(--violet);
-    letter-spacing: 0.12em;
+    letter-spacing: var(--pitch-label-tracking);
     text-transform: uppercase;
     margin-bottom: 0.6rem;
   }

@@ -15,9 +15,9 @@
   thead tr { background: var(--violet-xs); }
   thead th {
     font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: var(--pitch-label-size);
+    font-weight: var(--pitch-label-weight);
+    letter-spacing: var(--pitch-label-tracking);
     text-transform: uppercase;
     color: var(--violet);
     padding: 0.9rem 1.1rem;

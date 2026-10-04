@@ -1,48 +1,57 @@
 /* ADAM/PAGE — src/pitch/pitch-header-blur.css · progressive top blur for the sticky pitch header */
 /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · flair: blur the scrolled content, never paint over it. */
-/* Export map: .masthead-mount tint only (no own blur — nested backdrop-filters drop) · text above the blur layers · ::before bar blur · ::after bleed fade. */
-/* — Section: bar tint — the blur lives in the layers below, never on this box — */
-.masthead-mount {
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
+/* Export map: tint + blur share one eased mask so both dissolve to 0 at the bar's bottom edge — no hard line. */
+/* — Section: bar — transparent mount; the tint lives on ::before so it can fade with the blur — */
+body .masthead-mount {
+  background: transparent;
+  isolation: isolate;
+  overflow: clip;
+  padding-bottom: 16px;
 }
-/* — Section: text stays crisp — the blur layers sit under the masthead copy — */
+/* — Section: text stays crisp — the blur/tint layer sits under the masthead copy — */
 .masthead-mount .masthead {
   position: relative;
   z-index: 1;
 }
-/* — Section: bar blur — strongest at the viewport edge, easing down the bar — */
-.masthead-mount::before {
+/* — Section: bar blur+tint — strong blur does the obscuring, lighter tint keeps it glass not milky — */
+body .masthead-mount::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   transform: translateZ(0);
-  -webkit-backdrop-filter: blur(12px) saturate(1.25);
-  backdrop-filter: blur(12px) saturate(1.25);
-  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 35%, transparent 88%);
-  mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, var(--primitive-ink) 35%, transparent 88%);
+  background: color-mix(in srgb, var(--bg) 58%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  backdrop-filter: blur(18px) saturate(1.35);
+  /* eased trail: shorter solid (top 26% fully glass) then long cubic decay to 0 at 100% — blur trails, doesn't step */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 26%,
+    rgba(0, 0, 0, 0.82) 42%,
+    rgba(0, 0, 0, 0.56) 56%,
+    rgba(0, 0, 0, 0.28) 70%,
+    rgba(0, 0, 0, 0.08) 84%,
+    rgba(0, 0, 0, 0.018) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 26%,
+    rgba(0, 0, 0, 0.82) 42%,
+    rgba(0, 0, 0, 0.56) 56%,
+    rgba(0, 0, 0, 0.28) 70%,
+    rgba(0, 0, 0, 0.08) 84%,
+    rgba(0, 0, 0, 0.018) 92%,
+    transparent 100%
+  );
 }
-/* — Section: bleed fade — blur dissolves to zero before the trail's box edge — */
-.masthead-mount::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: 110px;
-  z-index: 0;
-  pointer-events: none;
-  transform: translateZ(0);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  -webkit-mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, transparent 72%);
-  mask-image: linear-gradient(to bottom, var(--primitive-ink) 0%, transparent 72%);
-}
-/* — Section: mobile — the blur field pads past the copy, top and bottom — */
+/* — Section: mobile — keep the extra bottom field but tighter — */
 @media (max-width: 760px) {
-  .masthead-mount {
+  body .masthead-mount {
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 12px;
   }
 }

@@ -1,6 +1,6 @@
 /* ADAM/PAGE — src/pitch/pitch-masthead.css · sticky masthead + split brand hero */
 /* [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · page bar sticks, hero grid. */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · brand wears --font-brand (Azeret Mono 500). */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · brand wears Rigamesh (the cube ALPHA wordmark face). */
   /* ── MASTHEAD MOUNT (sticks — body-tall parent, the page bar) ── */
   .masthead-mount {
     position: sticky;
@@ -9,7 +9,7 @@
     background: var(--bg);
   }
   .masthead {
-    --font-brand: 'Azeret Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-brand: 'Rigamesh', 'Space Grotesk', system-ui, sans-serif;
     padding: 1.1rem 2rem;
     max-width: 1060px;
     margin: 0 auto;
@@ -20,9 +20,10 @@
   }
   .masthead-brand {
     font-family: var(--font-brand);
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.35rem;
+    font-weight: 400;
     color: var(--violet);
+    letter-spacing: 0.02em;
   }
   .masthead-right {
     display: flex;
@@ -76,7 +77,7 @@
     font-size: clamp(2.6rem, 6vw, 4.2rem);   /* cap keeps “Turn your sales” on one line in the 482px copy column */
     font-weight: 800;
     line-height: 1.0;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.06em;
     color: var(--ink);
   }
   .brand-headline span {

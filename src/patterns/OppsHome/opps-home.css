@@ -50,13 +50,13 @@
    pill's own gap spaces the stack from the label, never between the faces */
 .opps__nearby .avatar{width:var(--icon-size-lg);height:var(--icon-size-lg);border:var(--border-width-medium) solid var(--bg-surface);margin-left:calc(var(--spacing-2) * -1)}
 .opps__nearby .avatar:first-child{margin-left:0}
-.opps__nearby .avatar--count{display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700)}
+.opps__nearby .avatar--count,.chip--faces .avatar--count{display:inline-flex;align-items:center;justify-content:center;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);background:var(--primitive-sapphire-ui-100);color:var(--primitive-sapphire-ui-700);border:var(--border-width-medium) solid var(--bg-surface)}
 .opps__nearby:focus{outline:none}
 .opps__nearby:focus-visible{box-shadow:var(--focus-ring)}
 /* count bubble: a flat pale disc loses edge contrast, so at an equal 24px box it reads
    ~5% smaller than a photo face — oversize the box 2px (22px disc vs 20px face) to match
    optically; the morph's hand-off clone carries these same classes, so both render alike */
-.opps__nearby .avatar.avatar--count{width:var(--spacing-odd-26);height:var(--spacing-odd-26)}
+.opps__nearby .avatar.avatar--count,.chip--faces .avatar.avatar--count{width:var(--spacing-odd-26);height:var(--spacing-odd-26)}
 .opps__filters{display:flex;align-items:center;gap:var(--spacing-2);overflow-x:auto;margin:0 calc(var(--spacing-4) * -1);padding:var(--border-width-medium) var(--spacing-4);scroll-padding:0 var(--spacing-4);scrollbar-width:none}
 .opps__filters::-webkit-scrollbar{display:none}
 /* filter row targets the 44px touch row (spacing-odd-44): every pill derives its
