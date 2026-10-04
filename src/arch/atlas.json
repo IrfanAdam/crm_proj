@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-04T12:34:09.337Z",
+    "generatedAt": "2026-10-04T12:51:48.607Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -45,7 +45,7 @@
       "src/components/Timeline": 1790164774821,
       "src/components/Toolbar": 1790164696780,
       "index.html": 1791115704160,
-      "src/glass/BottomDock.jsx": 1791115689386,
+      "src/glass/BottomDock.jsx": 1791117967532,
       "src/patterns/ActivityStrip": 1791109230849,
       "src/patterns/EmptyState": 1790097746429,
       "src/patterns/MonitorScreen": 1789570118710,

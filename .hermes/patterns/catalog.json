@@ -63,7 +63,7 @@
     },
     "fab-gem": {
       "status": "documented",
-      "location": "prototype dock (bottom nav) · DS gallery Dock",
+      "location": "prototype dock (bottom nav) · DS gallery Dock · shared motion/gooey.js",
       "components": [
         "Icon"
       ],
@@ -75,21 +75,22 @@
       ],
       "hexLeaks": [],
       "interactions": [
-        "press · squish spring (--fab-squish)",
-        "drag · soft follow spring, lag behind pointer (--fab-elasticity)",
-        "lag · elongation along trail vector, cross-axis half (--fab-stretch)",
-        "edges · rubber band beyond offsetParent bounds (1/4 gain)",
-        "release · underdamped fly home, overshoot ∝ ζ (--fab-damping)",
-        "gate · tap-vs-drag 8px, drag swallows trailing click",
+        "press · squish spring (--gooey-squish)",
+        "drag · resisted travel, quadratic onset into --gooey-give cap",
+        "strain · elongation along the EMA pull vector, rotation gate 6px (--gooey-stretch)",
+        "release · momentum shed (×0.3) + underdamped snap home (--gooey-damping)",
+        "gate · tap-vs-drag 8px; drag swallows trailing click (data-gooey-moved)",
+        "states · data-gooey=press|drag for styling",
         "reduced-motion · drive off, :active fallback",
-        "slow-mo · dt × time-scale.getScale()"
+        "slow-mo · dt × time-scale.getScale()",
+        "api · attachGooey(el) from src/motion/gooey.js · window.Gooey for classic pages"
       ],
       "docs": {
         "intro": "component-docs/fab-gem-intro.html",
         "lab": "gallery-panels/fab-gem-lab.html",
         "spec": "gallery-panels/fab-gem.html"
       },
-      "updated": "2026-10-04T12:34:49.596Z"
+      "updated": "2026-10-04T12:51:36.374Z"
     }
   },
   "version": 1

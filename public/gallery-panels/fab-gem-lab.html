@@ -7,6 +7,7 @@
 <span class="nlab__label">Damping</span><input class="fab-lab__range" type="range" data-fab-range="damping" min="0.2" max="1" step="0.02" value="0.5" aria-label="Damping"><output class="fab-lab__out" data-fab-out="damping">0.50</output>
 <span class="nlab__label">Stretch</span><input class="fab-lab__range" type="range" data-fab-range="stretch" min="0.05" max="0.45" step="0.01" value="0.26" aria-label="Stretch"><output class="fab-lab__out" data-fab-out="stretch">0.26</output>
 <span class="nlab__label">Squish</span><input class="fab-lab__range" type="range" data-fab-range="squish" min="0.02" max="0.2" step="0.01" value="0.08" aria-label="Squish"><output class="fab-lab__out" data-fab-out="squish">0.08</output>
+<span class="nlab__label">Give</span><input class="fab-lab__range" type="range" data-fab-range="give" min="0" max="80" step="2" value="14" aria-label="Give"><output class="fab-lab__out" data-fab-out="give">14</output>
 </div>
 <div class="nlab__group nlab__group--right" role="group" aria-label="Presets">
 <span class="nlab__label">Preset</span><button class="nlab__pill" data-fab-preset="crisp">Crisp</button><button class="nlab__pill is-on" data-fab-preset="apple">Apple</button><button class="nlab__pill" data-fab-preset="jelly">Jelly</button>
@@ -16,7 +17,7 @@
 <div class="fablab" data-fablab-stage>
 <div class="fablab__dock" aria-hidden="true"><i class="ph ph-house"></i><i class="ph ph-users"></i><i class="ph ph-handshake"></i></div>
 </div>
-<p class="nlab__hint meta">Press · drag · release — the blob squishes, lags, stretches along travel and wobbles home. Controls write the same CSS variables the spring reads on the next gesture.</p>
+<p class="nlab__hint meta">Press · drag · release — the blob squishes, strains toward your finger without leaving its dock, and wobbles home. Controls write the same CSS variables the spring reads on the next gesture.</p>
 </div>
 <div class="nlab__code">
 <pre><code class="tp-code" data-fab-code></code></pre>
@@ -24,5 +25,5 @@
 <button class="nlab__copy" data-fab-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
 </div>
 </div>
-<p class="spec-note">The specimen is the app component — same <code>.fab-gem</code> markup, same spring drive; only the variables differ. Reject: dead controls that flip a class the physics never reads.</p>
+<p class="spec-note">The specimen is the app component — same <code>.fab-gem</code> markup, same <code>attachGooey</code> drive; only the variables differ (<code>--gooey-elasticity</code> · <code>--gooey-damping</code> · <code>--gooey-stretch</code> · <code>--gooey-squish</code> · <code>--gooey-give</code>). Reject: dead controls that flip a class the physics never reads.</p>
 </section>

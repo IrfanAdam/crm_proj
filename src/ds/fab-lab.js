@@ -1,17 +1,18 @@
 /* ADAM/DS — src/ds/fab-lab.js · floating gem playground — lab controls write the live feel vars.
    The specimen IS the app component: same `.fab-gem` markup, same attachGooey drive. */
-import { attachGooey } from "../glass/fab-spring.js";
+import { attachGooey } from "../motion/gooey.js";
 
 const SPEC = {
-  elasticity: { prop: "--fab-elasticity", dflt: 800, fmt: (v) => String(v) },
-  damping: { prop: "--fab-damping", dflt: 0.5, fmt: (v) => v.toFixed(2) },
-  stretch: { prop: "--fab-stretch", dflt: 0.26, fmt: (v) => v.toFixed(2) },
-  squish: { prop: "--fab-squish", dflt: 0.08, fmt: (v) => v.toFixed(2) },
+  elasticity: { prop: "--gooey-elasticity", dflt: 800, fmt: (v) => String(v) },
+  damping: { prop: "--gooey-damping", dflt: 0.5, fmt: (v) => v.toFixed(2) },
+  stretch: { prop: "--gooey-stretch", dflt: 0.26, fmt: (v) => v.toFixed(2) },
+  squish: { prop: "--gooey-squish", dflt: 0.08, fmt: (v) => v.toFixed(2) },
+  give: { prop: "--gooey-give", dflt: 14, fmt: (v) => String(Math.round(v)) },
 };
 const PRESETS = {
-  crisp: { elasticity: 1500, damping: 0.85, stretch: 0.08, squish: 0.05 },
-  apple: { elasticity: 800, damping: 0.5, stretch: 0.26, squish: 0.08 },
-  jelly: { elasticity: 450, damping: 0.3, stretch: 0.4, squish: 0.16 },
+  crisp: { elasticity: 1500, damping: 0.85, stretch: 0.08, squish: 0.05, give: 6 },
+  apple: { elasticity: 800, damping: 0.5, stretch: 0.26, squish: 0.08, give: 14 },
+  jelly: { elasticity: 450, damping: 0.3, stretch: 0.4, squish: 0.16, give: 30 },
 };
 function flInit(root) {
   if (root.dataset.done) return;
@@ -35,7 +36,7 @@ function flInit(root) {
       const range = q('[data-fab-range="' + k + '"]'); if (range) range.value = o[k];
     }
     if (readout) readout.textContent = "ω " + Math.sqrt(o.elasticity).toFixed(1) + " · ζ " + o.damping.toFixed(2);
-    if (code) code.textContent = '<button class="fab-gem" style="--fab-elasticity:' + o.elasticity + "; --fab-damping:" + o.damping + ";\n  --fab-stretch:" + o.stretch + "; --fab-squish:" + o.squish + '">\n  <Icon name="gem-minimal" size={24} weight="regular" />\n</button>';
+    if (code) code.textContent = '<button class="fab-gem" style="--gooey-elasticity:' + o.elasticity + "; --gooey-damping:" + o.damping + ";\n  --gooey-stretch:" + o.stretch + "; --gooey-squish:" + o.squish + "; --gooey-give:" + o.give + '">\n  <Icon name="gem-minimal" size={24} weight="regular" />\n</button>';
     ctl.refresh();
   };
   root.addEventListener("input", (e) => {

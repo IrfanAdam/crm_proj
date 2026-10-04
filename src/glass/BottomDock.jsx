@@ -28,7 +28,7 @@ export default function BottomDock() {
       <span className="tabbar__rim" aria-hidden="true" />
       <DockTrack items={ITEMS} page={page} onSelect={setPage} />
     </div>
-    {/* iOS-style floating gem — right side, above dock · gooey spring blob */}
+    {/* iOS-style floating gem — right side, above dock · anchored gooey (motion/gooey) */}
     <FabGem />
     </>
   );
