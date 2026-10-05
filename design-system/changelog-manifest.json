@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T11:27:39.793Z",
+  "generated": "2026-10-05T11:27:55.279Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "007c58d",
+      "full": "007c58d94e9db76630380987bc98939523aabdea",
+      "date": "2026-10-05",
+      "time": "16:57",
+      "subject": "feat(pitch): footer auto-pulse on mobile — wave, no touch",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "3505f03",
       "full": "3505f03e523a60f3dd6587bc3fe76759e83fb0eb",
@@ -3188,11 +3197,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-footer-orchestrion.js"
-  ]
+  "wip": []
 }
