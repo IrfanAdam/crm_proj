@@ -87,7 +87,7 @@
     background-clip: text;
   }
   @media (max-width: 760px) {
-    .masthead { padding: 0.9rem 1rem; }
+    .masthead { padding: 1rem 1rem; }
     .masthead-brand { font-size: 0.95rem; }
     .masthead-tag { display: none; }
     .brand-hero { grid-template-columns: 1fr; padding: 2.5rem 1rem 2rem; }

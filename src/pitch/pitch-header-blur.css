@@ -48,10 +48,35 @@ body .masthead-mount::before {
     transparent 100%
   );
 }
-/* — Section: mobile — keep the extra bottom field but tighter — */
+/* — Section: mobile — more breathing room + longer progressive trail so header reads clean — */
 @media (max-width: 760px) {
   body .masthead-mount {
-    padding-top: 0.5rem;
-    padding-bottom: 12px;
+    padding-top: 0.6rem;
+    padding-bottom: 26px;
+  }
+  body .masthead-mount::before {
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 36%,
+      rgba(0, 0, 0, 0.84) 50%,
+      rgba(0, 0, 0, 0.58) 64%,
+      rgba(0, 0, 0, 0.30) 78%,
+      rgba(0, 0, 0, 0.09) 89%,
+      rgba(0, 0, 0, 0.02) 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 36%,
+      rgba(0, 0, 0, 0.84) 50%,
+      rgba(0, 0, 0, 0.58) 64%,
+      rgba(0, 0, 0, 0.30) 78%,
+      rgba(0, 0, 0, 0.09) 89%,
+      rgba(0, 0, 0, 0.02) 95%,
+      transparent 100%
+    );
   }
 }
