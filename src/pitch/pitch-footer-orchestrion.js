@@ -1,9 +1,12 @@
-/* ADAM/PAGE — src/pitch/pitch-footer-orchestrion.js · orthogonal node field, mouse-illuminated */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · dense equidistant ↕↔ lattice, viewport-bleed, rigid, dots slide strictly on rails. */
+/* ADAM/PAGE — src/pitch/pitch-footer-orchestrion.js · orthogonal node field, wave/pulse */
+ /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · dense equidistant ↕↔ lattice, viewport-bleed, rigid, dots slide strictly on rails. */
+ /* [mobile] · no hover/touch — sparing auto wave pulses across footer */
 (function () {
   var R = 240;
   var CORE_COLORS = ["#7cbefb", "#c48aff", "#ff85ab", "#ffc752"];
   var GAP = 15;
+  var MOBILE_MQ = window.matchMedia("(max-width: 760px)");
+  function isMobileView() { return MOBILE_MQ.matches; }
 
   function initFooterOrchestrion() {
     var footer = document.querySelector(".footer-strip");
@@ -38,6 +41,14 @@
       qx = gsap.quickTo(mouse, "x", { duration: 0.28, ease: "power3" });
       qy = gsap.quickTo(mouse, "y", { duration: 0.28, ease: "power3" });
     }
+    var isMobile = isMobileView();
+    if (MOBILE_MQ.addEventListener) MOBILE_MQ.addEventListener("change", function (e) { isMobile = e.matches; });
+    else if (MOBILE_MQ.addListener) MOBILE_MQ.addListener(function (e) { isMobile = e.matches; });
+
+    // auto wave state — mobile only, sparing pulses
+    var WAVE_DURATION = 2200; // ms sweep across
+    var WAVE_GAP = 3400; // ms pause between pulses — sparingly
+    var waveStart = (typeof performance !== "undefined" && performance.now) ? performance.now() : Date.now();
 
     function buildGraph() {
       nodes.length = 0; edges.length = 0;
@@ -93,12 +104,6 @@
 
     // mouse is tracked in canvas (viewport) coords: offset by footer left
     function canvasX(clientX) {
-      var rect = footer.getBoundingClientRect();
-      // canvas left is viewport 0, footer left may be >0 if centred
-      // canvasX = clientX - viewportLeft(0) = clientX
-      // but mouse logical x is relative to canvas (0..cw)
-      // canvas spans 0..cw (viewport), so x = clientX
-      // if viewport has scrollbar, clientX already viewport-relative
       return clientX;
     }
     function canvasY(clientY) {
@@ -107,42 +112,72 @@
     }
 
     footer.addEventListener("mousemove", function (e) {
+      if (isMobile) return;
       var nx = canvasX(e.clientX), ny = canvasY(e.clientY);
       if (hasGSAP) { qx(nx); qy(ny); } else { mouse.tx = nx; mouse.ty = ny; }
     });
     // also listen on window so mouse over viewport outside footer still maps near edge
     window.addEventListener("mousemove", function (e) {
+      if (isMobile) return;
       var rect = footer.getBoundingClientRect();
       if (e.clientY < rect.top || e.clientY > rect.bottom) return;
       var nx = canvasX(e.clientX), ny = canvasY(e.clientY);
       if (hasGSAP) { qx(nx); qy(ny); } else { mouse.tx = nx; mouse.ty = ny; }
     });
     footer.addEventListener("mouseleave", function () {
+      if (isMobile) return;
       if (hasGSAP) { qx(-9999); qy(-9999); }
       mouse.tx = -9999; mouse.ty = -9999;
     });
     footer.addEventListener("touchmove", function (e) {
+      if (isMobile) return;
       if (!e.touches[0]) return;
       var nx = canvasX(e.touches[0].clientX), ny = canvasY(e.touches[0].clientY);
       if (hasGSAP) { qx(nx); qy(ny); } else { mouse.tx = nx; mouse.ty = ny; }
     }, { passive: true });
     footer.addEventListener("touchend", function () {
+      if (isMobile) return;
       if (hasGSAP) { qx(-9999); qy(-9999); }
       mouse.tx = -9999; mouse.ty = -9999;
     });
 
     var idle = { t: 0 };
     function frame() {
-      if (!hasGSAP) { mouse.x += (mouse.tx - mouse.x) * 0.18; mouse.y += (mouse.ty - mouse.y) * 0.18; }
-      var mx = mouse.x, my = mouse.y;
-      var hasPointer = mx > -500 && my > -500;
-      var imx, imy;
-      if (!hasPointer) {
-        idle.t += 0.002;
-        imx = cw * 0.5 + Math.cos(idle.t) * cw * 0.06;
-        imy = h * 0.5 + Math.sin(idle.t * 0.8) * h * 0.05;
-      } else { idle.t += 0.001; imx = mx; imy = my; }
-      var px = hasPointer ? mx : imx, py = hasPointer ? my : imy;
+      var px, py, hasPointer, imx, imy;
+
+      if (isMobile) {
+        // ── MOBILE: sparing auto wave pulses, no touch —──
+        var now = (typeof performance !== "undefined" && performance.now) ? performance.now() : Date.now();
+        var elapsed = now - waveStart;
+        var period = WAVE_DURATION + WAVE_GAP;
+        var cycle = elapsed % period;
+        var isActive = cycle < WAVE_DURATION;
+        hasPointer = isActive;
+        if (isActive) {
+          var p = cycle / WAVE_DURATION;
+          // sine ease in-out — smooth entry/exit
+          var eased = 0.5 - Math.cos(p * Math.PI) * 0.5;
+          px = -R + eased * (cw + 2 * R);
+          // gentle vertical drift so wave isn't laser-straight
+          py = h * 0.5 + Math.sin(now * 0.00035) * h * 0.10;
+          imx = px; imy = py;
+        } else {
+          px = -9999; py = -9999;
+          imx = -9999; imy = -9999;
+        }
+        // keep idle tick for subtle phase on dots
+        idle.t += 0.001;
+      } else {
+        if (!hasGSAP) { mouse.x += (mouse.tx - mouse.x) * 0.18; mouse.y += (mouse.ty - mouse.y) * 0.18; }
+        var mx = mouse.x, my = mouse.y;
+        hasPointer = mx > -500 && my > -500;
+        if (!hasPointer) {
+          idle.t += 0.002;
+          imx = cw * 0.5 + Math.cos(idle.t) * cw * 0.06;
+          imy = h * 0.5 + Math.sin(idle.t * 0.8) * h * 0.05;
+        } else { idle.t += 0.001; imx = mx; imy = my; }
+        px = hasPointer ? mx : imx; py = hasPointer ? my : imy;
+      }
 
       ctx.clearRect(0, 0, cw, h);
 
@@ -189,7 +224,7 @@
         core.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = core;
         ctx.beginPath(); ctx.arc(px, py, 34, 0, Math.PI * 2); ctx.fill();
-      } else {
+      } else if (!isMobile) {
         var ig = ctx.createRadialGradient(imx, imy, 0, imx, imy, R * 0.75);
         ig.addColorStop(0, "rgba(148,176,206,0.02)");
         ig.addColorStop(1, "rgba(0,0,0,0)");
@@ -197,7 +232,7 @@
         ctx.beginPath(); ctx.arc(imx, imy, R * 0.75, 0, Math.PI * 2); ctx.fill();
       }
 
-      var idleScale = hasPointer ? 1 : 0.32;
+      var idleScale = hasPointer ? 1 : (isMobile ? 0 : 0.32);
       for (var ei = 0; ei < edges.length; ei++) {
         var ed = edges[ei];
         var ai = ed.a, bi = ed.b;
@@ -208,8 +243,8 @@
         var tt = 1 - Math.min(d / R, 1);
         tt = Math.pow(tt, 2.0) * idleScale;
         // stronger base so right side reads even far from mouse
-        var alpha = 0.11 + tt * 0.40;
-        var lw = 0.38 + tt * 0.95;
+        var alpha = isMobile ? (hasPointer ? 0.08 + tt * 0.42 : 0.06) : (0.11 + tt * 0.40);
+        var lw = isMobile ? (hasPointer ? 0.32 + tt * 0.95 : 0.28) : (0.38 + tt * 0.95);
         ctx.beginPath();
         if (ddx < 0.8 || ddy < 0.8) { ctx.moveTo(ax, ay); ctx.lineTo(bx, by); }
         else { ctx.moveTo(ax, ay); ctx.lineTo(ex, ey); ctx.lineTo(bx, by); }
