@@ -13,14 +13,15 @@ const FOV = 24;
 const css = function (n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); };
 api.tok = function (n, fb) { return css(n) || fb; };
 api.AZ = Math.PI / 4;
-api.LOOK = -0.04;
-api.STATIONS = { contact: { el: 22, p: 0.82 }, read: { el: 39, p: 1 }, macro: { el: 26, p: 0.74 } };
-const plate = function (hex, opacity, rough, glow) {
+api.LOOK = -0.118;
+api.STATIONS = { contact: { el: 39, p: 0.925 }, read: { el: 35, p: 0.92 }, settle: { el: 30, p: 0.93 } };
+const plate = function (hex, opacity, rough, glow, env, cc, ehex, spec) {
 return new T.MeshPhysicalMaterial({
 color: new T.Color(hex), metalness: 0, roughness: rough, ior: 1.45,
 transparent: true, opacity: opacity, depthWrite: false,
-clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 3,
-emissive: new T.Color(hex), emissiveIntensity: glow,
+clearcoat: cc, clearcoatRoughness: 0.05, envMapIntensity: env,
+specularIntensity: spec == null ? 1 : spec,
+emissive: new T.Color(ehex || hex), emissiveIntensity: glow,
 });
 };
 api.lay = function (rig, k) {
@@ -43,9 +44,9 @@ if (window.GEM_ENV) scene.environment = window.GEM_ENV.texture(renderer);
 const W = window.DECK_FORM.W, ts = window.DECK_FORM.THICKS;
 const group = new T.Group();
 const mats = [
-plate(api.tok('--primitive-sapphire-ui-400', 0x218aea), 0.98, 0.16, 0.55),
-plate(api.tok('--primitive-sapphire-ui-300', 0x7cbefb), 0.36, 0.2, 0.24),
-plate(api.tok('--primitive-sapphire-ui-200', 0xc1e0fd), 0.11, 0.24, 0.08),
+plate(api.tok('--primitive-sapphire-ui-400', 0x218aea), 0.995, 0.16, 1, 0, 0.05, api.tok('--primitive-sapphire-ui-500', 0x1666af), 0.1),
+plate(api.tok('--primitive-sapphire-ui-400', 0x218aea), 0.42, 0.2, 0.3, 0.7, 1),
+plate(api.tok('--primitive-sapphire-ui-300', 0x7cbefb), 0.1, 0.24, 0.08, 0.4, 1),
 ];
 const slabs = mats.map(function (m, i) {
 const mesh = new T.Mesh(window.DECK_FORM.slab(W, ts[i]), m);
@@ -72,13 +73,13 @@ const fill = new T.DirectionalLight(0xdfe9ff, 0.4);
 fill.position.set(-3.2, 3, 2.6);
 scene.add(key, fill, new T.AmbientLight(0xffffff, 0.35));
 const tan = Math.tan((FOV * Math.PI) / 360);
-const dist = Math.max(0.74 / (0.8 * tan * Math.max(aspect, 0.5)), 1.05);
+const dist = Math.max(0.78 / (0.8 * tan * Math.max(aspect, 0.5)), 1.05);
 scene.fog = new T.Fog(scene.background, dist * 1.25, dist * 2.5);
 const camera = new T.PerspectiveCamera(FOV, aspect, 0.1, 60);
 const rig = {
 scene: scene, camera: camera, group: group, slabs: slabs, dist: dist, fov: FOV,
 text: { canvas: sheet.canvas, paint: sheet.paint, tex: tex, plane: plane },
-cam: { el: 39, p: 1 }, target: { el: 39, p: 1 }, mode: 'hold', t: 0, clock: 0,
+cam: { el: 35, p: 0.92 }, target: { el: 35, p: 0.92 }, mode: 'hold', t: 0, clock: 0,
 };
 api.lay(rig, 1);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () {

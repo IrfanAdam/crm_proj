@@ -1,7 +1,7 @@
 /* ADAM/SHARED — src/components/GlassDeck/deck-dress.js · the clock: float + stations */
 // [plan:2026-10-05_000000-lump-sum-builds.md#phase-1] · (Task 46).
 // — step(rig, dt): idle float (bob + micro sway), station easing in hold mode, or the 6s push —
-// —   loop (contact → read → macro); then the camera solve — azimuth 45°, elevation + dolly only —
+// —   loop (contact → read → settle); then the camera solve — azimuth 45°, elevation + dolly only —
 // Export map: DECK_DRESS.step(rig, dt) · DECK_DRESS.LOOP (cycle seconds)
 (function () {
 const api = {};
@@ -25,15 +25,11 @@ rig.group.rotation.y = Math.sin(t * 0.23) * 0.006;
 if (rig.mode === 'loop') {
 const u = (t % api.LOOP) / api.LOOP;
 const A = window.DECK_SCENE.STATIONS;
-if (u < 0.62) {
-const k = ease(u / 0.62);
-rig.cam.el = lerp(A.contact.el, A.read.el, k);
-rig.cam.p = lerp(A.contact.p, A.read.p, k);
-} else {
-const k = ease((u - 0.62) / 0.38);
-rig.cam.el = lerp(A.read.el, A.macro.el, k);
-rig.cam.p = lerp(A.read.p, A.macro.p, k);
-}
+const seg = function (a, b, k) { rig.cam.el = lerp(a.el, b.el, k); rig.cam.p = lerp(a.p, b.p, k); };
+if (u < 0.12) seg(A.contact, A.contact, 0);
+else if (u < 0.5) seg(A.contact, A.read, ease((u - 0.12) / 0.38));
+else if (u < 0.83) seg(A.read, A.settle, ease((u - 0.5) / 0.33));
+else seg(A.settle, A.settle, 0);
 } else {
 const s = 1 - Math.pow(0.002, dt);
 rig.cam.el += (rig.target.el - rig.cam.el) * s;

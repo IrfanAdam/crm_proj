@@ -10,7 +10,7 @@ const T = window.THREE;
 if (!T || !T.WebGLRenderTarget || !T.ShaderMaterial) return;
 const POLL = 400, MSAA = 4;
 let on = true;
-const api = { intensity: 0.48, spread: 5, threshold: 0.68, on: function () { return on; } };
+const api = { intensity: 0.55, spread: 5, threshold: 0.64, on: function () { return on; } };
 const cam = new T.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 const geo = new T.PlaneGeometry(2, 2);
 const mkScene = function (m) {

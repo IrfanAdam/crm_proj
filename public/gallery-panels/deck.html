@@ -1,18 +1,18 @@
 <div class="pad spec-grid">
 <section class="specimen">
 <h3>Spec — stations</h3>
-<p class="spec-note">Three stations, one azimuth (45° locked); motion is elevation + dolly only. The Loop replays the reference push: contact → read → macro in 6s.</p>
+<p class="spec-note">Three stations, one azimuth (45° locked); motion is elevation + dolly only. The Loop replays the reference arc: contact → read → settle in 6s.</p>
 <table class="ch-roles"><thead><tr><th>Station</th><th>Frame</th><th>Elevation</th><th>Dolly ×</th><th>What you see</th></tr></thead><tbody>
-<tr><td>Contact</td><td>start</td><td>22°</td><td>0.82</td><td>low oblique and close; plates read as a tight stack, the word half-lost in bloom at the far edge</td></tr>
-<tr><td>Read</td><td>hold</td><td>39°</td><td>1.00</td><td>full lockup legible; plates layered, front corner tack, back dissolving to white</td></tr>
-<tr><td>Macro</td><td>end</td><td>26°</td><td>0.74</td><td>pushed past the whole label — top plate crops the frame, far letters wash out</td></tr>
+<tr><td>Contact</td><td>start</td><td>39°</td><td>0.925</td><td>tight and close, gently top-down; the stack reads compact, far corner near the frame edge</td></tr>
+<tr><td>Read</td><td>mid</td><td>35°</td><td>0.92</td><td>the reference read — full lockup legible, plates layered, back corner dissolving to white</td></tr>
+<tr><td>Settle</td><td>end hold</td><td>30°</td><td>0.93</td><td>the arc falls away and rests — full label readable, glow calmed off the rim</td></tr>
 </tbody></table>
 </section>
 <section class="specimen">
 <h3>Spec — anatomy</h3>
 <table class="ch-roles"><thead><tr><th>Part</th><th>Recipe</th></tr></thead><tbody>
 <tr><td>Plate</td><td><code>DECK_FORM.slab(w, t)</code> — rounded-rect extrude, radius <code>0.27w</code>, bevel ≈ ¼t (the bevel carries the rim; no stroke geometry) · wall normals welded smooth by position</td></tr>
-<tr><td>Opacity ladder</td><td>base <code>.98</code> sapphire-400 + emissive .55 → mid <code>.36</code> sapphire-300 → top <code>.11</code> sapphire-200 — one material recipe, three stops</td></tr>
+<tr><td>Opacity ladder</td><td>base <code>.995</code> sapphire-400 + sapphire-500 emissive @1 → mid <code>.42</code> sapphire-400 + emissive .3 → top <code>.10</code> sapphire-300 — one material recipe, three stops, deepened so the stack renders azure rather than pastel</td></tr>
 <tr><td>Wordmark</td><td>1024² canvas sheet (<code>deck-text.js</code>) on a plane 0.94w wide, 0.006 above the top face — an image in perspective, never a DOM overlay</td></tr>
 <tr><td>Stack</td><td>thickness <code>0.145 / 0.115 / 0.095w</code> (base → top), air gap <code>0.075w</code> (lab range 0.5–2×), total height <code>0.505w</code> centered on origin</td></tr>
 <tr><td>Alpha glass</td><td>transparent + <code>depthWrite:false</code>, explicit <code>renderOrder</code> base 2 → mid 3 → top 4 → sheet 6 — never <code>transmission</code> (r160's pass captures only opaque geometry and would swallow the stack)</td></tr>
@@ -22,8 +22,8 @@
 <h3>Spec — optics &amp; void</h3>
 <details class="spec-more"><summary>Light, env, bloom, reduced motion</summary>
 <table class="ch-roles"><thead><tr><th>Layer</th><th>Detail</th></tr></thead><tbody>
-<tr><td>Rim</td><td>clearcoat 1 + <code>envMapIntensity</code> 3 against the gem studio env (<code>GEM_ENV</code>) — highlights from geometry, not paint · renderer is <b>NoToneMapping</b>: the plates render linear so token saturation survives (ACES would crush it); the bloom composite re-encodes via <code>colorspace_fragment</code></td></tr>
-<tr><td>Bloom</td><td><code>deck-bloom.js</code> — threshold .68 · spread 5 · intensity .48, depth-gated to geometry: the void never glows; pill <code>Bloom: on/off</code></td></tr>
+<tr><td>Rim</td><td>clearcoat 1 + low <code>envMapIntensity</code> (≤0.7) against the gem studio env — high env reflects wash the deep blues back to pastel · renderer is <b>NoToneMapping</b>: the plates render linear so token saturation survives (ACES would crush it); the bloom composite re-encodes via <code>colorspace_fragment</code></td></tr>
+<tr><td>Bloom</td><td><code>deck-bloom.js</code> — threshold .64 · spread 5 · intensity .55, depth-gated to geometry: the void never glows; pill <code>Bloom: on/off</code></td></tr>
 <tr><td>Void</td><td>flat <code>--primitive-sapphire-ui-50</code> background + distance fog (×1.25 → ×2.5 of base distance) for the far-edge dissolve; no ground shadow</td></tr>
 <tr><td>Sizing</td><td>renderer <code>pixelRatio ≤ 2</code>; mounts via IntersectionObserver; paused offscreen or hidden tab; reduced motion → one static read frame; no WebGL → token-ramp stand-in (<code>deck-fallback.js</code>)</td></tr>
 </tbody></table>
@@ -34,6 +34,6 @@
 <p class="spec-note">One canvas, five scripts; the rig exposes <code>DECK3D</code> verbs — <code>station(name)</code> · <code>setMode('hold'|'loop')</code> · <code>control(el, p)</code> · <code>gap(k)</code> · <code>words(e, w)</code> — every lab control calls one.</p>
 <code class="tp-code">&lt;canvas data-deck&gt;&lt;/canvas&gt;
 &lt;!-- src/components/GlassDeck/ — deck-form · deck-text · deck-scene · deck-dress · deck3d (+ deck-bloom) --&gt;</code>
-<p class="meta">Related — env: <code>src/components/GemReward/gem-env.js</code> · specimen: <a href="deck.html">deck.html</a> · tokens: <code>--primitive-sapphire-ui-200/300/400</code>, <code>--primitive-sapphire-ui-50</code> · pattern source: research-deck-2 (macro push-in, Data Utility)</p>
+<p class="meta">Related — env: <code>src/components/GemReward/gem-env.js</code> · specimen: <a href="deck.html">deck.html</a> · tokens: <code>--primitive-sapphire-ui-200/300/400</code>, <code>--primitive-sapphire-ui-50</code> · pattern source: research-deck-2 (elevation arc + settle, Data Utility)</p>
 </section>
 </div>

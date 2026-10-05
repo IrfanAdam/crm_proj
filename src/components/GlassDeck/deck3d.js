@@ -1,13 +1,20 @@
 /* ADAM/SHARED — src/components/GlassDeck/deck3d.js · canvas[data-deck] mounts */
 // [plan:2026-10-05_000000-lump-sum-builds.md#phase-1] · mount + loop + lab verbs (Task 46).
 // — Motion: paused offscreen, hidden tab; one static read frame under reduced motion · —
-// —         no THREE → DECK_FALLBACK paints the stand-in —
+// —         no THREE → DECK_FALLBACK paints the stand-in · drop() reaps detached rigs —
 // Export map: mounts canvas[data-deck] on boot · ds:doc · DOM insert · DECK3D.rigs ·
 // —           DECK3D.station(name) · setMode('hold'|'loop') · control(el, p) · gap(k) · words(e, w)
 (function () {
 const THREE_ = window.THREE;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rigs = [];
+function drop(rig) {
+if (rig.gone) return;
+rig.gone = true;
+const i = rigs.indexOf(rig); if (i > -1) rigs.splice(i, 1);
+if (rig.io) rig.io.disconnect();
+if (rig.renderer) { rig.renderer.dispose(); rig.renderer.forceContextLoss(); }
+}
 function start(rig) {
 const canvas = rig.canvas;
 const renderer = new THREE_.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -29,11 +36,7 @@ renderer.render(rig.scene, rig.camera);
 return;
 }
 const loop = function () {
-if (rig.gone || !canvas.isConnected) {
-rig.gone = true; rigs.splice(rigs.indexOf(rig), 1);
-if (rig.renderer) { rig.renderer.dispose(); rig.renderer.forceContextLoss(); }
-return;
-}
+if (rig.gone || !canvas.isConnected) { drop(rig); return; }
 requestAnimationFrame(loop);
 const now = performance.now();
 const dt = Math.min((now - rig.last) / 1000 || 0, 0.05);
@@ -55,10 +58,11 @@ if (window.DECK_FALLBACK) window.DECK_FALLBACK.paint(canvas);
 return;
 }
 if (!window.IntersectionObserver) { rig.vis = true; start(rig); return; }
-new IntersectionObserver(function (es) {
+rig.io = new IntersectionObserver(function (es) {
 rig.vis = es[0].isIntersecting;
 if (rig.vis && !rig.renderer) start(rig);
-}, { rootMargin: '160px' }).observe(canvas);
+}, { rootMargin: '160px' });
+rig.io.observe(canvas);
 }
 const api = { rigs: rigs, still: still };
 api.station = function (name) {
@@ -70,14 +74,20 @@ api.setMode = function (m) { rigs.forEach(function (r) { r.mode = m; }); };
 api.control = function (el, p) { rigs.forEach(function (r) { r.mode = 'hold'; r.target.el = el; r.target.p = p; }); };
 api.gap = function (k) { rigs.forEach(function (r) { window.DECK_SCENE.lay(r, k); }); };
 api.words = function (e, w) { rigs.forEach(function (r) { r.text.paint(e, w); r.text.tex.needsUpdate = true; }); };
-const added = function (n) {
-if (n.nodeType === 1) (n.matches('canvas[data-deck]') ? [n] : Array.prototype.slice.call(n.querySelectorAll('canvas[data-deck]'))).forEach(mount);
+const decks = function (n) { return n.matches('canvas[data-deck]') ? [n] : Array.prototype.slice.call(n.querySelectorAll('canvas[data-deck]')); };
+const added = function (n) { if (n.nodeType === 1) decks(n).forEach(mount); };
+const reap = function (n) {
+if (n.nodeType !== 1) return;
+decks(n).forEach(function (c) { if (c.isConnected) return; var i = rigs.length; while (i--) if (rigs[i].canvas === c) drop(rigs[i]); });
 };
 const boot = function () { document.querySelectorAll('canvas[data-deck]').forEach(mount); };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 document.addEventListener('ds:doc', boot);
 if (window.MutationObserver) new MutationObserver(function (list) {
-list.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, added); });
+list.forEach(function (m) {
+Array.prototype.forEach.call(m.addedNodes, added);
+Array.prototype.forEach.call(m.removedNodes, function (n) { setTimeout(function () { reap(n); }, 0); });
+});
 }).observe(document.body, { childList: true, subtree: true });
 window.DECK3D = api;
 })();

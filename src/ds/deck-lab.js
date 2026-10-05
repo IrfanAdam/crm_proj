@@ -1,7 +1,7 @@
 /* ADAM/DS — src/ds/deck-lab.js · Deck playground — controls write the live rig */
 // [plan:2026-10-05_000000-lump-sum-builds.md#phase-1] · the #deck pattern section's controls (Task 46).
-// — Ranges: push ● elevation ● gap → rig.target (hold mode); stations: contact/read/macro pills; —
-// — Loop: the 6s auto push · words: eyebrow + word repaint the canvas sheet on every rig —
+// — Ranges: push ● elevation ● gap → rig.target (hold mode); stations: contact/read/settle pills; —
+// — Loop: the 6s auto arc · words: eyebrow + word repaint the canvas sheet on every rig —
 (function () {
 const PUSH = function (v) { return 1.05 - 0.31 * (Number(v) / 100); };
 const PUSHV = function (p) { return Math.round(((1.05 - p) / 0.31) * 100); };
