@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T13:25:13.366Z",
+  "generated": "2026-10-05T08:35:45.536Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -17,9 +17,28 @@
     "2026-09-29_132702-ds-docs-experience.md",
     "2026-09-29_135509-illusion-cube-surface-revision.md",
     "2026-09-29_143500-ds-docs-delight.md",
-    "2026-10-03_144222-gem-realism-round2.md"
+    "2026-10-03_144222-gem-realism-round2.md",
+    "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "9ea67ab",
+      "full": "9ea67abbd027beda8d166f4554c06b4928b546dd",
+      "date": "2026-10-05",
+      "time": "14:05",
+      "subject": "feat(ds,patterns): Deck — the Data Utility glass stack, native three.js rig + DS pattern",
+      "plan": "2026-10-05_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "2b7f814",
+      "full": "2b7f81492e5944e3c7adfd3aecc5b95821142a9c",
+      "date": "2026-10-04",
+      "time": "19:01",
+      "subject": "chore: batch commit day-session work — pitch footer+Rigamesh, illusion audio, opps home, activity strip, cube preview (excl. 6.3M probe shots + img backup)",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "c5acc8e",
       "full": "c5acc8e1ea5943d4c544eed10c31d575b3cfb61c",
@@ -3134,35 +3153,10 @@
     }
   ],
   "wip": [
-    "M gallery.html",
-    "M pitch.html",
-    "M public/pitch-v2/footer.html",
-    "M public/pitch-v2/img/layer-performance.jpg",
-    "M public/pitch-v2/loop.html",
-    "M src/components/Icon/Icon.jsx",
-    "M src/components/IllusionCube/illusion-audio-engine.js",
-    "M src/components/IllusionCube/illusion-audio.js",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
     "M src/js/mechanics/graphData.schema.js",
-    "M src/patterns/ActivityStrip/activity-strip.js",
-    "M src/patterns/OppsHome/opps-home.css",
-    "M src/patterns/OppsHome/opps-home.js",
-    "M src/pitch/pitch-base.css",
-    "M src/pitch/pitch-carousel.css",
-    "M src/pitch/pitch-footer.css",
-    "M src/pitch/pitch-header-blur.css",
-    "M src/pitch/pitch-layers.css",
-    "M src/pitch/pitch-loop-detail.css",
-    "M src/pitch/pitch-loop.css",
-    "M src/pitch/pitch-masthead.css",
-    "M src/pitch/pitch-position.css",
-    "M src/pitch/pitch-spine.css",
-    "M src/pitch/pitch-table.css",
-    "M src/pitch/pitch-theme.css",
-    "?? public/pitch-v2/img/layer-performance-graded-backup.jpg",
-    "?? src/pitch/pitch-footer-orchestrion.js",
-    "?? tests/illusion-audio.test.mjs"
+    "?? public/pitch-v2/img/layer-performance-graded-backup.jpg"
   ]
 }
