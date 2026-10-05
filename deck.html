@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ALPHA CRM — Glass Deck</title>
+<link rel="stylesheet" href="design-system/tokens.css"/>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--primitive-sapphire-ui-50);color:var(--text-primary);font-family:var(--font-family-sans)}
+.deck-stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--spacing-6);padding:var(--spacing-8) 0}
+.deck-stage__frame{width:min(88vmin,820px);aspect-ratio:16/10}
+.deck-stage canvas{width:100%;height:100%;display:block}
+.deck-stage__caption{font-size:var(--font-size-xs);letter-spacing:var(--font-tracking-wide);text-transform:uppercase;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<main class="deck-stage">
+<div class="deck-stage__frame">
+<canvas data-deck role="img" aria-label="Glass deck — three translucent plates with Data Utility written on the top face"></canvas>
+</div>
+<p class="deck-stage__caption">Glass deck — ALPHA DS · three r160</p>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script src="src/components/GemReward/gem-env.js"></script>
+<script src="src/components/GlassDeck/deck-form.js"></script>
+<script src="src/components/GlassDeck/deck-text.js"></script>
+<script src="src/components/GlassDeck/deck-scene.js"></script>
+<script src="src/components/GlassDeck/deck-dress.js"></script>
+<script src="src/components/GlassDeck/deck-fallback.js"></script>
+<script src="src/components/GlassDeck/deck3d.js"></script>
+<script src="src/components/GlassDeck/deck-bloom.js"></script>
+</body>
+</html>

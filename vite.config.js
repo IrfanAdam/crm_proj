@@ -70,6 +70,7 @@ export default defineConfig({
         changelog: resolve(__dirname, 'changelog.html'),
         preview: resolve(__dirname, 'preview.html'),
         cube: resolve(__dirname, 'cube.html'),
+        deck: resolve(__dirname, 'deck.html'),
         cubespline: resolve(__dirname, 'cube-spline.html'),
         illusion: resolve(__dirname, 'cube-illusion.html'),
       },

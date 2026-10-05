@@ -1,0 +1,33 @@
+<section class="specimen">
+<h3>Playground — one stack, live camera</h3>
+<div class="nlab" data-decklab>
+<div class="nlab__bar">
+<div class="nlab__group" role="group" aria-label="Camera">
+<span class="nlab__label">Push</span><input class="deck-lab__range" type="range" data-deck-range="push" min="0" max="100" step="1" value="16" aria-label="Dolly push"><output class="deck-lab__out" data-deck-out="push">16</output>
+<span class="nlab__label">Elevation</span><input class="deck-lab__range" type="range" data-deck-range="elevation" min="16" max="46" step="0.5" value="39" aria-label="Elevation"><output class="deck-lab__out" data-deck-out="elevation">39</output>
+<span class="nlab__label">Gap</span><input class="deck-lab__range" type="range" data-deck-range="gap" min="0.5" max="2" step="0.05" value="1" aria-label="Plate gap"><output class="deck-lab__out" data-deck-out="gap">1.00×</output>
+</div>
+<div class="nlab__group nlab__group--right" role="group" aria-label="Stations">
+<span class="nlab__label">Station</span><button class="nlab__pill" data-deck-station="contact">Contact</button><button class="nlab__pill is-on" data-deck-station="read">Read</button><button class="nlab__pill" data-deck-station="macro">Macro</button>
+<span class="nlab__label">Drive</span><button class="nlab__pill" data-deck-loop>Loop</button><button class="nlab__pill is-on" data-deck-bloom>Bloom: on</button>
+</div>
+</div>
+<div class="nlab__stage" data-surface="canvas">
+<div class="decklab"><canvas data-deck role="img" aria-label="Glass deck — three translucent plates with a wordmark on the top face"></canvas></div>
+<p class="nlab__hint meta">Drag to push, pick a station, or let the Loop run — every control writes the same rig state the renderer reads next frame; the wordmark repaints on the canvas sheet.</p>
+</div>
+<div class="nlab__bar nlab__bar--foot">
+<div class="nlab__group" role="group" aria-label="Wordmark">
+<span class="nlab__label">Eyebrow</span><input class="nlab__select" data-deck-eyebrow value="Data" aria-label="Eyebrow word">
+<span class="nlab__label">Word</span><input class="nlab__select" data-deck-word value="Utility" aria-label="Display word">
+</div>
+<span class="nlab__ratio" data-deck-read>el 39.0° · dolly ×1.00</span>
+</div>
+<div class="nlab__code">
+<pre><code class="tp-code" data-deck-code>&lt;canvas data-deck&gt;&lt;/canvas&gt;
+src/components/GlassDeck/*.js</code></pre>
+<button class="nlab__copy" data-deck-copy aria-label="Copy snippet"><i class="ph-bold ph-copy" aria-hidden="true"></i></button>
+</div>
+</div>
+<p class="spec-note">The specimen is the rig — same scripts, same tokens; the controls write live rig state (elevation · dolly × · gap × · mode). Stations are data (<code>DECK_SCENE.STATIONS</code>); the Loop is the 6s reference push (contact → read → macro). Reject: dead controls that flip a class the renderer never reads.</p>
+</section>

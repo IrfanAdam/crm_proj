@@ -1,0 +1,7 @@
+/* ADAM/DS — src/ds/deck-lab.css · deck playground shell */
+.deck-lab__range{width:120px;accent-color:var(--role-action)}
+.deck-lab__out{font-size:var(--font-size-xs);color:var(--text-secondary);font-variant-numeric:tabular-nums;min-width:34px}
+.decklab{position:relative;width:100%;border:1px solid var(--border-thin);border-radius:var(--radius-lg);background:var(--bg-primary);overflow:hidden}
+.decklab canvas{width:100%;display:block;aspect-ratio:16/10}
+.nlab__bar--foot .nlab__select{background:var(--bg-surface);border-color:var(--border-strong)}
+.nlab__bar--foot .nlab__ratio{position:static;margin-left:auto}

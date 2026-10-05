@@ -91,6 +91,49 @@
         "spec": "gallery-panels/fab-gem.html"
       },
       "updated": "2026-10-04T12:51:36.374Z"
+    },
+    "glass-deck": {
+      "status": "documented",
+      "location": "DS gallery · Patterns → Deck",
+      "components": [
+        "GlassDeck",
+        "GemReward"
+      ],
+      "tokens": [
+        "role-action",
+        "font-size-xs",
+        "text-secondary",
+        "border-thin",
+        "radius-lg",
+        "bg-primary",
+        "bg-surface",
+        "border-strong",
+        "primitive-sapphire-ui-50",
+        "text-primary",
+        "font-family-sans",
+        "spacing-6",
+        "spacing-8",
+        "font-tracking-wide",
+        "text-muted"
+      ],
+      "hexLeaks": [],
+      "interactions": [
+        "camera push · azimuth locked 45°, elevation + dolly only · stations are data (DECK_SCENE.STATIONS)",
+        "station pills · Contact 22° ×0.82 → Read 39° ×1.00 → Macro 26° ×0.74 · eases in hold mode",
+        "loop · 6s auto push contact→read→macro (DECK_DRESS.LOOP) · exits on any range drag",
+        "gap · air-gap ×0.5–2 live relayout (DECK_SCENE.lay)",
+        "words · eyebrow + word repaint the 1024² canvas sheet across every rig (DECK_TEXT.paint)",
+        "bloom · depth-gated highlight-only post (deck-bloom.js) · pill Bloom: on/off",
+        "mount · canvas[data-deck] boot + ds:doc + MutationObserver · IntersectionObserver pause · hidden-tab pause · reduced-motion → one static read frame",
+        "fallback · no WebGL → token-ramp 2D stand-in (deck-fallback.js)",
+        "api · DECK3D.station/setMode(hold|loop)/control(el,p)/gap(k)/words(e,w) · classic window.DECK_* namespaces"
+      ],
+      "docs": {
+        "intro": "component-docs/deck-intro.html",
+        "lab": "gallery-panels/deck-lab.html",
+        "spec": "gallery-panels/deck.html"
+      },
+      "updated": "2026-10-05T08:34:23.295Z"
     }
   },
   "version": 1
