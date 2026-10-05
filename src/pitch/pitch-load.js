@@ -91,6 +91,14 @@ function initFramedClose(){
 function initPitchVersion(){
   var sel=document.getElementById("pitch-version");
   if(!sel) return;
-  sel.value=PITCH_ACTIVE;
+  function syncVersionLabels(){
+    var isMobile=window.innerWidth<=760;
+    Array.prototype.forEach.call(sel.options,function(o){
+      o.textContent=isMobile? o.value : (PITCH_VERSIONS[o.value] ? PITCH_VERSIONS[o.value].label : o.value);
+    });
+    sel.value=PITCH_ACTIVE;
+  }
+  syncVersionLabels();
+  window.addEventListener("resize",syncVersionLabels);
   sel.addEventListener("change",function(){pitchSetVersion(sel.value);});
 }

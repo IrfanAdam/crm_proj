@@ -49,7 +49,18 @@
  }
  @media (max-width: 760px) {
    .masthead-version__select {
-     padding: 6px 28px 6px 11px;
-     font-size: 0.72rem;
+     padding: 4px 18px 4px 8px;
+     font-size: 0.62rem;
+     letter-spacing: 0.06em;
+     font-weight: 700;
+   }
+   .masthead-version__chevron {
+     right: 7px;
+     width: 10px;
+     height: 10px;
+   }
+   .masthead-version__chevron svg {
+     width: 10px;
+     height: 10px;
    }
  }
