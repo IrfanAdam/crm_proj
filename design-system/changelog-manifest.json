@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T10:20:31.442Z",
+  "generated": "2026-10-05T10:21:04.249Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "f2f5b19",
+      "full": "f2f5b19a0be011bf17e4b065c86b879a802ca049",
+      "date": "2026-10-05",
+      "time": "15:50",
+      "subject": "chore(mechanics): refresh graphData generatedAt + changelog manifest sync",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "b8341f5",
       "full": "b8341f5ba137a448b059d53024c0b37e860abfb7",
@@ -3170,11 +3179,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "A  public/pitch-v2/img/layer-performance-graded-backup.jpg",
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
