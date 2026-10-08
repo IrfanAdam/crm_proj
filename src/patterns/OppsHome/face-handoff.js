@@ -31,6 +31,12 @@ export function buildFaces(screen, pill, sheet) {
     cl.style.overflow = "hidden";
     cl.style.boxSizing = "border-box";
     cl.style.border = "2px solid var(--bg-surface)";
+    // — the destination blob is borderless full-bleed: the ring rides border-width,
+    // — not layout, so it collapses bw0 → 0 over the flight. At e = 1 the clone is a
+    // — full-bleed photo at the blob's own box, and the HAND swap underneath
+    // — crossfades identical pixels instead of scaling up ~17%.
+    const bw0 = parseFloat(getComputedStyle(av).borderTopWidth) || 0;
+    cl.style.borderWidth = `${bw0}px`;
     cl.style.transformOrigin = "0 0";
     cl.style.willChange = "transform";
     cl.style.left = "0";
@@ -63,21 +69,26 @@ export function buildFaces(screen, pill, sheet) {
     const side = Math.sign(cx - (ax + bx) / 2) || 1;
     const qx = (ax + bx) / 2 + side * dist * ARC;
     const qy = (ay + by) / 2 - dist * ARC;
-    return { el: cl, ax, ay, bx, by, qx, qy, aw: a.w, ah: a.h, bw: b.w, bh: b.h, i, label, swap };
+    return { el: cl, ax, ay, bx, by, qx, qy, aw: a.w, ah: a.h, bw: b.w, bh: b.h, bw0, i, label, swap };
   }).filter(Boolean);
   const ease = (f) => (f < 0.5 ? 4 * f * f * f : 1 - Math.pow(-2 * f + 2, 3) / 2);
-  return (s, rev) => faces.forEach((o) => {
+  // disp(bx, by) = the ghost drawer's current offset for the blob's final seat point
+  // (the OPEN overshoot push). Faces ride it once landed (× e): they settle WITH
+  // the drawer instead of parking rigid while the panel still moves under them.
+  return (s, rev, disp) => faces.forEach((o) => {
     const span = rev ? CLOSE_SPAN : SPAN;
     const f = clamp01((s - o.i * STAG) / span);
     const e = ease(f);
     const g = 1 - e;
-    const px = g * g * o.ax + 2 * g * e * o.qx + e * e * o.bx;
-    const py = g * g * o.ay + 2 * g * e * o.qy + e * e * o.by;
+    const d = disp ? disp(o.bx, o.by) : null;
+    const px = g * g * o.ax + 2 * g * e * o.qx + e * e * o.bx + (d ? d.x * e : 0);
+    const py = g * g * o.ay + 2 * g * e * o.qy + e * e * o.by + (d ? d.y * e : 0);
     const k = 1 + POP * Math.sin(Math.PI * e);
     const sc = ((o.aw + (o.bw - o.aw) * e) / o.aw) * k;
     const tx = px - o.aw * sc / 2;
     const ty = py - o.ah * sc / 2;
     o.el.style.transform = `translate(${tx.toFixed(2)}px, ${ty.toFixed(2)}px) scale(${sc.toFixed(4)})`;
+    o.el.style.borderWidth = `${(o.bw0 * (1 - e)).toFixed(2)}px`;
     const ring = Math.round((1 - clamp01((f - 0.5) / 0.4)) * 100);
     o.el.style.borderColor = `color-mix(in srgb, var(--bg-surface) ${ring}%, transparent)`;
     if (o.label) o.label.style.opacity = (1 - clamp01((f - 0.5) / 0.3)).toFixed(3);

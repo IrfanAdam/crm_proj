@@ -15,11 +15,15 @@
 .map-sheet__tiles{position:absolute;inset:0;overflow:hidden;background:var(--primitive-sapphire-ui-50);font:inherit}
 .map-sheet__close{position:absolute;top:60px;right:14px;z-index:1100;flex:0 0 auto;width:44px;height:44px;border-radius:var(--radius-full);background:var(--bg-surface-glass);border:1px solid color-mix(in srgb, white 24%, transparent);color:var(--text-primary);font-size:16px;cursor:pointer;box-shadow:0 8px 28px rgba(15,16,21,0.08), 0 1px 2px rgba(15,16,21,0.05), inset 0 1px 0 rgba(255,255,255,0.42);backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));-webkit-backdrop-filter:blur(var(--glass-blur-sm)) saturate(var(--glass-saturate))} /* lint-allow: glass chrome */
 .map-sheet__close:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.map-sheet__card{position:absolute;z-index:1100;left:12px;right:12px;bottom:12px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:max(var(--radius-xl),calc(var(--display-r) - var(--radius-md)));corner-shape:squircle;-webkit-corner-shape:squircle;box-shadow:var(--shadow-md);padding:8px 12px 12px;will-change:transform,opacity}
+.map-sheet__card{position:absolute;z-index:1100;left:12px;right:12px;bottom:12px;background:var(--bg-surface);border:1px solid var(--border-thin);border-radius:max(var(--radius-xl),calc(var(--display-r) - var(--radius-md)));corner-shape:squircle;-webkit-corner-shape:squircle;box-shadow:var(--shadow-md);padding:8px 12px 12px;will-change:opacity}
+/* sheet header — the sheet's OWN title bar: no exclusive title inside the drawer card;
+   the title sits left of the close toolbar button, riding the same progressive-blur
+   material the page header uses. Height is set inline from the avatar's seat (placeClose). */
+.map-sheet__header{position:absolute;top:0;left:0;right:0;z-index:1090;pointer-events:none;overflow:hidden;contain:layout paint}
+.map-sheet__header::before{content:"";position:absolute;inset:-1px 0 0;transform:translateZ(0);background:linear-gradient(to bottom,color-mix(in srgb, var(--bg-surface) 48%, transparent) 0%,color-mix(in srgb, var(--bg-surface) 40%, transparent) 48%,transparent 100%);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));-webkit-mask-image:linear-gradient(to top,transparent 0%,#000 34%);mask-image:linear-gradient(to top,transparent 0%,#000 34%)} /* lint-allow: header material — mirrors .device__edge--top */
+.map-sheet__header-title{position:absolute;left:var(--spacing-4);bottom:28px;font-size:var(--type-title);font-weight:var(--font-weight-bold);letter-spacing:var(--type-title-tracking);color:var(--text-primary);line-height:1.15}
+.map-sheet__header-sub{position:absolute;left:var(--spacing-4);bottom:10px;font-size:var(--type-micro);font-weight:var(--font-weight-medium);color:var(--text-muted);line-height:1.2}
 .map-sheet__handle{display:block;width:36px;height:4px;border-radius:var(--radius-full);background:var(--border-medium);margin:0 auto 8px}
-.map-sheet__head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.map-sheet__head b{display:block;font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--text-primary)}
-.map-sheet__head i{display:block;font-style:normal;font-size:var(--font-size-xs);color:var(--text-muted);margin-top:2px}
 .map-sheet__list{display:flex;flex-direction:column;max-height:220px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .map-sheet__row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border-thin)}
 .map-sheet__row:first-child{border-top:none}

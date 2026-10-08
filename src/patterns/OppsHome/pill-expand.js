@@ -9,6 +9,11 @@ import { getScale } from "../../logic/time-scale.js";
 const X0 = 0.55;
 const X1 = 0.75;
 const HAND = 0.84;   // ghost ⇄ real-card swap (mirrors FADE.open.card [.84,.98])
+// — the live pill hides at frame 0 and reveals only in cleanup, AFTER the ghost has
+// — parked on the seat (both dirs). The chip's `transition:150ms` would otherwise
+// — animate those two flips: hiding reads as a double border (real + ghost edge a
+// — few px apart) and revealing reads as a fade-out after settle — so the flight
+// — pins transition:none and swaps opacity atomically with the ghost.
 let gen = 0;
 // — interrupt teardown: ghost + faces gone, live pill whole. Flight state is inline —
 // — styles only, so node removal + opacity resets end it — no WAAPI ledger to chase. —
@@ -18,7 +23,11 @@ export function cancelExpand(screen) {
   screen?.querySelectorAll(".map-sheet__face").forEach((n) => n.remove());
   const pill = document.getElementById("nearby-open");
   pill?.querySelectorAll(".avatar").forEach((av) => { av.style.opacity = ""; });
-  if (pill) pill.style.opacity = "";
+  if (pill) {
+    pill.style.opacity = "";
+    void getComputedStyle(pill).opacity;   // commit before the transition returns (see cleanup)
+    pill.style.transition = "";
+  }
 }
 // — s = openness (open 0→1, close 1→0): box, layers and faces all read s. —
 export function driveExpand(screen, sheet, dir, ms, done) {
@@ -31,7 +40,7 @@ export function driveExpand(screen, sheet, dir, ms, done) {
   const ct = card.style.transform;
   card.style.transform = "none";
   const c = relRect(card, screen);
-  const h = relRect(sheet.querySelector(".map-sheet__head"), screen);
+  const h = relRect(sheet.querySelector(".map-sheet__list"), screen);
   const dh = { x: h.l + h.w / 2 - (c.l + c.w / 2), y: h.t + h.h / 2 - (c.t + c.h / 2) };
   const paintFaces = buildFaces(screen, pill, sheet);
   card.style.transform = ct;
@@ -64,7 +73,11 @@ export function driveExpand(screen, sheet, dir, ms, done) {
   ghost.style.width = `${p.w}px`;
   ghost.style.height = `${p.h}px`;
   ghost.style.borderRadius = `${rp}px`;
-  if (dir < 0) pill.style.opacity = "0";   // real pill hides: ghost + pill never double
+  // — hide the live pill NOW (frame 0), transition suppressed: the ghost's first
+  // — frame IS the pill rect, so the swap is pixel-identical and the growing (or
+  // — shrinking) drawer never coexists with the real container underneath it. —
+  pill.style.transition = "none";
+  pill.style.opacity = "0";
   screen.appendChild(ghost);
   const t0 = performance.now();
   // — ghost box writes layout intentionally (same class as sheet-morph): the ghost
@@ -80,7 +93,15 @@ export function driveExpand(screen, sheet, dir, ms, done) {
     pl.style.transform = `translate(${(dh.x * u).toFixed(2)}px, ${(dh.y * u).toFixed(2)}px)`;
     pw.style.opacity = (1 - clamp01((s - X0) / (X1 - X0))).toFixed(3);
     cw.style.opacity = clamp01((s - X0) / (X1 - X0)).toFixed(3);
-    paintFaces(s, dir < 0);
+    // — faces follow the drawer's actual geometry: a point seated at (x, y) in the
+    // — card's final rect currently sits where the ghost (overshooting) puts it —
+    paintFaces(s, dir < 0, (x, y) => {
+      const rx = (x - c.l) / c.w, ry = (y - c.t) / c.h;
+      return {
+        x: (1 - u) * ((p.l + rx * p.w) - (c.l + rx * c.w)),
+        y: (1 - u) * ((p.t + ry * p.h) - (c.t + ry * c.h)),
+      };
+    });
     if (dir > 0) ghost.style.opacity = (1 - clamp01((s - HAND) / (1 - HAND))).toFixed(3);
   };
   paint(dir > 0 ? 0 : 1);
@@ -92,7 +113,9 @@ export function driveExpand(screen, sheet, dir, ms, done) {
     ghost.remove();
     screen.querySelectorAll(".map-sheet__face").forEach((n) => n.remove());
     pill.querySelectorAll(".avatar").forEach((av) => { av.style.opacity = ""; });
-    pill.style.opacity = "";
+    pill.style.opacity = "";               // reveal AFTER the ghost has parked + vanished
+    void getComputedStyle(pill).opacity;   // commit 0→1 while transition is still none,
+    pill.style.transition = "";            // or the chip's 150ms fades it in AFTER settle
     if (done) done();
   };
   requestAnimationFrame(step);

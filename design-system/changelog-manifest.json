@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T11:33:21.753Z",
+  "generated": "2026-10-07T10:27:14.395Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "7e6e2ad",
+      "full": "7e6e2adee0234d1e513940a02099f1cca9d976c8",
+      "date": "2026-10-06",
+      "time": "00:05",
+      "subject": "fix(mobile): account for bottom drag indicator in fullscreen",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "1ba5432",
       "full": "1ba54324f5b862e67448f6dfa58ec0e04d1e65d1",
@@ -3215,5 +3224,15 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/patterns/OppsHome/face-handoff.js",
+    "M src/patterns/OppsHome/nearby-sheet.css",
+    "M src/patterns/OppsHome/nearby-sheet.js",
+    "M src/patterns/OppsHome/pill-expand.js",
+    "M src/patterns/OppsHome/sheet-morph.js"
+  ]
 }

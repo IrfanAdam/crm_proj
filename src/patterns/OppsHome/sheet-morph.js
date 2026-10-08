@@ -15,7 +15,7 @@ export function fitLayer(screen, layer) {
 }
 // — drive one morph; `rect` is the widget's inner box in screen px, `dir` +1 open / −1 close —
 export function morph(parts, rect, dir, done, instant) {
-  const { screen, win, layer, scrim, card, x } = parts;
+  const { screen, win, layer, scrim, card, x, header } = parts;
   const W = screen.clientWidth;
   const H = screen.clientHeight;
   const open = dir > 0;
@@ -47,13 +47,15 @@ export function morph(parts, rect, dir, done, instant) {
     win.style.setProperty("--win-sh", (edge * 0.28).toFixed(3));
     const rawC = open ? alpha("card", p) : 0;   // close holds the card at 0: the ghost
     // carries an identical card clone, so any real-card opacity doubles it (c_006 in audit)
-    // — easeOutCubic for card so it rides the window's settle, not linear —
+    // — easeOutCubic for card so it rides the window's settle, not linear; translateY stays
+    //    at 0 — the drawer never pushes down; it only fades in at its final seat —
     const ce = rawC >= 1 ? 1 : rawC <= 0 ? 0 : 1 - Math.pow(1 - rawC, 3);
     const bx = alpha("x", p);
     layer.style.opacity = lf ? clamp01((p - lf[0]) / (lf[1] - lf[0])).toFixed(3) : "1";
     scrim.style.opacity = alpha("scrim", p).toFixed(3);
     card.style.opacity = ce.toFixed(3);
-    card.style.transform = `translateY(${((1 - ce) * 12).toFixed(2)}px)`;
+    card.style.transform = "none";
+    if (header) header.style.opacity = bx.toFixed(3);   // header blur trails the avatar landing
     x.style.opacity = bx.toFixed(3);
     x.style.pointerEvents = bx > 0.2 ? "" : "none";
   };
