@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:44:24.209Z",
+  "generated": "2026-10-13T08:44:40.469Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "18f6ec8",
+      "full": "18f6ec87606aea5725f94d8286b0e13d1c3c6ed4",
+      "date": "2026-10-13",
+      "time": "14:14",
+      "subject": "chore(mechanics): refresh graphData generatedAt",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "2ae9697",
       "full": "2ae9697b69c208cf389670890c0aaca440e8fc1f",
@@ -3242,10 +3251,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
