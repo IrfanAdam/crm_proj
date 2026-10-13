@@ -29,7 +29,7 @@ export function paintPlan(root, ctx){
   }
   const sprint = sprints[si];
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
-    const seq = String(list.length - i).padStart(2, '0'), num = p.id || seq, frac = buildState(p.sprints);
+    const seq = String(list.length - i).padStart(2, '0'), num = p.id && p.id !== '000000' ? p.id : seq, frac = buildState(p.sprints);
     const done = isDone(frac);
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
     const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
