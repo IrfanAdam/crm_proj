@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:49:51.325Z",
+  "generated": "2026-10-13T08:50:12.441Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "4059883",
+      "full": "4059883502d133a2b556d90a94c1e9b2329747a7",
+      "date": "2026-10-13",
+      "time": "14:20",
+      "subject": "chore(changelog): sync retro-link for 14603ed",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "14603ed",
       "full": "14603ede201fd25e6be60731b987b6d92c197d0a",
