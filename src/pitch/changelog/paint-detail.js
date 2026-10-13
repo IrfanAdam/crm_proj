@@ -127,7 +127,7 @@ export function paintDetail(root, ctx){
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
   const seq = String(list.length - pi).padStart(2, '0');
-  const planNum = plan.id && plan.id !== '000000' ? plan.id : seq;
+  const planNum = plan.id || seq;
   const railTitle = short(sprint.head).toUpperCase();
   const railHead = [
     `<div class="ds-rail-head">`,
