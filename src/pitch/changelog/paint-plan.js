@@ -60,7 +60,7 @@ export function paintPlan(root, ctx){
     const tagFull = p.tags.join(' \u00b7 ');
     const pill = (t) => `<span class="ds-tag">${esc(t)}</span>`;
     const more = p.tags.length > 2 ? `<span class="ds-tag ds-tag--more">+${p.tags.length - 2}</span>` : '';
-    const tagsHtml = p.tags.slice(0, 2).map(pill).join('') + more;
+    const tagsHtml = p.tags.slice(0, 2).map(pill).join('<span class="ds-sep"> \u00b7 </span>') + (more ? '<span class="ds-sep"> \u00b7 </span>' + more : '');
     return [
       `<button class="ds-pick`,
       i === sel[0] ? ' on' : '',
