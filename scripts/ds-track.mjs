@@ -14,6 +14,20 @@ commits=commits.filter(c=>!isPlumbing(c.sha));
 commits.sort((a,b)=> b.date.localeCompare(a.date) || (b.time||'').localeCompare(a.time||'') || b.sha.localeCompare(a.sha));
 let retro={}; try{retro=JSON.parse(fs.readFileSync(join(root,'.hermes/plan-links.json'),'utf8'))}catch{} for(const c of commits) if(retro[c.sha]){c.plan=retro[c.sha].plan; c.anchor=retro[c.sha].anchor;}
 commits.forEach(c=>{ if(c.anchor) c.anchor=c.anchor.replace(/^\{\#|^\#|\}$/g,''); });
+// expand multi-phase commits (also) for tractability
+let expanded=[]
+for(const c of commits){
+  expanded.push(c)
+  const r=retro[c.sha]
+  if(r && r.also && Array.isArray(r.also)){
+    for(const alt of r.also){
+      const [aplan,aanchorRaw]=alt.split('#')
+      const aanchor=(aanchorRaw||'').replace(/^\{\#|^\#|\}$/g,'')
+      if(aplan && aanchor) expanded.push({...c, plan:aplan, anchor:aanchor, subject: c.subject + ` [also ${aanchor}]`})
+    }
+  }
+}
+commits=expanded
 commits.sort((a,b)=> b.date.localeCompare(a.date) || (b.time||'').localeCompare(a.time||'') || b.sha.localeCompare(a.sha));
 let cont='20260909_145218_9888b1'; try{cont=JSON.parse(fs.readFileSync(join(root,'.hermes/continuation.json'),'utf8')).continuation||cont}catch{}
 let linked=commits.filter(c=>c.plan).length;
