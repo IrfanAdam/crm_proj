@@ -12,7 +12,7 @@
 .ds-rail { flex: 0 0 36%; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; border-right: var(--border-hairline); padding-right: var(--cl-12); display: flex; flex-direction: column; }
 .ds-rail-head { margin-bottom: var(--cl-8); padding: var(--cl-8) 0 var(--cl-12); border-bottom: var(--border-hairline); }
 .ds-rail-num { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-bottom: var(--cl-2); }
-.ds-rail-title { display: block; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); line-height: var(--leading-mono); overflow-wrap: anywhere; }
+.ds-rail-title { display: block; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); line-height: var(--leading-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ds-rail .ds-pick { padding: var(--cl-8); font-size: 0.86em; }
 .ds-rail .ds-pick small { display: block; }
 .ds-rail [data-prov] { margin: auto 0 var(--cl-6); }

@@ -127,10 +127,11 @@ export function paintDetail(root, ctx){
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
   const planNum = String(list.length - pi).padStart(2, '0');
+  const railTitle = short(sprint.head).toUpperCase();
   const railHead = [
     `<div class="ds-rail-head">`,
     `<span class="ds-rail-num">${esc(planNum)}</span>`,
-    `<span class="ds-rail-title">${esc(short(sprint.head).toUpperCase())}</span>`,
+    `<span class="ds-rail-title" title="${esc(railTitle)}">${esc(railTitle)}</span>`,
     `</div>`,
   ].join('');
   root.querySelector('[data-col="sprint"]').innerHTML = railHead + sprints.map((s, i) => {
@@ -154,16 +155,7 @@ export function paintDetail(root, ctx){
       [frac + has + edited].filter(Boolean).join(' \u00b7 '),
       `</small></button>`,
     ].join('');
-  }).join('') + [
-    `<div class="ds-rail-plan"><strong>`,
-    esc(plan.title || plan.slug || plan.file),
-    `</strong></div>`,
-    `<p class="ds-commits" data-prov>`,
-    esc(provenance(plan)),
-    `</p><div class="ds-rail-foot" data-foot>`,
-    esc(plan.goal || sprintDesc(sprint)),
-    `</div>`,
-  ].join('');
+  }).join('') + '';
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   const bodyForMd = sprint.body.replace(/^##\s*Phase[^\n]*\n+/, '');
   root.querySelector('[data-col="tasks"]').innerHTML = [
