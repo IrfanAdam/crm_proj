@@ -1,7 +1,7 @@
 {
   "007c58d": {
     "anchor": "{#phase-1}",
-    "note": "feat(pitch): footer auto-pulse on mobile — wave, no touch",
+    "note": "feat(pitch): footer auto-pulse on mobile \u2014 wave, no touch",
     "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "0680ddb": {
@@ -13,6 +13,11 @@
     "anchor": "{#phase-5}",
     "note": "Phase 5 Task 2: DockSlices engine + slice-bands",
     "plan": "2026-09-22_122850-museum-refactor.md"
+  },
+  "14603ed": {
+    "anchor": "{#phase-1}",
+    "note": "retro-link 9 untracked commits",
+    "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "170e1f0": {
     "anchor": "{#phase-3}",
@@ -26,12 +31,12 @@
   },
   "1ba5432": {
     "anchor": "{#phase-1}",
-    "note": "feat(pitch): extend mobile header blur — more padding & progressive trail",
+    "note": "feat(pitch): extend mobile header blur \u2014 more padding & progressive trail",
     "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "233b764": {
     "anchor": "{#phase-1}",
-    "note": "feat(pitch): footer heartbeat — random pulses on mobile",
+    "note": "feat(pitch): footer heartbeat \u2014 random pulses on mobile",
     "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "2b33509": {
@@ -41,17 +46,17 @@
   },
   "2b7f814": {
     "anchor": "{#phase-1}",
-    "note": "chore: batch commit day-session work — pitch footer+Rigamesh, illusion audio, opps home, activity strip, cube preview (excl. 6.3M probe shots + img backup)",
+    "note": "chore: batch commit day-session work \u2014 pitch footer+Rigamesh, illusion audio, opps home, activity strip, cube preview (excl. 6.3M probe shots + img backup)",
     "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "2bc8d71": {
     "anchor": "{#phase-7}",
-    "note": "Phase 7: record ship SHAs — logic tests",
+    "note": "Phase 7: record ship SHAs \u2014 logic tests",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "2d0b9fd": {
     "anchor": "{#phase-2}",
-    "note": "Dock follows tab switches — scheme taxonomy (mechanics Phase 2)",
+    "note": "Dock follows tab switches \u2014 scheme taxonomy (mechanics Phase 2)",
     "plan": "2026-09-22_155000-architecture-mechanics.md"
   },
   "2e452a7": {
@@ -61,12 +66,12 @@
   },
   "3505f03": {
     "anchor": "{#phase-1}",
-    "note": "feat(pitch): compact masthead — smaller brand title, v1/v2 on mobile",
+    "note": "feat(pitch): compact masthead \u2014 smaller brand title, v1/v2 on mobile",
     "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "43b05fa": {
     "anchor": "{#phase-1}",
-    "note": "fix(map): avatar flights — centre swoop (Map & baseline)",
+    "note": "fix(map): avatar flights \u2014 centre swoop (Map & baseline)",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "4c1d451": {
@@ -76,12 +81,12 @@
   },
   "52a9b0d": {
     "anchor": "{#phase-8}",
-    "note": "Phase 8: record ship SHAs — perf pass",
+    "note": "Phase 8: record ship SHAs \u2014 perf pass",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "5316df7": {
     "anchor": "{#phase-1}",
-    "note": "fix(sheet): ghost-avatar handoff + header blur — no double border, header rides sheet",
+    "note": "fix(sheet): ghost-avatar handoff + header blur \u2014 no double border, header rides sheet",
     "plan": "2026-09-28_000000-lump-sum-builds.md"
   },
   "55143f9": {
@@ -96,7 +101,7 @@
   },
   "62d33ba": {
     "anchor": "{#phase-5}",
-    "note": "ds: glass token group — motion & gamification",
+    "note": "ds: glass token group \u2014 motion & gamification",
     "plan": "2026-09-16_180000-crm-design-system.md"
   },
   "63f6777": {
@@ -106,12 +111,12 @@
   },
   "64b5df3": {
     "anchor": "{#phase-2}",
-    "note": "fix: viewport units — OS layer layout (museum Phase 2)",
+    "note": "fix: viewport units \u2014 OS layer layout (museum Phase 2)",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "66bab6c": {
     "anchor": "{#phase-9}",
-    "note": "Phase 9: record ship SHAs in plan — handoff book",
+    "note": "Phase 9: record ship SHAs in plan \u2014 handoff book",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "6753512": {
@@ -141,17 +146,17 @@
   },
   "877fe0d": {
     "anchor": "{#phase-5}",
-    "note": "Phase 5: record ship SHAs — glass budget",
+    "note": "Phase 5: record ship SHAs \u2014 glass budget",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "8850eb4": {
     "anchor": "{#phase-1}",
-    "note": "Chore: drop dev artifacts — Map & baseline cleanup",
+    "note": "Chore: drop dev artifacts \u2014 Map & baseline cleanup",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "889e064": {
     "anchor": "{#phase-2}",
-    "note": "fix: atlas shell shadow pulse — timeline+semantic match to atlas shell",
+    "note": "fix: atlas shell shadow pulse \u2014 timeline+semantic match to atlas shell",
     "plan": "2026-09-22_082844-arch-atlas.md"
   },
   "8abe292": {
@@ -176,17 +181,17 @@
   },
   "8eeebc5": {
     "anchor": "#phase-1",
-    "note": "Phase 1 tokens · primitives housed",
+    "note": "Phase 1 tokens \u00b7 primitives housed",
     "plan": "2026-09-16_180000-crm-design-system.md"
   },
   "90a4327": {
     "anchor": "{#phase-1}",
-    "note": "chore: add illusioncube scene analysis assets — scaffold assets lane",
+    "note": "chore: add illusioncube scene analysis assets \u2014 scaffold assets lane",
     "plan": "2026-09-28_221212-illusion-cube-recreation.md"
   },
   "95847c1": {
     "anchor": "{#phase-1}",
-    "note": "fix(map): smooth avatar flights — proportional arc",
+    "note": "fix(map): smooth avatar flights \u2014 proportional arc",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "983f51b": {
@@ -196,7 +201,7 @@
   },
   "9891f1d": {
     "anchor": "{#phase-1}",
-    "note": "Fresh CRM design system exercise — initial plan, DESIGN.md, phase docs",
+    "note": "Fresh CRM design system exercise \u2014 initial plan, DESIGN.md, phase docs",
     "plan": "2026-09-16_180000-crm-design-system.md"
   },
   "9ad213c": {
@@ -216,7 +221,7 @@
   },
   "ac87d35": {
     "anchor": "{#phase-4}",
-    "note": "index.html becomes app entry — workspace shell separation",
+    "note": "index.html becomes app entry \u2014 workspace shell separation",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "bcb8788": {
@@ -236,12 +241,12 @@
   },
   "df2e075": {
     "anchor": "{#phase-5}",
-    "note": "deps: React 19 + plugin-react — glass dock scaffolding",
+    "note": "deps: React 19 + plugin-react \u2014 glass dock scaffolding",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "ecd77fd": {
     "anchor": "{#phase-4}",
-    "note": "Glass scroll-tracking fix — workspace shell separation",
+    "note": "Glass scroll-tracking fix \u2014 workspace shell separation",
     "plan": "2026-09-22_122850-museum-refactor.md"
   },
   "f0175f5": {
