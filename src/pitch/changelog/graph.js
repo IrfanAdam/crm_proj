@@ -41,7 +41,7 @@ export function graph({ plans, day }) {
       if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} \u00b7 upcoming"></span>`;
       const n = dc[k] || 0;
       if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} \u00b7 no changes"></span>`;
-      const lv = Math.min(4, Math.ceil(4 * Math.sqrt(n / max)));
+      const lv = Math.min(4, Math.ceil((4 * n) / max));
       return [
         `<button class="ds-day lv`,
         lv,

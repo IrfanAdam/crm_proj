@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-drawer.js · commit detail + same-day rail */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · rail click swaps in place. */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · rail click swaps in place. · alias: legacy PAGE drawer — canonical is src/pitch/changelog/paint-detail.js · esc via src/pitch/changelog/esc.js */
 // Export map: openDrawer · closeDrawer · isOpen.
 import { planTitle, fmtLong, esc } from './pitch-changelog-data.js';
 // — Section: open (detail + sibling badges) —

@@ -20,9 +20,11 @@ export function paintPlan(root, ctx){
     root
       .querySelector('[data-col="sprint"]')
       .innerHTML = '';
-    root
-      .querySelector('[data-col="triage"]')
-      .innerHTML = unlinked(texts);
+    const u0 = unlinked(texts);
+    const tri0 = root.querySelector('[data-col="triage"]');
+    const hide0 = /All tracked/.test(u0);
+    tri0.innerHTML = hide0 ? '' : u0;
+    tri0.hidden = hide0;
     drawer.hidden = true; scrim.hidden = true; return false;
   }
   const sprint = sprints[si];
@@ -55,7 +57,9 @@ export function paintPlan(root, ctx){
       revTxt,
     ].filter(Boolean).join(' \u00b7 ');
     const tagFull = p.tags.join(' \u00b7 ');
-    const tagShort = p.tags.length > 2 ? `${p.tags.slice(0, 2).join(' \u00b7 ')} \u00b7 +${p.tags.length - 2}` : tagFull;
+    const pill = (t) => `<span class="ds-tag">${esc(t)}</span>`;
+    const more = p.tags.length > 2 ? `<span class="ds-tag ds-tag--more">+${p.tags.length - 2}</span>` : '';
+    const tagsHtml = p.tags.slice(0, 2).map(pill).join('') + more;
     return [
       `<button class="ds-pick`,
       i === sel[0] ? ' on' : '',
@@ -73,7 +77,7 @@ export function paintPlan(root, ctx){
       `</span></small></span><span class="ds-tags" title="`,
       esc(tagFull),
       `">`,
-      esc(tagShort),
+      tagsHtml || `<span class="ds-tag ds-tag--muted">untagged</span>`,
       `</span></button>`,
     ].join('');
   }).join('');

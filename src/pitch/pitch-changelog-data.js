@@ -1,8 +1,9 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-data.js · manifest import + pure link helpers */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · hits/badges/unlinked over ds-track JSON. */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · hits/badges/unlinked over ds-track JSON. · alias: canonical esc in src/pitch/changelog/esc.js */
 // Export map: COMMITS · planTitle · dayCounts · visibleByDay · unlinked · sibs · fmtLong · esc.
 import MANIFEST from '../../design-system/changelog-manifest.json';
 import NAMES from '../ds/changelog-names.json';
+import { esc as escAll } from './changelog/esc.js';
 // — Section: normalized feed (newest first) —
 export const COMMITS = [...(MANIFEST.commits || [])].sort((a, b) => {
   if (a.date !== b.date) return a.date < b.date ? 1 : -1;
@@ -36,6 +37,4 @@ export function fmtLong(iso) {
   const d = new Date(iso + 'T12:00:00');
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
-export function esc(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
+export const esc = escAll;

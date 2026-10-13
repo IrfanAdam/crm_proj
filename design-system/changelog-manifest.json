@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:50:12.441Z",
+  "generated": "2026-10-13T09:07:58.307Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -37,7 +37,7 @@
       "time": "14:19",
       "subject": "chore(changelog): retro-link 9 untracked commits → 2026-09-28#phase-1",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "18f6ec8",
@@ -46,7 +46,7 @@
       "time": "14:14",
       "subject": "chore(mechanics): refresh graphData generatedAt",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "2ae9697",
@@ -64,7 +64,7 @@
       "time": "23:41",
       "subject": "fix(sheet): ghost-avatar handoff + header blur — no double border, header rides sheet",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "7e6e2ad",
@@ -73,7 +73,7 @@
       "time": "00:05",
       "subject": "fix(mobile): account for bottom drag indicator in fullscreen",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "1ba5432",
@@ -82,7 +82,7 @@
       "time": "17:03",
       "subject": "feat(pitch): extend mobile header blur — more padding & progressive trail",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "233b764",
@@ -91,7 +91,7 @@
       "time": "17:01",
       "subject": "feat(pitch): footer heartbeat — random pulses on mobile",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "007c58d",
@@ -100,7 +100,7 @@
       "time": "16:57",
       "subject": "feat(pitch): footer auto-pulse on mobile — wave, no touch",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "3505f03",
@@ -109,7 +109,7 @@
       "time": "16:53",
       "subject": "feat(pitch): compact masthead — smaller brand title, v1/v2 on mobile",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "f2f5b19",
@@ -118,7 +118,7 @@
       "time": "15:50",
       "subject": "chore(mechanics): refresh graphData generatedAt + changelog manifest sync",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "b8341f5",
@@ -154,7 +154,7 @@
       "time": "19:01",
       "subject": "chore: batch commit day-session work — pitch footer+Rigamesh, illusion audio, opps home, activity strip, cube preview (excl. 6.3M probe shots + img backup)",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "c5acc8e",
@@ -298,7 +298,7 @@
       "time": "17:46",
       "subject": "chore(lump-sum): stamp task 38 — gem icon junctions shipped in 80fd22e",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "80fd22e",
@@ -307,7 +307,7 @@
       "time": "17:46",
       "subject": "fix(ds): gem-friendly — seams join the culet, girdle chord spans the widest points",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "ea18b84",
@@ -319,11 +319,29 @@
       "anchor": "phase-10"
     },
     {
+      "sha": "35dbcf3",
+      "full": "35dbcf3f946ca87fab0b02517b90c42f9e2ef351",
+      "date": "2026-10-01",
+      "time": "17:36",
+      "subject": "chore(lump-sum): stamp task 38 — gem icon junctions (shipped in 1cb30cf)",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-2"
+    },
+    {
       "sha": "bc39728",
       "full": "bc3972860f232e8b75634fdd8fc2dd901eba0f88",
       "date": "2026-10-01",
       "time": "17:35",
       "subject": "feat(ds): sidebar accordion chevrons + fixed rail",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-10"
+    },
+    {
+      "sha": "1cb30cf",
+      "full": "1cb30cf1674c5aa205f924c219d36ea05dcbc195",
+      "date": "2026-10-01",
+      "time": "17:35",
+      "subject": "chore(ds): close Task 37 shipped in bc39728",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
       "anchor": "phase-10"
     },
@@ -352,7 +370,7 @@
       "time": "16:51",
       "subject": "chore(lump-sum): close phase-9 — stamping 6252679",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-9}"
+      "anchor": "phase-9"
     },
     {
       "sha": "6252679",
@@ -361,7 +379,7 @@
       "time": "16:50",
       "subject": "feat(ds): DS pattern loop + auto-changelog M.O. — self-documenting UI changes",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-9}"
+      "anchor": "phase-9"
     },
     {
       "sha": "0d543f4",
@@ -370,7 +388,7 @@
       "time": "16:44",
       "subject": "fix(changelog): exact dot-on-spine alignment — 7px node shares spine coordinate, zero delta at any zoom",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "973ec97",
@@ -379,7 +397,7 @@
       "time": "16:34",
       "subject": "fix(changelog): two independent scrollers — rail + task scroll, shell static, no inner scroll in phase",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "d44a2d7",
@@ -388,7 +406,7 @@
       "time": "16:31",
       "subject": "fix(changelog): single drawer scroller — rail/task overflow visible, unclipped dots, wrap-not-scroll content",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "bbf0bbe",
@@ -397,7 +415,7 @@
       "time": "16:26",
       "subject": "chore(mechanics): refresh graphs — timestamp",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "d051059",
@@ -406,7 +424,7 @@
       "time": "16:22",
       "subject": "fix(changelog): timeline date bold",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "55468ac",
@@ -415,7 +433,7 @@
       "time": "16:21",
       "subject": "fix(changelog): timeline date in accent, time stays muted",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "38646a9",
@@ -424,7 +442,7 @@
       "time": "16:19",
       "subject": "fix(changelog): timeline vertical alignment — dot centered on dotted spine, shared text edge, no h-scroll",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "ec12e68",
@@ -433,7 +451,7 @@
       "time": "16:15",
       "subject": "chore(mechanics): refresh graphs — dotted timeline",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "122b406",
@@ -442,7 +460,7 @@
       "time": "16:14",
       "subject": "fix(changelog): dotted timeline — grey dot offset right, dotted line, no blue dot, time subtext",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "3abaf77",
@@ -451,7 +469,7 @@
       "time": "16:08",
       "subject": "fix(changelog): timeline compact — no container, time only, date 25 Mar, 2026, unclipped line+dots",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "327aa5c",
@@ -460,7 +478,7 @@
       "time": "15:58",
       "subject": "feat(changelog): timeline view — left line + dots, date as explicit line",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "4dccc96",
@@ -469,7 +487,7 @@
       "time": "15:52",
       "subject": "chore(mechanics): refresh graphs after token expansion",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "8287127",
@@ -478,7 +496,7 @@
       "time": "15:51",
       "subject": "refactor(changelog): tooltip DS adherence — radius-xs, shadow-sm, leading-relaxed, motion eased",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "e0af616",
@@ -487,7 +505,7 @@
       "time": "15:48",
       "subject": "refactor(changelog): DS token adherence — popover/drawer/easing via var(--token), no layout change",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "d505a83",
@@ -496,7 +514,7 @@
       "time": "15:29",
       "subject": "fix(changelog): hide triage when no untracked commits — wip no longer shows as Unlinked",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-8}"
+      "anchor": "phase-8"
     },
     {
       "sha": "363ce86",
@@ -505,7 +523,7 @@
       "time": "15:25",
       "subject": "fix(changelog): ds-track plumbing + pipe-safe parse + timestamp stable",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-8}"
+      "anchor": "phase-8"
     },
     {
       "sha": "fd5bd42",
@@ -514,7 +532,7 @@
       "time": "15:22",
       "subject": "chore(changelog): audit retro links + plumbing exclusion — 0 untracked",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-8}"
+      "anchor": "phase-8"
     },
     {
       "sha": "9fcca79",
@@ -523,7 +541,7 @@
       "time": "15:01",
       "subject": "chore(ds): track refresh — stamp 660d391, watch changelog.html",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-8}"
+      "anchor": "phase-8"
     },
     {
       "sha": "660d391",
@@ -532,16 +550,7 @@
       "time": "15:00",
       "subject": "feat(changelog): rename to changelog.html + modular split",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-8}"
-    },
-    {
-      "sha": "1535d37",
-      "full": "1535d376ec7a32ecae29db9c7f9138d35aae6e46",
-      "date": "2026-10-01",
-      "time": "14:37",
-      "subject": "chore(plan): mark pitch changelog shipped",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-8"
     },
     {
       "sha": "46dab48",
@@ -550,7 +559,16 @@
       "time": "14:37",
       "subject": "feat(pitch): changelog page — calendar, build cards, drawer, nav links",
       "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "1535d37",
+      "full": "1535d376ec7a32ecae29db9c7f9138d35aae6e46",
+      "date": "2026-10-01",
+      "time": "14:37",
+      "subject": "chore(plan): mark pitch changelog shipped",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
     },
     {
       "sha": "623dd7d",
@@ -568,7 +586,7 @@
       "time": "16:37",
       "subject": "chore(mechanics): refresh generated graphs + manifest sync",
       "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-6}"
+      "anchor": "phase-6"
     },
     {
       "sha": "b9eb1df",
@@ -577,25 +595,7 @@
       "time": "16:14",
       "subject": "chore(plan): close out illusion surface revision — marks, shipped shas, track",
       "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-6}"
-    },
-    {
-      "sha": "72dac1c",
-      "full": "72dac1ce8d524b56cc4a0c38ddb76c1f9a01974b",
-      "date": "2026-09-29",
-      "time": "16:12",
-      "subject": "feat(illusion): frosted shell — backdrop blur, calm grain, metal lobes, plinth tone nudge",
-      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "f3656d5",
-      "full": "f3656d5c501c2dd648e602f4b0a8989188b12c59",
-      "date": "2026-09-29",
-      "time": "16:12",
-      "subject": "feat(illusion): morphing goo blobs + halos + retinted bleed lights",
-      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-6"
     },
     {
       "sha": "f7aa02a",
@@ -604,7 +604,25 @@
       "time": "16:12",
       "subject": "feat(illusion): one grounded floor — mint surface + grid + wash/contact pool, prism retired",
       "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "f3656d5",
+      "full": "f3656d5c501c2dd648e602f4b0a8989188b12c59",
+      "date": "2026-09-29",
+      "time": "16:12",
+      "subject": "feat(illusion): morphing goo blobs + halos + retinted bleed lights",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "phase-3"
+    },
+    {
+      "sha": "72dac1c",
+      "full": "72dac1ce8d524b56cc4a0c38ddb76c1f9a01974b",
+      "date": "2026-09-29",
+      "time": "16:12",
+      "subject": "feat(illusion): frosted shell — backdrop blur, calm grain, metal lobes, plinth tone nudge",
+      "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
+      "anchor": "phase-4"
     },
     {
       "sha": "c606efc",
@@ -613,7 +631,7 @@
       "time": "15:37",
       "subject": "feat(illusion): vector ALPHA wordmark + decoded text anchors + scene fonts",
       "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "062ade4",
@@ -622,7 +640,7 @@
       "time": "15:37",
       "subject": "chore(illusion): alpha vector extractor + scene letter data + probe hardening",
       "plan": "2026-09-29_135509-illusion-cube-surface-revision.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "d996d31",
@@ -652,20 +670,20 @@
       "anchor": "phase-1"
     },
     {
-      "sha": "5af15dc",
-      "full": "5af15dcc8879f6e9046031028d495b5e933fcf37",
-      "date": "2026-09-29",
-      "time": "13:55",
-      "subject": "chore(mechanics): refresh after nav brand dedupe",
-      "plan": "2026-09-29_132702-ds-docs-experience.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "727296c",
       "full": "727296ca73ca12d637fdf27f847844285c1f1260",
       "date": "2026-09-29",
       "time": "13:55",
       "subject": "fix(ds): remove duplicate ALPHA DS brand from left nav",
+      "plan": "2026-09-29_132702-ds-docs-experience.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "5af15dc",
+      "full": "5af15dcc8879f6e9046031028d495b5e933fcf37",
+      "date": "2026-09-29",
+      "time": "13:55",
+      "subject": "chore(mechanics): refresh after nav brand dedupe",
       "plan": "2026-09-29_132702-ds-docs-experience.md",
       "anchor": "phase-5"
     },
@@ -694,7 +712,7 @@
       "time": "12:00",
       "subject": "chore: add illusioncube scene analysis assets + gem rubric shots",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "1ed6a88",
@@ -703,7 +721,7 @@
       "time": "10:40",
       "subject": "feat(illusion): phase 7 frosted goo + explore — amorphous inners, milky shell, bleed, orbit/pan/zoom",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-7}"
+      "anchor": "phase-7"
     },
     {
       "sha": "91b2ba3",
@@ -712,7 +730,7 @@
       "time": "10:18",
       "subject": "feat(illusion): phase 6 proof — harness, acceptance, webkit parity, favicon",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-6}"
+      "anchor": "phase-6"
     },
     {
       "sha": "a24ef0b",
@@ -721,7 +739,7 @@
       "time": "09:52",
       "subject": "fix(illusion): cubesStep wrote world poses into group-local slots, double-riding the +97 cue",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-6}"
+      "anchor": "phase-6"
     },
     {
       "sha": "182a83b",
@@ -739,7 +757,7 @@
       "time": "00:19",
       "subject": "chore(illusion): close phases 4+5 — stamping 4ead21a/d201374",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "d201374",
@@ -748,7 +766,7 @@
       "time": "00:18",
       "subject": "feat(illusion): phase 5 interaction+audio — reveal machine, chain, sound layer, wiring",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "4ead21a",
@@ -757,7 +775,7 @@
       "time": "00:17",
       "subject": "feat(illusion): phase 4 motion — timeline tables, steppers, clock dispatch, still frame",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "b508bd4",
@@ -766,7 +784,7 @@
       "time": "23:59",
       "subject": "chore(illusion): close phase 3 — stamping 09fc321",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "09fc321",
@@ -775,7 +793,7 @@
       "time": "23:59",
       "subject": "feat(illusion): phase 3 materials — palette, textures, glass/gradient/plinth/text shaders",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "82be6b9",
@@ -784,7 +802,7 @@
       "time": "23:31",
       "subject": "chore(illusion): close phase 2 — stamping 57766e8",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "57766e8",
@@ -793,7 +811,7 @@
       "time": "23:31",
       "subject": "feat(illusion): phase 2 staging — bodies, camera, lights, floor, composer",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "9e0ad2e",
@@ -802,7 +820,7 @@
       "time": "23:15",
       "subject": "chore(illusion): close phase 1 — stamping c4adce9",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "c4adce9",
@@ -811,7 +829,7 @@
       "time": "23:14",
       "subject": "feat(illusion): phase 1 scaffold — page, rig seam, audio, harness",
       "plan": "2026-09-28_221212-illusion-cube-recreation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "4c62065",
@@ -1210,6 +1228,14 @@
       "anchor": "phase-1"
     },
     {
+      "sha": "d69c32a",
+      "full": "d69c32a63b87c72f7d0dd4583d3e35fa73aaf933",
+      "date": "2026-09-28",
+      "subject": "chore(ds): stamp tasks 27-28 shas + regen manifest",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-7"
+    },
+    {
       "sha": "cc62643",
       "full": "cc62643b03f0796080a5ff1ce846bd33f51410ee",
       "date": "2026-09-27",
@@ -1300,20 +1326,20 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "99a123f",
-      "full": "99a123f802863c332dc44c54e6b6a6d650fea357",
-      "date": "2026-09-25",
-      "time": "12:41",
-      "subject": "chore(mechanics): regen graphData after gem docs restructure",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-5"
-    },
-    {
       "sha": "f3fd580",
       "full": "f3fd5809a5780bdc75ffd1045ea9584eadef0f8b",
       "date": "2026-09-25",
       "time": "12:41",
       "subject": "chore(ds): drop orphan component-docs/gemreward.html (0 refs; content lives in the gallery-panels appendix)",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "99a123f",
+      "full": "99a123f802863c332dc44c54e6b6a6d650fea357",
+      "date": "2026-09-25",
+      "time": "12:41",
+      "subject": "chore(mechanics): regen graphData after gem docs restructure",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -1345,11 +1371,11 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "56c19de",
-      "full": "56c19def95a1c852d05a303d400611ecd1f54029",
+      "sha": "d3402ce",
+      "full": "d3402ce26a47192c46922e248d9a9d2a8689a159",
       "date": "2026-09-25",
       "time": "12:19",
-      "subject": "chore(ds): plan Task 24 (gem docs single card + pills) + manifest",
+      "subject": "refactor(ds): gem — extract the dispersion chunk into gem-shader.js (readable GLSL, no packed line)",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -1363,11 +1389,11 @@
       "anchor": "phase-5"
     },
     {
-      "sha": "d3402ce",
-      "full": "d3402ce26a47192c46922e248d9a9d2a8689a159",
+      "sha": "56c19de",
+      "full": "56c19def95a1c852d05a303d400611ecd1f54029",
       "date": "2026-09-25",
       "time": "12:19",
-      "subject": "refactor(ds): gem — extract the dispersion chunk into gem-shader.js (readable GLSL, no packed line)",
+      "subject": "chore(ds): plan Task 24 (gem docs single card + pills) + manifest",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-5"
     },
@@ -1561,13 +1587,21 @@
       "anchor": "phase-1"
     },
     {
+      "sha": "d50cd58",
+      "full": "d50cd587b68d581fb8a6e2aa22a9a5755c641664",
+      "date": "2026-09-24",
+      "subject": "feat(ds): per-component intro·lab·spec for all components — scannable gallery",
+      "plan": "2026-09-21_000000-lump-sum-builds.md",
+      "anchor": "phase-3"
+    },
+    {
       "sha": "8e04731",
       "full": "8e0473198c4e31c436fcf50359515c483dc595f0",
       "date": "2026-09-23",
       "time": "22:44",
       "subject": "chore(ds): record the build fix for the gallery's classic scripts",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "2a77584",
@@ -1576,7 +1610,7 @@
       "time": "22:41",
       "subject": "fix(build): copy raw source refs into dist so the gallery's classic scripts load",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "a56fe25",
@@ -1585,7 +1619,7 @@
       "time": "22:32",
       "subject": "chore(ds): record the focus-scroll fix, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "ea8b760",
@@ -1594,7 +1628,7 @@
       "time": "22:31",
       "subject": "fix(ds): focus never scrolls a layer into view, stage clips without scrolling",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "9299878",
@@ -1603,7 +1637,7 @@
       "time": "22:02",
       "subject": "chore(ds): record lane re-centring shipment",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "72f12b1",
@@ -1612,7 +1646,7 @@
       "time": "22:01",
       "subject": "fix(ds): drawer takes its lane, trigger re-centres in the dotted space",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "c397a1c",
@@ -1621,7 +1655,7 @@
       "time": "21:58",
       "subject": "chore(ds): record deep-link shipment, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "4180310",
@@ -1630,16 +1664,7 @@
       "time": "21:58",
       "subject": "feat(ds): deep-link a specimen's open layer (?open=<id>)",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "350e894",
-      "full": "350e894a6e722e28db5f4439af510474529a07d7",
-      "date": "2026-09-23",
-      "time": "21:31",
-      "subject": "chore(ds): refresh Task 12M shipments, manifest",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "85c2a3f",
@@ -1648,7 +1673,16 @@
       "time": "21:31",
       "subject": "fix(ds): stage scope also pins float positioning",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "350e894",
+      "full": "350e894a6e722e28db5f4439af510474529a07d7",
+      "date": "2026-09-23",
+      "time": "21:31",
+      "subject": "chore(ds): refresh Task 12M shipments, manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "phase-4"
     },
     {
       "sha": "78302e5",
@@ -1657,7 +1691,7 @@
       "time": "21:18",
       "subject": "chore(ds): close Task 12M — shipped 75b49e3, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "75b49e3",
@@ -1666,7 +1700,7 @@
       "time": "21:17",
       "subject": "fix(ds): stage owns layer anchoring, panel fetches bypass cache",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "4abc5e6",
@@ -1675,7 +1709,7 @@
       "time": "20:12",
       "subject": "chore(ds): close Task 12L — shipped d69a054, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "d69a054",
@@ -1684,16 +1718,7 @@
       "time": "20:10",
       "subject": "fix(ds): overlay specimens — contained stages, product-grade dismissal",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "954968a",
-      "full": "954968a5b1619032eb8d0bf48ae1a207391756ef",
-      "date": "2026-09-23",
-      "time": "19:33",
-      "subject": "chore(ds): close Task 12K — shipped 9ce8dae, refresh manifest",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "9ce8dae",
@@ -1702,16 +1727,16 @@
       "time": "19:33",
       "subject": "fix(ds): anchored layers demo live, drop in-flow override",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
-      "sha": "363a58d",
-      "full": "363a58de68f5801e151973ea36d30a0d81da3cd6",
+      "sha": "954968a",
+      "full": "954968a5b1619032eb8d0bf48ae1a207391756ef",
       "date": "2026-09-23",
-      "time": "19:26",
-      "subject": "chore(ds): close Task 12J — shipped 6f864c8, refresh manifest",
+      "time": "19:33",
+      "subject": "chore(ds): close Task 12K — shipped 9ce8dae, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "6f864c8",
@@ -1720,7 +1745,16 @@
       "time": "19:26",
       "subject": "fix(ds): overlay specimens render in-flow, toast close works",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "363a58d",
+      "full": "363a58de68f5801e151973ea36d30a0d81da3cd6",
+      "date": "2026-09-23",
+      "time": "19:26",
+      "subject": "chore(ds): close Task 12J — shipped 6f864c8, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "phase-4"
     },
     {
       "sha": "6f16193",
@@ -1729,7 +1763,7 @@
       "time": "19:24",
       "subject": "chore(ds): close Task 12I — shipped 18d5e97, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "18d5e97",
@@ -1738,16 +1772,7 @@
       "time": "19:24",
       "subject": "feat(ds): contextual specimens, final 4 frames",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "3ebdef1",
-      "full": "3ebdef1203e4f432285a02ec26cb4c4ff99d1131",
-      "date": "2026-09-23",
-      "time": "19:22",
-      "subject": "chore(ds): close Task 12H — shipped 88a2c96, refresh manifest",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "88a2c96",
@@ -1756,7 +1781,16 @@
       "time": "19:22",
       "subject": "feat(ds): contextual specimens, choice frame",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "3ebdef1",
+      "full": "3ebdef1203e4f432285a02ec26cb4c4ff99d1131",
+      "date": "2026-09-23",
+      "time": "19:22",
+      "subject": "chore(ds): close Task 12H — shipped 88a2c96, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "phase-4"
     },
     {
       "sha": "8cdac54",
@@ -1765,7 +1799,7 @@
       "time": "19:20",
       "subject": "chore(ds): close Task 12G — shipped 744386f, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "744386f",
@@ -1774,16 +1808,7 @@
       "time": "19:20",
       "subject": "feat(ds): contextual specimens, form frame",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
-    },
-    {
-      "sha": "0cec697",
-      "full": "0cec697b4e56c65604c4c644a05832a4850b6b2d",
-      "date": "2026-09-23",
-      "time": "19:18",
-      "subject": "chore(ds): close Task 12F — shipped 29bf342, refresh manifest",
-      "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "29bf342",
@@ -1792,7 +1817,16 @@
       "time": "19:18",
       "subject": "feat(ds): contextual specimens, identity frame",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "0cec697",
+      "full": "0cec697b4e56c65604c4c644a05832a4850b6b2d",
+      "date": "2026-09-23",
+      "time": "19:18",
+      "subject": "chore(ds): close Task 12F — shipped 29bf342, refresh manifest",
+      "plan": "2026-09-23_002500-design-system-consolidation.md",
+      "anchor": "phase-4"
     },
     {
       "sha": "5b53d45",
@@ -1801,7 +1835,7 @@
       "time": "19:14",
       "subject": "feat(ds): contextual specimens, actions exemplar",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "57b7f73",
@@ -1810,7 +1844,7 @@
       "time": "18:58",
       "subject": "feat(ds): 8 agents refine panels, all frames intro-first with live specimens after tenets",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "7b66556",
@@ -1819,7 +1853,7 @@
       "time": "18:57",
       "subject": "chore(ds): close Task 12D — shipped da10664, refresh manifest",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "da10664",
@@ -1828,7 +1862,7 @@
       "time": "18:56",
       "subject": "feat(ds): pairings in situ — matrix modal mapped to shipped elements",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "6cfb6fd",
@@ -1837,7 +1871,7 @@
       "time": "18:55",
       "subject": "fix(ds): split opening articles into intro cards, specimens right after tenets",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "1308c82",
@@ -1846,7 +1880,7 @@
       "time": "18:42",
       "subject": "fix(ds): live specimens right after opening article in all 8 frames",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "95117f6",
@@ -1855,7 +1889,7 @@
       "time": "18:38",
       "subject": "fix(ds): spec articles above live specimens in all 8 frames",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "0771cba",
@@ -1864,7 +1898,7 @@
       "time": "18:05",
       "subject": "fix(ds): dnav rename kills tabs collision, load toolbar+textarea css, stack nav demos",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "35158d2",
@@ -1873,7 +1907,7 @@
       "time": "18:00",
       "subject": "feat(ds): all 32 component articles wired into gallery frames",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "9acce60",
@@ -1882,7 +1916,7 @@
       "time": "17:57",
       "subject": "feat(ds): button+chip full articles exemplar, plan Task 12C",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "d44d32a",
@@ -1891,7 +1925,7 @@
       "time": "17:53",
       "subject": "feat(ds): gallery showcases remaining variants",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "57b0475",
@@ -1900,7 +1934,7 @@
       "time": "17:52",
       "subject": "fix(ds): drop scrollIntoView — tab switch no longer yanks scroll",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "ee40b04",
@@ -1909,7 +1943,7 @@
       "time": "17:47",
       "subject": "feat(ds): gallery showcases actions + identity variants, hash scroll, plan 12A/12B",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "62201f4",
@@ -1918,7 +1952,7 @@
       "time": "17:41",
       "subject": "fix(ds): restore language-panel fetch — resolves via Vite public/ on live server",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "c3beace",
@@ -1927,7 +1961,7 @@
       "time": "17:38",
       "subject": "fix(ds): hash-deep-link gallery panels, drop dead language-panel fetch",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "a8464e1",
@@ -1936,7 +1970,7 @@
       "time": "17:32",
       "subject": "feat(ds): rebuild all 30 components to M3+Carbon bar — full states, sizes, a11y",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "95a380e",
@@ -1945,7 +1979,7 @@
       "time": "17:06",
       "subject": "feat(ds): gallery proves batch-1 components",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "b2f733b",
@@ -1954,7 +1988,7 @@
       "time": "16:58",
       "subject": "feat(ds): build cards + data on tokens",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "80164f5",
@@ -1963,7 +1997,7 @@
       "time": "16:53",
       "subject": "feat(ds): build actions + identity on tokens",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "f428087",
@@ -1972,7 +2006,7 @@
       "time": "16:00",
       "subject": "feat(ds): foundations dotted-canonical tokens + exhaustive iconography with playground",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "db9ca93",
@@ -1981,7 +2015,7 @@
       "time": "15:41",
       "subject": "fix(ds): typography page — line-height tokens named, even table gutters, token map",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "9308840",
@@ -1990,7 +2024,7 @@
       "time": "15:34",
       "subject": "fix(tooling): ds-track covers the foundation articles — 14 unlinked commits recovered",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "167a4b1",
@@ -1999,7 +2033,7 @@
       "time": "15:32",
       "subject": "refine(ds): typography foundation — labeled specimens, spec table, leading proof",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "204b330",
@@ -2008,7 +2042,7 @@
       "time": "14:51",
       "subject": "fix(ds): neutral night ladder mirrors so the prominence ramp holds (strong brightest > basic > neutral)",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "1fc1907",
@@ -2017,7 +2051,7 @@
       "time": "14:45",
       "subject": "refactor(ds): clean token names (dotted canonical), calibrated role ladder, Roles + Semantics tabs regrouped",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "4b78817",
@@ -2026,7 +2060,7 @@
       "time": "14:27",
       "subject": "feat(ds): messaging ramps in color specimens — green · red · orange",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "0748a65",
@@ -2035,7 +2069,7 @@
       "time": "14:23",
       "subject": "fix(ds): playground night ladder — pairing inverts for dark, swap control removed",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "1391cf6",
@@ -2044,7 +2078,7 @@
       "time": "13:58",
       "subject": "fix(ds): playground families — action to Neutral, citrine to Core, warning to orange",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "42539cf",
@@ -2053,7 +2087,7 @@
       "time": "13:50",
       "subject": "feat(ds): color foundations — chapter article, contrast playground, section tabs",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "babeb34",
@@ -2062,7 +2096,7 @@
       "time": "11:03",
       "subject": "feat(ds): color section nav as tabs for Ramps/Roles/Semantics, rest scrolls",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "cddf126",
@@ -2071,7 +2105,7 @@
       "time": "05:12",
       "subject": "feat(ds): color page UX — section nav, ramp heroes, collapsible matrix, single snippet",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "de89505",
@@ -2080,7 +2114,7 @@
       "time": "03:21",
       "subject": "feat(ds): pairing explorer — grouped pass-only dropdowns, scoped light/dark preview",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "407e509",
@@ -2089,7 +2123,7 @@
       "time": "03:11",
       "subject": "feat(ds): live contrast pills, full 17x10 pairing matrix, lab picker",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "c07d17e",
@@ -2098,7 +2132,7 @@
       "time": "02:45",
       "subject": "fix(ds): drop self-referential token aliases — amethyst-900/50, radius, weight resolve",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "9d7d5ab",
@@ -2107,7 +2141,7 @@
       "time": "02:38",
       "subject": "feat(ds): role gradations per category, unified value grammar, roles light/dark",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "10188e1",
@@ -2116,7 +2150,7 @@
       "time": "02:19",
       "subject": "feat(ds): color — grouped semantic with dark, full pairing matrix, lab extracted",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "6187179",
@@ -2125,7 +2159,7 @@
       "time": "02:01",
       "subject": "fix(ds): unify article vocabulary — specimens + contrast on color",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "2f9a183",
@@ -2134,7 +2168,7 @@
       "time": "01:57",
       "subject": "fix(ds): fold orphan motion demo into article — one motion panel",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "4e72db6",
@@ -2143,7 +2177,7 @@
       "time": "01:55",
       "subject": "feat(ds): color article — labeled ramps, hero samples, exhaustive semantic, pairing lab",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "1283e65",
@@ -2152,7 +2186,7 @@
       "time": "01:49",
       "subject": "feat(ds): foundations as articles — iconography chapter, shell swap",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "629889c",
@@ -2161,7 +2195,7 @@
       "time": "01:47",
       "subject": "feat(ds): foundations as articles — motion chapter, shell swap",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "61038ac",
@@ -2170,7 +2204,7 @@
       "time": "01:45",
       "subject": "feat(ds): foundations as articles — shadow chapter, shell swap",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "040514e",
@@ -2179,7 +2213,7 @@
       "time": "01:43",
       "subject": "feat(ds): foundations as articles — radius chapter, shell swap",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "83b4ea2",
@@ -2188,7 +2222,7 @@
       "time": "01:42",
       "subject": "feat(ds): color article — full 50–900 ramps + story-tied semantic layer",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "fd0d416",
@@ -2197,7 +2231,7 @@
       "time": "01:39",
       "subject": "feat(ds): foundations as articles — spacing chapter, shell swap",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "aa922f2",
@@ -2206,7 +2240,7 @@
       "time": "01:36",
       "subject": "feat(ds): foundations as articles — typography chapter, shell swap",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "16f8d8f",
@@ -2215,7 +2249,7 @@
       "time": "01:35",
       "subject": "fix(ds): run foundation doc loader after frames exist — color tab renders",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "2a7bcdb",
@@ -2224,7 +2258,7 @@
       "time": "01:32",
       "subject": "feat(ds): foundations as chapter articles — color exemplar, frame shells + doc loader",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "98fe52f",
@@ -2233,7 +2267,7 @@
       "time": "01:22",
       "subject": "feat(tooling): lint foundation drift",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "93a8993",
@@ -2242,7 +2276,7 @@
       "time": "01:22",
       "subject": "feat(ds): foundations documented — tokens, contrast, code",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "abd40b2",
@@ -2251,7 +2285,7 @@
       "time": "01:18",
       "subject": "feat(ds): build token source ground-up — all layers tokenized",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "d10b870",
@@ -2260,7 +2294,7 @@
       "time": "01:16",
       "subject": "chore(plan): close consolidation phase 1 — mark shipped, hide exhaustive subset",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "3e75875",
@@ -2269,7 +2303,7 @@
       "time": "00:58",
       "subject": "feat(ds): Chapter 1 goes thematic — values, materials, day-loop; detail moves to tabs",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "1549a21",
@@ -2278,7 +2312,7 @@
       "time": "00:53",
       "subject": "feat(ds): recipes say what each piece is — plain-English build order",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "d2b1ebf",
@@ -2287,7 +2321,7 @@
       "time": "00:51",
       "subject": "feat(ds): ceramic/aluminium/gems story — decluttered chapter, plain words",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "79f4846",
@@ -2296,7 +2330,7 @@
       "time": "00:45",
       "subject": "feat(ds): design Chapter 1 as a chapter page — laws, registers, roles, flows",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "66f8054",
@@ -2305,7 +2339,7 @@
       "time": "00:38",
       "subject": "feat(ds): fold Chapter 1 into gallery Language tab, drop standalone page",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "d200d90",
@@ -2314,7 +2348,7 @@
       "time": "00:34",
       "subject": "feat(ds): gallery opens on Chapter 1 in chapter order",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "cafb0ed",
@@ -2323,7 +2357,7 @@
       "time": "00:33",
       "subject": "docs(ds): build DS Chapter 1 — the language",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "7e521d5",
@@ -2332,7 +2366,7 @@
       "time": "00:32",
       "subject": "docs(ds): name the ground-up DS build plan",
       "plan": "2026-09-23_002500-design-system-consolidation.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "df6223c",
@@ -2341,7 +2375,7 @@
       "time": "23:07",
       "subject": "docs(ds): spec names the three registers",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "bade53d",
@@ -2350,7 +2384,7 @@
       "time": "23:07",
       "subject": "test(ds): assert prototype language invariants",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "2dd6206",
@@ -2359,7 +2393,7 @@
       "time": "23:07",
       "subject": "feat(tooling): lint pattern CSS for raw color",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "e3be7fd",
@@ -2368,7 +2402,7 @@
       "time": "23:01",
       "subject": "fix(ds): gallery icon demo is Phosphor",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "3cbdf96",
@@ -2377,7 +2411,7 @@
       "time": "22:56",
       "subject": "feat(ds): add the language page",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "ea90b33",
@@ -2386,7 +2420,7 @@
       "time": "22:52",
       "subject": "feat(ds): one empty state for quiet tabs",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "82b4930",
@@ -2395,7 +2429,7 @@
       "time": "22:52",
       "subject": "refactor(ds): extract the activity data-mark",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "b349127",
@@ -2404,25 +2438,7 @@
       "time": "22:51",
       "subject": "refactor(ds): compose Opps screen from roles — title, chip, KPI",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-3}"
-    },
-    {
-      "sha": "92130ca",
-      "full": "92130ca8cc1722c651ce02c9110ba1cb13c0e4e3",
-      "date": "2026-09-22",
-      "time": "22:50",
-      "subject": "test(ds): gate role contrast pairs",
-      "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-2}"
-    },
-    {
-      "sha": "72c125f",
-      "full": "72c125f4f77ba8de973497221e9844cb95946518",
-      "date": "2026-09-22",
-      "time": "22:50",
-      "subject": "feat(ds): name chrome material tokens",
-      "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-3"
     },
     {
       "sha": "f502bbe",
@@ -2431,7 +2447,25 @@
       "time": "22:50",
       "subject": "feat(ds): add type roles",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "92130ca",
+      "full": "92130ca8cc1722c651ce02c9110ba1cb13c0e4e3",
+      "date": "2026-09-22",
+      "time": "22:50",
+      "subject": "test(ds): gate role contrast pairs",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "phase-2"
+    },
+    {
+      "sha": "72c125f",
+      "full": "72c125f4f77ba8de973497221e9844cb95946518",
+      "date": "2026-09-22",
+      "time": "22:50",
+      "subject": "feat(ds): name chrome material tokens",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "phase-2"
     },
     {
       "sha": "c08b80e",
@@ -2440,7 +2474,7 @@
       "time": "22:49",
       "subject": "feat(ds): add color roles as aliases",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "b400ac0",
@@ -2449,16 +2483,7 @@
       "time": "22:48",
       "subject": "docs(ds): record nav and glass supersessions",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-1}"
-    },
-    {
-      "sha": "84a62d6",
-      "full": "84a62d6ed100044e3928288573a9aa73fda0bb2e",
-      "date": "2026-09-22",
-      "time": "22:48",
-      "subject": "docs(ds): write the visual language",
-      "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "b0a2062",
@@ -2467,7 +2492,16 @@
       "time": "22:48",
       "subject": "docs(ds): name the visual-language plan",
       "plan": "2026-09-22_190645-visual-language.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "84a62d6",
+      "full": "84a62d6ed100044e3928288573a9aa73fda0bb2e",
+      "date": "2026-09-22",
+      "time": "22:48",
+      "subject": "docs(ds): write the visual language",
+      "plan": "2026-09-22_190645-visual-language.md",
+      "anchor": "phase-1"
     },
     {
       "sha": "2c1aa0f",
@@ -2512,7 +2546,7 @@
       "time": "15:35",
       "subject": "fix: drop tab-switch shadow pulse that read as resize nudge",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "64b5df3",
@@ -2521,7 +2555,7 @@
       "time": "15:30",
       "subject": "fix: dynamic viewport units stop Safari toolbar resize nudging layout",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "ab2fb68",
@@ -2530,7 +2564,7 @@
       "time": "15:27",
       "subject": "fix: arch panel matches prototype dotted viewport, stable scrollbar gutter",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "2b33509",
@@ -2539,7 +2573,7 @@
       "time": "15:20",
       "subject": "fix: atlas canvas borderless single panel, graph capped to design size",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "9ad213c",
@@ -2548,7 +2582,7 @@
       "time": "15:06",
       "subject": "refactor: atlas right side is one container swapping per tab, no nested cards",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "9bae36b",
@@ -2557,7 +2591,7 @@
       "time": "15:02",
       "subject": "feat: atlas Code Truth becomes fourth lens tab rendering in canvas",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "170e1f0",
@@ -2566,7 +2600,7 @@
       "time": "14:56",
       "subject": "fix: atlas code truth moves to left rail as tab, full-width lens nav",
       "plan": "2026-09-22_082844-arch-atlas.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "0fa9721",
@@ -2638,7 +2672,7 @@
       "time": "13:32",
       "subject": "Phase 9: record ship SHAs in plan",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-9}"
+      "anchor": "phase-9"
     },
     {
       "sha": "cb8c595",
@@ -2650,20 +2684,20 @@
       "anchor": "phase-9"
     },
     {
-      "sha": "52a9b0d",
-      "full": "52a9b0dc5df209b0fd3e6c5a0a6711895b5af234",
-      "date": "2026-09-22",
-      "time": "13:25",
-      "subject": "Phase 8: record ship SHAs in plan",
-      "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-8}"
-    },
-    {
       "sha": "b7b12dc",
       "full": "b7b12dc6728d1d4c7c79fd2e9d0646bc3279f3d1",
       "date": "2026-09-22",
       "time": "13:25",
       "subject": "Phase 8 Task 2: lazy Leaflet chunk, passive+scaleX scroll, motion whitelists",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-8"
+    },
+    {
+      "sha": "52a9b0d",
+      "full": "52a9b0dc5df209b0fd3e6c5a0a6711895b5af234",
+      "date": "2026-09-22",
+      "time": "13:25",
+      "subject": "Phase 8: record ship SHAs in plan",
       "plan": "2026-09-22_122850-museum-refactor.md",
       "anchor": "phase-8"
     },
@@ -2677,13 +2711,22 @@
       "anchor": "phase-8"
     },
     {
+      "sha": "8867a49",
+      "full": "8867a4940be70b31455ecd7e793d17da23eee6b7",
+      "date": "2026-09-22",
+      "time": "13:19",
+      "subject": "Phase 7 Task 1: pure-logic unit tests, gate runs them",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-7"
+    },
+    {
       "sha": "2bc8d71",
       "full": "2bc8d71e1f996fdf520ef721abd858a9ccdddc9f",
       "date": "2026-09-22",
       "time": "13:19",
       "subject": "Phase 7: record ship SHAs in plan",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-7}"
+      "anchor": "phase-7"
     },
     {
       "sha": "0d7f5dc",
@@ -2691,15 +2734,6 @@
       "date": "2026-09-22",
       "time": "13:19",
       "subject": "Phase 7 Task 2: flow diagrams + layered Architecture panel",
-      "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "phase-7"
-    },
-    {
-      "sha": "8867a49",
-      "full": "8867a4940be70b31455ecd7e793d17da23eee6b7",
-      "date": "2026-09-22",
-      "time": "13:19",
-      "subject": "Phase 7 Task 1: pure-logic unit tests, gate runs them",
       "plan": "2026-09-22_122850-museum-refactor.md",
       "anchor": "phase-7"
     },
@@ -2719,7 +2753,7 @@
       "time": "13:09",
       "subject": "Phase 5: record ship SHAs in plan",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "63f6777",
@@ -2728,7 +2762,7 @@
       "time": "13:08",
       "subject": "Phase 5 Task 3: lens-copy + dock-track splits, dead DeviceAppBar removal",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "1379724",
@@ -2737,7 +2771,7 @@
       "time": "13:04",
       "subject": "Phase 5 Task 2: DockSlices engine + slice-bands extraction (95/33 lines)",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "4c1d451",
@@ -2746,7 +2780,7 @@
       "time": "13:03",
       "subject": "Phase 5 Task 1: shared optics.js + rect-zoom.js, single getZoom/toLayout source",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "ac87d35",
@@ -2755,7 +2789,7 @@
       "time": "12:57",
       "subject": "index.html becomes app entry (/), app.html redirect shim preserving query+hash",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "0680ddb",
@@ -2764,7 +2798,7 @@
       "time": "12:53",
       "subject": "Phase 4 Task 2: shell.css extraction, dead stage/float-tabs removal",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "c1ea0f0",
@@ -2773,7 +2807,7 @@
       "time": "12:52",
       "subject": "Phase 4 Task 1: TopPills to shell scope, drop dual clock writer",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "983f51b",
@@ -2782,7 +2816,7 @@
       "time": "12:49",
       "subject": "Phase 3: device frame module (frameVars, buildFrame, mounts-only index)",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-3}"
+      "anchor": "phase-3"
     },
     {
       "sha": "6753512",
@@ -2791,7 +2825,7 @@
       "time": "12:44",
       "subject": "Phase 2: OS layer extraction (status bar, notch, indicator, edges)",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "fbcb2c7",
@@ -2800,7 +2834,7 @@
       "time": "12:40",
       "subject": "Phase 1: module inventory, dependency graph, baselines",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "43b05fa",
@@ -2809,7 +2843,7 @@
       "time": "19:13",
       "subject": "fix(map): compositor avatar flights — centre swoop, count morph, early return",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "be88022",
@@ -2818,7 +2852,7 @@
       "time": "17:22",
       "subject": "polish(map): softer landing spring, count dissolves in place, buffered last-blob reveal",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "6c418db",
@@ -2827,7 +2861,7 @@
       "time": "17:13",
       "subject": "fix(map): seamless avatar landing — blob scales up in place, clone crossfades, pill hidden on close",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "bcb8788",
@@ -2836,7 +2870,7 @@
       "time": "17:03",
       "subject": "fix(map): smooth card handoff — aligned ghost/card windows, easeOutCubic, 12px lift",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "95847c1",
@@ -2845,7 +2879,7 @@
       "time": "17:00",
       "subject": "fix(map): smooth avatar flights — proportional arc, per-segment spring + interrupt clean-up",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "2e452a7",
@@ -2854,7 +2888,7 @@
       "time": "16:55",
       "subject": "fix(map): delay blob pop until clone landing",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "82cb183",
@@ -2863,7 +2897,7 @@
       "time": "16:53",
       "subject": "feat(map): live tiles, window morph, concentric card + avatar flights",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "8ee8c82",
@@ -2872,7 +2906,7 @@
       "time": "12:51",
       "subject": "Workspace device groups + sheet CSS wiring",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "2d0b9fd",
@@ -2881,7 +2915,7 @@
       "time": "12:51",
       "subject": "Dock follows tab switches, defaults to Opps",
       "plan": "2026-09-22_155000-architecture-mechanics.md",
-      "anchor": "{#phase-2}"
+      "anchor": "phase-2"
     },
     {
       "sha": "8abe292",
@@ -2890,7 +2924,7 @@
       "time": "12:50",
       "subject": "Opps nearby map: fullscreen sheet morph with avatar continuity",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-1}"
+      "anchor": "phase-1"
     },
     {
       "sha": "ecd77fd",
@@ -2899,7 +2933,7 @@
       "time": "21:02",
       "subject": "Glass scroll-tracking fix (lens frame-flag reset), fullscreen dock safe margin",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "55143f9",
@@ -2908,7 +2942,7 @@
       "time": "20:52",
       "subject": "Vercel prod fix: vite build to dist, PWA via public/, exit gesture hardening",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-4}"
+      "anchor": "phase-4"
     },
     {
       "sha": "8d28635",
@@ -2917,25 +2951,7 @@
       "time": "20:40",
       "subject": "Mobile fullscreen prototype, PWA install, Vercel static config",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
-    },
-    {
-      "sha": "55ae4d8",
-      "full": "55ae4d826f4d43bda83d435d7603685a049b8109",
-      "date": "2026-09-17",
-      "time": "17:07",
-      "subject": "feat(glass): liquid-glass dock prototype (app.html, bottom dock, lens) + glass tabbar/toolbar",
-      "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
-    },
-    {
-      "sha": "62d33ba",
-      "full": "62d33bad7a97a197af7320589515ae09961f7e10",
-      "date": "2026-09-17",
-      "time": "17:07",
-      "subject": "ds: glass token group (blur blur-sm saturate) + build-tokens emission",
-      "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
     },
     {
       "sha": "df2e075",
@@ -2944,7 +2960,25 @@
       "time": "17:07",
       "subject": "deps: React 19 + plugin-react + ws; app.html entry page; .gitignore node_modules",
       "plan": "2026-09-22_122850-museum-refactor.md",
-      "anchor": "{#phase-5}"
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "62d33ba",
+      "full": "62d33bad7a97a197af7320589515ae09961f7e10",
+      "date": "2026-09-17",
+      "time": "17:07",
+      "subject": "ds: glass token group (blur blur-sm saturate) + build-tokens emission",
+      "plan": "2026-09-16_180000-crm-design-system.md",
+      "anchor": "phase-5"
+    },
+    {
+      "sha": "55ae4d8",
+      "full": "55ae4d826f4d43bda83d435d7603685a049b8109",
+      "date": "2026-09-17",
+      "time": "17:07",
+      "subject": "feat(glass): liquid-glass dock prototype (app.html, bottom dock, lens) + glass tabbar/toolbar",
+      "plan": "2026-09-22_122850-museum-refactor.md",
+      "anchor": "phase-5"
     },
     {
       "sha": "bf8d8d1",
@@ -2974,15 +3008,6 @@
       "anchor": "phase-3"
     },
     {
-      "sha": "3b728a0",
-      "full": "3b728a0446a97fcd201e4c9a4a244cce13feae19",
-      "date": "2026-09-16",
-      "time": "20:41",
-      "subject": "chore(ds): track refresh — manifest + Shipped 719eddd",
-      "plan": "2026-09-16_203500-ds-polish.md",
-      "anchor": "phase-2"
-    },
-    {
       "sha": "719eddd",
       "full": "719eddd1d49aa9755625ba9e2b281edc940c7fb4",
       "date": "2026-09-16",
@@ -2992,13 +3017,13 @@
       "anchor": "phase-2"
     },
     {
-      "sha": "24fde48",
-      "full": "24fde48d3f0d84a6776b4df7cef6acf2da47d257",
+      "sha": "3b728a0",
+      "full": "3b728a0446a97fcd201e4c9a4a244cce13feae19",
       "date": "2026-09-16",
-      "time": "20:38",
-      "subject": "chore(ds): track refresh — manifest + Shipped 3d3f5be",
+      "time": "20:41",
+      "subject": "chore(ds): track refresh — manifest + Shipped 719eddd",
       "plan": "2026-09-16_203500-ds-polish.md",
-      "anchor": "phase-1"
+      "anchor": "phase-2"
     },
     {
       "sha": "3d3f5be",
@@ -3006,6 +3031,15 @@
       "date": "2026-09-16",
       "time": "20:38",
       "subject": "feat(ds): full 50-900 ramps + signal swap-slot (Evo parity)",
+      "plan": "2026-09-16_203500-ds-polish.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "24fde48",
+      "full": "24fde48d3f0d84a6776b4df7cef6acf2da47d257",
+      "date": "2026-09-16",
+      "time": "20:38",
+      "subject": "chore(ds): track refresh — manifest + Shipped 3d3f5be",
       "plan": "2026-09-16_203500-ds-polish.md",
       "anchor": "phase-1"
     },
@@ -3028,20 +3062,20 @@
       "anchor": "phase-13"
     },
     {
-      "sha": "2267a3a",
-      "full": "2267a3aef5999a5fd0b233080ee332382b0403a4",
-      "date": "2026-09-16",
-      "time": "20:22",
-      "subject": "chore(ds): track refresh — manifest + Shipped 2c3f3a6",
-      "plan": "2026-09-16_193500-full-publishable-design-system.md",
-      "anchor": "phase-12"
-    },
-    {
       "sha": "2c3f3a6",
       "full": "2c3f3a6a4f22ffdf7c2b0b0ecd2f39fe074aadcf",
       "date": "2026-09-16",
       "time": "20:22",
       "subject": "Phase 12: motion & gamification — motion tokens + ElasticScroll/TiltCard (reduced-motion) + GemReward hue-rotate (4 categories, single Spline)",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-12"
+    },
+    {
+      "sha": "2267a3a",
+      "full": "2267a3aef5999a5fd0b233080ee332382b0403a4",
+      "date": "2026-09-16",
+      "time": "20:22",
+      "subject": "chore(ds): track refresh — manifest + Shipped 2c3f3a6",
       "plan": "2026-09-16_193500-full-publishable-design-system.md",
       "anchor": "phase-12"
     },
@@ -3172,20 +3206,20 @@
       "anchor": "phase-7"
     },
     {
-      "sha": "03b7281",
-      "full": "03b72812f8004c228a579d44b206eda66711cd2c",
-      "date": "2026-09-16",
-      "time": "19:23",
-      "subject": "chore(ds): track refresh — manifest + Shipped 31f35d7",
-      "plan": "2026-09-16_193500-full-publishable-design-system.md",
-      "anchor": "phase-6"
-    },
-    {
       "sha": "31f35d7",
       "full": "31f35d71957bc591d7e57cb5b82211bfdf41b43c",
       "date": "2026-09-16",
       "time": "19:23",
       "subject": "Phase 6: token pipeline hardening — DTCG source, generated CSS, themes, gates",
+      "plan": "2026-09-16_193500-full-publishable-design-system.md",
+      "anchor": "phase-6"
+    },
+    {
+      "sha": "03b7281",
+      "full": "03b72812f8004c228a579d44b206eda66711cd2c",
+      "date": "2026-09-16",
+      "time": "19:23",
+      "subject": "chore(ds): track refresh — manifest + Shipped 31f35d7",
       "plan": "2026-09-16_193500-full-publishable-design-system.md",
       "anchor": "phase-6"
     },
@@ -3196,7 +3230,7 @@
       "time": "18:59",
       "subject": "Phases 4+5: lock funnel states, transient/temporal, reports, motion, gems, mood to tokens",
       "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "#phase-4"
+      "anchor": "phase-4"
     },
     {
       "sha": "f0175f5",
@@ -3205,7 +3239,7 @@
       "time": "18:57",
       "subject": "Phase 3: lock chips/pills/bars/cards/nav to tokens, add status-pill-new",
       "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "#phase-3"
+      "anchor": "phase-3"
     },
     {
       "sha": "8eb6000",
@@ -3214,7 +3248,7 @@
       "time": "18:54",
       "subject": "Phase 2: lock type/spacing/radii to tokens, add breakpoint mapping",
       "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "#phase-2"
+      "anchor": "phase-2"
     },
     {
       "sha": "8eeebc5",
@@ -3223,7 +3257,7 @@
       "time": "18:46",
       "subject": "Phase 1: house ink/dim primitives, zero raw hex, lint gate green",
       "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "#phase-1"
+      "anchor": "phase-1"
     },
     {
       "sha": "9891f1d",
@@ -3232,42 +3266,28 @@
       "time": "18:31",
       "subject": "Fresh CRM design system exercise: plan, DESIGN.md, phase docs, references",
       "plan": "2026-09-16_180000-crm-design-system.md",
-      "anchor": "{#phase-1}"
-    },
-    {
-      "sha": "35dbcf3",
-      "full": "35dbcf3f946ca87fab0b02517b90c42f9e2ef351",
-      "date": "2026-10-01",
-      "time": "17:36",
-      "subject": "chore(lump-sum): stamp task 38 — gem icon junctions (shipped in 1cb30cf)",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "{#phase-2}"
-    },
-    {
-      "sha": "1cb30cf",
-      "full": "1cb30cf1674c5aa205f924c219d36ea05dcbc195",
-      "date": "2026-10-01",
-      "time": "17:35",
-      "subject": "chore(ds): close Task 37 shipped in bc39728",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-10"
-    },
-    {
-      "sha": "d69c32a",
-      "full": "d69c32a63b87c72f7d0dd4583d3e35fa73aaf933",
-      "date": "2026-09-28",
-      "subject": "chore(ds): stamp tasks 27-28 shas + regen manifest",
-      "plan": "2026-09-28_000000-lump-sum-builds.md",
-      "anchor": "phase-7"
-    },
-    {
-      "sha": "d50cd58",
-      "full": "d50cd587b68d581fb8a6e2aa22a9a5755c641664",
-      "date": "2026-09-24",
-      "subject": "feat(ds): per-component intro·lab·spec for all components — scannable gallery",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-3"
+      "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M scripts/ds-track.mjs",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/pitch/changelog-links.js",
+    "M src/pitch/changelog-parse.js",
+    "M src/pitch/changelog-titles.js",
+    "M src/pitch/changelog/esc.js",
+    "M src/pitch/changelog/graph.js",
+    "M src/pitch/changelog/paint-detail.js",
+    "M src/pitch/changelog/paint-plan.js",
+    "M src/pitch/pitch-changelog-cal.css",
+    "M src/pitch/pitch-changelog-cal.js",
+    "M src/pitch/pitch-changelog-cards.css",
+    "M src/pitch/pitch-changelog-data.js",
+    "M src/pitch/pitch-changelog-drawer.css",
+    "M src/pitch/pitch-changelog-drawer.js",
+    "M src/pitch/pitch-changelog-list.js"
+  ]
 }

@@ -13,7 +13,7 @@
 .ds-rail .ds-pick { padding: var(--cl-8); font-size: 0.86em; }
 .ds-rail .ds-pick small { display: block; }
 .ds-rail [data-prov] { margin: auto 0 var(--cl-6); }
-.ds-rail-foot { padding-top: var(--cl-10); border-top: var(--border-hairline); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-ink-muted); }
+.ds-rail-foot { position: sticky; bottom: 0; margin-top: auto; padding-top: var(--cl-10); border-top: var(--cl-1) solid var(--color-border); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-ink-muted); background: var(--color-bg); z-index: var(--cl-1); }
 .ds-task { flex: 1 1 auto; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; }
 .ds-drawer:not([hidden]) { animation: ds-drawer-in var(--dur-glide) var(--ease-signature); }
 @keyframes ds-drawer-in { from { transform: translateX(var(--cl-30)); opacity: 0; } to { transform: none; opacity: 1; } }
@@ -24,7 +24,7 @@
 .ds-drawer-head b { flex: 1 1 auto; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); }
 .ds-drawer-head button { font-family: var(--font-mono); font-size: var(--text-micro); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--cl-4) var(--cl-9); cursor: pointer; }
 .ds-drawer-head button:disabled { opacity: 0.4; cursor: default; }
-.ds-done { display: inline-block; background: var(--color-ink); color: var(--color-bg); padding: 0 var(--cl-5); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: var(--tracking-mono); font-weight: 700; line-height: 1.6; border-radius: var(--radius-none); }
+.ds-done { display: inline-block; background: var(--color-ink); color: var(--color-bg); padding: 0 var(--cl-5); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: var(--tracking-mono); font-weight: 700; line-height: 1.6; border-radius: var(--radius-xs); box-shadow: var(--shadow-sm); transform: translateY(calc(var(--cl-1) * -1)); }
 .ds-pick { display: block; width: 100%; text-align: left; font: inherit; background: none; border: none; border-bottom: var(--border-hairline); padding: var(--cl-8) var(--cl-12); font-size: var(--text-ds-body); color: var(--color-ink); cursor: pointer; position: relative; }
 .ds-pick:last-child { border-bottom: none; }
 .ds-pick small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--cl-2); }
@@ -37,10 +37,10 @@
 /* cl-* compat */
 .cl-scrim, .cl-drawer, .cl-d-label, .cl-d-title, .cl-d-row, .cl-sib, .cl-close { display: none; }
 
-.ds-timeline{position:relative;margin:var(--cl-8) 0 0 var(--cl-4);padding-left:var(--cl-12);border-left:var(--cl-1) dotted var(--color-border)}
+.ds-timeline{position:relative;margin:var(--cl-8) 0 0 var(--cl-4);padding-left:var(--cl-12);border-left:var(--cl-1) solid var(--color-border)}
 .ds-timeline-date{font-family:var(--font-mono);font-size:var(--text-micro);font-weight:var(--font-weight-bold);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-accent);margin:var(--cl-8) 0 var(--cl-4);position:relative}
 .ds-timeline-date:first-child{margin-top:0}
-.ds-timeline-date::before{content:"";position:absolute;left:calc(-1 * var(--cl-12) - var(--cl-4));top:50%;transform:translateY(-50%);width:var(--cl-7);height:var(--cl-7);background:var(--color-panel);border:var(--border-hairline);border-radius:50%;box-sizing:border-box}
+.ds-timeline-date::before{content:"";position:absolute;left:calc(-1 * var(--cl-12) - var(--cl-4));top:50%;transform:translateY(-50%);width:var(--cl-7);height:var(--cl-7);background:var(--color-accent);border:var(--cl-1) solid var(--color-accent);border-radius:50%;box-sizing:border-box;box-shadow: 0 0 0 var(--cl-2) color-mix(in srgb, var(--color-accent) 18%, transparent)}
 .ds-timeline-item{position:relative;padding:var(--cl-2) 0;margin-bottom:var(--cl-4);min-width:0;overflow-wrap:anywhere}
 .ds-timeline-item::before{display:none}
 .ds-timeline-item a{font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink);text-decoration:underline;text-underline-offset:var(--cl-1);font-weight:600;margin-right:var(--cl-4)}
@@ -51,4 +51,13 @@
 .ds-md th,.ds-md td{overflow-wrap:anywhere;vertical-align:top}
 .ds-md pre{white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:visible}
 .ds-drawer-head b{min-width:0;overflow-wrap:anywhere}
+
+/* triage callout + count badge · Lane C scannability */
+.ds-callout { border: var(--cl-1) solid var(--color-border); background: var(--color-panel); padding: var(--cl-12) var(--cl-14); border-radius: var(--radius-xs); }
+.ds-callout--warn { border-left: var(--cl-2) solid var(--color-accent); background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)); }
+.ds-callout--success { border-left: var(--cl-2) solid var(--primitive-green-400); background: color-mix(in srgb, var(--primitive-green-400) 6%, var(--color-surface)); }
+.ds-callout h2 { display: flex; align-items: center; gap: var(--cl-8); margin: 0 0 var(--cl-6); }
+.ds-count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: var(--cl-16); height: var(--cl-16); padding: 0 var(--cl-6); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; color: var(--color-bg); background: var(--color-accent); border-radius: var(--radius-full); line-height: 1; }
+.ds-count-badge--ok { background: var(--primitive-green-400); }
+[data-col="triage"][hidden] { display: none !important; }
 

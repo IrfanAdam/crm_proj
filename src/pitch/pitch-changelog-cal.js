@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-cal.js · Mon–Sun heat graph, day toggle */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · date→count map, dated cells filter. */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · date→count map, dated cells filter. · alias: legacy PAGE cal — canonical graph is src/pitch/changelog/graph.js · esc via src/pitch/changelog/esc.js */
 // Export map: renderCal(el, counts, sel, onPick).
 import { fmtLong } from './pitch-changelog-data.js';
 // — Section: week math (Monday-first columns) —

@@ -32,7 +32,7 @@ const cleanH1 = (h1) => String(h1 || '')
   .replace(/\s*[—–-]\s*$/, '')
   .trim();
 export const h1Of = (md) => ((md.match(/^#\s+(.+)$/m) || [])[1] || '').trim();
-export const shortPhase = (h) => h.replace(/^Phase \d+ [·—–-]\s*/, '').replace(/\s*\{#.*\}\s*$/, '');
+export const shortPhase = (h) => h.replace(/^Phase \d+ [·—–-]\s*/, '').replace(/\s*\{?#.*\}?\s*$/, '').trim();
 export const planSentence = ({ h1, goal, slug },
   max = 76) => sentOf(goal,
   max) || sentOf(cleanH1(h1),

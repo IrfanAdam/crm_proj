@@ -1,5 +1,5 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-list.js · build cards + day chip + triage */
-/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · sequence from filtered list. */
+/* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · sequence from filtered list. · alias: legacy PAGE list — canonical detail is src/pitch/changelog/paint-detail.js · esc via src/pitch/changelog/esc.js */
 // Export map: renderDay · renderList · renderTriage.
 import { planTitle, unlinked, fmtLong, esc } from './pitch-changelog-data.js';
 // — Section: day-clear chip —
