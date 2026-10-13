@@ -4,7 +4,9 @@
 .ds-plan-grid .ds-col { flex: 1 1 100%; }
 .ds-row { display: flex; align-items: baseline; gap: var(--cl-8); min-width: 0; }
 .ds-row b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 0 1 auto; }
-.ds-num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-accent); }
+.ds-num { font-family: var(--font-mono); font-size: var(--text-micro); }
+.ds-pick.is-done .ds-num { color: var(--color-accent); }
+.ds-pick.is-pending .ds-num { color: var(--color-ink-muted); }
 .ds-row .ds-num { flex: 0 0 auto; white-space: nowrap; }
 .ds-tags { margin-left: auto; flex: 0 0 auto; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
 /* plan list rows — strict grid: id / title+meta / tags (rail keeps .ds-row) */
@@ -18,9 +20,12 @@
   padding-bottom: var(--cl-6);
 }
 .ds-plan-grid .ds-num { min-width: 7ch; font-variant-numeric: tabular-nums; }
-.ds-plan-grid .ds-pick.on { background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg)); box-shadow: inset var(--cl-2) 0 0 var(--color-accent); }
-.ds-plan-grid .ds-pick.on .ds-date { color: var(--color-ink-muted); }
-.ds-plan-grid .ds-pick.on .ds-tag { color: var(--color-ink-muted); }
+.ds-plan-grid .ds-pick.is-done.on { background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg)); box-shadow: inset var(--cl-2) 0 0 var(--color-accent); }
+.ds-plan-grid .ds-pick.is-pending.on { background: var(--color-surface); box-shadow: inset var(--cl-2) 0 0 var(--color-border); }
+.ds-plan-grid .ds-pick.is-done.on .ds-date { color: var(--color-ink-muted); }
+.ds-plan-grid .ds-pick.is-pending.on .ds-date { color: var(--color-ink-muted); }
+.ds-plan-grid .ds-pick.is-done.on .ds-tag { color: var(--color-ink-muted); }
+.ds-plan-grid .ds-pick.is-pending.on .ds-tag { color: var(--color-ink-muted); }
 .ds-plan-grid .ds-main, .ds-plan-grid .ds-main small { display: contents; }
 .ds-plan-grid .ds-main b {
   grid-column: 2; grid-row: 1; min-width: 0;

@@ -30,6 +30,7 @@ export function paintPlan(root, ctx){
   const sprint = sprints[si];
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const seq = String(list.length - i).padStart(2, '0'), num = p.id || seq, frac = buildState(p.sprints);
+    const done = isDone(frac);
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
     const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
     const tagged = valid.filter((c) => c.date === p.date || (c.time && c.date >= p.date));
@@ -63,7 +64,7 @@ export function paintPlan(root, ctx){
     return [
       `<button class="ds-pick`,
       i === sel[0] ? ' on' : '',
-      isDone(frac) ? '' : ' is-open',
+      done ? ' is-done' : ' is-open is-pending',
       `" data-tip="`,
       esc(clip(p.goal, 100) || p.purpose || p.title),
       `"><span class="ds-num">`,

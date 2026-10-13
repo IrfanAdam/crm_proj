@@ -10,6 +10,9 @@
   box-shadow: var(--shadow-viewer); display: flex; gap: var(--cl-14); align-items: stretch;
 }
 .ds-rail { flex: 0 0 36%; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; border-right: var(--border-hairline); padding-right: var(--cl-12); display: flex; flex-direction: column; }
+.ds-rail-head { margin-bottom: var(--cl-8); padding: var(--cl-8) 0 var(--cl-12); border-bottom: var(--border-hairline); }
+.ds-rail-num { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-bottom: var(--cl-2); }
+.ds-rail-title { display: block; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); line-height: var(--leading-mono); overflow-wrap: anywhere; }
 .ds-rail .ds-pick { padding: var(--cl-8); font-size: 0.86em; }
 .ds-rail .ds-pick small { display: block; }
 .ds-rail [data-prov] { margin: auto 0 var(--cl-6); }
@@ -20,7 +23,7 @@
 @keyframes ds-scrim-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .ds-drawer:not([hidden]), .ds-scrim:not([hidden]) { animation: none; } }
 /* drawer head + picks */
-.ds-drawer-head { display: flex; gap: var(--cl-8); align-items: center; margin-bottom: var(--cl-12); }
+.ds-drawer-head { display: flex; gap: var(--cl-8); align-items: center; justify-content: flex-end; margin-bottom: var(--cl-12); }
 .ds-drawer-head b { flex: 1 1 auto; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); }
 .ds-drawer-head button { font-family: var(--font-mono); font-size: var(--text-micro); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--cl-4) var(--cl-9); cursor: pointer; }
 .ds-drawer-head button:disabled { opacity: 0.4; cursor: default; }
@@ -28,7 +31,11 @@
 .ds-pick { display: block; width: 100%; text-align: left; font: inherit; background: none; border: none; border-bottom: var(--border-hairline); padding: var(--cl-8) var(--cl-12); font-size: var(--text-ds-body); color: var(--color-ink); cursor: pointer; position: relative; }
 .ds-pick:last-child { border-bottom: none; }
 .ds-pick small { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); margin-top: var(--cl-2); }
-.ds-pick.on { background: var(--color-panel); box-shadow: inset var(--cl-2) 0 0 var(--color-accent); }
+.ds-pick.is-done .ds-num { color: var(--color-accent); }
+.ds-pick.is-pending .ds-num { color: var(--color-ink-muted); }
+.ds-pick.is-pending { color: var(--color-ink-muted); }
+.ds-pick.is-done.on { background: var(--color-panel); box-shadow: inset var(--cl-2) 0 0 var(--color-accent); }
+.ds-pick.is-pending.on { background: var(--color-surface); box-shadow: inset var(--cl-2) 0 0 var(--color-border); }
 .ds-pick.on small { color: var(--color-ink-muted); }
 .ds-hero.wide .lede { max-width: none; }
 .ds-commits { font-family: var(--font-mono); font-size: var(--text-micro); line-height: 1.7; color: var(--color-ink-muted); word-break: break-all; }

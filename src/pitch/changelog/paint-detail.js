@@ -126,16 +126,24 @@ export function paintDetail(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
-  root.querySelector('[data-col="sprint"]').innerHTML = sprints.map((s, i) => {
+  const planNum = String(list.length - pi).padStart(2, '0');
+  const railHead = [
+    `<div class="ds-rail-head">`,
+    `<span class="ds-rail-num">${esc(planNum)}</span>`,
+    `<span class="ds-rail-title">${esc(short(sprint.head).toUpperCase())}</span>`,
+    `</div>`,
+  ].join('');
+  root.querySelector('[data-col="sprint"]').innerHTML = railHead + sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
       hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
       has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
       frac = state(s.body);
     const edited = isEdited(plan.file, s.head, s.body) ? ' \u00b7 edited' : '';
+    const done = isDone(frac);
     return [
       `<button class="ds-pick`,
       i === sel[1] ? ' on' : '',
-      isDone(frac) ? '' : ' is-open',
+      done ? ' is-done' : ' is-open is-pending',
       `" data-tip="`,
       esc(clip(sprintDesc(s), 100)),
       `"><span class="ds-row"><span class="ds-num">Phase `,
@@ -157,11 +165,10 @@ export function paintDetail(root, ctx){
     `</div>`,
   ].join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
+  const bodyForMd = sprint.body.replace(/^##\s*Phase[^\n]*\n+/, '');
   root.querySelector('[data-col="tasks"]').innerHTML = [
-    `<div class="ds-drawer-head"><b>`,
-    esc(short(sprint.head)),
-    `</b><button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
-    marked.parse(sprint.body) + badges(hs),
+    `<div class="ds-drawer-head"><button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
+    marked.parse(bodyForMd) + badges(hs),
     `</div>`,
   ].join('');
   const u = unlinked(texts);
