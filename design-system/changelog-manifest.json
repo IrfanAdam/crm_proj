@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:49:55.143Z",
+  "generated": "2026-10-13T09:50:10.748Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "3d1ccf7",
+      "full": "3d1ccf7d746429baba7bb1543dc3a234034d122c",
+      "date": "2026-10-13",
+      "time": "15:20",
+      "subject": "fix(changelog): panel plan number matches list (p.id || seq), keep list logic",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "969c6ae",
       "full": "969c6aeda849863964cf1b60fe60ccd8ce451b41",
@@ -3318,8 +3327,6 @@
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/changelog/paint-detail.js",
-    "M src/pitch/changelog/paint-plan.js"
+    "M src/js/mechanics/graphData.schema.js"
   ]
 }
