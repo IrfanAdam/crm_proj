@@ -157,12 +157,7 @@ export function paintDetail(root, ctx){
       `</small></button>`,
     ].join('');
   }).join('') + [
-    `<div class="ds-rail-plan"><strong>`,
-    esc(plan.title || plan.slug || plan.file),
-    `</strong></div>`,
-    `<p class="ds-commits" data-prov>`,
-    esc(provenance(plan)),
-    `</p><div class="ds-rail-foot" data-foot>`,
+    `<div class="ds-rail-foot" data-foot>`,
     esc(plan.goal || sprintDesc(sprint)),
     `</div>`,
   ].join('');
