@@ -27,8 +27,27 @@ const marked = {
 };
 import { hits, badges, unlinked } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
-import { isDone, state } from '../changelog-parse.js';
+import { isDone, state, hash } from '../changelog-parse.js';
 import { esc } from './esc.js';
+import history from '../../../design-system/plan-history.json';
+function isEdited(planFile, head, body){
+  const hist = history[planFile] || [];
+  if(!hist.length) return false;
+  const liveHash = hash(body);
+  // collect hashes for this head across history
+  const hashes = new Set();
+  let everFound = false;
+  for(const e of hist){
+    const sec = e.sections.find(x=>x.head===head);
+    if(sec){ hashes.add(sec.hash); everFound=true; }
+  }
+  if(!everFound) return true;
+  const earliestHas = hist[0].sections.some(x=>x.head===head);
+  if(!earliestHas) return true;
+  if(hashes.size>1) return true;
+  if(!hashes.has(liveHash)) return true;
+  return false;
+}
 export function paintDetail(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
@@ -38,6 +57,7 @@ export function paintDetail(root, ctx){
       hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
       has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
       frac = state(s.body);
+    const edited = isEdited(plan.file, s.head, s.body) ? ' \u00b7 edited' : '';
     return [
       `<button class="ds-pick`,
       i === sel[1] ? ' on' : '',
@@ -49,7 +69,7 @@ export function paintDetail(root, ctx){
       `</span><b>`,
       esc(short(s.head)),
       `</b></span><small>`,
-      [frac + has].filter(Boolean).join(' \u00b7 '),
+      [frac + has + edited].filter(Boolean).join(' \u00b7 '),
       `</small></button>`,
     ].join('');
   }).join('') + [

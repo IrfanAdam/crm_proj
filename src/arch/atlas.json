@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-04T12:51:48.607Z",
+    "generatedAt": "2026-10-13T08:42:02.605Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -50,7 +50,7 @@
       "src/patterns/EmptyState": 1790097746429,
       "src/patterns/MonitorScreen": 1789570118710,
       "src/patterns/OperateScreen": 1789627036004,
-      "src/patterns/OppsHome": 1791114189912,
+      "src/patterns/OppsHome": 1791374877021,
       "src/patterns/ReportsMatrix": 1789570122013
     }
   },

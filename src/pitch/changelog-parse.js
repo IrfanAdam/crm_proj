@@ -1,5 +1,5 @@
 /* ADAM/DS — changelog-parse · parse helpers · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
-// Exports: chunks, goal, norm, split, state, isDone, buildState, parseMeta
+// Exports: chunks, goal, norm, split, state, isDone, buildState, parseMeta, hash
 // Re-exports MONTHS, fmtDate, fmtTime, pDay, isoDay via changelog-format.js
 
 export const chunks = (md) => {
@@ -65,6 +65,13 @@ export const buildState = (ss) => {
     if (m) { d += Number(m[1]); t += Number(m[2]); }
   });
   return t ? `${d}/${t}` : '';
+};
+
+export const hash = (str) => {
+  const s = String(str).replace(/\s+/g, ' ').trim();
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(16).padStart(8, '0');
 };
 
 export const parseMeta = (file) => {

@@ -32,13 +32,13 @@
   grid-column: 3; grid-row: 2; justify-self: end; white-space: nowrap;
   font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted);
 }
-.ds-plan-grid .ds-tags { grid-column: 3; grid-row: 1; margin-left: 0; min-width: 0; }
+.ds-plan-grid .ds-tags { grid-column: 3; grid-row: 1; margin-left: 0; min-width: 0; max-width: 32ch; justify-self: end; text-align: right; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow-wrap: anywhere; word-break: break-word; }
 @media (max-width: 640px) {
   .ds-plan-grid .ds-pick { grid-template-columns: auto minmax(0, 1fr); }
   .ds-plan-grid .ds-main b { grid-column: 2; white-space: normal; }
   .ds-plan-grid .ds-date { grid-column: 1 / -1; white-space: normal; }
   .ds-plan-grid .ds-state { grid-column: 1 / -1; justify-self: start; }
-  .ds-plan-grid .ds-tags { grid-column: 1 / -1; white-space: normal; }
+  .ds-plan-grid .ds-tags { grid-column: 1 / -1; white-space: normal; max-width: none; justify-self: start; text-align: left; }
 }
 .ds-rail-foot { display: block; margin-top: var(--cl-6); font-size: 0.92em; line-height: var(--leading-prose); color: var(--color-ink-muted); }
 .ds-cursor-tip {

@@ -3,6 +3,7 @@ import { fmtDate, fmtTime, buildState, isDone } from '../changelog-parse.js';
 import { hits, commits, unlinked } from '../changelog-links.js';
 import { clip } from '../changelog-titles.js';
 import { esc } from './esc.js';
+import history from '../../../design-system/plan-history.json';
 export function paintPlan(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
@@ -46,10 +47,15 @@ export function paintPlan(root, ctx){
     const stBit = st ? ' ' + st : '';
     const endBit = endTxt ? ' ' + endTxt.trim() : '';
     const dateTxt = sd + stBit + endBit;
+    const revs = history[p.file] || [];
+    const revTxt = revs.length > 1 ? `rev ${revs.length} \u00b7 ${fmtDate(revs[revs.length-1].date)}` : '';
     const stateTxt = [
       [p.sprints.length, ` phases`].join(''),
       frac,
+      revTxt,
     ].filter(Boolean).join(' \u00b7 ');
+    const tagFull = p.tags.join(' \u00b7 ');
+    const tagShort = p.tags.length > 2 ? `${p.tags.slice(0, 2).join(' \u00b7 ')} \u00b7 +${p.tags.length - 2}` : tagFull;
     return [
       `<button class="ds-pick`,
       i === sel[0] ? ' on' : '',
@@ -64,8 +70,10 @@ export function paintPlan(root, ctx){
       dateTxt,
       `</span><span class="ds-state">`,
       stateTxt,
-      `</span></small></span><span class="ds-tags">`,
-      p.tags.join(' \u00b7 '),
+      `</span></small></span><span class="ds-tags" title="`,
+      esc(tagFull),
+      `">`,
+      esc(tagShort),
       `</span></button>`,
     ].join('');
   }).join('');

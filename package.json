@@ -13,6 +13,7 @@
     "gen:atlas": "node scripts/generate-arch-atlas.mjs",
     "verify:atlas": "node scripts/generate-arch-atlas.mjs --check",
     "ds:track": "node scripts/ds-track.mjs",
+    "plan:backfill": "node scripts/plan-backfill.mjs",
     "plan:names": "node scripts/plan-names.mjs",
     "predev": "node scripts/ds-track.mjs || true",
     "dev": "vite --port 5173 --host 0.0.0.0",
