@@ -19,8 +19,8 @@
 }
 .ds-plan-grid .ds-num { min-width: 7ch; font-variant-numeric: tabular-nums; }
 .ds-plan-grid .ds-pick.on { background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg)); box-shadow: inset var(--cl-2) 0 0 var(--color-accent); }
-.ds-plan-grid .ds-pick.on .ds-date { color: var(--color-ink); }
-.ds-plan-grid .ds-pick.on .ds-tag { border-color: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.ds-plan-grid .ds-pick.on .ds-date { color: var(--color-ink-muted); }
+.ds-plan-grid .ds-pick.on .ds-tag { color: var(--color-ink-muted); }
 .ds-plan-grid .ds-main, .ds-plan-grid .ds-main small { display: contents; }
 .ds-plan-grid .ds-main b {
   grid-column: 2; grid-row: 1; min-width: 0;
@@ -29,15 +29,15 @@
 .ds-plan-grid .ds-date {
   grid-column: 2; grid-row: 2; min-width: 0;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink); font-weight: var(--font-weight-medium);
+  font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); font-weight: var(--font-weight-regular);
 }
 .ds-plan-grid .ds-state {
   grid-column: 3; grid-row: 2; justify-self: end; white-space: nowrap;
   font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); opacity: 0.85;
 }
-.ds-plan-grid .ds-tags { grid-column: 3; grid-row: 1; margin-left: 0; min-width: 0; max-width: 32ch; justify-self: end; display: flex; flex-wrap: wrap; gap: var(--cl-4); justify-content: flex-end; align-items: center; }
-.ds-tag { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); font-weight: var(--font-weight-medium); color: var(--color-ink); background: var(--color-panel); border: var(--border-hairline); border-radius: var(--radius-full); padding: 0 var(--cl-8); line-height: 1.8; white-space: nowrap; }
-.ds-tag--more { background: var(--color-ink); color: var(--color-bg); border-color: var(--color-ink); }
+.ds-plan-grid .ds-tags { grid-column: 3; grid-row: 1; margin-left: 0; min-width: 0; max-width: 32ch; justify-self: end; display: flex; flex-wrap: wrap; gap: var(--cl-4); justify-content: flex-end; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); }
+.ds-tag { display: inline; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); white-space: nowrap; }
+.ds-tag--more { display: inline; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); white-space: nowrap; }
 .ds-tag--muted { opacity: 0.6; }
 @media (max-width: 40rem) {
   .ds-plan-grid .ds-pick { grid-template-columns: auto minmax(0, 1fr); }
