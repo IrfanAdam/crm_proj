@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:18:47.379Z",
+  "generated": "2026-10-13T09:19:43.099Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "2ef1b8f",
+      "full": "2ef1b8fa19a7c800107b0d514f7b17cd97c6c031",
+      "date": "2026-10-13",
+      "time": "14:49",
+      "subject": "fix(changelog): tags as text, +N inline, date muted",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "1dfdc34",
       "full": "1dfdc347f55b5a70fd20c41579aa7332d8371a0b",
@@ -3278,11 +3287,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-changelog-cards.css"
-  ]
+  "wip": []
 }
