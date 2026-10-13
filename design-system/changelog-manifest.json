@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T10:05:33.528Z",
+  "generated": "2026-10-13T10:05:57.711Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "d2b0e71",
+      "full": "d2b0e71372231ce57354906596ff0d8898839d56",
+      "date": "2026-10-13",
+      "time": "15:35",
+      "subject": "fix(changelog): make batch commits tractable across phases via also",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "e4f1df7",
       "full": "e4f1df7c4f61aec77e3e8529eca4721b39945c95",
@@ -3404,7 +3413,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M scripts/ds-track.mjs"
-  ]
+  "wip": []
 }
