@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:07:58.307Z",
+  "generated": "2026-10-13T09:14:40.545Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "1dfdc34",
+      "full": "1dfdc347f55b5a70fd20c41579aa7332d8371a0b",
+      "date": "2026-10-13",
+      "time": "14:44",
+      "subject": "feat(changelog): scannable revisions, semantic coherence, delight phases",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "4059883",
       "full": "4059883502d133a2b556d90a94c1e9b2329747a7",
@@ -3269,25 +3278,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M scripts/ds-track.mjs",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/changelog-links.js",
-    "M src/pitch/changelog-parse.js",
-    "M src/pitch/changelog-titles.js",
-    "M src/pitch/changelog/esc.js",
-    "M src/pitch/changelog/graph.js",
-    "M src/pitch/changelog/paint-detail.js",
-    "M src/pitch/changelog/paint-plan.js",
-    "M src/pitch/pitch-changelog-cal.css",
-    "M src/pitch/pitch-changelog-cal.js",
-    "M src/pitch/pitch-changelog-cards.css",
-    "M src/pitch/pitch-changelog-data.js",
-    "M src/pitch/pitch-changelog-drawer.css",
-    "M src/pitch/pitch-changelog-drawer.js",
-    "M src/pitch/pitch-changelog-list.js"
-  ]
+  "wip": []
 }
