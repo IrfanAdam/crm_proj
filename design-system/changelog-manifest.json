@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:52:58.544Z",
+  "generated": "2026-10-13T09:53:27.332Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "599594e",
+      "full": "599594ed70c612c5c7d04021cd9bf187bfaa3c3e",
+      "date": "2026-10-13",
+      "time": "15:23",
+      "subject": "fix(changelog): only subtext at bottom, 6-line clamp, one-line rail head",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "cc6251f",
       "full": "cc6251f7778abfbeb7e3ff876b8c2af6a609aa51",
@@ -3332,12 +3341,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/changelog/paint-detail.js",
-    "M src/pitch/pitch-changelog-drawer.css"
-  ]
+  "wip": []
 }
