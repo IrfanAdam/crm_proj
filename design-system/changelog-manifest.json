@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:44:40.469Z",
+  "generated": "2026-10-13T08:48:56.121Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -27,8 +27,8 @@
       "date": "2026-10-13",
       "time": "14:14",
       "subject": "chore(mechanics): refresh graphData generatedAt",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "2ae9697",
@@ -45,8 +45,8 @@
       "date": "2026-10-08",
       "time": "23:41",
       "subject": "fix(sheet): ghost-avatar handoff + header blur — no double border, header rides sheet",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "7e6e2ad",
@@ -54,8 +54,8 @@
       "date": "2026-10-06",
       "time": "00:05",
       "subject": "fix(mobile): account for bottom drag indicator in fullscreen",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "1ba5432",
@@ -63,8 +63,8 @@
       "date": "2026-10-05",
       "time": "17:03",
       "subject": "feat(pitch): extend mobile header blur — more padding & progressive trail",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "233b764",
@@ -72,8 +72,8 @@
       "date": "2026-10-05",
       "time": "17:01",
       "subject": "feat(pitch): footer heartbeat — random pulses on mobile",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "007c58d",
@@ -81,8 +81,8 @@
       "date": "2026-10-05",
       "time": "16:57",
       "subject": "feat(pitch): footer auto-pulse on mobile — wave, no touch",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "3505f03",
@@ -90,8 +90,8 @@
       "date": "2026-10-05",
       "time": "16:53",
       "subject": "feat(pitch): compact masthead — smaller brand title, v1/v2 on mobile",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "f2f5b19",
@@ -99,8 +99,8 @@
       "date": "2026-10-05",
       "time": "15:50",
       "subject": "chore(mechanics): refresh graphData generatedAt + changelog manifest sync",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "b8341f5",
@@ -135,8 +135,8 @@
       "date": "2026-10-04",
       "time": "19:01",
       "subject": "chore: batch commit day-session work — pitch footer+Rigamesh, illusion audio, opps home, activity strip, cube preview (excl. 6.3M probe shots + img backup)",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "{#phase-1}"
     },
     {
       "sha": "c5acc8e",
