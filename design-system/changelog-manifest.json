@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:48:29.863Z",
+  "generated": "2026-10-13T09:48:44.832Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "969c6ae",
+      "full": "969c6aeda849863964cf1b60fe60ccd8ce451b41",
+      "date": "2026-10-13",
+      "time": "15:18",
+      "subject": "fix(changelog): plan number matches outside (ignore 000000), one-line rail head, restore semantic summary",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "547fc91",
       "full": "547fc9147584a5ad56df277756798d141808d99c",
@@ -3305,13 +3314,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/changelog/paint-detail.js",
-    "M src/pitch/changelog/paint-plan.js",
-    "M src/pitch/pitch-changelog-drawer.css"
-  ]
+  "wip": []
 }
