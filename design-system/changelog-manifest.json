@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:42:13.071Z",
+  "generated": "2026-10-13T08:42:45.796Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "2ae9697",
+      "full": "2ae9697b69c208cf389670890c0aaca440e8fc1f",
+      "date": "2026-10-13",
+      "time": "14:12",
+      "subject": "feat(changelog): plan history — iteration tracking, rev badges, edited state, hash + backfill",
+      "plan": "2026-09-28_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "5316df7",
       "full": "5316df762f8386019b20ada793ffc16da1e45456",
@@ -3233,17 +3242,5 @@
       "anchor": "phase-3"
     }
   ],
-  "wip": [
-    "M scripts/ds-track.mjs",
-    "M src/arch/atlas.json",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/changelog-parse.js",
-    "M src/pitch/changelog/paint-detail.js",
-    "M src/pitch/changelog/paint-plan.js",
-    "M src/pitch/pitch-changelog-cards.css",
-    "?? scripts/plan-backfill.mjs"
-  ]
+  "wip": []
 }
