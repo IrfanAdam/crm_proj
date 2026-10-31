@@ -80,11 +80,11 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
-**Status:** 12/13 · GATE OPEN (Tasks 11–12, 15–24 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
+**Status:** 13/14 · GATE OPEN (Tasks 11–12, 15–25 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
 
 Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
 
-*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec, 1473cae, f336623, dc1f635, 4569001, 4f41628, 8514cc3, cb38d36 · Tasks 11–12, 15–24 · phase-4.*
+*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec, 1473cae, f336623, dc1f635, 4569001, 4f41628, 8514cc3, cb38d36, 8093ff1 · Tasks 11–12, 15–25 · phase-4.*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -101,6 +101,7 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 | 22 | Unlinked callout ✓ done | Raw `\u2014` escapes rendered as text (now real em-dashes); callout head was giant phase-title size (now panel-scale label); Task-20 day caret leaked onto static date rows (scoped to fold summaries) |
 | 23 | Due under status ✓ done | Deadline row moved into the body (crumb → title → status → due → content, safepipe order); head is close-only; crumb guard relaxed to the ✕ width |
 | 24 | Lane titles + hover ✓ done | `ds-num` prefix dropped from lane bars (all 18 plans titled, no blanks); `data-pop/data-tip` moved up to the row so hovering the empty lane shows the card, not just the thin bar |
+| 25 | Hover card stacking ✓ done | Card used the dropdown slot (1000) under the modal-slot timeline (1040) — invisible over the panel. New `--z-ds-tip` = toast slot; card + cursor tip both on it. Occlusion probe: card is the topmost element at its own center, bar and lane gap both |
 
 ### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
 
@@ -130,7 +131,10 @@ Mechanical re-verify 2026-10-31 (covers Tasks 15–23): `node --check` all chang
 
 ### Task 24: Lane titles + hover ✓ done {#phase-4}
 
+### Task 25: Hover card stacking ✓ done {#phase-4}
+
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+- REF GATE 4 · rev 2026-10-31: hover card invisible over timeline — root cause z-slot (dropdown 1000 under modal 1040), fixed via `--z-ds-tip` (toast 1050) on card + cursor tip; occlusion probe proves card topmost at its center on bar and lane gap, suite 0 failures, build green.
 - REF GATE 4 · rev 2026-10-31: lane titles + hover (owner) — numbers off bars, row-level card live-verified on bar and bare lane, tl3 green, build green.
 - REF GATE 4 · rev 2026-10-31: Task 13 mechanical re-verify fresh (checks/DEBUG/tests/build/budgets/live all green, atlas staleness fixed, 419/419 linked) — only owner Safari pixel sign-off remains.
 - REF GATE 4 · rev 2026-10-31: due under status (owner, safepipe order) — body order crumb/title/status/due/content live-verified, head close-only, build green.
