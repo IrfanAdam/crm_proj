@@ -7853,6 +7853,43 @@
           "state": "0/2"
         }
       ]
+    },
+    {
+      "sha": "22beca3e1ed8d620e7801d224130c5ee5061e635",
+      "date": "2026-10-31",
+      "hash": "394e11db",
+      "sections": [
+        {
+          "head": "Phase 1 — Status model + filter drawer {#phase-1}",
+          "hash": "46b728fa",
+          "state": "6/6"
+        },
+        {
+          "head": "Phase 2 — Gate verdicts + evals feed {#phase-2}",
+          "hash": "f14838ba",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 3 — Orphans + triage parity {#phase-3}",
+          "hash": "c84483e4",
+          "state": "2/2"
+        },
+        {
+          "head": "Phase 4 — Timeline tracks drawer {#phase-4}",
+          "hash": "99a92081",
+          "state": "0/4"
+        },
+        {
+          "head": "Phase 5 — Due scheduling lane {#phase-5}",
+          "hash": "fb879f59",
+          "state": "0/4"
+        },
+        {
+          "head": "Phase 6 — Verify + close {#phase-6}",
+          "hash": "29f3ecb3",
+          "state": "0/2"
+        }
+      ]
     }
   ]
 }
