@@ -8075,6 +8075,43 @@
           "state": "2/2"
         }
       ]
+    },
+    {
+      "sha": "4e79563960a77f2ccecba743a3823acff1a1bb48",
+      "date": "2026-10-31",
+      "hash": "7234fb06",
+      "sections": [
+        {
+          "head": "Phase 1 — Status model + filter drawer {#phase-1}",
+          "hash": "27688125",
+          "state": "6/6"
+        },
+        {
+          "head": "Phase 2 — Gate verdicts + evals feed {#phase-2}",
+          "hash": "25765139",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 3 — Orphans + triage parity {#phase-3}",
+          "hash": "5062c70b",
+          "state": "2/2"
+        },
+        {
+          "head": "Phase 4 — Timeline tracks drawer {#phase-4}",
+          "hash": "22c0b671",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 5 — Due scheduling lane {#phase-5}",
+          "hash": "982b942f",
+          "state": "3/4"
+        },
+        {
+          "head": "Phase 6 — Verify + close {#phase-6}",
+          "hash": "890afda1",
+          "state": "2/2"
+        }
+      ]
     }
   ],
   "2026-10-31_135705-changelog-safepipe-parity.md": [
@@ -8288,6 +8325,33 @@
           "head": "Phase 4 — Chrome consistency + overlay layering {#phase-4}",
           "hash": "e0ef3452",
           "state": ""
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-10-31",
+      "hash": "c9000b82",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "4f9ea859",
+          "state": "2/3"
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "c89f5955",
+          "state": "3/3"
+        },
+        {
+          "head": "Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}",
+          "hash": "0fe1cef0",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 4 — Chrome consistency + overlay layering {#phase-4}",
+          "hash": "d27f30e0",
+          "state": "2/3"
         }
       ]
     }
