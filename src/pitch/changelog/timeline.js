@@ -56,17 +56,16 @@ export function paintTimeline(root, ctx) {
   const col = (k) => Math.round((atMidnight(k + 'T00:00:00') - startMs) / DAY);
   const geom = (s, e) => { const off = col(s), span = Math.max(col(e) - off + 1, 2); return `left:calc(${off} * var(--tl-day));width:calc(${span} * var(--tl-day) - var(--cl-4))`; };
   const rows = info.map((r, i) => {
-    const num = r.p.id || String(list.length - i).padStart(2, '0');
     const tip = `${r.n} commit${r.n === 1 ? '' : 's'} · ${r.s} → ${r.e}`;
     const dt = (String(buildState(r.p.sprints || [])).match(/(\d+\/\d+)/) || [])[1] || '';
-    const bn = `<span class="ds-tl-barname"><span class="ds-num">${num}</span> ${r.p.title}</span>`;
+    const bn = `<span class="ds-tl-barname">${r.p.title}</span>`;
     const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" data-pop="${noq(r.p.title)}" data-tk="${dt}" style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)}">${bn}</div>`;
     let g = '';
     if (r.g) {
       const gt = `Due ${r.g.due || r.g.to}${r.g.overdue ? ' · overdue' : ''} · ${noq(r.p.title)}`;
       g = `<div class="ds-tl-ghost${r.g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}" data-tip="${gt}" data-pop="${noq(r.p.title)}" data-due="${r.g.due ? `${r.g.due}${r.g.overdue ? ' (overdue)' : ''}` : r.g.to}" style="${geom(r.g.from, r.g.to)}" aria-label="${gt}"></div>`;
     }
-    return `<div class="ds-tl-row has-track" data-tl-row="${r.p.file}"><div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l" aria-label="Scroll track into view" hidden>«</button>${bar}${g}<button class="ds-tl-edge is-r" data-tl-edge="r" aria-label="Scroll track into view" hidden>»</button></div></div>`;
+    return `<div class="ds-tl-row has-track" data-tl-row="${r.p.file}" data-pop="${noq(r.p.title)}" data-tip="${noq(r.p.title)} · ${tip}"><div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l" aria-label="Scroll track into view" hidden>«</button>${bar}${g}<button class="ds-tl-edge is-r" data-tl-edge="r" aria-label="Scroll track into view" hidden>»</button></div></div>`;
   }).join('');
   const mo = [];
   for (let d = 0; d < days; d++) {
