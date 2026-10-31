@@ -76,6 +76,7 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 - REF GATE 3 · rev 2026-10-31: polish round from owner screenshots — sticky side-label rail (every row titled), name aboard only bars ≥5d (no slivers), day grid widened to --tl-day with dividers, taller pills, display head, sticky axis.
 - REF GATE 3 · rev 2026-10-31: floating edge-caret pattern per owner safepipe fix — persistent side rail removed, name truncated in-lane on the work bar, carets + lane-click instant scroll with nudge, sticky month badge, danger-token overdue, dead [data-status] branch removed.
 - REF GATE 3 · rev 2026-10-31: per-lane structured popover (owner request — was deliberately excluded): title + de-duped desc + accented `d/t tasks` scope + Due text on bar/ghost hover; `tl-pop.js` 34 lines, events/timeline/shell deltas keep budgets ≤100; tl3 20/20; live probe shows title/desc/scope; Due is text, not a filter-jump button (no due-jump in crm; bar click opens the plan).
+- REF GATE 3 · rev 2026-10-31: popover card restyle to safepipe look (owner screenshot): white 12px card, 16/20/14 padding, display 15px title, mono 12.5px desc with 2-line clamp, accented scope, muted Due/sub; live probe confirms white/12px/card padding.
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
