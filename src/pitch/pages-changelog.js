@@ -58,7 +58,7 @@ const cur = () => {
 };
 export function render() {
   return [
-    `<p class="ds-crumb">Start \u00b7 Changelog</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
+    `<p class="ds-crumb">Start \u00b7 Changelog \u00b7 sh3</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
     `<hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div>`,
     `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage">`,
     `<aside class="ds-timeline" data-col="timeline" aria-label="Timeline" hidden></aside><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
