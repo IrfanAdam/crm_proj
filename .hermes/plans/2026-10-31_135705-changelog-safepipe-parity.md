@@ -80,15 +80,18 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
-**Status:** 2/3 · GATE OPEN (Tasks 11–12 verified; Task 13 mechanical GO, Safari pixel confirm pending)
+**Status:** 3/4 · GATE OPEN (Tasks 11–12 verified; Task 15 lint shipped; Task 13 mechanical GO, Safari pixel confirm pending)
 
 Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
+
+*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd · Tasks 11–12, 15 · phase-4.*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 11 | Drawer full-bleed + rail insets ✓ done | Drawer `padding:0;gap:0`; rail/task carry `cl-18/30` insets + `overscroll:contain`; rail-head `flex:none` + `cl-16` sides; rail picks `cl-12 cl-16`; rail-foot sides `cl-16`; drawer-head rhythm `pt-6/mb-4` + single-line ellipsis title |
 | 12 | One panel at a time ✓ done | `st.returnTimeline`: tl-open hides timeline under drawer; ✕/scrim/Escape restore it on close; paintTimeline stays hidden while `open`; phone ≤720px drawer stacks full-width (rail 42% top, task fills) |
 | 13 | Verify + close | node --check 7/7, budgets ≤100, build green, zero DEBUG remnants; Safari pixel confirm (layering, insets, phone stack) |
+| 15 | Task-line lint ✓ done | Prose lines keep own rows (no para-merge), `### Task` headers open `<section class="ds-subtask">`, task-overview tables render as `<table>` (header th + body rows) instead of dropped; `✓/✗` strip no longer eats newlines |
 
 ### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
 
@@ -96,6 +99,9 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 
 ### Task 13: Verify + close {#phase-4}
 
+### Task 15: Task-line lint ✓ done {#phase-4}
+
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+- REF GATE 4 · rev 2026-10-31: task-line lint (owner report — tasks ran together as one): prose one-`<p>`-per-line, Task sections wrapped, overview tables render as tables (was dropped like safepipe — but safepipe duplicates tasks as checkboxes while crm phases list them only in the table); newline-eating `✓/✗` strip fixed; struct-harness 10/10, file 93 lines, suite green.
 - REF GATE 4 · rev 2026-10-31: mechanical half GO (independent re-verify: node --check 7/7, all 8 files ≤100, returnTimeline set/restore wired incl. Escape, zero DEBUG remnants, full-bleed + insets + phone stack present).
 - REF GATE 4 · rev 2026-10-31: pixel-review screenshots captured from live :5173 (timeline panel, plan drawer, filter dropdown, 390px bottom sheet) — attached for owner sign-off, the last Task 13 item.
