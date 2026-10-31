@@ -245,6 +245,7 @@
 **Verify:** end-to-end pick → redeploy carries value; poll-then-confirm lifecycle per skill references.
 
 - REF GATE 5 (OPEN · evidence 2026-10-31): due-core 8/8 cases, endpoint guards (shape/traversal/head-404) + set/clear net-zero via curl, full page loop (Add deadline → Saving → reload → Deadline · date + future hollow dot + due-day filter → 1 card), drawer snapshot restores across reload, api/due.js written + syntax-checked. BLOCKED: live redeploy verification needs `DUE_AUTHOR` (GitHub login) + `DUE_TOKEN` (fine-grained PAT, Contents read+write, repo-only) as Vercel env — owner supplies or defers Task 20. Verdict: OPEN.
+- REF GATE 5 · rev 2026-10-31: independent re-verify — all 4 files present (api/due.js 91, due-core.js 32, ds-due-writer.mjs 45, vite.config.js 80), node --check 6/6, env reads isolated to api/due.js, Task 20 heading correctly unmarked. Blocker unchanged.
 
 ---
 
