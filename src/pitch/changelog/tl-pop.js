@@ -24,7 +24,7 @@ export function hoverTlPop(root, el, x, y) {
     scope + dueRow +
     (sub ? `<span class="ds-tl-pop__sub">${esc(sub)}</span>` : '');
   p.hidden = false;
-  const pad = 14, r = p.getBoundingClientRect();
+  const pad = 10, r = p.getBoundingClientRect();
   let px = x + pad, py = y + pad;
   if (px + r.width > innerWidth - 8) px = x - r.width - pad;
   if (py + r.height > innerHeight - 8) py = y - r.height - pad;
