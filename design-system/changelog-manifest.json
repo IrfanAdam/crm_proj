@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T07:50:54.594Z",
+  "generated": "2026-10-31T07:53:46.180Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -22,6 +22,15 @@
     "2026-10-31_131759-changelog-parity.md"
   ],
   "commits": [
+    {
+      "sha": "0542270",
+      "full": "054227081d7bfb0b5cab4597034f90032e116400",
+      "date": "2026-10-31",
+      "time": "13:23",
+      "subject": "feat(changelog): gate verdicts + evals feed — parseGates, inline tags, Evals/Commits panels, thread strip",
+      "plan": "2026-10-31_131759-changelog-parity.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "b516d54",
       "full": "b516d540ac0d950ef3fca435d8521fcc5376cc3d",
