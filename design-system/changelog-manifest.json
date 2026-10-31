@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T08:50:53.447Z",
+  "generated": "2026-10-31T08:53:36.424Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "5deca08",
+      "full": "5deca0891fd18f87d66b132a86e4a70997a9fde7",
+      "date": "2026-10-31",
+      "time": "14:23",
+      "subject": "chore(changelog): TEMP-DEBUG tab-title state readout (revert after root-cause)",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "206ea44",
       "full": "206ea440038c7e09573252070437dbb73c467d06",
