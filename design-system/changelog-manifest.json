@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T07:28:11.539Z",
+  "generated": "2026-10-31T07:30:10.616Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,6 +21,15 @@
     "2026-10-05_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "deb4841",
+      "full": "deb48414a15570f150ecefa4de9346de5b12a206",
+      "date": "2026-10-31",
+      "time": "13:00",
+      "subject": "chore(changelog): retro-link gem batch into gem-realism phase-7 via also",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-7"
+    },
     {
       "sha": "d2b0e71",
       "full": "d2b0e71372231ce57354906596ff0d8898839d56",
