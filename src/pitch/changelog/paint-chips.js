@@ -1,11 +1,24 @@
-/* ADAM/DS — ds/changelog/paint-chips · chips + graph · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
+/* ADAM/DS — ds/changelog/paint-chips · chips + filter drawer + graph · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { fmtDate } from '../changelog-parse.js';
 import { graph } from './graph.js';
 export function paintChips(root, ctx){
-  const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
+  const { active, status, day, counts, statusCounts, plans, filterOpen, filterTab } = ctx;
+  const anyFilter = active.size || status.size || day;
+  const filterCount = active.size + status.size + (day ? 1 : 0);
+  const trigger = [
+    `<button class="ds-chip ds-filter-trigger`,
+    filterOpen ? ' on' : '',
+    `" data-filter-trigger aria-expanded="`,
+    filterOpen,
+    `" aria-label="Filters`,
+    filterCount ? `, ${filterCount} active` : '',
+    `">Filter`,
+    filterCount ? ` (${filterCount})` : '',
+    `</button>`,
+  ].join('');
   const showAll = [
     `<button class="ds-chip`,
-    (active.size || day) ? '' : ' on',
+    anyFilter ? '' : ' on',
     `" data-tag="">All (`,
     plans.length,
     `)</button>`,
@@ -13,9 +26,9 @@ export function paintChips(root, ctx){
   const dayChip = day ? [
     `<button class="ds-chip on" data-day-clear aria-label="Clear day filter">`,
     fmtDate(day),
-    ` \u2715</button>`,
+    ` ✕</button>`,
   ].join('') : '';
-  root.querySelector('[data-col="chips"]').innerHTML = dayChip + showAll + counts.map(([t, n]) => [
+  const pills = counts.slice(0, 3).map(([t, n]) => [
     `<button class="ds-chip`,
     active.has(t) ? ' on' : '',
     `" data-tag="`,
@@ -28,6 +41,44 @@ export function paintChips(root, ctx){
     n,
     `)</button>`,
   ].join('')).join('');
+  const clear = anyFilter ? `<button class="ds-chip" data-clear>Clear</button>` : '';
+  const tab = filterTab === 'status' ? 'status' : 'tags';
+  const tagOpts = counts.map(([t, n]) => [
+    `<button class="ds-chip`,
+    active.has(t) ? ' on' : '',
+    `" data-tag="`,
+    t,
+    `" aria-pressed="`,
+    active.has(t),
+    `">`,
+    t,
+    ` (`,
+    n,
+    `)</button>`,
+  ].join('')).join('');
+  const statusOpts = statusCounts.map(([t, n]) => [
+    `<button class="ds-chip`,
+    status.has(t) ? ' on' : '',
+    `" data-status="`,
+    t,
+    `" aria-pressed="`,
+    status.has(t),
+    `">`,
+    t,
+    ` (`,
+    n,
+    `)</button>`,
+  ].join('')).join('');
+  const drawer = filterOpen ? [
+    `<div class="ds-filter" role="dialog" aria-label="Filters">`,
+    `<div class="ds-filter-tabs" role="tablist">`,
+    `<button role="tab" aria-selected="${tab === 'tags'}" data-tab="tags" class="ds-chip${tab === 'tags' ? ' on' : ''}">Tags</button>`,
+    `<button role="tab" aria-selected="${tab === 'status'}" data-tab="status" class="ds-chip${tab === 'status' ? ' on' : ''}">Status</button>`,
+    `</div><div class="ds-filter-opts">`,
+    tab === 'tags' ? tagOpts : statusOpts,
+    `</div></div>`,
+  ].join('') : '';
+  root.querySelector('[data-col="chips"]').innerHTML = trigger + dayChip + showAll + pills + clear + drawer;
   const gEl = root.querySelector('[data-col="graph"]');
   if (!gEl.dataset.ready) { gEl.innerHTML = graph({ plans, day }); gEl.dataset.ready = '1'; }
   else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day,

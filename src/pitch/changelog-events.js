@@ -1,7 +1,9 @@
 /* ADAM/DS — ds/changelog-events · drawer + filter interactions ·
    [plan:2026-09-12_150255-glitch-sound.md#phase-6] */
 // Exports: bindChangelogEvents — click/key/hover wiring over shared state st
-// — Events —
+// Branch order: specific [data-*] branches BEFORE generic class branches —
+// closest() matches the element itself, so order is the only thing that saves
+// a view-toggle element carrying a filter class from the generic branch.
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
   const onClick = (e) => {
@@ -9,6 +11,27 @@ export function bindChangelogEvents(root, st, helpers) {
     const dd = e.target.closest('[data-day]');
     if (dd) { st.day = st.day === dd.dataset.day ? '' : dd.dataset.day;
       st.sel = [0, 0]; doPaint(root); return; }
+    if (e.target.closest('[data-filter-trigger]')) { st.filterOpen = !st.filterOpen; doPaint(root); return; }
+    const tab = e.target.closest('[data-tab]');
+    if (tab) { st.filterTab = tab.dataset.tab; doPaint(root); return; }
+    const so = e.target.closest('[data-status]');
+    if (so) { const t = so.dataset.status;
+      st.status.has(t) ? st.status.delete(t) : st.status.add(t);
+      st.sel = [0, 0]; doPaint(root); return; }
+    if (e.target.closest('[data-clear]')) { st.active = new Set(); st.status = new Set();
+      st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
+    const tm = e.target.closest('[data-tags-more]');
+    if (tm) { e.preventDefault(); e.stopPropagation();
+      const row = tm.closest('.ds-pick'), tags = row && row.querySelector('.ds-tags');
+      if (tags) { const full = tags.dataset.tip; if (full) tags.innerHTML = full.split(' · ').map((t) => `<span class="ds-tag">${t}</span>`).join('<span class="ds-sep"> · </span>'); }
+      return; }
+    if (e.target.closest('[data-close]')
+      || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; doPaint(root); return; }
+    if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
+    const step = e.target.closest('[data-step]');
+    if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
+        Math.min(Math.max(c.si + Number(step.dataset.step), 0),
+          c.sprints.length - 1)]; st.open = true; doPaint(root); return; }
     const chip = e
       .target
       .closest('.ds-chip');
@@ -18,21 +41,14 @@ export function bindChangelogEvents(root, st, helpers) {
       } else { st.active.has(t) ? st.active.delete(t) : st.active.add(t);
       } st.sel = [0,
         0]; doPaint(root); return; }
-    if (e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { st.open = false; st.stage = 'list'; doPaint(root); return; }
-    if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
-    const step = e.target.closest('[data-step]');
-    if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
-        Math.min(Math.max(c.si + Number(step.dataset.step), 0),
-          c.sprints.length - 1)]; st.open = true; doPaint(root); return; }
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const col = b.closest('[data-col]'), i = [...col.querySelectorAll('.ds-pick')].indexOf(b);
-    if (col.dataset.col === 'plan') { st.sel = [i,
-        st.sel[1]]; st.open = true; st.stage = 'tasks'; } else { st.sel = [st.sel[0],
+    if (col.dataset.col === 'plan') { const c0 = cur(), hit = c0.list[i];
+      st.sel = [i, st.sel[1]]; st.open = true; st.openFile = hit ? hit.file : ''; st.stage = 'tasks'; } else { st.sel = [st.sel[0],
         i]; st.stage = 'tasks'; }
     doPaint(root);
   };
-  const onKey = (e) => { if (e.key === 'Escape' && st.open) { st.open = false; doPaint(root); } };
+  const onKey = (e) => { if (e.key === 'Escape' && st.open) { st.open = false; st.openFile = ''; doPaint(root); } };
   const move = (e) => {
     const el = e.target.closest('[data-tip]'), tip = root.querySelector('.ds-cursor-tip');
     if (!tip) return;

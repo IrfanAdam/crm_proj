@@ -59,3 +59,21 @@ export const parseMeta = (file) => {
   return { date: '', id: '', slug: file.replace(/\.md$/, '') };
 };
 export { MONTHS, fmtDate, fmtTime, pDay, isoDay } from './changelog-format.js';
+// — Plan status (cancelled > done > incomplete). View-layer only: never feeds
+// state()/isDone()/hash, so section hashes are untouched by this helper.
+export const secStatus = (head, body) => {
+  if (/✗/.test(head)) return 'cancelled';
+  const m = String(state(body)).match(/(\d+)\/(\d+)/);
+  if (!m) return /✓/.test(head) ? 'done' : 'open';
+  return isDone(state(body)) ? 'done' : 'open';
+};
+export const planStatus = (sprints) => {
+  if (!sprints.length) return 'incomplete';
+  const ss = sprints.map((s) => secStatus(s.head, s.body));
+  if (ss.every((x) => x === 'cancelled')) return 'cancelled';
+  let i = ss.length;
+  while (i > 0 && ss[i - 1] === 'cancelled') i--;
+  if (i < ss.length && ss.slice(0, i).every((x) => x === 'done')) return 'cancelled';
+  if (ss.some((x) => x === 'open')) return 'incomplete';
+  return 'done';
+};

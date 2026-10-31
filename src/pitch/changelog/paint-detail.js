@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { hits, badges, unlinked } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
-import { isDone, state, hash } from '../changelog-parse.js';
+import { isDone, state, hash, planStatus } from '../changelog-parse.js';
 import { esc } from './esc.js';
 import history from '../../../design-system/plan-history.json';
 
@@ -138,14 +138,14 @@ export function paintDetail(root, ctx){
   root.querySelector('[data-col="sprint"]').innerHTML = railHead + sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
       hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
-      has = hsS.length ? ' \u00b7 ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
+      has = hsS.length ? ' · ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
       frac = state(s.body);
-    const edited = isEdited(plan.file, s.head, s.body) ? ' \u00b7 edited' : '';
+    const edited = isEdited(plan.file, s.head, s.body) ? ' · edited' : '';
     const done = isDone(frac);
     return [
       `<button class="ds-pick`,
       i === sel[1] ? ' on' : '',
-      done ? ' is-done' : ' is-open is-pending',
+      done ? ' is-done' : /✗/.test(s.head) ? ' is-cancelled' : ' is-open is-pending',
       `" data-tip="`,
       esc(clip(sprintDesc(s), 100)),
       `"><span class="ds-row"><span class="ds-num">Phase `,

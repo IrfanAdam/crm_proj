@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/paint-plan · build cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
-import { fmtDate, fmtTime, buildState, isDone } from '../changelog-parse.js';
+import { fmtDate, fmtTime, buildState, planStatus } from '../changelog-parse.js';
 import { hits, commits, unlinked } from '../changelog-links.js';
 import { clip } from '../changelog-titles.js';
 import { esc } from './esc.js';
@@ -30,7 +30,7 @@ export function paintPlan(root, ctx){
   const sprint = sprints[si];
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const seq = String(list.length - i).padStart(2, '0'), num = p.id || seq, frac = buildState(p.sprints);
-    const done = isDone(frac);
+    const pst = planStatus(p.sprints);
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
     const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
     const tagged = valid.filter((c) => c.date === p.date || (c.time && c.date >= p.date));
@@ -57,14 +57,14 @@ export function paintPlan(root, ctx){
       frac,
       revTxt,
     ].filter(Boolean).join(' \u00b7 ');
-    const tagFull = p.tags.join(' \u00b7 ');
+    const tagFull = p.tags.join(' · ');
     const pill = (t) => `<span class="ds-tag">${esc(t)}</span>`;
-    const more = p.tags.length > 2 ? `<span class="ds-tag ds-tag--more">+${p.tags.length - 2}</span>` : '';
-    const tagsHtml = p.tags.slice(0, 2).map(pill).join('<span class="ds-sep"> \u00b7 </span>') + (more ? '<span class="ds-sep"> \u00b7 </span>' + more : '');
+    const more = p.tags.length > 3 ? `<span class="ds-sep"> · </span><span class="ds-tags-more" role="button" tabindex="0" data-tags-more="${i}">+${p.tags.length - 3}</span>` : '';
+    const tagsHtml = p.tags.slice(0, 3).map(pill).join('<span class="ds-sep"> · </span>') + more;
     return [
       `<button class="ds-pick`,
       i === sel[0] ? ' on' : '',
-      done ? ' is-done' : ' is-open is-pending',
+      pst === 'done' ? ' is-done' : pst === 'cancelled' ? ' is-cancelled' : ' is-open is-pending',
       `" data-tip="`,
       esc(clip(p.goal, 100) || p.purpose || p.title),
       `"><span class="ds-num">`,
@@ -75,9 +75,9 @@ export function paintPlan(root, ctx){
       dateTxt,
       `</span><span class="ds-state">`,
       stateTxt,
-      `</span></small></span><span class="ds-tags" title="`,
-      esc(tagFull),
-      `">`,
+      `</span></small></span><span class="ds-tags"`,
+      more ? ` data-tip="${esc(tagFull)}"` : '',
+      `>`,
       tagsHtml || `<span class="ds-tag ds-tag--muted">untagged</span>`,
       `</span></button>`,
     ].join('');
