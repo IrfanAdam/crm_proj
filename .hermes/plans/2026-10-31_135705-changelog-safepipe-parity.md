@@ -80,17 +80,17 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
-**Status:** 15/16 · GATE OPEN (Tasks 11–12, 15–27 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
+**Status:** 17/17 · GATE PASSED (Tasks 11–12, 13, 15–28 shipped; owner pixel sign-off received 2026-11-01)
 
 Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
 
-*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec, 1473cae, f336623, dc1f635, 4569001, 4f41628, 8514cc3, cb38d36, 8093ff1, 44026ff, a4fe809 · Tasks 11–12, 15–27 · phase-4.*
+*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec, 1473cae, f336623, dc1f635, 4569001, 4f41628, 8514cc3, cb38d36, 8093ff1, 44026ff, a4fe809, 2414bcd · Tasks 11–12, 13, 15–28 · phase-4.*
 
 | # | Task | Done when |
 |---|------|-----------|
 | 11 | Drawer full-bleed + rail insets ✓ done | Drawer `padding:0;gap:0`; rail/task carry `cl-18/30` insets + `overscroll:contain`; rail-head `flex:none` + `cl-16` sides; rail picks `cl-12 cl-16`; rail-foot sides `cl-16`; drawer-head rhythm `pt-6/mb-4` + single-line ellipsis title |
 | 12 | One panel at a time ✓ done | `st.returnTimeline`: tl-open hides timeline under drawer; ✕/scrim/Escape restore it on close; paintTimeline stays hidden while `open`; phone ≤720px drawer stacks full-width (rail 42% top, task fills) |
-| 13 | Verify + close | node --check 7/7, budgets ≤100, build green, zero DEBUG remnants; Safari pixel confirm (layering, insets, phone stack) |
+| 13 | Verify + close ✓ done | node --check green, budgets ≤100, build green, zero DEBUG remnants; owner pixel sign-off received 2026-11-01 |
 | 15 | Task-line lint ✓ done | Prose lines keep own rows (no para-merge), `### Task` headers open `<section class="ds-subtask">`, task-overview tables render as `<table>` (header th + body rows) instead of dropped; `✓/✗` strip no longer eats newlines |
 | 16 | Detail polish port ✓ done | Safepipe task-pane contract: closed task folds (tick + clean name + caret, body unfolded), dup-head/Status/Shipped/---/Due/table strips, tables dropped again (checkbox list is the single task list), eval markdown cleaned, due hidden on sealed phases, fold CSS |
 | 17 | Fold content + scale ✓ done | Empty-fold fix: tables restored as the task list (bare ### markers carry no detail), bodyless dupes suppressed when a table lists them, bare tick rows only without tables; fold CSS to safepipe spec (13px/700 summary, cl-4 gap, margin 0, flush body, bare rows); corpus probe 343 folds/0 empty/56 tables |
@@ -104,12 +104,13 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 | 25 | Hover card stacking ✓ done | Card used the dropdown slot (1000) under the modal-slot timeline (1040) — invisible over the panel. New `--z-ds-tip` = toast slot; card + cursor tip both on it. Occlusion probe: card is the topmost element at its own center, bar and lane gap both |
 | 26 | Compact hover card ✓ done | 455×103 → 285×99: max-width `min(26ch,58vw)`, padding `cl-8/cl-12`, radius `radius-sm`, title 13px, mono rows 12px/`leading-mono`, offsets 10px; all token-fed, no hardcodes |
 | 27 | Card date line ✓ done | ISO `2026-10-31 → 2026-11-21` replaced by `31 Oct – 21 Nov 2026` (year once when shared) on its own block line at dim `--color-ink-dim`; commit count no longer carries the range |
+| 28 | Exhaustive lane card ✓ done | Goal lede + `dn/tot` phases + tasks + status (`Done d Mon yyyy`/Cancelled/In progress) + commits/revs + friendly range; meta extracted to `tl-meta.js` (timeline back to budget); tl3 22/22, suite green |
 
 ### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
 
 ### Task 12: One panel at a time ✓ done {#phase-4}
 
-### Task 13: Verify + close {#phase-4}
+### Task 13: Verify + close ✓ done {#phase-4}
 
 Mechanical re-verify 2026-10-31 (covers Tasks 15–23): `node --check` all changelog JS green; zero `TEMP-DEBUG`/`console.log` remnants; `npm test` 0 failures (fixed pre-existing `verify:atlas` staleness from gem `3a28d08` via sanctioned `npm run gen:atlas`); build green; touched JS 32–90 lines ≤100; live probes — stable plan-title rail head, crumb/rail-text/due on one line, › carets on folds only, due order crumb/title/status/due/content, 0 tables, triage hidden at 419/419 linked. Remaining: owner Safari pixel sign-off (layering, insets, phone stack) — owner deferred 2026-10-31, will confirm later. Supporting geometry 2026-10-31: layering round-trip chip→timeline→bar→drawer→✕→timeline exclusive at every step; 390px zero x-overflow, rail/task stack 0–354/354–844.
 
@@ -139,7 +140,10 @@ Mechanical re-verify 2026-10-31 (covers Tasks 15–23): `node --check` all chang
 
 ### Task 27: Card date line ✓ done {#phase-4}
 
-- REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+### Task 28: Exhaustive lane card ✓ done {#phase-4}
+
+- REF GATE 4 (PASSED · evidence 2026-11-01): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline; mechanical re-verify green (checks/DEBUG/tests/build/budgets/live), layering round-trip exclusive, 390px zero x-overflow with rail/task stack; owner pixel sign-off received — phase closed 17/17.
+- REF GATE 4 · rev 2026-11-01: Task 28 exhaustive lane card + owner close — tl-meta extraction (timeline 101→99), tl3 22/22, live rich-card probe (title/desc/tasks/status/stats/date, no numbers, drawer clean), suite green.
 - REF GATE 4 · rev 2026-10-31: card date line (owner) — friendly `16 Sep – 17 Sep 2026`, own block row, dim grey live; build green.
 - REF GATE 4 · rev 2026-10-31: compact hover card (owner) — 285×99 live, token-fed type/spacing, build green.
 - REF GATE 4 · rev 2026-10-31: hover card invisible over timeline — root cause z-slot (dropdown 1000 under modal 1040), fixed via `--z-ds-tip` (toast 1050) on card + cursor tip; occlusion probe proves card topmost at its center on bar and lane gap, suite 0 failures, build green.
