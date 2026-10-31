@@ -5,12 +5,14 @@ import { shortPhase as short } from '../changelog-titles.js';
 import { stripGateThread, renderEvals, renderCommitsPanel, gateVerdictTag } from './panels.js';
 import { marked } from './markdown.js';
 import { esc } from './esc.js';
+import { isDone, state } from '../changelog-parse.js';
 export function paintDrawer({ plan, sprint }) {
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   const headGate = gateVerdictTag(sprint.head, sprint.body);
   const due = dueFor(plan.file, sprint.head, sprint.body);
   const derr = dueErr(plan.file, sprint.head);
-  const dueHtml = `<label class="ds-due"><span data-due-label${derr ? ' data-due-retry=""' : ''}>${derr ? `Deadline · ${esc(due)} (${esc(derr)} — kept locally, click to retry)` : due ? `Deadline · ${esc(due)}` : 'Add deadline'}</span><input type="date" data-due-input value="${esc(due)}" aria-label="Deadline"></label>`;
+  const sealed = isDone(state(sprint.body)) || /✗/.test(sprint.head);
+  const dueHtml = sealed ? '' : `<label class="ds-due"><span data-due-label${derr ? ' data-due-retry=""' : ''}>${derr ? `Deadline · ${esc(due)} (${esc(derr)} — kept locally, click to retry)` : due ? `Deadline · ${esc(due)}` : 'Add deadline'}</span><input type="date" data-due-input value="${esc(due)}" aria-label="Deadline"></label>`;
   const evalsHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body);
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));

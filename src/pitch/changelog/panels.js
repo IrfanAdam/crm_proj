@@ -25,7 +25,7 @@ export function isEdited(planFile, head, body){
 // Gate thread lines are dropped from the markdown body and rendered in Evals instead.
 const GATE_THREAD = /^- .*REF GATE\s+0*\d+\b/;
 export const stripGateThread = (body) => String(body).split('\n').filter((l) => !GATE_THREAD.test(l)).join('\n');
-const cleanEval = (line) => esc(line.replace(/^- /, '').replace(/\s*\{#.*$/, '').trim());
+const cleanEval = (line) => esc(line.replace(/^- /, '').replace(/^\[[ xX]\] /, '').replace(/\*\*/g, '').replace(/\s*\{#.*$/, '').trim());
 const firstGateDate = (s) => ((s || '').match(/(20\d{2}-\d{2}-\d{2})/) || [])[1] || '';
 export const renderEvals = (planFile, planDate, head, body) => {
   const g = parseGates(head, body);
