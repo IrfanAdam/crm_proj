@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T13:11:27.736Z",
+  "generated": "2026-10-31T13:20:37.295Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "f336623",
+      "full": "f33662356afc21a04b231c50e03e9fe44ea0aa88",
+      "date": "2026-10-31",
+      "time": "18:50",
+      "subject": "feat(changelog): Task 19 review fixes — no tables, fold-body lint, status once, panel carets",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "1473cae",
       "full": "1473caed0a93f94538d09e6f36c4e1c8b59b9141",
