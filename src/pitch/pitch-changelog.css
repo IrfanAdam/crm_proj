@@ -14,15 +14,20 @@ a.masthead-brand{text-decoration:none}
 .ds-chip{font-family:var(--font-display);background:var(--color-surface);color:var(--color-ink-muted);border:var(--border-hairline);padding:var(--spacing-changelog-chip-y) var(--spacing-changelog-chip-x);border-radius:var(--radius-md);font-weight:600;letter-spacing:0.06em;font-size:var(--font-size-changelog-chip);cursor:pointer}
 .ds-chip.on{background:var(--color-accent);color:var(--primitive-gray-white);border-color:var(--color-accent)}
 .ds-md{font-size:var(--text-ds-body);line-height:var(--leading-prose)}
-.ds-md .ds-task-fold{margin:var(--cl-8) 0}
-.ds-md .ds-acc-head{display:flex;align-items:baseline;gap:var(--cl-8);cursor:pointer;list-style:none}
+.ds-md .ds-subtask{margin:var(--cl-6) 0}
+.ds-md .ds-task-fold{margin:0}
+.ds-md .ds-task-bare{display:flex;align-items:baseline;gap:var(--cl-4)}
+.ds-md .ds-task-bare h3{margin:0;font-size:var(--text-ds-body);font-weight:700}
+.ds-md .ds-acc-head{display:flex;align-items:baseline;gap:var(--cl-4);cursor:pointer;list-style:none}
 .ds-md .ds-acc-head::-webkit-details-marker{display:none}
-.ds-md .ds-acc-head h3{margin:0}
-.ds-md .ds-tick{color:var(--color-ink-muted)}
-.ds-md .ds-task-fold > .ds-acc-head .ds-caret{transform:rotate(0deg)}
+.ds-md .ds-acc-head::marker{content:""}
+.ds-md .ds-acc-head h3{margin:0;font-size:var(--text-ds-body);font-weight:700;flex:0 1 auto;min-width:0}
+.ds-md .ds-task-fold > .ds-acc-head .ds-caret{flex:none;transform:rotate(0deg)}
 .ds-md .ds-task-fold[open] > .ds-acc-head .ds-caret{transform:rotate(90deg)}
-.ds-md .ds-acc-body{padding:var(--cl-2) 0 var(--cl-4) var(--cl-18)}
-.ds-md .ds-acc-body ul{margin:var(--cl-4) 0}
+.ds-md .ds-acc-body{padding:var(--cl-2) 0 var(--cl-1) 0;font-size:var(--text-ds-body)}
+.ds-md .ds-acc-body p{margin:var(--cl-1) 0}
+.ds-md .ds-acc-body ul,.ds-md .ds-acc-body ol{padding-left:var(--cl-16);margin:var(--cl-2) 0}
+.ds-md .ds-acc-body li{margin-bottom:var(--cl-1)}
 .ds-md h1{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--cl-8)}
 .ds-md h2{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:var(--cl-22) 0 var(--cl-8)}
 .ds-md h3{font-size:var(--text-h3);font-weight:600;margin:var(--cl-16) 0 var(--cl-6)}
