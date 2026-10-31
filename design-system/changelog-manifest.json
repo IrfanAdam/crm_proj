@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T12:24:44.414Z",
+  "generated": "2026-10-31T12:39:00.968Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "36ac8da",
+      "full": "36ac8da5b8077c90bfdf8b4ee9068b0a443dafbb",
+      "date": "2026-10-31",
+      "time": "18:08",
+      "subject": "feat(changelog): Task 16 detail polish — closed task folds, ticks, pane strips, sealed-due hide",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "0122cdd",
       "full": "0122cdd2af3c25e2cc945a1e82f17b36af082e1f",
@@ -3694,5 +3703,7 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "?? prototype/gems/score.py"
+  ]
 }
