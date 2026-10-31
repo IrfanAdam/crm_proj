@@ -20,6 +20,12 @@ export function bindChangelogEvents(root, st, helpers) {
       st.sel = [0, 0]; doPaint(root); return; }
     if (e.target.closest('[data-clear]')) { st.active = new Set(); st.status = new Set();
       st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
+    if (e.target.closest('[data-timeline-chip]')) { st.timeline = !st.timeline; doPaint(root); return; }
+    if (e.target.closest('[data-tl-close]')) { st.timeline = false; doPaint(root); return; }
+    const to = e.target.closest('[data-tl-open]');
+    if (to) { const f = to.dataset.tlOpen; st.day = '';
+      const c1 = cur(), idx = c1.list.findIndex((p) => p.file === f);
+      st.sel = [Math.max(idx, 0), 0]; st.open = true; st.openFile = f; st.stage = 'tasks'; doPaint(root); return; }
     const tm = e.target.closest('[data-tags-more]');
     if (tm) { e.preventDefault(); e.stopPropagation();
       const row = tm.closest('.ds-pick'), tags = row && row.querySelector('.ds-tags');
@@ -48,7 +54,7 @@ export function bindChangelogEvents(root, st, helpers) {
         i]; st.stage = 'tasks'; }
     doPaint(root);
   };
-  const onKey = (e) => { if (e.key === 'Escape' && st.open) { st.open = false; st.openFile = ''; doPaint(root); } };
+  const onKey = (e) => { if (e.key === 'Escape' && st.open) { st.open = false; st.openFile = ''; doPaint(root); } else if (e.key === 'Escape' && st.timeline) { st.timeline = false; doPaint(root); } };
   const move = (e) => {
     const el = e.target.closest('[data-tip]'), tip = root.querySelector('.ds-cursor-tip');
     if (!tip) return;

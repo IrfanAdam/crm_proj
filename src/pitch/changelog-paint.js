@@ -2,7 +2,9 @@
 import { paintChips } from './changelog/paint-chips.js';
 import { paintPlan } from './changelog/paint-plan.js';
 import { paintDetail } from './changelog/paint-detail.js';
+import { paintTimeline } from './changelog/timeline.js';
 export function paint(root, ctx){
   paintChips(root, ctx);
   if (paintPlan(root, ctx)) paintDetail(root, ctx);
+  paintTimeline(root, ctx);
 }

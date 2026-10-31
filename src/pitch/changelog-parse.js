@@ -77,6 +77,10 @@ export const planStatus = (sprints) => {
   if (ss.some((x) => x === 'open')) return 'incomplete';
   return 'done';
 };
+export const statusLabel = (sprints) => {
+  const s = planStatus(sprints);
+  return s === 'done' ? 'Done' : s === 'cancelled' ? 'Cancelled' : 'Incomplete';
+};
 // — Gate verdicts (REF GATE ownership by heading number, never positional index).
 // Pure additive exports: never feed state()/isDone()/hash, so section hashes are untouched.
 const GATE_N = (n) => new RegExp(`REF GATE\\s+0*${n}\\b`);

@@ -1,8 +1,9 @@
 /* ADAM/DS — ds/changelog/paint-chips · chips + filter drawer + graph · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { fmtDate } from '../changelog-parse.js';
 import { graph } from './graph.js';
+import { timelineList } from './timeline.js';
 export function paintChips(root, ctx){
-  const { active, status, day, counts, statusCounts, plans, filterOpen, filterTab } = ctx;
+  const { active, status, day, counts, statusCounts, plans, filterOpen, filterTab, timeline } = ctx;
   const anyFilter = active.size || status.size || day;
   const filterCount = active.size + status.size + (day ? 1 : 0);
   const trigger = [
@@ -42,6 +43,8 @@ export function paintChips(root, ctx){
     `)</button>`,
   ].join('')).join('');
   const clear = anyFilter ? `<button class="ds-chip" data-clear>Clear</button>` : '';
+  const tlCount = timelineList(plans, active, status).length;
+  const tlChip = `<button class="ds-chip ds-tl-chip${timeline ? ' on' : ''}" data-timeline-chip aria-pressed="${timeline}">→ All ${tlCount} tracks</button>`;
   const tab = filterTab === 'status' ? 'status' : 'tags';
   const tagOpts = counts.map(([t, n]) => [
     `<button class="ds-chip`,
@@ -78,7 +81,7 @@ export function paintChips(root, ctx){
     tab === 'tags' ? tagOpts : statusOpts,
     `</div></div>`,
   ].join('') : '';
-  root.querySelector('[data-col="chips"]').innerHTML = trigger + dayChip + showAll + pills + clear + drawer;
+  root.querySelector('[data-col="chips"]').innerHTML = trigger + dayChip + showAll + pills + clear + tlChip + drawer;
   const gEl = root.querySelector('[data-col="graph"]');
   if (!gEl.dataset.ready) { gEl.innerHTML = graph({ plans, day }); gEl.dataset.ready = '1'; }
   else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day,

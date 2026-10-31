@@ -36,7 +36,7 @@ const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).lengt
 const STATUS = ['Done', 'Incomplete', 'Cancelled'];
 const statusOf = (p) => { const s = planStatus(p.sprints); return s === 'done' ? 'Done' : s === 'cancelled' ? 'Cancelled' : 'Incomplete'; };
 const statusCounts = STATUS.map((t) => [t, plans.filter((p) => statusOf(p) === t).length]).filter(([, n]) => n);
-const st = { active: new Set(), status: new Set(), day: '', sel: [0, 0], open: false, openFile: '', filterOpen: false, filterTab: 'tags', stage: 'list' };
+const st = { active: new Set(), status: new Set(), day: '', sel: [0, 0], open: false, openFile: '', filterOpen: false, filterTab: 'tags', timeline: false, stage: 'list' };
 const visiblePlans = () => plans
   .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
     && (!st.status.size || st.status.has(statusOf(p)))
@@ -59,7 +59,7 @@ export function render() {
     `<p class="ds-crumb">Start \u00b7 Changelog</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
     `<hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div>`,
     `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage">`,
-    `</div><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
+    `</div><div data-col="timeline"></div><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
     `<aside class="ds-drawer" data-drawer hidden aria-label="Build detail">`,
     `<div class="ds-rail" data-col="sprint"></div><div class="ds-task" data-col="tasks"></div></aside>`,
   ].join('');
@@ -68,7 +68,7 @@ function doPaint(root) {
   const { list, pi, plan, sprints, si } = cur();
   st.sel = [pi, si];
   paint(root, { list, pi, plan, sprints, si, active: st.active, status: st.status, day: st.day,
-    sel: st.sel, open: st.open, stage: st.stage, counts, statusCounts, plans, texts, filterOpen: st.filterOpen, filterTab: st.filterTab });
+    sel: st.sel, open: st.open, stage: st.stage, counts, statusCounts, plans, texts, filterOpen: st.filterOpen, filterTab: st.filterTab, timeline: st.timeline });
 }
 export function mount(root) {
   st.open = false; st.stage = 'list'; doPaint(root);

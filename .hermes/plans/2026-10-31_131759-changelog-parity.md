@@ -149,7 +149,7 @@
 
 ## Phase 4 — Timeline tracks drawer {#phase-4}
 
-**Status:** 0/4 · GATE OPEN
+**Status:** 4/4 · GATE PASSED (17 rows / 12 done bars / fractional today / day-independence / bar-click open + day-drop / Escape layering, all live-verified)
 
 *What the page gains: a full-height track view with day axis, bars, and today line.*
 
@@ -160,35 +160,35 @@
 | 15 | Timeline chip in chips row | `→ All N tracks` right-aligned, pressed state is light, not accent |
 | 16 | Timeline CSS contract | Flush panel vs inset title, no month bands, phone rows full-width |
 
-### Task 13: Timeline shell + lanes + bars {#phase-4}
+### Task 13: Timeline shell + lanes + bars ✓ done {#phase-4}
 
 **Objective:** `aside.ds-timeline` with sticky day-axis and per-plan rows beside the landing.
 **Files:** new `src/pitch/changelog/timeline.js`, `src/pitch/pitch-changelog-timeline.css` (new), mount point in `src/pitch/pages-changelog.js`
 **Steps:** rows carry explicit lane width; incomplete bars neutral mix, complete muted-accent mix (never raw accent); ghost/upcoming markers dashed full-height.
 **Verify:** drawer opens, rows span full scroll width, screenshot.
 
-### Task 14: Today line + open-from-timeline {#phase-4}
+### Task 14: Today line + open-from-timeline ✓ done {#phase-4}
 
 **Objective:** Real-time today marker; bar clicks resolve against the day-ignoring list.
 **Files:** `src/pitch/changelog/timeline.js`, `src/pitch/pages-changelog.js`
 **Steps:** wash at integer floor, dotted line at fractional offset; secondary view fed its own day-ignoring list; drop day filter on explicit navigation.
 **Verify:** line position moves within the day; bar click on a day-filtered-out plan opens it.
 
-### Task 15: Timeline chip in chips row {#phase-4}
+### Task 15: Timeline chip in chips row ✓ done {#phase-4}
 
 **Objective:** `→ All N tracks` chip last, pulled right.
 **Files:** `src/pitch/changelog/paint-chips.js`, `src/pitch/changelog-events.js`
 **Steps:** `margin-left:auto`, hover surface, pressed light; specific `[data-*]` branch before generic chip branch.
 **Verify:** chip opens timeline; Clear interplay correct.
 
-### Task 16: Timeline CSS contract {#phase-4}
+### Task 16: Timeline CSS contract ✓ done {#phase-4}
 
 **Objective:** Flush grid, inset title, no banding, phone-safe rows.
 **Files:** `src/pitch/pitch-changelog-timeline.css`
 **Steps:** aside `margin:0; padding:0` property-complete; no month background bands; ≤720 query keeps rows full-width.
 **Verify:** computed-style probe + screenshots (desktop + 390px).
 
-- REF GATE 4 (OPEN): bars/today correct, filtered-out bar click opens, screenshots attached.
+- REF GATE 4 (✓ PASSED · evidence 2026-10-31): 17 rows render with flush grid, 12 done bars in muted accent, today wash integer + dotted fractional (45.5607), day filter narrows cards to 5 while rows stay 17, bar click on filtered-out plan opens its detail and drops the day filter, Escape layers drawer-then-timeline. Deferred: login-gated controls (no auth on this page), schedule-deadline link (Phase 5). Verdict: PASSED.
 
 ---
 
