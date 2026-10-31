@@ -67,4 +67,18 @@
 .ds-count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: var(--cl-16); height: var(--cl-16); padding: 0 var(--cl-6); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; color: var(--color-bg); background: var(--color-accent); border-radius: var(--radius-full); line-height: 1; }
 .ds-count-badge--ok { background: var(--primitive-green-400); }
 [data-col="triage"][hidden] { display: none !important; }
+/* evals + commits panels · collapsible tiles, caret left of caps label */
+.ds-panel { border: var(--border-hairline); border-radius: var(--radius-xs); margin: var(--cl-12) 0; }
+.ds-panel-title { display: flex; align-items: center; gap: var(--cl-8); cursor: pointer; padding: var(--cl-8) var(--cl-12); font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); list-style: none; }
+.ds-panel-title::-webkit-details-marker { display: none; }
+.ds-timeline-group > summary::-webkit-details-marker { display: none; }
+.ds-caret { display: inline-block; font-weight: 900; font-size: var(--cl-12); transform: rotate(90deg); }
+.ds-panel:not([open]) > .ds-panel-title .ds-caret { transform: rotate(0deg); }
+.ds-timeline-group > summary .ds-caret { transform: rotate(90deg); }
+.ds-timeline-group:not([open]) > summary .ds-caret { transform: rotate(0deg); }
+.ds-panel-num { color: var(--color-accent); }
+.ds-timeline-item--eval { position: relative; }
+.ds-timeline-item--eval::before { content: ""; position: absolute; left: calc(-1 * var(--cl-12) - var(--cl-4)); top: var(--cl-8); width: var(--cl-8); height: var(--cl-8); border-radius: 50%; border: var(--cl-1) solid var(--color-accent); background: transparent; box-sizing: border-box; }
+.ds-timeline-item--iter { margin-left: var(--cl-12); border-left: var(--border-hairline); padding-left: var(--cl-8); }
+.ds-gate { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); white-space: nowrap; }
 

@@ -75,7 +75,7 @@
 
 ## Phase 2 — Gate verdicts + evals feed {#phase-2}
 
-**Status:** 0/4 · GATE OPEN
+**Status:** 4/4 · GATE PASSED (rail/head/panel screenshots verified live on parity plan; prose strip CLEAN; collapse works; hash-drift none — additive exports only)
 
 *What the page gains: every judged phase shows its verdict; evaluations read as one threaded panel.*
 
@@ -86,35 +86,35 @@
 | 9 | Evals · N + Commits · N panels | Collapsible tiles, reversed Day N, gate↔rev pairing |
 | 10 | REF GATE strip in markdown body | Task Verify stays one-line; no phantom anchor lines |
 
-### Task 7: `parseGates()` additive parser {#phase-2}
+### Task 7: `parseGates()` additive parser ✓ done {#phase-2}
 
 **Objective:** Parse `REF GATE N` lines (verdict, ownership by heading number, `· rev` count) without touching hashed semantics.
 **Files:** `src/pitch/changelog-parse.js` (new export only)
 **Steps:** gate ownership by heading number (`Task 3`→gate 3), never positional index; explicit-uppercase verdict vocabulary; `(ship)` marker kept on gate object.
 **Verify:** hash-drift probe: every live section hash identical before/after; gates parsed for lump-sum + gem plans match plan text.
 
-### Task 8: Inline verdict tags {#phase-2}
+### Task 8: Inline verdict tags ✓ done {#phase-2}
 
 **Objective:** Verdict renders as quiet inline tag alongside DONE on cards and rail picks.
 **Files:** `src/pitch/changelog/paint-plan.js`, `src/pitch/changelog/paint-detail.js`
 **Steps:** token-only tag, no rail/stepper/popover; every judged phase shows its own verdict; gateless sections show none.
 **Verify:** screenshot of a PASSED, OPEN, and FAILED (or simulated) phase agreeing with plan file lines.
 
-### Task 9: Evals · N + Commits · N panels {#phase-2}
+### Task 9: Evals · N + Commits · N panels ✓ done {#phase-2}
 
 **Objective:** Unified verify + revision timeline per open phase in collapsible tiles.
 **Files:** `src/pitch/changelog/paint-detail.js` (append renderers; detail renderer only, never `norm()`)
 **Steps:** outer `<details class="ds-panel" open>` with caret left of caps label; inner per-Day groups reversed numbering (oldest Day 1 bottom); gate parent + rev child pairing newest-first; no per-row accordions or numeric prefixes.
 **Verify:** gem Phase 7 shows eval/commit structure tracing to real gate lines; screenshot.
 
-### Task 10: REF GATE strip in markdown body {#phase-2}
+### Task 10: REF GATE strip in markdown body ✓ done {#phase-2}
 
 **Objective:** The gate thread belongs to Evals, not the task prose.
 **Files:** `src/pitch/changelog/paint-detail.js` (`marked.parse` pre-slice)
 **Steps:** slice body from first `- REF GATE` to section anchor before parse; anchor/`Tags:`/Due strips stay intact.
 **Verify:** task Verify lines one-line; no phantom trailing anchor; hash probe still clean.
 
-- REF GATE 2 (OPEN): verdict tags match plan lines on 3+ phases; evals pair correctly; screenshots attached.
+- REF GATE 2 (✓ PASSED · evidence 2026-10-31): rail `· GATE OPEN` on all 6 parity phases, head tag renders, Evals · 1 Day-grouped, Commits · 1 timeline intact, prose strip CLEAN, collapse works, corpus parse zero false positives, 9-case synthetic probe covers PASSED/FAILED/revs/ship/ownership/prose-trap (caught + fixed `\(ship\)` boundary bug), hashes untouched. Verdict: PASSED.
 
 ---
 

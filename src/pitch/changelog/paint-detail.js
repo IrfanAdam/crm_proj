@@ -1,7 +1,7 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { hits, badges, unlinked } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
-import { isDone, state, hash, planStatus } from '../changelog-parse.js';
+import { isDone, state, hash, planStatus, parseGates, fmtDate } from '../changelog-parse.js';
 import { esc } from './esc.js';
 import history from '../../../design-system/plan-history.json';
 
@@ -122,6 +122,41 @@ function isEdited(planFile, head, body){
   if(!hashes.has(liveHash)) return true;
   return false;
 }
+// — Evals + commits panels (detail renderer only — norm()/hashes untouched).
+// Gate thread lines are dropped from the markdown body and rendered here instead.
+const GATE_THREAD = /^- .*REF GATE\s+0*\d+\b/;
+const stripGateThread = (body) => String(body).split('\n').filter((l) => !GATE_THREAD.test(l)).join('\n');
+const cleanEval = (line) => esc(line.replace(/^- /, '').replace(/\s*\{#.*$/, '').trim());
+const renderEvals = (planFile, planDate, head, body) => {
+  const g = parseGates(head, body);
+  if (!g) return '';
+  const entries = g.bases.map((t) => ({ date: firstGateDate(t) || planDate, kind: 'eval', text: cleanEval(t) }))
+    .concat(g.revLines.map((t) => ({ date: firstGateDate(t) || planDate, kind: 'iter', text: cleanEval(t) })));
+  if (!entries.length) return '';
+  const byDate = {};
+  entries.forEach((e) => { (byDate[e.date] = byDate[e.date] || []).push(e); });
+  const dates = Object.keys(byDate).sort().reverse();
+  const total = dates.length;
+  const groups = dates.map((d, di) => {
+    const rows = byDate[d];
+    const dayN = total - di;
+    const items = rows.map((r) => r.kind === 'eval'
+      ? `<div class="ds-timeline-item ds-timeline-item--eval"><span>${r.text}</span></div>`
+      : `<div class="ds-timeline-item ds-timeline-item--iter"><span>${r.text}</span><small>${esc(d)}</small></div>`).join('');
+    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date"><span class="ds-caret">‹›</span>Day ${dayN} · ${esc(fmtDate(d) || d)} · ${rows.length}</summary>${items}</details>`;
+  }).join('');
+  return `<details class="ds-panel" open><summary class="ds-panel-title"><span class="ds-caret">‹›</span>Evals · ${entries.length}</summary><div class="ds-timeline">${groups}</div></details>`;
+};
+const firstGateDate = (s) => ((s || '').match(/(20\d{2}-\d{2}-\d{2})/) || [])[1] || '';
+const renderCommitsPanel = (hs, badgesHtml) => {
+  if (!hs.length) return '';
+  return `<details class="ds-panel" open><summary class="ds-panel-title"><span class="ds-caret">‹›</span>Commits · ${hs.length}</summary>${badgesHtml}</details>`;
+};
+const gateVerdictTag = (head, body) => {
+  const g = parseGates(head, body);
+  if (!g) return '';
+  return g.verdict === 'passed' ? 'GATE PASSED' : g.verdict === 'failed' ? 'GATE FAILED' : 'GATE OPEN';
+};
 export function paintDetail(root, ctx){
   const { list, pi, plan, sprints, si, active, day, sel, open, counts, plans, texts } = ctx;
   const scrim = root.querySelector('[data-scrim]'), drawer = root.querySelector('[data-drawer]');
@@ -141,6 +176,7 @@ export function paintDetail(root, ctx){
       has = hsS.length ? ' · ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
       frac = state(s.body);
     const edited = isEdited(plan.file, s.head, s.body) ? ' · edited' : '';
+    const gate = gateVerdictTag(s.head, s.body) ? ' · ' + gateVerdictTag(s.head, s.body) : '';
     const done = isDone(frac);
     return [
       `<button class="ds-pick`,
@@ -153,7 +189,7 @@ export function paintDetail(root, ctx){
       `</span><b>`,
       esc(short(s.head)),
       `</b></span><small>`,
-      [frac + has + edited].filter(Boolean).join(' \u00b7 '),
+      [frac + has + edited + gate].filter(Boolean).join(' · '),
       `</small></button>`,
     ].join('');
   }).join('') + [
@@ -162,11 +198,16 @@ export function paintDetail(root, ctx){
     `</div>`,
   ].join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
+  const headGate = gateVerdictTag(sprint.head, sprint.body);
+  const evalsHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body);
+  const commitsHtml = renderCommitsPanel(hs, badges(hs));
   root.querySelector('[data-col="tasks"]').innerHTML = [
     `<div class="ds-drawer-head"><b>`,
     esc(short(sprint.head)),
-    `</b><button data-close aria-label="Close detail">\u2715</button></div><div class="ds-md">`,
-    marked.parse(sprint.body) + badges(hs),
+    `</b>`,
+    headGate ? `<span class="ds-gate">${headGate}</span>` : '',
+    `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
+    marked.parse(stripGateThread(sprint.body)) + evalsHtml + commitsHtml,
     `</div>`,
   ].join('');
   const u = unlinked(texts);
