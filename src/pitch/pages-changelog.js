@@ -72,6 +72,7 @@ function doPaint(root) {
   st.sel = [pi, si];
   paint(root, { list, pi, plan, sprints, si, active: st.active, status: st.status, day: st.day,
     sel: st.sel, open: st.open, stage: st.stage, counts, statusCounts, plans, texts, filterOpen: st.filterOpen, filterTab: st.filterTab, timeline: st.timeline });
+  try { document.title = `cl open=${st.open ? 1 : 0} tl=${st.timeline ? 1 : 0} n=${list.length}`; } catch {} // TEMP-DEBUG sh3: state readout, revert after root-cause
 }
 export function mount(root) {
   applyOverrides(plans);
