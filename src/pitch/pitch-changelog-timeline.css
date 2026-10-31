@@ -46,6 +46,7 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-tl-pop__tasks{display:block;font-family:var(--font-mono);font-size:var(--font-size-xs);line-height:var(--leading-mono);color:var(--color-ink);margin:0}
 .ds-tl-pop__tasks b{color:var(--color-accent);font-weight:700}
 .ds-tl-pop__due-txt{display:block;font-family:var(--font-mono);font-size:var(--font-size-xs);line-height:var(--leading-mono);color:var(--color-ink-muted);margin:0}
+.ds-tl-pop__date{display:block;font-family:var(--font-mono);font-size:var(--font-size-xs);line-height:var(--leading-mono);color:var(--color-ink-dim);margin:var(--cl-2) 0 0}
 .ds-tl-pop__sub{display:block;font-family:var(--font-mono);font-size:var(--font-size-xs);line-height:var(--leading-mono);color:var(--color-ink-muted);white-space:pre-line}
 .ds-tl-chip{margin-left:auto}
 .ds-tl-chip.on{background:var(--color-surface);color:var(--color-ink);border-color:var(--color-border)}

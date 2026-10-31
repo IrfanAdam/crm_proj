@@ -14,6 +14,8 @@ export function hoverTlPop(root, el, x, y) {
   const title = lines[0] || '', sub = lines.slice(1).join('\n');
   let desc = (el.dataset.tip || '').trim();
   if (title && desc.startsWith(title)) desc = desc.slice(title.length).replace(/^[·\s]+/, '');
+  const span = (el.dataset.span || '').trim();
+  if (span) desc = desc.split(' · ').filter((p) => p !== span).join(' · ');
   const tk = String(el.dataset.tk || '').split('/');
   const tkOk = tk.length === 2 && tk[0] !== '' && tk[1] !== '';
   const scope = tkOk ? `<span class="ds-tl-pop__tasks"><b>${esc(tk[0])}</b>/${esc(tk[1])} tasks</span>` : '';
@@ -22,6 +24,7 @@ export function hoverTlPop(root, el, x, y) {
   p.innerHTML = `<b class="ds-tl-pop__title">${esc(title)}</b>` +
     (desc && desc !== title ? `<span class="ds-tl-pop__desc">${esc(desc)}</span>` : '') +
     scope + dueRow +
+    (span ? `<span class="ds-tl-pop__date">${esc(span)}</span>` : '') +
     (sub ? `<span class="ds-tl-pop__sub">${esc(sub)}</span>` : '');
   p.hidden = false;
   const pad = 10, r = p.getBoundingClientRect();

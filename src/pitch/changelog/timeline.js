@@ -8,6 +8,14 @@ const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0
 const atMidnight = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
 const addDays = (k, n) => iso(new Date(atMidnight(k + 'T00:00:00') + n * DAY));
 const noq = (s) => String(s || '').replace(/"/g, '');
+const dPart = (k) => {
+  const d = new Date(k + 'T00:00:00');
+  return { t: `${d.getDate()} ${d.toLocaleString('en', { month: 'short' })}`, y: d.getFullYear() };
+};
+const spanText = (s, e) => {
+  const a = dPart(s), b = dPart(e);
+  return a.y === b.y ? `${a.t} – ${b.t} ${b.y}` : `${a.t} ${a.y} – ${b.t} ${b.y}`;
+};
 export function timelineList(plans, active, status) {
   return plans.filter((p) => (!active.size || p.tags.some((t) => active.has(t))) && (!status.size || status.has(statusLabel(p.sprints))));
 }
@@ -56,16 +64,16 @@ export function paintTimeline(root, ctx) {
   const col = (k) => Math.round((atMidnight(k + 'T00:00:00') - startMs) / DAY);
   const geom = (s, e) => { const off = col(s), span = Math.max(col(e) - off + 1, 2); return `left:calc(${off} * var(--tl-day));width:calc(${span} * var(--tl-day) - var(--cl-4))`; };
   const rows = info.map((r, i) => {
-    const tip = `${r.n} commit${r.n === 1 ? '' : 's'} · ${r.s} → ${r.e}`;
+    const tip = `${r.n} commit${r.n === 1 ? '' : 's'} · ${spanText(r.s, r.e)}`;
     const dt = (String(buildState(r.p.sprints || [])).match(/(\d+\/\d+)/) || [])[1] || '';
     const bn = `<span class="ds-tl-barname">${r.p.title}</span>`;
-    const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" data-pop="${noq(r.p.title)}" data-tk="${dt}" style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)}">${bn}</div>`;
+    const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" data-pop="${noq(r.p.title)}" data-tk="${dt}" data-span="${spanText(r.s, r.e)}" style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)}">${bn}</div>`;
     let g = '';
     if (r.g) {
       const gt = `Due ${r.g.due || r.g.to}${r.g.overdue ? ' · overdue' : ''} · ${noq(r.p.title)}`;
       g = `<div class="ds-tl-ghost${r.g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}" data-tip="${gt}" data-pop="${noq(r.p.title)}" data-due="${r.g.due ? `${r.g.due}${r.g.overdue ? ' (overdue)' : ''}` : r.g.to}" style="${geom(r.g.from, r.g.to)}" aria-label="${gt}"></div>`;
     }
-    return `<div class="ds-tl-row has-track" data-tl-row="${r.p.file}" data-pop="${noq(r.p.title)}" data-tip="${noq(r.p.title)} · ${tip}"><div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l" aria-label="Scroll track into view" hidden>«</button>${bar}${g}<button class="ds-tl-edge is-r" data-tl-edge="r" aria-label="Scroll track into view" hidden>»</button></div></div>`;
+    return `<div class="ds-tl-row has-track" data-tl-row="${r.p.file}" data-pop="${noq(r.p.title)}" data-tip="${noq(r.p.title)} · ${tip}" data-span="${spanText(r.s, r.e)}"><div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l" aria-label="Scroll track into view" hidden>«</button>${bar}${g}<button class="ds-tl-edge is-r" data-tl-edge="r" aria-label="Scroll track into view" hidden>»</button></div></div>`;
   }).join('');
   const mo = [];
   for (let d = 0; d < days; d++) {
