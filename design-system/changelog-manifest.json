@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T09:14:59.513Z",
+  "generated": "2026-10-31T09:17:27.187Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "08c1466",
+      "full": "08c14664f9cd59a1c68520ea78c37d467e9cb4b7",
+      "date": "2026-10-31",
+      "time": "14:47",
+      "subject": "feat(changelog): drawer full-bleed insets + one-panel-at-a-time layering with return-to-timeline",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "395cc90",
       "full": "395cc9043185a970f07206010e9be6c03908d8d2",
