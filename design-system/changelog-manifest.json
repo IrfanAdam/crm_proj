@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T12:03:13.862Z",
+  "generated": "2026-10-31T12:04:56.358Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -29,8 +29,8 @@
       "date": "2026-10-31",
       "time": "17:33",
       "subject": "chore(ds): sync plan manifest (plumbing — manifest-only, auto-excluded)",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-7"
     },
     {
       "sha": "0b2c6e7",
