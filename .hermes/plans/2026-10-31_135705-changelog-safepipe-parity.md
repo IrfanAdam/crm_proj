@@ -80,11 +80,11 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
-**Status:** 4/5 · GATE OPEN (Tasks 11–12, 15–16 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
+**Status:** 5/6 · GATE OPEN (Tasks 11–12, 15–17 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
 
 Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
 
-*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da · Tasks 11–12, 15–16 · phase-4.*
+*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec · Tasks 11–12, 15–17 · phase-4.*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -93,6 +93,7 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 | 13 | Verify + close | node --check 7/7, budgets ≤100, build green, zero DEBUG remnants; Safari pixel confirm (layering, insets, phone stack) |
 | 15 | Task-line lint ✓ done | Prose lines keep own rows (no para-merge), `### Task` headers open `<section class="ds-subtask">`, task-overview tables render as `<table>` (header th + body rows) instead of dropped; `✓/✗` strip no longer eats newlines |
 | 16 | Detail polish port ✓ done | Safepipe task-pane contract: closed task folds (tick + clean name + caret, body unfolded), dup-head/Status/Shipped/---/Due/table strips, tables dropped again (checkbox list is the single task list), eval markdown cleaned, due hidden on sealed phases, fold CSS |
+| 17 | Fold content + scale ✓ done | Empty-fold fix: tables restored as the task list (bare ### markers carry no detail), bodyless dupes suppressed when a table lists them, bare tick rows only without tables; fold CSS to safepipe spec (13px/700 summary, cl-4 gap, margin 0, flush body, bare rows); corpus probe 343 folds/0 empty/56 tables |
 
 ### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
 
@@ -104,7 +105,10 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 
 ### Task 16: Detail polish port ✓ done {#phase-4}
 
+### Task 17: Fold content + scale ✓ done {#phase-4}
+
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+- REF GATE 4 · rev 2026-10-31: fold content + scale (owner: empty accordions, off-scale titles) — ### markers are bare headers with all content in the phase table, so folds were correctly shaped but empty: tables restored as THE task list, bodyless dupes suppressed under tables, bare tick rows only table-less; fold CSS to safepipe spec (13px/700 summary, cl-4 gap, margin 0, flush body); corpus probe 19 plans → 343 folds, 0 empty, 56 tables; struct-harness 11/11, 90 lines, build green, 9/9 suites + plan-names pass (lint red only on sibling's live gem WIP file, untouched).
 - REF GATE 4 · rev 2026-10-31: detail polish port (owner: safepipe-level format/indents/concision) — dual-auditor findings (22 gaps + full fold/tick/indent contract) implemented as Task 16: norm-shaped items fold closed with ☑/☐/☒ + clean names, dup-head/Status/Shipped/---/Due/table strips, eval `**`/`[x]` cleaned, due setter hidden on sealed phases; struct-harness 12/12, files ≤100 (72/58/30), build + suite green, live DOM 4 folds/4 ticks/0 dupes; screenshots blocked (capture daemon timeouts ×3) — owner to confirm in Safari.
 - REF GATE 4 · rev 2026-10-31: task-line lint (owner report — tasks ran together as one): prose one-`<p>`-per-line, Task sections wrapped, overview tables render as tables (was dropped like safepipe — but safepipe duplicates tasks as checkboxes while crm phases list them only in the table); newline-eating `✓/✗` strip fixed; struct-harness 10/10, file 93 lines, suite green.
 - REF GATE 4 · rev 2026-10-31: mechanical half GO (independent re-verify: node --check 7/7, all 8 files ≤100, returnTimeline set/restore wired incl. Escape, zero DEBUG remnants, full-bleed + insets + phone stack present).
