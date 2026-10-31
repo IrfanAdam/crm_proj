@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T09:17:27.187Z",
+  "generated": "2026-10-31T09:25:30.420Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "34463ef",
+      "full": "34463ef65f277b46182cd151520f598c9bec0f04",
+      "date": "2026-10-31",
+      "time": "14:55",
+      "subject": "feat(changelog): timeline polish — sticky label rail, wide day grid, tall pills, display head",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "08c1466",
       "full": "08c14664f9cd59a1c68520ea78c37d467e9cb4b7",
