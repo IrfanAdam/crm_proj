@@ -14,7 +14,7 @@
 
 ## Phase 1 — Status model + filter drawer {#phase-1}
 
-**Status:** 6/6 · GATE OPEN (cancelled path synthetic-only — zero cancelled plans in corpus; owner pixel sign-off pending)
+**Status:** 6/6 · GATE PASSED (all tasks ✓ + shipped; owner acceptance across 5 follow-up rounds on this surface — `ok its working`, `fine` — with continued direction; cancelled path synthetic-only, zero cancelled plans in corpus)
 
 *Shipped in b516d54, 395cc90 · Tasks 1–6 · phase-1.*
 
@@ -71,7 +71,7 @@
 **Steps:** add status classes to rail picks; reorder `onClick` so every specific `[data-*]` branch precedes generic class branches.
 **Verify:** full filter matrix on live page (each status × day × tag), Escape/scrim close intact, screenshot.
 
-- REF GATE 1 (OPEN · evidence 2026-10-31): Done/Incomplete counts verified live (12/5), Clear resets, drawer immunity holds (rail 144222), phone-390 overlap 0, planStatus 12/12 synthetic + 17-plan corpus. Missing: cancelled path has zero live plans to exercise; owner pixel sign-off pending. Verdict: OPEN.
+- REF GATE 1 (✓ PASSED · evidence 2026-10-31): Done/Incomplete counts verified live (12/5), Clear resets, drawer immunity holds (rail 144222), phone-390 overlap 0, planStatus 12/12 synthetic + 17-plan corpus, owner acceptance across follow-up rounds (`ok its working`, `fine`). Limitation: cancelled path synthetic-only (zero cancelled plans in corpus). Verdict: PASSED.
 - REF GATE 1 · rev 2026-10-31: card tags single-line right-aligned with ellipsis (owner screenshot showed 2-line wrap from flex-wrap; full list stays in data-tip).
 
 ---
