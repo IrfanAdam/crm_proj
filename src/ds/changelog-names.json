@@ -66,5 +66,13 @@
   "2026-10-05_000000-lump-sum-builds.md": {
     "title": "Lump-sum builds — week of Oct 5 (glass deck + Data Utility)",
     "purpose": "weekly catch-all + deck rig"
+  },
+  "2026-10-31_131759-changelog-parity.md": {
+    "title": "Changelog parity — skill contract on the page",
+    "purpose": "changelog views parity"
+  },
+  "2026-10-31_135705-changelog-safepipe-parity.md": {
+    "title": "Changelog safepipe parity — filter + timeline chrome",
+    "purpose": "safepipe chrome parity"
   }
 }

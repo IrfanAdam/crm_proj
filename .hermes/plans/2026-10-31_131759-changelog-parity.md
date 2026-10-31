@@ -16,6 +16,8 @@
 
 **Status:** 6/6 · GATE OPEN (cancelled path synthetic-only — zero cancelled plans in corpus; owner pixel sign-off pending)
 
+*Shipped in b516d54, 395cc90 · Tasks 1–6 · phase-1.*
+
 *What the page gains: Done / Incomplete / Cancelled filtering shared by every surface.*
 
 | # | Task | Done when |
@@ -78,6 +80,8 @@
 
 **Status:** 4/4 · GATE PASSED (rail/head/panel screenshots verified live on parity plan; prose strip CLEAN; collapse works; hash-drift none — additive exports only)
 
+*Shipped in 0542270 · Tasks 7–10 · phase-2.*
+
 *What the page gains: every judged phase shows its verdict; evaluations read as one threaded panel.*
 
 | # | Task | Done when |
@@ -123,6 +127,8 @@
 
 **Status:** 2/2 · GATE PASSED (section-matcher probe: 0 orphans / 0 unlinked; triage hidden live; no spurious Further-commits; render path for non-empty orphans reviewed — badges(title) branch on verified badges())
 
+*Shipped in 22beca3 · Tasks 11–12 · phase-3.*
+
 *What the page gains: no linked commit ever vanishes from the drawer; triage tells the truth.*
 
 | # | Task | Done when |
@@ -151,6 +157,8 @@
 ## Phase 4 — Timeline tracks drawer {#phase-4}
 
 **Status:** 4/4 · GATE PASSED (17 rows / 12 done bars / fractional today / day-independence / bar-click open + day-drop / Escape layering, all live-verified)
+
+*Shipped in febe13b · Tasks 13–16 · phase-4.*
 
 *What the page gains: a full-height track view with day axis, bars, and today line.*
 
@@ -196,6 +204,8 @@
 ## Phase 5 — Due scheduling lane {#phase-5}
 
 **Status:** 3/4 · GATE OPEN (Tasks 17–19 live-verified; Task 20 code-complete, live verification blocked on owner secrets `DUE_AUTHOR` + `DUE_TOKEN`)
+
+*Shipped in e62bfcc (partial) · Tasks 17–19 · phase-5 · Task 20 open — owner secrets.*
 
 *What the page gains: deadlines set from the drawer and persist across refresh and devices.*
 
