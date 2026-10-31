@@ -92,4 +92,5 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 ### Task 13: Verify + close {#phase-4}
 
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
-- REF GATE 4 · rev 2026-10-31: mechanical half GO (independent re-verify: node --check 7/7, all 8 files ≤100, returnTimeline set/restore wired incl. Escape, zero DEBUG remnants, full-bleed + insets + phone stack present). Remaining: owner Safari pixel confirm.
+- REF GATE 4 · rev 2026-10-31: mechanical half GO (independent re-verify: node --check 7/7, all 8 files ≤100, returnTimeline set/restore wired incl. Escape, zero DEBUG remnants, full-bleed + insets + phone stack present).
+- REF GATE 4 · rev 2026-10-31: pixel-review screenshots captured from live :5173 (timeline panel, plan drawer, filter dropdown, 390px bottom sheet) — attached for owner sign-off, the last Task 13 item.
