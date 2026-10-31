@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T08:10:18.717Z",
+  "generated": "2026-10-31T08:23:04.728Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -22,6 +22,15 @@
     "2026-10-31_131759-changelog-parity.md"
   ],
   "commits": [
+    {
+      "sha": "9e75fcc",
+      "full": "9e75fcc0cb2fca12ba0329fc496a1b53ba085ce7",
+      "date": "2026-10-31",
+      "time": "13:52",
+      "subject": "fix(changelog): timeline renders under chips (visible on open), Filter trigger chevron",
+      "plan": "2026-10-31_131759-changelog-parity.md",
+      "anchor": "phase-6"
+    },
     {
       "sha": "52a838a",
       "full": "52a838a602a172869d64f3cb6616cc540ea43cd3",
