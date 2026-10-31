@@ -13,7 +13,7 @@ export function paintChips(root, ctx){
     filterOpen,
     `" aria-label="Filters`,
     filterCount ? `, ${filterCount} active` : '',
-    `">Filter`,
+    `">Filter ${filterOpen ? '▴' : '▾'}`,
     filterCount ? ` (${filterCount})` : '',
     `</button>`,
   ].join('');

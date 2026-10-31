@@ -54,9 +54,7 @@ export function bindChangelogEvents(root, st, helpers) {
     if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
         Math.min(Math.max(c.si + Number(step.dataset.step), 0),
           c.sprints.length - 1)]; st.open = true; doPaint(root); return; }
-    const chip = e
-      .target
-      .closest('.ds-chip');
+    const chip = e.target.closest('.ds-chip');
     if (chip) { const t = chip.dataset.tag;
       if (!t) { st.active = new Set();
         st.day = '';
