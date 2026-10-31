@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T15:45:08.881Z",
+  "generated": "2026-10-31T17:41:53.046Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "122f9f1",
+      "full": "122f9f1ad3f0ff01c162001ac07d17adebb9cfab",
+      "date": "2026-10-31",
+      "time": "23:11",
+      "subject": "chore(checkpoint): working state — manifests, mechanics regen, darkcap lane evidence",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "2f301ae",
       "full": "2f301ae5d27c096cd7fa67473ca68b491babc63c",
@@ -3847,10 +3856,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
