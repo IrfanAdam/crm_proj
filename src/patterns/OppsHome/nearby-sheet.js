@@ -3,54 +3,13 @@
 import { createLiveMap, RING_MS, REHOME_GLIDE_SLOW_S } from "./live-map.js";
 import { fitLayer, morph } from "./sheet-morph.js";
 import { flyPill, flyPillBack } from "./map-flights.js";
-import { PINS, PROSPECTS, relRect } from "./nearby-map.js";
+import { PINS } from "./nearby-map.js";
+import { parts, fromState, placeClose } from "./sheet-geometry.js";
+export { sheetHTML } from "./sheet-html.js";
 let openFn = null;
 let sheetApi = null;
 let inlineApi = null;
 export function openSheet() { if (openFn) openFn(); }
-export function sheetHTML() {
-  const rows = PROSPECTS.map((p) => `<div class="map-sheet__row">`
-    + `<span class="map-sheet__blob"><img src="https://i.pravatar.cc/64?img=${p.img}" alt=""/></span>`
-    + `<span class="map-sheet__who"><b>${p.name}</b><i>${p.meta} · ${p.dist}</i></span>`
-    + `<button type="button" aria-label="Open ${p.name}">→</button></div>`).join("");
-  return `<div class="map-sheet" id="nearby-sheet" hidden>`
-    + `<div class="map-sheet__scrim" data-close></div>`
-    + `<section class="map-sheet__panel" role="dialog" aria-modal="true" aria-label="Prospects nearby">`
-    + `<div class="map-sheet__win" id="sheet-win"><div class="map-sheet__map" id="sheet-map">`
-    + `<div class="map-sheet__view" id="sheet-view"><div class="map-sheet__tiles" id="sheet-tiles"></div></div></div></div>`
-    + `<div class="map-sheet__header" id="sheet-header"><span class="map-sheet__header-title">3 Prospects</span><span class="map-sheet__header-sub">pan &amp; zoom</span></div>`
-    + `<button class="map-sheet__close" id="sheet-close" type="button" aria-label="Close map">✕</button>`
-    + `<div class="map-sheet__card"><span class="map-sheet__handle"></span>`
-    + `<div class="map-sheet__list">${rows}</div></div></section></div>`;
-}
-function parts() {
-  const sheet = document.getElementById("nearby-sheet");
-  return { sheet, screen: document.querySelector(".device__screen"), win: sheet.querySelector(".map-sheet__win"),
-    layer: sheet.querySelector("#sheet-map"), scrim: sheet.querySelector(".map-sheet__scrim"),
-    header: sheet.querySelector("#sheet-header"),
-    card: sheet.querySelector(".map-sheet__card"), x: sheet.querySelector("#sheet-close") };
-}
-// — the widget's inner box in screen px (the 1px border and its radius come off the box) —
-function fromState() {
-  const box = document.getElementById("nearby-map");
-  const screen = document.querySelector(".device__screen");
-  box.style.transition = "none"; box.removeAttribute("data-pressed");
-  const m = relRect(box, screen);
-  box.style.transition = "";
-  const cs = getComputedStyle(box);
-  const bw = parseFloat(cs.borderTopWidth) || 0;
-  const rect = { l: m.l + bw, t: m.t + bw, w: m.w - bw * 2, h: m.h - bw * 2, r: (parseFloat(cs.borderTopLeftRadius) || 0) - bw };
-  return { screen, rect };
-}
-function placeClose(sheet, screen) {
-  const big = document.querySelector(".opps__avatar");
-  let r = big && relRect(big, screen);
-  if (!r || r.t + r.h < 0 || r.t > screen.clientHeight) r = relRect(document.querySelector(".opps__compact-avatar"), screen);
-  const c = sheet.querySelector("#sheet-close");
-  Object.assign(c.style, { left: `${r.l}px`, top: `${r.t}px`, width: `${r.w}px`, height: `${r.h}px` });
-  const h = sheet.querySelector("#sheet-header");
-  if (h) h.style.height = `${r.t + r.h}px`;
-}
 function open() {
   const p = parts();
   if (!p.sheet || !p.sheet.hidden) return;

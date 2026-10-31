@@ -26,6 +26,7 @@ globalThis.window = {
 globalThis.document = { addEventListener() {}, hidden: false };
 const load = (p) => new Function(readFileSync(new URL(p, import.meta.url), 'utf8'))();
 load('../src/components/IllusionCube/illusion-audio-engine.js');
+load('../src/components/IllusionCube/illusion-audio-engine-buffers.js');
 load('../src/components/IllusionCube/illusion-audio.js');
 const Au = globalThis.window.ILLUSION_AUDIO;
 const gain = () => ctx._master.gain.value;
@@ -66,6 +67,7 @@ globalThis.window = {
   },
 };
 load('../src/components/IllusionCube/illusion-audio-engine.js');
+load('../src/components/IllusionCube/illusion-audio-engine-buffers.js');
 load('../src/components/IllusionCube/illusion-audio.js');
 const Au2 = globalThis.window.ILLUSION_AUDIO, E2 = globalThis.window.ILLUSION_AUDIO_ENGINE;
 ok('intent API exists', typeof Au2.expectBed === 'function');
