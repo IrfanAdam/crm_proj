@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T14:48:02.288Z",
+  "generated": "2026-10-31T14:49:26.126Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -3793,7 +3793,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/arch/atlas.json"
-  ]
+  "wip": []
 }
