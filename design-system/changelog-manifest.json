@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T15:18:21.354Z",
+  "generated": "2026-10-31T15:20:40.734Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "a4fe809",
+      "full": "a4fe809c91a109789a99518ac902fd72d60c8c3b",
+      "date": "2026-10-31",
+      "time": "20:50",
+      "subject": "fix(changelog): Task 27 hover card date on its own muted line",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "44026ff",
       "full": "44026ff97962fde8cab97db8ee5dc8925d98b6e5",
