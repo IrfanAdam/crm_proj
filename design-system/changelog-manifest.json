@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T09:06:28.429Z",
+  "generated": "2026-10-31T09:14:59.513Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "395cc90",
+      "full": "395cc9043185a970f07206010e9be6c03908d8d2",
+      "date": "2026-10-31",
+      "time": "14:44",
+      "subject": "fix(changelog): card tags single-line right-aligned ellipsis (flex-wrap wrapped to 2 lines)",
+      "plan": "2026-10-31_131759-changelog-parity.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "a7088ac",
       "full": "a7088ac3f6af8147e040cea7eaf26efe68676974",
