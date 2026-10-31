@@ -28,7 +28,7 @@
 
 ## Phase 2 — Timeline fixed panel {#phase-2}
 
-**Status:** 2/3 · GATE OPEN (Tasks 4–5 coded + bundle-verified; Task 6 needs a real page load — see note)
+**Status:** 3/3 · GATE PASSED (Tasks 4–6 coded, bundle-verified, live owner-confirmed `ok its working`; see REF GATE 2)
 
 *Shipped in d719a70, 99075bb, dc94737, 206ea44, 5deca08, c171960 · Tasks 4–6 · phase-2.*
 
