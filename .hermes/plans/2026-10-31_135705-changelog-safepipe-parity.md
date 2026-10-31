@@ -48,11 +48,11 @@
 
 ## Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}
 
-**Status:** 4/4 · GATE PASSED (tl3 18/18, budgets hold, owner accepted floating-caret revision and moved on)
+**Status:** 5/5 · GATE PASSED (tl3 20/20, popover live-verified with structured content, budgets hold, owner-requested port)
 
-*Shipped in a7088ac, 34463ef, 083d026 · Tasks 7–10 · phase-3.*
+*Shipped in a7088ac, 34463ef, 083d026, 0b2c6e7 · Tasks 7–10, 14 · phase-3.*
 
-Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model kept — no bout-merge port): plan name truncated inside its work bar, floating edge carets + lane-click scroll, sticky month badge, done-coverage fill, ghost upcoming bar, hover tips, daily ticks, empty state, keep-today-in-view. Deliberately NOT ported: bout popover, 'next' sort.
+Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model kept — no bout-merge port): plan name truncated inside its work bar, floating edge carets + lane-click scroll, sticky month badge, done-coverage fill, ghost upcoming bar, hover tips, structured lane popover, daily ticks, empty state, keep-today-in-view. Deliberately NOT ported: 'next' sort.
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -60,6 +60,7 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 | 8 | Ghost upcoming bar ✓ done | Open plans get dashed ghost from last activity to Due (first open section with Due, else +21d); overdue state when Due < today; grid bounds include ghost dates |
 | 9 | Axis + empty + today ✓ done | Daily ticks (bare day numbers, month label on 1st emphasized); range text in head; `Nothing matches the current filters yet.` empty state; today keeps fractional time + scrolls into view on open (instant) |
 | 10 | Verify + close ✓ done | TEMP-DEBUG reverted (error badge, title readout, sh3 stamp); every touched file ≤100 lines; node --check; tl3 slice-test 18/18; build green; owner accepted revision (`fine`) and directed roundup + icon-only filter |
+| 14 | Lane popover ✓ done | Structured per-lane popover (`tl-pop.js`: title + desc + accented d/t scope + Due text) on bar/ghost hover; text tip suppressed while pop shows; Escape/bar-open hides; Due is text (no due-jump filter in crm) |
 
 ### Task 7: Bars + names + coverage + tips ✓ done {#phase-3}
 
@@ -69,9 +70,12 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 ### Task 10: Verify + close ✓ done {#phase-3}
 
+### Task 14: Lane popover ✓ done {#phase-3}
+
 - REF GATE 3 (✓ PASSED · evidence 2026-10-31): bars read as per-plan tracks with names truncated in-lane, ghost honest (Due-anchored, danger-token overdue), carets + lane-click + month badge per owner safepipe fix, tips accurate, tl3 18/18, no parse/hash drift (parse layer untouched), budgets hold, owner `fine`. Verdict: PASSED.
 - REF GATE 3 · rev 2026-10-31: polish round from owner screenshots — sticky side-label rail (every row titled), name aboard only bars ≥5d (no slivers), day grid widened to --tl-day with dividers, taller pills, display head, sticky axis.
 - REF GATE 3 · rev 2026-10-31: floating edge-caret pattern per owner safepipe fix — persistent side rail removed, name truncated in-lane on the work bar, carets + lane-click instant scroll with nudge, sticky month badge, danger-token overdue, dead [data-status] branch removed.
+- REF GATE 3 · rev 2026-10-31: per-lane structured popover (owner request — was deliberately excluded): title + de-duped desc + accented `d/t tasks` scope + Due text on bar/ghost hover; `tl-pop.js` 34 lines, events/timeline/shell deltas keep budgets ≤100; tl3 20/20; live probe shows title/desc/scope; Due is text, not a filter-jump button (no due-jump in crm; bar click opens the plan).
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
