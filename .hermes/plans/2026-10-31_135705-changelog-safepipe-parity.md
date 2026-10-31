@@ -3,6 +3,9 @@
 **Goal:** Match safepipe's changelog chrome in crm_proj: filter trigger opens an anchored dropdown (not an in-flow box), timeline opens as a fixed right slide-in panel (not in-flow rows). Both are already declared in the changelog-kit skill (View roles: Chips filter-icon dropdown; Timeline tracks drawer `aside.ds-timeline`) — this plan closes the gap, no skill change.
 **Reference:** `/Users/irfan/Documents/Portfolio Redo/safepipe_proj/src/changelog/changelog/paint-chips.js` (filterBtn), `changelog.css` (`.ds-tag-dropdown`, phone bottom-sheet), `changelog-timeline.css` (`aside.ds-timeline` + `.is-open`), `changelog-events.js` (outside-dismiss, tab switch without repaint).
 **Scope:** chrome only — crm keeps its own row/bar/today rendering, status model, due lane. No bout-merge/ghost/popover port.
+**Architecture:** Pure chrome port — safepipe markup/edge-sync adapted to crm tokens (`--cl-*`/`--color-*`) and crm's single-bar-per-plan rows; parse/link layer untouched (zero hash drift); new state (`st.returnTimeline`) flows through existing `ctx`.
+**Tech Stack:** Vanilla ESM (no framework), Vite `import.meta.glob` plans + manifest JSON, Node slice-tests from scratch dir (no browser dependency).
+**Tags:** Design System, Component
 
 ## Phase 1 — Filter dropdown {#phase-1}
 
@@ -14,6 +17,12 @@
 | 2 | Dropdown behavior ✓ done | Toggle flips `hidden` + `aria-expanded`; tab switch without repaint; option pick applies + repaints; outside-click + Escape dismiss; phone ≤640px bottom-sheet restyle |
 | 3 | Budget + probes | Every touched file ≤100 lines (extract `changelog/filter-menu.js` if needed); node --check; live: toggle opens anchored panel, option filters list, outside-click closes |
 
+### Task 1: Dropdown toggle + menu markup ✓ done {#phase-1}
+
+### Task 2: Dropdown behavior ✓ done {#phase-1}
+
+### Task 3: Budget + probes {#phase-1}
+
 - REF GATE 1 (OPEN · evidence 2026-10-31): desktop dropdown live-verified (anchored below trigger, 6 tag + 2 status options, status pick → 12 cards, outside-dismiss ✓, budgets all ≤100, `npm test` exit 0, build green). PENDING a real page load: phone bottom-sheet geometry + Escape dismiss (harness tabs stopped reloading tonight — shell stuck pre-edit while paint modules hot-swapped; Safari hard-refresh is the verification). Verdict: OPEN.
 - REF GATE 1 · rev 2026-10-31: toggle is icon-only funnel per owner (no Filter text/caret/count in button; active state via pill `.on` + aria-label).
 
@@ -21,17 +30,27 @@
 
 **Status:** 2/3 · GATE OPEN (Tasks 4–5 coded + bundle-verified; Task 6 needs a real page load — see note)
 
+*Shipped in d719a70, 99075bb, dc94737, 206ea44, 5deca08, c171960 · Tasks 4–6 · phase-2.*
+
 | # | Task | Done when |
 |---|------|-----------|
 | 4 | Aside mount + open/close ✓ done | `[data-col="timeline"]` becomes `aside.ds-timeline` fixed right (`min(86vw, var(--size-ds-drawer))`, slide/fade `.is-open`, `hidden` when closed); ✕ + Escape + scrim + chip-toggle close; in-flow host div removed from render |
 | 5 | Panel CSS ✓ done | Sticky axis, scroll region, head chrome mirror safepipe panel (crm `--cl-*`/`--color-*` tokens only); phone full-width; `prefers-reduced-motion` stills the slide |
 | 6 | Budget + live probes ✓ done | Files ≤100 lines; live owner-confirmed: chip opens panel over content, card opens drawer (`ok its working`), close paths wired |
 
+### Task 4: Aside mount + open/close ✓ done {#phase-2}
+
+### Task 5: Panel CSS ✓ done {#phase-2}
+
+### Task 6: Budget + live probes ✓ done {#phase-2}
+
 - REF GATE 2 (PASSED · evidence 2026-10-31): owner confirms both panels open on live page after triage-div fix (`ok its working`); aside render + fixed CSS + scrim/Escape/✕ wiring in source and bundle; budgets ≤100; build green; `npm test` exit 0. Verdict: PASSED.
 
 ## Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}
 
 **Status:** 4/4 · GATE PASSED (tl3 18/18, budgets hold, owner accepted floating-caret revision and moved on)
+
+*Shipped in a7088ac, 34463ef, 083d026 · Tasks 7–10 · phase-3.*
 
 Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model kept — no bout-merge port): plan name truncated inside its work bar, floating edge carets + lane-click scroll, sticky month badge, done-coverage fill, ghost upcoming bar, hover tips, daily ticks, empty state, keep-today-in-view. Deliberately NOT ported: bout popover, 'next' sort.
 
@@ -41,6 +60,14 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 | 8 | Ghost upcoming bar ✓ done | Open plans get dashed ghost from last activity to Due (first open section with Due, else +21d); overdue state when Due < today; grid bounds include ghost dates |
 | 9 | Axis + empty + today ✓ done | Daily ticks (bare day numbers, month label on 1st emphasized); range text in head; `Nothing matches the current filters yet.` empty state; today keeps fractional time + scrolls into view on open (instant) |
 | 10 | Verify + close ✓ done | TEMP-DEBUG reverted (error badge, title readout, sh3 stamp); every touched file ≤100 lines; node --check; tl3 slice-test 18/18; build green; owner accepted revision (`fine`) and directed roundup + icon-only filter |
+
+### Task 7: Bars + names + coverage + tips ✓ done {#phase-3}
+
+### Task 8: Ghost upcoming bar ✓ done {#phase-3}
+
+### Task 9: Axis + empty + today ✓ done {#phase-3}
+
+### Task 10: Verify + close ✓ done {#phase-3}
 
 - REF GATE 3 (✓ PASSED · evidence 2026-10-31): bars read as per-plan tracks with names truncated in-lane, ghost honest (Due-anchored, danger-token overdue), carets + lane-click + month badge per owner safepipe fix, tips accurate, tl3 18/18, no parse/hash drift (parse layer untouched), budgets hold, owner `fine`. Verdict: PASSED.
 - REF GATE 3 · rev 2026-10-31: polish round from owner screenshots — sticky side-label rail (every row titled), name aboard only bars ≥5d (no slivers), day grid widened to --tl-day with dividers, taller pills, display head, sticky axis.
@@ -57,5 +84,11 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 | 11 | Drawer full-bleed + rail insets ✓ done | Drawer `padding:0;gap:0`; rail/task carry `cl-18/30` insets + `overscroll:contain`; rail-head `flex:none` + `cl-16` sides; rail picks `cl-12 cl-16`; rail-foot sides `cl-16`; drawer-head rhythm `pt-6/mb-4` + single-line ellipsis title |
 | 12 | One panel at a time ✓ done | `st.returnTimeline`: tl-open hides timeline under drawer; ✕/scrim/Escape restore it on close; paintTimeline stays hidden while `open`; phone ≤720px drawer stacks full-width (rail 42% top, task fills) |
 | 13 | Verify + close | node --check ×3; budgets ≤100; build green; `npm test` exit 0; owner Safari confirm (layering, insets, phone stack) |
+
+### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
+
+### Task 12: One panel at a time ✓ done {#phase-4}
+
+### Task 13: Verify + close {#phase-4}
 
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, no parse/hash drift, budgets hold.
