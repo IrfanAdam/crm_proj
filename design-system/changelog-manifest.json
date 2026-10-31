@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T11:39:00.867Z",
+  "generated": "2026-10-31T11:56:35.855Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "5c70e8d",
+      "full": "5c70e8deeda86e49441d4780c667cef451f4cad6",
+      "date": "2026-10-31",
+      "time": "17:26",
+      "subject": "refactor(budget): split 6 over-limit files to <=100 — audio-engine, OppsHome trio, footer-orchestrion, pitch-load",
+      "plan": "2026-10-31_131759-changelog-parity.md",
+      "anchor": "phase-6"
+    },
     {
       "sha": "4e79563",
       "full": "4e79563960a77f2ccecba743a3823acff1a1bb48",
