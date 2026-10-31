@@ -24,9 +24,8 @@ export function paintDrawer({ plan, sprint }) {
   const orphanHtml = badges(orph, 'Further commits');
   return [
     `<div class="ds-drawer-head">`,
-    dueHtml,
     `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
-    crumb + `<h2>${title}</h2>` + status,
+    crumb + `<h2>${title}</h2>` + status + dueHtml,
     marked.parse(stripGateThread(sprint.body)) + evalsHtml + commitsHtml + orphanHtml,
     `</div>`,
   ].join('');
