@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T13:44:14.024Z",
+  "generated": "2026-10-31T13:57:50.668Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "8514cc3",
+      "full": "8514cc361fc5ddaf66a712f0493c59d966048da8",
+      "date": "2026-10-31",
+      "time": "19:27",
+      "subject": "feat(changelog): Task 23 due row under status, head close-only",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "4f41628",
       "full": "4f41628556b0b5b1d2eb3ed7c5ce4e63800bcc7b",
