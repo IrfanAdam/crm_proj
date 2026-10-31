@@ -272,7 +272,7 @@
 **Steps:** stage explicit paths only (never `-A`); one commit per phase with `[plan:<file>#{#phase-N}]` trailer; manifest-only syncs untrailered; mark `✓ done` in task headings in place (never append phantom headings); `buildState` reads complete; end with `git status` clean.
 **Verify:** every `✓ done` sha resolves in `git log` with its trailer; no `## Phase`/`## Task` mixing; fractions full.
 
-- REF GATE 6 (OPEN · evidence 2026-10-31): tracker ×2 stable (384 linked, 0 wip), `npm test` exit 0, `npm run build` green, changelog CSS 160 × var(--cl-) / 0 × space-vars, browser matrix (filters, immunity, evals, orphans, timeline, due loop, 390px cards+rows overlap 0), budget extraction leaves every touched file ≤100 (advisory lint unchanged). Missing: owner pixel sign-off; Task 20 live redeploy (secrets). Verdict: OPEN — corrected record: 9/9 test files pass, plan-names 19/19 green; lint-tokens red on 6 pre-existing over-budget files outside this thread (extraction work dispatched); Task 20 blocked on secrets.
+- REF GATE 6 (OPEN · evidence 2026-10-31): tracker ×2 stable (384 linked, 0 wip), `npm test` exit 0, `npm run build` green, changelog CSS 160 × var(--cl-) / 0 × space-vars, browser matrix (filters, immunity, evals, orphans, timeline, due loop, 390px cards+rows overlap 0), budget extraction leaves every touched file ≤100 (advisory lint unchanged). Missing: owner pixel sign-off; Task 20 live redeploy (secrets). Verdict: OPEN — corrected record 2026-10-31: full suite green (`npm test` exit 0 incl. lint-tokens 0 over-limit after 6-file extraction + atlas regen, build 4.38s); Task 20 blocked on secrets.
 
 ---
 
