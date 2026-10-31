@@ -9,21 +9,21 @@
 
 ## Phase 1 — Filter dropdown {#phase-1}
 
-**Status:** 2/3 · GATE OPEN (Tasks 1–2 desktop-verified live; Task 3 needs a real page load — see note)
+**Status:** 3/3 · GATE PASSED (subagent fresh-session live verify: icon-only toggle, anchored dropdown, option filters cards, outside-click + Escape dismiss, 390px bottom sheet)
 
 | # | Task | Done when |
 |---|------|-----------|
 | 1 | Dropdown toggle + menu markup ✓ done | Icon-only funnel button FIRST in chips row (`data-filter-toggle`, `aria-haspopup="dialog"`; active state via pill `.on` + aria-label, no text/caret/count in the button); `div.ds-tag-dropdown[data-tag-dropdown][hidden]` anchored under it with Tags/Status tabs, checkbox (`data-tag-opt`) + radio (`data-status-opt`) options with counts; inline pills + day chip + Clear + timeline chip order unchanged |
 | 2 | Dropdown behavior ✓ done | Toggle flips `hidden` + `aria-expanded`; tab switch without repaint; option pick applies + repaints; outside-click + Escape dismiss; phone ≤640px bottom-sheet restyle |
-| 3 | Budget + probes | Every touched file ≤100 lines (extract `changelog/filter-menu.js` if needed); node --check; live: toggle opens anchored panel, option filters list, outside-click closes |
+| 3 | Budget + probes ✓ done | Every touched file ≤100 lines; node --check; fresh-session live: toggle opens anchored panel (same left edge, below trigger), option filters list (22→20 picks), outside-click + Escape close, 390px bottom sheet (fixed, full-width, 12px top radii) |
 
 ### Task 1: Dropdown toggle + menu markup ✓ done {#phase-1}
 
 ### Task 2: Dropdown behavior ✓ done {#phase-1}
 
-### Task 3: Budget + probes {#phase-1}
+### Task 3: Budget + probes ✓ done {#phase-1}
 
-- REF GATE 1 (OPEN · evidence 2026-10-31): desktop dropdown live-verified (anchored below trigger, 6 tag + 2 status options, status pick → 12 cards, outside-dismiss ✓, budgets all ≤100, `npm test` exit 0, build green). PENDING a real page load: phone bottom-sheet geometry + Escape dismiss (harness tabs stopped reloading tonight — shell stuck pre-edit while paint modules hot-swapped; Safari hard-refresh is the verification). Verdict: OPEN.
+- REF GATE 1 (✓ PASSED · evidence 2026-10-31): fresh-session live — icon-only funnel (svg only, empty textContent), dropdown anchored below toggle (same left edge), Design System pick 22→20 picks, Done status 20→13, outside-click + Escape dismiss, 390px bottom sheet (fixed full-width, 12px top radii). Budgets ≤100, build green. Nit (follow-up): aria-expanded stays "true" after outside-click dismiss — visibility correct, label stale. Verdict: PASSED.
 - REF GATE 1 · rev 2026-10-31: toggle is icon-only funnel per owner (no Filter text/caret/count in button; active state via pill `.on` + aria-label).
 
 ## Phase 2 — Timeline fixed panel {#phase-2}
@@ -92,3 +92,4 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 ### Task 13: Verify + close {#phase-4}
 
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, no parse/hash drift, budgets hold.
+- REF GATE 4 · rev 2026-10-31: mechanical half GO (independent re-verify: node --check 7/7, all 8 files ≤100, returnTimeline set/restore wired incl. Escape, zero DEBUG remnants, full-bleed + insets + phone stack present). Remaining: owner Safari pixel confirm.
