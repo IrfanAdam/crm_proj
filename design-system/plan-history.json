@@ -8149,6 +8149,43 @@
           "state": "2/2"
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-10-31",
+      "hash": "53c204a2",
+      "sections": [
+        {
+          "head": "Phase 1 — Status model + filter drawer {#phase-1}",
+          "hash": "1aa4a118",
+          "state": "6/6"
+        },
+        {
+          "head": "Phase 2 — Gate verdicts + evals feed {#phase-2}",
+          "hash": "25765139",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 3 — Orphans + triage parity {#phase-3}",
+          "hash": "5062c70b",
+          "state": "2/2"
+        },
+        {
+          "head": "Phase 4 — Timeline tracks drawer {#phase-4}",
+          "hash": "22c0b671",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 5 — Due scheduling lane {#phase-5}",
+          "hash": "b2514a32",
+          "state": "3/4"
+        },
+        {
+          "head": "Phase 6 — Verify + close {#phase-6}",
+          "hash": "890afda1",
+          "state": "2/2"
+        }
+      ]
     }
   ],
   "2026-10-31_135705-changelog-safepipe-parity.md": [
@@ -8415,6 +8452,33 @@
         {
           "head": "Phase 4 — Chrome consistency + overlay layering {#phase-4}",
           "hash": "d27f30e0",
+          "state": "2/3"
+        }
+      ]
+    },
+    {
+      "sha": "209a603f76c53cf32cdc993798b78c613538c509",
+      "date": "2026-10-31",
+      "hash": "58541d2e",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "09b24b3f",
+          "state": "3/3"
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "7666f600",
+          "state": "3/3"
+        },
+        {
+          "head": "Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}",
+          "hash": "0fe1cef0",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 4 — Chrome consistency + overlay layering {#phase-4}",
+          "hash": "6611677b",
           "state": "2/3"
         }
       ]
