@@ -4,29 +4,30 @@
 // Branch order: specific [data-*] branches BEFORE generic class branches —
 // closest() matches the element itself, so order is the only thing that saves
 // a view-toggle element carrying a filter class from the generic branch.
-import { saveDue } from './changelog/due.js';
-const dueUi = (root, doPaint, plan, sprint, due) => {
-  const label = () => root.querySelector('[data-due-label]');
-  const ui = {
-    pending: () => { const l = label(); if (l) l.textContent = 'Saving…'; },
-    done: () => { doPaint(root); },
-    fail: () => { doPaint(root); },
-  };
-  saveDue(plan, sprint, due, ui);
-};
+import { dueUi, onDueChange } from './changelog/due.js';
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
   const onClick = (e) => {
+    const openDd = root.querySelector('[data-tag-dropdown]:not([hidden])');
+    if (openDd && !e.target.closest('[data-tag-dropdown],[data-filter-toggle]')) { openDd.hidden = true; st.filterOpen = false; }
     if (e.target.closest('[data-day-clear]')) { st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
     const dd = e.target.closest('[data-day]');
     if (dd) { st.day = st.day === dd.dataset.day ? '' : dd.dataset.day;
       st.sel = [0, 0]; doPaint(root); return; }
-    if (e.target.closest('[data-filter-trigger]')) { st.filterOpen = !st.filterOpen; doPaint(root); return; }
+    if (e.target.closest('[data-filter-toggle]')) { st.filterOpen = !st.filterOpen; doPaint(root); return; }
     const tab = e.target.closest('[data-tab]');
     if (tab) { st.filterTab = tab.dataset.tab; doPaint(root); return; }
     const so = e.target.closest('[data-status]');
     if (so) { const t = so.dataset.status;
       st.status.has(t) ? st.status.delete(t) : st.status.add(t);
+      st.sel = [0, 0]; doPaint(root); return; }
+    const tgo = e.target.closest('[data-tag-opt]');
+    if (tgo) { const t = tgo.dataset.tagOpt;
+      if (t) { st.active.has(t) ? st.active.delete(t) : st.active.add(t); }
+      st.sel = [0, 0]; doPaint(root); return; }
+    const so2 = e.target.closest('[data-status-opt]');
+    if (so2) { const t = so2.dataset.statusOpt;
+      if (t) { st.status.has(t) ? st.status.delete(t) : st.status.add(t); }
       st.sel = [0, 0]; doPaint(root); return; }
     if (e.target.closest('[data-clear]')) { st.active = new Set(); st.status = new Set();
       st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
@@ -42,13 +43,10 @@ export function bindChangelogEvents(root, st, helpers) {
       if (tags) { const full = tags.dataset.tip; if (full) tags.innerHTML = full.split(' · ').map((t) => `<span class="ds-tag">${t}</span>`).join('<span class="ds-sep"> · </span>'); }
       return; }
     const dr = e.target.closest('[data-due-retry]');
-    if (dr) { const c = cur(); if (!c.plan) return;
-      const sprint = c.sprints[c.si];
-      const inp = root.querySelector('[data-due-input]');
-      dueUi(root, doPaint, c.plan, sprint, inp && inp.value ? inp.value : '');
-      return; }
+    if (dr) { const c = cur(); const inp = root.querySelector('[data-due-input]');
+      if (c.plan) dueUi(root, doPaint, c.plan, c.sprints[c.si], inp && inp.value ? inp.value : ''); return; }
     if (e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; doPaint(root); return; }
+      || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; st.timeline = false; doPaint(root); return; }
     if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
     const step = e.target.closest('[data-step]');
     if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
@@ -68,7 +66,10 @@ export function bindChangelogEvents(root, st, helpers) {
         i]; st.stage = 'tasks'; }
     doPaint(root);
   };
-  const onKey = (e) => { if (e.key === 'Escape' && st.open) { st.open = false; st.openFile = ''; doPaint(root); } else if (e.key === 'Escape' && st.timeline) { st.timeline = false; doPaint(root); } };
+  const onKey = (e) => { if (e.key !== 'Escape') return;
+    if (st.open) { st.open = false; st.openFile = ''; doPaint(root); }
+    else if (st.timeline) { st.timeline = false; doPaint(root); }
+    else if (st.filterOpen) { st.filterOpen = false; doPaint(root); } };
   const move = (e) => {
     const el = e.target.closest('[data-tip]'), tip = root.querySelector('.ds-cursor-tip');
     if (!tip) return;
@@ -81,18 +82,14 @@ export function bindChangelogEvents(root, st, helpers) {
     tip.style.left = x + 'px'; tip.style.top = y + 'px';
   };
   const hideTip = () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; };
-  const onDueChange = (e) => {
-    const inp = e.target.closest('[data-due-input]'); if (!inp) return;
-    const c = cur(); if (!c.plan) return;
-    dueUi(root, doPaint, c.plan, c.sprints[c.si], inp.value);
-  };
+  const dueChange = onDueChange(root, doPaint, cur);
   root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
   root.addEventListener('mousemove', move);
-  root.addEventListener('change', onDueChange);
+  root.addEventListener('change', dueChange);
   document.addEventListener('mouseleave', hideTip);
   return () => {
     root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey);
     root.removeEventListener('mousemove', move);
-    root.removeEventListener('change', onDueChange);
+    root.removeEventListener('change', dueChange);
     document.removeEventListener('mouseleave', hideTip); };
 }

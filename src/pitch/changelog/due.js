@@ -56,3 +56,19 @@ export const saveDue = async (plan, sprint, due, ui) => {
     ui.fail(errs[key]);
   }
 };
+// View wiring (moved from changelog-events.js, budget): Saving… narrative +
+// change handler share saveDue so the drawer narrative never diverges.
+export const dueUi = (root, doPaint, plan, sprint, due) => {
+  const label = () => root.querySelector('[data-due-label]');
+  const ui = {
+    pending: () => { const l = label(); if (l) l.textContent = 'Saving…'; },
+    done: () => { doPaint(root); },
+    fail: () => { doPaint(root); },
+  };
+  saveDue(plan, sprint, due, ui);
+};
+export const onDueChange = (root, doPaint, cur) => (e) => {
+  const inp = e.target.closest('[data-due-input]'); if (!inp) return;
+  const c = cur(); if (!c.plan) return;
+  dueUi(root, doPaint, c.plan, c.sprints[c.si], inp.value);
+};

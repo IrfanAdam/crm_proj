@@ -10,7 +10,7 @@ a.masthead-brand{text-decoration:none}
 #cl-root .ds-hero h1{font-size:clamp(2rem,4.5vw,2.9rem)}
 .ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:min(var(--type-hero-clamp),12vw);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
 .ds-hr{border:none;border-top:var(--border-hairline);margin:var(--cl-14) 0}
-.ds-chips{display:flex;gap:var(--cl-8);flex-wrap:wrap;margin:0 0 var(--cl-12)}
+.ds-chips{display:flex;gap:var(--cl-8);flex-wrap:wrap;align-items:center;margin:0 0 var(--cl-12);position:relative}
 .ds-chip{font-family:var(--font-display);background:var(--color-surface);color:var(--color-ink-muted);border:var(--border-hairline);padding:var(--spacing-changelog-chip-y) var(--spacing-changelog-chip-x);border-radius:var(--radius-md);font-weight:600;letter-spacing:0.06em;font-size:var(--font-size-changelog-chip);cursor:pointer}
 .ds-chip.on{background:var(--color-accent);color:var(--primitive-gray-white);border-color:var(--color-accent)}
 .ds-md{font-size:var(--text-ds-body);line-height:var(--leading-prose)}
@@ -26,9 +26,18 @@ a.masthead-brand{text-decoration:none}
 .cl-count{display:none}
 .cl-dayrow{display:none}
 .masthead-close[href]{display:grid;place-items:center;text-decoration:none}
-.ds-filter{flex:1 1 100%;border:var(--border-hairline);border-radius:var(--radius-md);background:var(--color-surface);padding:var(--cl-8) var(--cl-12) var(--cl-12)}
+.ds-chip-filter__icon{width:var(--cl-14);height:var(--cl-14);flex:none;vertical-align:middle}
+.ds-tag-dropdown{position:absolute;top:calc(100% + var(--cl-4));left:0;z-index:var(--z-ds-controls);background:var(--color-surface);border:var(--border-hairline);border-radius:var(--radius-md);box-shadow:var(--shadow-viewer);padding:var(--cl-8);min-width:260px;max-width:100%;box-sizing:border-box;max-height:70dvh;overflow:auto;display:flex;flex-direction:column;gap:var(--cl-4)}
+.ds-tag-dropdown[hidden]{display:none}
+.ds-tag-option{display:flex;align-items:center;gap:var(--cl-8);padding:var(--cl-8) var(--cl-12);cursor:pointer;font-family:var(--font-mono);font-size:var(--text-micro);border-radius:var(--radius-xs)}
+.ds-tag-option:hover{background:var(--color-panel)}
+.ds-tag-option input[type="checkbox"]{accent-color:var(--color-accent);flex:none}
+@media (max-width:640px){
+.ds-tag-dropdown{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-width:100%;min-width:0;box-sizing:border-box;overflow-x:clip;z-index:var(--z-ds-drawer);max-height:70dvh;overflow:auto;border-radius:var(--radius-md) var(--radius-md) 0 0;box-shadow:0 0 0 100vmax var(--color-viewer-shade),var(--shadow-viewer)}
+.ds-chips .ds-chip[data-tag]{display:none}
+}
 .ds-filter-tabs{display:flex;gap:var(--cl-8);margin-bottom:var(--cl-8)}
-.ds-filter-opts{display:flex;gap:var(--cl-8);flex-wrap:wrap}
+.ds-filter-opts{display:flex;flex-direction:column;gap:var(--cl-4)}
 .ds-pick.is-cancelled .ds-num{color:var(--color-danger)}
 .ds-plan-grid .ds-pick.is-cancelled.on{background:var(--color-surface);box-shadow:inset var(--cl-2) 0 0 var(--color-danger)}
 .ds-tags-more{color:inherit;cursor:pointer}

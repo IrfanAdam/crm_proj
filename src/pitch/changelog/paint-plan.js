@@ -25,7 +25,7 @@ export function paintPlan(root, ctx){
     const hide0 = /All tracked/.test(u0);
     tri0.innerHTML = hide0 ? '' : u0;
     tri0.hidden = hide0;
-    drawer.hidden = true; scrim.hidden = true; return false;
+    drawer.hidden = true; scrim.hidden = !ctx.timeline; return false;
   }
   const sprint = sprints[si];
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {

@@ -171,6 +171,6 @@ export function paintDetail(root, ctx){
   const isAllTracked = /All tracked/.test(u);
   tri.innerHTML = isAllTracked ? '' : `<hr class="ds-hr">${u}`;
   tri.hidden = isAllTracked;
-  if (open) { drawer.hidden = false; scrim.hidden = false; } else { drawer.hidden = true; scrim.hidden = true; }
+  if (open) { drawer.hidden = false; scrim.hidden = false; } else { drawer.hidden = true; scrim.hidden = !ctx.timeline; }
 }
 export { marked };

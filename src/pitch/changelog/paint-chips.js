@@ -2,21 +2,11 @@
 import { fmtDate } from '../changelog-parse.js';
 import { graph } from './graph.js';
 import { timelineList } from './timeline.js';
+import { filterMenu } from './filter-menu.js';
 export function paintChips(root, ctx){
   const { active, status, day, counts, statusCounts, plans, filterOpen, filterTab, timeline } = ctx;
   const anyFilter = active.size || status.size || day;
-  const filterCount = active.size + status.size + (day ? 1 : 0);
-  const trigger = [
-    `<button class="ds-chip ds-filter-trigger`,
-    filterOpen ? ' on' : '',
-    `" data-filter-trigger aria-expanded="`,
-    filterOpen,
-    `" aria-label="Filters`,
-    filterCount ? `, ${filterCount} active` : '',
-    `">Filter ${filterOpen ? '▴' : '▾'}`,
-    filterCount ? ` (${filterCount})` : '',
-    `</button>`,
-  ].join('');
+  const menu = filterMenu({ counts, statusCounts, active, status, filterTab, filterOpen });
   const showAll = [
     `<button class="ds-chip`,
     anyFilter ? '' : ' on',
@@ -45,43 +35,7 @@ export function paintChips(root, ctx){
   const clear = anyFilter ? `<button class="ds-chip" data-clear>Clear</button>` : '';
   const tlCount = timelineList(plans, active, status).length;
   const tlChip = `<button class="ds-chip ds-tl-chip${timeline ? ' on' : ''}" data-timeline-chip aria-pressed="${timeline}">→ All ${tlCount} tracks</button>`;
-  const tab = filterTab === 'status' ? 'status' : 'tags';
-  const tagOpts = counts.map(([t, n]) => [
-    `<button class="ds-chip`,
-    active.has(t) ? ' on' : '',
-    `" data-tag="`,
-    t,
-    `" aria-pressed="`,
-    active.has(t),
-    `">`,
-    t,
-    ` (`,
-    n,
-    `)</button>`,
-  ].join('')).join('');
-  const statusOpts = statusCounts.map(([t, n]) => [
-    `<button class="ds-chip`,
-    status.has(t) ? ' on' : '',
-    `" data-status="`,
-    t,
-    `" aria-pressed="`,
-    status.has(t),
-    `">`,
-    t,
-    ` (`,
-    n,
-    `)</button>`,
-  ].join('')).join('');
-  const drawer = filterOpen ? [
-    `<div class="ds-filter" role="dialog" aria-label="Filters">`,
-    `<div class="ds-filter-tabs" role="tablist">`,
-    `<button role="tab" aria-selected="${tab === 'tags'}" data-tab="tags" class="ds-chip${tab === 'tags' ? ' on' : ''}">Tags</button>`,
-    `<button role="tab" aria-selected="${tab === 'status'}" data-tab="status" class="ds-chip${tab === 'status' ? ' on' : ''}">Status</button>`,
-    `</div><div class="ds-filter-opts">`,
-    tab === 'tags' ? tagOpts : statusOpts,
-    `</div></div>`,
-  ].join('') : '';
-  root.querySelector('[data-col="chips"]').innerHTML = trigger + dayChip + showAll + pills + clear + tlChip + drawer;
+  root.querySelector('[data-col="chips"]').innerHTML = menu + dayChip + showAll + pills + clear + tlChip;
   const gEl = root.querySelector('[data-col="graph"]');
   if (!gEl.dataset.ready) { gEl.innerHTML = graph({ plans, day }); gEl.dataset.ready = '1'; }
   else { gEl.querySelectorAll('[data-day]').forEach((el) => { const k = el.dataset.day,

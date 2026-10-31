@@ -16,12 +16,13 @@ const planRange = (p) => {
 export function paintTimeline(root, ctx) {
   const host = root.querySelector('[data-col="timeline"]');
   const { plans, active, status, timeline } = ctx;
-  if (!timeline) { host.innerHTML = ''; return 0; }
+  if (!timeline) { host.innerHTML = ''; host.hidden = true; return 0; }
+  host.hidden = false;
   const list = timelineList(plans, active, status).slice().reverse();
   const now = Date.now();
   const todayK = iso(new Date(now));
   const bounds = list.flatMap(planRange).filter(Boolean).concat([todayK]).sort();
-  if (!bounds.length) { host.innerHTML = ''; return 0; }
+  if (!bounds.length) { host.innerHTML = ''; host.hidden = true; return 0; }
   const startMs = atMidnight(bounds[0] + 'T00:00:00');
   const endMs = atMidnight(bounds[bounds.length - 1] + 'T00:00:00');
   const days = Math.max(1, Math.round((endMs - startMs) / DAY) + 1);
@@ -41,7 +42,7 @@ export function paintTimeline(root, ctx) {
   const todayFrac = (now - startMs) / DAY;
   const todayCol = `<div class="ds-tl-todaycol" style="left:calc(${Math.floor(todayFrac)} * var(--cl-16));width:var(--cl-16)"></div>` +
     `<div class="ds-tl-today" style="left:calc(${todayFrac.toFixed(4)} * var(--cl-16))"></div>`;
-  host.innerHTML = `<aside class="ds-timeline" aria-label="Timeline"><div class="ds-tl-head"><b>Timeline</b><button data-tl-close aria-label="Close timeline">✕</button></div>` +
-    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><div class="ds-tl-corner"></div><div class="ds-tl-ticks">${mo.join('')}</div></div>${rows}${todayCol}</div></div></aside>`;
+  host.innerHTML = `<div class="ds-tl-head"><b>Timeline</b><button data-tl-close aria-label="Close timeline">✕</button></div>` +
+    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><div class="ds-tl-corner"></div><div class="ds-tl-ticks">${mo.join('')}</div></div>${rows}${todayCol}</div></div>`;
   return list.length;
 }
