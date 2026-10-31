@@ -80,11 +80,11 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
-**Status:** 6/7 · GATE OPEN (Tasks 11–12, 15–18 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
+**Status:** 7/8 · GATE OPEN (Tasks 11–12, 15–19 shipped; Task 13 mechanical GO, Safari pixel confirm pending)
 
 Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
 
-*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec, 1473cae · Tasks 11–12, 15–18 · phase-4.*
+*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da, cc722ec, 1473cae, f336623 · Tasks 11–12, 15–19 · phase-4.*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -95,6 +95,7 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 | 16 | Detail polish port ✓ done | Safepipe task-pane contract: closed task folds (tick + clean name + caret, body unfolded), dup-head/Status/Shipped/---/Due/table strips, tables dropped again (checkbox list is the single task list), eval markdown cleaned, due hidden on sealed phases, fold CSS |
 | 17 | Fold content + scale ✓ done | Empty-fold fix: tables restored as the task list (bare ### markers carry no detail), bodyless dupes suppressed when a table lists them, bare tick rows only without tables; fold CSS to safepipe spec (13px/700 summary, cl-4 gap, margin 0, flush body, bare rows); corpus probe 343 folds/0 empty/56 tables |
 | 18 | Expected drawer structure ✓ done | Right pane leads crumb (plan tags +N) + full phase h2 + computed status line (✓ DONE/frac · gate, cancelled-aware); drawer-head drops dup title (gate + due + ✕); rail-head sticky; all crm tokens |
+| 19 | Review fixes ✓ done | Tables dropped entirely (bare tick rows carry tasks); fold-body lint (`code` spans via placeholders, `**Field:**` rows, own-line prose); status only under title (head = due + ✕); evals/commits/day single native caret, panel titles styled, timeline rail flush |
 
 ### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
 
@@ -110,7 +111,10 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 
 ### Task 18: Expected drawer structure ✓ done {#phase-4}
 
+### Task 19: Review fixes ✓ done {#phase-4}
+
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+- REF GATE 4 · rev 2026-10-31: review fixes (owner 5 items) — no tables, fold-body lint, status-once, panel carets; live probe 0 tables/1 status/0 extra carets, harness 11/11, corpus 343 folds 0 empty, budgets 90/58/33, build green.
 - REF GATE 4 · rev 2026-10-31: expected drawer structure (owner screenshot spec) — right pane now crumb + full phase title + computed status line, head drops dup title, rail title sticky; live probe crumb/h2/`✓ DONE · GATE PASSED`/sticky all green; display synthesis only, card seal untouched.
 - REF GATE 4 · rev 2026-10-31: fold content + scale (owner: empty accordions, off-scale titles) — ### markers are bare headers with all content in the phase table, so folds were correctly shaped but empty: tables restored as THE task list, bodyless dupes suppressed under tables, bare tick rows only table-less; fold CSS to safepipe spec (13px/700 summary, cl-4 gap, margin 0, flush body); corpus probe 19 plans → 343 folds, 0 empty, 56 tables; struct-harness 11/11, 90 lines, build green, 9/9 suites + plan-names pass (lint red only on sibling's live gem WIP file, untouched).
 - REF GATE 4 · rev 2026-10-31: detail polish port (owner: safepipe-level format/indents/concision) — dual-auditor findings (22 gaps + full fold/tick/indent contract) implemented as Task 16: norm-shaped items fold closed with ☑/☐/☒ + clean names, dup-head/Status/Shipped/---/Due/table strips, eval `**`/`[x]` cleaned, due setter hidden on sealed phases; struct-harness 12/12, files ≤100 (72/58/30), build + suite green, live DOM 4 folds/4 ticks/0 dupes; screenshots blocked (capture daemon timeouts ×3) — owner to confirm in Safari.
