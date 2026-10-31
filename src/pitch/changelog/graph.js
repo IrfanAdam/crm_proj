@@ -2,6 +2,7 @@
 import { commits } from '../changelog-links.js';
 import { MONTHS, fmtDate, pDay, isoDay } from '../changelog-parse.js';
 import { dueOf } from './due-core.js';
+import { futureDueCell, dueOnlyCell } from './due-cells.js';
 export function graph({ plans, day }) {
   const dc = {};
   commits.forEach((c) => { if (c.date) dc[c.date] = (dc[c.date] || 0) + 1; });
@@ -45,29 +46,11 @@ export function graph({ plans, day }) {
         dueBit = m ? ` + ${m} Due` : '';
       if (d > today) {
         if (!m) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} · upcoming"></span>`;
-        return `<button class="ds-day is-future is-due${todayCls}" data-day="${k}" data-tip="${m} Due · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${m} due on ${fmtDate(k)} — filter list"></button>`;
+        return futureDueCell(k, m, day);
       }
       const n = dc[k] || 0;
       if (!n && !m) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} · no changes"></span>`;
-      if (!n) return [
-        `<button class="ds-day is-due`,
-        todayCls,
-        day === k ? ' on' : '',
-        `"`,
-        ` data-day="`,
-        k,
-        `" data-tip="`,
-        m,
-        ` Due · `,
-        fmtDate(k),
-        `" aria-pressed="`,
-        day === k,
-        `" aria-label="`,
-        m,
-        ` due on `,
-        fmtDate(k),
-        ` — filter list"></button>`,
-      ].join('');
+      if (!n) return dueOnlyCell(k, m, day, todayCls);
       const lv = Math.min(4, Math.ceil((4 * n) / max));
       return [
         `<button class="ds-day lv`,

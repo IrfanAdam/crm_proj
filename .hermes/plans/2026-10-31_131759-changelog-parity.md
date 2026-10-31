@@ -239,14 +239,14 @@
 
 ## Phase 6 — Verify + close {#phase-6}
 
-**Status:** 0/2 · GATE OPEN
+**Status:** 1/2 · GATE OPEN (matrix green; Task 22 closes with the landing commit; Phase 5 gate stays OPEN — Task 20 blocked on owner secrets)
 
 | # | Task | Done when |
 |---|------|-----------|
 | 21 | Full verification matrix | Tracker ×2 stable, tests + build green, browser passes, CSS parity |
 | 22 | Commit per phase + close | Each phase trailered, manifest synced untrailered, tree clean |
 
-### Task 21: Full verification matrix {#phase-6}
+### Task 21: Full verification matrix ✓ done {#phase-6}
 
 **Objective:** Prove every surface before claiming done.
 **Files:** none (read-only probes)
@@ -260,7 +260,7 @@
 **Steps:** stage explicit paths only (never `-A`); one commit per phase with `[plan:<file>#{#phase-N}]` trailer; manifest-only syncs untrailered; mark `✓ done` in task headings in place (never append phantom headings); `buildState` reads complete; end with `git status` clean.
 **Verify:** every `✓ done` sha resolves in `git log` with its trailer; no `## Phase`/`## Task` mixing; fractions full.
 
-- REF GATE 6 (OPEN → ship): matrix green + owner screenshot sign-off per phase.
+- REF GATE 6 (OPEN · evidence 2026-10-31): tracker ×2 stable (384 linked, 0 wip), `npm test` exit 0, `npm run build` green, changelog CSS 160 × var(--cl-) / 0 × space-vars, browser matrix (filters, immunity, evals, orphans, timeline, due loop, 390px cards+rows overlap 0), budget extraction leaves every touched file ≤100 (advisory lint unchanged). Missing: owner pixel sign-off; Task 20 live redeploy (secrets). Verdict: OPEN.
 
 ---
 
@@ -277,8 +277,10 @@
 | `src/pitch/pages-changelog.js` | 1, 4 |
 | `src/pitch/changelog-events.js` | 1, 4, 5 |
 | `src/pitch/changelog/timeline.js` + `src/pitch/pitch-changelog-timeline.css` (new) | 4 |
-| `src/pitch/changelog/due-core.js` + `api/due.js` (new), `vite.config.js` | 5 |
+| `src/pitch/changelog/due-core.js` + `api/due.js` (new), `vite.config.js`, `scripts/ds-due-writer.mjs` (new, Task 20 blocked on secrets) | 5 |
 | `design-system/tokens.css` (read-only — confirm danger token) | 1 |
+
+*Budget extraction (Phase 6): `changelog/gates.js`, `changelog/panels.js`, `changelog/due-cells.js` (new, from parse/paint-detail/graph) + `scripts/ds-due-writer.mjs` (from vite.config) — every touched file ≤100 lines; behavior unchanged, re-verified live.*
 
 ## Pitfalls
 
