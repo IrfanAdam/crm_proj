@@ -8039,5 +8039,41 @@
         }
       ]
     }
+  ],
+  "2026-10-31_135705-changelog-safepipe-parity.md": [
+    {
+      "sha": null,
+      "date": "2026-10-31",
+      "hash": "9ab98041",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "fbcdba40",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "a20dc41e",
+          "state": ""
+        }
+      ]
+    },
+    {
+      "sha": "d719a701926a73e51c2e12ce2d72339757fde9a5",
+      "date": "2026-10-31",
+      "hash": "154f1158",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "7c896e9c",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "e16b0333",
+          "state": ""
+        }
+      ]
+    }
   ]
 }

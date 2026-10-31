@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T08:23:04.728Z",
+  "generated": "2026-10-31T08:32:05.923Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -19,9 +19,19 @@
     "2026-09-29_143500-ds-docs-delight.md",
     "2026-10-03_144222-gem-realism-round2.md",
     "2026-10-05_000000-lump-sum-builds.md",
-    "2026-10-31_131759-changelog-parity.md"
+    "2026-10-31_131759-changelog-parity.md",
+    "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "d719a70",
+      "full": "d719a701926a73e51c2e12ce2d72339757fde9a5",
+      "date": "2026-10-31",
+      "time": "14:01",
+      "subject": "feat(changelog): safepipe parity — anchored filter dropdown, fixed timeline panel  [plan:2026-10-31_135705-changelog-safepipe-parity.md#{#phase-2}]",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "9e75fcc",
       "full": "9e75fcc0cb2fca12ba0329fc496a1b53ba085ce7",
