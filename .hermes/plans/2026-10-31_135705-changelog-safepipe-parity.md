@@ -84,7 +84,7 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 
 Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
 
-*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd · Tasks 11–12, 15 · phase-4 (Task 16 in flight).*
+*Shipped in 08c1466, 93214c0, 0f41aa6, 0122cdd, 36ac8da · Tasks 11–12, 15–16 · phase-4.*
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -92,7 +92,7 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 | 12 | One panel at a time ✓ done | `st.returnTimeline`: tl-open hides timeline under drawer; ✕/scrim/Escape restore it on close; paintTimeline stays hidden while `open`; phone ≤720px drawer stacks full-width (rail 42% top, task fills) |
 | 13 | Verify + close | node --check 7/7, budgets ≤100, build green, zero DEBUG remnants; Safari pixel confirm (layering, insets, phone stack) |
 | 15 | Task-line lint ✓ done | Prose lines keep own rows (no para-merge), `### Task` headers open `<section class="ds-subtask">`, task-overview tables render as `<table>` (header th + body rows) instead of dropped; `✓/✗` strip no longer eats newlines |
-| 16 | Detail polish port | Safepipe task-pane contract: closed task folds (tick + clean name + caret, body unfolded), dup-head/Status/Shipped/---/Due/table strips, tables dropped again (checkbox list is the single task list), eval markdown cleaned, due hidden on sealed phases, fold CSS |
+| 16 | Detail polish port ✓ done | Safepipe task-pane contract: closed task folds (tick + clean name + caret, body unfolded), dup-head/Status/Shipped/---/Due/table strips, tables dropped again (checkbox list is the single task list), eval markdown cleaned, due hidden on sealed phases, fold CSS |
 
 ### Task 11: Drawer full-bleed + rail insets ✓ done {#phase-4}
 
@@ -102,9 +102,10 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 
 ### Task 15: Task-line lint ✓ done {#phase-4}
 
-### Task 16: Detail polish port {#phase-4}
+### Task 16: Detail polish port ✓ done {#phase-4}
 
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+- REF GATE 4 · rev 2026-10-31: detail polish port (owner: safepipe-level format/indents/concision) — dual-auditor findings (22 gaps + full fold/tick/indent contract) implemented as Task 16: norm-shaped items fold closed with ☑/☐/☒ + clean names, dup-head/Status/Shipped/---/Due/table strips, eval `**`/`[x]` cleaned, due setter hidden on sealed phases; struct-harness 12/12, files ≤100 (72/58/30), build + suite green, live DOM 4 folds/4 ticks/0 dupes; screenshots blocked (capture daemon timeouts ×3) — owner to confirm in Safari.
 - REF GATE 4 · rev 2026-10-31: task-line lint (owner report — tasks ran together as one): prose one-`<p>`-per-line, Task sections wrapped, overview tables render as tables (was dropped like safepipe — but safepipe duplicates tasks as checkboxes while crm phases list them only in the table); newline-eating `✓/✗` strip fixed; struct-harness 10/10, file 93 lines, suite green.
 - REF GATE 4 · rev 2026-10-31: mechanical half GO (independent re-verify: node --check 7/7, all 8 files ≤100, returnTimeline set/restore wired incl. Escape, zero DEBUG remnants, full-bleed + insets + phone stack present).
 - REF GATE 4 · rev 2026-10-31: pixel-review screenshots captured from live :5173 (timeline panel, plan drawer, filter dropdown, 390px bottom sheet) — attached for owner sign-off, the last Task 13 item.
