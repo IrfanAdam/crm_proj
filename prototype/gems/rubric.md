@@ -236,3 +236,50 @@ render because they differed in scope — one merged the new env's brighter cont
 (praised by the comparative read as "separate bright glints along the girdle") into a single huge
 component, another excluded it by erosion. State the erosion radius and use fixed thresholds; percentile
 thresholds are not comparable across looks.
+
+
+## Instrument revision — round 6 (2026-10-31)
+
+The original analyzer script did not survive; the instrument is now `prototype/gems/score.py`
+(all 11 criteria, `python3 prototype/gems/score.py <run-dir> --color <cat> --peer <peer-run>`).
+Shots for the baseline live in `.hermes/tmp/round6/runs/{sapphire,citrine}/`.
+
+**Mask recipe changed (validated, not fitted).** The light-stage stone is white-on-white at the
+crown, so no light-scheme threshold finds it: the old `txoff sat>18` seed measured 19 468 px of a
+31 441 px stone (top 44 px missing) and only 9 485 px of citrine's 32 058 px stone — cross-category
+IoU 0.49, which fails the instrument's own stability criterion. The mask is now seeded from the
+**dark-scheme shot, saturation > 20** (largest component, holes filled): sapphire 31 441 px,
+citrine 32 058 px, both bbox 147..444 x 56..240, **IoU 0.9946**. Fallbacks (no-stone difference,
+then sat>18) are named in the score notes so a degraded mask is never silent.
+
+**Instrument stability (measured):** repeat `mean|Δ|` 0.15 (sapphire) / 0.07 (citrine) — noise floor
+≤1.0; `frac>8` 0.004 / 0.002; canvas pinned 510x223 in every shot of both categories. Criterion 11 = 10.
+
+**Baseline sheet, round 6** (same pose, light scheme, floor on):
+
+| # | Criterion | Sapphire | Citrine |
+|---|---|---|---|
+| 1 | Facet edge crispness | 4 | 4 |
+| 2 | Internal brightness range | 2 | 2 |
+| 3 | Dispersion / fire | 2 | 4 |
+| 4 | Transmission depth | 1 | 3 |
+| 5 | Highlight structure | 8 | 0 |
+| 6 | Background interaction | 1 | 3 |
+| 7 | Material honesty | 6 | 6 |
+| 8 | Cut integrity | 8 | 8 |
+| 9 | Tone-map / scheme | 8 | 6 |
+| 10 | Motion smoothness | 4 | 4 |
+| 11 | Instrument stability | 10 | 10 |
+| | **Total** | **54/110 (4.91)** | **50/110 (4.55)** |
+
+Motion is host-bound, not rig-bound: 180 frames, omega CoV 0.299, dt p50 47.2 ms / p95 80.9 ms,
+monotonic true, one interval over 100 ms (headless SwiftShader sustains ~21 fps). Criterion 10 stays
+provisional until the same probe runs on a GPU host.
+
+**Round-6 findings worth carrying:** (a) `gem-tint.js` `api.step` referenced an undeclared `T`
+(it lives inside `apply()`), so any category pill threw `ReferenceError` at the ramp uniforms and the
+stone froze mid-tint with the category never committing — fixed by declaring `T` in `step()`.
+(b) The console also carries 7 `deck-lab.js:16` TypeErrors per load (`r.cam` undefined) — unrelated
+to the gem, recorded, not fixed. (c) Citrine's interior is 50 % clipped-bright (L≥215): criterion 5 = 0.
+(d) Backdrop transfer is real but weak: the chart is visible through the table per vision, while the
+whole-interior high-pass ratio T is 0.018 (sapphire) / 0.078 (citrine).

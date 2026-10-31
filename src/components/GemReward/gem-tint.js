@@ -62,6 +62,7 @@ api.apply = function (canvas, name) {
   return true;
 };
 api.step = function (rig, dt) {
+  const T = window.THREE;
   const t = rig.tint;
   if (!t) return;
   t.t = Math.min(1, t.t + dt / DUR);
