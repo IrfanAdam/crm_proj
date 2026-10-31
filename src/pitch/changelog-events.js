@@ -5,6 +5,7 @@
 // closest() matches the element itself, so order is the only thing that saves
 // a view-toggle element carrying a filter class from the generic branch.
 import { dueUi, onDueChange } from './changelog/due.js';
+import { scrollRowIntoView } from './changelog/tl-edges.js';
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
   const onClick = (e) => {
@@ -17,10 +18,6 @@ export function bindChangelogEvents(root, st, helpers) {
     if (e.target.closest('[data-filter-toggle]')) { st.filterOpen = !st.filterOpen; doPaint(root); return; }
     const tab = e.target.closest('[data-tab]');
     if (tab) { st.filterTab = tab.dataset.tab; doPaint(root); return; }
-    const so = e.target.closest('[data-status]');
-    if (so) { const t = so.dataset.status;
-      st.status.has(t) ? st.status.delete(t) : st.status.add(t);
-      st.sel = [0, 0]; doPaint(root); return; }
     const tgo = e.target.closest('[data-tag-opt]');
     if (tgo) { const t = tgo.dataset.tagOpt;
       if (t) { st.active.has(t) ? st.active.delete(t) : st.active.add(t); }
@@ -38,6 +35,12 @@ export function bindChangelogEvents(root, st, helpers) {
       const c1 = cur(), idx = c1.list.findIndex((p) => p.file === f);
       st.returnTimeline = st.timeline; st.timeline = false;
       st.sel = [Math.max(idx, 0), 0]; st.open = true; st.openFile = f; st.stage = 'tasks'; doPaint(root); return; }
+    const edge = e.target.closest('[data-tl-edge]');
+    if (edge && st.timeline) { const row = edge.closest('[data-tl-row]');
+      if (row) scrollRowIntoView(root, row, edge.dataset.tlEdge); return; }
+    const lane = e.target.closest('.ds-tl-lane');
+    if (lane && st.timeline) { const row = lane.closest('[data-tl-row]');
+      if (row) scrollRowIntoView(root, row, 'auto'); return; }
     const tm = e.target.closest('[data-tags-more]');
     if (tm) { e.preventDefault(); e.stopPropagation();
       const row = tm.closest('.ds-pick'), tags = row && row.querySelector('.ds-tags');
