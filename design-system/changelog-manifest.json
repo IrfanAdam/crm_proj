@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T13:57:50.668Z",
+  "generated": "2026-10-31T14:48:02.288Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -110,8 +110,8 @@
       "date": "2026-10-31",
       "time": "18:12",
       "subject": "chore(ds): sync plan manifest (plumbing — manifest-only, auto-excluded)",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-1"
     },
     {
       "sha": "36ac8da",
@@ -146,8 +146,8 @@
       "date": "2026-10-31",
       "time": "17:35",
       "subject": "chore(ds): retro-link 7a49e74 (gem handoff) + sync manifest",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-7"
     },
     {
       "sha": "7a49e74",
@@ -3793,5 +3793,7 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/arch/atlas.json"
+  ]
 }
