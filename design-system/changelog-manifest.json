@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T12:05:38.734Z",
+  "generated": "2026-10-31T12:13:15.710Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "2590ac0",
+      "full": "2590ac08fb3cf3722b6d6e5a7966863b2e98b55a",
+      "date": "2026-10-31",
+      "time": "17:43",
+      "subject": "fix(changelog): lane popover safepipe card look — white 12px, display title, mono lines",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "415d8b1",
       "full": "415d8b11bea8fc9c8b84f5945e0cfd7dc5253ff0",
