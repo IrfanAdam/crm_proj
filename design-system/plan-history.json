@@ -8074,6 +8074,50 @@
           "state": ""
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-10-31",
+      "hash": "83f4f439",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "7c896e9c",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "8b377a3a",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}",
+          "hash": "3e6b9789",
+          "state": ""
+        }
+      ]
+    },
+    {
+      "sha": "a7088ac3f6af8147e040cea7eaf26efe68676974",
+      "date": "2026-10-31",
+      "hash": "39c95a5a",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "7c896e9c",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "8b377a3a",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}",
+          "hash": "d46e8a4a",
+          "state": ""
+        }
+      ]
     }
   ]
 }

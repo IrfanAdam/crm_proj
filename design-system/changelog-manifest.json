@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T08:57:59.302Z",
+  "generated": "2026-10-31T09:06:28.429Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "a7088ac",
+      "full": "a7088ac3f6af8147e040cea7eaf26efe68676974",
+      "date": "2026-10-31",
+      "time": "14:36",
+      "subject": "feat(changelog): timeline inner track UX — bars with names aboard, done coverage, ghost upcoming, tips, daily ticks",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "c171960",
       "full": "c17196030e86db03b2cfccfa486874a9e9604dc0",
