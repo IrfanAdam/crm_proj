@@ -70,7 +70,7 @@
 .ds-callout { border: var(--cl-1) solid var(--color-border); background: var(--color-panel); padding: var(--cl-12) var(--cl-14); border-radius: var(--radius-xs); }
 .ds-callout--warn { border-left: var(--cl-2) solid var(--color-accent); background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)); }
 .ds-callout--success { border-left: var(--cl-2) solid var(--primitive-green-400); background: color-mix(in srgb, var(--primitive-green-400) 6%, var(--color-surface)); }
-.ds-callout h2 { display: flex; align-items: center; gap: var(--cl-8); margin: 0 0 var(--cl-6); }
+.ds-callout h2 { display: flex; align-items: center; gap: var(--cl-8); margin: 0 0 var(--cl-6); font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--color-ink-muted); }
 .ds-count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: var(--cl-16); height: var(--cl-16); padding: 0 var(--cl-6); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; color: var(--color-bg); background: var(--color-accent); border-radius: var(--radius-full); line-height: 1; }
 .ds-count-badge--ok { background: var(--primitive-green-400); }
 [data-col="triage"][hidden] { display: none !important; }
@@ -82,7 +82,7 @@
 .ds-panel-title::before { content: "›"; color: var(--color-ink-muted); transition: transform .15s; }
 .ds-panel[open] > .ds-panel-title::before { transform: rotate(90deg); }
 .ds-timeline-group > summary::-webkit-details-marker { display: none; }
-.ds-timeline-date::after { content: "›"; color: var(--color-ink-muted); margin-left: var(--cl-8); display: inline-block; transition: transform .15s; }
+.ds-timeline-group > .ds-timeline-date::after { content: "›"; color: var(--color-ink-muted); margin-left: var(--cl-8); display: inline-block; transition: transform .15s; }
 .ds-timeline-group[open] > .ds-timeline-date::after { transform: rotate(90deg); }
 .ds-caret { display: inline-block; font-weight: 900; font-size: var(--cl-12); transform: rotate(90deg); }
 .ds-panel:not([open]) > .ds-panel-title .ds-caret { transform: rotate(0deg); }

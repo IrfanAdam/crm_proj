@@ -52,8 +52,8 @@ export const unlinked = (texts) => {
     if (!c.anchor) return false;
     return !secsOf(c.plan).some((s) => anchorHit(s.body, c.anchor));
   });
-  if (!xs.length) return '<div class="ds-callout ds-callout--success"><h2>Unlinked DS changes <span class="ds-count-badge ds-count-badge--ok">0</span></h2><p>All tracked \u2014 every DS commit cites its plan.</p></div>';
-  return ['<div class="ds-callout ds-callout--warn"><h2>Unlinked DS changes <span class="ds-count-badge">', String(xs.length), '</span></h2><p>These cite no plan \u2014 link next time via ',
+  if (!xs.length) return '<div class="ds-callout ds-callout--success"><h2>Unlinked DS changes <span class="ds-count-badge ds-count-badge--ok">0</span></h2><p>All tracked — every DS commit cites its plan.</p></div>';
+  return ['<div class="ds-callout ds-callout--warn"><h2>Unlinked DS changes <span class="ds-count-badge">', String(xs.length), '</span></h2><p>These cite no plan — link next time via ',
     '<code>[plan:&lt;file&gt;#&lt;anchor&gt;]</code>.</p>'].join('')
     + (xs.length ? ((()=>{ let h='<div class="ds-timeline">'; let l=null; for(const c of xs){ if(c.date!==l){ h+=`<div class="ds-timeline-date">${esc(fmtTimelineDate(c.date))}</div>`; l=c.date; } h+=badgeItem(c); } return h+'</div>'; })()) : '')
     + (wip.length ? `<p>Uncommitted:</p><ul>${wip.map((w) => `<li><code>${esc(w)}</code></li>`).join('')}</ul>` : '')
