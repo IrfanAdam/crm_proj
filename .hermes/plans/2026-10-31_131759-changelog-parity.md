@@ -70,6 +70,7 @@
 **Verify:** full filter matrix on live page (each status × day × tag), Escape/scrim close intact, screenshot.
 
 - REF GATE 1 (OPEN · evidence 2026-10-31): Done/Incomplete counts verified live (12/5), Clear resets, drawer immunity holds (rail 144222), phone-390 overlap 0, planStatus 12/12 synthetic + 17-plan corpus. Missing: cancelled path has zero live plans to exercise; owner pixel sign-off pending. Verdict: OPEN.
+- REF GATE 1 · rev 2026-10-31: card tags single-line right-aligned with ellipsis (owner screenshot showed 2-line wrap from flex-wrap; full list stays in data-tip).
 
 ---
 
