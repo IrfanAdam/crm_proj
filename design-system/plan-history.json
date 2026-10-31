@@ -8236,6 +8236,33 @@
           "state": ""
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-10-31",
+      "hash": "5321dce2",
+      "sections": [
+        {
+          "head": "Phase 1 — Filter dropdown {#phase-1}",
+          "hash": "7c896e9c",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Timeline fixed panel {#phase-2}",
+          "hash": "8b377a3a",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}",
+          "hash": "106d6ec7",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Chrome consistency + overlay layering {#phase-4}",
+          "hash": "e0ef3452",
+          "state": ""
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T09:32:30.629Z",
+  "generated": "2026-10-31T09:46:12.516Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "083d026",
+      "full": "083d026bc7b31dfe5de8ba21b17a825a765e78ad",
+      "date": "2026-10-31",
+      "time": "15:16",
+      "subject": "feat(changelog): floating edge-caret timeline labels per owner safepipe fix — side rail removed",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-3"
+    },
     {
       "sha": "0f41aa6",
       "full": "0f41aa6cdd356b3c70b409b3dea8b3876484c7fb",
