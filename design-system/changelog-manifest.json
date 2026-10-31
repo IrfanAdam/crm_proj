@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T12:42:56.034Z",
+  "generated": "2026-10-31T13:03:27.148Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "cc722ec",
+      "full": "cc722ec5020a3daf94c9a3b2d5fc6b67ca2045e7",
+      "date": "2026-10-31",
+      "time": "18:33",
+      "subject": "fix(changelog): Task 17 — tables back as task list, bare dupes suppressed, safepipe fold scale",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "0c50a68",
       "full": "0c50a688553431cd04e2abd4f04782b91a9708f2",
@@ -3713,6 +3722,9 @@
     }
   ],
   "wip": [
+    "M prototype/gems/rubric.md",
+    "M src/components/GemReward/gem-tint.js",
+    "?? prototype/gems/motion-probe.mjs",
     "?? prototype/gems/score.py"
   ]
 }
