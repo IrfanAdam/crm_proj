@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T09:25:30.420Z",
+  "generated": "2026-10-31T09:29:10.387Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "93214c0",
+      "full": "93214c0d3c72482a7c13b2a9241261cf31e367dd",
+      "date": "2026-10-31",
+      "time": "14:59",
+      "subject": "refactor(changelog): split paint-detail 176 into markdown/rail/drawer/orchestrator, all under budget",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "34463ef",
       "full": "34463ef65f277b46182cd151520f598c9bec0f04",
