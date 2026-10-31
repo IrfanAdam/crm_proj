@@ -2,6 +2,7 @@
    Continuation 20260909_145218_9888b1 — all future plans branch from here. */
 import manifest from '../../design-system/changelog-manifest.json';
 import { fmtDate, fmtTime } from './changelog-format.js';
+import { split } from './changelog-parse.js';
 import { esc as escAll } from './changelog/esc.js';
 const fmtTimelineDate = (iso) => { if(!iso) return ''; const d=fmtDate(iso); return d ? d.replace(' ', ' ').replace(/^([0-9]{2}) ([A-Za-z]{3}) ([0-9]{4})$/, (_,dd,mmm,yyyy)=> `${Number(dd)} ${mmm}, ${yyyy}`) : iso; };
 const GH = 'https://github.com/IrfanAdam/crm_proj/commit/';
@@ -10,19 +11,32 @@ export const commits = manifest.commits || [];
 export const wip = manifest.wip || [];
 export const continuation = manifest.continuation || '20260909_145218_9888b1';
 const badgeItem = (c) => `<div class="ds-timeline-item"><a href="${GH}${c.full}">${c.sha}</a> <span>${esc(c.subject)}</span>${c.time ? `<small>${esc(fmtTime(c.time))}</small>` : ''}</div>`;
+// Shared anchor matcher: anchor hits a split() section body. Both hits() and
+// unlinked() test through here so triage matches the way hits() matches.
+export const anchorHit = (body, anchor) => {
+  const a = String(anchor).replace(/^.*?(phase-\d+).*$/i, '$1');
+  const escA = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(escA + '(?!\\d)').test(body);
+};
 // anchor-less commits attach to their plan's first phase; anchored ones to the first phase whose text contains the
 // anchor. Anchor normalized via .replace to bare phase-N; exact match ensures phase-1 doesn't hit phase-10.
 export const hits = (file, text, first) => commits
   .filter((c) => {
     if (c.plan !== file) return false;
     if (!c.anchor) return first;
-    const a = String(c.anchor).replace(/^.*?(phase-\d+).*$/i, '$1');
-    const escA = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    return new RegExp(escA + '(?!\d)').test(text);
+    return anchorHit(text, c.anchor);
   });
-export const badges = (list) => {
+// Plan-wide orphan set: linked commits matching NO section body. Built by unioning
+// hits() over EVERY sprint — plan-level, never section-scoped — so each section pane
+// repeats the identical full-plan list instead of vanishing post-done batches.
+export const orphans = (file, sprints) => {
+  const seen = new Set();
+  sprints.forEach((s, i) => hits(file, s.body, i === 0).forEach((c) => seen.add(c.sha)));
+  return commits.filter((c) => c.plan === file && !seen.has(c.sha));
+};
+export const badges = (list, title) => {
   if (!list.length) return '';
-  let html = '<div class="ds-timeline">';
+  let html = title ? `<p class="ds-sub">${esc(title)} · ${list.length}</p><div class="ds-timeline">` : '<div class="ds-timeline">';
   let last = null;
   for (const c of list) {
     if (c.date !== last) { html += `<div class="ds-timeline-date">${esc(fmtTimelineDate(c.date))}</div>`; last = c.date; }
@@ -31,12 +45,12 @@ export const badges = (list) => {
   return html + '</div>';
 };
 export const unlinked = (texts) => {
+  const secsCache = {};
+  const secsOf = (file) => (secsCache[file] = secsCache[file] || split(texts[file] || ''));
   const xs = commits.filter((c) => {
     if (!c.plan || !texts[c.plan]) return true;
     if (!c.anchor) return false;
-    const a = String(c.anchor).replace(/^.*?(phase-\d+).*$/i, '$1');
-    const escA = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    return !new RegExp(escA + '(?!\d)').test(texts[c.plan]);
+    return !secsOf(c.plan).some((s) => anchorHit(s.body, c.anchor));
   });
   if (!xs.length) return '<div class="ds-callout ds-callout--success"><h2>Unlinked DS changes <span class="ds-count-badge ds-count-badge--ok">0</span></h2><p>All tracked \u2014 every DS commit cites its plan.</p></div>';
   return ['<div class="ds-callout ds-callout--warn"><h2>Unlinked DS changes <span class="ds-count-badge">', String(xs.length), '</span></h2><p>These cite no plan \u2014 link next time via ',

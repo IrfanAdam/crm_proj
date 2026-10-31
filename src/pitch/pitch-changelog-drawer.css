@@ -67,6 +67,7 @@
 .ds-count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: var(--cl-16); height: var(--cl-16); padding: 0 var(--cl-6); font-family: var(--font-mono); font-size: var(--text-micro); font-weight: 700; color: var(--color-bg); background: var(--color-accent); border-radius: var(--radius-full); line-height: 1; }
 .ds-count-badge--ok { background: var(--primitive-green-400); }
 [data-col="triage"][hidden] { display: none !important; }
+.ds-sub { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); margin: var(--cl-12) 0 var(--cl-4); }
 /* evals + commits panels · collapsible tiles, caret left of caps label */
 .ds-panel { border: var(--border-hairline); border-radius: var(--radius-xs); margin: var(--cl-12) 0; }
 .ds-panel-title { display: flex; align-items: center; gap: var(--cl-8); cursor: pointer; padding: var(--cl-8) var(--cl-12); font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); list-style: none; }

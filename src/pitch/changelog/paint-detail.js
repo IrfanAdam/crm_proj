@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
-import { hits, badges, unlinked } from '../changelog-links.js';
+import { hits, badges, unlinked, orphans } from '../changelog-links.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
 import { isDone, state, hash, planStatus, parseGates, fmtDate } from '../changelog-parse.js';
 import { esc } from './esc.js';
@@ -201,13 +201,15 @@ export function paintDetail(root, ctx){
   const headGate = gateVerdictTag(sprint.head, sprint.body);
   const evalsHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body);
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
+  const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
+  const orphanHtml = badges(orph, 'Further commits');
   root.querySelector('[data-col="tasks"]').innerHTML = [
     `<div class="ds-drawer-head"><b>`,
     esc(short(sprint.head)),
     `</b>`,
     headGate ? `<span class="ds-gate">${headGate}</span>` : '',
     `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
-    marked.parse(stripGateThread(sprint.body)) + evalsHtml + commitsHtml,
+    marked.parse(stripGateThread(sprint.body)) + evalsHtml + commitsHtml + orphanHtml,
     `</div>`,
   ].join('');
   const u = unlinked(texts);

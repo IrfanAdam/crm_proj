@@ -120,7 +120,7 @@
 
 ## Phase 3 — Orphans + triage parity {#phase-3}
 
-**Status:** 0/2 · GATE OPEN
+**Status:** 2/2 · GATE PASSED (section-matcher probe: 0 orphans / 0 unlinked; triage hidden live; no spurious Further-commits; render path for non-empty orphans reviewed — badges(title) branch on verified badges())
 
 *What the page gains: no linked commit ever vanishes from the drawer; triage tells the truth.*
 
@@ -129,21 +129,21 @@
 | 11 | Plan-wide orphan set + Further-commits groups | Every section pane repeats the identical full-plan orphan list |
 | 12 | `unlinked()` matcher parity | Anchor tested against `split()` bodies; triage hides at 0 untracked |
 
-### Task 11: Plan-wide orphan set + Further-commits groups {#phase-3}
+### Task 11: Plan-wide orphan set + Further-commits groups ✓ done {#phase-3}
 
 **Objective:** Post-done batches stay tracked instead of vanishing.
 **Files:** `src/pitch/changelog-links.js` (export `orphans(file, sprints)`), `src/pitch/changelog/paint-detail.js` (second `badges()` group per pane)
 **Steps:** build `seen` by unioning `hits()` over EVERY sprint (plan-level, never section-scoped); render `badges(orphans, 'Further commits')` identically in each pane.
 **Verify:** node probe — orphans grouped by anchor printed; gem Phase 7 pane repeats the plan orphan list.
 
-### Task 12: `unlinked()` matcher parity {#phase-3}
+### Task 12: `unlinked()` matcher parity ✓ done {#phase-3}
 
 **Objective:** Triage matches the way `hits()` matches.
 **Files:** `src/pitch/changelog-links.js`
 **Steps:** test anchors against each `split()` section body (same `anchorHit`), not raw file text; wip never concatenated; block hides when untracked = 0.
 **Verify:** manifest reports 0 unlinked; triage block hidden on live page; `All tracked` path intact.
 
-- REF GATE 3 (OPEN): zero done phases at 0 commits without note; triage hidden; probe output attached.
+- REF GATE 3 (✓ PASSED · evidence 2026-10-31): orphan-by-anchor probe empty, section-matcher unlinked 0, triage hidden on live page, Further-commits correctly absent, no console errors. Verdict: PASSED.
 
 ---
 
