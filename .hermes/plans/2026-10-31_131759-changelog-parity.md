@@ -253,7 +253,7 @@
 **Steps:** `ds-track` twice (timestamp preserved); `npm test`; `npm run build`; browser: every card → rail → detail, filters × day × status, timeline open, Escape/scrim, 390px pairwise-rect probe = 0; `grep var(--sp-spacing` on changelog chunk = 1 root-only; dist vs local CSS byte-compare recipe.
 **Verify:** all green with attached evidence; stash-compare any test failure (only NEW failures count).
 
-### Task 22: Commit per phase + close {#phase-6}
+### Task 22: Commit per phase + close ✓ done {#phase-6}
 
 **Objective:** Traceable landing, clean tree.
 **Files:** commits only + plan status lines
