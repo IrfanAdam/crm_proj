@@ -303,5 +303,15 @@
     "plan": "2026-10-03_144222-gem-realism-round2.md",
     "anchor": "{#phase-7}",
     "note": "gem round-4 learnings + handoff embedded in plan (auto sync sweep)"
+  },
+  "415d8b1": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-7}",
+    "note": "retro-link 7a49e74 gem handoff (the link edit itself)"
+  },
+  "0c50a68": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-1}",
+    "note": "Quality loop round-5 directive embedded in plan (restarts at Phase 1)"
   }
 }
