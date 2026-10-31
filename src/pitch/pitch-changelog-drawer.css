@@ -17,7 +17,7 @@
 .ds-rail .ds-pick small { display: block; }
 .ds-rail [data-prov] { margin: auto 0 var(--cl-6); }
 .ds-rail-foot { position: sticky; bottom: 0; margin-top: auto; padding: var(--cl-10) var(--cl-16) 0; border-top: var(--cl-1) solid var(--color-border); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-ink-muted); background: var(--color-bg); z-index: var(--cl-1); display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; line-clamp: 6; }
-.ds-task { flex: 1 1 auto; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: var(--cl-18) var(--cl-16) var(--cl-30); }
+.ds-task { flex: 1 1 auto; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: var(--cl-22) var(--cl-16) var(--cl-30); }
 .ds-drawer:not([hidden]) { animation: ds-drawer-in var(--dur-glide) var(--ease-signature); }
 @keyframes ds-drawer-in { from { transform: translateX(var(--cl-30)); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes ds-scrim-in { from { opacity: 0; } to { opacity: 1; } }
@@ -49,7 +49,9 @@
   .ds-rail { flex: none; max-height: 42%; border-right: none; border-bottom: var(--border-hairline); }
 }
 
-.ds-timeline{position:relative;margin:var(--cl-8) 0 0 var(--cl-4);padding-left:var(--cl-12);border-left:var(--cl-1) solid var(--color-border)}
+.ds-panel{margin:var(--cl-12) 0}
+.ds-panel-title{font-family:var(--font-mono);font-size:var(--text-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-ink-muted);cursor:pointer}
+.ds-timeline{position:relative;margin:var(--cl-8) 0 0 0;padding-left:var(--cl-12);border-left:var(--cl-1) solid var(--color-border)}
 .ds-timeline-date{font-family:var(--font-mono);font-size:var(--text-micro);font-weight:var(--font-weight-bold);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-accent);margin:var(--cl-8) 0 var(--cl-4);position:relative}
 .ds-timeline-date:first-child{margin-top:0}
 .ds-timeline-date::before{content:"";position:absolute;left:calc(-1 * var(--cl-12) - var(--cl-4));top:50%;transform:translateY(-50%);width:var(--cl-7);height:var(--cl-7);background:var(--color-accent);border:var(--cl-1) solid var(--color-accent);border-radius:50%;box-sizing:border-box;box-shadow: 0 0 0 var(--cl-2) color-mix(in srgb, var(--color-accent) 18%, transparent)}

@@ -43,13 +43,13 @@ export const renderEvals = (planFile, planDate, head, body) => {
     const items = rows.map((r) => r.kind === 'eval'
       ? `<div class="ds-timeline-item ds-timeline-item--eval"><span>${r.text}</span></div>`
       : `<div class="ds-timeline-item ds-timeline-item--iter"><span>${r.text}</span><small>${esc(d)}</small></div>`).join('');
-    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date"><span class="ds-caret">‹›</span>Day ${dayN} · ${esc(fmtDate(d) || d)} · ${rows.length}</summary>${items}</details>`;
+    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">Day ${dayN} · ${esc(fmtDate(d) || d)} · ${rows.length}</summary>${items}</details>`;
   }).join('');
-  return `<details class="ds-panel" open><summary class="ds-panel-title"><span class="ds-caret">‹›</span>Evals · ${entries.length}</summary><div class="ds-timeline">${groups}</div></details>`;
+  return `<details class="ds-panel" open><summary class="ds-panel-title">Evals · ${entries.length}</summary><div class="ds-timeline">${groups}</div></details>`;
 };
 export const renderCommitsPanel = (hs, badgesHtml) => {
   if (!hs.length) return '';
-  return `<details class="ds-panel" open><summary class="ds-panel-title"><span class="ds-caret">‹›</span>Commits · ${hs.length}</summary>${badgesHtml}</details>`;
+  return `<details class="ds-panel" open><summary class="ds-panel-title">Commits · ${hs.length}</summary>${badgesHtml}</details>`;
 };
 export const gateVerdictTag = (head, body) => {
   const g = parseGates(head, body);

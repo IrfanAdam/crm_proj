@@ -10,6 +10,9 @@ a.masthead-brand{text-decoration:none}
 .ds-md .ds-status.ds-is-done{color:var(--color-accent)}
 .ds-md .ds-status.ds-is-cancelled{color:var(--color-danger)}
 .ds-md .ds-status.ds-is-gate{color:var(--color-ink-muted)}
+.ds-md code{font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-accent)}
+.ds-md .ds-field{margin:var(--cl-4) 0}
+.ds-md .ds-f-t{font-weight:700}
 #cl-root{padding-top:var(--cl-22);padding-bottom:var(--cl-32)}
 #cl-root .ds-hero h1{font-size:clamp(2rem,4.5vw,2.9rem)}
 .ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:min(var(--type-hero-clamp),12vw);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
