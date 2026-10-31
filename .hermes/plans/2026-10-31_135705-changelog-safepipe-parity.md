@@ -107,6 +107,8 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 
 ### Task 13: Verify + close {#phase-4}
 
+Mechanical re-verify 2026-10-31 (covers Tasks 15–23): `node --check` all changelog JS green; zero `TEMP-DEBUG`/`console.log` remnants; `npm test` 0 failures (fixed pre-existing `verify:atlas` staleness from gem `3a28d08` via sanctioned `npm run gen:atlas`); build green; touched JS 32–90 lines ≤100; live probes — stable plan-title rail head, crumb/rail-text/due on one line, › carets on folds only, due order crumb/title/status/due/content, 0 tables, triage hidden at 419/419 linked. Remaining: owner Safari pixel sign-off (layering, insets, phone stack).
+
 ### Task 15: Task-line lint ✓ done {#phase-4}
 
 ### Task 16: Detail polish port ✓ done {#phase-4}
@@ -126,6 +128,7 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 ### Task 23: Due under status ✓ done {#phase-4}
 
 - REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, mechanical 7/7 + budgets verified, Safari pixel confirm pending.
+- REF GATE 4 · rev 2026-10-31: Task 13 mechanical re-verify fresh (checks/DEBUG/tests/build/budgets/live all green, atlas staleness fixed, 419/419 linked) — only owner Safari pixel sign-off remains.
 - REF GATE 4 · rev 2026-10-31: due under status (owner, safepipe order) — body order crumb/title/status/due/content live-verified, head close-only, build green.
 - REF GATE 4 · rev 2026-10-31: unlinked callout (owner) — em-dashes render, head at panel scale (10.5px/uppercase live), static dates caret-free, build green.
 - REF GATE 4 · rev 2026-10-31: deadline row position (owner) — rail text, crumb, due pill all on one line (26/26/26 live probe), build green.

@@ -246,12 +246,13 @@
 
 - REF GATE 5 (OPEN · evidence 2026-10-31): due-core 8/8 cases, endpoint guards (shape/traversal/head-404) + set/clear net-zero via curl, full page loop (Add deadline → Saving → reload → Deadline · date + future hollow dot + due-day filter → 1 card), drawer snapshot restores across reload, api/due.js written + syntax-checked. BLOCKED: live redeploy verification needs `DUE_AUTHOR` (GitHub login) + `DUE_TOKEN` (fine-grained PAT, Contents read+write, repo-only) as Vercel env — owner supplies or defers Task 20. Verdict: OPEN.
 - REF GATE 5 · rev 2026-10-31: independent re-verify — all 4 files present (api/due.js 91, due-core.js 32, ds-due-writer.mjs 45, vite.config.js 80), node --check 6/6, env reads isolated to api/due.js, Task 20 heading correctly unmarked. Blocker unchanged.
+- REF GATE 5 · rev 2026-10-31 (close-out pass): code-complete re-confirmed, nothing further doable without secrets. Single ask stands: `DUE_AUTHOR` (your GitHub login) + `DUE_TOKEN` (fine-grained PAT, Contents read+write, repo-only) as Vercel env, then one redeploy-pick to verify end-to-end.
 
 ---
 
 ## Phase 6 — Verify + close {#phase-6}
 
-**Status:** 1/2 · GATE OPEN (matrix run — suite red on pre-existing items, see GATE 6; Task 22 closes with the landing commit; Phase 5 Task 20 blocked on owner secrets)
+**Status:** 2/2 · GATE OPEN (Tasks 21–22 done; Task 20 secrets + owner pixel sign-off still pending)
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -273,6 +274,7 @@
 **Verify:** every `✓ done` sha resolves in `git log` with its trailer; no `## Phase`/`## Task` mixing; fractions full.
 
 - REF GATE 6 (OPEN · evidence 2026-10-31): tracker ×2 stable (384 linked, 0 wip), `npm test` exit 0, `npm run build` green, changelog CSS 160 × var(--cl-) / 0 × space-vars, browser matrix (filters, immunity, evals, orphans, timeline, due loop, 390px cards+rows overlap 0), budget extraction leaves every touched file ≤100 (advisory lint unchanged). Missing: owner pixel sign-off; Task 20 live redeploy (secrets). Verdict: OPEN — corrected record 2026-10-31: full suite green (`npm test` exit 0 incl. lint-tokens 0 over-limit after 6-file extraction + atlas regen, build 4.38s); Task 20 blocked on secrets.
+- REF GATE 6 · rev 2026-10-31: status corrected 1/2 → 2/2 (both task headings ✓ done; rail already computed 2/2); `verify:atlas` staleness from gem `3a28d08` fixed via `npm run gen:atlas`, full suite 0 failures, tree clean; 419/419 DS commits linked (retro-linked `0c50a68` + `415d8b1` to gem plan, no history rewrite). Gate stays OPEN: Phase 5 Task 20 needs owner `DUE_AUTHOR` + `DUE_TOKEN`, plus owner pixel sign-off.
 
 ---
 
