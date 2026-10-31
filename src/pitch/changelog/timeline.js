@@ -34,8 +34,8 @@ const covOf = (p) => {
 export function paintTimeline(root, ctx) {
   const host = root.querySelector('[data-col="timeline"]');
   if (!host) return 0;
-  const { plans, active, status, timeline } = ctx;
-  if (!timeline) { host.innerHTML = ''; host.hidden = true; return 0; }
+  const { plans, active, status, timeline, open } = ctx;
+  if (!timeline || open) { host.innerHTML = ''; host.hidden = true; return 0; }
   host.hidden = false;
   const list = timelineList(plans, active, status).slice().reverse();
   const now = Date.now();

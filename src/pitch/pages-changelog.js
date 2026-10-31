@@ -38,7 +38,7 @@ const counts = TAGS.map((t) => [t, plans.filter((p) => p.tags.includes(t)).lengt
 const STATUS = ['Done', 'Incomplete', 'Cancelled'];
 const statusOf = (p) => { const s = planStatus(p.sprints); return s === 'done' ? 'Done' : s === 'cancelled' ? 'Cancelled' : 'Incomplete'; };
 const statusCounts = STATUS.map((t) => [t, plans.filter((p) => statusOf(p) === t).length]).filter(([, n]) => n);
-const st = { active: new Set(), status: new Set(), day: '', sel: [0, 0], open: false, openFile: '', filterOpen: false, filterTab: 'tags', timeline: false, stage: 'list' };
+const st = { active: new Set(), status: new Set(), day: '', sel: [0, 0], open: false, openFile: '', filterOpen: false, filterTab: 'tags', timeline: false, returnTimeline: false, stage: 'list' };
 const visiblePlans = () => plans
   .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
     && (!st.status.size || st.status.has(statusOf(p)))

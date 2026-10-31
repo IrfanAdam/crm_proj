@@ -36,6 +36,7 @@ export function bindChangelogEvents(root, st, helpers) {
     const to = e.target.closest('[data-tl-open]');
     if (to) { const f = to.dataset.tlOpen; st.day = '';
       const c1 = cur(), idx = c1.list.findIndex((p) => p.file === f);
+      st.returnTimeline = st.timeline; st.timeline = false;
       st.sel = [Math.max(idx, 0), 0]; st.open = true; st.openFile = f; st.stage = 'tasks'; doPaint(root); return; }
     const tm = e.target.closest('[data-tags-more]');
     if (tm) { e.preventDefault(); e.stopPropagation();
@@ -46,7 +47,7 @@ export function bindChangelogEvents(root, st, helpers) {
     if (dr) { const c = cur(); const inp = root.querySelector('[data-due-input]');
       if (c.plan) dueUi(root, doPaint, c.plan, c.sprints[c.si], inp && inp.value ? inp.value : ''); return; }
     if (e.target.closest('[data-close]')
-      || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; st.timeline = false; doPaint(root); return; }
+      || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; st.timeline = false; if (st.returnTimeline) { st.timeline = true; st.returnTimeline = false; } doPaint(root); return; }
     if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
     const step = e.target.closest('[data-step]');
     if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
@@ -67,7 +68,7 @@ export function bindChangelogEvents(root, st, helpers) {
     doPaint(root);
   };
   const onKey = (e) => { if (e.key !== 'Escape') return;
-    if (st.open) { st.open = false; st.openFile = ''; doPaint(root); }
+    if (st.open) { st.open = false; st.openFile = ''; if (st.returnTimeline) { st.timeline = true; st.returnTimeline = false; } doPaint(root); }
     else if (st.timeline) { st.timeline = false; doPaint(root); }
     else if (st.filterOpen) { st.filterOpen = false; doPaint(root); } };
   const move = (e) => {

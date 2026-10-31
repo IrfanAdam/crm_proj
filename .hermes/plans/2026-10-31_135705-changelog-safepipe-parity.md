@@ -42,3 +42,17 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 | 10 | Cleanup + budget + verify | Revert TEMP-DEBUG (error badge, title readout, sh3 stamp); every touched file ≤100 lines; node --check; Node slice-test of open path; build green; owner Safari confirm |
 
 - REF GATE 3 (OPEN → ship): bars read as per-plan tracks with names aboard, ghost honest (Due-anchored, overdue marked), tips accurate, no parse/hash drift (parse layer untouched), budgets hold.
+
+## Phase 4 — Chrome consistency + overlay layering {#phase-4}
+
+**Status:** 2/3 · GATE OPEN (Tasks 11–12 code-verified; Task 13 needs owner Safari confirm)
+
+Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer outer padding clips header/final row (skill full-bleed rule); rail children lack the 16px guide insets; rail-head can collapse in the flex scroll container; task pane has no insets of its own; timeline+drawer stacked at one z (tl-open left both open). Deliberately NOT ported: scrim `.is-open` mechanism (crm `[hidden]` works), mobile multi-level panes (needs JS markers — minimal phone stack instead), rail-prov element (no crm markup).
+
+| # | Task | Done when |
+|---|------|-----------|
+| 11 | Drawer full-bleed + rail insets ✓ done | Drawer `padding:0;gap:0`; rail/task carry `cl-18/30` insets + `overscroll:contain`; rail-head `flex:none` + `cl-16` sides; rail picks `cl-12 cl-16`; rail-foot sides `cl-16`; drawer-head rhythm `pt-6/mb-4` + single-line ellipsis title |
+| 12 | One panel at a time ✓ done | `st.returnTimeline`: tl-open hides timeline under drawer; ✕/scrim/Escape restore it on close; paintTimeline stays hidden while `open`; phone ≤720px drawer stacks full-width (rail 42% top, task fills) |
+| 13 | Verify + close | node --check ×3; budgets ≤100; build green; `npm test` exit 0; owner Safari confirm (layering, insets, phone stack) |
+
+- REF GATE 4 (OPEN → ship): drawer reads full-bleed with even insets, rail guide flush, exactly one panel visible at a time with return-to-timeline, no parse/hash drift, budgets hold.
