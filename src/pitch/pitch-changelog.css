@@ -27,6 +27,7 @@ a.masthead-brand{text-decoration:none}
 .cl-dayrow{display:none}
 .masthead-close[href]{display:grid;place-items:center;text-decoration:none}
 .ds-chip-filter__icon{width:var(--cl-14);height:var(--cl-14);flex:none;vertical-align:middle}
+.ds-chip-filter{display:inline-flex;align-items:center;justify-content:center}
 .ds-tag-dropdown{position:absolute;top:calc(100% + var(--cl-4));left:0;z-index:var(--z-ds-controls);background:var(--color-surface);border:var(--border-hairline);border-radius:var(--radius-md);box-shadow:var(--shadow-viewer);padding:var(--cl-8);min-width:260px;max-width:100%;box-sizing:border-box;max-height:70dvh;overflow:auto;display:flex;flex-direction:column;gap:var(--cl-4)}
 .ds-tag-dropdown[hidden]{display:none}
 .ds-tag-option{display:flex;align-items:center;gap:var(--cl-8);padding:var(--cl-8) var(--cl-12);cursor:pointer;font-family:var(--font-mono);font-size:var(--text-micro);border-radius:var(--radius-xs)}
