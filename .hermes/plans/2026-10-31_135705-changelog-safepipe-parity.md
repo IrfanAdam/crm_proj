@@ -108,7 +108,7 @@ Port safepipe drawer chrome + one-panel-at-a-time layering. Findings: drawer out
 
 ### Task 13: Verify + close {#phase-4}
 
-Mechanical re-verify 2026-10-31 (covers Tasks 15–23): `node --check` all changelog JS green; zero `TEMP-DEBUG`/`console.log` remnants; `npm test` 0 failures (fixed pre-existing `verify:atlas` staleness from gem `3a28d08` via sanctioned `npm run gen:atlas`); build green; touched JS 32–90 lines ≤100; live probes — stable plan-title rail head, crumb/rail-text/due on one line, › carets on folds only, due order crumb/title/status/due/content, 0 tables, triage hidden at 419/419 linked. Remaining: owner Safari pixel sign-off (layering, insets, phone stack) — owner deferred 2026-10-31, will confirm later.
+Mechanical re-verify 2026-10-31 (covers Tasks 15–23): `node --check` all changelog JS green; zero `TEMP-DEBUG`/`console.log` remnants; `npm test` 0 failures (fixed pre-existing `verify:atlas` staleness from gem `3a28d08` via sanctioned `npm run gen:atlas`); build green; touched JS 32–90 lines ≤100; live probes — stable plan-title rail head, crumb/rail-text/due on one line, › carets on folds only, due order crumb/title/status/due/content, 0 tables, triage hidden at 419/419 linked. Remaining: owner Safari pixel sign-off (layering, insets, phone stack) — owner deferred 2026-10-31, will confirm later. Supporting geometry 2026-10-31: layering round-trip chip→timeline→bar→drawer→✕→timeline exclusive at every step; 390px zero x-overflow, rail/task stack 0–354/354–844.
 
 ### Task 15: Task-line lint ✓ done {#phase-4}
 
