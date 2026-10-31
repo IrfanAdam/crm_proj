@@ -15,6 +15,7 @@ const planRange = (p) => {
 };
 export function paintTimeline(root, ctx) {
   const host = root.querySelector('[data-col="timeline"]');
+  if (!host) return 0;
   const { plans, active, status, timeline } = ctx;
   if (!timeline) { host.innerHTML = ''; host.hidden = true; return 0; }
   host.hidden = false;

@@ -67,6 +67,7 @@ export function render() {
   ].join('');
 }
 function doPaint(root) {
+  if (!root.querySelector('aside.ds-timeline') || !root.querySelector('[data-drawer]')) root.innerHTML = render();
   const { list, pi, plan, sprints, si } = cur();
   st.sel = [pi, si];
   paint(root, { list, pi, plan, sprints, si, active: st.active, status: st.status, day: st.day,
