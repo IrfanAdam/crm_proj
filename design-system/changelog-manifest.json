@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T13:04:49.761Z",
+  "generated": "2026-10-31T13:07:09.076Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "465d294",
+      "full": "465d294b572bbcd4754f16ff0dc881c674b70ff9",
+      "date": "2026-10-31",
+      "time": "18:37",
+      "subject": "refactor(gem): trim motion-probe to the 100-line gate",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "3a28d08",
       "full": "3a28d08e9847e6476efd145210fd46ad2f7562f1",
