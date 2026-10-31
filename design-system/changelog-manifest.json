@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T08:48:53.388Z",
+  "generated": "2026-10-31T08:50:53.447Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "206ea44",
+      "full": "206ea440038c7e09573252070437dbb73c467d06",
+      "date": "2026-10-31",
+      "time": "14:20",
+      "subject": "chore(changelog): TEMP-DEBUG on-page error badge (revert after root-cause)",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "dc94737",
       "full": "dc94737c0af60c1797b6544db70e06d0ec3215ff",
