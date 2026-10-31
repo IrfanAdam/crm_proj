@@ -58,7 +58,7 @@ const cur = () => {
 };
 export function render() {
   return [
-    `<p class="ds-crumb">Start \u00b7 Changelog \u00b7 sh3</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
+    `<p class="ds-crumb">Start \u00b7 Changelog</p><div class="ds-hero wide"><h1>What shipped, in order.</h1></div>`,
     `<hr class="ds-hr"><div class="ds-graph" data-col="graph"></div><div class="ds-chips" data-col="chips"></div>`,
     `<div class="ds-plan-grid"><div class="ds-col" data-col="plan"></div></div><div class="ds-md" data-col="triage"></div>`,
     `<aside class="ds-timeline" data-col="timeline" aria-label="Timeline" hidden></aside><div class="ds-scrim" data-scrim hidden></div><span class="ds-cursor-tip" hidden role="tooltip"></span>`,
@@ -72,7 +72,6 @@ function doPaint(root) {
   st.sel = [pi, si];
   paint(root, { list, pi, plan, sprints, si, active: st.active, status: st.status, day: st.day,
     sel: st.sel, open: st.open, stage: st.stage, counts, statusCounts, plans, texts, filterOpen: st.filterOpen, filterTab: st.filterTab, timeline: st.timeline });
-  try { document.title = `cl open=${st.open ? 1 : 0} tl=${st.timeline ? 1 : 0} n=${list.length}`; } catch {} // TEMP-DEBUG sh3: state readout, revert after root-cause
 }
 export function mount(root) {
   applyOverrides(plans);

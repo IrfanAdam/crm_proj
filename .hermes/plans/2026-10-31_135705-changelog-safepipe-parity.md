@@ -24,6 +24,21 @@
 |---|------|-----------|
 | 4 | Aside mount + open/close ✓ done | `[data-col="timeline"]` becomes `aside.ds-timeline` fixed right (`min(86vw, var(--size-ds-drawer))`, slide/fade `.is-open`, `hidden` when closed); ✕ + Escape + scrim + chip-toggle close; in-flow host div removed from render |
 | 5 | Panel CSS ✓ done | Sticky axis, scroll region, head chrome mirror safepipe panel (crm `--cl-*`/`--color-*` tokens only); phone full-width; `prefers-reduced-motion` stills the slide |
-| 6 | Budget + probes | Files ≤100 lines; live: chip opens panel over content (cards visible behind scrim), row click opens drawer, close paths work, 390px no overlap |
+| 6 | Budget + live probes ✓ done | Files ≤100 lines; live owner-confirmed: chip opens panel over content, card opens drawer (`ok its working`), close paths wired |
 
-- REF GATE 2 (OPEN · evidence 2026-10-31): aside render + fixed-panel CSS + scrim/Escape/✕ wiring all present in source AND the built bundle (post-build grep), budgets ≤100, build green. PENDING a real page load: panel open/close + 390px (same stuck-tab cause as Gate 1 — render() runs once per load, HMR only swaps paint; Safari hard-refresh is the verification). Verdict: OPEN.
+- REF GATE 2 (PASSED · evidence 2026-10-31): owner confirms both panels open on live page after triage-div fix (`ok its working`); aside render + fixed CSS + scrim/Escape/✕ wiring in source and bundle; budgets ≤100; build green; `npm test` exit 0. Verdict: PASSED.
+
+## Phase 3 — Timeline inner track UX (safepipe-adapted) {#phase-3}
+
+**Status:** 3/4 · GATE OPEN (Tasks 7–9 code-verified; Task 10 needs owner Safari confirm)
+
+Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model kept — no bout-merge port): plan name rides its longest bar, done-coverage fill, ghost upcoming bar, hover tips, daily ticks, empty state, keep-today-in-view. Deliberately NOT ported: bout popover, edge carets, month badge, 'next' sort.
+
+| # | Task | Done when |
+|---|------|-----------|
+| 7 | Bars + names + coverage + tips ✓ done | Name (+num) rides longest of bar/ghost; bar shows plan done-share (`--tl-done` muted accent from left); bar/ghost carry `data-tip` (commits · range · Due); sidebar name buttons + corner spacer removed |
+| 8 | Ghost upcoming bar ✓ done | Open plans get dashed ghost from last activity to Due (first open section with Due, else +21d); overdue state when Due < today; grid bounds include ghost dates |
+| 9 | Axis + empty + today ✓ done | Daily ticks (bare day numbers, month label on 1st emphasized); range text in head; `Nothing matches the current filters yet.` empty state; today keeps fractional time + scrolls into view on open (instant) |
+| 10 | Cleanup + budget + verify | Revert TEMP-DEBUG (error badge, title readout, sh3 stamp); every touched file ≤100 lines; node --check; Node slice-test of open path; build green; owner Safari confirm |
+
+- REF GATE 3 (OPEN → ship): bars read as per-plan tracks with names aboard, ghost honest (Due-anchored, overdue marked), tips accurate, no parse/hash drift (parse layer untouched), budgets hold.
