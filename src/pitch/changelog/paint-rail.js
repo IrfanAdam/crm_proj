@@ -7,7 +7,7 @@ import { esc } from './esc.js';
 export function paintRail({ plan, sprints, sel, si, seq }) {
   const sprint = sprints[si], sprintDesc = (s) => descOf(s.body);
   const planNum = plan.id || seq;
-  const railTitle = short(sprint.head).toUpperCase();
+  const railTitle = String(plan.title || short(sprint.head)).toUpperCase();
   const railHead = [
     `<div class="ds-rail-head">`,
     `<span class="ds-rail-num">${esc(planNum)}</span>`,

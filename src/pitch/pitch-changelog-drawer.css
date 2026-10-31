@@ -17,13 +17,13 @@
 .ds-rail .ds-pick small { display: block; }
 .ds-rail [data-prov] { margin: auto 0 var(--cl-6); }
 .ds-rail-foot { position: sticky; bottom: 0; margin-top: auto; padding: var(--cl-10) var(--cl-16) 0; border-top: var(--cl-1) solid var(--color-border); font-size: var(--text-micro); line-height: var(--leading-prose); color: var(--color-ink-muted); background: var(--color-bg); z-index: var(--cl-1); display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; line-clamp: 6; }
-.ds-task { flex: 1 1 auto; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: var(--cl-22) var(--cl-16) var(--cl-30); }
+.ds-task { flex: 1 1 auto; position: relative; min-width: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: var(--cl-18) var(--cl-16) var(--cl-30); }
 .ds-drawer:not([hidden]) { animation: ds-drawer-in var(--dur-glide) var(--ease-signature); }
 @keyframes ds-drawer-in { from { transform: translateX(var(--cl-30)); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes ds-scrim-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .ds-drawer:not([hidden]), .ds-scrim:not([hidden]) { animation: none; } }
 /* drawer head + picks */
-.ds-drawer-head { display: flex; gap: var(--cl-8); align-items: center; justify-content: flex-end; padding-top: var(--cl-6); margin-bottom: var(--cl-4); }
+.ds-drawer-head { display: flex; gap: var(--cl-8); align-items: center; justify-content: flex-end; position: absolute; top: var(--cl-6); right: var(--cl-16); z-index: 2; margin: 0; padding: var(--cl-2) 0 var(--cl-2) var(--cl-8); background: var(--color-bg); }
 .ds-drawer-head b { flex: 1 1 auto; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); }
 .ds-drawer-head button { font-family: var(--font-mono); font-size: var(--text-micro); background: var(--color-surface); color: var(--color-ink); border: var(--border-hairline); padding: var(--cl-4) var(--cl-9); cursor: pointer; }
 .ds-drawer-head button:disabled { opacity: 0.4; cursor: default; }
@@ -79,7 +79,11 @@
 .ds-panel { border: var(--border-hairline); border-radius: var(--radius-xs); margin: var(--cl-12) 0; }
 .ds-panel-title { display: flex; align-items: center; gap: var(--cl-8); cursor: pointer; padding: var(--cl-8) var(--cl-12); font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); list-style: none; }
 .ds-panel-title::-webkit-details-marker { display: none; }
+.ds-panel-title::before { content: "›"; color: var(--color-ink-muted); transition: transform .15s; }
+.ds-panel[open] > .ds-panel-title::before { transform: rotate(90deg); }
 .ds-timeline-group > summary::-webkit-details-marker { display: none; }
+.ds-timeline-date::after { content: "›"; color: var(--color-ink-muted); margin-left: var(--cl-8); display: inline-block; transition: transform .15s; }
+.ds-timeline-group[open] > .ds-timeline-date::after { transform: rotate(90deg); }
 .ds-caret { display: inline-block; font-weight: 900; font-size: var(--cl-12); transform: rotate(90deg); }
 .ds-panel:not([open]) > .ds-panel-title .ds-caret { transform: rotate(0deg); }
 .ds-timeline-group > summary .ds-caret { transform: rotate(90deg); }
