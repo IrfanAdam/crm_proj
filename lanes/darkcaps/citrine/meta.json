@@ -1,0 +1,302 @@
+{
+  "url": "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+  "cat": "citrine",
+  "updatedAt": "2026-10-31T17:30:27.435Z",
+  "shots": {
+    "front": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/front.png",
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "front",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "repeat": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/repeat.png",
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "repeat",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "txoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/txoff.png",
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "txoff",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          0
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "dispoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/dispoff.png",
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "dispoff",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "chart": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/chart.png",
+      "seconds": 9.1,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "chart",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "dark": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/dark.png",
+      "seconds": 9.1,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "dark",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "theme": "dark"
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "nogem": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/nogem.png",
+      "seconds": 8.5,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "nogem",
+        "cat": "citrine",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    }
+  }
+}

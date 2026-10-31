@@ -1,0 +1,562 @@
+{
+  "sapphire_win0": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_win0.png",
+    "seconds": 8.9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "win0",
+      "cat": "sapphire",
+      "steps": [
+        "probe:win0"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "sapphire_stageoff": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_stageoff.png",
+    "seconds": 8.9,
+    "consoleErrors": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "stageoff",
+      "cat": "sapphire",
+      "steps": [
+        "probe:stageoff"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "sapphire_gain05": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_gain05.png",
+    "seconds": 9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "gain05",
+      "cat": "sapphire",
+      "steps": [
+        "probe:gain05"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        1.3
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "sapphire_gain2": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_gain2.png",
+    "seconds": 9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "gain2",
+      "cat": "sapphire",
+      "steps": [
+        "probe:gain2"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        5.2
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "sapphire_tx025": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_tx025.png",
+    "seconds": 9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "tx025",
+      "cat": "sapphire",
+      "steps": [
+        "probe:tx025"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0.25
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        0.25
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "sapphire_att05": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_att05.png",
+    "seconds": 8.9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "att05",
+      "cat": "sapphire",
+      "steps": [
+        "probe:att05"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0.725
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "sapphire_att2": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/sapphire_att2.png",
+    "seconds": 8.7,
+    "consoleErrors": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "att2",
+      "cat": "sapphire",
+      "steps": [
+        "probe:att2"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        2.9
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "sapphire"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_win0": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_win0.png",
+    "seconds": 8.9,
+    "consoleErrors": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "win0",
+      "cat": "citrine",
+      "steps": [
+        "probe:win0"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_stageoff": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_stageoff.png",
+    "seconds": 9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "stageoff",
+      "cat": "citrine",
+      "steps": [
+        "probe:stageoff"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_gain05": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_gain05.png",
+    "seconds": 9,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "gain05",
+      "cat": "citrine",
+      "steps": [
+        "probe:gain05"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        1.3
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_gain2": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_gain2.png",
+    "seconds": 9.2,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "gain2",
+      "cat": "citrine",
+      "steps": [
+        "probe:gain2"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        5.2
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_tx025": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_tx025.png",
+    "seconds": 9.5,
+    "consoleErrors": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "tx025",
+      "cat": "citrine",
+      "steps": [
+        "probe:tx025"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0.25
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        0.25
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_att05": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_att05.png",
+    "seconds": 9.6,
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "att05",
+      "cat": "citrine",
+      "steps": [
+        "probe:att05"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        0.256
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  },
+  "citrine_att2": {
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/probes/citrine_att2.png",
+    "seconds": 9.3,
+    "consoleErrors": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "eval": {
+      "kind": "probe",
+      "name": "att2",
+      "cat": "citrine",
+      "steps": [
+        "probe:att2"
+      ],
+      "tintLeft": false,
+      "probeState": [
+        1.025
+      ],
+      "canvas": {
+        "cw": 510,
+        "ch": 223,
+        "bw": 510,
+        "bh": 223,
+        "gem": "citrine"
+      },
+      "rigs": 1,
+      "transmission": [
+        1
+      ],
+      "rotationY": [
+        0
+      ]
+    }
+  }
+}

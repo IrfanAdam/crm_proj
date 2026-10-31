@@ -1,0 +1,196 @@
+{
+  "color": "citrine",
+  "shots": {
+    "front": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/front.png",
+    "repeat": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/repeat.png",
+    "txoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/txoff.png",
+    "dispoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/dispoff.png",
+    "chart": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/chart.png",
+    "dark": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/dark.png",
+    "nogem": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/nogem.png"
+  },
+  "metrics": {
+    "1": {
+      "g_p5": 0.04476684704422951,
+      "g_p95": 50.21419372558589,
+      "g_p99": 84.13155349731443,
+      "edge_frac_gt20": 0.1256027478697404,
+      "acutance": 0.46240884898112694,
+      "EW_px": 0.869872372597456,
+      "L_p5": 68.07628440856934,
+      "L_p95": 250.01820373535156
+    },
+    "2": {
+      "p1": 61.90119934082031,
+      "p5": 68.07628440856934,
+      "p50": 206.97959899902344,
+      "p95": 250.01820373535156,
+      "p99": 252.48961074829097,
+      "p99_9": 255.0,
+      "DR": 190.58841140747066,
+      "stops": 1.889881422267475
+    },
+    "3": {
+      "fire_px_frac": 0.02132303559435863,
+      "fire_dev_p95": 11.949110984802246,
+      "hue_std": 19.769706682580434,
+      "hue_p90_p10": 44.375,
+      "hue_mean": 38.464665879234836,
+      "fire_pool_px": 29780,
+      "disp_on_mean": 28.80959701538086,
+      "disp_on_frac_gt8": 0.5157209855340511
+    },
+    "4": {
+      "txoff_mean": 124.17460632324219,
+      "txoff_frac_gt8": 0.9897198583762966,
+      "hp_interior_plain": 5.315418243408203,
+      "hp_interior_chart": 7.143052101135254,
+      "hp_ring_plain": 0.5904906988143921,
+      "hp_ring_chart": 19.322101593017578,
+      "d_hp_interior": 1.8276338577270508,
+      "d_hp_ring": 18.731610894203186,
+      "T": 0.09756949725517963,
+      "hp_ratio": 0.36968298022594687
+    },
+    "5": {
+      "n_cc": 4,
+      "largest_frac": 0.9260571175558999,
+      "bright_frac": 0.4922624237140366,
+      "bright_px": 13551,
+      "body_px": 27528,
+      "threshold_L": 215.0
+    },
+    "6": {
+      "T": 0.09756949725517963,
+      "chart_vs_plain_mean": 56.94683074951172,
+      "hp_ratio": 0.36968298022594687
+    },
+    "7": {
+      "txoff_mean": 124.17460632324219,
+      "sat_mean": 132.6511688232422,
+      "hue_mean": 38.464665879234836,
+      "token_hue": 38.9,
+      "delta_hue": 0.4353341207651624,
+      "halo_sat": 150.41188049316406,
+      "cutout_frac": 0.0,
+      "tells": {
+        "tx": true,
+        "colour": true,
+        "halo": true,
+        "cutout": true
+      }
+    },
+    "8": {
+      "bbox_fill": 0.5872118470965859,
+      "mask_holes": 0,
+      "mask_area": 32198,
+      "quadrant_edge_frac": [
+        0.21387096774193548,
+        0.11599176389842142,
+        0.11857214178731902,
+        0.13451612903225807
+      ],
+      "bbox": [
+        147,
+        57,
+        445,
+        241
+      ]
+    },
+    "9": {
+      "clip_frac": 0.008851311183037188,
+      "DR_light": 190.58841140747066,
+      "p50_light": 206.97959899902344,
+      "DR_dark": 190.08301330566402,
+      "p50_dark": 163.89599609375,
+      "abs_dp50": 43.08360290527344
+    },
+    "10": {
+      "frames": 180,
+      "omega_mean": 0.307699104952457,
+      "omega_cov": 0.3361076185356886,
+      "dt_p50": 50.0,
+      "dt_p95": 66.79999999999927,
+      "dt_max": 150.0,
+      "intervals_gt100": 1,
+      "monotonic": true,
+      "rad_total": 2.48812199990988
+    },
+    "11": {
+      "repeat_mean": 0.07011944055557251,
+      "repeat_frac_gt8": 0.001666455455582309,
+      "repeat_mean_interior": 0.9265143275260925,
+      "repeat_pass": true,
+      "canvas": [
+        510.0,
+        223.0
+      ],
+      "pin_ok": true,
+      "peer_canvas": [
+        510.0,
+        223.0
+      ],
+      "mask_iou": 0.9947720101466312,
+      "peer": "lanes/darkcaps/sapphire"
+    }
+  },
+  "criteria": [
+    {
+      "id": 1,
+      "score": 6,
+      "notes": "EW 0.87 px (anchor 1.0), acutance 0.462 (0.9 at the 10 band), edge_frac 0.1256 (10 band needs 0.04-0.09); borderline: a band threshold is within measurement tolerance of this value; silhouette: dark-scheme sat>20; mask 32198 px, bbox 298x184, fill 0.587, holes 0"
+    },
+    {
+      "id": 2,
+      "score": 4,
+      "notes": "p1 61.9 / p5 68.1 / p99 252.5; DR 190.6 (anchor 210), stops 1.89 (3.0) \u2014 darkest 1% of the interior reaches shadow"
+    },
+    {
+      "id": 3,
+      "score": 6,
+      "notes": "fire_px_frac 2.13% (10 band 6%), dev_p95 11.9 deg (25), hue p90-p10 44.4 deg (30), hue_std 19.8 deg"
+    },
+    {
+      "id": 4,
+      "score": 3,
+      "notes": "T 0.0976: interior hp 5.32 -> 7.14 vs ring 0.59 -> 19.32; tx-off mean|d| 124.17 (10 band needs >=25), frac>8 0.990"
+    },
+    {
+      "id": 5,
+      "score": 0,
+      "notes": "washed out: bright_frac 0.4923 > 0.08; fixed L>=215: n_cc 4 (10 band 6), largest_frac 0.926 (0.35), bright_frac 0.4923 (0.03)"
+    },
+    {
+      "id": 6,
+      "score": 3,
+      "notes": "min(T band 3, interior-delta band 10); chart-vs-plain mean|d| 56.95 (10 band 30), hp_ratio 0.370"
+    },
+    {
+      "id": 7,
+      "score": 10,
+      "notes": "tells pass 4/4: tx 124.17>=20, sat 132.7>=100, |dhue| 0.4<=30, halo 150.4>=40, cutout 0.0000<0.05"
+    },
+    {
+      "id": 8,
+      "score": 8,
+      "notes": "bbox fill 0.587 outside 0.48-0.58 (round brilliant band); quadrant edge_frac [0.2139, 0.116, 0.1186, 0.1345] vs 0.02 (10) / 0.01 (8); fill 0.587"
+    },
+    {
+      "id": 9,
+      "score": 8,
+      "notes": "clip_frac(L>=254) 0.0089 (<=0.02), DR light 190.6 / dark 190.1, |dp50| 43.1 (<=40)"
+    },
+    {
+      "id": 10,
+      "score": 4,
+      "notes": "180 frames: omega 0.308 rad/s, CoV 0.336 (<=0.05), dt p50/p95/max 50.0/66.8/150.0 ms, 1 intervals >100 ms, monotonic True"
+    },
+    {
+      "id": 11,
+      "score": 10,
+      "notes": "repeat mean|d| 0.07 (<=1.0), frac>8 0.002 (<=0.05); canvas 510x223; IoU 0.9948"
+    }
+  ],
+  "total_of_110": 62,
+  "total_of_10": 5.64
+}

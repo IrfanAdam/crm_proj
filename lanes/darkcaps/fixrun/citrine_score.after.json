@@ -1,0 +1,196 @@
+{
+  "color": "citrine",
+  "shots": {
+    "front": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/front.png",
+    "repeat": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/repeat.png",
+    "txoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/txoff.png",
+    "dispoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/dispoff.png",
+    "chart": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/chart.png",
+    "dark": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/dark.png",
+    "nogem": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/citrine/nogem.png"
+  },
+  "metrics": {
+    "1": {
+      "g_p5": 0.04476684704422951,
+      "g_p95": 33.82163848876953,
+      "g_p99": 55.99059906005852,
+      "edge_frac_gt20": 0.12319152458202284,
+      "acutance": 0.4919949124501365,
+      "EW_px": 0.9371157381683588,
+      "L_p5": 136.28720092773438,
+      "L_p95": 250.0904083251953
+    },
+    "2": {
+      "p1": 132.3911181640625,
+      "p5": 136.28720092773438,
+      "p50": 212.3470001220703,
+      "p95": 250.0904083251953,
+      "p99": 252.83399963378906,
+      "p99_9": 255.0,
+      "DR": 120.44288146972656,
+      "stops": 0.8989466786863495
+    },
+    "3": {
+      "fire_px_frac": 0.012455396216252608,
+      "fire_dev_p95": 10.446697235107422,
+      "hue_std": 15.60285170299423,
+      "hue_p90_p10": 37.5,
+      "hue_mean": 42.28406313754048,
+      "fire_pool_px": 29706,
+      "disp_on_mean": 4.330806255340576,
+      "disp_on_frac_gt8": 0.10100976659493462
+    },
+    "4": {
+      "txoff_mean": 123.43547821044922,
+      "txoff_frac_gt8": 0.9887636952191236,
+      "hp_interior_plain": 4.289982795715332,
+      "hp_interior_chart": 7.184307098388672,
+      "hp_ring_plain": 0.7093138694763184,
+      "hp_ring_chart": 19.62499237060547,
+      "d_hp_interior": 2.89432430267334,
+      "d_hp_ring": 18.91567850112915,
+      "T": 0.15301192090469112,
+      "hp_ratio": 0.3660794849097321
+    },
+    "5": {
+      "n_cc": 4,
+      "largest_frac": 0.9204421496618428,
+      "bright_frac": 0.5038472812545801,
+      "bright_px": 13751,
+      "body_px": 27292,
+      "threshold_L": 215.0
+    },
+    "6": {
+      "T": 0.15301192090469112,
+      "chart_vs_plain_mean": 75.28768920898438,
+      "hp_ratio": 0.3660794849097321
+    },
+    "7": {
+      "txoff_mean": 123.43547821044922,
+      "sat_mean": 145.61801147460938,
+      "hue_mean": 42.28406313754048,
+      "token_hue": 38.9,
+      "delta_hue": 3.3840631375404655,
+      "halo_sat": 154.5952606201172,
+      "cutout_frac": 0.0,
+      "tells": {
+        "tx": true,
+        "colour": true,
+        "halo": true,
+        "cutout": true
+      }
+    },
+    "8": {
+      "bbox_fill": 0.5859352203093084,
+      "mask_holes": 0,
+      "mask_area": 32128,
+      "quadrant_edge_frac": [
+        0.17445687952600394,
+        0.11804472178887156,
+        0.10710760118460019,
+        0.12161290322580645
+      ],
+      "bbox": [
+        147,
+        56,
+        445,
+        240
+      ]
+    },
+    "9": {
+      "clip_frac": 0.009236881311041218,
+      "DR_light": 120.44288146972656,
+      "p50_light": 212.3470001220703,
+      "DR_dark": 138.980185546875,
+      "p50_dark": 177.2028045654297,
+      "abs_dp50": 35.144195556640625
+    },
+    "10": {
+      "frames": 180,
+      "omega_mean": 0.307699104952457,
+      "omega_cov": 0.3361076185356886,
+      "dt_p50": 50.0,
+      "dt_p95": 66.79999999999927,
+      "dt_max": 150.0,
+      "intervals_gt100": 1,
+      "monotonic": true,
+      "rad_total": 2.48812199990988
+    },
+    "11": {
+      "repeat_mean": 0.06030287593603134,
+      "repeat_frac_gt8": 0.0012941959194018502,
+      "repeat_mean_interior": 0.7170336246490479,
+      "repeat_pass": true,
+      "canvas": [
+        510.0,
+        223.0
+      ],
+      "pin_ok": true,
+      "peer_canvas": [
+        510.0,
+        223.0
+      ],
+      "mask_iou": 0.9860759493670886,
+      "peer": "lanes/darkcaps/sapphire"
+    }
+  },
+  "criteria": [
+    {
+      "id": 1,
+      "score": 6,
+      "notes": "EW 0.94 px (anchor 1.0), acutance 0.492 (0.9 at the 10 band), edge_frac 0.1232 (10 band needs 0.04-0.09); borderline: a band threshold is within measurement tolerance of this value; silhouette: dark-scheme sat>20; mask 32128 px, bbox 298x184, fill 0.586, holes 0"
+    },
+    {
+      "id": 2,
+      "score": 2,
+      "notes": "p1 132.4 / p5 136.3 / p99 252.8; DR 120.4 (anchor 210), stops 0.90 (3.0) \u2014 darkest 1% of the interior is mid-tone (no shadowed facets)"
+    },
+    {
+      "id": 3,
+      "score": 4,
+      "notes": "fire_px_frac 1.25% (10 band 6%), dev_p95 10.4 deg (25), hue p90-p10 37.5 deg (30), hue_std 15.6 deg"
+    },
+    {
+      "id": 4,
+      "score": 5,
+      "notes": "T 0.1530: interior hp 4.29 -> 7.18 vs ring 0.71 -> 19.62; tx-off mean|d| 123.44 (10 band needs >=25), frac>8 0.989"
+    },
+    {
+      "id": 5,
+      "score": 0,
+      "notes": "washed out: bright_frac 0.5038 > 0.08; fixed L>=215: n_cc 4 (10 band 6), largest_frac 0.920 (0.35), bright_frac 0.5038 (0.03)"
+    },
+    {
+      "id": 6,
+      "score": 4,
+      "notes": "min(T band 4, interior-delta band 10); chart-vs-plain mean|d| 75.29 (10 band 30), hp_ratio 0.366"
+    },
+    {
+      "id": 7,
+      "score": 10,
+      "notes": "tells pass 4/4: tx 123.44>=20, sat 145.6>=100, |dhue| 3.4<=30, halo 154.6>=40, cutout 0.0000<0.05"
+    },
+    {
+      "id": 8,
+      "score": 8,
+      "notes": "bbox fill 0.586 outside 0.48-0.58 (round brilliant band); quadrant edge_frac [0.1745, 0.118, 0.1071, 0.1216] vs 0.02 (10) / 0.01 (8); fill 0.586"
+    },
+    {
+      "id": 9,
+      "score": 8,
+      "notes": "clip_frac(L>=254) 0.0092 (<=0.02), DR light 120.4 / dark 139.0, |dp50| 35.1 (<=40)"
+    },
+    {
+      "id": 10,
+      "score": 4,
+      "notes": "180 frames: omega 0.308 rad/s, CoV 0.336 (<=0.05), dt p50/p95/max 50.0/66.8/150.0 ms, 1 intervals >100 ms, monotonic True"
+    },
+    {
+      "id": 11,
+      "score": 8,
+      "notes": "repeat mean|d| 0.06 (<=1.0), frac>8 0.001 (<=0.05); canvas 510x223; IoU 0.9861"
+    }
+  ],
+  "total_of_110": 59,
+  "total_of_10": 5.36
+}

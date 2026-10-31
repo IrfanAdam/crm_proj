@@ -1,0 +1,39 @@
+{
+  "interior_px": 18384,
+  "zones": {
+    "top": {
+      "n_interior": 2588,
+      "darkflat_frac": 0.0,
+      "L_p5": 127.0698,
+      "L_std": 24.48143635738904
+    },
+    "mid": {
+      "n_interior": 11936,
+      "darkflat_frac": 0.006032171581769437,
+      "L_p5": 117.57480000000001,
+      "L_std": 37.37592733478111
+    },
+    "bot": {
+      "n_interior": 3860,
+      "darkflat_frac": 0.8186528497409327,
+      "L_p5": 45.4356,
+      "L_std": 18.550910780954652
+    }
+  },
+  "slab_frac": 0.17580504786771106,
+  "slab_maxcc_frac": 0.17580504786771106,
+  "darkflat_cc_count": 1,
+  "darkflat_cc_top5": [
+    3232
+  ],
+  "straight_segments": 29,
+  "straight_edge_px": 137,
+  "shuffle_null_segments": 0,
+  "shuffle_null_edge_px": 3472,
+  "neon_inmask": 0,
+  "interior_L_p1": 45.4356,
+  "interior_L_p5": 49.010400000000004,
+  "interior_L_std": 57.7738709255281,
+  "color": "sapphire",
+  "run_dir": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire"
+}

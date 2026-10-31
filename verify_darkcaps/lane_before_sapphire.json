@@ -1,0 +1,39 @@
+{
+  "interior_px": 18383,
+  "zones": {
+    "top": {
+      "n_interior": 2370,
+      "darkflat_frac": 0.0,
+      "L_p5": 128.07286,
+      "L_std": 24.582794705575978
+    },
+    "mid": {
+      "n_interior": 12043,
+      "darkflat_frac": 0.0,
+      "L_p5": 119.7926,
+      "L_std": 35.942980915783416
+    },
+    "bot": {
+      "n_interior": 3970,
+      "darkflat_frac": 0.8085642317380353,
+      "L_p5": 45.4356,
+      "L_std": 18.79521896371265
+    }
+  },
+  "slab_frac": 0.1746178534515585,
+  "slab_maxcc_frac": 0.1746178534515585,
+  "darkflat_cc_count": 1,
+  "darkflat_cc_top5": [
+    3210
+  ],
+  "straight_segments": 23,
+  "straight_edge_px": 122,
+  "shuffle_null_segments": 0,
+  "shuffle_null_edge_px": 3435,
+  "neon_inmask": 0,
+  "interior_L_p1": 45.4356,
+  "interior_L_p5": 49.0706,
+  "interior_L_std": 57.74975268482212,
+  "color": "sapphire",
+  "run_dir": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire"
+}

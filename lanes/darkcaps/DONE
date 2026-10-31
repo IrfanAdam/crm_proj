@@ -1,0 +1,7 @@
+FAILED
+gem-shader.js md5 f854e086501c9213109339fcd5d33229 (committed bytes, verified; git diff empty)
+lanes/darkcaps/sapphire md5 n/a (dir) — score 66/110; lanes/darkcaps/citrine — score 62/110
+gates: std UP both cats PASS | cap p5 up PASS | neon 0 PASS | sheet>=66/62 FAIL (62/59) | slab not-worse PASS
+fix (TIR softbox mirUp, reverted): sap cap-region std 8.50->23.74 p5 46.0->103.7; cit std 7.60->19.72 p5 62.1->134.9; neon (0,0); slab 0.273/0.150->0.000
+attribution winner: body transmission (tx025 erases caps; win0/stageoff exactly 0.0)
+runs_baseline_00/ untouched; see lanes/darkcaps/report.md

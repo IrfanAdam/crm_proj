@@ -1,0 +1,196 @@
+{
+  "color": "sapphire",
+  "shots": {
+    "front": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/front.png",
+    "repeat": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/repeat.png",
+    "txoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/txoff.png",
+    "dispoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/dispoff.png",
+    "chart": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/chart.png",
+    "dark": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/dark.png",
+    "nogem": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/nogem.png"
+  },
+  "metrics": {
+    "1": {
+      "g_p5": 0.044757384806871414,
+      "g_p95": 35.78045272827148,
+      "g_p99": 66.70434051513654,
+      "edge_frac_gt20": 0.13541632262113154,
+      "acutance": 0.4981113467300917,
+      "EW_px": 1.0435158461332321,
+      "L_p5": 104.58279418945312,
+      "L_p95": 238.49731140136714
+    },
+    "2": {
+      "p1": 100.01719665527344,
+      "p5": 104.58279418945312,
+      "p50": 160.3939971923828,
+      "p95": 238.49731140136714,
+      "p99": 255.0,
+      "p99_9": 255.0,
+      "DR": 154.98280334472656,
+      "stops": 1.277769058483471
+    },
+    "3": {
+      "fire_px_frac": 0.0020792256676823804,
+      "fire_dev_p95": 4.0921854972839355,
+      "hue_std": 4.709886299096674,
+      "hue_p90_p10": 10.097064208984374,
+      "hue_mean": 223.52907957173474,
+      "fire_pool_px": 27895,
+      "disp_on_mean": 13.108036041259766,
+      "disp_on_frac_gt8": 0.7696601380585923
+    },
+    "4": {
+      "txoff_mean": 83.0497817993164,
+      "txoff_frac_gt8": 0.968417129902798,
+      "hp_interior_plain": 5.4552507400512695,
+      "hp_interior_chart": 6.988475322723389,
+      "hp_ring_plain": 0.5038788318634033,
+      "hp_ring_chart": 19.25258445739746,
+      "d_hp_interior": 1.5332245826721191,
+      "d_hp_ring": 18.748705625534058,
+      "T": 0.08177762312209994,
+      "hp_ratio": 0.3629889451043645
+    },
+    "5": {
+      "n_cc": 29,
+      "largest_frac": 0.16733067729083664,
+      "bright_frac": 0.04831010855339133,
+      "bright_px": 1255,
+      "body_px": 25978,
+      "threshold_L": 215.0
+    },
+    "6": {
+      "T": 0.08177762312209994,
+      "chart_vs_plain_mean": 45.63081741333008,
+      "hp_ratio": 0.3629889451043645
+    },
+    "7": {
+      "txoff_mean": 83.0497817993164,
+      "sat_mean": 114.29545593261719,
+      "hue_mean": 223.52907957173474,
+      "token_hue": 208.7,
+      "delta_hue": 14.829079571734752,
+      "halo_sat": 70.93211364746094,
+      "cutout_frac": 0.0,
+      "tells": {
+        "tx": true,
+        "colour": true,
+        "halo": true,
+        "cutout": true
+      }
+    },
+    "8": {
+      "bbox_fill": 0.5872665596731835,
+      "mask_holes": 0,
+      "mask_area": 32201,
+      "quadrant_edge_frac": [
+        0.18582065393331176,
+        0.09936173883042954,
+        0.19482458322965912,
+        0.07048387096774193
+      ],
+      "bbox": [
+        147,
+        57,
+        445,
+        241
+      ]
+    },
+    "9": {
+      "clip_frac": 0.02923010866334181,
+      "DR_light": 154.98280334472656,
+      "p50_light": 160.3939971923828,
+      "DR_dark": 165.61380004882812,
+      "p50_dark": 138.91140747070312,
+      "abs_dp50": 21.482589721679688
+    },
+    "10": {
+      "frames": 180,
+      "omega_mean": 0.2659222470300201,
+      "omega_cov": 0.464936060211986,
+      "dt_p50": 66.60000000000036,
+      "dt_p95": 83.39999999999964,
+      "dt_max": 100.0,
+      "intervals_gt100": 0,
+      "monotonic": true,
+      "rad_total": 2.5348364998197543
+    },
+    "11": {
+      "repeat_mean": 0.046744707971811295,
+      "repeat_frac_gt8": 0.001077176530224306,
+      "repeat_mean_interior": 0.6021732687950134,
+      "repeat_pass": true,
+      "canvas": [
+        510.0,
+        223.0
+      ],
+      "pin_ok": true,
+      "peer_canvas": [
+        510.0,
+        223.0
+      ],
+      "mask_iou": 0.9860759493670886,
+      "peer": "lanes/darkcaps/citrine"
+    }
+  },
+  "criteria": [
+    {
+      "id": 1,
+      "score": 6,
+      "notes": "EW 1.04 px (anchor 1.0), acutance 0.498 (0.9 at the 10 band), edge_frac 0.1354 (10 band needs 0.04-0.09); borderline: a band threshold is within measurement tolerance of this value; silhouette: dark-scheme sat>20; mask 32201 px, bbox 298x184, fill 0.587, holes 0"
+    },
+    {
+      "id": 2,
+      "score": 4,
+      "notes": "p1 100.0 / p5 104.6 / p99 255.0; DR 155.0 (anchor 210), stops 1.28 (3.0) \u2014 darkest 1% of the interior is mid-tone (no shadowed facets)"
+    },
+    {
+      "id": 3,
+      "score": 2,
+      "notes": "tint, not fire: dispersion on/off moves 77% of the interior by >8/255 (mean 13.11) while fire_px_frac stays 0.21%; fire_px_frac 0.21% (10 band 6%), dev_p95 4.1 deg (25), hue p90-p10 10.1 deg (30), hue_std 4.7 deg"
+    },
+    {
+      "id": 4,
+      "score": 3,
+      "notes": "T 0.0818: interior hp 5.46 -> 6.99 vs ring 0.50 -> 19.25; tx-off mean|d| 83.05 (10 band needs >=25), frac>8 0.968"
+    },
+    {
+      "id": 5,
+      "score": 8,
+      "notes": "fixed L>=215: n_cc 29 (10 band 6), largest_frac 0.167 (0.35), bright_frac 0.0483 (0.03)"
+    },
+    {
+      "id": 6,
+      "score": 3,
+      "notes": "min(T band 3, interior-delta band 10); chart-vs-plain mean|d| 45.63 (10 band 30), hp_ratio 0.363"
+    },
+    {
+      "id": 7,
+      "score": 8,
+      "notes": "tells pass 4/4: tx 83.05>=20, sat 114.3>=100, |dhue| 14.8<=30, halo 70.9>=40, cutout 0.0000<0.05"
+    },
+    {
+      "id": 8,
+      "score": 8,
+      "notes": "bbox fill 0.587 outside 0.48-0.58 (round brilliant band); quadrant edge_frac [0.1858, 0.0994, 0.1948, 0.0705] vs 0.02 (10) / 0.01 (8); fill 0.587"
+    },
+    {
+      "id": 9,
+      "score": 8,
+      "notes": "clip_frac(L>=254) 0.0292 (<=0.02), DR light 155.0 / dark 165.6, |dp50| 21.5 (<=40)"
+    },
+    {
+      "id": 10,
+      "score": 4,
+      "notes": "180 frames: omega 0.266 rad/s, CoV 0.465 (<=0.05), dt p50/p95/max 66.6/83.4/100.0 ms, 0 intervals >100 ms, monotonic True"
+    },
+    {
+      "id": 11,
+      "score": 8,
+      "notes": "repeat mean|d| 0.05 (<=1.0), frac>8 0.001 (<=0.05); canvas 510x223; IoU 0.9861"
+    }
+  ],
+  "total_of_110": 62,
+  "total_of_10": 5.64
+}

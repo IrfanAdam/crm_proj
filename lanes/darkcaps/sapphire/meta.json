@@ -1,0 +1,302 @@
+{
+  "url": "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+  "cat": "sapphire",
+  "updatedAt": "2026-10-31T17:29:25.921Z",
+  "shots": {
+    "front": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/front.png",
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "front",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "repeat": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/repeat.png",
+      "seconds": 8.5,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "repeat",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "txoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/txoff.png",
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "txoff",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          0
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "dispoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/dispoff.png",
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "dispoff",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "chart": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/chart.png",
+      "seconds": 9.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "chart",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "dark": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/dark.png",
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "dark",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "theme": "dark"
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "nogem": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/darkcaps/sapphire/nogem.png",
+      "seconds": 8.5,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "kind": "variant",
+        "name": "nogem",
+        "cat": "sapphire",
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    }
+  }
+}

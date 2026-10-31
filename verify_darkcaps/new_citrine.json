@@ -1,0 +1,37 @@
+{
+  "interior_px": 8437,
+  "zones": {
+    "top": {
+      "n_interior": 3461,
+      "darkflat_frac": 0.0,
+      "L_p5": 158.52859999999998,
+      "L_std": 30.42246240720377
+    },
+    "mid": {
+      "n_interior": 3806,
+      "darkflat_frac": 0.0,
+      "L_p5": 154.75234999999998,
+      "L_std": 33.32776850730018
+    },
+    "bot": {
+      "n_interior": 1170,
+      "darkflat_frac": 0.0,
+      "L_p5": 137.03089,
+      "L_std": 18.015854605552217
+    }
+  },
+  "slab_frac": 0.0,
+  "slab_maxcc_frac": 0.0,
+  "darkflat_cc_count": 0,
+  "darkflat_cc_top5": [],
+  "straight_segments": 0,
+  "straight_edge_px": 0,
+  "shuffle_null_segments": 0,
+  "shuffle_null_edge_px": 0,
+  "neon_inmask": 0,
+  "interior_L_p1": 135.77119199999999,
+  "interior_L_p5": 144.08780000000002,
+  "interior_L_std": 36.21191551213113,
+  "color": "citrine",
+  "run_dir": "/Users/irfan/Documents/Portfolio Redo/crm_proj/verify_darkcaps/new_citrine"
+}

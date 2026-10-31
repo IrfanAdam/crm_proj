@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T15:30:40.753Z",
+  "generated": "2026-10-31T15:45:08.881Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "2f301ae",
+      "full": "2f301ae5d27c096cd7fa67473ca68b491babc63c",
+      "date": "2026-10-31",
+      "time": "21:14",
+      "subject": "optics(gem): sharp transmission sampling + multiplicative interior lift",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "2414bcd",
       "full": "2414bcde99883db8311573ef08b17af25d39070b",
@@ -3839,6 +3848,9 @@
     }
   ],
   "wip": [
-    "M src/components/GemReward/gem-shader.js"
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
   ]
 }

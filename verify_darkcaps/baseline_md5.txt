@@ -1,0 +1,2 @@
+MD5 (.hermes/tmp/round6/runs/sapphire/front.png) = 9d5908b8caa6fca24c4ccb821718a4cf
+MD5 (.hermes/tmp/round6/runs/citrine/front.png) = 491cea156e376c3488ed79d18b89f33e
