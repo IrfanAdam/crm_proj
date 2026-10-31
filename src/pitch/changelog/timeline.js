@@ -55,32 +55,33 @@ export function paintTimeline(root, ctx) {
   const endMs = atMidnight(bounds[bounds.length - 1] + 'T00:00:00');
   const days = Math.max(1, Math.round((endMs - startMs) / DAY) + 1);
   const col = (k) => Math.round((atMidnight(k + 'T00:00:00') - startMs) / DAY);
-  const geom = (s, e) => `left:calc(${col(s)} * var(--cl-16));width:calc(${col(e) - col(s) + 1} * var(--cl-16) - var(--cl-4))`;
+  const geom = (s, e) => `left:calc(${col(s)} * var(--tl-day));width:calc(${col(e) - col(s) + 1} * var(--tl-day) - var(--cl-4))`;
   const rows = info.map((r, i) => {
     const num = r.p.id || String(list.length - i).padStart(2, '0');
-    const nm = `<span class="ds-tl-barname"><span class="ds-num">${num}</span> ${r.p.title}</span>`;
     const tip = `${r.n} commit${r.n === 1 ? '' : 's'} · ${r.s} → ${r.e}`;
     const barW = col(r.e) - col(r.s) + 1, gW = r.g ? col(r.g.to) - col(r.g.from) + 1 : 0;
-    const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)}">${barW >= gW ? nm : ''}</div>`;
+    const bn = `<span class="ds-tl-barname"><span class="ds-num">${num}</span> ${r.p.title}</span>`;
+    const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)}">${barW >= 5 ? bn : ''}</div>`;
     let g = '';
     if (r.g) {
       const gt = `Due ${r.g.due || r.g.to}${r.g.overdue ? ' · overdue' : ''} · ${noq(r.p.title)}`;
-      g = `<div class="ds-tl-ghost${r.g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}" data-tip="${gt}" style="${geom(r.g.from, r.g.to)}" aria-label="${gt}">${gW > barW ? nm : ''}</div>`;
+      g = `<div class="ds-tl-ghost${r.g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}" data-tip="${gt}" style="${geom(r.g.from, r.g.to)}" aria-label="${gt}">${gW >= 5 && barW < 5 ? bn : ''}</div>`;
     }
-    return `<div class="ds-tl-row"><div class="ds-tl-lane">${bar}${g}</div></div>`;
+    const side = `<button class="ds-tl-side" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" aria-label="${noq(r.p.title)}"><span class="ds-num">${num}</span><span class="ds-tl-sidename">${r.p.title}</span></button>`;
+    return `<div class="ds-tl-row">${side}<div class="ds-tl-lane">${bar}${g}</div></div>`;
   }).join('');
   const mo = [];
   for (let d = 0; d < days; d++) {
     const dt = new Date(startMs + d * DAY);
     mo.push(dt.getDate() === 1
-      ? `<span class="ds-tl-tick is-month" style="left:calc(${d} * var(--cl-16))">${dt.toLocaleString('en', { month: 'short' })}</span>`
-      : `<span class="ds-tl-tick" style="left:calc(${d} * var(--cl-16))">${dt.getDate()}</span>`);
+      ? `<span class="ds-tl-tick is-month" style="left:calc(${d} * var(--tl-day))">${dt.toLocaleString('en', { month: 'short' })}</span>`
+      : `<span class="ds-tl-tick" style="left:calc(${d} * var(--tl-day))">${dt.getDate()}</span>`);
   }
   const todayFrac = (now - startMs) / DAY;
-  const todayCol = `<div class="ds-tl-todaycol" style="left:calc(${Math.floor(todayFrac)} * var(--cl-16));width:var(--cl-16)"></div>` +
-    `<div class="ds-tl-today" style="left:calc(${todayFrac.toFixed(4)} * var(--cl-16))"></div>`;
+  const todayCol = `<div class="ds-tl-todaycol" style="left:calc(${Math.floor(todayFrac)} * var(--tl-day));width:var(--tl-day)"></div>` +
+    `<div class="ds-tl-today" style="left:calc(${todayFrac.toFixed(4)} * var(--tl-day))"></div>`;
   host.innerHTML = `<div class="ds-tl-head"><b>Timeline</b><small>${bounds[0]} → ${bounds[bounds.length - 1]}</small><button data-tl-close aria-label="Close timeline">✕</button></div>` +
-    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><div class="ds-tl-ticks">${mo.join('')}</div></div>${rows}${todayCol}</div></div>`;
+    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><div class="ds-tl-corner"></div><div class="ds-tl-ticks">${mo.join('')}</div></div>${rows}${todayCol}</div></div>`;
   try {
     requestAnimationFrame(() => {
       try {

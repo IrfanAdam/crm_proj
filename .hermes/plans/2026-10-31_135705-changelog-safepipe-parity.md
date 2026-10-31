@@ -42,6 +42,7 @@ Adapt safepipe's inner timeline UX to crm tokens/rows (single-bar-per-plan model
 | 10 | Cleanup + budget + verify | Revert TEMP-DEBUG (error badge, title readout, sh3 stamp); every touched file ≤100 lines; node --check; Node slice-test of open path; build green; owner Safari confirm |
 
 - REF GATE 3 (OPEN → ship): bars read as per-plan tracks with names aboard, ghost honest (Due-anchored, overdue marked), tips accurate, no parse/hash drift (parse layer untouched), budgets hold.
+- REF GATE 3 · rev 2026-10-31: polish round from owner screenshots — sticky side-label rail (every row titled), name aboard only bars ≥5d (no slivers), day grid widened to --tl-day with dividers, taller pills, display head, sticky axis.
 
 ## Phase 4 — Chrome consistency + overlay layering {#phase-4}
 
