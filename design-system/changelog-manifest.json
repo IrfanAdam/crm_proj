@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T15:12:28.979Z",
+  "generated": "2026-10-31T15:18:21.354Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "44026ff",
+      "full": "44026ff97962fde8cab97db8ee5dc8925d98b6e5",
+      "date": "2026-10-31",
+      "time": "20:48",
+      "subject": "fix(changelog): Task 26 compact hover card — 285px wide, tighter type",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "8093ff1",
       "full": "8093ff1b0a86d1674a921727bb665c1d7cc64529",
