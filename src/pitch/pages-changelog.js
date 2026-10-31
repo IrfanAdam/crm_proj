@@ -9,6 +9,8 @@ import names from '../ds/changelog-names.json';
 import { goal, split, parseMeta, planStatus } from './changelog-parse.js';
 import { paint } from './changelog-paint.js';
 import { bindChangelogEvents } from './changelog-events.js';
+import { applyOverrides } from './changelog/due.js';
+import { dueOf } from './changelog/due-core.js';
 
 const raws = import.meta.glob('../../.hermes/plans/*.md', { query: '?raw', import: 'default', eager: true });
 const entries = Object.entries(raws).sort(([a], [b]) => b.localeCompare(a));
@@ -40,7 +42,7 @@ const st = { active: new Set(), status: new Set(), day: '', sel: [0, 0], open: f
 const visiblePlans = () => plans
   .filter((p) => (!st.active.size || p.tags.some((t) => st.active.has(t)))
     && (!st.status.size || st.status.has(statusOf(p)))
-    && (!st.day || p.date === st.day || commits.some((c) => c.plan === p.file && c.date === st.day)));
+    && (!st.day || p.date === st.day || p.sprints.some((s) => dueOf(s.body) === st.day) || commits.some((c) => c.plan === p.file && c.date === st.day)));
 const visibleSprints = (plan) => {
   const ss = st.active.size ? plan.sprints.filter((s) => s.tags.some((t) => st.active.has(t))) : plan.sprints;
   return ss.length ? ss : plan.sprints;
@@ -71,6 +73,21 @@ function doPaint(root) {
     sel: st.sel, open: st.open, stage: st.stage, counts, statusCounts, plans, texts, filterOpen: st.filterOpen, filterTab: st.filterTab, timeline: st.timeline });
 }
 export function mount(root) {
-  st.open = false; st.stage = 'list'; doPaint(root);
-  return bindChangelogEvents(root, st, { cur, doPaint });
+  applyOverrides(plans);
+  st.open = false; st.stage = 'list';
+  try {
+    const snap = JSON.parse(sessionStorage.getItem('ds-drawer-snap') || 'null');
+    if (snap && plans.some((p) => p.file === snap.file)) {
+      st.open = true; st.openFile = snap.file;
+      st.sel = [0, Math.max(snap.si || 0, 0)];
+    }
+  } catch {}
+  doPaint(root);
+  const saveSnap = () => { try {
+    if (st.open && st.openFile) sessionStorage.setItem('ds-drawer-snap', JSON.stringify({ file: st.openFile, si: st.sel[1] }));
+    else sessionStorage.removeItem('ds-drawer-snap');
+  } catch {} };
+  window.addEventListener('beforeunload', saveSnap);
+  const unbind = bindChangelogEvents(root, st, { cur, doPaint });
+  return () => { unbind(); window.removeEventListener('beforeunload', saveSnap); };
 }

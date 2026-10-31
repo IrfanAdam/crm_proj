@@ -4,6 +4,16 @@
 // Branch order: specific [data-*] branches BEFORE generic class branches —
 // closest() matches the element itself, so order is the only thing that saves
 // a view-toggle element carrying a filter class from the generic branch.
+import { saveDue } from './changelog/due.js';
+const dueUi = (root, doPaint, plan, sprint, due) => {
+  const label = () => root.querySelector('[data-due-label]');
+  const ui = {
+    pending: () => { const l = label(); if (l) l.textContent = 'Saving…'; },
+    done: () => { doPaint(root); },
+    fail: () => { doPaint(root); },
+  };
+  saveDue(plan, sprint, due, ui);
+};
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
   const onClick = (e) => {
@@ -30,6 +40,12 @@ export function bindChangelogEvents(root, st, helpers) {
     if (tm) { e.preventDefault(); e.stopPropagation();
       const row = tm.closest('.ds-pick'), tags = row && row.querySelector('.ds-tags');
       if (tags) { const full = tags.dataset.tip; if (full) tags.innerHTML = full.split(' · ').map((t) => `<span class="ds-tag">${t}</span>`).join('<span class="ds-sep"> · </span>'); }
+      return; }
+    const dr = e.target.closest('[data-due-retry]');
+    if (dr) { const c = cur(); if (!c.plan) return;
+      const sprint = c.sprints[c.si];
+      const inp = root.querySelector('[data-due-input]');
+      dueUi(root, doPaint, c.plan, sprint, inp && inp.value ? inp.value : '');
       return; }
     if (e.target.closest('[data-close]')
       || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; doPaint(root); return; }
@@ -67,11 +83,18 @@ export function bindChangelogEvents(root, st, helpers) {
     tip.style.left = x + 'px'; tip.style.top = y + 'px';
   };
   const hideTip = () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; };
+  const onDueChange = (e) => {
+    const inp = e.target.closest('[data-due-input]'); if (!inp) return;
+    const c = cur(); if (!c.plan) return;
+    dueUi(root, doPaint, c.plan, c.sprints[c.si], inp.value);
+  };
   root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
   root.addEventListener('mousemove', move);
+  root.addEventListener('change', onDueChange);
   document.addEventListener('mouseleave', hideTip);
   return () => {
     root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey);
     root.removeEventListener('mousemove', move);
+    root.removeEventListener('change', onDueChange);
     document.removeEventListener('mouseleave', hideTip); };
 }

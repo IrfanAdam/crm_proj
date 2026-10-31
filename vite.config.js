@@ -1,8 +1,9 @@
 import { resolve, dirname } from 'node:path';
 import { spawn } from 'node:child_process';
-import { readdirSync, readFileSync, mkdirSync, copyFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, copyFileSync, statSync, existsSync } from 'node:fs';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolveHead, applyDueEdit } from './src/pitch/changelog/due-core.js';
 function rawSourceRefsPlugin(){
   // The DS gallery and the preview load their scripts as classic <script src="src/…">, which Vite leaves
   // untouched in the build (only module scripts and stylesheets get rewritten). Without the files themselves
@@ -53,8 +54,43 @@ function mechanicsGraphPlugin(){
     }
   };
 }
+function dsDueWriter(){
+  // Dev/preview-only plan Due writer. POST /__ds/due {file, head, due} edits the
+  // live section body in the plan file (filenames locked, no paths/traversal).
+  // Static builds have no writer — the client keeps a localStorage override layer.
+  const PLAN_RE = /^\d{4}-\d{2}-\d{2}[_-].+\.md$/;
+  const DUE_RE = /^(20\d{2}-\d{2}-\d{2})?$/;
+  const json = (res, code, obj) => { res.statusCode = code; res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(obj)); };
+  const handle = (req, res) => {
+    if (req.method !== 'POST' || req.url.split('?')[0] !== '/__ds/due') return false;
+    let raw = '';
+    req.on('data', (c) => { raw += c; if (raw.length > 65536) req.destroy(); });
+    req.on('end', () => {
+      let q = null;
+      try { q = JSON.parse(raw || '{}'); } catch { return json(res, 400, { ok: false, error: 'parse' }); }
+      const file = String((q && q.file) || '');
+      const head = String((q && q.head) || '');
+      const due = String((q && q.due) || '');
+      if (file.includes('..') || file.includes('/') || !PLAN_RE.test(file) || !DUE_RE.test(due)) {
+        return json(res, 400, { ok: false, error: 'shape' });
+      }
+      const path = resolve(__dirname, '.hermes/plans', file);
+      if (!existsSync(path)) return json(res, 404, { ok: false, error: 'head-not-found' });
+      const md = readFileSync(path, 'utf8');
+      const canon = resolveHead(md, head);
+      if (!canon) return json(res, 404, { ok: false, error: 'head-not-found' });
+      const next = applyDueEdit(md, canon, due);
+      if (next === null || next === md) return json(res, 200, { ok: true, head: canon, unchanged: true, content: md });
+      writeFileSync(path, next);
+      return json(res, 200, { ok: true, head: canon, content: next });
+    });
+    return true;
+  };
+  const mount = (server) => { server.middlewares.use((req, res, next) => { if (!handle(req, res)) next(); }); };
+  return { name: 'ds-due-writer', configureServer: mount, configurePreviewServer: mount };
+}
 export default defineConfig({
-  plugins: [react(), rawSourceRefsPlugin(), mechanicsGraphPlugin()],
+  plugins: [react(), rawSourceRefsPlugin(), mechanicsGraphPlugin(), dsDueWriter()],
   server: { port: 5173, host: '0.0.0.0', open: false },
   appType: 'mpa',
   // index.html is the app entry (serves /); app.html is a redirect shim

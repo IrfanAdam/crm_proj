@@ -194,7 +194,7 @@
 
 ## Phase 5 — Due scheduling lane {#phase-5}
 
-**Status:** 0/4 · GATE OPEN
+**Status:** 3/4 · GATE OPEN (Tasks 17–19 live-verified; Task 20 code-complete, live verification blocked on owner secrets `DUE_AUTHOR` + `DUE_TOKEN`)
 
 *What the page gains: deadlines set from the drawer and persist across refresh and devices.*
 
@@ -205,21 +205,21 @@
 | 19 | Drawer + calendar affordances | `Add deadline` / `Deadline · date`, due dots, Due-day filtering |
 | 20 | Server commit endpoint | `api/due.js` allow-listed; needs `DUE_AUTHOR` + `DUE_TOKEN` from owner |
 
-### Task 17: Shared matcher + dev write endpoint {#phase-5}
+### Task 17: Shared matcher + dev write endpoint ✓ done {#phase-5}
 
 **Objective:** Client preview, server lookup, and send-time resolution import one core.
 **Files:** new shared `src/pitch/changelog/due-core.js`, `vite.config.js` (`ds-due-writer`, configureServer + configurePreviewServer only)
 **Steps:** normalize + exact + single-candidate fuzzy in one module; lock to plan filenames (no traversal).
 **Verify:** curl POST edits a section Due on dev; static build unaffected.
 
-### Task 18: applyDue persistence {#phase-5}
+### Task 18: applyDue persistence ✓ done {#phase-5}
 
 **Objective:** Optimistic synchronous apply with background commit and reload survival.
 **Files:** `src/pitch/changelog/paint-detail.js` (affordance), events wiring, drawer state snapshot on `beforeunload`
 **Steps:** preview + override at click, `Saving…` narrative → `synced ✓`; drawer state in sessionStorage; file wins over stale overrides.
 **Verify:** set → refresh keeps date; drawer reopens where it was.
 
-### Task 19: Drawer + calendar affordances {#phase-5}
+### Task 19: Drawer + calendar affordances ✓ done {#phase-5}
 
 **Objective:** Deadline copy convention everywhere.
 **Files:** paint-detail.js, graph.js, pages-changelog.js predicates
@@ -233,7 +233,7 @@
 **Steps:** caller OAuth token as identity proof, `DUE_AUTHOR` allow-list, server-side PAT; one change = one commit. **Blocking input:** owner must supply `DUE_AUTHOR` (login) and provision `DUE_TOKEN` (Contents read+write, repo-only) — one ask, exact values.
 **Verify:** end-to-end pick → redeploy carries value; poll-then-confirm lifecycle per skill references.
 
-- REF GATE 5 (OPEN): published read-back equals pick; `live` only after server truth applied; owner supplies auth values or defers this phase.
+- REF GATE 5 (OPEN · evidence 2026-10-31): due-core 8/8 cases, endpoint guards (shape/traversal/head-404) + set/clear net-zero via curl, full page loop (Add deadline → Saving → reload → Deadline · date + future hollow dot + due-day filter → 1 card), drawer snapshot restores across reload, api/due.js written + syntax-checked. BLOCKED: live redeploy verification needs `DUE_AUTHOR` (GitHub login) + `DUE_TOKEN` (fine-grained PAT, Contents read+write, repo-only) as Vercel env — owner supplies or defers Task 20. Verdict: OPEN.
 
 ---
 

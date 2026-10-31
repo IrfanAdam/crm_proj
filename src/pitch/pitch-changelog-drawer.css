@@ -82,4 +82,6 @@
 .ds-timeline-item--eval::before { content: ""; position: absolute; left: calc(-1 * var(--cl-12) - var(--cl-4)); top: var(--cl-8); width: var(--cl-8); height: var(--cl-8); border-radius: 50%; border: var(--cl-1) solid var(--color-accent); background: transparent; box-sizing: border-box; }
 .ds-timeline-item--iter { margin-left: var(--cl-12); border-left: var(--border-hairline); padding-left: var(--cl-8); }
 .ds-gate { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: var(--tracking-mono); color: var(--color-ink-muted); white-space: nowrap; }
+.ds-due { display: inline-flex; align-items: center; gap: var(--cl-8); font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-ink-muted); white-space: nowrap; }
+.ds-due input[type="date"] { font: inherit; color: var(--color-ink); background: var(--color-surface); border: var(--border-hairline); border-radius: var(--radius-xs); padding: var(--cl-2) var(--cl-6); }
 

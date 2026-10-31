@@ -1,11 +1,14 @@
 /* ADAM/DS — ds/changelog/graph · activity graph · [plan:2026-09-12_150255-glitch-sound.md#phase-6] */
 import { commits } from '../changelog-links.js';
 import { MONTHS, fmtDate, pDay, isoDay } from '../changelog-parse.js';
+import { dueOf } from './due-core.js';
 export function graph({ plans, day }) {
   const dc = {};
   commits.forEach((c) => { if (c.date) dc[c.date] = (dc[c.date] || 0) + 1; });
+  const dues = {};
+  plans.forEach((p) => p.sprints.forEach((s) => { const d = dueOf(s.body); if (d) dues[d] = (dues[d] || 0) + 1; }));
   const keys = Object.keys(dc).sort();
-  const bounds = keys.concat(plans.map((p) => p.date).filter(Boolean)).sort();
+  const bounds = keys.concat(plans.map((p) => p.date).filter(Boolean)).concat(Object.keys(dues)).sort();
   if (!bounds.length) return '';
   const max = Math.max(...Object.values(dc), 1);
   const pad = 6 * 7 * 864e5;
@@ -37,16 +40,41 @@ export function graph({ plans, day }) {
   const cols = weeks.map((col) => {
     const cells = col.map((d) => {
       const k = isoDay(d),
-        todayCls = k === isoDay(today) ? ' is-today' : '';
-      if (d > today) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} \u00b7 upcoming"></span>`;
+        todayCls = k === isoDay(today) ? ' is-today' : '',
+        m = dues[k] || 0,
+        dueBit = m ? ` + ${m} Due` : '';
+      if (d > today) {
+        if (!m) return `<span class="ds-day is-future" data-tip="${fmtDate(k)} · upcoming"></span>`;
+        return `<button class="ds-day is-future is-due${todayCls}" data-day="${k}" data-tip="${m} Due · ${fmtDate(k)}" aria-pressed="${day === k}" aria-label="${m} due on ${fmtDate(k)} — filter list"></button>`;
+      }
       const n = dc[k] || 0;
-      if (!n) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} \u00b7 no changes"></span>`;
+      if (!n && !m) return `<span class="ds-day${todayCls}" data-tip="${fmtDate(k)} · no changes"></span>`;
+      if (!n) return [
+        `<button class="ds-day is-due`,
+        todayCls,
+        day === k ? ' on' : '',
+        `"`,
+        ` data-day="`,
+        k,
+        `" data-tip="`,
+        m,
+        ` Due · `,
+        fmtDate(k),
+        `" aria-pressed="`,
+        day === k,
+        `" aria-label="`,
+        m,
+        ` due on `,
+        fmtDate(k),
+        ` — filter list"></button>`,
+      ].join('');
       const lv = Math.min(4, Math.ceil((4 * n) / max));
       return [
         `<button class="ds-day lv`,
         lv,
         day === k ? ' on' : '',
         todayCls,
+        m ? ' is-due' : '',
         `"`,
         ` data-day="`,
         k,
@@ -54,7 +82,8 @@ export function graph({ plans, day }) {
         n,
         ` change`,
         n > 1 ? 's' : '',
-        ` \u00b7 `,
+        dueBit,
+        ` · `,
         fmtDate(k),
         `" aria-pressed="`,
         day === k,
@@ -62,7 +91,7 @@ export function graph({ plans, day }) {
         n,
         ` changes on `,
         fmtDate(k),
-        ` \u2014 filter list"></button>`,
+        ` — filter list"></button>`,
       ].join('');
     }).join('');
     return `<div class="ds-week">${cells}</div>`;

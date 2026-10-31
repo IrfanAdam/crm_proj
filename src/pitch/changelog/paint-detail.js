@@ -1,5 +1,6 @@
 /* ADAM/DS — ds/changelog/paint-detail · rail + detail · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { hits, badges, unlinked, orphans } from '../changelog-links.js';
+import { dueFor, dueErr } from './due.js';
 import { shortPhase as short, provenance, descOf, clip } from '../changelog-titles.js';
 import { isDone, state, hash, planStatus, parseGates, fmtDate } from '../changelog-parse.js';
 import { esc } from './esc.js';
@@ -14,6 +15,7 @@ const marked = {
     src = src.split('\n').filter((l)=>{
       const t = l.trim();
       if (!t) return true;
+      if (/^Due:\s*20\d{2}-\d{2}-\d{2}\s*$/.test(t)) return false;
       if (t.startsWith('|')) return false;
       // table separator like | --- | --- | or ---|---
       if (t.includes('|') && /^[\s|:\-]+$/.test(t)) return false;
@@ -199,6 +201,9 @@ export function paintDetail(root, ctx){
   ].join('');
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
   const headGate = gateVerdictTag(sprint.head, sprint.body);
+  const due = dueFor(plan.file, sprint.head, sprint.body);
+  const derr = dueErr(plan.file, sprint.head);
+  const dueHtml = `<label class="ds-due"><span data-due-label${derr ? ' data-due-retry=""' : ''}>${derr ? `Deadline · ${esc(due)} (${esc(derr)} — kept locally, click to retry)` : due ? `Deadline · ${esc(due)}` : 'Add deadline'}</span><input type="date" data-due-input value="${esc(due)}" aria-label="Deadline"></label>`;
   const evalsHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body);
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
@@ -208,6 +213,7 @@ export function paintDetail(root, ctx){
     esc(short(sprint.head)),
     `</b>`,
     headGate ? `<span class="ds-gate">${headGate}</span>` : '',
+    dueHtml,
     `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
     marked.parse(stripGateThread(sprint.body)) + evalsHtml + commitsHtml + orphanHtml,
     `</div>`,
