@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T08:32:05.923Z",
+  "generated": "2026-10-31T08:46:21.543Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "99075bb",
+      "full": "99075bbac2e483704b463cba0ade399a27798be8",
+      "date": "2026-10-31",
+      "time": "14:16",
+      "subject": "fix(changelog): self-healing shell + null-safe timeline paint",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "d719a70",
       "full": "d719a701926a73e51c2e12ce2d72339757fde9a5",
