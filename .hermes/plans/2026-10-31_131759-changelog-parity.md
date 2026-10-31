@@ -203,9 +203,9 @@
 
 ## Phase 5 — Due scheduling lane {#phase-5}
 
-**Status:** 3/4 + 1 deferred · CLOSED (Tasks 17–19 ✓ shipped e62bfcc; Task 20 ✗ cancelled — deferred by owner, revive with Vercel `DUE_AUTHOR` + `DUE_TOKEN`)
+**Status:** 3/4 · GATE OPEN (Tasks 17–19 live-verified; Task 20 code-complete, live verification blocked on owner secrets `DUE_AUTHOR` + `DUE_TOKEN`)
 
-*Shipped in e62bfcc · Tasks 17–19 · phase-5 · Task 20 ✗ cancelled (deferred — revive with secrets).*
+*Shipped in e62bfcc (partial) · Tasks 17–19 · phase-5 · Task 20 open — owner secrets.*
 
 *What the page gains: deadlines set from the drawer and persist across refresh and devices.*
 
@@ -237,23 +237,21 @@
 **Steps:** empty `Add deadline`, set `Deadline · <date>`; calendar due dots as real filter buttons; day predicate matches section Due dates.
 **Verify:** future-Due day filters to the plan (non-empty list).
 
-### Task 20: Server commit endpoint ✗ cancelled {#phase-5}
+### Task 20: Server commit endpoint {#phase-5}
 
 **Objective:** Production writes via allow-listed server commit.
 **Files:** new `api/due.js`
 **Steps:** caller OAuth token as identity proof, `DUE_AUTHOR` allow-list, server-side PAT; one change = one commit. **Blocking input:** owner must supply `DUE_AUTHOR` (login) and provision `DUE_TOKEN` (Contents read+write, repo-only) — one ask, exact values.
 **Verify:** end-to-end pick → redeploy carries value; poll-then-confirm lifecycle per skill references.
 
-- REF GATE 5 (OPEN · evidence 2026-10-31): due-core 8/8 cases, endpoint guards (shape/traversal/head-404) + set/clear net-zero via curl, full page loop (Add deadline → Saving → reload → Deadline · date + future hollow dot + due-day filter → 1 card), drawer snapshot restores across reload, api/due.js written + syntax-checked. BLOCKED: live redeploy verification needs `DUE_AUTHOR` (GitHub login) + `DUE_TOKEN` (fine-grained PAT, Contents read+write, repo-only) as Vercel env — owner supplies or defers Task 20. Verdict: CLOSED (deferred by owner 2026-10-31 — code-complete + guarded, revive Task 20 when secrets are set).
+- REF GATE 5 (OPEN · evidence 2026-10-31): due-core 8/8 cases, endpoint guards (shape/traversal/head-404) + set/clear net-zero via curl, full page loop (Add deadline → Saving → reload → Deadline · date + future hollow dot + due-day filter → 1 card), drawer snapshot restores across reload, api/due.js written + syntax-checked. BLOCKED: live redeploy verification needs `DUE_AUTHOR` (GitHub login) + `DUE_TOKEN` (fine-grained PAT, Contents read+write, repo-only) as Vercel env — owner supplies or defers Task 20. Verdict: OPEN.
 - REF GATE 5 · rev 2026-10-31: independent re-verify — all 4 files present (api/due.js 91, due-core.js 32, ds-due-writer.mjs 45, vite.config.js 80), node --check 6/6, env reads isolated to api/due.js, Task 20 heading correctly unmarked. Blocker unchanged.
 
 ---
 
 ## Phase 6 — Verify + close {#phase-6}
 
-**Status:** 2/2 · CLOSED (matrix run + documented, per-phase commits landed, Task 22 ✓; Phase 5 deferred — see above)
-
-*Shipped in 52a838a, 28b37de · Tasks 21–22 · phase-6.*
+**Status:** 1/2 · GATE OPEN (matrix run — suite red on pre-existing items, see GATE 6; Task 22 closes with the landing commit; Phase 5 Task 20 blocked on owner secrets)
 
 | # | Task | Done when |
 |---|------|-----------|
@@ -274,7 +272,7 @@
 **Steps:** stage explicit paths only (never `-A`); one commit per phase with `[plan:<file>#{#phase-N}]` trailer; manifest-only syncs untrailered; mark `✓ done` in task headings in place (never append phantom headings); `buildState` reads complete; end with `git status` clean.
 **Verify:** every `✓ done` sha resolves in `git log` with its trailer; no `## Phase`/`## Task` mixing; fractions full.
 
-- REF GATE 6 (OPEN · evidence 2026-10-31): tracker ×2 stable (384 linked, 0 wip), `npm test` exit 0, `npm run build` green, changelog CSS 160 × var(--cl-) / 0 × space-vars, browser matrix (filters, immunity, evals, orphans, timeline, due loop, 390px cards+rows overlap 0), budget extraction leaves every touched file ≤100 (advisory lint unchanged). Missing: owner pixel sign-off; Task 20 live redeploy (secrets). Verdict: CLOSED 2026-10-31 — corrected record: 9/9 test files pass, plan-names 19/19 green; lint-tokens red on 6 pre-existing over-budget files outside this thread (no file touched by either plan exceeds 100); Task 20 deferred with secrets.
+- REF GATE 6 (OPEN · evidence 2026-10-31): tracker ×2 stable (384 linked, 0 wip), `npm test` exit 0, `npm run build` green, changelog CSS 160 × var(--cl-) / 0 × space-vars, browser matrix (filters, immunity, evals, orphans, timeline, due loop, 390px cards+rows overlap 0), budget extraction leaves every touched file ≤100 (advisory lint unchanged). Missing: owner pixel sign-off; Task 20 live redeploy (secrets). Verdict: OPEN — corrected record: 9/9 test files pass, plan-names 19/19 green; lint-tokens red on 6 pre-existing over-budget files outside this thread (extraction work dispatched); Task 20 blocked on secrets.
 
 ---
 
