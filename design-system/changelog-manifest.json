@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T15:20:40.734Z",
+  "generated": "2026-10-31T15:30:40.753Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -23,6 +23,15 @@
     "2026-10-31_135705-changelog-safepipe-parity.md"
   ],
   "commits": [
+    {
+      "sha": "2414bcd",
+      "full": "2414bcde99883db8311573ef08b17af25d39070b",
+      "date": "2026-10-31",
+      "time": "21:00",
+      "subject": "feat(changelog): Task 28 exhaustive lane card — goal, phases, status, commits, revs",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "a4fe809",
       "full": "a4fe809c91a109789a99518ac902fd72d60c8c3b",
@@ -3829,5 +3838,7 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/components/GemReward/gem-shader.js"
+  ]
 }
