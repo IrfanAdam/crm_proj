@@ -85,8 +85,9 @@ const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad
 const group = new T.Group();
 const body = new T.Mesh(geo, api.surface(color, soft, ior));
 group.add(body);
-const proxy = window.GEM_SHADER && window.GEM_SHADER.farside ? new T.Mesh(geo, window.GEM_SHADER.farside({ envMap: scene.environment, ior: ior || 2.4, tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null })) : null;
+const proxy = window.GEM_SHADER && window.GEM_SHADER.farside ? new T.Mesh(geo, window.GEM_SHADER.farside({ envMap: scene.environment, ior: ior || 2.4, tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null, can: renderer.domElement })) : null;
 if (proxy) { proxy.scale.setScalar(0.997); group.add(proxy); }
+if (proxy && window.GEM_SHADER && window.GEM_SHADER.aim) proxy.onBeforeRender = function () { window.GEM_SHADER.aim(this); };
 scene.add(group);
 if (bare) group.scale.setScalar(gscale);
 const rig = { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors, mats: [body.material].concat(proxy ? [proxy.material] : []), baseCamY: cy + h * 0.16, baseLookY: cy - h * 0.02, dropY: 0 };
