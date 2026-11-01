@@ -1,0 +1,43 @@
+[
+  {
+    "cat": "sapphire",
+    "probe": "verify",
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value/probes/sapphire/verify.png",
+    "secs": 8.6,
+    "evalMeta": {
+      "variant": "verify",
+      "cat": "sapphire",
+      "steps": [],
+      "rigs": 1,
+      "tintLeft": [
+        false
+      ],
+      "bodyColor": [
+        "#b4caf4"
+      ],
+      "uniforms": [
+        {
+          "stageOn": 1,
+          "winGain": 1.8,
+          "ior": 1.77,
+          "gain": 2.6,
+          "tint": "218aea",
+          "rampDeep": "0e54c8",
+          "rampMid": "218aea",
+          "rampLite": "cfdcf7",
+          "rampPink": "f4d2f0"
+        }
+      ]
+    },
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ]
+  }
+]

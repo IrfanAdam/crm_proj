@@ -1,0 +1,10 @@
+FAILED
+gem-shader.js md5 f854e086501c9213109339fcd5d33229 (committed bytes, restored + re-render verified vs runs_baseline_00: mean|d| 0.012/0.124)
+lanes/value/sapphire front md5 8f92250dded157fbf27bdcad510130d7 repeat md5 8991478c79039a78775462136c158e8e score 64/110
+lanes/value/citrine  front md5 aa607d626edafd422df096731dfa4567 repeat md5 043d7a96105b5ab3dcc222437f1e436d score 58/110
+committed reference (runs_baseline_00) front/repeat md5 9d5908b8caa6fca24c4ccb821718a4cf / e23b23dbcede9001c6c9c0101de04d6b (sap), 491cea156e376c3488ed79d18b89f33e / a591eaf014b6890a138b78964a6bdff8 (cit)
+gates: G1 FAIL (sap lower_pav L50 71.8 < 80; all std pass both cats) | G2 FAIL (sap sat 102 < 110; cit L50 206.9 > 185) | G3 FAIL (sap L95 229.4 < 235; cit L5 79.7 > 75) | G4 FAIL (sheet 64/58 < 66/62; neon 0, clip 0.0126/0.0062, slab 0.012/0.049 all PASS) | G5 FAIL (cit gap 107.8 > 105, sap 100.1 PASS)
+fix (reverted): hash survives quantiser + hash-gated token-tinted floor at the dark end + env-gated ramp routing/attenuation at the pale end. sap std 2.67->6.07 (crown) 4.08->6.54 (lower pav) 8.88->20.17 (upper pav); cit 7.24->10.64 / 2.00->6.09 / 3.23->14.20; pale-empty slab 0.073->0.012 (sap) 0.271->0.049 (cit); neon (0,0)
+attribution winner: farside proxy env (proxy gain 0 kills the pale band 191->43, std 8.87->0.28); rampc gate owns only 27% of it and rampMid owns the band (rampMid-red +R130); dark end is 94% un-gated through and its hash jitter is swallowed by floor(t1r*6)/6
+TRAP: .hermes/tmp/round6/gem-shader.before.js/.after.js are stale (older body-dispersion chunk); use lanes/value/gem-shader.committed.js (f854e08)
+runs/ restored byte-identical to runs_baseline_00; runs_baseline_00/ untouched; see lanes/value/report.md

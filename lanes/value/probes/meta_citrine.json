@@ -1,0 +1,43 @@
+[
+  {
+    "cat": "citrine",
+    "probe": "verify",
+    "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value/probes/citrine/verify.png",
+    "secs": 8.2,
+    "evalMeta": {
+      "variant": "verify",
+      "cat": "citrine",
+      "steps": [],
+      "rigs": 1,
+      "tintLeft": [
+        false
+      ],
+      "bodyColor": [
+        "#ffd8b4"
+      ],
+      "uniforms": [
+        {
+          "stageOn": 1,
+          "winGain": 1.8,
+          "ior": 1.545,
+          "gain": 2.6,
+          "tint": "ffb01e",
+          "rampDeep": "956d18",
+          "rampMid": "ffb01e",
+          "rampLite": "ffe5cf",
+          "rampPink": "ffd4e6"
+        }
+      ]
+    },
+    "consoleErrors": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ]
+  }
+]

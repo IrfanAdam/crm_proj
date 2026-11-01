@@ -1,0 +1,1034 @@
+{
+  "url": "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+  "cat": "sapphire",
+  "timestamp": "2026-10-31T15:41:54.867Z",
+  "canvas": {
+    "cw": 510,
+    "ch": 223,
+    "bw": 510,
+    "bh": 223,
+    "attr": "510x223",
+    "gem": "sapphire",
+    "pinned": "0 0 auto/223px"
+  },
+  "rigs": 1,
+  "shots": {
+    "front": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/front.png",
+      "seconds": 9,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/front --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-front>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/front",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"front\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"front\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"front\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"front\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "front",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "repeat": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/repeat.png",
+      "seconds": 8.9,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/repeat --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-repeat>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/repeat",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"repeat\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"repeat\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"repeat\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"repeat\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "repeat",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "txoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/txoff.png",
+      "seconds": 8.7,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/txoff --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-txoff>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/txoff",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"txoff\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('txoff');\n      rigs().forEach(function (r) { (r.mats || []).forEach(function (m) {\n        if (m && 'transmission' in m) { m.transmission = 0; m.needsUpdate = true; }\n      }); });\n      var hid = [];\n      rigs().forEach(function (r) { var fl = r.floors; if (!fl) return;\n        if (fl.shadow) { fl.shadow.visible = false; hid.push('shadow'); }\n        if (fl.caustic) { fl.caustic.visible = false; hid.push('caustic'); } });\n      meta.floorsHidden = hid;\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"txoff\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"txoff\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('txoff');\n      rigs().forEach(function (r) { (r.mats || []).forEach(function (m) {\n        if (m && 'transmission' in m) { m.transmission = 0; m.needsUpdate = true; }\n      }); });\n      var hid = [];\n      rigs().forEach(function (r) { var fl = r.floors; if (!fl) return;\n        if (fl.shadow) { fl.shadow.visible = false; hid.push('shadow'); }\n        if (fl.caustic) { fl.caustic.visible = false; hid.push('caustic'); } });\n      meta.floorsHidden = hid;\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"txoff\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "txoff",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "txoff"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "floorsHidden": [
+          "shadow",
+          "caustic"
+        ],
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          0
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": false,
+            "caustic": false
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "dispoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/dispoff.png",
+      "seconds": 9.5,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/dispoff --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-dispoff>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/dispoff",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"dispoff\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('dispoff');\n      var seen = [], n = 0;\n      rigs().forEach(function (r) { r.group.traverse(function (o) {\n        var ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];\n        ms.forEach(function (m) { if (!m || seen.indexOf(m) >= 0) return; seen.push(m);\n          m.onBeforeCompile = function () {}; m.needsUpdate = true; n++; });\n      }); });\n      meta.onBeforeCompileReplaced = n;\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"dispoff\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"dispoff\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('dispoff');\n      var seen = [], n = 0;\n      rigs().forEach(function (r) { r.group.traverse(function (o) {\n        var ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];\n        ms.forEach(function (m) { if (!m || seen.indexOf(m) >= 0) return; seen.push(m);\n          m.onBeforeCompile = function () {}; m.needsUpdate = true; n++; });\n      }); });\n      meta.onBeforeCompileReplaced = n;\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"dispoff\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "dispoff",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "dispoff"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "onBeforeCompileReplaced": 2,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "chart": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/chart.png",
+      "seconds": 9.8,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/chart --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-chart>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/chart",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"chart\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('chart');\n      var pb = document.querySelector('.frame[data-panel=\"gems\"] [data-gem-photo]') || document.querySelector('[data-gem-photo]');\n      if (pb) { pb.click(); pb.click(); }\n      meta.photoMode = pb ? pb.dataset.gemPhoto : null;\n      for (var ci = 0; ci < 80; ci++) {\n        var bg = rigs()[0] && rigs()[0].scene && rigs()[0].scene.background;\n        if (bg && bg.image && (bg.image.width || bg.image.naturalWidth)) break;\n        await sleep(50);\n      }\n      meta.steps.push('chart-tex:' + (meta.photoMode === '2' ? 'chart' : 'FAIL'));\n      await sleep(500);\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"chart\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"chart\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('chart');\n      var pb = document.querySelector('.frame[data-panel=\"gems\"] [data-gem-photo]') || document.querySelector('[data-gem-photo]');\n      if (pb) { pb.click(); pb.click(); }\n      meta.photoMode = pb ? pb.dataset.gemPhoto : null;\n      for (var ci = 0; ci < 80; ci++) {\n        var bg = rigs()[0] && rigs()[0].scene && rigs()[0].scene.background;\n        if (bg && bg.image && (bg.image.width || bg.image.naturalWidth)) break;\n        await sleep(50);\n      }\n      meta.steps.push('chart-tex:' + (meta.photoMode === '2' ? 'chart' : 'FAIL'));\n      await sleep(500);\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"chart\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "chart",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "chart",
+          "chart-tex:chart"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "photoMode": "2",
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "dark": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/dark.png",
+      "seconds": 10.1,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/dark --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-dark>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/dark",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"dark\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('dark');\n      var db = document.querySelector('.frame[data-panel=\"gems\"] [data-gem-scheme=\"dark\"]') || document.querySelector('[data-gem-scheme=\"dark\"]');\n      if (db) db.click();\n      await sleep(600);\n      meta.theme = stage ? stage.dataset.theme : null;\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"dark\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"dark\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('dark');\n      var db = document.querySelector('.frame[data-panel=\"gems\"] [data-gem-scheme=\"dark\"]') || document.querySelector('[data-gem-scheme=\"dark\"]');\n      if (db) db.click();\n      await sleep(600);\n      meta.theme = stage ? stage.dataset.theme : null;\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"dark\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "dark",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "dark"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "theme": "dark",
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "nogem": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/nogem.png",
+      "seconds": 8.7,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/nogem --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-nogem>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/nogem",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"nogem\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('nogem');\n      rigs().forEach(function (r) { r.group.visible = false; });\n      meta.groupHidden = rigs().map(function (r) { return r.group.visible; });\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"nogem\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"nogem\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('nogem');\n      rigs().forEach(function (r) { r.group.visible = false; });\n      meta.groupHidden = rigs().map(function (r) { return r.group.visible; });\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"nogem\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "nogem",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "nogem"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "groupHidden": [
+          false
+        ],
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          false
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "proxy": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/proxy.png",
+      "seconds": 8.5,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/proxy --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-proxy>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/proxy",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"proxy\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('proxy-only');\n      rigs().forEach(function (r) { var b = r.group.children[0]; if (b) b.visible = false; });\n      meta.bodyHidden = rigs().map(function (r) { return r.group.children[0] ? r.group.children[0].visible : null; });\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"proxy\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"proxy\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('proxy-only');\n      rigs().forEach(function (r) { var b = r.group.children[0]; if (b) b.visible = false; });\n      meta.bodyHidden = rigs().map(function (r) { return r.group.children[0] ? r.group.children[0].visible : null; });\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"proxy\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "proxy",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "proxy-only"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "bodyHidden": [
+          false
+        ],
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    },
+    "noproxy": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/noproxy.png",
+      "seconds": 8.6,
+      "cmd": "node /Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs http://127.0.0.1:5176/gallery.html?gem=high#gems /Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/noproxy --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage' --eval \"<eval-noproxy>\"",
+      "argv": [
+        "node",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/prototype/gems/gem-shot.mjs",
+        "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+        "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/.work/sapphire/noproxy",
+        "--scale",
+        "1",
+        "--wait",
+        "6000",
+        "--clip",
+        ".frame[data-panel=\"gems\"] .gem-stage",
+        "--eval",
+        "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"noproxy\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('no-proxy');\n      rigs().forEach(function (r) { var p = r.group.children[1]; if (p) p.visible = false; });\n      meta.proxyHidden = rigs().map(function (r) { return r.group.children[1] ? r.group.children[1].visible : null; });\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"noproxy\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()"
+      ],
+      "evalSrc": "(async()=>{\n  const sleep=ms=>new Promise(r=>setTimeout(r,ms));\n  const meta={variant:\"noproxy\",cat:\"sapphire\",steps:[]};\n  try{\n    const rigs=()=>((window.GEM3D&&window.GEM3D.rigs)||[]).filter(r=>r&&r.group&&r.canvas&&r.canvas.isConnected);\n    const frame=document.querySelector('.frame[data-panel=\"gems\"]');\n    const stage=document.querySelector('.frame[data-panel=\"gems\"] [data-gem-stage]');\n    // WORKAROUND (page bug, no src edit): gem-tint.js step() uses a bare T that is only declared\n    // inside apply(); unqualified lookup falls through to the global, so publish it. Without this the\n    // tint throws at t.t===1 and the category never commits (stone stuck mid-lerp, spin stuck).\n    if(!window.T&&window.THREE)window.T=window.THREE;\n    meta.tWorkaround=!!window.T;\n    const pill=document.querySelector('[data-gemspec-cat=\"sapphire\"]');\n    if(pill)pill.click();\n    const snap=()=>{let n=0;rigs().forEach(r=>{if(r.tint&&window.GEM_TINT&&window.GEM_TINT.step){try{window.GEM_TINT.step(r,5);n++;}catch(e){}}});return n;};\n    for(let i=0;i<40;i++){const a=snap();if(!rigs().some(r=>r.tint))break;if(!a)await sleep(50);}\n    meta.tintLeft=rigs().some(r=>r.tint);\n    meta.steps.push('cat:sapphire'+(pill?':click':':nopill')+':tintLeft='+meta.tintLeft);\n    let c=document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem=\"sapphire\"]')||document.querySelector('.frame[data-panel=\"gems\"] canvas[data-gem]');\n    if(c){c.style.flex='0 0 auto';c.style.height='223px';}\n    await sleep(300);\n    \n      meta.steps.push('no-proxy');\n      rigs().forEach(function (r) { var p = r.group.children[1]; if (p) p.visible = false; });\n      meta.proxyHidden = rigs().map(function (r) { return r.group.children[1] ? r.group.children[1].visible : null; });\n    const rs=rigs();\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    await sleep(600);\n    rs.forEach(r=>{try{r.cat.spin=0;r.t=0;r.tilt=0;r.tiltT=0;}catch(e){}});\n    const b=c?c.getBoundingClientRect():null;\n    meta.canvas=c?{cw:c.clientWidth,ch:c.clientHeight,bw:Math.round(b.width),bh:Math.round(b.height),attr:c.getAttribute('width')+'x'+c.getAttribute('height'),gem:c.dataset.gem,pinned:c.style.flex+'/'+c.style.height}:null;\n    meta.rigs=rs.length;\n    meta.rigsFlat=(window.GEM3D&&window.GEM3D.rigs?window.GEM3D.rigs.length:0);\n    meta.transmission=rs.map(r=>(r.mats&&r.mats[0]?r.mats[0].transmission:null));\n    meta.bodyColor=rs.map(r=>(r.mats&&r.mats[0]&&r.mats[0].color&&r.mats[0].color.getHexString?('#'+r.mats[0].color.getHexString()):null));\n    meta.catToken=rs.map(r=>(r.cat&&r.cat.token)||null);\n    meta.floors=rs.map(r=>r.floors?{shadow:!!r.floors.shadow&&r.floors.shadow.visible,caustic:!!r.floors.caustic&&r.floors.caustic.visible}:null);\n    meta.groupVisible=rs.map(r=>r.group.visible);\n    meta.rotationY=rs.map(r=>+r.group.rotation.y.toFixed(4));\n    meta.pose=rs.map(r=>({t:+(r.t||0).toFixed(3),tilt:+(r.tilt||0).toFixed(4)}));\n    meta.theme=stage?stage.dataset.theme:null;\n    meta.frameHidden=frame?frame.hidden:null;\n    meta.bgClass=rs.map(r=>r.scene&&r.scene.background?(r.scene.background.isTexture?'texture':'color'):'none');\n    return JSON.stringify(meta);\n  }catch(e){return JSON.stringify({variant:\"noproxy\",cat:\"sapphire\",error:String(e&&e.stack||e)});}\n})()",
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "variant": "noproxy",
+        "cat": "sapphire",
+        "steps": [
+          "cat:sapphire:click:tintLeft=false",
+          "no-proxy"
+        ],
+        "tWorkaround": true,
+        "tintLeft": false,
+        "proxyHidden": [
+          false
+        ],
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "attr": "510x223",
+          "gem": "sapphire",
+          "pinned": "0 0 auto/223px"
+        },
+        "rigs": 1,
+        "rigsFlat": 2,
+        "transmission": [
+          1
+        ],
+        "bodyColor": [
+          "#b4caf4"
+        ],
+        "catToken": [
+          "--primitive-sapphire-ui-400"
+        ],
+        "floors": [
+          {
+            "shadow": true,
+            "caustic": true
+          }
+        ],
+        "groupVisible": [
+          true
+        ],
+        "rotationY": [
+          0
+        ],
+        "pose": [
+          {
+            "t": 0,
+            "tilt": 0
+          }
+        ],
+        "frameHidden": false,
+        "bgClass": [
+          "texture"
+        ]
+      },
+      "probe": {
+        "revision": "160",
+        "gems": 2,
+        "mounted": 2,
+        "notFound": [],
+        "title": "ALPHA CRM — DS Gallery"
+      }
+    }
+  },
+  "consoleErrors": {
+    "front": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "repeat": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "txoff": [
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "dispoff": [
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "chart": [
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "dark": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "nogem": [
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "proxy": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ],
+    "noproxy": [
+      "Uncaught",
+      "Uncaught",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught",
+      "Uncaught"
+    ]
+  },
+  "validation": {
+    "rows": [
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/front.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 240.427,
+        "std": 32.756,
+        "min": 13.9,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/repeat.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 240.428,
+        "std": 32.764,
+        "min": 13.9,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/txoff.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 242.975,
+        "std": 25.487,
+        "min": 13.9,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/dispoff.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 239.982,
+        "std": 36.374,
+        "min": 11.5,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/chart.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 226.108,
+        "std": 55.304,
+        "min": 13.9,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/dark.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 47.396,
+        "std": 48.51,
+        "min": 13.9,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/nogem.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 245.44,
+        "std": 17.862,
+        "min": 13.9,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/proxy.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 240.275,
+        "std": 39.229,
+        "min": 10.2,
+        "max": 255
+      },
+      {
+        "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/tmp/round6/runs/sapphire/noproxy.png",
+        "w": 1214,
+        "h": 520,
+        "mean": 240.981,
+        "std": 28.058,
+        "min": 13.9,
+        "max": 255
+      }
+    ],
+    "bad": []
+  },
+  "notes": [
+    "Recipe: gem-shot.mjs unmodified, --scale 1 --wait 6000 --clip '.frame[data-panel=\"gems\"] .gem-stage', viewport 1500x1200.",
+    "Pose frozen in EVAL (cat.spin=0, t=0, tilt=0, tiltT=0) then 600 ms wait before capture; canvas pinned flex=0 0 auto / height=223px (510x223 client box, confirmed in every shot).",
+    "Each destructive probe (txoff, dispoff) runs in its own Chrome/page load; chart+dark+nogem each also get a fresh load, so no probe state leaks.",
+    "WORKAROUND for a shipped page bug (no src edit): src/components/GemReward/gem-tint.js step() references a bare T that is only declared inside apply(), so the tint throws ReferenceError at t.t===1 and a category click never commits (stone stuck mid-lerp, rig.cat.spin stuck ~0.3). EVAL sets window.T=window.THREE before clicking the category pill; the tint then completes and is snapped to t=1 via GEM_TINT.step(rig,5).",
+    "Console errors listed per shot are gem-shot's own Log/Runtime capture; a 404 on load is present in both categories and predates the capture lane."
+  ],
+  "updatedAt": "2026-10-31T15:43:17.057Z",
+  "present": [
+    "chart.png",
+    "dark.png",
+    "dispoff.png",
+    "front.png",
+    "meta.json",
+    "motion.json",
+    "nogem.png",
+    "noproxy.png",
+    "proxy.png",
+    "repeat.png",
+    "score.json",
+    "txoff.png"
+  ],
+  "missing": []
+}

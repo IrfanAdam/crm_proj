@@ -1,0 +1,28 @@
+FAILED
+reasons: per-band 7x7 std gate misses in crown_top (1.02-1.30 sapphire) and lower_pav (0.73-2.36 both cats);
+clip at tilt +0.55 is 13-15% (one flat table facet flashing white, committed 27-38%); dark-band L50<=130 and
+achrom<=5% miss in that same +0.55 cell; sheet sapphire 64 < 66 (citrine 64 >= 62 PASS); gate (d) TIR-vs-non-TIR
+is measured but INVERTED (TIR px are 98.2-98.8% of the stone, the non-TIR group is the dark grazing fringe).
+shipped: YES - the better try is installed (not committed bytes), because the owner's defect
+(whole-stone pale field) is reproduced and removed at 12/12 spin x tilt cells: pale-lowinfo 84.7% -> 0.3%
+(citrine tilt -0.55), 32-33% -> 0.0-0.5% (sapphire tilt -0.55), 7.2-27.8% -> 0.0-0.6% (all spin angles).
+loops: 8 capture-measure rounds (disclosed in report.md section 9; rounds 1-6 were brightness-anchor misses).
+
+md5 src/components/GemReward/gem-shader.js        ad74d41976447c38df55ced0249e3a1a   (shipped = try7)
+md5 lanes/value2/gem-shader.try7.js                ad74d41976447c38df55ced0249e3a1a
+md5 lanes/value2/gem-shader.try8.js                ef0dd71659954e4fa834b4033d0bb579   (brighter variant, sheet 64/64)
+md5 lanes/value2/gem-shader.committed.js           f854e086501c9213109339fcd5d33229   (revert: cp over src)
+md5 lanes/value2/capture2.mjs                      4a5651afe6c8e9fc80ae9d7af9ab4205
+md5 lanes/value2/measure.py                        40c6845ed0916585aa42218d143671a9
+md5 lanes/value2/report.py                         73fc4987f22b4144f80e5caf7f353a79
+md5 lanes/value2/tables.md                         3f789e612b0a89b9e878a0ac9377df59
+md5 lanes/value2/sapphire/score.json               64/110  (front,repeat,txoff,dispoff,chart,dark,nogem @ 0deg)
+md5 lanes/value2/citrine/score.json                64/110
+md5 lanes/value2/base/sapphire/score.json          66/110  (committed bytes, same pose)
+md5 lanes/value2/base/citrine/score.json           62/110
+
+gates verified before each capture: node --check (0), node scripts/lint-tokens.mjs (0 raw leaks, 0 over-limit,
+gem-shader.js 86 lines <= 100), served-copy curl-grep of a unique token (aces( col * 0.75 ) / vec3( 3.2 ) /
+mirf) on http://127.0.0.1:5176 before every capture batch.
+never touched: port 5173, the shared lanes/darkcaps/capture.mjs, runs_baseline_00/, lanes/edgeAB*, verify_edge*,
+darkcaps, verify_darkcaps, value, verify_value, .hermes/tmp/round6 shader copies; no git, no npm install.

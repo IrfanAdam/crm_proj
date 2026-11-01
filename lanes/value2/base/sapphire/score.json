@@ -1,0 +1,196 @@
+{
+  "color": "sapphire",
+  "shots": {
+    "front": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front.png",
+    "repeat": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/repeat.png",
+    "txoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/txoff.png",
+    "dispoff": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dispoff.png",
+    "chart": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/chart.png",
+    "dark": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark.png",
+    "nogem": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/nogem.png"
+  },
+  "metrics": {
+    "1": {
+      "g_p5": 0.044764481484889984,
+      "g_p95": 43.442996215820294,
+      "g_p99": 84.01446624755859,
+      "edge_frac_gt20": 0.11854332906445998,
+      "acutance": 0.4645579397856112,
+      "EW_px": 0.899270549416542,
+      "L_p5": 55.84760284423828,
+      "L_p95": 236.69580078125
+    },
+    "2": {
+      "p1": 45.938201904296875,
+      "p5": 55.84760284423828,
+      "p50": 142.8511962890625,
+      "p95": 236.69580078125,
+      "p99": 255.0,
+      "p99_9": 255.0,
+      "DR": 209.06179809570312,
+      "stops": 2.1709723904303826
+    },
+    "3": {
+      "fire_px_frac": 0.004057950379097996,
+      "fire_dev_p95": 4.525854587554932,
+      "hue_std": 6.00980836205279,
+      "hue_p90_p10": 11.248138427734375,
+      "hue_mean": 224.34068181908012,
+      "fire_pool_px": 28093,
+      "disp_on_mean": 25.46517562866211,
+      "disp_on_frac_gt8": 0.7965717663284405
+    },
+    "4": {
+      "txoff_mean": 101.56031799316406,
+      "txoff_frac_gt8": 0.977602026630418,
+      "hp_interior_plain": 5.722387790679932,
+      "hp_interior_chart": 6.8990983963012695,
+      "hp_ring_plain": 0.5286703705787659,
+      "hp_ring_chart": 19.2401065826416,
+      "d_hp_interior": 1.176710605621338,
+      "d_hp_ring": 18.711436212062836,
+      "T": 0.06288724137929826,
+      "hp_ratio": 0.35857901133071823
+    },
+    "5": {
+      "n_cc": 19,
+      "largest_frac": 0.19274537695590327,
+      "bright_frac": 0.0530185904445869,
+      "bright_px": 1406,
+      "body_px": 26519,
+      "threshold_L": 215.0
+    },
+    "6": {
+      "T": 0.06288724137929826,
+      "chart_vs_plain_mean": 45.937255859375,
+      "hp_ratio": 0.35857901133071823
+    },
+    "7": {
+      "txoff_mean": 101.56031799316406,
+      "sat_mean": 135.4681854248047,
+      "hue_mean": 224.34068181908012,
+      "token_hue": 208.7,
+      "delta_hue": 15.640681819080129,
+      "halo_sat": 77.62351989746094,
+      "cutout_frac": 0.0,
+      "tells": {
+        "tx": true,
+        "colour": true,
+        "halo": true,
+        "cutout": true
+      }
+    },
+    "8": {
+      "bbox_fill": 0.5871394884817703,
+      "mask_holes": 0,
+      "mask_area": 32369,
+      "quadrant_edge_frac": [
+        0.19258530183727035,
+        0.06387398303617794,
+        0.18464172169234533,
+        0.08666666666666667
+      ],
+      "bbox": [
+        147,
+        54,
+        445,
+        239
+      ]
+    },
+    "9": {
+      "clip_frac": 0.02167274160181263,
+      "DR_light": 209.06179809570312,
+      "p50_light": 142.8511962890625,
+      "DR_dark": 209.06179809570312,
+      "p50_dark": 116.22260284423828,
+      "abs_dp50": 26.62859344482422
+    },
+    "10": {
+      "frames": 180,
+      "omega_mean": 0.3021245880919994,
+      "omega_cov": 0.2828317222696337,
+      "dt_p50": 50.0,
+      "dt_p95": 66.70000000000073,
+      "dt_max": 83.39999999999964,
+      "intervals_gt100": 0,
+      "monotonic": true,
+      "rad_total": 2.372800499339104
+    },
+    "11": {
+      "repeat_mean": 0.0,
+      "repeat_frac_gt8": 0.0,
+      "repeat_mean_interior": 0.0,
+      "repeat_pass": true,
+      "canvas": [
+        510.0,
+        223.0
+      ],
+      "pin_ok": true,
+      "peer_canvas": [
+        510.0,
+        223.0
+      ],
+      "mask_iou": 0.9977762678361851,
+      "peer": "lanes/value2/base/citrine"
+    }
+  },
+  "criteria": [
+    {
+      "id": 1,
+      "score": 6,
+      "notes": "EW 0.9 px (anchor 1.0), acutance 0.465 (0.9 at the 10 band), edge_frac 0.1185 (10 band needs 0.04-0.09); borderline: a band threshold is within measurement tolerance of this value; silhouette: dark-scheme sat>20; mask 32369 px, bbox 298x185, fill 0.587, holes 0"
+    },
+    {
+      "id": 2,
+      "score": 6,
+      "notes": "p1 45.9 / p5 55.8 / p99 255.0; DR 209.1 (anchor 210), stops 2.17 (3.0) \u2014 darkest 1% of the interior reaches shadow"
+    },
+    {
+      "id": 3,
+      "score": 2,
+      "notes": "tint, not fire: dispersion on/off moves 80% of the interior by >8/255 (mean 25.47) while fire_px_frac stays 0.41%; fire_px_frac 0.41% (10 band 6%), dev_p95 4.5 deg (25), hue p90-p10 11.2 deg (30), hue_std 6.0 deg"
+    },
+    {
+      "id": 4,
+      "score": 3,
+      "notes": "T 0.0629: interior hp 5.72 -> 6.90 vs ring 0.53 -> 19.24; tx-off mean|d| 101.56 (10 band needs >=25), frac>8 0.978"
+    },
+    {
+      "id": 5,
+      "score": 8,
+      "notes": "fixed L>=215: n_cc 19 (10 band 6), largest_frac 0.193 (0.35), bright_frac 0.0530 (0.03)"
+    },
+    {
+      "id": 6,
+      "score": 3,
+      "notes": "min(T band 3, interior-delta band 10); chart-vs-plain mean|d| 45.94 (10 band 30), hp_ratio 0.359"
+    },
+    {
+      "id": 7,
+      "score": 8,
+      "notes": "tells pass 4/4: tx 101.56>=20, sat 135.5>=100, |dhue| 15.6<=30, halo 77.6>=40, cutout 0.0000<0.05"
+    },
+    {
+      "id": 8,
+      "score": 8,
+      "notes": "bbox fill 0.587 outside 0.48-0.58 (round brilliant band); quadrant edge_frac [0.1926, 0.0639, 0.1846, 0.0867] vs 0.02 (10) / 0.01 (8); fill 0.587"
+    },
+    {
+      "id": 9,
+      "score": 8,
+      "notes": "clip_frac(L>=254) 0.0217 (<=0.02), DR light 209.1 / dark 209.1, |dp50| 26.6 (<=40)"
+    },
+    {
+      "id": 10,
+      "score": 4,
+      "notes": "180 frames: omega 0.302 rad/s, CoV 0.283 (<=0.05), dt p50/p95/max 50.0/66.7/83.4 ms, 0 intervals >100 ms, monotonic True"
+    },
+    {
+      "id": 11,
+      "score": 10,
+      "notes": "repeat mean|d| 0.00 (<=1.0), frac>8 0.000 (<=0.05); canvas 510x223; IoU 0.9978"
+    }
+  ],
+  "total_of_110": 66,
+  "total_of_10": 6.0
+}

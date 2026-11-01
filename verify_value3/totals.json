@@ -1,0 +1,14 @@
+{
+  "sapphire": {
+    "claim": 66,
+    "rescore": 66,
+    "ckpt_claim": 64,
+    "ckpt_rescore": 64
+  },
+  "citrine": {
+    "claim": 62,
+    "rescore": 62,
+    "ckpt_claim": 64,
+    "ckpt_rescore": 64
+  }
+}

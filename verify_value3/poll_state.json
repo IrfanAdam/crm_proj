@@ -1,0 +1,185 @@
+{
+  "polls": 30,
+  "history": [
+    {
+      "t": "02:06:07",
+      "poll": 1,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:07:07",
+      "poll": 2,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:07:53",
+      "poll": 3,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:08:53",
+      "poll": 4,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:09:53",
+      "poll": 5,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:10:53",
+      "poll": 6,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:11:54",
+      "poll": 7,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:12:54",
+      "poll": 8,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:13:54",
+      "poll": 9,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:15:04",
+      "poll": 10,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:16:05",
+      "poll": 11,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:17:05",
+      "poll": 12,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:18:05",
+      "poll": 13,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:19:05",
+      "poll": 14,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:20:05",
+      "poll": 15,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:20:09",
+      "poll": 16,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:21:09",
+      "poll": 17,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:22:09",
+      "poll": 18,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:23:09",
+      "poll": 19,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:24:09",
+      "poll": 20,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:25:09",
+      "poll": 21,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:25:13",
+      "poll": 22,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:26:13",
+      "poll": 23,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:27:13",
+      "poll": 24,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:28:13",
+      "poll": 25,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:29:13",
+      "poll": 26,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:30:13",
+      "poll": 27,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:30:16",
+      "poll": 28,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:31:16",
+      "poll": 29,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    },
+    {
+      "t": "02:32:16",
+      "poll": 30,
+      "result": "waiting",
+      "info": "lane_dir=no"
+    }
+  ]
+}

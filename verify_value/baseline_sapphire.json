@@ -1,0 +1,244 @@
+{
+ "run_dir": ".hermes/tmp/round6/runs/sapphire",
+ "color": "sapphire",
+ "front": {
+  "bands": {
+   "bbox": [
+    147,
+    56,
+    445,
+    241
+   ],
+   "bbox_h": 185,
+   "crown_top": {
+    "rows": [
+     56,
+     97
+    ],
+    "stone_frac": 0.1368,
+    "n_stone": 6807,
+    "L_p50": 73.07,
+    "L_p5": 63.78,
+    "L_p95": 254.14,
+    "S_med": 197.11,
+    "std7_med": 2.771
+   },
+   "crown_lower": {
+    "rows": [
+     97,
+     126
+    ],
+    "stone_frac": 0.2309,
+    "n_stone": 8129,
+    "L_p50": 160.28,
+    "L_p5": 67.07,
+    "L_p95": 252.24,
+    "S_med": 112.65,
+    "std7_med": 20.44
+   },
+   "girdle": {
+    "rows": [
+     126,
+     141
+    ],
+    "stone_frac": 0.2254,
+    "n_stone": 4104,
+    "L_p50": 138.13,
+    "L_p5": 116.86,
+    "L_p95": 223.28,
+    "S_med": 144.36,
+    "std7_med": 15.688
+   },
+   "upper_pavilion": {
+    "rows": [
+     141,
+     182
+    ],
+    "stone_frac": 0.1689,
+    "n_stone": 8406,
+    "L_p50": 190.73,
+    "L_p5": 146.85,
+    "L_p95": 231.59,
+    "S_med": 86.7,
+    "std7_med": 9.02
+   },
+   "lower_pavilion": {
+    "rows": [
+     182,
+     215
+    ],
+    "stone_frac": 0.0938,
+    "n_stone": 3758,
+    "L_p50": 56.71,
+    "L_p5": 45.44,
+    "L_p95": 184.04,
+    "S_med": 216.0,
+    "std7_med": 3.895
+   },
+   "culet": {
+    "rows": [
+     215,
+     241
+    ],
+    "stone_frac": 0.0338,
+    "n_stone": 1068,
+    "L_p50": 56.01,
+    "L_p5": 45.44,
+    "L_p95": 115.89,
+    "S_med": 225.18,
+    "std7_med": 5.93
+   }
+  },
+  "global": {
+   "L_p5": 55.63,
+   "L_p95": 237.76,
+   "L_p50": 141.07,
+   "clip_frac": 0.03108,
+   "pale_lowinfo_frac": 0.07325,
+   "neon_inmask": 0,
+   "slab_frac": 0.2671,
+   "n_mask": 32272,
+   "n_interior": 30360,
+   "n_pale_lowinfo": 2364,
+   "n_slab": 8109
+  }
+ },
+ "alt_dark": {
+  "bands": {
+   "bbox": [
+    147,
+    56,
+    445,
+    241
+   ],
+   "bbox_h": 185,
+   "crown_top": {
+    "rows": [
+     56,
+     97
+    ],
+    "stone_frac": 0.1368,
+    "n_stone": 6807,
+    "L_p50": 73.07,
+    "L_p5": 63.63,
+    "L_p95": 254.06,
+    "S_med": 197.11,
+    "std7_med": 2.753
+   },
+   "crown_lower": {
+    "rows": [
+     97,
+     126
+    ],
+    "stone_frac": 0.2309,
+    "n_stone": 8129,
+    "L_p50": 123.17,
+    "L_p5": 66.76,
+    "L_p95": 248.38,
+    "S_med": 160.32,
+    "std7_med": 19.017
+   },
+   "girdle": {
+    "rows": [
+     126,
+     141
+    ],
+    "stone_frac": 0.2254,
+    "n_stone": 4104,
+    "L_p50": 116.08,
+    "L_p5": 86.34,
+    "L_p95": 171.15,
+    "S_med": 167.43,
+    "std7_med": 11.059
+   },
+   "upper_pavilion": {
+    "rows": [
+     141,
+     182
+    ],
+    "stone_frac": 0.1689,
+    "n_stone": 8406,
+    "L_p50": 144.5,
+    "L_p5": 102.26,
+    "L_p95": 169.69,
+    "S_med": 137.47,
+    "std7_med": 9.635
+   },
+   "lower_pavilion": {
+    "rows": [
+     182,
+     215
+    ],
+    "stone_frac": 0.0938,
+    "n_stone": 3758,
+    "L_p50": 56.71,
+    "L_p5": 45.44,
+    "L_p95": 156.63,
+    "S_med": 216.23,
+    "std7_med": 3.928
+   },
+   "culet": {
+    "rows": [
+     215,
+     241
+    ],
+    "stone_frac": 0.0338,
+    "n_stone": 1068,
+    "L_p50": 56.01,
+    "L_p5": 45.38,
+    "L_p95": 100.74,
+    "S_med": 225.18,
+    "std7_med": 6.033
+   }
+  },
+  "global": {
+   "L_p5": 55.63,
+   "L_p95": 193.44,
+   "L_p50": 114.37,
+   "clip_frac": 0.02727,
+   "pale_lowinfo_frac": 0.00834,
+   "neon_inmask": 0,
+   "slab_frac": 0.2679,
+   "n_mask": 32272,
+   "n_interior": 30360,
+   "n_pale_lowinfo": 269,
+   "n_slab": 8133
+  }
+ },
+ "gates": {
+  "crown_top_dark": {
+   "std7_med": 2.771,
+   "L_p50": 73.07,
+   "pass": false
+  },
+  "lower_pavilion_dark": {
+   "std7_med": 3.895,
+   "L_p50": 56.71,
+   "pass": false
+  },
+  "upper_pavilion_chroma": {
+   "S_med": 86.7,
+   "L_p50": 190.73,
+   "std7_med": 9.02,
+   "pass": false
+  },
+  "global_range": {
+   "L_p5": 55.63,
+   "L_p95": 237.76,
+   "pass": true
+  },
+  "neon": {
+   "neon_inmask": 0,
+   "pass": true
+  },
+  "clip": {
+   "clip_frac": 0.03108,
+   "pass": false
+  },
+  "slab": {
+   "slab_frac": 0.2671,
+   "limit": 0.25,
+   "pass": false
+  }
+ }
+}

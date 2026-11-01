@@ -1,0 +1,1383 @@
+{
+  "url": "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+  "cat": "sapphire",
+  "angleLever": "gem3d.js L51 rotation.y = cat.spin * t * 0.9 (frozen via accessors)",
+  "updatedAt": "2026-10-31T19:40:08.245Z",
+  "shots": {
+    "front": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front.png",
+      "angleDeg": 0,
+      "seconds": 9.2,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark.png",
+      "angleDeg": 0,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a35": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front_a35.png",
+      "angleDeg": 35,
+      "seconds": 8.6,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 35,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a35": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark_a35.png",
+      "angleDeg": 35,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 35,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a70": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front_a70.png",
+      "angleDeg": 70,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 70,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a70": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark_a70.png",
+      "angleDeg": 70,
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 70,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a90": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front_a90.png",
+      "angleDeg": 90,
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 90,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.5708
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a90": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark_a90.png",
+      "angleDeg": 90,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 90,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.5708
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a110": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front_a110.png",
+      "angleDeg": 110,
+      "seconds": 8.9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 110,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.9199
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a110": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark_a110.png",
+      "angleDeg": 110,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 110,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.9199
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a140": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front_a140.png",
+      "angleDeg": 140,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 140,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          2.4435
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a140": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark_a140.png",
+      "angleDeg": 140,
+      "seconds": 9.6,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 140,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          2.4435
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a170": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/front_a170.png",
+      "angleDeg": 170,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 170,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          2.9671
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a170": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/sapphire/dark_a170.png",
+      "angleDeg": 170,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 170,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          2.9671
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "repeat": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/repeat.png",
+      "angleDeg": 0,
+      "seconds": 9.2,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "repeat",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "txoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/txoff.png",
+      "angleDeg": 0,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "txoff",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          0
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dispoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dispoff.png",
+      "angleDeg": 0,
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dispoff",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "chart": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/chart.png",
+      "angleDeg": 0,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "chart",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "nogem": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/nogem.png",
+      "angleDeg": 0,
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "nogem",
+        "cat": "sapphire",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "front_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front_t-0.55.png",
+      "angleDeg": 0,
+      "tiltRad": -0.55,
+      "seconds": 9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 0,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark_t-0.55.png",
+      "angleDeg": 0,
+      "tiltRad": -0.55,
+      "seconds": 9.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 0,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front_t0.55.png",
+      "angleDeg": 0,
+      "tiltRad": 0.55,
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 0,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark_t0.55.png",
+      "angleDeg": 0,
+      "tiltRad": 0.55,
+      "seconds": 10.9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 0,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a35_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front_a35_t-0.55.png",
+      "angleDeg": 35,
+      "tiltRad": -0.55,
+      "seconds": 10.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 35,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a35_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark_a35_t-0.55.png",
+      "angleDeg": 35,
+      "tiltRad": -0.55,
+      "seconds": 10.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 35,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a35_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front_a35_t0.55.png",
+      "angleDeg": 35,
+      "tiltRad": 0.55,
+      "seconds": 9.9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 35,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a35_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark_a35_t0.55.png",
+      "angleDeg": 35,
+      "tiltRad": 0.55,
+      "seconds": 11.1,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 35,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.0158
+        ],
+        "rotationX": [
+          0
+        ],
+        "posY": [
+          0.0012
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a70_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front_a70_t-0.55.png",
+      "angleDeg": 70,
+      "tiltRad": -0.55,
+      "seconds": 9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 70,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a70_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark_a70_t-0.55.png",
+      "angleDeg": 70,
+      "tiltRad": -0.55,
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 70,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a70_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/front_a70_t0.55.png",
+      "angleDeg": 70,
+      "tiltRad": 0.55,
+      "seconds": 9.1,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "sapphire",
+        "angle": 70,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a70_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/sapphire/dark_a70_t0.55.png",
+      "angleDeg": 70,
+      "tiltRad": 0.55,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "sapphire",
+        "angle": 70,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "sapphire"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    }
+  }
+}

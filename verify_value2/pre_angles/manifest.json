@@ -1,0 +1,142 @@
+[
+  {
+    "src": "lanes/value2/sapphire/front.png",
+    "copied": "verify_value2/pre_angles/sapphire_front.png",
+    "md5": "36e9ee55041ffc65ef19132ae0fbd050",
+    "mtime": "00:53:49",
+    "bytes": 96903
+  },
+  {
+    "src": "lanes/value2/sapphire/front_a110.png",
+    "copied": "verify_value2/pre_angles/sapphire_front_a110.png",
+    "md5": "44780b403d451e049df67711b9c0292f",
+    "mtime": "00:55:42",
+    "bytes": 97565
+  },
+  {
+    "src": "lanes/value2/sapphire/front_a140.png",
+    "copied": "verify_value2/pre_angles/sapphire_front_a140.png",
+    "md5": "fb8719e5ccccb1814a3f8726a5296d3a",
+    "mtime": "00:56:00",
+    "bytes": 95199
+  },
+  {
+    "src": "lanes/value2/sapphire/front_a170.png",
+    "copied": "verify_value2/pre_angles/sapphire_front_a170.png",
+    "md5": "25cfd1c9f0fab5602cb161338f17be91",
+    "mtime": "00:56:18",
+    "bytes": 94805
+  },
+  {
+    "src": "lanes/value2/sapphire/front_a35.png",
+    "copied": "verify_value2/pre_angles/sapphire_front_a35.png",
+    "md5": "b198f5a27f226e1101d3317d68c3d90b",
+    "mtime": "00:54:07",
+    "bytes": 94807
+  },
+  {
+    "src": "lanes/value2/sapphire/front_a70.png",
+    "copied": "verify_value2/pre_angles/sapphire_front_a70.png",
+    "md5": "0c81703c8e22d0ca5036a49ce3f0cc25",
+    "mtime": "00:55:06",
+    "bytes": 97832
+  },
+  {
+    "src": "lanes/value2/sapphire/front_a90.png",
+    "copied": "verify_value2/pre_angles/sapphire_front_a90.png",
+    "md5": "d9af65344af6920c8b0a75f24f38e9ac",
+    "mtime": "00:55:23",
+    "bytes": 96910
+  },
+  {
+    "src": "lanes/value2/sapphire/dark.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark.png",
+    "md5": "62cf7e9a40346992758f6294e48a4c0a",
+    "mtime": "00:53:58",
+    "bytes": 98596
+  },
+  {
+    "src": "lanes/value2/sapphire/dark_a110.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark_a110.png",
+    "md5": "ca35335c3cd9b1749f84fb87d74c7d74",
+    "mtime": "00:55:51",
+    "bytes": 100078
+  },
+  {
+    "src": "lanes/value2/sapphire/dark_a140.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark_a140.png",
+    "md5": "6a4601b37da4507615348d60f72450dd",
+    "mtime": "00:56:09",
+    "bytes": 97730
+  },
+  {
+    "src": "lanes/value2/sapphire/dark_a170.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark_a170.png",
+    "md5": "8631bfc801c1b5ca2b97aaad091b83be",
+    "mtime": "00:56:28",
+    "bytes": 98335
+  },
+  {
+    "src": "lanes/value2/sapphire/dark_a35.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark_a35.png",
+    "md5": "68e7e1ae272885da91c4644adf18eea8",
+    "mtime": "00:54:16",
+    "bytes": 98320
+  },
+  {
+    "src": "lanes/value2/sapphire/dark_a70.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark_a70.png",
+    "md5": "705e5f03571bf544781b986a1caa39fb",
+    "mtime": "00:55:15",
+    "bytes": 99719
+  },
+  {
+    "src": "lanes/value2/sapphire/dark_a90.png",
+    "copied": "verify_value2/pre_angles/sapphire_dark_a90.png",
+    "md5": "24a3205e211ae7ae1cb34c13373f76da",
+    "mtime": "00:55:33",
+    "bytes": 98614
+  },
+  {
+    "src": "lanes/value2/citrine/front.png",
+    "copied": "verify_value2/pre_angles/citrine_front.png",
+    "md5": "57ae0c32013b581adab36fb67db084c3",
+    "mtime": "00:58:07",
+    "bytes": 89282
+  },
+  {
+    "src": "lanes/value2/citrine/front_a35.png",
+    "copied": "verify_value2/pre_angles/citrine_front_a35.png",
+    "md5": "90f0329a43d6e9702a8b9ec39c76e321",
+    "mtime": "00:58:24",
+    "bytes": 89496
+  },
+  {
+    "src": "lanes/value2/citrine/front_a70.png",
+    "copied": "verify_value2/pre_angles/citrine_front_a70.png",
+    "md5": "90dd9e1421f36ead93061cfe540a3153",
+    "mtime": "00:58:43",
+    "bytes": 90139
+  },
+  {
+    "src": "lanes/value2/citrine/dark.png",
+    "copied": "verify_value2/pre_angles/citrine_dark.png",
+    "md5": "9e0443d8c0df95fa5943279cb1954331",
+    "mtime": "00:58:16",
+    "bytes": 92923
+  },
+  {
+    "src": "lanes/value2/citrine/dark_a35.png",
+    "copied": "verify_value2/pre_angles/citrine_dark_a35.png",
+    "md5": "84585bff8269a8b11d17daec20fecd0f",
+    "mtime": "00:58:34",
+    "bytes": 93835
+  },
+  {
+    "src": "lanes/value2/citrine/dark_a70.png",
+    "copied": "verify_value2/pre_angles/citrine_dark_a70.png",
+    "md5": "00924bb074aa801e18edbc9cd0ca34b4",
+    "mtime": "00:58:52",
+    "bytes": 93497
+  }
+]

@@ -1,0 +1,1043 @@
+{
+  "url": "http://127.0.0.1:5176/gallery.html?gem=high#gems",
+  "cat": "citrine",
+  "angleLever": "gem3d.js L51 rotation.y = cat.spin * t * 0.9 (frozen via accessors)",
+  "updatedAt": "2026-10-31T19:41:59.129Z",
+  "shots": {
+    "front": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/citrine/front.png",
+      "angleDeg": 0,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/citrine/dark.png",
+      "angleDeg": 0,
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a35": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/citrine/front_a35.png",
+      "angleDeg": 35,
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 35,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a35": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/citrine/dark_a35.png",
+      "angleDeg": 35,
+      "seconds": 9.3,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 35,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a70": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/citrine/front_a70.png",
+      "angleDeg": 70,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 70,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a70": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/citrine/dark_a70.png",
+      "angleDeg": 70,
+      "seconds": 9.2,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 70,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "repeat": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/repeat.png",
+      "angleDeg": 0,
+      "seconds": 9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "repeat",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "txoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/txoff.png",
+      "angleDeg": 0,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "txoff",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          0
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dispoff": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dispoff.png",
+      "angleDeg": 0,
+      "seconds": 9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dispoff",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "chart": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/chart.png",
+      "angleDeg": 0,
+      "seconds": 9.6,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "chart",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "nogem": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/nogem.png",
+      "angleDeg": 0,
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "nogem",
+        "cat": "citrine",
+        "angle": 0,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "front_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/front_t-0.55.png",
+      "angleDeg": 0,
+      "tiltRad": -0.55,
+      "seconds": 9.2,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 0,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dark_t-0.55.png",
+      "angleDeg": 0,
+      "tiltRad": -0.55,
+      "seconds": 9.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 0,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/front_t0.55.png",
+      "angleDeg": 0,
+      "tiltRad": 0.55,
+      "seconds": 9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 0,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dark_t0.55.png",
+      "angleDeg": 0,
+      "tiltRad": 0.55,
+      "seconds": 9.6,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 0,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a35_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/front_a35_t-0.55.png",
+      "angleDeg": 35,
+      "tiltRad": -0.55,
+      "seconds": 9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 35,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a35_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dark_a35_t-0.55.png",
+      "angleDeg": 35,
+      "tiltRad": -0.55,
+      "seconds": 9.5,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 35,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a35_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/front_a35_t0.55.png",
+      "angleDeg": 35,
+      "tiltRad": 0.55,
+      "seconds": 8.9,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 35,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a35_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dark_a35_t0.55.png",
+      "angleDeg": 35,
+      "tiltRad": 0.55,
+      "seconds": 9.5,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 35,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          0.6109
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a70_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/front_a70_t-0.55.png",
+      "angleDeg": 70,
+      "tiltRad": -0.55,
+      "seconds": 8.8,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 70,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a70_t-0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dark_a70_t-0.55.png",
+      "angleDeg": 70,
+      "tiltRad": -0.55,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 70,
+        "tilt": -0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          -0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    },
+    "front_a70_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/front_a70_t0.55.png",
+      "angleDeg": 70,
+      "tiltRad": 0.55,
+      "seconds": 8.7,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "front",
+        "cat": "citrine",
+        "angle": 70,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ]
+      }
+    },
+    "dark_a70_t0.55": {
+      "file": "/Users/irfan/Documents/Portfolio Redo/crm_proj/lanes/value2/base/citrine/dark_a70_t0.55.png",
+      "angleDeg": 70,
+      "tiltRad": 0.55,
+      "seconds": 9.4,
+      "consoleErrors": [
+        "Uncaught",
+        "Uncaught",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught",
+        "Uncaught"
+      ],
+      "eval": {
+        "role": "dark",
+        "cat": "citrine",
+        "angle": 70,
+        "tilt": 0.55,
+        "steps": [],
+        "tintLeft": false,
+        "canvas": {
+          "cw": 510,
+          "ch": 223,
+          "bw": 510,
+          "bh": 223,
+          "gem": "citrine"
+        },
+        "rigs": 1,
+        "transmission": [
+          1
+        ],
+        "rotationY": [
+          1.2217
+        ],
+        "rotationX": [
+          0.55
+        ],
+        "posY": [
+          0.0215
+        ],
+        "dbg": [
+          null
+        ],
+        "theme": "dark"
+      }
+    }
+  }
+}
