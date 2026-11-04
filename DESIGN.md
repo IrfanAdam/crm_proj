@@ -182,7 +182,7 @@ components:
 
 # Overview
 
-ALPHA is the only CRM stack the field team needs — data in here don't lie.
+Alphas is the only CRM stack the field team needs — data in here don't lie.
 Two surfaces, never mixed: **Operate** (opportunities, prospects, actions) and
 **Monitor** (funnel, reports, goals). Both are light-first, typography-led, and
 quiet: hairlines carry elevation, one blue carries action, gems carry ceremony.

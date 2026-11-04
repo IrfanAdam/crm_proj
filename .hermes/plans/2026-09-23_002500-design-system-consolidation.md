@@ -9,7 +9,7 @@
 > *"how should this component work"*, *"token for X"*, *"is this consistent"*,
 > *"here's a rough X sample, add it to the system"*.
 
-**Goal:** Build the ALPHA CRM design system from the ground up to industry bar
+**Goal:** Build the Alphas design system from the ground up to industry bar
 (Material/Carbon/Polaris/HIG, WCAG 2.2) — language first, then a complete token source,
 then all 32 components specced and built on those tokens, then patterns, then composed
 pages, then the gates that keep it true. One system, one chapter order, one icon set.
