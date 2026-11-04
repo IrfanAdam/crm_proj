@@ -1,9 +1,9 @@
 """ADAM/SHARED — prototype/gems/gem_cut.py · portable round-brilliant cut (mirror)."""
 # [plan:2026-10-03_144222-gem-realism-round2.md#phase-9] · Task 19 parity twin of gem-cut.js.
 # — Data: CUT dims + CATEGORIES (token, hue, spin, ior = real refractive index) · key order mirrors the JS core —
-# — Cut: octagon table · 8 star · 8 bezel kites · 16 upper-girdle triangles · thin 16-gon girdle band ·
-#   8 pavilion mains (pentagon kites) · 16 lower-girdle triangles · small culet octagon — 124 triangles,
-#   74 planes (one per facet) · closed + manifold —
+# — Cut: octagon table · 8 star · 8 bezel kites · 16 upper-girdle triangles · ROUND 48-segment girdle ·
+#   8 pavilion mains (pentagon kites) · 16 lower-girdle triangles · small culet octagon —
+#   16 flat facets on a round outline, every facet exactly one plane, closed + manifold —
 #   star = star-tip position along the bezel (0 = table edge, 1 = girdle) —
 # — Mirror: same vertex order + same expressions as the JS core; parity_check.py asserts 1e-9 —
 import math, re
@@ -23,6 +23,7 @@ FALLBACK = {"sapphire": "#218aea", "citrine": "#ffb01e", "amethyst": "#a54cff", 
 def gem_cut(cut=CUT):
     """Build the round brilliant → (positions, cells); every cell is a triangle index triple."""
     g, h = cut["girdle"], cut["band"] / 2.0             # girdle radius · band half-height
+    S, n = 3, 16 * 3                                    # segments per facet · ring segments (48)
     tab_r, r_cu = g * cut["table"], g * cut["culet"]
     c22 = math.cos(math.pi / 8)
     y_tab = h + cut["crown"]                            # table plane
@@ -43,10 +44,19 @@ def gem_cut(cut=CUT):
 
     tab = ring(8, tab_r, y_tab)                         # 0: octagon table
     mid = ring(8, r_mid, y_mid, 0.5 / 8)                # 8: star tips (bezel shoulders)
-    gt = ring(16, g, h)                                 # 16: girdle top, 16 shared vertices
-    gb = ring(16, g, -h)                                # 32: girdle bottom
+    gt = ring(16, g, h)                                 # 16: 16 facet corners, top
+    gb = ring(16, g, -h)                                # 32: 16 facet corners, bottom
     low = ring(8, meet_r, -d_low, 0.5 / 8)              # 48: lower-girdle meet points
     cu = ring(8, r_cu, -cut["pavilion"], 0.5 / 8)       # 56: culet octagon
+
+    GT = len(pos)
+    for i in range(n):
+        ang = (i / n) * math.pi * 2
+        pos.append([math.cos(ang) * g, h, math.sin(ang) * g])     # 64: round girdle, top edge
+    GB = len(pos)
+    for i in range(n):
+        ang = (i / n) * math.pi * 2
+        pos.append([math.cos(ang) * g, -h, math.sin(ang) * g])    # 112: round girdle, bottom edge
 
     cells = []
 
@@ -55,25 +65,25 @@ def gem_cut(cut=CUT):
 
     for i in range(1, 7):                               # table octagon (6 tris)
         tri(tab, tab + i + 1, tab + i)
-    for k in range(8):                                  # crown: 1 star + 2 bezel + 2 upper-girdle
+    for k in range(8):                                  # crown: 1 star + 2 bezel + 2*S upper-girdle
         t0, t1 = tab + k, tab + (k + 1) % 8
         s, s0 = mid + k, mid + (k + 7) % 8
-        m, ml, mr = gt + 2 * k, gt + (2 * k + 1) % 16, gt + (2 * k + 2) % 16
+        m = GT + 2 * S * k
         tri(t0, t1, s)
         tri(t0, s, m)
         tri(t0, m, s0)
-        tri(s, ml, m)
-        tri(s, mr, ml)
-    for i in range(16):                                 # thin girdle band (two close rings)
-        j = (i + 1) % 16
-        tri(gt + i, gt + j, gb + j)
-        tri(gt + i, gb + j, gb + i)
-    for k in range(8):                                  # pavilion: 2 lower-girdle + 3 main (pentagon kite)
-        b0, bl, br = gb + 2 * k, gb + (2 * k + 1) % 16, gb + (2 * k + 2) % 16
+        for q in range(2 * S):
+            tri(s, GT + (2 * S * k + q + 1) % n, GT + (2 * S * k + q) % n)
+    for i in range(n):                                  # girdle band, 48 segments
+        j = (i + 1) % n
+        tri(GT + i, GT + j, GB + j)
+        tri(GT + i, GB + j, GB + i)
+    for k in range(8):                                  # pavilion: 2*S lower-girdle + 3 main
+        b0 = GB + 2 * S * k
         p, pl = low + k, low + (k + 7) % 8
         c, cl = cu + k, cu + (k + 7) % 8
-        tri(b0, bl, p)
-        tri(p, bl, br)
+        for q in range(2 * S):
+            tri(GB + (2 * S * k + q) % n, GB + (2 * S * k + q + 1) % n, p)
         tri(b0, p, c)
         tri(b0, c, cl)
         tri(b0, cl, pl)
