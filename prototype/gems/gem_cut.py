@@ -8,8 +8,8 @@
 # — Mirror: same vertex order + same expressions as the JS core; parity_check.py asserts 1e-9 —
 import math, re
 
-CUT = {"facets": 16, "girdle": 1.0, "table": 0.55, "crown": 0.32, "pavilion": 0.86,
-       "band": 0.055, "star": 0.5, "lower": 0.72, "culet": 0.06}
+CUT = {"facets": 16, "girdle": 1.0, "table": 0.555, "crown": 0.305, "pavilion": 0.8845,
+       "band": 0.05, "star": 0.5, "lower": 0.8206, "culet": 0.012}
 CATEGORIES = {
     "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35, "ior": 1.77},
     "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3, "ior": 1.545},
