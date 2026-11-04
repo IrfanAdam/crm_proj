@@ -1,4 +1,4 @@
-# Changelog — ALPHA CRM DS (semver)
+# Changelog — Alphas DS (semver)
 
 ## [0.14.0] — 2026-09-16 (DS polish — Evo 50–900 + signal + docs maturity)
 ### Added

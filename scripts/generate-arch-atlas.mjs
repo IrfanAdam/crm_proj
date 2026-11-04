@@ -27,7 +27,7 @@ export function buildAtlas(res) {
     const uses = patSrc.split('\n').filter((l) => l.includes(d.toLowerCase()) || l.includes(d.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase())).length;
     addN('component:' + d, 'components', d, 'src/components/' + d, uses + ' referencing lines in patterns');
   }
-  addN('app', 'ia', 'ALPHA App', 'index.html', 'shell frame: header, game-layout, footer');
+  addN('app', 'ia', 'Alphas App', 'index.html', 'shell frame: header, game-layout, footer');
   for (const t of ['Home', 'Leads', 'Opps']) addN('tab:' + t, 'ia', t + ' Tab', 'src/glass/BottomDock.jsx', 'dock tab; bridges via app-tab event');
   for (const d of fs.readdirSync(join(root, 'src/patterns')).filter((d) => !d.startsWith('.'))) addN('screen:' + d, 'ia', pretty(d), 'src/patterns/' + d, 'pattern screen; mount(page) branch');
   for (const t of ['Home', 'Leads', 'Opps']) { addE('app', 'tab:' + t, 'contains'); addE('tab:' + t, 'screen:OppsHome', 'contains', t === 'Opps' ? 'full screen' : 'empty placeholder'); }

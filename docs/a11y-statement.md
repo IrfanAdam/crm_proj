@@ -1,4 +1,4 @@
-# A11Y Statement — ALPHA CRM DS (WCAG 2.2 AA, Evo-grade)
+# A11Y Statement — Alphas DS (WCAG 2.2 AA, Evo-grade)
 
 **Conformance:** WCAG 2.2 AA pass as of 2026-09-16 polish (manual + axe + contrast gates). No known violations; `goal-bar` 4.14:1 triaged as large/bold-only (AA-large).
 

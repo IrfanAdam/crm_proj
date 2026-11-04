@@ -1,6 +1,6 @@
 ---
 version: beta
-name: ALPHA CRM
+name: Alphas
 description: Field-sales CRM — light-first, typography-driven Operate/Monitor surfaces with a single Sapphire action hue, gem-category gamification, and transient-vs-temporal data logic. Full 50–900 ramps + signal swap-slot.
 colors:
   primary: "#222222"

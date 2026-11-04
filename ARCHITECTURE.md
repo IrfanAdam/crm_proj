@@ -1,4 +1,4 @@
-# ARCHITECTURE — ALPHA CRM layered prototype
+# ARCHITECTURE — Alphas layered prototype
 
 Extract-only refactor: each layer owns its modules behind documented contracts.
 Geometry flows one way from `src/workspace/devices.js`. No rewrites, no behavior

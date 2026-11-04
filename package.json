@@ -2,7 +2,7 @@
   "name": "alpha-crm-ds",
   "version": "0.14.0",
   "private": true,
-  "description": "ALPHA CRM design system — DTCG token source + generated CSS + gates",
+  "description": "Alphas design system — DTCG token source + generated CSS + gates",
   "type": "module",
   "scripts": {
     "build": "node scripts/build-tokens.mjs && node scripts/ds-track.mjs && vite build",

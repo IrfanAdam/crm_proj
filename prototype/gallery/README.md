@@ -1,4 +1,4 @@
-# ALPHA CRM — Prototype Gallery Contracts
+# Alphas — Prototype Gallery Contracts
 
 Gallery lives at **gallery.html** (desktop DS, full-width wraps, 20 tabs). Each tab is a full-width frame demo: `data-tab` ↔ `data-panel` switching via `hidden`.
 

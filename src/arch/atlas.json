@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-11-04T10:24:02.743Z",
+    "generatedAt": "2026-11-04T10:31:54.577Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -44,7 +44,7 @@
       "src/components/Textarea": 1790164876031,
       "src/components/Timeline": 1790164774821,
       "src/components/Toolbar": 1790164696780,
-      "index.html": 1793520459484,
+      "index.html": 1793788147280,
       "src/glass/BottomDock.jsx": 1791117967532,
       "src/patterns/ActivityStrip": 1791109230849,
       "src/patterns/EmptyState": 1790097746429,
@@ -58,7 +58,7 @@
     {
       "id": "app",
       "lens": "ia",
-      "title": "ALPHA App",
+      "title": "Alphas App",
       "source": "index.html",
       "detail": "shell frame: header, game-layout, footer"
     },

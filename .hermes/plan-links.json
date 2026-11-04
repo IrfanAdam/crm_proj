@@ -313,5 +313,25 @@
     "plan": "2026-10-03_144222-gem-realism-round2.md",
     "anchor": "{#phase-1}",
     "note": "Quality loop round-5 directive embedded in plan (restarts at Phase 1)"
+  },
+  "051110e": {
+    "plan": "2026-09-22_155000-architecture-mechanics.md",
+    "anchor": "{#phase-2}",
+    "note": "chore(graphs): regen atlas + mechanics — GemReward/index.html mtimes"
+  },
+  "0f241a2": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-7}",
+    "note": "checkpoint(gem): photo-target shaper + body shader recompile fix"
+  },
+  "2c8eb87": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-8}",
+    "note": "checkpoint(helper-watch): sibling 0f241a2 + realism2 round in flight"
+  },
+  "122f9f1": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-1}",
+    "note": "chore(checkpoint): working state — manifests, mechanics regen, darkcap lane evidence"
   }
 }

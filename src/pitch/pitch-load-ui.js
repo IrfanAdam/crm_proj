@@ -34,7 +34,7 @@ function initFramedClose(){
   if(window.self===window.top) return;
   document.querySelectorAll("[data-pitch-close]").forEach(function(btn){
     btn.hidden=false;
-    btn.addEventListener("click",function(){window.parent.postMessage("alphagems:close-pitch","*");});
+    btn.addEventListener("click",function(){window.parent.postMessage("alphas:close-pitch","*");});
   });
 }
 function initPitchVersion(){

@@ -1,4 +1,4 @@
-# Figma Parity Checklist — ALPHA CRM DS (Evo 50–900 + signal)
+# Figma Parity Checklist — Alphas DS (Evo 50–900 + signal)
 
 Source: ref-01..12, REGISTRY.md, DESIGN.md (beta, 56 colors 50–900 + signal), `tokens/primitives.json` (10-step) + `tokens.css` 27 lines.
 

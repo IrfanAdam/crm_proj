@@ -74,5 +74,9 @@
   "2026-10-31_135705-changelog-safepipe-parity.md": {
     "title": "Changelog safepipe parity — filter + timeline chrome",
     "purpose": "safepipe chrome parity"
+  },
+  "2026-11-02_000000-lump-sum-builds.md": {
+    "title": "Lump-sum builds — week of Nov 2 (Alphas brand rename)",
+    "purpose": "weekly catch-all + brand rename"
   }
 }

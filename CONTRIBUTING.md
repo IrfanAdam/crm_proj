@@ -1,4 +1,4 @@
-# Contributing — ALPHA CRM DS
+# Contributing — Alphas DS
 
 **Source of truth:** `tokens/*.json` (DTCG 10-step 50–900 + `signal` swap-slot) → generated `design-system/tokens.css` (27 lines) via `npm run build`. Never hand-edit `tokens.css`.
 

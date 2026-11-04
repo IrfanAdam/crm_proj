@@ -48,7 +48,7 @@ window.addEventListener('popstate', function () {
 if (new URL(location.href).searchParams.get(KEY) === '1') open();
 // — Section: framed close (masthead ✕ posts from inside the iframe) —
 window.addEventListener('message', function (e) {
-  if (e.data === 'alphagems:close-pitch') close();
+  if (e.data === 'alphas:close-pitch') close();
 });
  // — Section: visibility — hush is sticky, pause resumes on visible —
 document.addEventListener('visibilitychange', function(){

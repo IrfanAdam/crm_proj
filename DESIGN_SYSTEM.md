@@ -1,4 +1,4 @@
-# DESIGN_SYSTEM.md — ALPHA CRM (persistent source of truth)
+# DESIGN_SYSTEM.md — Alphas (persistent source of truth)
 
 **This file is law.** Every screen/feature/flow/prototype must first inspect the existing DS and product code and obey `Reuse → Compose → Extend → Create`. Treat it as an active architectural constraint, not passive docs.
 
