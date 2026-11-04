@@ -1,9 +1,12 @@
 /* ADAM/SHARED — src/components/GemReward/gem-cut.js · portable brilliant-cut */
 // [plan:2026-10-03_144222-gem-realism-round2.md#phase-9] · real facet wiring (Task 19).
 // — CUT: girdle = girdle RADIUS · table/crown/pavilion/star/culet = × girdle · band = girdle band height ·
-//   starDrop = star-tip drop below the table (× crown) · lower = lower-girdle meet depth (× pavilion) —
+//   star = star-tip position along the bezel (0 = table edge, 1 = girdle) · lower = lower-girdle meet
+//   depth (× pavilion) —
 // — Cut: octagon table · 8 star triangles · 8 bezel kites · 16 upper-girdle triangles · thin 16-gon girdle
-//   band · 8 pavilion mains (kites) · 16 lower-girdle triangles · small culet octagon — 116 triangles.
+//   band · 8 pavilion mains (pentagon kites) · 16 lower-girdle triangles · small culet octagon — 124 triangles,
+//   74 planes: every facet is exactly one plane (meet ring = the mains' own intersection line; bezel shoulders
+//   lie on the bezel plane), the girdle band is 16 flats, and the shell is closed + manifold (0 bad edges).
 // — Topology is 16-fold: the girdle is ONE ring of 16 shared vertices — bezel tips at 45k, star tips at
 //   22.5+45k — so every facet is a facet. No 48-column fan, no scalloped break, no sliver triangles.
 // Export map: window.GEM_CUT = { CUT, CATEGORIES, gemCut(cut) } — zero DOM, zero THREE,
@@ -11,7 +14,7 @@
 // asserts identical vertex order + ≤1e-9. CATEGORIES also carries the legacy kebab alias;
 // ior = real refractive index (ordinary ray) per stone — sapphire 1.77 · quartz 1.545 · red beryl 1.577.
 window.GEM_CUT = {
-CUT: { facets: 16, girdle: 1, table: 0.55, crown: 0.32, pavilion: 0.86, band: 0.055, star: 0.775, starDrop: 0.5, lower: 0.72, culet: 0.06 },
+CUT: { facets: 16, girdle: 1, table: 0.55, crown: 0.32, pavilion: 0.86, band: 0.055, star: 0.5, lower: 0.72, culet: 0.06 },
 CATEGORIES: {
 sapphire: { token: '--primitive-sapphire-ui-400', hue: 0, spin: 0.35, ior: 1.77 },
 citrine: { token: '--primitive-citrine-400', hue: 38, spin: 0.3, ior: 1.545 },
@@ -21,10 +24,11 @@ redberyl: { token: '--primitive-red-beryl-400', hue: 310, spin: 0.5, ior: 1.577 
 gemCut: function (cut) {
 const g = cut.girdle, h = cut.band / 2;
 const tabR = g * cut.table, rCu = g * cut.culet;
-const yTab = h + cut.crown, yMid = h + cut.crown * (1 - cut.starDrop);
-const dLow = cut.pavilion * cut.lower;
-const pav = cut.pavilion - h;
-const cone = function (depth) { return g + (rCu - g) * (depth - h) / pav; };
+const c22 = Math.cos(Math.PI / 8), yTab = h + cut.crown;
+const yMid = h + cut.crown * (1 - cut.star);
+const rMid = (tabR + (g - tabR) * cut.star) / c22;
+const dLow = cut.pavilion * cut.lower, pav = cut.pavilion - h;
+const meetR = (pav * g + (g - rCu * c22) * (h - dLow)) / (pav * c22);
 const pos = [];
 const ring = function (count, rad, y, off) {
 const start = pos.length;
@@ -35,11 +39,11 @@ pos.push([Math.cos(a) * rad, y, Math.sin(a) * rad]);
 return start;
 };
 const tab = ring(8, tabR, yTab);
-const mid = ring(8, g * cut.star, yMid, 0.5 / 8);
+const mid = ring(8, rMid, yMid, 0.5 / 8);
 const gt = ring(16, g, h);
 const gb = ring(16, g, -h);
-const low = ring(8, cone(dLow), -dLow, 0.5 / 8);
-const cu = ring(8, rCu, -cut.pavilion);
+const low = ring(8, meetR, -dLow, 0.5 / 8);
+const cu = ring(8, rCu, -cut.pavilion, 0.5 / 8);
 const cells = [];
 const tri = function (a, b, c) { cells.push([a, b, c]); };
 for (let i = 1; i < 7; i++) tri(tab, tab + i + 1, tab + i);
@@ -60,11 +64,13 @@ tri(gt + i, gb + j, gb + i);
 }
 for (let k = 0; k < 8; k++) {
 const b0 = gb + 2 * k, bl = gb + (2 * k + 1) % 16, br = gb + (2 * k + 2) % 16;
-const p = low + k, pl = low + (k + 7) % 8, c = cu + k;
+const p = low + k, pl = low + (k + 7) % 8;
+const c = cu + k, cl = cu + (k + 7) % 8;
 tri(b0, bl, p);
 tri(p, bl, br);
 tri(b0, p, c);
-tri(b0, c, pl);
+tri(b0, c, cl);
+tri(b0, cl, pl);
 }
 for (let i = 1; i < 7; i++) tri(cu, cu + i, cu + i + 1);
 return { positions: pos, cells: cells };

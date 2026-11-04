@@ -2,12 +2,14 @@
 # [plan:2026-10-03_144222-gem-realism-round2.md#phase-9] · Task 19 parity twin of gem-cut.js.
 # — Data: CUT dims + CATEGORIES (token, hue, spin, ior = real refractive index) · key order mirrors the JS core —
 # — Cut: octagon table · 8 star · 8 bezel kites · 16 upper-girdle triangles · thin 16-gon girdle band ·
-#   8 pavilion mains (kites) · 16 lower-girdle triangles · small culet octagon — 116 triangles —
+#   8 pavilion mains (pentagon kites) · 16 lower-girdle triangles · small culet octagon — 124 triangles,
+#   74 planes (one per facet) · closed + manifold —
+#   star = star-tip position along the bezel (0 = table edge, 1 = girdle) —
 # — Mirror: same vertex order + same expressions as the JS core; parity_check.py asserts 1e-9 —
 import math, re
 
 CUT = {"facets": 16, "girdle": 1.0, "table": 0.55, "crown": 0.32, "pavilion": 0.86,
-       "band": 0.055, "star": 0.775, "starDrop": 0.5, "lower": 0.72, "culet": 0.06}
+       "band": 0.055, "star": 0.5, "lower": 0.72, "culet": 0.06}
 CATEGORIES = {
     "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35, "ior": 1.77},
     "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3, "ior": 1.545},
@@ -22,13 +24,13 @@ def gem_cut(cut=CUT):
     """Build the round brilliant → (positions, cells); every cell is a triangle index triple."""
     g, h = cut["girdle"], cut["band"] / 2.0             # girdle radius · band half-height
     tab_r, r_cu = g * cut["table"], g * cut["culet"]
+    c22 = math.cos(math.pi / 8)
     y_tab = h + cut["crown"]                            # table plane
-    y_mid = h + cut["crown"] * (1.0 - cut["starDrop"])  # star tip / bezel shoulder
+    y_mid = h + cut["crown"] * (1.0 - cut["star"])      # star tip / bezel shoulder
+    r_mid = (tab_r + (g - tab_r) * cut["star"]) / c22   # on the bezel plane → bezel kite stays flat
     d_low = cut["pavilion"] * cut["lower"]              # lower-girdle meet depth
     pav = cut["pavilion"] - h
-
-    def cone(depth):                                    # radius of the ideal pavilion cone
-        return g + (r_cu - g) * (depth - h) / pav
+    meet_r = (pav * g + (g - r_cu * c22) * (h - d_low)) / (pav * c22)  # mains' own intersect → flat main
 
     pos = []
 
@@ -40,11 +42,11 @@ def gem_cut(cut=CUT):
         return start
 
     tab = ring(8, tab_r, y_tab)                         # 0: octagon table
-    mid = ring(8, g * cut["star"], y_mid, 0.5 / 8)      # 8: star tips (bezel shoulders)
+    mid = ring(8, r_mid, y_mid, 0.5 / 8)                # 8: star tips (bezel shoulders)
     gt = ring(16, g, h)                                 # 16: girdle top, 16 shared vertices
     gb = ring(16, g, -h)                                # 32: girdle bottom
-    low = ring(8, cone(d_low), -d_low, 0.5 / 8)         # 48: lower-girdle meet points
-    cu = ring(8, r_cu, -cut["pavilion"])                # 56: culet octagon
+    low = ring(8, meet_r, -d_low, 0.5 / 8)              # 48: lower-girdle meet points
+    cu = ring(8, r_cu, -cut["pavilion"], 0.5 / 8)       # 56: culet octagon
 
     cells = []
 
@@ -66,13 +68,15 @@ def gem_cut(cut=CUT):
         j = (i + 1) % 16
         tri(gt + i, gt + j, gb + j)
         tri(gt + i, gb + j, gb + i)
-    for k in range(8):                                  # pavilion: 2 lower-girdle + 2 main (kite)
+    for k in range(8):                                  # pavilion: 2 lower-girdle + 3 main (pentagon kite)
         b0, bl, br = gb + 2 * k, gb + (2 * k + 1) % 16, gb + (2 * k + 2) % 16
-        p, pl, c = low + k, low + (k + 7) % 8, cu + k
+        p, pl = low + k, low + (k + 7) % 8
+        c, cl = cu + k, cu + (k + 7) % 8
         tri(b0, bl, p)
         tri(p, bl, br)
         tri(b0, p, c)
-        tri(b0, c, pl)
+        tri(b0, c, cl)
+        tri(b0, cl, pl)
     for i in range(1, 7):                               # culet facet octagon (6 tris)
         tri(cu, cu + i, cu + i + 1)
     return pos, cells
