@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T10:53:24.511Z",
+  "generated": "2026-11-04T14:09:59.924Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,69 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "826244a",
+      "full": "826244aca8b9a88e02fd1dd5aaf14e3e3559cf99",
+      "date": "2026-11-04",
+      "time": "19:39",
+      "subject": "feat(gem): plane-derived brilliant — every facet one plane (bezel 0.049deg), 202 planes, 16-fold girdle 2.61%/1.60%",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "8d71ae3",
+      "full": "8d71ae309766dc5317432397a1d9dc2ccd19c202",
+      "date": "2026-11-04",
+      "time": "18:56",
+      "subject": "feat(gem): tapered chamfered girdle — thick at facet junctions, thin mid-facet, chamfer 0.2x local half-thickness; break facets coplanar (0.0000deg), 106+8 planes",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "adc44a3",
+      "full": "adc44a3807fe15959777721d86d39ccba7b464ed",
+      "date": "2026-11-04",
+      "time": "18:35",
+      "subject": "feat(gem): chamfered girdle edges — 48-seg bevel strips top and bottom so break facets taper into the band (444 tris, 266 planes)",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "713f633",
+      "full": "713f633a85afdda8369488b5049f688dd02c0550",
+      "date": "2026-11-04",
+      "time": "18:24",
+      "subject": "feat(gem): standard proportions from lane A — table 55.5%, crown 34.4deg, pavilion 41.0deg, girdle 2.5%, lower halves 80%, culet 1.2%",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "5d0c417",
+      "full": "5d0c41739e63eaaf6fae54a6020120f33e18525a",
+      "date": "2026-11-04",
+      "time": "18:13",
+      "subject": "feat(gem): round 48-segment girdle + 16 flat facets — constant-thickness band, restored round silhouette",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "50f20da",
+      "full": "50f20da445b41314c30a15a959341ff8f4cde18e",
+      "date": "2026-11-04",
+      "time": "17:58",
+      "subject": "fix(gem): manifold pavilion (mains share the culet edges), planar mains + bezels — 124 tris / 74 facets, girdle 16-flat band",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
+    {
+      "sha": "7a98692",
+      "full": "7a98692bbba62b3fca4f85045a00efe1656d90f9",
+      "date": "2026-11-04",
+      "time": "17:49",
+      "subject": "feat(gem): real 16-fold brilliant facet wiring — 8 mains, 16 lower-girdle, star/bezel crown",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-9"
+    },
     {
       "sha": "74afb5e",
       "full": "74afb5e50697dc5b399347fda9695c2638c29f9a",
@@ -3911,5 +3974,11 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M pitch.html",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
