@@ -4,16 +4,27 @@
 # — Cut: octagon table · 8 star · 8 bezel kites · 16 upper-girdle triangles · ROUND 48-segment girdle ·
 #   8 pavilion mains (pentagon kites) · 16 lower-girdle triangles · small culet octagon —
 #   16 flat facets on a round outline, every facet exactly one plane, closed + manifold —
-#   star = star-tip position along the bezel (0 = table edge, 1 = girdle) —
-# — Girdle: THICK at the 16 facet junctions, THIN between them. Every ring azimuth takes its y from
-#   that azimuth's own facet plane cut by the cylinder r = girdle (taper scales the dip, minBand floors
-#   it), so the 3 strips of one facet are coplanar and the facet merges to ONE plane. The chamfer strips
-#   survive as a 0.2 × local-half-thickness inset of the crown/pavilion attachment rings —
+#   star = star-tip position along the bezel (0 = table edge, 1 = girdle) · lower = lower-girdle
+#   meet depth × pavilion.
+# — Definition is by FACET PLANE: the 16 crown planes run through the star tip and the two girdle
+#   junctions at (g, +h); the 16 pavilion planes through the lower-girdle meet and the junctions at
+#   (g, −h). Every girdle vertex that touches a facet is that facet's plane cut at its own radius, so
+#   a facet is ONE plane by construction. y_mid = h + crown·(1 − star) puts the star tip exactly on
+#   its bezel planes (no taper multiplier) → bezel kite fold 0.000°; the upper/lower strips are
+#   coplanar because all their girdle points lie on that one facet plane.
+# — Girdle SCULPT: the bevel width w(φ) runs 16-fold — narrow at the 16 facet junctions (thick band),
+#   wide at the 16 mid-facet columns (thin band). The facet planes sag toward the girdle plane between
+#   junctions, so a plain 48-ring band tapers 2.75:1; moving the facet attachments inward at the
+#   mid-facet columns (where the plane is higher) lifts the thin section to the reference 1.6:1. Each
+#   bevel is a CONE from an apex on the axis, so a bevel quad is EXACTLY planar for any w(φ): all four
+#   corners share the plane through the apex and the two facet attachments. The band wall is the two
+#   r = girdle rings, so the silhouette stays a 48-gon at exactly the girdle radius.
 # — Mirror: same vertex order + same expressions as the JS core; parity_check.py asserts 1e-9 —
 import math, re
 
 CUT = {"facets": 16, "girdle": 1.0, "table": 0.555, "crown": 0.305, "pavilion": 0.8845,
-       "band": 0.05, "star": 0.5, "lower": 0.8206, "culet": 0.012, "taper": 0.3, "minBand": 0.4}
+       "band": 0.05, "star": 0.5, "lower": 0.80, "culet": 0.012,
+       "bevelMin": 0.0012, "bevelMax": 0.0097, "bevelApex": 0.55}
 CATEGORIES = {
     "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35, "ior": 1.77},
     "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3, "ior": 1.545},
@@ -28,15 +39,16 @@ def gem_cut(cut=CUT):
     """Build the round brilliant → (positions, cells); every cell is a triangle index triple."""
     g, h = cut["girdle"], cut["band"] / 2.0             # girdle radius · band half-height
     S, n = 3, 16 * 3                                    # segments per facet · ring segments (48)
-    tp = cut["taper"]                                   # 0 = flat band, 1 = full facet-plane dip
     tab_r, r_cu = g * cut["table"], g * cut["culet"]
-    c22 = math.cos(math.pi / 8)
+    c8 = math.cos(math.pi / 8)
     y_tab = h + cut["crown"]                            # table plane
-    r_mid = (tab_r + (g - tab_r) * cut["star"]) / c22   # on the bezel plane → bezel kite stays flat
-    y_mid = h + cut["crown"] * (1.0 - cut["star"]) * tp  # star tip, squashed toward the girdle plane
-    d_low = cut["pavilion"] * cut["lower"]              # lower-girdle meet depth (pavilion plane is fixed)
+    y_mid = h + cut["crown"] * (1.0 - cut["star"])       # star tip ON the bezel plane (exact)
+    r_mid = (tab_r + (g - tab_r) * cut["star"]) / c8     # ... and on the table-corner→girdle line
+    d_low = cut["pavilion"] * cut["lower"]              # lower-girdle meet depth
     pav = cut["pavilion"] - h
-    meet_r = (pav * g + (g - r_cu * c22) * (h - d_low)) / (pav * c22)  # mains' own intersect → flat main
+    meet_r = (pav * g + (g - r_cu * c8) * (h - d_low)) / (pav * c8)  # meet ON the main plane
+    b_min, b_max = cut["bevelMin"], cut["bevelMax"]
+    y_con = cut["bevelApex"] * g                         # bevel cone apex, on the axis
 
     pos = []
 
@@ -62,32 +74,31 @@ def gem_cut(cut=CUT):
         L = math.sqrt(nx * nx + ny * ny + nz * nz)
         return [nx / L, ny / L, nz / L], -(nx * a[0] + ny * a[1] + nz * a[2]) / L
 
-    def yat(pl, r, phi):                               # plane height on the cylinder r at azimuth phi
+    def yat(pl, r, phi):                               # facet plane height at (r, azimuth)
         return (-pl[1] - r * (pl[0][0] * math.cos(phi) + pl[0][2] * math.sin(phi))) / pl[0][1]
 
     cols = []                                           # one column of GT · BT · BB · GB per azimuth
     for i in range(n):
         phi = (i / n) * math.pi * 2
         kf = i // S                                     # 22.5° facet index (0..15)
-        k = kf // 2                                     # 45° sector → its star-tip apex
+        k = kf // 2                                     # 45° sector → its star-tip / meet apex
         a0, a1 = kf * math.pi / 8, (kf + 1) * math.pi / 8
         ac = (k + 0.5) * math.pi / 4
+        cp, sp = math.cos(phi), math.sin(phi)
         crown = plane([r_mid * math.cos(ac), y_mid, r_mid * math.sin(ac)],
                       [g * math.cos(a0), h, g * math.sin(a0)],
                       [g * math.cos(a1), h, g * math.sin(a1)])
         pavl = plane([meet_r * math.cos(ac), -d_low, meet_r * math.sin(ac)],
                      [g * math.cos(a0), -h, g * math.sin(a0)],
                      [g * math.cos(a1), -h, g * math.sin(a1)])
-        top, bot = yat(crown, g, phi), yat(pavl, g, phi)
-        if top - bot < cut["minBand"] * 2 * h:           # floor: never pinch below minBand·band
-            my = (top + bot) / 2
-            top, bot = my + cut["minBand"] * h, my - cut["minBand"] * h
-        c = 0.2 * (top - bot) / 2                        # chamfer = 0.2 of the LOCAL half-thickness
-        cp, sp = math.cos(phi), math.sin(phi)
-        cols.append([[cp * (g - c), yat(crown, g - c, phi), sp * (g - c)],   # GT: on the crown plane
-                     [cp * g, top - c, sp * g],                              # BT: band top
-                     [cp * g, bot + c, sp * g],                              # BB: band bottom
-                     [cp * (g - c), yat(pavl, g - c, phi), sp * (g - c)]])   # GB: on the pavilion plane
+        # 16-fold bevel width: 0 at the 16 facet junctions (22.5°k), 1 at the mid-facet columns
+        w = b_min + (b_max - b_min) * (1.0 - math.cos(16.0 * phi)) / 2.0
+        rt = g - w
+        gy, py = yat(crown, rt, phi), yat(pavl, rt, phi)
+        cols.append([[rt * cp, gy, rt * sp],                    # GT: crown facet attachment
+                     [g * cp, y_con + (g / rt) * (gy - y_con), g * sp],    # BT: bevel cone → r = girdle
+                     [g * cp, -y_con + (g / rt) * (py + y_con), g * sp],   # BB: bevel cone → r = girdle
+                     [rt * cp, py, rt * sp]])                   # GB: pavilion facet attachment
     GT = len(pos)
     BT, BB, GB = GT + n, GT + 2 * n, GT + 3 * n
     for ri in range(4):
