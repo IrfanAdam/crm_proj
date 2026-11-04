@@ -9551,5 +9551,19 @@
         }
       ]
     }
+  ],
+  "2026-11-02_000000-lump-sum-builds.md": [
+    {
+      "sha": null,
+      "date": "2026-11-04",
+      "hash": "ed257340",
+      "sections": [
+        {
+          "head": "Phase 1 — Brand: AlphaGems → Alphas {#phase-1}",
+          "hash": "bcc130bd",
+          "state": "0/1"
+        }
+      ]
+    }
   ]
 }

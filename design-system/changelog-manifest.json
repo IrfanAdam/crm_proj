@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01T08:28:41.662Z",
+  "generated": "2026-11-04T10:33:18.730Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -20,17 +20,36 @@
     "2026-10-03_144222-gem-realism-round2.md",
     "2026-10-05_000000-lump-sum-builds.md",
     "2026-10-31_131759-changelog-parity.md",
-    "2026-10-31_135705-changelog-safepipe-parity.md"
+    "2026-10-31_135705-changelog-safepipe-parity.md",
+    "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "101c3a0",
+      "full": "101c3a088b17332f0c5f100afa7b31985a38ecaf",
+      "date": "2026-11-04",
+      "time": "16:02",
+      "subject": "refactor(brand): AlphaGems → Alphas — masthead, titles, pitch copy, atlas, mechanics",
+      "plan": "2026-11-02_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
+    {
+      "sha": "051110e",
+      "full": "051110edfed446dccf7b5472feeb2750ea305ddc",
+      "date": "2026-11-04",
+      "time": "15:55",
+      "subject": "chore(graphs): regen atlas + mechanics — atlas GemReward/index.html mtimes, mechanics generatedAt",
+      "plan": "2026-09-22_155000-architecture-mechanics.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "2c8eb87",
       "full": "2c8eb873ce5df15fd7974349c7a0ae7623bd131d",
       "date": "2026-11-01",
       "time": "13:58",
       "subject": "checkpoint(helper-watch): sibling 0f241a2 + realism2 round in flight — helper results, bridge note, queue claims",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-8"
     },
     {
       "sha": "0f241a2",
@@ -38,8 +57,8 @@
       "date": "2026-11-01",
       "time": "10:46",
       "subject": "checkpoint(gem): photo-target shaper + body shader recompile fix",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-7"
     },
     {
       "sha": "122f9f1",
@@ -47,8 +66,8 @@
       "date": "2026-10-31",
       "time": "23:11",
       "subject": "chore(checkpoint): working state — manifests, mechanics regen, darkcap lane evidence",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-1"
     },
     {
       "sha": "2f301ae",
