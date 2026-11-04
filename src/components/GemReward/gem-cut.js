@@ -43,10 +43,14 @@ const gt = ring(16, g, h);
 const gb = ring(16, g, -h);
 const low = ring(8, meetR, -dLow, 0.5 / 8);
 const cu = ring(8, rCu, -cut.pavilion, 0.5 / 8);
-const GT = pos.length;
-for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2; pos.push([Math.cos(a) * g, h, Math.sin(a) * g]); }
-const GB = pos.length;
-for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2; pos.push([Math.cos(a) * g, -h, Math.sin(a) * g]); }
+const bw = h * 0.45, tanC = cut.crown / (g - tabR), tanP = (cut.pavilion - h) / (g - rCu);
+const rad = [g - bw, g, g, g - bw], yy = [h + bw * tanC, h - bw, -h + bw, -(h + bw * tanP)];
+const rings = rad.map(function (r, q) {
+const start = pos.length;
+for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2; pos.push([Math.cos(a) * r, yy[q], Math.sin(a) * r]); }
+return start;
+});
+const GT = rings[0], BT = rings[1], BB = rings[2], GB = rings[3];
 const cells = [];
 const tri = function (a, b, c) { cells.push([a, b, c]); };
 for (let i = 1; i < 7; i++) tri(tab, tab + i + 1, tab + i);
@@ -59,8 +63,12 @@ for (let q = 0; q < 2 * S; q++) tri(s, GT + (2 * S * k + q + 1) % n, GT + (2 * S
 }
 for (let i = 0; i < n; i++) {
 const j = (i + 1) % n;
-tri(GT + i, GT + j, GB + j);
-tri(GT + i, GB + j, GB + i);
+tri(GT + i, GT + j, BT + j);
+tri(GT + i, BT + j, BT + i);
+tri(BT + i, BT + j, BB + j);
+tri(BT + i, BB + j, BB + i);
+tri(BB + i, BB + j, GB + j);
+tri(BB + i, GB + j, GB + i);
 }
 for (let k = 0; k < 8; k++) {
 const b0 = GB + 2 * S * k, p = low + k, pl = low + (k + 7) % 8, c = cu + k, cl = cu + (k + 7) % 8;

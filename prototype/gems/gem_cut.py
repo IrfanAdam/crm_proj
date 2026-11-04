@@ -49,14 +49,17 @@ def gem_cut(cut=CUT):
     low = ring(8, meet_r, -d_low, 0.5 / 8)              # 48: lower-girdle meet points
     cu = ring(8, r_cu, -cut["pavilion"], 0.5 / 8)       # 56: culet octagon
 
-    GT = len(pos)
-    for i in range(n):
-        ang = (i / n) * math.pi * 2
-        pos.append([math.cos(ang) * g, h, math.sin(ang) * g])     # 64: round girdle, top edge
-    GB = len(pos)
-    for i in range(n):
-        ang = (i / n) * math.pi * 2
-        pos.append([math.cos(ang) * g, -h, math.sin(ang) * g])    # 112: round girdle, bottom edge
+    bw = h * 0.45                                       # bevel width (radial) = bevel drop
+    tan_c = cut["crown"] / (g - tab_r)
+    tan_p = (cut["pavilion"] - h) / (g - r_cu)
+    rings = []
+    for r, y in ((g - bw, h + bw * tan_c), (g, h - bw), (g, -h + bw), (g - bw, -(h + bw * tan_p))):
+        start = len(pos)
+        for i in range(n):
+            ang = (i / n) * math.pi * 2
+            pos.append([math.cos(ang) * r, y, math.sin(ang) * r])
+        rings.append(start)                             # 64 GT · 112 BT · 160 BB · 208 GB
+    GT, BT, BB, GB = rings
 
     cells = []
 
@@ -74,10 +77,14 @@ def gem_cut(cut=CUT):
         tri(t0, m, s0)
         for q in range(2 * S):
             tri(s, GT + (2 * S * k + q + 1) % n, GT + (2 * S * k + q) % n)
-    for i in range(n):                                  # girdle band, 48 segments
+    for i in range(n):                                  # girdle: bevel · band · bevel, 48 segments
         j = (i + 1) % n
-        tri(GT + i, GT + j, GB + j)
-        tri(GT + i, GB + j, GB + i)
+        tri(GT + i, GT + j, BT + j)
+        tri(GT + i, BT + j, BT + i)
+        tri(BT + i, BT + j, BB + j)
+        tri(BT + i, BB + j, BB + i)
+        tri(BB + i, BB + j, GB + j)
+        tri(BB + i, GB + j, GB + i)
     for k in range(8):                                  # pavilion: 2*S lower-girdle + 3 main
         b0 = GB + 2 * S * k
         p, pl = low + k, low + (k + 7) % 8
