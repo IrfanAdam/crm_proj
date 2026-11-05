@@ -333,5 +333,20 @@
     "plan": "2026-10-03_144222-gem-realism-round2.md",
     "anchor": "{#phase-1}",
     "note": "chore(checkpoint): working state — manifests, mechanics regen, darkcap lane evidence"
+  },
+  "13117fc": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-9}",
+    "note": "fix(gem): GIA bezel 38% shoulder — trailer in body, tracker reads subject"
+  },
+  "bf4b0b5": {
+    "plan": "2026-10-03_144222-gem-realism-round2.md",
+    "anchor": "{#phase-9}",
+    "note": "fix(gem): bezel shoulder up-table (bezelT) — trailer in body, tracker reads subject"
+  },
+  "df5efef": {
+    "plan": "2026-11-02_000000-lump-sum-builds.md",
+    "anchor": "{#phase-1}",
+    "note": "chore(ds): sync plan manifest — Task 47 shipped (101c3a0)"
   }
 }
