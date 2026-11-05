@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T13:19:21.523Z",
+  "generated": "2026-11-05T13:45:17.547Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "a5c3400",
+      "full": "a5c34009b28f1c8272d4b608b8ac7971b87668a4",
+      "date": "2026-11-05",
+      "time": "19:15",
+      "subject": "fix(changelog): tighten today ring inset to hug blob",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "c7a8d11",
       "full": "c7a8d11c3f9da8a4caf63bc3d758c985d040340e",
@@ -4037,5 +4046,10 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
