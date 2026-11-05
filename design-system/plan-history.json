@@ -9299,6 +9299,43 @@
           "state": "2/2"
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-05",
+      "hash": "648954a9",
+      "sections": [
+        {
+          "head": "Phase 1 — Status model + filter drawer {#phase-1}",
+          "hash": "1aa4a118",
+          "state": "6/6"
+        },
+        {
+          "head": "Phase 2 — Gate verdicts + evals feed {#phase-2}",
+          "hash": "25765139",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 3 — Orphans + triage parity {#phase-3}",
+          "hash": "5062c70b",
+          "state": "2/2"
+        },
+        {
+          "head": "Phase 4 — Timeline tracks drawer {#phase-4}",
+          "hash": "22c0b671",
+          "state": "4/4"
+        },
+        {
+          "head": "Phase 5 — Due scheduling lane {#phase-5}",
+          "hash": "b4370752",
+          "state": "3/4"
+        },
+        {
+          "head": "Phase 6 — Verify + close {#phase-6}",
+          "hash": "9fe9ed16",
+          "state": "2/2"
+        }
+      ]
     }
   ],
   "2026-10-31_135705-changelog-safepipe-parity.md": [
