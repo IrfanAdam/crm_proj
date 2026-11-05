@@ -4,27 +4,30 @@
 # — Cut: octagon table · 8 star · 8 bezel kites · 16 upper-girdle triangles · ROUND 48-segment girdle ·
 #   8 pavilion mains (pentagon kites) · 16 lower-girdle triangles · small culet octagon —
 #   16 flat facets on a round outline, every facet exactly one plane, closed + manifold —
-#   star = star-tip position along the bezel (0 = table edge, 1 = girdle) · lower = lower-girdle
-#   meet depth × pavilion.
+#   tipPhi = star-tip AZIMUTH offset from its own table corner (deg; 22.5 = the mirror-kite case) ·
+#   bezelT = the WIDE star-tip's station along the bezel (0 table → 1 girdle) · tipVar = alternating ± fraction ·
+#   star = legacy star-tip position along the bezel (superseded by tipPhi/bezelT, kept for the shared CUT token set) ·
+#   lower = lower-girdle meet depth × pavilion.
 # — Definition is by FACET PLANE: the 16 crown planes run through the star tip and the two girdle
 #   junctions at (g, +h); the 16 pavilion planes through the lower-girdle meet and the junctions at
 #   (g, −h). Every girdle vertex that touches a facet is that facet's plane cut at its own radius, so
-#   a facet is ONE plane by construction. y_mid = h + crown·(1 − star) puts the star tip exactly on
-#   its bezel planes (no taper multiplier) → bezel kite fold 0.000°; the upper/lower strips are
-#   coplanar because all their girdle points lie on that one facet plane.
+#   a facet is ONE plane by construction.
+# — TIP AZIMUTH is the GIA orientation degree of freedom. With the tips at a constant azimuth offset
+#   phi from their table corner (phi ≠ 22.5) the two bezel triangles of a kite are NOT coplanar for a
+#   naive height, so the 8 tip heights are SOLVED: det(S_k−T, M−T, S_{k−1}−T) = 0 is linear in the two
+#   tip heights of bezel k → an 8×8 cyclic system (Gaussian elimination; pure Python = JS mirror).
+#   phi > 22.5 puts the angularly-wide tip up-table and the narrow one toward the girdle, which no
+#   fixed ±22.5° star tip can do. Bezel kite fold is solved to ~1e-12°.
 # — Girdle SCULPT: the bevel width w(φ) runs 16-fold — narrow at the 16 facet junctions (thick band),
-#   wide at the 16 mid-facet columns (thin band). The facet planes sag toward the girdle plane between
-#   junctions, so a plain 48-ring band tapers 2.75:1; moving the facet attachments inward at the
-#   mid-facet columns (where the plane is higher) lifts the thin section to the reference 1.6:1. Each
-#   bevel is a CONE from an apex on the axis, so a bevel quad is EXACTLY planar for any w(φ): all four
-#   corners share the plane through the apex and the two facet attachments. The band wall is the two
-#   r = girdle rings, so the silhouette stays a 48-gon at exactly the girdle radius.
+#   wide at the 16 mid-facet columns (thin band). Each bevel is a CONE from an apex on the axis, so a
+#   bevel quad is EXACTLY planar for any w(φ). Band wall = the two r = girdle rings → 48-gon silhouette.
 # — Mirror: same vertex order + same expressions as the JS core; parity_check.py asserts 1e-9 —
 import math, re
 
 CUT = {"facets": 16, "girdle": 1.0, "table": 0.555, "crown": 0.305, "pavilion": 0.8845,
        "band": 0.05, "star": 0.5, "lower": 0.80, "culet": 0.012,
-       "bevelMin": 0.0012, "bevelMax": 0.0097, "bevelApex": 0.55}
+       "bevelMin": 0.0012, "bevelMax": 0.0097, "bevelApex": 0.55,
+       "tipPhi": 25.5, "bezelT": 0.36, "tipVar": 0.0}
 CATEGORIES = {
     "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35, "ior": 1.77},
     "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3, "ior": 1.545},
@@ -35,6 +38,37 @@ ALIASES = {"red-beryl": "redberyl"}   # legacy kebab key (JS exposes the same as
 FALLBACK = {"sapphire": "#218aea", "citrine": "#ffb01e", "amethyst": "#a54cff", "redberyl": "#ea005e"}
 
 
+def _solve8(A, B, C):
+    """Solve the cyclic system A[k]·y[k] + B[k]·y[k−1] = C[k] (k = 0..7) by Gaussian elimination."""
+    n = 8
+    M = [[0.0] * (n + 1) for _ in range(n)]
+    for k in range(n):
+        M[k][k] += A[k]
+        M[k][(k - 1) % n] += B[k]
+        M[k][n] = C[k]
+    for col in range(n):
+        piv = col
+        for r in range(col + 1, n):
+            if abs(M[r][col]) > abs(M[piv][col]):
+                piv = r
+        if abs(M[piv][col]) < 1e-15:
+            raise ValueError("singular tip-height system (phi = 22.5° is the degenerate case)")
+        M[col], M[piv] = M[piv], M[col]
+        pv = M[col][col]
+        for r in range(col + 1, n):
+            f = M[r][col] / pv
+            if f != 0.0:
+                for cc in range(col, n + 1):
+                    M[r][cc] -= f * M[col][cc]
+    y = [0.0] * n
+    for r in range(n - 1, -1, -1):
+        s = M[r][n]
+        for cc in range(r + 1, n):
+            s -= M[r][cc] * y[cc]
+        y[r] = s / M[r][r]
+    return y
+
+
 def gem_cut(cut=CUT):
     """Build the round brilliant → (positions, cells); every cell is a triangle index triple."""
     g, h = cut["girdle"], cut["band"] / 2.0             # girdle radius · band half-height
@@ -42,13 +76,15 @@ def gem_cut(cut=CUT):
     tab_r, r_cu = g * cut["table"], g * cut["culet"]
     c8 = math.cos(math.pi / 8)
     y_tab = h + cut["crown"]                            # table plane
-    y_mid = h + cut["crown"] * (1.0 - cut["star"])       # star tip ON the bezel plane (exact)
-    r_mid = (tab_r + (g - tab_r) * cut["star"]) / c8     # ... and on the table-corner→girdle line
     d_low = cut["pavilion"] * cut["lower"]              # lower-girdle meet depth
     pav = cut["pavilion"] - h
     meet_r = (pav * g + (g - r_cu * c8) * (h - d_low)) / (pav * c8)  # meet ON the main plane
     b_min, b_max = cut["bevelMin"], cut["bevelMax"]
     y_con = cut["bevelApex"] * g                         # bevel cone apex, on the axis
+    phi_t = math.radians(cut["tipPhi"])                  # star-tip azimuth offset from its corner
+    r_tip = (tab_r + (g - tab_r) * cut["bezelT"]) / math.cos(phi_t)   # wide tip's station along the bezel
+    t_var = cut.get("tipVar", 0.0)
+    r_tip = [r_tip * (1.0 + (t_var if k % 2 else -t_var)) for k in range(8)]
 
     pos = []
 
@@ -58,11 +94,6 @@ def gem_cut(cut=CUT):
             a = (i / count + off) * math.pi * 2
             pos.append([math.cos(a) * rad, y, math.sin(a) * rad])
         return start
-
-    tab = ring(8, tab_r, y_tab)                         # 0: octagon table
-    mid = ring(8, r_mid, y_mid, 0.5 / 8)                # 8: star tips (bezel shoulders)
-    low = ring(8, meet_r, -d_low, 0.5 / 8)              # 16: lower-girdle meet points
-    cu = ring(8, r_cu, -cut["pavilion"], 0.5 / 8)       # 24: culet octagon
 
     def plane(a, b, c):
         """(n, d) with n·x + d = 0 for the triangle a,b,c."""
@@ -77,24 +108,68 @@ def gem_cut(cut=CUT):
     def yat(pl, r, phi):                               # facet plane height at (r, azimuth)
         return (-pl[1] - r * (pl[0][0] * math.cos(phi) + pl[0][2] * math.sin(phi))) / pl[0][1]
 
+    r_jun = g - b_min                                    # junction column: girdle height, bevel inset
+
+    def crown_planes(ty):
+        """The 16 crown planes: tip k + the two junction COLUMNS of each 22.5° half.
+        Both neighbours of a junction share that column's exact 3D point, so the fan of every
+        half-facet is one plane for ANY tip azimuth (the ±22.5° family only hid this)."""
+        out = []
+        for kf in range(16):
+            k = kf // 2
+            a0, a1 = kf * math.pi / 8, (kf + 1) * math.pi / 8
+            ac = k * math.pi / 4 + phi_t
+            out.append(plane([r_tip[k] * math.cos(ac), ty[k], r_tip[k] * math.sin(ac)],
+                             [r_jun * math.cos(a0), h, r_jun * math.sin(a0)],
+                             [r_jun * math.cos(a1), h, r_jun * math.sin(a1)]))
+        return out
+
+    def tip_heights():
+        """Coplanarity of (T_k, S_k, M_k, S_{k−1}) → 8 linear equations for the 8 tip heights.
+        M_k is the junction column at azimuth 45k° (radius g − bevelMin, height h), so the system is
+        EXACTLY linear: det(S_k−T, M−T, S_{k−1}−T) = 0 → A[k]·y[k] + B[k]·y[k−1] = C[k]."""
+        cph, sph = math.cos(phi_t), math.sin(phi_t)
+        cps, sps = math.cos(math.pi / 4 - phi_t), math.sin(math.pi / 4 - phi_t)
+        d_tab = r_jun - tab_r
+        e = h - y_tab
+        A = [0.0] * 8
+        B = [0.0] * 8
+        C = [0.0] * 8
+        for k in range(8):
+            rk, rp = r_tip[k], r_tip[k - 1]
+            a, c = rk * cph - tab_r, rk * sph
+            p, s = rp * cps - tab_r, -rp * sps
+            A[k] = d_tab * s
+            B[k] = -c * d_tab
+            C[k] = a * e * s - c * e * p + (A[k] + B[k]) * y_tab
+        return _solve8(A, B, C)
+
+    y_tip = tip_heights()                               # SOLVED star-tip heights (per k)
+    tab = ring(8, tab_r, y_tab)                         # 0: octagon table
+    mid = len(pos)                                      # 8: star tips (bezel shoulders), azimuth 45k+phi
+    for k in range(8):
+        ac = k * math.pi / 4 + phi_t
+        pos.append([r_tip[k] * math.cos(ac), y_tip[k], r_tip[k] * math.sin(ac)])
+    low = ring(8, meet_r, -d_low, 0.5 / 8)              # 16: lower-girdle meet points
+    cu = ring(8, r_cu, -cut["pavilion"], 0.5 / 8)       # 24: culet octagon
+
+    pls = crown_planes(y_tip)
     cols = []                                           # one column of GT · BT · BB · GB per azimuth
     for i in range(n):
         phi = (i / n) * math.pi * 2
         kf = i // S                                     # 22.5° facet index (0..15)
         k = kf // 2                                     # 45° sector → its star-tip / meet apex
-        a0, a1 = kf * math.pi / 8, (kf + 1) * math.pi / 8
         ac = (k + 0.5) * math.pi / 4
         cp, sp = math.cos(phi), math.sin(phi)
-        crown = plane([r_mid * math.cos(ac), y_mid, r_mid * math.sin(ac)],
-                      [g * math.cos(a0), h, g * math.sin(a0)],
-                      [g * math.cos(a1), h, g * math.sin(a1)])
+        crown = pls[kf]
         pavl = plane([meet_r * math.cos(ac), -d_low, meet_r * math.sin(ac)],
-                     [g * math.cos(a0), -h, g * math.sin(a0)],
-                     [g * math.cos(a1), -h, g * math.sin(a1)])
+                     [g * math.cos(kf * math.pi / 8), -h, g * math.sin(kf * math.pi / 8)],
+                     [g * math.cos((kf + 1) * math.pi / 8), -h, g * math.sin((kf + 1) * math.pi / 8)])
         # 16-fold bevel width: 0 at the 16 facet junctions (22.5°k), 1 at the mid-facet columns
         w = b_min + (b_max - b_min) * (1.0 - math.cos(16.0 * phi)) / 2.0
         rt = g - w
-        gy, py = yat(crown, rt, phi), yat(pavl, rt, phi)
+        gy = h if i % S == 0 else yat(crown, rt, phi)   # junction columns: exactly the shared point
+        py = yat(pavl, rt, phi)
         cols.append([[rt * cp, gy, rt * sp],                    # GT: crown facet attachment
                      [g * cp, y_con + (g / rt) * (gy - y_con), g * sp],    # BT: bevel cone → r = girdle
                      [g * cp, -y_con + (g / rt) * (py + y_con), g * sp],   # BB: bevel cone → r = girdle
