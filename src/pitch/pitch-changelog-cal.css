@@ -20,7 +20,7 @@ button.ds-day.on:hover { outline-width: var(--cl-2); }
 .ds-day.is-due { border-color: var(--color-accent); background: transparent; }
 button.ds-day.is-due { border-color: var(--color-accent); }
 button.ds-day.is-due:not(.lv1):not(.lv2):not(.lv3):not(.lv4) { background: transparent; }
-.ds-day.is-today::before { content: ""; position: absolute; inset: calc(var(--cl-12) * -1); border: var(--cl-1) solid var(--color-ink); border-radius: calc(var(--radius-xs) + var(--cl-1)); }
+.ds-day.is-today::before { content: ""; position: absolute; inset: calc(var(--cl-2) * -1); border: var(--cl-1) solid var(--color-ink); border-radius: calc(var(--radius-xs) + var(--cl-1)); }
 @media (prefers-reduced-motion: no-preference) { .ds-day.is-today::before { animation: ds-today-pulse 2.4s ease-in-out infinite; } }
 @keyframes ds-today-pulse { 0%, 100% { opacity: .9; } 50% { opacity: .35; } }
 .ds-day.is-future { opacity: .6; }
