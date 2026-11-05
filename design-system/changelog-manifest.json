@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T11:44:30.373Z",
+  "generated": "2026-11-05T12:03:53.410Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4001,5 +4001,9 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M prototype/gems/gem_cut.py",
+    "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-cut.js"
+  ]
 }

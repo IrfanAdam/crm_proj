@@ -5,7 +5,7 @@
    along the bezel (0 table → 1 girdle), tipVar = alternating radius fraction. Octagon table · 8 star · 8 bezel kites · 16 upper · 48 girdle ·
    8 mains · 16 lower · culet. Tip heights solve det(S_k−T,M−T,S_{k−1}−T)=0 (8×8 cyclic); junction columns at (g−bevelMin,±h) make both crown fans one plane. Export window.GEM_CUT; gem_cut.py mirrors it. */
 window.GEM_CUT = {
-CUT: { facets: 16, girdle: 1, table: 0.555, crown: 0.305, pavilion: 0.8845, band: 0.05, star: 0.5, lower: 0.80, culet: 0.012, bevelMin: 0.0012, bevelMax: 0.0097, bevelApex: 0.55, tipPhi: 25.5, bezelT: 0.36, tipVar: 0 },
+CUT: { facets: 16, girdle: 1, table: 0.555, crown: 0.305, pavilion: 0.8845, band: 0.05, star: 0.5, lower: 0.80, culet: 0.012, bevelMin: 0.0012, bevelMax: 0.0097, bevelApex: 0.55, tipPhi: 22.8, bezelT: 0.383, tipVar: 0 },
 CATEGORIES: {
 sapphire: { token: '--primitive-sapphire-ui-400', hue: 0, spin: 0.35, ior: 1.77 },
 citrine: { token: '--primitive-citrine-400', hue: 38, spin: 0.3, ior: 1.545 },

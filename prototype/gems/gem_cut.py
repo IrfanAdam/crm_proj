@@ -27,7 +27,7 @@ import math, re
 CUT = {"facets": 16, "girdle": 1.0, "table": 0.555, "crown": 0.305, "pavilion": 0.8845,
        "band": 0.05, "star": 0.5, "lower": 0.80, "culet": 0.012,
        "bevelMin": 0.0012, "bevelMax": 0.0097, "bevelApex": 0.55,
-       "tipPhi": 25.5, "bezelT": 0.36, "tipVar": 0.0}
+       "tipPhi": 22.8, "bezelT": 0.383, "tipVar": 0.0}
 CATEGORIES = {
     "sapphire": {"token": "--primitive-sapphire-ui-400", "hue": 0, "spin": 0.35, "ior": 1.77},
     "citrine": {"token": "--primitive-citrine-400", "hue": 38, "spin": 0.3, "ior": 1.545},
