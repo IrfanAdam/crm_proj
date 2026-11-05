@@ -8,7 +8,7 @@ let commits=log.trim()? log.trim().split('\n').map(l=>{const [full,sha,date,time
 try{const prev=JSON.parse(fs.readFileSync(join(root,'design-system/changelog-manifest.json'),'utf8')); const seen=new Set(commits.map(c=>c.sha)); for(const c of prev.commits||[]) if(!seen.has(c.sha)) commits.push(c)}catch{}
 let plans=[]; try{plans=fs.readdirSync(join(root,'.hermes/plans')).filter(f=>f.endsWith('.md')).sort()}catch{}
 let wip=[]; try{const s=execSync(`git status --short -- ${DS.join(' ')}`,{encoding:'utf8'}); wip=s.trim()? s.trim().split('\n').map(l=>l.trim()).filter(l=>!l.includes('changelog-manifest.json') && !l.includes('plan-history.json')):[]}catch{}
-const GENERATED=new Set(['design-system/changelog-manifest.json','design-system/plan-history.json','src/arch/atlas.json','src/arch/arch-atlas.json']);
+const GENERATED=new Set(['design-system/changelog-manifest.json','design-system/plan-history.json','src/arch/atlas.json','src/arch/arch-atlas.json','src/js/mechanics/graphData.js','src/js/mechanics/graphData.decisions.js','src/js/mechanics/graphData.logic.js','src/js/mechanics/graphData.schema.js']);
 function isPlumbing(sha){ try{ const files=execSync(`git show --name-only --format="" ${sha}`,{encoding:'utf8'}).trim().split('\n').filter(Boolean); if(!files.length) return false; return files.every(f=>GENERATED.has(f)); }catch{ return false; } }
 commits=commits.filter(c=>!isPlumbing(c.sha));
 commits.sort((a,b)=> b.date.localeCompare(a.date) || (b.time||'').localeCompare(a.time||'') || b.sha.localeCompare(a.sha));
