@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05T12:03:53.410Z",
+  "generated": "2026-11-05T12:07:37.535Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "13117fc",
+      "full": "13117fc41163685707fe8b0238c717f7cfc0d162",
+      "date": "2026-11-05",
+      "time": "17:37",
+      "subject": "fix(gem): match the GIA bezel exactly — shoulder at 38%, near-symmetric kite",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "bf4b0b5",
       "full": "bf4b0b569601e5209d912bcfb1381bc6da9197a2",
@@ -4001,9 +4010,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M prototype/gems/gem_cut.py",
-    "M src/arch/atlas.json",
-    "M src/components/GemReward/gem-cut.js"
-  ]
+  "wip": []
 }
