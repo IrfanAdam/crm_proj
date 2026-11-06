@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T14:26:59.430Z",
+  "generated": "2026-11-06T16:51:01.050Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "8a4d294",
+      "full": "8a4d294e532ff067e49eb9d30df1a14cef6c4165",
+      "date": "2026-11-06",
+      "time": "20:25",
+      "subject": "fix(gem): stone hue comes from the measured record, not the UI token — reverts the no-op setHSL mix",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "ac93752",
       "full": "ac9375239023fe3f5f98c715627db4e148e465c9",
