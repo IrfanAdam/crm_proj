@@ -1,12 +1,13 @@
 /* ADAM/SHARED — src/components/GemReward/gem-caustic-trace.js · analytic facet caustic field */
 // [plan:2026-10-03_144222-gem-realism-round2.md#phase-10 Task 26] — ONE continuous glow, 1:1 with the stone.
-// — Every downward facet of the real cut refracts the key light (Snell 2.4, dispersion-averaged) to a floor
-// — point; soft Gaussian splats + a Gaussian envelope merge them into a single luminous pool. No Monte
-// — Carlo and no trace on the render path: the field is rebuilt from the live pose each frame (~2 ms), so
-// — the pool tracks the stone every frame and never hitches. Facet exit is a SOFT Fresnel falloff, not a
-// — hard critical-angle cut — a hard cut made facets blink on/off (the "blotch"/"stuck" read).
-// — Exit records stay NINE numbers [px,py,pz,dx,dy,dz,nx,ny,nz].
-// — Export: GEM_CAUSTIC_TRACE.{S,pose,geomKey,field}.
+// — Every downward facet refracts the key light (Snell 2.4, dispersion-averaged) to a floor point; soft Gaussian
+// — splats + a Gaussian envelope merge them into one pool. No Monte Carlo, no trace on the render
+// — path: the field is rebuilt from the live pose every frame (~2 ms). Entry refracts at the TABLE with the
+// — pose-rotated normal (+y at rest → neutral-preserving), so tilt bends the entering ray and the exits alike.
+// — field() also returns the PAVILION CHIEF RAY's floor point (cx,cz) — area-weighted, so it slides smoothly and
+// — monotonically with tilt instead of jumping when the lit-facet set flips — and the landing points' RMS
+// — spread sp, the caustic's focus: gem-bare puts the quad there and scales it by that ratio.
+// — Export: GEM_CAUSTIC_TRACE.{S,pose,geomKey,field,refOf}.
 (function () {
 if (!window.THREE) return;
 const S = 160, IOR = 2.4, DISP = 0.06, FD = 0.5, SPAN = 2.4, SIG = 5.2, ENV = 0.86, CSX = 0.52, CSZ = 0.44, STREAK = 0.42, RAD = (S / 2) / SPAN, EA = 1 / IOR;
@@ -49,16 +50,16 @@ const kx = Int16Array.from(KX), ky = Int16Array.from(KY), kw = Float32Array.from
 const ENVV = new Float32Array(S * S), CORE = new Float32Array(S * S);   // static envelope + core mound
 for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
 const dx = (x - S / 2) / RAD, dz = (y - S / 2) / RAD, j = y * S + x;
-ENVV[j] = Math.exp(-(dx * dx + dz * dz) / (2 * ENV * ENV));
-CORE[j] = Math.exp(-(dx * dx / (2 * CSX * CSX) + dz * dz / (2 * CSZ * CSZ)));   // the glow under the stone
+ENVV[j] = Math.exp(-(dx * dx + dz * dz) / (2 * ENV * ENV)); CORE[j] = Math.exp(-(dx * dx / (2 * CSX * CSX) + dz * dz / (2 * CSZ * CSZ)));
 }
 const BUF = new Float32Array(S * S), OUT = new Float32Array(S * S);
 const field = function (G, P) {   // per-frame: refract each pavilion facet to the floor, splat, envelope
 const F_ = facetsOf(G), M = P.R, fy = P.floorY;
-let d1x = EA * DX0, d1y = EA * DY0, d1z = EA * DZ0;   // entry at the table: Snell bends the key light down
-{ const dn = DY0, cc = EA * dn + Math.sqrt(1 - EA * EA * (1 - dn * dn)); d1y = EA * DY0 - cc; const l = Math.hypot(d1x, d1y, d1z) || 1; d1x /= l; d1y /= l; d1z /= l; }
-const PX = [], PZ = [], PW = [];
-let mx = 0, mz = 0, ws = 0;
+const tnx = M[1], tny = M[4], tnz = M[7], dn = DX0 * tnx + DY0 * tny + DZ0 * tnz;   // table normal, posed
+const c0 = EA * dn + Math.sqrt(Math.max(0, 1 - EA * EA * (1 - dn * dn)));   // Snell at the table, air → gem
+let d1x = EA * DX0 - c0 * tnx, d1y = EA * DY0 - c0 * tny, d1z = EA * DZ0 - c0 * tnz;
+{ const l = Math.hypot(d1x, d1y, d1z) || 1; d1x /= l; d1y /= l; d1z /= l; }
+const PX = [], PZ = [], PW = []; let mx = 0, mz = 0, ws = 0, m2 = 0, ax = 0, ay = 0, az = 0, aw = 0, hx = 0, hy = 0, hz = 0;
 for (let i = 0; i < F_.length; i++) {
 const f = F_[i], nx = M[0] * f[3] + M[1] * f[4] + M[2] * f[5], ny = M[3] * f[3] + M[4] * f[4] + M[5] * f[5], nz = M[6] * f[3] + M[7] * f[4] + M[8] * f[5];
 const nd = d1x * nx + d1y * ny + d1z * nz; if (nd <= 0.02) continue;   // ray must travel outward through the facet
@@ -72,25 +73,27 @@ const rx = ee * d1x - cc * nx, ry = ee * d1y - cc * ny, rz = ee * d1z - cc * nz;
 if (ry >= -1e-3) continue;
 const t = (fy - cy) / ry; if (t <= 0) continue;
 px += cx + rx * t; pz += cz + rz * t; ok++;
+const a3 = f[6] * Math.max(0, nd) / 3, l3 = Math.hypot(rx, ry, rz) || 1;   // chief ray: area-weighted, no light gate
+ax += cx * a3; ay += cy * a3; az += cz * a3; aw += a3; hx += rx / l3 * a3; hy += ry / l3 * a3; hz += rz / l3 * a3;
 }
-if (!ok) continue;
-px /= ok; pz /= ok;
+if (!ok) continue; px /= ok; pz /= ok;
 if (px * px + pz * pz > 1.9) continue;   // no far-flung satellites — the pool stays one glow
-PX.push(px); PZ.push(pz); PW.push(w); mx += px * w; mz += pz * w; ws += w;
+PX.push(px); PZ.push(pz); PW.push(w); mx += px * w; mz += pz * w; m2 += (px * px + pz * pz) * w; ws += w;
 }
 BUF.fill(0);
 if (ws) { mx /= ws; mz /= ws; }
+const hl = Math.hypot(hx, hy, hz) || 1; let chx = 0, chz = 0;
+if (aw > 1e-6 && hy / hl < -1e-3) { const tc = (fy - ay / aw) / (hy / hl); chx = ax / aw + hx / hl * tc; chz = az / aw + hz / hl * tc; }
 for (let i = 0; i < PW.length; i++) {   // one splat per facet — the three channels are SUMMED here
 const x0 = Math.round(S / 2 + (PX[i] - mx) * RAD), y0 = Math.round(S / 2 + (PZ[i] - mz) * RAD), w = PW[i];
 for (let k = 0; k < KN; k++) { const px = x0 + kx[k], py = y0 + ky[k]; if (px < 0 || py < 0 || px >= S || py >= S) continue; BUF[py * S + px] += w * kw[k]; }
 }
-let smax = 0;
-for (let i = 0; i < S * S; i++) { const v = BUF[i] * ENVV[i]; OUT[i] = v; if (v > smax) smax = v; }
+let smax = 0; for (let i = 0; i < S * S; i++) { const v = BUF[i] * ENVV[i]; OUT[i] = v; if (v > smax) smax = v; }
 // — ONE glow: the facet streaks ride ON a continuous core mound instead of standing as separate islands.
-const sc = smax > 0 ? STREAK / smax : 0;
-let fmax = 0;
+const sc = smax > 0 ? STREAK / smax : 0; let fmax = 0;
 for (let i = 0; i < S * S; i++) { const v = OUT[i] * sc + CORE[i]; OUT[i] = v; if (v > fmax) fmax = v; }
-return { f: OUT, mx: fmax || 1 };
-};
-window.GEM_CAUSTIC_TRACE = { S: S, pose: poseOf, geomKey: geomKey, field: field };
+return { f: OUT, mx: fmax || 1, cx: chx, cz: chz, sp: ws ? Math.sqrt(Math.max(0, m2 / ws - mx * mx - mz * mz)) : 0 };
+}; const REFS = {};
+const refOf = function (G) { const k = geomKey(G); if (!REFS[k]) { const f = field(G, poseOf({ yaw: 0, pitch: 0, lift: 0 }, G)); REFS[k] = { cx: f.cx, cz: f.cz, sp: f.sp }; } return REFS[k]; };
+window.GEM_CAUSTIC_TRACE = { S: S, pose: poseOf, geomKey: geomKey, field: field, refOf: refOf };
 })();

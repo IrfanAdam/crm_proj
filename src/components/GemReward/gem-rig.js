@@ -45,7 +45,7 @@ const live = mp && mp.userData && mp.userData.gemCaustic && window.GEM_CAUSTIC &
 if (live) {
 // — 1:1: rebuild the field from THIS frame's pose — no pose gate, no hold-last-texture, no trace on
 // — the render path, so the pool can never lag behind, jump, or read as a rigid sticker.
-window.GEM_CAUSTIC.live(mp, fl.poolArgs.color, fl.poolArgs.cut, { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y });
+window.GEM_CAUSTIC.live(mp, fl.poolArgs.color, fl.poolArgs.cut, { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y }, rig);
 fl.caustic.rotation.z = 0;                             // traced pattern is already world-oriented — never rigid-spin it
 } else {
 fl.caustic.rotation.z = g.rotation.y;                  // fallback pool: rigid turn is all we have

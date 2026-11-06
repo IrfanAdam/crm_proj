@@ -40,14 +40,22 @@ const aim = function (rig) {
   const h0 = rig.stageBg ? fl.rest : 0;                // staged: rest height is the neutral pose (no jump at rest)
   const gx = fl.ground.x * (hgt - h0) * fl.k;
   const gz = fl.ground.z * (hgt - h0) * fl.k;          // no 0.6 damping — keeps shadow vector collinear with key (±5°)
-  const pitch = Math.sin(Math.max(-0.35, Math.min(0.35, g.rotation.x))) * 0.3;
+  // — the cast pool is NOT an ornament hung under the stone: gem-caustic publishes the quad's own
+  // — screen motion (off.x/off.z, world units on the floor) pinned to the camera ray through the stone's
+  // — projected vertex centroid, so the pool slides exactly as far as the stone does (Task 26's 1:1), and
+  // — off.s, the traced landing-points' RMS spread, drives its magnification. ±12 % is a stability guard
+  // — on the spread ratio, not a target.
+  const mp = fl.caustic.material.map, traced = !!(mp && mp.userData && mp.userData.gemCaustic);
+  const off = traced && window.GEM_CAUSTIC ? window.GEM_CAUSTIC.off : null;
+  const ox = off ? off.x : 0, oz = off ? off.z : 0;
+  const fs = off && off.s > 0 ? Math.max(0.88, Math.min(1.12, off.s)) : 1;
   fl.shadow.position.x = gx * UMBRA;                   // the stone is a lens: almost no umbra, so the dark pool stays
   fl.shadow.position.z = gz * UMBRA;                   // on the contact point while the cast light lands off-axis below
   fl.shadow.scale.set(fl.base.sx * (0.94 + 0.1 * k), fl.base.sy * (0.94 + 0.1 * k), 1);
   fl.shadow.material.opacity = (fl.so * 0.62) / (0.45 + 0.55 * k);
-  fl.caustic.position.x = gx;
-  fl.caustic.position.z = fl.base.cz + gz + pitch;
-  fl.caustic.scale.setScalar(fl.base.cs * (1 + 0.3 * (k - 1)));
+  fl.caustic.position.x = gx + ox;
+  fl.caustic.position.z = fl.base.cz + gz + oz;
+  fl.caustic.scale.setScalar(fl.base.cs * (1 + 0.3 * (k - 1)) * fs);
   fl.caustic.material.opacity = 0.72 - g.position.y * 2.2;
 };
 window.GEM_BARE = {
@@ -81,7 +89,7 @@ window.GEM_BARE = {
     }
     scene.add(shadow);
     scene.add(caustic);
-    return { shadow: shadow, caustic: caustic, ground: GROUND, rest: rest, k: PULL, so: bare ? HERO_SOFT : CARD_SOFT,
+    return { shadow: shadow, caustic: caustic, ground: GROUND, rest: rest, k: PULL, so: bare ? HERO_SOFT : CARD_SOFT, gs: s,
       poolArgs: { color: color, cut: cut },
       base: { sx: shadow.scale.x, sy: shadow.scale.y, cs: caustic.scale.x, cz: caustic.position.z, cy: caustic.position.y } };
   }
