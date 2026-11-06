@@ -353,5 +353,10 @@
     "anchor": "{#phase-1}",
     "note": "fix(changelog): filter dropdown closes on click outside",
     "plan": "2026-10-31_135705-changelog-safepipe-parity.md"
+  },
+  "7768e82": {
+    "anchor": "{#phase-1}",
+    "note": "retro-link 4bca540 to safepipe filter phase-1",
+    "plan": "2026-10-31_135705-changelog-safepipe-parity.md"
   }
 }
