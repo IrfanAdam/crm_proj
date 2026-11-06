@@ -85,8 +85,10 @@ export function paintTimeline(root, ctx) {
   const atX = (v) => `left:calc(var(--tl-label) + ${v} * var(--tl-day))`;
   const todayCol = `<div class="ds-tl-todaycol" style="${atX(Math.floor(todayFrac))};width:var(--tl-day)"></div>` +
     `<div class="ds-tl-today" style="${atX(todayFrac.toFixed(4))}"></div>`;
+  // Label-column collapse persists on the host across repaints (innerHTML only).
+  const collapsed = host.dataset.collapsed === '1';
   host.innerHTML = `<div class="ds-tl-head"><b>Timeline</b><small>${bounds[0]} → ${bounds[bounds.length - 1]}</small><button data-tl-close aria-label="Close timeline">✕</button></div>` +
-    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><span class="ds-tl-clabel">Plan</span><span class="ds-tl-curmonth" data-tl-curmonth hidden></span><div class="ds-tl-ticks">${mo.join('')}</div><span class="ds-tl-todaydot" style="${atX(todayFrac.toFixed(4))}"></span></div>${rows}${todayCol}</div></div>`;
+    `<div class="ds-tl-scroll"><div class="ds-tl-body${collapsed ? ' is-collapsed' : ''}" style="--tl-days:${days}"><div class="ds-tl-axis"><button class="ds-tl-clabel" data-tl-collapse aria-expanded="${collapsed ? 'false' : 'true'}" aria-label="${collapsed ? 'Expand' : 'Collapse'} plan labels" title="${collapsed ? 'Expand' : 'Collapse'} plan labels">Plan<span class="ds-tl-clabel-caret" aria-hidden="true">«</span></button><span class="ds-tl-curmonth" data-tl-curmonth hidden></span><div class="ds-tl-ticks">${mo.join('')}</div><span class="ds-tl-todaydot" style="${atX(todayFrac.toFixed(4))}"></span></div>${rows}${todayCol}</div></div>`;
   try {
     const sc0 = host.querySelector('.ds-tl-scroll');
     if (sc0) { sc0.onscroll = () => { try { syncTlEdges(host); } catch {} }; try { syncTlEdges(host); } catch {} }

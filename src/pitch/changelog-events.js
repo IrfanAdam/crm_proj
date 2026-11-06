@@ -3,7 +3,7 @@
 // closest() matches the element itself, so order is the only thing that saves
 // a view-toggle element carrying a filter class from the generic branch.
 import { dueUi, onDueChange } from './changelog/due.js';
-import { scrollRowIntoView } from './changelog/tl-edges.js';
+import { scrollRowIntoView, syncTlEdges } from './changelog/tl-edges.js';
 import { hoverTlPop, hideTlPop } from './changelog/tl-pop.js';
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
@@ -30,6 +30,14 @@ export function bindChangelogEvents(root, st, helpers) {
     if (e.target.closest('[data-clear]')) { st.active = new Set(); st.status = new Set(); st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
     if (e.target.closest('[data-timeline-chip]')) { st.timeline = !st.timeline; doPaint(root); return; }
     if (e.target.closest('[data-tl-close]')) { st.timeline = false; doPaint(root); return; }
+    const tc = e.target.closest('[data-tl-collapse]');
+    if (tc && st.timeline) { const host = root.querySelector('aside.ds-timeline'), body = host && host.querySelector('.ds-tl-body');
+      if (host && body) { const next = body.classList.toggle('is-collapsed');
+        host.dataset.collapsed = next ? '1' : ''; tc.setAttribute('aria-expanded', String(!next));
+        tc.setAttribute('aria-label', (next ? 'Expand' : 'Collapse') + ' plan labels');
+        tc.setAttribute('title', (next ? 'Expand' : 'Collapse') + ' plan labels');
+        try { syncTlEdges(host); } catch {} }
+      return; }
     const to = e.target.closest('[data-tl-open]');
     if (to) { const f = to.dataset.tlOpen; st.day = ''; hideTlPop(root);
       const c1 = cur(), idx = c1.list.findIndex((p) => p.file === f);
