@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T13:03:35.233Z",
+  "generated": "2026-11-06T13:49:29.607Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "111d8c6",
+      "full": "111d8c672929df8a10c213f4ace1a011c21acd83",
+      "date": "2026-11-06",
+      "time": "19:19",
+      "subject": "Changelog polish: spacing, pills, 60vw drawer, single carets, timeline lanes",
+      "plan": "2026-11-02_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "596f29f",
       "full": "596f29f871e045e8ae7da0710d7849b9fda431e7",
@@ -4010,5 +4019,15 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M gallery.html",
+    "M index.html",
+    "M prototype/gems/audit.py",
+    "M src/components/GemReward/gem-appearance.js",
+    "M src/components/GemReward/gem-scene.js",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
