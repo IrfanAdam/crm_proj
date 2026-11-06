@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T11:03:35.949Z",
+  "generated": "2026-11-06T11:03:55.011Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "acfac75",
+      "full": "acfac75e330e4ccf58c4d59de2d9c162ebc02c5e",
+      "date": "2026-11-06",
+      "time": "16:33",
+      "subject": "chore(ds): retro-link 7768e82 to safepipe filter phase-1",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "7768e82",
       "full": "7768e827a06829fc6ded5b343cf93a36cd4df4e5",
