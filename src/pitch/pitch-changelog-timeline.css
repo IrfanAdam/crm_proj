@@ -10,9 +10,10 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-tl-head small{flex:none;font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted);white-space:nowrap}
 .ds-tl-head button{flex:none;margin-right:var(--cl-16);font-family:var(--font-mono);font-size:var(--text-micro);background:var(--color-surface);color:var(--color-ink);border:var(--border-hairline);border-radius:var(--radius-xs);padding:var(--cl-4) var(--cl-9);cursor:pointer}
 .ds-tl-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;padding-bottom:var(--cl-8)}
-.ds-tl-body{position:relative;width:max-content;min-width:100%;--tl-day:var(--cl-30)}
+.ds-tl-body{position:relative;width:max-content;min-width:100%;--tl-day:var(--cl-30);--tl-label:calc(var(--cl-30) * 8)}
 .ds-tl-axis{display:flex;border-bottom:var(--border-hairline);position:sticky;top:0;background:var(--color-bg);z-index:var(--z-ds-side)}
-.ds-tl-curmonth{flex:none;display:inline-block;position:sticky;left:0;z-index:var(--z-ds-side);width:max-content;max-width:calc(var(--tl-day) * 2);height:var(--cl-22);line-height:var(--cl-22);text-align:left;font-family:var(--font-mono);font-size:var(--text-micro);font-weight:700;color:var(--color-ink);background:linear-gradient(to right, var(--color-bg) 50%, transparent);padding-right:var(--cl-12)}
+.ds-tl-clabel{flex:none;display:inline-block;position:sticky;left:0;z-index:var(--z-ds-side);width:var(--tl-label);box-sizing:border-box;height:var(--cl-22);line-height:var(--cl-22);padding-left:var(--cl-16);background:var(--color-bg);border-right:var(--border-hairline);text-align:left;font-family:var(--font-mono);font-size:var(--text-micro);font-weight:700;letter-spacing:var(--tracking-mono);text-transform:uppercase;color:var(--color-ink-muted);white-space:nowrap;overflow:hidden}
+.ds-tl-curmonth{flex:none;display:inline-block;position:sticky;left:var(--tl-label);z-index:var(--z-ds-side);width:0;height:var(--cl-22);line-height:var(--cl-22);text-align:left;font-family:var(--font-mono);font-size:var(--text-micro);font-weight:700;color:var(--color-ink);white-space:nowrap;background:transparent;padding-right:var(--cl-12)}
 .ds-tl-curmonth[hidden]{display:none}
 .ds-tl-ticks{position:relative;flex:none;width:calc(var(--tl-days,30) * var(--tl-day));height:var(--cl-22)}
 .ds-tl-tick{position:absolute;top:0;height:100%;width:var(--tl-day);text-align:center;border-left:var(--border-hairline);box-sizing:border-box;font-family:var(--font-mono);font-size:var(--text-micro);line-height:var(--cl-22);color:var(--color-ink-muted);white-space:nowrap;overflow:visible}
@@ -20,6 +21,14 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-tl-row{display:flex;align-items:stretch;border-bottom:var(--border-hairline);min-height:var(--cl-32)}
 .ds-tl-row.has-track{background:color-mix(in srgb, var(--color-surface) 45%, transparent)}
 .ds-tl-row:hover{background:color-mix(in srgb, var(--color-surface) 80%, transparent)}
+/* Lane differentiation (DS tokens): open lanes ride on surface, done lanes on muted. */
+.ds-tl-row.is-done{background:color-mix(in srgb, var(--color-ink-muted) 10%, transparent)}
+.ds-tl-row.is-done:hover{background:color-mix(in srgb, var(--color-ink-muted) 16%, transparent)}
+.ds-tl-label{position:sticky;left:0;z-index:3;flex:none;align-self:stretch;display:flex;align-items:center;gap:var(--cl-6);width:var(--tl-label);box-sizing:border-box;padding:0 var(--cl-8) 0 var(--cl-16);border:0;border-right:var(--border-hairline);background:var(--color-bg);font:inherit;text-align:left;cursor:pointer}
+.ds-tl-label .ds-num{flex:none;font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-ink-muted)}
+.ds-tl-label-name{overflow:hidden;color:var(--color-ink);text-overflow:ellipsis;white-space:nowrap}
+.ds-tl-row:hover .ds-tl-label-name{color:var(--color-accent)}
+.ds-tl-row.is-done .ds-tl-label-name{color:var(--color-ink-muted)}
 .ds-tl-lane{position:relative;flex:none;align-self:stretch;width:calc(var(--tl-days,30) * var(--tl-day))}
 .ds-tl-bar{position:absolute;top:50%;transform:translateY(-50%);height:var(--cl-22);border:none;border-radius:var(--radius-md);background:linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 45%, var(--color-surface)) 0, color-mix(in srgb, var(--color-accent) 45%, var(--color-surface)) var(--tl-done,0%), color-mix(in srgb, var(--color-ink-muted) 35%, var(--color-surface)) var(--tl-done,0%), color-mix(in srgb, var(--color-ink-muted) 35%, var(--color-surface)) 100%);cursor:pointer;padding:0;box-sizing:border-box}
 .ds-tl-bar:hover{outline:var(--cl-1) solid var(--color-ink);outline-offset:var(--cl-1)}
@@ -30,9 +39,10 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-tl-ghost:hover{outline:var(--cl-1) solid var(--color-ink);outline-offset:var(--cl-1)}
 .ds-tl-todaycol{position:absolute;top:0;bottom:0;background:color-mix(in srgb, var(--color-accent) 7%, transparent);pointer-events:none}
 .ds-tl-today{position:absolute;top:0;bottom:0;border-left:var(--cl-2) dotted color-mix(in srgb, var(--color-accent) 55%, transparent);pointer-events:none}
+.ds-tl-todaydot{position:absolute;bottom:0;z-index:2;width:var(--cl-6);height:var(--cl-6);background:var(--color-accent);transform:translate(-50%,50%);pointer-events:none}
 .ds-tl-edge{position:sticky;display:inline-flex;align-items:center;justify-content:center;width:var(--cl-26);height:var(--cl-26);margin-top:calc((var(--cl-32) - var(--cl-26)) / 2);padding:0;background:var(--color-surface);color:var(--color-ink);border:var(--border-hairline);border-radius:var(--radius-xs);font-family:var(--font-mono);font-size:var(--text-micro);cursor:pointer;z-index:var(--z-ds-side)}
 .ds-tl-edge[hidden]{display:none}
-.ds-tl-edge.is-l{left:var(--cl-8)}
+.ds-tl-edge.is-l{left:calc(var(--tl-label) + var(--cl-8))}
 .ds-tl-edge.is-r{float:right;right:var(--cl-8)}
 .ds-tl-edge:hover{outline:var(--cl-1) solid var(--color-ink);outline-offset:var(--cl-1)}
 @keyframes ds-tl-nudge-fwd{from{transform:translateX(var(--cl-8))}to{transform:translateX(0)}}
@@ -51,3 +61,14 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-tl-pop__date{display:block;font-family:var(--font-mono);font-size:var(--font-size-xs);line-height:var(--leading-mono);color:var(--color-ink-dim);margin:var(--cl-2) 0 0}
 .ds-tl-chip{margin-left:auto}
 .ds-tl-chip.on{background:var(--color-surface);color:var(--color-ink);border-color:var(--color-border)}
+/* Detail-pane panels (evals/commits) · single-span caret + body inset.
+   The summaries now carry their own .ds-caret span (reference footer), so the
+   drawer ::before/::after glyphs are suppressed here — one caret per row that
+   rotates on open via the existing .ds-caret rules. Panel bodies get the same
+   horizontal inset as the padded summary label. */
+.ds-panel > .ds-panel-title::before{content:none}
+.ds-panel .ds-timeline-group > .ds-timeline-date::after{content:none}
+.ds-panel .ds-caret{transition:transform .15s}
+.ds-day-num{color:var(--color-accent);font-weight:var(--font-weight-bold)}
+.ds-panel > .ds-sub{margin-left:var(--cl-12);margin-right:var(--cl-12)}
+.ds-panel > .ds-timeline{margin:var(--cl-4) var(--cl-12) var(--cl-12)}

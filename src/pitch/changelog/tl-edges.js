@@ -21,11 +21,16 @@ export function syncTlEdges(host) {
     if (ticks) { const want = badge.hidden ? '' : `${-badge.offsetWidth}px`; if (ticks.style.marginLeft !== want) ticks.style.marginLeft = want; }
   }
   host.querySelectorAll('[data-tl-row]').forEach((row) => {
-    const tracks = [...row.querySelectorAll('[data-tl-open]')];
+    // Tracks only — the sticky .ds-tl-label also carries data-tl-open but is
+    // not a track (reference tracksOf).
+    const tracks = [...row.querySelectorAll('[data-tl-bout],[data-tl-ghost]')];
     const L = row.querySelector('[data-tl-edge="l"]'), R = row.querySelector('[data-tl-edge="r"]');
     if (!tracks.length) { if (L) L.hidden = true; if (R) R.hidden = true; return; }
     const f = tracks[0].getBoundingClientRect(), l = tracks[tracks.length - 1].getBoundingClientRect();
-    if (L) L.hidden = !(l.right < vr.left + slop);
+    // A track tucked behind the sticky label column is not "visible".
+    const lab = row.querySelector('.ds-tl-label');
+    const pad = lab ? lab.getBoundingClientRect().width : 0;
+    if (L) L.hidden = !(l.right < vr.left + pad + slop);
     if (R) R.hidden = !(f.left > vr.right - slop);
   });
 }
@@ -40,18 +45,22 @@ const nudge = (el, dx) => { try {
 export function scrollRowIntoView(root, row, dir) {
   const sc = root.querySelector('.ds-tl-scroll');
   if (!sc) return;
-  const tracks = [...row.querySelectorAll('[data-tl-open]')];
+  const tracks = [...row.querySelectorAll('[data-tl-bout],[data-tl-ghost]')];
   if (!tracks.length) return;
   const { l: PAD_L, r: PAD_R } = pads();
+  // Landing a track at the raw pane edge parks it under the sticky label —
+  // clear the label width too.
+  const lab = row.querySelector('.ds-tl-label');
+  const PADL = PAD_L + (lab ? lab.getBoundingClientRect().width : 0);
   const vr = sc.getBoundingClientRect();
   const f = tracks[0].getBoundingClientRect(), l = tracks[tracks.length - 1].getBoundingClientRect();
   const fDoc = f.left - vr.left + sc.scrollLeft, lDoc = l.right - vr.left + sc.scrollLeft;
   const viewL = sc.scrollLeft, viewR = viewL + sc.clientWidth;
   let x = null;
   if (dir === 'l') x = lDoc - sc.clientWidth + PAD_R;
-  else if (dir === 'r') x = fDoc - PAD_L;
-  else if (fDoc < viewL + PAD_L) x = fDoc - PAD_L;
-  else if (lDoc > viewR - PAD_R) x = (lDoc - fDoc <= sc.clientWidth) ? lDoc - sc.clientWidth + PAD_R : fDoc - PAD_L;
+  else if (dir === 'r') x = fDoc - PADL;
+  else if (fDoc < viewL + PADL) x = fDoc - PADL;
+  else if (lDoc > viewR - PAD_R) x = (lDoc - fDoc <= sc.clientWidth) ? lDoc - sc.clientWidth + PAD_R : fDoc - PADL;
   if (x !== null && Math.abs(x - sc.scrollLeft) > 1) {
     const dx = x - sc.scrollLeft;
     sc.scrollTo({ left: Math.max(0, x), behavior: 'auto' });

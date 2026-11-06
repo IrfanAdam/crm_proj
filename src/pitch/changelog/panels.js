@@ -27,6 +27,15 @@ const GATE_THREAD = /^- .*REF GATE\s+0*\d+\b/;
 export const stripGateThread = (body) => String(body).split('\n').filter((l) => !GATE_THREAD.test(l)).join('\n');
 const cleanEval = (line) => esc(line.replace(/^- /, '').replace(/^\[[ xX]\] /, '').replace(/\*\*/g, '').replace(/\s*\{#.*$/, '').trim());
 const firstGateDate = (s) => ((s || '').match(/(20\d{2}-\d{2}-\d{2})/) || [])[1] || '';
+// Single-span caret (the ::before/::after glyphs are suppressed in CSS) +
+// day items nested in .ds-timeline-items — reference footer structure.
+const caret = `<span class="ds-caret" aria-hidden="true">▸</span>`;
+const dayGroup = (dayN, d, rows) => {
+  const items = rows.map((r) => r.kind === 'eval'
+    ? `<div class="ds-timeline-item ds-timeline-item--eval"><span>${r.text}</span></div>`
+    : `<div class="ds-timeline-item ds-timeline-item--iter"><span>${r.text}</span><small>${esc(d)}</small></div>`).join('');
+  return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${caret}<span class="ds-day-num">Day ${dayN}</span> · ${esc(fmtDate(d) || d)} · ${rows.length}</summary><div class="ds-timeline-items">${items}</div></details>`;
+};
 export const renderEvals = (planFile, planDate, head, body) => {
   const g = parseGates(head, body);
   if (!g) return '';
@@ -37,19 +46,12 @@ export const renderEvals = (planFile, planDate, head, body) => {
   entries.forEach((e) => { (byDate[e.date] = byDate[e.date] || []).push(e); });
   const dates = Object.keys(byDate).sort().reverse();
   const total = dates.length;
-  const groups = dates.map((d, di) => {
-    const rows = byDate[d];
-    const dayN = total - di;
-    const items = rows.map((r) => r.kind === 'eval'
-      ? `<div class="ds-timeline-item ds-timeline-item--eval"><span>${r.text}</span></div>`
-      : `<div class="ds-timeline-item ds-timeline-item--iter"><span>${r.text}</span><small>${esc(d)}</small></div>`).join('');
-    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">Day ${dayN} · ${esc(fmtDate(d) || d)} · ${rows.length}</summary>${items}</details>`;
-  }).join('');
-  return `<details class="ds-panel" open><summary class="ds-panel-title">Evals · ${entries.length}</summary><div class="ds-timeline">${groups}</div></details>`;
+  const groups = dates.map((d, di) => dayGroup(total - di, d, byDate[d])).join('');
+  return `<details class="ds-panel" open><summary class="ds-panel-title">${caret}Evals · <span class="ds-panel-num">${entries.length}</span></summary><div class="ds-timeline">${groups}</div></details>`;
 };
 export const renderCommitsPanel = (hs, badgesHtml) => {
   if (!hs.length) return '';
-  return `<details class="ds-panel" open><summary class="ds-panel-title">Commits · ${hs.length}</summary>${badgesHtml}</details>`;
+  return `<details class="ds-panel" open><summary class="ds-panel-title">${caret}Commits · <span class="ds-panel-num">${hs.length}</span></summary>${badgesHtml}</details>`;
 };
 export const gateVerdictTag = (head, body) => {
   const g = parseGates(head, body);

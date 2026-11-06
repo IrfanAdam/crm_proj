@@ -59,8 +59,8 @@ a.masthead-brand{text-decoration:none}
 .ds-chips .ds-chip[data-tag]{display:none}
 }
 .ds-filter-tabs{display:flex;gap:var(--cl-8);margin-bottom:var(--cl-8)}
-.ds-filter-tabs .ds-chip{border:none;border-radius:0;background:transparent;color:var(--color-ink-muted);padding-left:var(--cl-4);padding-right:var(--cl-4);border-bottom:var(--cl-2) solid transparent}
-.ds-filter-tabs .ds-chip.on{background:transparent;color:var(--color-ink);border-bottom-color:var(--color-accent)}
+.ds-filter-tabs .ds-chip{border:var(--border-hairline);border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-ink-muted);padding-left:var(--cl-4);padding-right:var(--cl-4);border-bottom:var(--cl-2) solid transparent}
+.ds-filter-tabs .ds-chip.on{background:var(--color-surface);color:var(--color-ink);border-bottom-color:var(--color-accent)}
 .ds-filter-opts{display:flex;flex-direction:column;gap:var(--cl-4)}
 .ds-pick.is-cancelled .ds-num{color:var(--color-danger)}
 .ds-plan-grid .ds-pick.is-cancelled.on{background:var(--color-surface);box-shadow:inset var(--cl-2) 0 0 var(--color-danger)}

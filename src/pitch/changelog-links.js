@@ -44,11 +44,16 @@ export const badges = (list, title) => {
   }
   return html + '</div>';
 };
+// Commits with no matching plan file (c.plan empty, or unknown to texts).
+// Plan-scoped queries (hits/orphans) require c.plan === file, so these never
+// surface in any drawer pane — render them in rail/triage instead of dropping.
+export const planless = (texts) => commits.filter((c) => !c.plan || (texts && !texts[c.plan]));
 export const unlinked = (texts) => {
   const secsCache = {};
   const secsOf = (file) => (secsCache[file] = secsCache[file] || split(texts[file] || ''));
+  const gone = new Set(planless(texts).map((c) => c.sha));
   const xs = commits.filter((c) => {
-    if (!c.plan || !texts[c.plan]) return true;
+    if (gone.has(c.sha)) return true;
     if (!c.anchor) return false;
     return !secsOf(c.plan).some((s) => anchorHit(s.body, c.anchor));
   });

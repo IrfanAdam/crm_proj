@@ -2,6 +2,7 @@
 import { commits } from '../changelog-links.js';
 import { planStatus, statusLabel, state, isDone, buildState } from '../changelog-parse.js';
 import { dueOf } from './due-core.js';
+import { esc } from './esc.js';
 import { syncTlEdges } from './tl-edges.js';
 import { spanText, laneMeta, noq } from './tl-meta.js';
 const DAY = 864e5;
@@ -55,18 +56,22 @@ export function paintTimeline(root, ctx) {
   const days = Math.max(1, Math.round((endMs - startMs) / DAY) + 1);
   const col = (k) => Math.round((atMidnight(k + 'T00:00:00') - startMs) / DAY);
   const geom = (s, e) => { const off = col(s), span = Math.max(col(e) - off + 1, 2); return `left:calc(${off} * var(--tl-day));width:calc(${span} * var(--tl-day) - var(--cl-4))`; };
+  // Row/track/label/meta separation (reference tl-rows): the label carries plan
+  // identity + lane payload, the lane only tracks (bar + ghost).
   const rows = info.map((r, i) => {
     const tip = `${r.n} commit${r.n === 1 ? '' : 's'} · ${spanText(r.s, r.e)}`;
     const dt = (String(buildState(r.p.sprints || [])).match(/(\d+\/\d+)/) || [])[1] || '';
     const meta = laneMeta(r.p, r.e, r.n);
-    const bn = `<span class="ds-tl-barname">${r.p.title}</span>`;
-    const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tip="${noq(r.p.title)} · ${tip}" data-pop="${noq(r.p.title)}" data-tk="${dt}"${meta} style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)}">${bn}</div>`;
+    const seq = String(info.length - i).padStart(2, '0');
+    const done = planStatus(r.p.sprints) === 'done';
+    const label = `<button class="ds-tl-label" data-tl-open="${r.p.file}" data-pop="${noq(r.p.title)}"${meta} aria-label="${noq(r.p.title)}"><span class="ds-num">${seq}</span><span class="ds-tl-label-name">${esc(r.p.title)}</span></button>`;
+    const bar = `<div class="ds-tl-bar" data-tl-open="${r.p.file}" data-tl-bout="${r.p.file}:0" data-tip="${noq(r.p.title)} · ${tip}" data-pop="${noq(r.p.title)}" data-tk="${dt}"${meta} style="${geom(r.s, r.e)};--tl-done:${r.cov}%" aria-label="${noq(r.p.title)} · ${tip}"></div>`;
     let g = '';
     if (r.g) {
       const gt = `Due ${r.g.due || r.g.to}${r.g.overdue ? ' · overdue' : ''} · ${noq(r.p.title)}`;
-      g = `<div class="ds-tl-ghost${r.g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}" data-tip="${gt}" data-pop="${noq(r.p.title)}" data-due="${r.g.due ? `${r.g.due}${r.g.overdue ? ' (overdue)' : ''}` : r.g.to}" style="${geom(r.g.from, r.g.to)}" aria-label="${gt}"></div>`;
+      g = `<div class="ds-tl-ghost${r.g.overdue ? ' is-overdue' : ''}" data-tl-open="${r.p.file}" data-tl-ghost="${r.p.file}" data-tip="${gt}" data-pop="${noq(r.p.title)}" data-due="${r.g.due ? `${r.g.due}${r.g.overdue ? ' (overdue)' : ''}` : r.g.to}" style="${geom(r.g.from, r.g.to)}" aria-label="${gt}"></div>`;
     }
-    return `<div class="ds-tl-row has-track" data-tl-row="${r.p.file}" data-pop="${noq(r.p.title)}" data-tip="${noq(r.p.title)} · ${tip}"${meta}><div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l" aria-label="Scroll track into view" hidden>«</button>${bar}${g}<button class="ds-tl-edge is-r" data-tl-edge="r" aria-label="Scroll track into view" hidden>»</button></div></div>`;
+    return `<div class="ds-tl-row has-track${done ? ' is-done' : ''}" data-tl-row="${r.p.file}" data-pop="${noq(r.p.title)}" data-tip="${noq(r.p.title)} · ${tip}"${meta}>${label}<div class="ds-tl-lane"><button class="ds-tl-edge is-l" data-tl-edge="l" aria-label="Scroll track into view" hidden>«</button>${bar}${g}<button class="ds-tl-edge is-r" data-tl-edge="r" aria-label="Scroll track into view" hidden>»</button></div></div>`;
   }).join('');
   const mo = [];
   for (let d = 0; d < days; d++) {
@@ -76,10 +81,12 @@ export function paintTimeline(root, ctx) {
       : `<span class="ds-tl-tick" style="left:calc(${d} * var(--tl-day))">${dt.getDate()}</span>`);
   }
   const todayFrac = (now - startMs) / DAY;
-  const todayCol = `<div class="ds-tl-todaycol" style="left:calc(${Math.floor(todayFrac)} * var(--tl-day));width:var(--tl-day)"></div>` +
-    `<div class="ds-tl-today" style="left:calc(${todayFrac.toFixed(4)} * var(--tl-day))"></div>`;
+  // Absolute markers ride past the sticky label column (reference atX).
+  const atX = (v) => `left:calc(var(--tl-label) + ${v} * var(--tl-day))`;
+  const todayCol = `<div class="ds-tl-todaycol" style="${atX(Math.floor(todayFrac))};width:var(--tl-day)"></div>` +
+    `<div class="ds-tl-today" style="${atX(todayFrac.toFixed(4))}"></div>`;
   host.innerHTML = `<div class="ds-tl-head"><b>Timeline</b><small>${bounds[0]} → ${bounds[bounds.length - 1]}</small><button data-tl-close aria-label="Close timeline">✕</button></div>` +
-    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><span class="ds-tl-curmonth" data-tl-curmonth hidden></span><div class="ds-tl-ticks">${mo.join('')}</div></div>${rows}${todayCol}</div></div>`;
+    `<div class="ds-tl-scroll"><div class="ds-tl-body" style="--tl-days:${days}"><div class="ds-tl-axis"><span class="ds-tl-clabel">Plan</span><span class="ds-tl-curmonth" data-tl-curmonth hidden></span><div class="ds-tl-ticks">${mo.join('')}</div><span class="ds-tl-todaydot" style="${atX(todayFrac.toFixed(4))}"></span></div>${rows}${todayCol}</div></div>`;
   try {
     const sc0 = host.querySelector('.ds-tl-scroll');
     if (sc0) { sc0.onscroll = () => { try { syncTlEdges(host); } catch {} }; try { syncTlEdges(host); } catch {} }
@@ -89,8 +96,14 @@ export function paintTimeline(root, ctx) {
         if (!sc || !lane) return;
         const dayPx = lane.getBoundingClientRect().width / days;
         if (!dayPx) return;
-        const x = todayFrac * dayPx;
-        if (x < sc.scrollLeft || x > sc.scrollLeft + sc.clientWidth) sc.scrollLeft = Math.max(0, x - sc.clientWidth * 0.3);
+        // The sticky label column covers the lane's left edge — measure into
+        // view past it (reference scrollToday).
+        const lab = host.querySelector('.ds-tl-label');
+        const pad = lab ? lab.getBoundingClientRect().width : 0;
+        const x = pad + todayFrac * dayPx;
+        if (x >= sc.scrollLeft + pad && x <= sc.scrollLeft + sc.clientWidth - 24) return;
+        const pane = Math.max(sc.clientWidth - pad, 1);
+        sc.scrollLeft = Math.max(0, x - pad - pane * 0.5);
         try { syncTlEdges(host); } catch {}
       } catch {}
     });

@@ -1,10 +1,10 @@
 /* ADAM/PAGE — src/pitch/pitch-changelog-drawer.css · scrim + two-pane drawer */
- /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · pitch tokens, 50vw rail */
+ /* [plan:2026-09-28_000000-lump-sum-builds.md#phase-1] · pitch tokens, 60vw rail */
 .ds-scrim { position: fixed; inset: 0; z-index: var(--z-ds-scrim); cursor: pointer; background: var(--color-viewer-shade); }
 .ds-scrim[hidden], .ds-drawer[hidden] { display: none; }
 .ds-scrim:not([hidden]) { animation: ds-scrim-in var(--dur-soft) var(--ease-standard); }
 .ds-drawer {
-  position: fixed; top: 0; right: 0; bottom: 0; width: min(50vw, var(--size-ds-drawer));
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(60vw, var(--size-ds-drawer));
   box-sizing: border-box; background: var(--color-bg); border-left: var(--border-hairline);
   z-index: var(--z-ds-drawer); overflow: hidden; padding: 0;
   box-shadow: var(--shadow-viewer); display: flex; gap: 0; align-items: stretch;
