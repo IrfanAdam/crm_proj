@@ -9,6 +9,7 @@ const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rigs = [];
 const css = function (name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
+const huePaint = function (hex, h) { const c = new THREE_.Color(hex), o = {}; c.getHSL(o); c.setHSL(h / 360, o.s, o.l); return '#' + c.getHexString(); };
 function start(rig) {
 const canvas = rig.canvas;
 const renderer = new THREE_.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -64,7 +65,9 @@ if (canvas.dataset.gemDone) return;
 const cat = GEM && GEM.CATEGORIES[canvas.dataset.gem];
 if (!cat) return;
 canvas.dataset.gemDone = '1';
-const paint = css(cat.token) || css('--primitive-sapphire-ui-500');
+const raw = css(cat.token) || css('--primitive-sapphire-ui-500');
+const ap = window.GEM_APPEARANCE && window.GEM_APPEARANCE.stones && window.GEM_APPEARANCE.stones[canvas.dataset.gem];
+const paint = (ap && THREE_) ? huePaint(raw, ap.hue) : raw;   // the measured record owns the hue, the UI token owns lightness/sat
 const rig = { canvas: canvas, cat: cat, paint: paint, renderer: null, vis: false, t: 0, last: 0, tilt: 0, tiltT: 0, w: 0, h: 0, gone: false };
 rigs.push(rig);
 if (!THREE_ || !window.GEM_SCENE || !window.GEM_SCENE.stage || !GEM.gemCut) {

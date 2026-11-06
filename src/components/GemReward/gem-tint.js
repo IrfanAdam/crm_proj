@@ -11,12 +11,14 @@ const api = {};
 const DUR = 1;                          // seconds: a slow cross-fade, long enough to read as a morph, not a cut
 let W = null;
 const one = function (T) { return W || (W = new T.Color(1, 1, 1)); };
+const paintHue = function (hex, h) { const c = new window.THREE.Color(hex), o = {}; c.getHSL(o); c.setHSL(h / 360, o.s, o.l); return '#' + c.getHexString(); };
 const warmth = function (c) { return Math.max(0, c.r - c.b); };   // warm paints read washed in the cool studio env — absorb harder
 function token(name) {
   const cat = window.GEM_CUT && window.GEM_CUT.CATEGORIES[name];
   if (!cat) return null;
   const root = getComputedStyle(document.documentElement);
-  const paint = root.getPropertyValue(cat.token).trim() || root.getPropertyValue('--primitive-sapphire-ui-500').trim();
+  let paint = root.getPropertyValue(cat.token).trim() || root.getPropertyValue('--primitive-sapphire-ui-500').trim();
+  if (window.GEM_APPEARANCE && window.GEM_APPEARANCE.stones && window.GEM_APPEARANCE.stones[name]) paint = paintHue(paint, window.GEM_APPEARANCE.stones[name].hue);   // the measured record owns the hue
   return { cat: cat, paint: paint };
 }
 function rigOf(canvas) {
