@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T14:06:11.082Z",
+  "generated": "2026-11-06T14:18:59.690Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -93,8 +93,8 @@
       "date": "2026-11-06",
       "time": "18:30",
       "subject": "chore(ds): sync changelog manifest; ignore __pycache__",
-      "plan": null,
-      "anchor": null
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
     },
     {
       "sha": "6557bea",
