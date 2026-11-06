@@ -72,11 +72,11 @@ window.GEM_BARE = {
       shadow.position.y = bb.min.y - h * 0.26;
       caustic.position.y = bb.min.y - h * 0.2;
       caustic.scale.setScalar(rad * 2.4);
-      shadow.rotation.z = CARD_AZ;
+      shadow.rotation.z = -CARD_AZ;   // plane is rotated -90° about X first: +CARD_AZ would mirror the axis
       shadow.scale.set(rad * 2.6 * CARD_SPREAD * 1.16, rad * 2.6 * CARD_SPREAD * 0.88, 1);
     } else {
       // — the umbra leans away from the key and stretches on its azimuth, but only a little: the stone —
-      shadow.rotation.z = CARD_AZ;
+      shadow.rotation.z = -CARD_AZ;   // same mirror fix as the card — long axis on the key's ground azimuth
       shadow.scale.set(shadow.scale.x * 1.16 * HERO_SPREAD, shadow.scale.y * 0.88 * HERO_SPREAD, 1);
     }
     scene.add(shadow);
