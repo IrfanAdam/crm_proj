@@ -8,6 +8,10 @@
 // —   hue = circular mean over sat>60 & L<220 · achromatic = fraction sat<=25 · glints = fraction L>235 —
 // — Population note: `achromatic` here is sat<=25 (the appearance record). The photo-cell gate in —
 // —   audit.py uses sat<60 & L>150 — two instruments, two named populations, never mixed. —
+// —   ONE EXCEPTION, named in the record: when the object mask admits a coloured backdrop (redberyl's —
+// —   dark blue-black sweep is 55% of its mask), hue/sat/l come from the CRYSTAL CORE instead —
+// —   (hue within 295-50 deg, sat>60, L 35-220, largest component, resultant reported) so a two-family —
+// —   mean can never become a stone colour. —
 // — Optics are PUBLISHED: ior at 589 nm, abbe from the same aperture values, both cited per stone. —
 // — Bands are the absorbing transitions behind the measured hue — { peak nm, fwhm nm, k }. Peaks are —
 // —   cited; fwhm is an estimate where the source names only a peak (see `weak`). —
@@ -42,16 +46,17 @@ amethyst: {
 ior: 1.544, abbe: 70.0, hue: 283.4, sat: 0.349, l50: 99.7, l95: 206.0,
 achromatic: 0.019, glints: 0.016,
 bands: [{ peak: 340, fwhm: 90, k: 0.3 }, { peak: 540, fwhm: 110, k: 0.9 }, { peak: 950, fwhm: 140, k: 0.3 }],
-confidence: 'low', weak: ['l50', 'l95', 'sat', 'abbe'],
-note: 'four stones on white; the recipe locks onto the largest (61384 px mask, bbox 479,143-755,419) so l50/l95/sat include pale reflections the shader never shows — the same-hue core sits near l50 46. abbe derived from quartz dispersion, not a published V.',
+confidence: 'low', weak: ['l50', 'l95', 'abbe'],
+note: 'four stones on white; the recipe locks onto the largest (61384 px mask, bbox 479,143-755,419) so l50/l95 include pale reflections the shader never shows. Hue 283.4 is unimodal on the crystal core (52522 px, resultant 0.997, 85.6% of the mask), and the whole-mask sat median 89/255 agrees with that core (94/255) — sat stays on the whole mask so this record has ONE population. abbe derived from quartz dispersion, not a published V.',
 source: [U.quartz, U.cohen, U.refs],
 },
 redberyl: {
-ior: 1.577, abbe: 68.7, hue: 264.8, sat: 0.380, l50: 65.1, l95: 147.0,
-achromatic: 0.001, glints: 0.002,
+ior: 1.577, abbe: 68.7, hue: 343.72, sat: 0.6353, l50: 72.58, l95: 170.15,
+achromatic: 0.0, glints: 0.0,
 bands: [{ peak: 540, fwhm: 110, k: 0.95 }, { peak: 500, fwhm: 60, k: 0.35 }, { peak: 430, fwhm: 60, k: 0.2 }],
-confidence: 'low', weak: ['ior', 'hue', 'sat', 'l50', 'l95', 'abbe'],
-note: 'WEAK EVIDENCE: rough crystal specimen on a dark blue-black backdrop, not a faceted stone; the mask covers 73% of the frame and touches all four borders (backdrop admitted by max<120). The frozen population puts 97.5% of that mask in the hue set and the circular resultant collapses to 0.499, so hue 264.8 averages two colour families, not one hue. Published ior spread is 1.560-1.583 (beryl 1.577-1.583, mindat 1.564-1.580): 1.577 is the beryl table value, not a red-beryl specific measurement.',
+mask: 'crystal', crystal: { hue: [295, 50], sat_min: 60, L: [35, 220] },
+confidence: 'low', weak: ['ior', 'l50', 'l95', 'abbe'],
+note: 'WEAK SPECIMEN, SOUND COLOUR: rough crystal on a dark blue-black backdrop, not a faceted stone. The whole-frame mask admits the backdrop (55% of it sits at hue 220-240), so this record declares the CRYSTAL population instead — `mask: crystal`, hue 295-50 deg, sat>60, L 35-220, largest component = 22948 px at native resolution — and audit.py reproduces it field for field. The retired 264.8 was the two-family mean of crystal+backdrop. Published ior spread 1.560-1.583; 1.577 is the beryl table value, not a red-beryl specific measurement.',
 source: [U.beryl, U.mindat, U.gem_a, U.gia, U.refs],
 },
 citrine: {

@@ -38,7 +38,9 @@ return geo;
 };
 api.surface = function (color, soft, ior) {
 const white = new T.Color(1, 1, 1);
-const m = new T.MeshPhysicalMaterial({ color: color.clone().lerp(white, 0.45), metalness: 0, roughness: 0.06, ior: ior || 2.4, flatShading: true, envMapIntensity: 0.35, dithering: true });
+const base = color.clone().lerp(white, 0.45), h0 = {}, h1 = {};
+color.getHSL(h0); base.getHSL(h1); base.setHSL(h0.h, h1.s, h1.l);
+const m = new T.MeshPhysicalMaterial({ color: base, metalness: 0, roughness: 0.06, ior: ior || 2.4, flatShading: true, envMapIntensity: 0.35, dithering: true });
 if (!soft) {
 m.transmission = 1.0;
 m.thickness = 0.9;

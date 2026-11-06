@@ -554,12 +554,35 @@ def sheet_axis(t, root, stone, outdir, peer=None):
 
 
 # ------------------------------------------------------------------- appearance
-def appearance_row(path, n):
+def crystal_mask(a, spec):
+    """Crystal-core population: hue window (wraps through 0), sat floor, L window,
+    then the largest connected component. Named per record via `mask: 'crystal'`."""
+    h = hue_deg(a)
+    lo, hi = spec['hue']
+    inside = (h >= lo) | (h <= hi) if lo > hi else (h >= lo) & (h <= hi)
+    L = a @ W
+    m = inside & (sat255(a) > spec['sat_min']) & (L > spec['L'][0]) & (L < spec['L'][1])
+    return largest(ndi.binary_fill_holes(ndi.binary_opening(m, np.ones((3, 3)))))
+
+
+def crystal_spec(txt, stone):
+    blk = re.search(r'\b' + stone + r':\s*\{(.*?)\n\}', txt, re.S)
+    if not blk or "mask: 'crystal'" not in blk.group(1):
+        return None
+    q = re.search(r'crystal:\s*\{\s*hue:\s*\[([0-9.]+),\s*([0-9.]+)\],\s*sat_min:\s*([0-9.]+),'
+                  r'\s*L:\s*\[([0-9.]+),\s*([0-9.]+)\]', blk.group(1))
+    if not q:
+        return None
+    v = [float(x) for x in q.groups()]
+    return {'hue': [v[0], v[1]], 'sat_min': v[2], 'L': [v[3], v[4]]}
+
+
+def appearance_row(path, n, crystal=None):
     a = load_rgb(path)
-    m = stone_mask(a, n)
+    m = crystal_mask(a, crystal) if crystal else stone_mask(a, n)
     L = a @ W
     sat = sat255(a)
-    sel = m & (sat > n['hue_sat_min']) & (L < n['hue_L_max'])
+    sel = m if crystal else (m & (sat > n['hue_sat_min']) & (L < n['hue_L_max']))
     npx = max(int(m.sum()), 1)
     hr = np.deg2rad(hue_deg(a)[sel])
     cm = float(np.rad2deg(np.arctan2(np.sin(hr).mean(), np.cos(hr).mean())) % 360.0) if sel.sum() else 0.0
@@ -571,13 +594,13 @@ def appearance_row(path, n):
 
 
 def appearance(t, refs, module=None):
+    txt = open(module).read() if module and os.path.exists(module) else ''
     out = {}
     for stone, fname in t['appearance']['files'].items():
         p = os.path.join(refs, fname)
         if os.path.exists(p):
-            out[stone] = appearance_row(p, t['appearance']['recipe']['numbers'])
-    if module and os.path.exists(module):
-        txt = open(module).read()
+            out[stone] = appearance_row(p, t['appearance']['recipe']['numbers'], crystal_spec(txt, stone))
+    if txt:
         tol = t['appearance']['tolerance']
         checks = []
         for stone, rec in out.items():
