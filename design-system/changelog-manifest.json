@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T13:00:33.964Z",
+  "generated": "2026-11-06T13:00:57.731Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "85719b8",
+      "full": "85719b83bac8b23fa439bf0d7bcda11369cece18",
+      "date": "2026-11-06",
+      "time": "18:30",
+      "subject": "chore(ds): sync changelog manifest; ignore __pycache__",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "6557bea",
       "full": "6557beaae53f8143b7ff941dc96ebcc9688b340b",
