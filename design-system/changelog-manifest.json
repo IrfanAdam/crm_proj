@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T11:20:50.533Z",
+  "generated": "2026-11-06T13:00:06.872Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,24 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "6557bea",
+      "full": "6557beaae53f8143b7ff941dc96ebcc9688b340b",
+      "date": "2026-11-06",
+      "time": "18:29",
+      "subject": "fix(gem): floor caustic as one continuous glow, 1:1 motion; shadow azimuth +53.13°",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
+    },
+    {
+      "sha": "5ae0112",
+      "full": "5ae01129457c92b33282b794678fd363d6f1e361",
+      "date": "2026-11-06",
+      "time": "18:29",
+      "subject": "feat(gem): round-10 audit instrument in-repo — P/S/C/sheet from one command",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "5e5e725",
       "full": "5e5e725b55ef17bd3ade8708688485f1e9fd4340",
@@ -3974,5 +3992,11 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "?? prototype/gems/__pycache__/"
+  ]
 }
