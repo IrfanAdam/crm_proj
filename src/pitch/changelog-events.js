@@ -7,9 +7,12 @@ import { scrollRowIntoView } from './changelog/tl-edges.js';
 import { hoverTlPop, hideTlPop } from './changelog/tl-pop.js';
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
+  const onDocClick = (e) => { if (!st.filterOpen || root.contains(e.target)) return;
+    if (e.target.closest('[data-tag-dropdown],[data-filter-toggle]')) return;
+    st.filterOpen = false; doPaint(root); };
   const onClick = (e) => {
     const openDd = root.querySelector('[data-tag-dropdown]:not([hidden])');
-    if (openDd && !e.target.closest('[data-tag-dropdown],[data-filter-toggle]')) { openDd.hidden = true; st.filterOpen = false; }
+    if (openDd && !e.target.closest('[data-tag-dropdown],[data-filter-toggle]')) { openDd.hidden = true; st.filterOpen = false; const tg = root.querySelector('[data-filter-toggle]'); if (tg) tg.setAttribute('aria-expanded', 'false'); }
     if (e.target.closest('[data-day-clear]')) { st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
     const dd = e.target.closest('[data-day]');
     if (dd) { st.day = st.day === dd.dataset.day ? '' : dd.dataset.day; st.sel = [0, 0]; doPaint(root); return; }
@@ -24,8 +27,7 @@ export function bindChangelogEvents(root, st, helpers) {
     if (so2) { const t = so2.dataset.statusOpt;
       if (t) { st.status.has(t) ? st.status.delete(t) : st.status.add(t); }
       st.sel = [0, 0]; doPaint(root); return; }
-    if (e.target.closest('[data-clear]')) { st.active = new Set(); st.status = new Set();
-      st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
+    if (e.target.closest('[data-clear]')) { st.active = new Set(); st.status = new Set(); st.day = ''; st.sel = [0, 0]; doPaint(root); return; }
     if (e.target.closest('[data-timeline-chip]')) { st.timeline = !st.timeline; doPaint(root); return; }
     if (e.target.closest('[data-tl-close]')) { st.timeline = false; doPaint(root); return; }
     const to = e.target.closest('[data-tl-open]');
@@ -51,9 +53,7 @@ export function bindChangelogEvents(root, st, helpers) {
       || e.target.closest('[data-scrim]')) { st.open = false; st.openFile = ''; st.stage = 'list'; st.timeline = false; if (st.returnTimeline) { st.timeline = true; st.returnTimeline = false; } doPaint(root); return; }
     if (e.target.closest('[data-back]')) { st.stage = 'list'; doPaint(root); return; }
     const step = e.target.closest('[data-step]');
-    if (step && !step.disabled) { const c = cur(); st.sel = [c.pi,
-        Math.min(Math.max(c.si + Number(step.dataset.step), 0),
-          c.sprints.length - 1)]; st.open = true; doPaint(root); return; }
+    if (step && !step.disabled) { const c = cur(); st.sel = [c.pi, Math.min(Math.max(c.si + Number(step.dataset.step), 0), c.sprints.length - 1)]; st.open = true; doPaint(root); return; }
     const chip = e.target.closest('.ds-chip');
     if (chip) { const t = chip.dataset.tag;
       if (!t) { st.active = new Set(); st.day = ''; }
@@ -62,8 +62,7 @@ export function bindChangelogEvents(root, st, helpers) {
     const b = e.target.closest('.ds-pick'); if (!b) return;
     const col = b.closest('[data-col]'), i = [...col.querySelectorAll('.ds-pick')].indexOf(b);
     if (col.dataset.col === 'plan') { const c0 = cur(), hit = c0.list[i];
-      st.sel = [i, st.sel[1]]; st.open = true; st.openFile = hit ? hit.file : ''; st.stage = 'tasks'; } else { st.sel = [st.sel[0],
-        i]; st.stage = 'tasks'; }
+      st.sel = [i, st.sel[1]]; st.open = true; st.openFile = hit ? hit.file : ''; st.stage = 'tasks'; } else { st.sel = [st.sel[0], i]; st.stage = 'tasks'; }
     doPaint(root);
   };
   const onKey = (e) => { if (e.key !== 'Escape') return;
@@ -87,12 +86,10 @@ export function bindChangelogEvents(root, st, helpers) {
   const hideTip = () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; };
   const dueChange = onDueChange(root, doPaint, cur);
   root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
-  root.addEventListener('mousemove', move);
-  root.addEventListener('change', dueChange);
-  document.addEventListener('mouseleave', hideTip);
+  document.addEventListener('click', onDocClick); root.addEventListener('mousemove', move);
+  root.addEventListener('change', dueChange); document.addEventListener('mouseleave', hideTip);
   return () => {
     root.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey);
-    root.removeEventListener('mousemove', move);
-    root.removeEventListener('change', dueChange);
-    document.removeEventListener('mouseleave', hideTip); };
+    document.removeEventListener('click', onDocClick); root.removeEventListener('mousemove', move);
+    root.removeEventListener('change', dueChange); document.removeEventListener('mouseleave', hideTip); };
 }
