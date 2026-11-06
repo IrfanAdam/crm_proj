@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T14:19:48.750Z",
+  "generated": "2026-11-06T14:26:59.430Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "ac93752",
+      "full": "ac9375239023fe3f5f98c715627db4e148e465c9",
+      "date": "2026-11-06",
+      "time": "19:56",
+      "subject": "feat(gem): material-accurate colour — crystal-population records, hue-preserving whitening, appearance gate 24/24",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "0c01db2",
       "full": "0c01db205d934d48701a2da22cb70a2754b3478a",
@@ -4073,11 +4082,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M gallery.html",
-    "M index.html",
-    "M prototype/gems/audit.py",
-    "M src/components/GemReward/gem-appearance.js",
-    "M src/components/GemReward/gem-scene.js"
-  ]
+  "wip": []
 }
