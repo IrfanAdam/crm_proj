@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T11:03:55.011Z",
+  "generated": "2026-11-06T11:20:50.533Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "5e5e725",
+      "full": "5e5e725b55ef17bd3ade8708688485f1e9fd4340",
+      "date": "2026-11-06",
+      "time": "16:50",
+      "subject": "docs(gem): round-10 realism audit — R 3.7/10, freeze per-task gates in Phase 10",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "acfac75",
       "full": "acfac75e330e4ccf58c4d59de2d9c162ebc02c5e",
