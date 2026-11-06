@@ -3,3 +3,4 @@ dist/
 .DS_Store
 .hermes/tmp/
 docs/assets/illusioncube/illusioncube.splinecode
+__pycache__/
