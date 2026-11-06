@@ -1,11 +1,13 @@
 /* ADAM/SHARED — src/components/GemReward/gem-appearance.js · stone optics, measured */
-// [plan:2026-11-01_000000-gem-appearance.md#appearance] · reference data for the gem shader.
-// — Colour numbers are MEASURED, not chosen: one fixed recipe over the photographs in —
-// —   .hermes/tmp/round6/refs (script + committed output: .hermes/tmp/round6/lanes/appearance/) — :
-// —   sat = (max-min)/max*100 · mask = (sat>25 | max<120) & max>8 · opening 3x3 · largest component ·
-// —   holes filled · L = 0.2126R+0.7152G+0.0722B · hue = circular mean over pixels with sat>60 & L<220 ·
-// —   l50/l95 = percentiles of L within the mask · achromatic = fraction sat<=25 ·
-// —   glints = fraction L>=230 & sat<=40. Re-run the script to reproduce every one of them. —
+// [plan:2026-10-03_144222-gem-realism-round2.md#phase-10] · Task 21: ONE population per field.
+// — Colour numbers are MEASURED, not chosen: one frozen recipe over the photographs in —
+// —   .hermes/tmp/round6/refs — recompute with `python3 prototype/gems/audit.py --refs <dir>` —
+// —   (that also re-checks this file field-by-field against the ±1 gate) — :
+// —   mask = (sat>25 | max<120) & max>8 · 3x3 opening · largest 8-connected component · holes filled —
+// —   sat = whole-mask median of (max-min)/max*255, stored /255 · l50/l95 = whole-mask L percentiles —
+// —   hue = circular mean over sat>60 & L<220 · achromatic = fraction sat<=25 · glints = fraction L>235 —
+// — Population note: `achromatic` here is sat<=25 (the appearance record). The photo-cell gate in —
+// —   audit.py uses sat<60 & L>150 — two instruments, two named populations, never mixed. —
 // — Optics are PUBLISHED: ior at 589 nm, abbe from the same aperture values, both cited per stone. —
 // — Bands are the absorbing transitions behind the measured hue — { peak nm, fwhm nm, k }. Peaks are —
 // —   cited; fwhm is an estimate where the source names only a peak (see `weak`). —
@@ -25,39 +27,39 @@ gem_a: 'https://gem-a.com/gem-hub/red-beryl-rare-gemstone/ — Mn3+ bands at 500
 gia: 'https://www.gia.edu/gems-gemology/summer-2022-gemnews-topaz-in-red-beryl — intense 540 nm (Mn3+), weak 370 nm (Fe3+)',
 ct: 'https://gia.edu/dam/migrated-assets/docs/doc1/SP88A1.pdf — O-metal charge transfer centred in the near-UV, tailing into blue: yellow',
 citrine: 'https://en.wikipedia.org/wiki/Citrine_(quartz) — colour from aluminium-based colour centres',
-refs: '.hermes/tmp/round6/refs/{stone}.jpg — measured, see lanes/appearance/refs-measured.json',
+refs: '.hermes/tmp/round6/refs/{stone}.jpg — measured, re-check with prototype/gems/audit.py --refs',
 };
 api.stones = {
 sapphire: {
-ior: 1.768, abbe: 72.2, hue: 227.0, sat: 0.871, l50: 86.4, l95: 172.8,
-achromatic: 0.013, glints: 0.016,
+ior: 1.768, abbe: 72.2, hue: 226.3, sat: 0.735, l50: 87.1, l95: 179.9,
+achromatic: 0.001, glints: 0.014,
 bands: [{ peak: 580, fwhm: 130, k: 0.85 }, { peak: 710, fwhm: 90, k: 0.45 }],
 confidence: 'high', weak: [],
-note: 'faceted pear, white sweep, no setting; hue result 0.997, IQR 224.3-229.7 over 70% of the mask. Body-only pixels run darker than the mask (l50 67.0, l95 113.4): the mask tail is facet reflection.',
+note: 'faceted pear, white sweep, no setting; whole-mask recipe: 24567 px mask, hue over 96.8% of it (resultant 0.995), sat 187.5/255. The earlier sat 0.871 was the hue-population median — that second population is retired.',
 source: [U.sapphire, U.ivct, U.refs],
 },
 amethyst: {
-ior: 1.544, abbe: 70.0, hue: 283.9, sat: 0.62, l50: 96.1, l95: 196.3,
-achromatic: 0.129, glints: 0.015,
+ior: 1.544, abbe: 70.0, hue: 283.4, sat: 0.349, l50: 99.7, l95: 206.0,
+achromatic: 0.019, glints: 0.016,
 bands: [{ peak: 340, fwhm: 90, k: 0.3 }, { peak: 540, fwhm: 110, k: 0.9 }, { peak: 950, fwhm: 140, k: 0.3 }],
-confidence: 'low', weak: ['l50', 'l95', 'abbe'],
-note: 'no clean faceted amethyst reference in the set: this frame shows four stones on white and the recipe locks onto the largest (bbox 479,143-755,419) — 12.9% of that mask is white reflection (sat<=25) and only 0.4% of it (233 px) clears sat>60 & L<220, so hue/sat rest on a thin population and l50/l95 ride the pale reflections; the same-hue core sits at l50 46.3. abbe derived from quartz dispersion, not a published V.',
+confidence: 'low', weak: ['l50', 'l95', 'sat', 'abbe'],
+note: 'four stones on white; the recipe locks onto the largest (61384 px mask, bbox 479,143-755,419) so l50/l95/sat include pale reflections the shader never shows — the same-hue core sits near l50 46. abbe derived from quartz dispersion, not a published V.',
 source: [U.quartz, U.cohen, U.refs],
 },
 redberyl: {
-ior: 1.577, abbe: 68.7, hue: 340.3, sat: 0.88, l50: 64.1, l95: 144.2,
-achromatic: 0.022, glints: 0.0,
+ior: 1.577, abbe: 68.7, hue: 264.8, sat: 0.380, l50: 65.1, l95: 147.0,
+achromatic: 0.001, glints: 0.002,
 bands: [{ peak: 540, fwhm: 110, k: 0.95 }, { peak: 500, fwhm: 60, k: 0.35 }, { peak: 430, fwhm: 60, k: 0.2 }],
-confidence: 'low', weak: ['ior', 'l50', 'l95', 'abbe'],
-note: 'WEAK EVIDENCE: rough crystal specimen on a dark blue-black backdrop, not a faceted stone. The mask covers 72% of the frame and touches all four borders (backdrop admitted by max<120), which drags l50 to 64.1; within-hue crystal pixels sit at l50 33.9, l95 80.7. Published ior spread is 1.560-1.583 (beryl 1.577-1.583, mindat 1.564-1.580): 1.577 is the beryl table value, not a red-beryl specific measurement.',
+confidence: 'low', weak: ['ior', 'hue', 'sat', 'l50', 'l95', 'abbe'],
+note: 'WEAK EVIDENCE: rough crystal specimen on a dark blue-black backdrop, not a faceted stone; the mask covers 73% of the frame and touches all four borders (backdrop admitted by max<120). The frozen population puts 97.5% of that mask in the hue set and the circular resultant collapses to 0.499, so hue 264.8 averages two colour families, not one hue. Published ior spread is 1.560-1.583 (beryl 1.577-1.583, mindat 1.564-1.580): 1.577 is the beryl table value, not a red-beryl specific measurement.',
 source: [U.beryl, U.mindat, U.gem_a, U.gia, U.refs],
 },
 citrine: {
-ior: 1.544, abbe: 70.0, hue: 25.0, sat: 0.867, l50: 107.4, l95: 168.2,
-achromatic: 0.0, glints: 0.0,
+ior: 1.544, abbe: 70.0, hue: 24.9, sat: 0.864, l50: 107.8, l95: 171.3,
+achromatic: 0.0, glints: 0.004,
 bands: [{ peak: 430, fwhm: 140, k: 0.9 }],
 confidence: 'high', weak: ['abbe'],
-note: 'faceted stone on white; 97.7% of the mask lands in the hue population (hue result 0.994, IQR 20.1-28.7) and no low-saturation pixel reaches L>=230 (glints 0.0, brightest pixel L 230.2 and still chromatic), so l95 168.2 is the real highlight ceiling, not a clipped glint. abbe derived from quartz dispersion 0.013, not a published V.',
+note: 'faceted stone on white; 80170 px mask, 98.8% of it in the hue population (resultant 0.994, IQR 20.1-28.7), sat 220.2/255 — the photograph sits above the render on both l50 and sat, which is the gap Task 22 closes. abbe derived from quartz dispersion 0.013, not a published V.',
 source: [U.quartz, U.citrine, U.ct, U.refs],
 },
 };

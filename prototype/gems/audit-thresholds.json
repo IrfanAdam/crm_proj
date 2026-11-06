@@ -1,0 +1,936 @@
+{
+  "instrument": "round-10 gem audit \u2014 photo cells, structure detectors, colour proof, 11-criterion sheet",
+  "plan": ".hermes/plans/2026-10-03_144222-gem-realism-round2.md#phase-10 (Task 21)",
+  "version": "round-10",
+  "provenance": {
+    "quoted": [
+      "photo targets, photo gates, glint bands, achro ceilings, spread limit \u2014 plan round-10 audit",
+      "structure gates (plate 8, broad plate 12, speckle 2, fringe +4, seg z 5, jag p90 0.10, clip 2) \u2014 plan Task 23",
+      "structure weights 25/25/15/15/10/10 and composite R = 0.40P + 0.30S + 0.15C + 0.15V \u2014 plan round-10 audit",
+      "colour checks r(sat,L) <= -0.5, achro <= 2.5 %, mean sat >= 110 \u2014 plan Task 25"
+    ],
+    "reconstructed": [
+      "S verdict scale (pass 1 / half 0.5 / fail 0): the audit published S = 4.3 but not its arithmetic; these weights with 0/0.5/1 verdicts give sapphire 42.5/100 -> 4.25 -> 4.3, and R then reproduces 3.7 exactly. Fringe is the only detector that can score half: its gate is read as the two-sided band [-4, +4], so sapphire -20.9 (no additive fringe, desaturated rim) = half and citrine +12.0 (additive) = fail.",
+      "coherence floor 0.60: the audit reports coherence as a pass at 0.744/0.746 without stating the floor; any floor in 0.25..0.74 gives the same verdict for both stones.",
+      "S is the sapphire stone (the gate stone) in the composite; citrine S is reported alongside. Mean-of-stones S = 3.875 would give R 3.6, which does not reproduce the frozen 3.7.",
+      "photo gate count 74 = 72 cell gates + 2 exposure-spread gates; the published 45 is the cell-gate count (the audit table sums to 45/72). Both denominators are printed by audit.py."
+    ],
+    "not_from_pixels": [
+      "V (vision) 3/10 sapphire, 4/10 citrine is the round-10 owner/vision read; audit.py echoes it from this file and never measures it."
+    ]
+  },
+  "capture": {
+    "url_path": "/gallery.html?gem=high#gems",
+    "clip": ".frame[data-panel=\"gems\"] .gem-stage",
+    "canvas": {
+      "w": 510,
+      "h": 223,
+      "pin_style": "flex:0 0 auto;height:223px",
+      "tolerance_px": 1
+    },
+    "viewport": {
+      "w": 1500,
+      "h": 1200
+    },
+    "scale": 1,
+    "rubric_roles": [
+      "front",
+      "repeat",
+      "txoff",
+      "dispoff",
+      "chart",
+      "dark",
+      "nogem",
+      "proxy",
+      "noproxy"
+    ],
+    "photo_cells": [
+      {
+        "tilt": -0.55,
+        "spin": 0
+      },
+      {
+        "tilt": 0,
+        "spin": 0
+      },
+      {
+        "tilt": 0.55,
+        "spin": 0
+      },
+      {
+        "tilt": -0.55,
+        "spin": 35
+      },
+      {
+        "tilt": 0,
+        "spin": 35
+      },
+      {
+        "tilt": 0.55,
+        "spin": 35
+      }
+    ],
+    "pose": {
+      "rubric": {
+        "tilt": 0.0,
+        "spin_deg": 0.0
+      },
+      "tolerance": {
+        "rotation_x": 0.002,
+        "rotation_y": 0.004,
+        "tilt": 0.002,
+        "tiltT": 0.002,
+        "spin_rate": 0.001
+      },
+      "stamp_keys": [
+        "rotation.x",
+        "rotation.y",
+        "r.tilt",
+        "r.tiltT",
+        "r.cat.spin"
+      ]
+    }
+  },
+  "photo": {
+    "recipe": {
+      "mask": "(sat>25 | max<120) & max>8; 3x3 opening; largest 8-connected component; holes filled",
+      "L": "0.2126R + 0.7152G + 0.0722B (0..255)",
+      "sat": "(max-min)/max*255",
+      "sat_population": "whole mask median (both photo and render)",
+      "L50_L95": "percentiles of L over the whole mask",
+      "hue": "circular mean of HSV hue over sat>60 & L<220 (degrees)",
+      "achro": "fraction of mask with sat<60 & L>150 (percent)",
+      "glints": "fraction of mask with L>235 (percent)",
+      "numbers": {
+        "mask_sat": 25.0,
+        "mask_dark_max": 120.0,
+        "mask_floor": 8.0,
+        "opening_px": 3,
+        "hue_sat_min": 60.0,
+        "hue_L_max": 220.0,
+        "achro_sat_max": 60.0,
+        "achro_L_min": 150.0,
+        "glint_L": 235.0
+      }
+    },
+    "targets": {
+      "sapphire": {
+        "L50": 87.1,
+        "L95": 179.9,
+        "sat": 187.5,
+        "hue": 226.3,
+        "achro": 1.86,
+        "glints": 1.36
+      },
+      "citrine": {
+        "L50": 107.8,
+        "L95": 171.3,
+        "sat": 220.2,
+        "hue": 24.9,
+        "achro": 1.09,
+        "glints": 0.35
+      }
+    },
+    "gates": {
+      "L50": {
+        "abs": 15
+      },
+      "L95": {
+        "abs": 25
+      },
+      "sat": {
+        "abs": 30
+      },
+      "hue": {
+        "abs_deg": 12
+      },
+      "achro_max": {
+        "sapphire": 2.5,
+        "citrine": 2.0
+      },
+      "glints_band": {
+        "sapphire": [
+          0.4,
+          2.2
+        ],
+        "citrine": [
+          0.2,
+          1.2
+        ]
+      },
+      "spread_max": 25,
+      "spread_basis": "max L50 - min L50 over the three tilt cells at spin 0",
+      "cell_rule": "a cell passes only if all six gates pass; a cell with no pose stamp is INVALID"
+    },
+    "frozen_cells": [
+      {
+        "stone": "citrine",
+        "tilt": -0.55,
+        "spin": 0,
+        "file": "main-tm055-s0.png",
+        "measured": {
+          "n": 37709,
+          "L50": 107.68,
+          "L95": 148.83,
+          "sat": 215.67,
+          "hue": 17.59,
+          "achro": 0.25,
+          "glint": 0.0
+        },
+        "pass": {
+          "L50": true,
+          "L95": true,
+          "sat": true,
+          "hue": true,
+          "achro": true,
+          "glint": false
+        },
+        "failing": [
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": -0.55,
+          "rotation_y": 0,
+          "yaw_deg": 0,
+          "tilt_requested": -0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "citrine"
+          }
+        }
+      },
+      {
+        "stone": "citrine",
+        "tilt": 0.0,
+        "spin": 0,
+        "file": "main-t0-s0.png",
+        "measured": {
+          "n": 32129,
+          "L50": 83.0,
+          "L95": 187.33,
+          "sat": 189.26,
+          "hue": 16.24,
+          "achro": 0.44,
+          "glint": 0.0
+        },
+        "pass": {
+          "L50": false,
+          "L95": true,
+          "sat": false,
+          "hue": true,
+          "achro": true,
+          "glint": false
+        },
+        "failing": [
+          "L50",
+          "sat",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": 0,
+          "rotation_y": 0,
+          "yaw_deg": 0,
+          "tilt_requested": 0.0,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "citrine"
+          }
+        }
+      },
+      {
+        "stone": "citrine",
+        "tilt": 0.55,
+        "spin": 0,
+        "file": "main-t055-s0.png",
+        "measured": {
+          "n": 37727,
+          "L50": 121.73,
+          "L95": 198.06,
+          "sat": 204.0,
+          "hue": 19.28,
+          "achro": 4.92,
+          "glint": 0.29
+        },
+        "pass": {
+          "L50": true,
+          "L95": false,
+          "sat": true,
+          "hue": true,
+          "achro": false,
+          "glint": false
+        },
+        "failing": [
+          "L95",
+          "achro",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": 0.55,
+          "rotation_y": 0,
+          "yaw_deg": 0,
+          "tilt_requested": 0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "citrine"
+          }
+        }
+      },
+      {
+        "stone": "citrine",
+        "tilt": -0.55,
+        "spin": 35,
+        "file": "main-tm055-s35.png",
+        "measured": {
+          "n": 37650,
+          "L50": 106.03,
+          "L95": 136.95,
+          "sat": 216.12,
+          "hue": 17.46,
+          "achro": 0.33,
+          "glint": 0.0
+        },
+        "pass": {
+          "L50": true,
+          "L95": false,
+          "sat": true,
+          "hue": true,
+          "achro": true,
+          "glint": false
+        },
+        "failing": [
+          "L95",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": -0.55,
+          "rotation_y": 0.611,
+          "yaw_deg": 35.01,
+          "tilt_requested": -0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "citrine"
+          }
+        }
+      },
+      {
+        "stone": "citrine",
+        "tilt": 0.0,
+        "spin": 35,
+        "file": "main-t0-s35.png",
+        "measured": {
+          "n": 31784,
+          "L50": 86.38,
+          "L95": 186.25,
+          "sat": 185.06,
+          "hue": 16.76,
+          "achro": 0.41,
+          "glint": 0.0
+        },
+        "pass": {
+          "L50": false,
+          "L95": true,
+          "sat": false,
+          "hue": true,
+          "achro": true,
+          "glint": false
+        },
+        "failing": [
+          "L50",
+          "sat",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": 0,
+          "rotation_y": 0.611,
+          "yaw_deg": 35.01,
+          "tilt_requested": 0.0,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "citrine"
+          }
+        }
+      },
+      {
+        "stone": "citrine",
+        "tilt": 0.55,
+        "spin": 35,
+        "file": "main-t055-s35.png",
+        "measured": {
+          "n": 37848,
+          "L50": 126.86,
+          "L95": 222.89,
+          "sat": 199.9,
+          "hue": 19.65,
+          "achro": 5.31,
+          "glint": 3.06
+        },
+        "pass": {
+          "L50": false,
+          "L95": false,
+          "sat": true,
+          "hue": true,
+          "achro": false,
+          "glint": false
+        },
+        "failing": [
+          "L50",
+          "L95",
+          "achro",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": 0.55,
+          "rotation_y": 0.611,
+          "yaw_deg": 35.01,
+          "tilt_requested": 0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "citrine"
+          }
+        }
+      },
+      {
+        "stone": "sapphire",
+        "tilt": -0.55,
+        "spin": 0,
+        "file": "main-tm055-s0.png",
+        "measured": {
+          "n": 37702,
+          "L50": 86.7,
+          "L95": 128.53,
+          "sat": 217.89,
+          "hue": 218.46,
+          "achro": 0.33,
+          "glint": 0.0
+        },
+        "pass": {
+          "L50": true,
+          "L95": false,
+          "sat": true,
+          "hue": true,
+          "achro": true,
+          "glint": false
+        },
+        "failing": [
+          "L95",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": -0.55,
+          "rotation_y": 0,
+          "yaw_deg": 0,
+          "tilt_requested": -0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "sapphire"
+          }
+        }
+      },
+      {
+        "stone": "sapphire",
+        "tilt": 0.0,
+        "spin": 0,
+        "file": "main-t0-s0.png",
+        "measured": {
+          "n": 32259,
+          "L50": 77.2,
+          "L95": 195.13,
+          "sat": 206.86,
+          "hue": 221.27,
+          "achro": 1.32,
+          "glint": 0.71
+        },
+        "pass": {
+          "L50": true,
+          "L95": true,
+          "sat": true,
+          "hue": true,
+          "achro": true,
+          "glint": true
+        },
+        "failing": [],
+        "verdict": "PASS",
+        "pose": {
+          "rotation_x": 0,
+          "rotation_y": 0,
+          "yaw_deg": 0,
+          "tilt_requested": 0.0,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "sapphire"
+          }
+        }
+      },
+      {
+        "stone": "sapphire",
+        "tilt": 0.55,
+        "spin": 0,
+        "file": "main-t055-s0.png",
+        "measured": {
+          "n": 37761,
+          "L50": 93.67,
+          "L95": 219.2,
+          "sat": 201.88,
+          "hue": 220.81,
+          "achro": 6.02,
+          "glint": 3.5
+        },
+        "pass": {
+          "L50": true,
+          "L95": false,
+          "sat": true,
+          "hue": true,
+          "achro": false,
+          "glint": false
+        },
+        "failing": [
+          "L95",
+          "achro",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": 0.55,
+          "rotation_y": 0,
+          "yaw_deg": 0,
+          "tilt_requested": 0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "sapphire"
+          }
+        }
+      },
+      {
+        "stone": "sapphire",
+        "tilt": -0.55,
+        "spin": 35,
+        "file": "main-tm055-s35.png",
+        "measured": {
+          "n": 37946,
+          "L50": 86.62,
+          "L95": 119.04,
+          "sat": 218.06,
+          "hue": 218.74,
+          "achro": 0.43,
+          "glint": 0.0
+        },
+        "pass": {
+          "L50": true,
+          "L95": false,
+          "sat": false,
+          "hue": true,
+          "achro": true,
+          "glint": false
+        },
+        "failing": [
+          "L95",
+          "sat",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": -0.55,
+          "rotation_y": 0.611,
+          "yaw_deg": 35.01,
+          "tilt_requested": -0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "sapphire"
+          }
+        }
+      },
+      {
+        "stone": "sapphire",
+        "tilt": 0.0,
+        "spin": 35,
+        "file": "main-t0-s35.png",
+        "measured": {
+          "n": 31808,
+          "L50": 80.78,
+          "L95": 194.91,
+          "sat": 200.87,
+          "hue": 221.27,
+          "achro": 1.39,
+          "glint": 1.15
+        },
+        "pass": {
+          "L50": true,
+          "L95": true,
+          "sat": true,
+          "hue": true,
+          "achro": true,
+          "glint": true
+        },
+        "failing": [],
+        "verdict": "PASS",
+        "pose": {
+          "rotation_x": 0,
+          "rotation_y": 0.611,
+          "yaw_deg": 35.01,
+          "tilt_requested": 0.0,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "sapphire"
+          }
+        }
+      },
+      {
+        "stone": "sapphire",
+        "tilt": 0.55,
+        "spin": 35,
+        "file": "main-t055-s35.png",
+        "measured": {
+          "n": 37833,
+          "L50": 97.62,
+          "L95": 245.01,
+          "sat": 197.15,
+          "hue": 220.98,
+          "achro": 11.76,
+          "glint": 7.65
+        },
+        "pass": {
+          "L50": true,
+          "L95": false,
+          "sat": true,
+          "hue": true,
+          "achro": false,
+          "glint": false
+        },
+        "failing": [
+          "L95",
+          "achro",
+          "glint"
+        ],
+        "verdict": "FAIL",
+        "pose": {
+          "rotation_x": 0.55,
+          "rotation_y": 0.611,
+          "yaw_deg": 35.01,
+          "tilt_requested": 0.55,
+          "canvas": {
+            "cw": 510,
+            "ch": 223,
+            "w": 510,
+            "h": 223,
+            "gem": "sapphire"
+          }
+        }
+      }
+    ],
+    "frozen_spreads": {
+      "sapphire": 16.47,
+      "sapphire_all6": 20.42,
+      "citrine": 38.73,
+      "citrine_all6": 43.86
+    },
+    "frozen_summary": {
+      "cells_pass": 2,
+      "cells_total": 12,
+      "cell_gates_pass": 45,
+      "cell_gates_total": 72,
+      "spread_gates_pass": 1,
+      "published": "2/12 cells, 45/74 gates"
+    }
+  },
+  "structure": {
+    "inputs": {
+      "roles": [
+        "front",
+        "proxy",
+        "noproxy",
+        "txoff",
+        "dark"
+      ],
+      "note": "all detectors on front.png inside the eroded txoff silhouette"
+    },
+    "recipe": {
+      "interior": "sat>18 on txoff, largest 8-CC, holes filled, eroded by radius-2 disk",
+      "dark_crosscheck": "sat>20 on dark, same recipe; IoU reported, txoff mask used (IoU < 0.98)",
+      "plate": "fraction interior with box7 sd<6 and L8 in window",
+      "plate_windows": [
+        [
+          40,
+          80
+        ],
+        [
+          40,
+          220
+        ]
+      ],
+      "speckle": "fraction interior with |L8 - box5|>12 and coherence<0.25",
+      "fringe": "mean|R-B| on G>=20 edges minus mean|R-B| on interior px with EDT(edge)>5",
+      "segments": {
+        "min_len_px": 14.0,
+        "max_resid_px": 0.6,
+        "min_fill": 0.7,
+        "grad_thr": 20.0,
+        "null_draws": 20,
+        "null_seed": 7,
+        "null_block": 8
+      },
+      "coherence": {
+        "sigma_pre": 1.0,
+        "sigma_t": 2.0
+      },
+      "jaggedness": "p90 |d2 p| of the parabolic sub-pixel edge position (px)",
+      "clip": "fraction of interior with any channel >= 255 (from the sheet, criterion 9)",
+      "numbers": {
+        "sil_sat": 18.0,
+        "dark_sat": 20.0,
+        "erode_radius": 2,
+        "plate_sd": 6.0,
+        "speckle_hp": 12.0,
+        "speckle_coh": 0.25,
+        "edge_grad": 20.0,
+        "ctrl_dist": 5.0
+      }
+    },
+    "gates": {
+      "plate_max_pct": 8.0,
+      "broad_plate_max_pct": 12.0,
+      "speckle_max_pct": 2.0,
+      "fringe_band": [
+        -4.0,
+        4.0
+      ],
+      "seg_z_min": 5.0,
+      "jag_p90_max_px": 0.1,
+      "coherence_min": 0.6,
+      "clip_max_pct": 2.0,
+      "proxy_r_min": 0.35
+    },
+    "weights": {
+      "plate": 25,
+      "proxy_r": 25,
+      "fringe": 15,
+      "segments": 15,
+      "speckle": 10,
+      "coherence": 10
+    },
+    "verdicts": {
+      "pass": 1.0,
+      "half": 0.5,
+      "fail": 0.0,
+      "half_rule": "fringe only: the gate is the two-sided band [-4, +4]; a delta BELOW -4 scores half (no additive fringing, but the rim reads desaturated \u2014 the round-10 audit graded sapphire -20.9 \"half\"), a delta ABOVE +4 scores fail (additive fringe)."
+    },
+    "frozen": {
+      "sapphire": {
+        "plate_pct": 21.8,
+        "broad_plate_pct": 31.5,
+        "speckle_pct": 0.52,
+        "fringe_delta": -20.9,
+        "segments": 10,
+        "seg_z": 5.94,
+        "coherence": 0.744,
+        "r_proxy": -0.008,
+        "r_noproxy": 0.071,
+        "jag_p90_px": 0.096,
+        "mask_iou_pre_erode": 0.9393,
+        "interior_px": 28023
+      },
+      "citrine": {
+        "plate_pct": 15.0,
+        "broad_plate_pct": 31.1,
+        "speckle_pct": 0.56,
+        "fringe_delta": 12.0,
+        "segments": 6,
+        "seg_z": 5.14,
+        "coherence": 0.746,
+        "r_proxy": -0.016,
+        "r_noproxy": 0.083,
+        "jag_p90_px": 0.15,
+        "mask_iou_pre_erode": 0.8876,
+        "interior_px": 25527
+      }
+    },
+    "frozen_scores": {
+      "sapphire": 4.25,
+      "citrine": 3.5,
+      "reported": 4.3
+    }
+  },
+  "colour": {
+    "recipe": {
+      "mask": "sat>18 on txoff, largest 8-CC, holes filled, eroded 3x3 twice",
+      "L": "0.2126R + 0.7152G + 0.0722B",
+      "sat": "(max-min)/max*255",
+      "checks": [
+        "pearson r(sat, L) over the interior",
+        "achromatic % = fraction sat<60 & L>150",
+        "mean sat over the interior"
+      ],
+      "numbers": {
+        "sil_sat": 18.0,
+        "erode_px": 3,
+        "erode_iter": 2,
+        "achro_sat_max": 60.0,
+        "achro_L_min": 150.0
+      }
+    },
+    "checks": {
+      "pearson_max": -0.5,
+      "achro_max_pct": 2.5,
+      "mean_sat_min": 110.0
+    },
+    "frozen": {
+      "sapphire": {
+        "pearson_sat_L": -0.934,
+        "achro_pct": 0.74,
+        "mean_sat": 195.9,
+        "pass": 3
+      },
+      "citrine": {
+        "pearson_sat_L": -0.204,
+        "achro_pct": 0.0,
+        "mean_sat": 186.6,
+        "pass": 2
+      }
+    },
+    "frozen_block_sat_std": {
+      "sapphire": 39.8,
+      "citrine": 21.0,
+      "note": "anti-shaper guard floor is 0.8x these (Tasks 22-25)"
+    }
+  },
+  "vision": {
+    "scores": {
+      "sapphire": 3,
+      "citrine": 4
+    },
+    "source": "round-10 full-res read at tilt -0.55 / level / +0.55 (owner + vision); echoed, never measured",
+    "max": 10
+  },
+  "sheet": {
+    "instrument": "prototype/gems/score.py",
+    "max": 110,
+    "frozen": {
+      "sapphire": {
+        "total_of_110": 70,
+        "criteria": [
+          6,
+          8,
+          2,
+          3,
+          8,
+          3,
+          10,
+          8,
+          10,
+          2,
+          10
+        ]
+      },
+      "citrine": {
+        "total_of_110": 65,
+        "criteria": [
+          6,
+          6,
+          2,
+          5,
+          4,
+          4,
+          8,
+          8,
+          10,
+          2,
+          10
+        ]
+      }
+    },
+    "note": "instrument health only, never the realism gate; #10 motion needs motion.json (motion-probe.mjs)"
+  },
+  "composite": {
+    "weights": {
+      "P": 0.4,
+      "S": 0.3,
+      "C": 0.15,
+      "V": 0.15
+    },
+    "formula": "R = 0.40*P + 0.30*S + 0.15*C + 0.15*V",
+    "P": "10 * cells passing all six photo gates / 12",
+    "S": "10 * sum(weight_i * verdict_i) / 100, sapphire stone",
+    "C": "10 * colour checks passed / 6",
+    "V": "mean of the vision scores",
+    "frozen": {
+      "P": 1.7,
+      "S": 4.3,
+      "C": 8.3,
+      "V": 3.5,
+      "R": 3.7
+    }
+  },
+  "appearance": {
+    "refs": ".hermes/tmp/round6/refs",
+    "files": {
+      "sapphire": "sapphire.jpg",
+      "amethyst": "amethyst_cat.jpg",
+      "redberyl": "redberyl.jpg",
+      "citrine": "citrine.jpg"
+    },
+    "recipe": {
+      "mask": "(sat>25 | max<120) & max>8; 3x3 opening; largest 8-CC; holes filled",
+      "sat": "whole-mask median / 255 (stored 0..1)",
+      "l50_l95": "whole-mask percentiles of L",
+      "hue": "circular mean over sat>60 & L<220",
+      "achromatic": "fraction of mask with sat<=25",
+      "glints": "fraction of mask with L>235",
+      "numbers": {
+        "mask_sat": 25.0,
+        "mask_dark_max": 120.0,
+        "mask_floor": 8.0,
+        "opening_px": 3,
+        "hue_sat_min": 60.0,
+        "hue_L_max": 220.0,
+        "achro_sat_max": 25.0,
+        "glint_L": 235.0
+      }
+    },
+    "tolerance": {
+      "hue_deg": 1.0,
+      "sat_255_units": 1.0,
+      "L_levels": 1.0,
+      "fraction_pp": 1.0
+    },
+    "note": "achromatic here is sat<=25 (appearance record); the photo-cell gate uses sat<60 & L>150. Two instruments, two named populations \u2014 never mixed."
+  }
+}
