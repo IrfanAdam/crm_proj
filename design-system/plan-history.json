@@ -8716,6 +8716,63 @@
           "state": "1/3"
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-06",
+      "hash": "89385f81",
+      "sections": [
+        {
+          "head": "Phase 1 — Baseline re-score before touching anything {#phase-1}",
+          "hash": "9984b4d0",
+          "state": "0/1"
+        },
+        {
+          "head": "Phase 2 — True dispersion (matches real-world gem physics) {#phase-2}",
+          "hash": "728862fd",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 3 — Caustics + shadow read as emitted BY the gem {#phase-3}",
+          "hash": "5426c2c8",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 4 — Transmission depth + interior see-through (the big ceiling) {#phase-4}",
+          "hash": "1fb3818e",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 5 — Light fixture becomes visible (the \"no light source read\") {#phase-5}",
+          "hash": "22fd7bcf",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 6 — Loop harness {#phase-6}",
+          "hash": "ec414639",
+          "state": "0/1"
+        },
+        {
+          "head": "Phase 7 — Real optics rework (round 3, user-authorized escalation) {#phase-7}",
+          "hash": "6c42a661",
+          "state": "0/4"
+        },
+        {
+          "head": "Phase 8 — Photo-anchored realism (round 6, user re-anchored) {#phase-8}",
+          "hash": "0eaa5c41",
+          "state": "0/3"
+        },
+        {
+          "head": "Phase 9 — Internal-pattern aberration (round 7, owner re-opened) {#phase-9}",
+          "hash": "ec0c39c5",
+          "state": "1/3"
+        },
+        {
+          "head": "Phase 10 — Material accuracy (round 10) {#phase-10}",
+          "hash": "b84f8892",
+          "state": "0/7"
+        }
+      ]
     }
   ],
   "2026-10-05_000000-lump-sum-builds.md": [
