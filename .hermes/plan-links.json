@@ -363,5 +363,10 @@
   "anchor": "{#phase-10}",
   "note": "chore(ds) sync: manifest + __pycache__ ignore, follows 5ae0112",
   "plan": "2026-10-03_144222-gem-realism-round2.md"
+ },
+ "dd62b01": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-11",
+  "note": "feat(gem): GEM_OPTICS — one optical parameter record per stone"
  }
 }

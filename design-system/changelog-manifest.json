@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T14:38:57.623Z",
+  "generated": "2026-11-07T14:40:45.114Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "dd62b01",
+      "full": "dd62b01e78d7034dacb2bb8f3a19589032180abf",
+      "date": "2026-11-07",
+      "time": "20:09",
+      "subject": "feat(gem): GEM_OPTICS — one optical parameter record per stone",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-11"
+    },
     {
       "sha": "1eca4be",
       "full": "1eca4becea1d439b025ecb4f6ebf7395daf6c717",
@@ -4145,19 +4154,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M gallery.html",
-    "M index.html",
-    "M pitch.html",
-    "M src/components/GemReward/gem-caustic-trace.js",
-    "M src/components/GemReward/gem-facets.js",
-    "M src/components/GemReward/gem-scene.js",
-    "M src/components/GemReward/gem-shader.js",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "?? prototype/gems/optics_sweep.py",
-    "?? src/components/GemReward/gem-optics.js"
-  ]
+  "wip": []
 }
