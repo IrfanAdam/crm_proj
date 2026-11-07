@@ -10,7 +10,7 @@
 // — Export: GEM_CAUSTIC_TRACE.{S,pose,geomKey,field,refOf}.
 (function () {
 if (!window.THREE) return;
-const S = 160, IOR = 2.4, DISP = 0.06, FD = 0.5, SPAN = 2.4, SIG = 5.2, ENV = 0.86, CSX = 0.52, CSZ = 0.44, STREAK = 0.42, RAD = (S / 2) / SPAN, EA = 1 / IOR;
+const O = (window.GEM_OPTICS && window.GEM_OPTICS.of('sapphire').caus) || { n: 2.4, disp: 0.06, sig: 5.2, streak: 0.42 }, S = 160, IOR = O.n, DISP = O.disp, FD = 0.5, SPAN = 2.4, SIG = O.sig, ENV = 0.86, CSX = 0.52, CSZ = 0.44, STREAK = O.streak, RAD = (S / 2) / SPAN, EA = 1 / IOR;
 const LN = Math.hypot(3, 5, 4), LX = 3 / LN, LY = 5 / LN, LZ = 4 / LN, DX0 = -LX, DY0 = -LY, DZ0 = -LZ;
 const CH = [IOR * (1 - DISP), IOR, IOR * (1 + DISP)];
 const yminOf = function (G) { let y = 1e9; for (let i = 0; i < G.positions.length; i++) { const q = G.positions[i]; if (q[1] < y) y = q[1]; } return y; };

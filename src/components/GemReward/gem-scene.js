@@ -36,16 +36,16 @@ geo.computeVertexNormals();
 geo.computeBoundingBox();
 return geo;
 };
-api.surface = function (color, soft, ior) {
-const white = new T.Color(1, 1, 1);
-const m = new T.MeshPhysicalMaterial({ color: color.clone().lerp(white, 0.45), metalness: 0, roughness: 0.06, ior: ior || 2.4, flatShading: true, envMapIntensity: 0.35, dithering: true });
+api.surface = function (color, soft, ior, cat) {
+const white = new T.Color(1, 1, 1), G = window.GEM_OPTICS, O = G ? G.of(cat) : null;
+const m = new T.MeshPhysicalMaterial({ color: color.clone().lerp(white, 0.45), metalness: 0, roughness: O ? O.reflect.rough : 0.06, ior: ior || (O ? O.n.trace : 2.4), flatShading: true, envMapIntensity: O ? O.reflect.env : 0.35, dithering: true });
 if (!soft) {
 m.transmission = 1.0;
-m.thickness = 0.9;
-m.attenuationColor = color.clone().lerp(white, 0.1);
-m.attenuationDistance = 1.45;
+m.thickness = O ? O.absorb.thick : 0.9;
+m.attenuationColor = color.clone().lerp(white, O ? O.absorb.tint : 0.1);
+m.attenuationDistance = O ? O.absorb.atten : 1.45;
 m.onBeforeCompile = function (s) {
-if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader);
+if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader, O ? O.fire.bodySpread : 2);
 s.uniforms.bgTex = (m.userData.bgU = { value: null });     // the actual backdrop, sampled through the body (demo bg)
 s.uniforms.bgOn = (m.userData.bgOnU = { value: 0 });
 };
@@ -64,6 +64,7 @@ const h = Math.max(bb.max.y - bb.min.y, 0.001);
 const cy = (bb.max.y + bb.min.y) / 2;
 const rad = Math.max(Math.abs(bb.max.x), Math.abs(bb.min.x), Math.abs(bb.max.z), Math.abs(bb.min.z));
 const bare = renderer.domElement.dataset.gemStage === 'off';
+const cat = renderer.domElement.dataset.gem || 'sapphire';
 const gscale = bare ? parseFloat(renderer.domElement.dataset.gemScale) || 1 : 1;
 const tan = Math.tan((FOV * Math.PI) / 360);
 const dist = Math.max(h / FILL / (2 * tan), rad / (0.9 * tan * Math.max(aspect, 0.4)));
@@ -83,9 +84,9 @@ bounce.position.set(-1, -4, 3);
 scene.add(key, cross, bounce, new T.AmbientLight(0xffffff, 0.10));
 const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy * gscale, cut) : null;
 const group = new T.Group();
-const body = new T.Mesh(geo, api.surface(color, soft, ior));
+const body = new T.Mesh(geo, api.surface(color, soft, ior, cat));
 group.add(body);
-const proxy = window.GEM_SHADER && window.GEM_SHADER.farside ? new T.Mesh(geo, window.GEM_SHADER.farside({ envMap: scene.environment, ior: ior || 2.4, tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null, can: renderer.domElement })) : null;
+const proxy = window.GEM_SHADER && window.GEM_SHADER.farside ? new T.Mesh(geo, window.GEM_SHADER.farside({ envMap: scene.environment, ior: ior || (window.GEM_OPTICS ? window.GEM_OPTICS.of(cat).n.trace : 2.4), tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null, can: renderer.domElement })) : null;
 if (proxy) { proxy.scale.setScalar(0.997); group.add(proxy); }
 if (proxy && window.GEM_SHADER && window.GEM_SHADER.aim) proxy.onBeforeRender = function () { window.GEM_SHADER.aim(this); };
 scene.add(group);

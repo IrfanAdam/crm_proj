@@ -80,7 +80,7 @@ const A = window.GEM_APPEARANCE && window.GEM_APPEARANCE.stones && window.GEM_AP
 if (A) return [A.hue, A.sat];
 return api.stones[cat] || api.stones.sapphire;
 };
-api.k3 = function (cat) { const s = stone(cat), v = hsv(s[0], s[1]); return v.map(function (q) { return -Math.log(Math.max(q, 1e-4)); }); };
+api.k3 = function (cat) { if (window.GEM_OPTICS && window.GEM_OPTICS.k3) return window.GEM_OPTICS.k3(cat); const s = stone(cat), v = hsv(s[0], s[1]); return v.map(function (q) { return -Math.log(Math.max(q, 1e-4)); }); };
 api.kAt = function (cat, nm) {
 const A = window.GEM_APPEARANCE;
 if (A && A.kAt) return A.kAt(cat, nm);
