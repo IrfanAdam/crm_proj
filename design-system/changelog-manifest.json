@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T05:42:17.098Z",
+  "generated": "2026-11-07T05:42:35.272Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "b0d4e62",
+      "full": "b0d4e627a1e06d134c6922cd9f9bc6daeb68a8a2",
+      "date": "2026-11-07",
+      "time": "11:12",
+      "subject": "fix(gem): 4-tap supersampled interior trace removes the speckle at the pavilion cone",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "8c6248e",
       "full": "8c6248e4e3f13665b3ec33d1868acddb7bd12385",
@@ -4127,7 +4136,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/components/GemReward/gem-shader.js"
-  ]
+  "wip": []
 }
