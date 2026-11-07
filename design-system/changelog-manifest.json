@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T16:51:01.050Z",
+  "generated": "2026-11-07T04:22:13.031Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,24 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "3e5a180",
+      "full": "3e5a180b665d357bdb539d75f1363408ab15c17f",
+      "date": "2026-11-07",
+      "time": "09:52",
+      "subject": "fix(gem): thickness 0.9->0.2 stops three's transmission blur smearing the traced interior into a flat plane",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "77569a1",
+      "full": "77569a14674e76c243f2a7aea8fef84b4ba61482",
+      "date": "2026-11-07",
+      "time": "01:25",
+      "subject": "fix(gem): caustic pool tracks the stone 1:1 in screen space, rotation-only lock",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-10"
+    },
     {
       "sha": "8a4d294",
       "full": "8a4d294e532ff067e49eb9d30df1a14cef6c4165",
