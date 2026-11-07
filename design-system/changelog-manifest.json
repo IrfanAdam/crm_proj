@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T15:28:15.583Z",
+  "generated": "2026-11-07T15:29:39.132Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "7388fa6",
+      "full": "7388fa6ddc5cb81e62400427855529533c044883",
+      "date": "2026-11-07",
+      "time": "20:58",
+      "subject": "feat(gem): spectral trace + per-stone caustic on the visible stone",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-15"
+    },
     {
       "sha": "9187054",
       "full": "918705458f6e6cd819d7d05a965d83260f3fef7e",
@@ -4172,10 +4181,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/components/GemReward/gem-caustic-trace.js",
-    "M src/components/GemReward/gem-caustic.js",
-    "M src/components/GemReward/gem-optics.js",
-    "M src/components/GemReward/gem-shader.js"
-  ]
+  "wip": []
 }
