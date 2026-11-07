@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T05:45:10.189Z",
+  "generated": "2026-11-07T05:48:19.344Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "1eca4be",
+      "full": "1eca4becea1d439b025ecb4f6ebf7395daf6c717",
+      "date": "2026-11-07",
+      "time": "11:18",
+      "subject": "revert(gem): restore the 77569a1 interior look — it is the owner's reference",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "b0d4e62",
       "full": "b0d4e627a1e06d134c6922cd9f9bc6daeb68a8a2",
@@ -4136,8 +4145,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/components/GemReward/gem-scene.js",
-    "M  src/components/GemReward/gem-shader.js"
-  ]
+  "wip": []
 }
