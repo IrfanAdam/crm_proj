@@ -84,14 +84,15 @@ bounce.position.set(-1, -4, 3);
 scene.add(key, cross, bounce, new T.AmbientLight(0xffffff, 0.10));
 const floors = window.GEM_BARE ? window.GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy * gscale, cut) : null;
 const group = new T.Group();
+const SH = window.GEM_SHADER, oo = { envMap: scene.environment, ior: ior || (window.GEM_OPTICS ? window.GEM_OPTICS.of(cat).n.trace : 2.4), tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null, can: renderer.domElement };
+const core = SH && SH.core ? new T.Mesh(geo, SH.core(oo)) : null;          // the trace IS the stone (Task 36)
 const body = new T.Mesh(geo, api.surface(color, soft, ior, cat));
-group.add(body);
-const proxy = window.GEM_SHADER && window.GEM_SHADER.farside ? new T.Mesh(geo, window.GEM_SHADER.farside({ envMap: scene.environment, ior: ior || (window.GEM_OPTICS ? window.GEM_OPTICS.of(cat).n.trace : 2.4), tint: color, ramp: RAMP(color, T), stageTex: (scene.background && scene.background.isTexture) ? scene.background : null, can: renderer.domElement })) : null;
-if (proxy) { proxy.scale.setScalar(0.997); group.add(proxy); }
-if (proxy && window.GEM_SHADER && window.GEM_SHADER.aim) proxy.onBeforeRender = function () { window.GEM_SHADER.aim(this); };
+const proxy = !core && SH && SH.farside ? new T.Mesh(geo, SH.farside(oo)) : null;
+if (core) { group.add(core); core.onBeforeRender = function () { SH.aim(this); }; } else group.add(body);
+if (proxy) { proxy.scale.setScalar(0.997); group.add(proxy); if (SH.aim) proxy.onBeforeRender = function () { SH.aim(this); }; }
 scene.add(group);
 if (bare) group.scale.setScalar(gscale);
-const rig = { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors, mats: [body.material].concat(proxy ? [proxy.material] : []), baseCamY: cy + h * 0.16, baseLookY: cy - h * 0.02, dropY: 0 };
+const rig = { scene: scene, camera: camera, group: group, stageBg: scene.background, floors: floors, mats: [(core || body).material].concat(proxy ? [proxy.material] : []), baseCamY: cy + h * 0.16, baseLookY: cy - h * 0.02, dropY: 0 };
 api.frame(rig);
 return rig;
 };

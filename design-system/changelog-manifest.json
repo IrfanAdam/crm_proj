@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T14:40:45.114Z",
+  "generated": "2026-11-07T15:21:42.019Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "46355f5",
+      "full": "46355f58d0942ab8eafe4dbf3b44eb8dba95eb03",
+      "date": "2026-11-07",
+      "time": "20:10",
+      "subject": "chore(ds): link dd62b01 to phase-11 + manifest sync",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-11"
+    },
     {
       "sha": "dd62b01",
       "full": "dd62b01e78d7034dacb2bb8f3a19589032180abf",
@@ -4154,5 +4163,10 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/components/GemReward/gem-optics.js",
+    "M src/components/GemReward/gem-scene.js",
+    "M src/components/GemReward/gem-shader.js",
+    "?? prototype/gems/caustic_probe.py"
+  ]
 }

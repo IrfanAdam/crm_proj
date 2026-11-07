@@ -29,7 +29,7 @@ const C = window.GEM_CUT && window.GEM_CUT.CATEGORIES, F = FIT[name] || FIT.sapp
 const d = a.ior || (C && C[name] && C[name].ior) || 1.768;
 return {
 n: { d: d, abbe: a.abbe || 70, trace: (C && C[name] && C[name].ior) || d, spread: 0 },
-reflect: { fresnel: 0, bodySpec: 0.60, env: 0.35, rough: 0.06, win: 1.8, mirror: 2.2, crisp: 0.05, broad: 0.30, luma: 0.55, lumaB: 0.85, shK: 0.9, bounce: 3 },
+reflect: { fresnel: 0, bodySpec: 0.60, env: 0.35, rough: 0.06, win: 1.8, mirror: 2.2, crisp: 0.05, broad: 0.30, luma: 0.55, lumaB: 0.85, shK: 0.9, bounce: 5 },
 absorb: { k: null, scale: F.k, atten: 1.45, thick: 0.9, tint: 0.10 },
 light: { exp: F.e, gam: 0.74, amb: api.AMB },
 fire: { taps: 3, mix: 0.6, spread: 0, bodySpread: 2 },
