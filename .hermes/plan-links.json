@@ -393,5 +393,10 @@
   "plan": "2026-10-03_144222-gem-realism-round2.md",
   "anchor": "phase-15",
   "note": "fix(gem): thickness 0.9->0.2 stops transmission blur smearing traced interior"
+ },
+ "eb80acb": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-14",
+  "note": "chore(ds): plan-history sync for 0b99eb1 (round-14 close)"
  }
 }
