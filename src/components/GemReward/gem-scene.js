@@ -43,7 +43,7 @@ if (!soft) {
 m.transmission = 1.0;
 m.thickness = 0.2;
 m.attenuationColor = color.clone().lerp(white, 0.1);
-m.attenuationDistance = 1.45;
+m.attenuationDistance = 0.28;
 m.onBeforeCompile = function (s) {
 if (window.GEM_SHADER && window.GEM_SHADER.dispersion) s.fragmentShader = window.GEM_SHADER.dispersion(s.fragmentShader);
 s.uniforms.bgTex = (m.userData.bgU = { value: null });     // the actual backdrop, sampled through the body (demo bg)

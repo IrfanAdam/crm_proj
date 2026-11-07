@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T04:35:00.250Z",
+  "generated": "2026-11-07T04:39:38.378Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4118,5 +4118,8 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/components/GemReward/gem-scene.js",
+    "M src/components/GemReward/gem-shader-body.js"
+  ]
 }
