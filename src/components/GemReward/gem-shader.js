@@ -26,12 +26,15 @@ const HEAD = 'uniform vec4 uPl[PLMAX];\nuniform sampler2D uPlTex;\nuniform sampl
 'vec3 sh( vec3 s, float k ) { return s * k / ( k + s ); }\n' +
 'vec3 envR( vec3 d, mat3 R ) {\n\tvec3 e = normalize( R * d );\n#ifdef ENVMAP_TYPE_CUBE_UV\n\tvec3 s0 = textureCubeUV( envMap, e, 0.05 ).rgb;\n\tvec3 s1 = textureCubeUV( envMap, e, 0.30 ).rgb;\n' +
 '\treturn sh( mix( s0, vec3( lum( s0 ) ), 0.55 ), 0.9 ) + sh( mix( s1, vec3( lum( s1 ) ), 0.85 ), 0.9 ) * gain;\n#else\n\treturn vec3( 0.05 ) + 0.02 * lum( e );\n#endif\n}\n';
-const TAPS = 'const vec2 TP[ 4 ] = vec2[ 4 ]( vec2( -0.25, -0.25 ), vec2( 0.25, -0.25 ), vec2( -0.25, 0.25 ), vec2( 0.25, 0.25 ) );\nmat3 gR;\n';
-const BODY = 'vec3 tr( vec3 ro, vec3 rd ) {\n' +
-    'mat3 R = gR;\n' +
+const BODY = 'void main() {\n' +
+    'vec3 w = normalize( vW - cameraPosition );\n' +
+    // the plane set is object space, so one transform in and one out — no inverse matrix (and no ES-3 `inverse`).
+    'float sc = length( uM[ 0 ].xyz );\n\tmat3 R = mat3( uM ) / sc;\n\tvec3 rel = cameraPosition - uM[ 3 ].xyz;\n' +
+    '\tvec3 ro = vec3( dot( R[ 0 ], rel ), dot( R[ 1 ], rel ), dot( R[ 2 ], rel ) ) / sc;\n' +
+    '\tvec3 rd = vec3( dot( R[ 0 ], w ), dot( R[ 1 ], w ), dot( R[ 2 ], w ) );\n' +
     // entry = the last plane the ray is still outside of; that crossing is the real way into the solid.
     'float tin = -1.0;\n\tint ei = 0;\n\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\tif ( i >= uCount ) break;\n\t\tvec4 P = PL( i );\n\t\tfloat s = dot( P.xyz, ro ) + P.w, den = dot( P.xyz, rd );\n\t\tif ( s > 1e-5 && den < -1e-6 ) { float t = -s / den; if ( t > tin ) { tin = t; ei = i; } }\n\t}\n' +
-    '\tif ( tin < 0.0 ) return vec3( 0.0 );\n' +
+    '\tif ( tin < 0.0 ) { gl_FragColor = vec4( 0.0, 0.0, 0.0, 1.0 ); return; }\n' +
     '\tvec3 ne = PL( ei ).xyz;\n\tvec3 dl = refract( rd, ne, 1.0 / ior );\n\tif ( dot( dl, dl ) < 1e-6 ) dl = rd;\n\tvec3 p = ro + rd * tin;\n\tvec3 acc = vec3( 0.0 ), ab = vec3( 1.0 );\n' +
     '\tfloat F0 = pow( ( ior - 1.0 ) / ( ior + 1.0 ), 2.0 );\n\tint skip = ei;\n\tfloat esc = 0.0, tot = 0.0, nb = 0.0;\n' +
     '\tfor ( int b = 0; b < 3; b++ ) {\n\t\tfloat t = 1e9;\n\t\tint hi = -1;\n' +
@@ -41,12 +44,10 @@ const BODY = 'vec3 tr( vec3 ro, vec3 rd ) {\n' +
     '\t\tdl = reflect( dl, nh );\n\t\tskip = hi;\n\t}\n' +
     // 3 TIRs exhausted: the ray is still inside, so take the heading it holds — the last image it can carry.
     '\tif ( esc < 0.5 ) acc += ab * envR( dl, R ) * 0.55;\n' +
-    '\tif ( dbg > 0.5 ) return vec3( tot / 3.0, nb / 3.0, 1.0 - ab.g );\n' +
-    '\treturn acc * uExp + uAmb * ( 1.0 - ab ) * tint;\n}\n' +
-    'void main() {\n\tvec3 w = normalize( vW - cameraPosition );\n\tfloat sc = length( uM[ 0 ].xyz );\n\tgR = mat3( uM ) / sc;\n\tvec3 rel = cameraPosition - uM[ 3 ].xyz;\n\tvec3 ro = vec3( dot( gR[ 0 ], rel ), dot( gR[ 1 ], rel ), dot( gR[ 2 ], rel ) ) / sc;\n\tvec3 rd = vec3( dot( gR[ 0 ], w ), dot( gR[ 1 ], w ), dot( gR[ 2 ], w ) );\n' +
-    '\tvec3 dx = dFdx( rd ), dy = dFdy( rd );\n\tvec3 lin = vec3( 0.0 );\n\tfor ( int s = 0; s < 4; s++ ) { lin += tr( ro, rd + dx * TP[ s ].x + dy * TP[ s ].y ); }\n\tlin *= 0.25;\n' +
+    '\tif ( dbg > 0.5 ) { gl_FragColor = vec4( tot / 3.0, nb / 3.0, 1.0 - ab.g, 1.0 ); return; }\n' +
+    '\tvec3 lin = acc * uExp + uAmb * ( 1.0 - ab ) * tint;\n' +
     '\tgl_FragColor = vec4( clamp( pow( aces( lin ), vec3( 1.0 / uGam ) ), 0.0, 1.0 ), 1.0 );\n}';
-const FS = HEAD + TAPS + BODY;
+const FS = HEAD + BODY;
 api.setup = function () {   // build the plane set once from the shared cut — same 136 vertices / 268 triangles
 
 const C = window.GEM_CUT;
