@@ -1,5 +1,5 @@
 /* ADAM/DS — ds/changelog/paint-rail · rail head + sprint picks + foot (extracted from paint-detail.js, budget) */
-import { hits, badges, planless } from '../changelog-links.js';
+import { hits } from '../changelog-links.js';
 import { shortPhase as short, descOf, clip } from '../changelog-titles.js';
 import { isDone, state } from '../changelog-parse.js';
 import { isEdited, gateVerdictTag } from './panels.js';
@@ -14,7 +14,6 @@ export function paintRail({ plan, sprints, sel, si, seq }) {
     `<span class="ds-rail-title" title="${esc(railTitle)}">${esc(railTitle)}</span>`,
     `</div>`,
   ].join('');
-  const loose = planless();
   return railHead + sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
       hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
@@ -38,7 +37,6 @@ export function paintRail({ plan, sprints, sel, si, seq }) {
       `</small></button>`,
     ].join('');
   }).join('') + [
-    loose.length ? `<div data-prov>${badges(loose, 'Unlinked')}</div>` : '',
     `<div class="ds-rail-foot" data-foot>`,
     esc(plan.goal || sprintDesc(sprint)),
     `</div>`,
