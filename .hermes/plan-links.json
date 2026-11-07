@@ -368,5 +368,30 @@
   "plan": "2026-10-03_144222-gem-realism-round2.md",
   "anchor": "phase-11",
   "note": "feat(gem): GEM_OPTICS — one optical parameter record per stone"
+ },
+ "1eca4be": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-15",
+  "note": "revert(gem): restore the 77569a1 interior look — owner reference"
+ },
+ "b0d4e62": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-15",
+  "note": "fix(gem): 4-tap supersampled interior trace removes pavilion-cone speckle"
+ },
+ "8c6248e": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-15",
+  "note": "fix(gem): depth from Beer-Lambert attenuation, not volume thickness"
+ },
+ "e8626ac": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-15",
+  "note": "fix(gem): transmitted-block lift keeps sharpened interior from washing out"
+ },
+ "3e5a180": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-15",
+  "note": "fix(gem): thickness 0.9->0.2 stops transmission blur smearing traced interior"
  }
 }
