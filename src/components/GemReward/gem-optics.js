@@ -11,7 +11,7 @@
 (function () {
 const api = {};
 window.GEM_OPTICS = api;
-const FIT = { sapphire: { e: 6.2, k: 0.55 }, citrine: { e: 3.8, k: 0.55 }, amethyst: { e: 5.0, k: 0.62 }, redberyl: { e: 7.0, k: 0.60 } };
+const FIT = { sapphire: { e: 9.0, k: 0.55 }, citrine: { e: 3.8, k: 0.55 }, amethyst: { e: 5.0, k: 0.62 }, redberyl: { e: 7.0, k: 0.60 } };
 api.FIT = FIT; api.AMB = 0.10;
 const NAMES = ['sapphire', 'citrine', 'amethyst', 'redberyl'];
 const hsv = function (h, s) {
@@ -40,7 +40,7 @@ caus: { n: 2.4, disp: 0.06, sig: 5.2, streak: 0.42, gain: 1 },
 const derive = function (name, r) {
 r.n.spread = r.n.abbe > 0 && r.n.d > 0 ? (r.n.d - 1) / r.n.abbe / r.n.d : 0;
 r.reflect.fresnel = Math.pow((r.n.trace - 1) / (r.n.trace + 1), 2);
-r.fire.spread = r.n.spread;
+r.fire.spread = r.fire.spread || r.n.spread;   // Abbe-derived by default; a set() may widen it (author must say so)
 r.absorb.k = api.k3(name);
 return r;
 };

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T15:21:42.019Z",
+  "generated": "2026-11-07T15:28:15.583Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "9187054",
+      "full": "918705458f6e6cd819d7d05a965d83260f3fef7e",
+      "date": "2026-11-07",
+      "time": "20:51",
+      "subject": "feat(gem): the trace becomes the visible stone",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-15"
+    },
     {
       "sha": "46355f5",
       "full": "46355f58d0942ab8eafe4dbf3b44eb8dba95eb03",
@@ -4164,9 +4173,9 @@
     }
   ],
   "wip": [
+    "M src/components/GemReward/gem-caustic-trace.js",
+    "M src/components/GemReward/gem-caustic.js",
     "M src/components/GemReward/gem-optics.js",
-    "M src/components/GemReward/gem-scene.js",
-    "M src/components/GemReward/gem-shader.js",
-    "?? prototype/gems/caustic_probe.py"
+    "M src/components/GemReward/gem-shader.js"
   ]
 }
