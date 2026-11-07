@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T16:09:04.137Z",
+  "generated": "2026-11-07T16:10:11.283Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "ed896c8",
+      "full": "ed896c85ed17cfa29406faffcdefb964f662fdea",
+      "date": "2026-11-07",
+      "time": "21:39",
+      "subject": "chore(ds): retro-link 5 gem interior-trace commits to round2 phase-15",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-15"
+    },
     {
       "sha": "7fd3e9f",
       "full": "7fd3e9f4bd35945575fb94963d0be4f4ba186ff7",

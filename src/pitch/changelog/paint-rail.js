@@ -14,7 +14,7 @@ export function paintRail({ plan, sprints, sel, si, seq }) {
     `<span class="ds-rail-title" title="${esc(railTitle)}">${esc(railTitle)}</span>`,
     `</div>`,
   ].join('');
-  return railHead + sprints.map((s, i) => {
+  return railHead + '<div class="ds-rail-scroll">' + sprints.map((s, i) => {
     const n = (s.head.match(/Phase (\d+)/) || [])[1] || String(i + 1),
       hsS = hits(plan.file, s.body, plan.sprints.indexOf(s) === 0),
       has = hsS.length ? ' · ' + hsS.length + ' commit' + (hsS.length > 1 ? 's' : '') : '',
@@ -36,7 +36,7 @@ export function paintRail({ plan, sprints, sel, si, seq }) {
       [frac + has + edited + gate].filter(Boolean).join(' · '),
       `</small></button>`,
     ].join('');
-  }).join('') + [
+  }).join('') + '</div>' + [
     `<div class="ds-rail-foot" data-foot>`,
     esc(plan.goal || sprintDesc(sprint)),
     `</div>`,
