@@ -72,23 +72,23 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 /* Detail-pane panels (evals/commits) · flat flush-left sections, single-span
    caret per row that rotates on open via the existing .ds-caret rules.
    The summaries carry their own .ds-caret span (reference footer), so the
-   drawer ::before/::after glyphs are suppressed here. Labels, day carets
-   and rows all start at the container edge — no tile, no spine, no indent. */
+   drawer ::before/::after glyphs are suppressed here. Labels start at the
+   container edge — no tile; day + commit dots ride the timeline spine. */
 .ds-panel > .ds-panel-title::before{content:none}
 .ds-panel .ds-timeline-group > .ds-timeline-date::after{content:none}
 .ds-panel .ds-caret{transition:transform .15s}
 .ds-day-num{color:var(--color-accent);font-weight:var(--font-weight-bold)}
 .ds-panel > .ds-sub{margin-left:0;margin-right:0;padding-left:0}
-.ds-panel > .ds-timeline{margin:var(--cl-4) 0 var(--cl-12);padding-left:0;border-left:none}
-/* Flush-left panels: no tile chrome, no hanging markers, no branch indent. */
+.ds-panel > .ds-timeline{margin:var(--cl-4) 0 var(--cl-12);padding-left:var(--cl-12);border-left:var(--cl-1) solid var(--color-border)}
+/* Flush-left panels: no tile chrome; day carets get breathing room, day dots
+   reconnect on the spine, every commit carries its own dot + spine indent. */
 details.ds-panel{border:none}
 .ds-panel > .ds-panel-title{padding-left:0}
-.ds-panel .ds-timeline-date::before{content:none}
 .ds-panel .ds-timeline-group > summary{list-style:none;cursor:pointer}
 .ds-panel .ds-timeline-group > summary::-webkit-details-marker{display:none}
 .ds-panel .ds-timeline-group > summary::marker{content:""}
-.ds-panel .ds-timeline-item--eval::before{content:none}
-.ds-panel .ds-timeline-item--iter{margin-left:0;border-left:none;padding-left:0}
+.ds-panel .ds-timeline-group > summary .ds-caret{margin-right:var(--cl-8)}
+.ds-panel .ds-timeline-item:not(.ds-timeline-item--eval):not(.ds-timeline-item--iter)::before{content:"";position:absolute;left:calc(-1 * var(--cl-12) - var(--cl-4));top:var(--cl-8);width:var(--cl-7);height:var(--cl-7);background:var(--color-bg);border:var(--cl-1) solid var(--color-ink-muted);border-radius:50%;box-sizing:border-box}
 /* Explicit closed-state hiding: never depend on UA details internals alone —
    any author display rule (or quirky embed) can silently break native collapse. */
 .ds-timeline-group:not([open]) > .ds-timeline-items{display:none}
