@@ -24,10 +24,9 @@ const HEAD = 'uniform vec4 uPl[PLMAX];\nuniform sampler2D uPlTex;\nuniform sampl
 // the spectrum is a property of the PATH, not of the exit: tr() is the whole interior trace at one index, and main
 // runs it once per wavelength (R lo, G n, B hi; 5 taps adds yellow/cyan). Fresnel, TIR and Beer-Lambert are per hit.
 const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
-    // entry = one plane per ray: the last plane the ray is still outside of (s > 0, heading at it, max t), object space.
-    // r18/f: it also keeps the runner-up plane. The girdle is 48 walls 7.5 deg apart, so near the silhouette two of them
-    // land within one pixel of each other and winning is a coin toss: that toss is the collar static. tau is the ray's
-    // per-pixel footprint (computed once in main), so the blend below is exactly one pixel wide at any DPR or distance.
+    // entry = the last plane the ray is still outside of (max t, object space); it also keeps the runner-up. The girdle is
+    // 48 walls 7.5 deg apart, so near the silhouette two land in one pixel and winning is a coin toss = the collar static.
+    // tau is the per-pixel footprint (from main), so the blend is exactly one pixel wide at any DPR or distance.
     'vec4 ent( vec3 ro, vec3 rd, float tau ) {\n\tfloat t1 = -1.0, t2 = -1.0;\n\tint e1 = -1, e2 = -1;\n\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\tif ( i >= uCount ) break;\n\t\tvec4 P = PL( i );\n\t\tfloat s = dot( P.xyz, ro ) + P.w, den = dot( P.xyz, rd );\n\t\tif ( s > 1e-5 && den < -1e-6 ) { float t = -s / den; if ( t > t1 ) { t2 = t1; e2 = e1; t1 = t; e1 = i; } else if ( t > t2 ) { t2 = t; e2 = i; } }\n\t}\n' +
     '\tvec3 n1 = PL( max( e1, 0 ) ).xyz, n2 = n1;\n\tfloat h = 1.0;\n\tif ( e2 >= 0 ) {\n\t\tn2 = PL( e2 ).xyz;\n' +
     // near-parallel only (cos 13 deg): a real crease keeps its hard edge, so crown/pavilion structure cannot be softened.
