@@ -50,7 +50,7 @@ export const badges = (list, title) => {
   const groups = dates.map((d, di) => {
     const rows = byDate.get(d);
     const label = d ? esc(fmtTimelineDate(d)) : 'Undated';
-    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${caret}<span class="ds-day-num">Day ${total - di}</span> · ${label} · ${rows.length}</summary><div class="ds-timeline-items">${rows.map((c) => badgeItem(c)).join('')}</div></details>`;
+    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${caret}<span class="ds-day-num">Day ${total - di}</span> · ${label}<span class="ds-sub"> · ${rows.length}</span></summary><div class="ds-timeline-items">${rows.map((c) => badgeItem(c)).join('')}</div></details>`;
   }).join('');
   const inner = `<div class="ds-timeline">${groups}</div>`;
   return title ? `<p class="ds-sub">${esc(title)} · ${list.length}</p>${inner}` : inner;

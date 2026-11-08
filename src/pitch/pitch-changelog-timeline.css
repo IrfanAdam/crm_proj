@@ -79,16 +79,19 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-panel .ds-caret{transition:transform .15s}
 .ds-day-num{color:var(--color-accent);font-weight:var(--font-weight-bold)}
 .ds-panel > .ds-sub{margin-left:0;margin-right:0;padding-left:0}
-.ds-panel > .ds-timeline{margin:var(--cl-4) 0 var(--cl-12);padding-left:var(--cl-12);border-left:var(--cl-1) solid var(--color-border)}
-/* Flush-left panels: no tile chrome; day carets get breathing room, day dots
-   reconnect on the spine, every commit carries its own dot + spine indent. */
+.ds-panel > .ds-timeline{margin:var(--cl-4) 0 var(--cl-12);padding-left:var(--cl-4);border-left:var(--cl-1) solid var(--color-border)}
+/* Flush-left panels: no tile chrome; tight spine indent with carets hugging
+   the line, muted dots, day counts de-accented. */
 details.ds-panel{border:none}
 .ds-panel > .ds-panel-title{padding-left:0}
 .ds-panel .ds-timeline-group > summary{list-style:none;cursor:pointer}
 .ds-panel .ds-timeline-group > summary::-webkit-details-marker{display:none}
 .ds-panel .ds-timeline-group > summary::marker{content:""}
 .ds-panel .ds-timeline-group > summary .ds-caret{margin-right:var(--cl-8)}
-.ds-panel .ds-timeline-item:not(.ds-timeline-item--eval):not(.ds-timeline-item--iter)::before{content:"";position:absolute;left:calc(-1 * var(--cl-12) - var(--cl-4));top:var(--cl-8);width:var(--cl-7);height:var(--cl-7);background:var(--color-bg);border:var(--cl-1) solid var(--color-ink-muted);border-radius:50%;box-sizing:border-box}
+.ds-panel .ds-timeline-date::before{left:calc(-1 * var(--cl-4) - var(--cl-4));background:var(--color-ink-muted)}
+.ds-panel .ds-timeline-item:not(.ds-timeline-item--eval):not(.ds-timeline-item--iter)::before{content:"";position:absolute;left:calc(-1 * var(--cl-4) - var(--cl-4));top:var(--cl-8);width:var(--cl-7);height:var(--cl-7);background:var(--color-bg);border:var(--cl-1) solid var(--color-ink-muted);border-radius:50%;box-sizing:border-box}
+.ds-panel .ds-timeline-item--eval::before{border-color:var(--color-ink-muted)}
+.ds-panel .ds-timeline-item--iter{margin-left:var(--cl-8)}
 /* Explicit closed-state hiding: never depend on UA details internals alone —
    any author display rule (or quirky embed) can silently break native collapse. */
 .ds-timeline-group:not([open]) > .ds-timeline-items{display:none}
