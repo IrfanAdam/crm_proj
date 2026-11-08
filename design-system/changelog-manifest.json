@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T13:19:59.384Z",
+  "generated": "2026-11-08T15:06:24.845Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "f1086e7",
+      "full": "f1086e70e3c8dd42b9e0955ed7b1d1681fe2a957",
+      "date": "2026-11-08",
+      "time": "20:36",
+      "subject": "feat(gem): hard panels + body-tinted fill + entry-depth clamp — black L<25 13.4->0.1 sapphire, 2.8->0.3 amethyst",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-16"
+    },
     {
       "sha": "8428fbe",
       "full": "8428fbe29eeb85e4e16b5b8bb63627bf8c083338",
@@ -4334,5 +4343,10 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
