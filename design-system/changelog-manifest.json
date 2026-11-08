@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T10:11:29.899Z",
+  "generated": "2026-11-08T10:32:04.053Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "8b33ea7",
+      "full": "8b33ea73667747e9194abd87222b03fa8126e4c9",
+      "date": "2026-11-08",
+      "time": "16:01",
+      "subject": "fix(changelog): tight panel indent, muted dots, day counts de-accented",
+      "plan": "2026-11-02_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "68c5603",
       "full": "68c5603ef3a2c049a328bbe441ad82e1d8f4471a",
@@ -4271,5 +4280,10 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
