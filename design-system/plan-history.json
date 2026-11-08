@@ -9386,6 +9386,93 @@
           "state": ""
         }
       ]
+    },
+    {
+      "sha": "8428fbe29eeb85e4e16b5b8bb63627bf8c083338",
+      "date": "2026-11-08",
+      "hash": "daad3d0a",
+      "sections": [
+        {
+          "head": "Phase 1 — Baseline re-score before touching anything {#phase-1}",
+          "hash": "9984b4d0",
+          "state": "0/1"
+        },
+        {
+          "head": "Phase 2 — True dispersion (matches real-world gem physics) {#phase-2}",
+          "hash": "728862fd",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 3 — Caustics + shadow read as emitted BY the gem {#phase-3}",
+          "hash": "5426c2c8",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 4 — Transmission depth + interior see-through (the big ceiling) {#phase-4}",
+          "hash": "1fb3818e",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 5 — Light fixture becomes visible (the \"no light source read\") {#phase-5}",
+          "hash": "22fd7bcf",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 6 — Loop harness {#phase-6}",
+          "hash": "ec414639",
+          "state": "0/1"
+        },
+        {
+          "head": "Phase 7 — Real optics rework (round 3, user-authorized escalation) {#phase-7}",
+          "hash": "6c42a661",
+          "state": "0/4"
+        },
+        {
+          "head": "Phase 8 — Photo-anchored realism (round 6, user re-anchored) {#phase-8}",
+          "hash": "0eaa5c41",
+          "state": "0/3"
+        },
+        {
+          "head": "Phase 9 — Internal-pattern aberration (round 7, owner re-opened) {#phase-9}",
+          "hash": "ec0c39c5",
+          "state": "1/3"
+        },
+        {
+          "head": "Phase 10 — Material accuracy (round 10) {#phase-10}",
+          "hash": "c8bfe574",
+          "state": "0/9"
+        },
+        {
+          "head": "Phase 11 — Optical parameter surface {#phase-11}",
+          "hash": "fd784663",
+          "state": "0/3"
+        },
+        {
+          "head": "Phase 12 — Ray-traced interior: spectral trace, bounce budget, glint {#phase-12}",
+          "hash": "edfe8967",
+          "state": "0/2"
+        },
+        {
+          "head": "Phase 13 — Traced caustics on the same optics {#phase-13}",
+          "hash": "f417d432",
+          "state": "0/1"
+        },
+        {
+          "head": "Phase 14 — Independent eval and close {#phase-14}",
+          "hash": "bd28dd92",
+          "state": "0/4"
+        },
+        {
+          "head": "Phase 15 — The trace becomes the stone (owner re-anchor: \"realism, and we are not close\") {#phase-15}",
+          "hash": "4126a2c7",
+          "state": "1/3"
+        },
+        {
+          "head": "Phase 16 — Material and realism (round 16, owner re-anchor: black internal reflection) {#phase-16}",
+          "hash": "908581ec",
+          "state": ""
+        }
+      ]
     }
   ],
   "2026-10-05_000000-lump-sum-builds.md": [
