@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T11:11:08.590Z",
+  "generated": "2026-11-08T11:17:52.552Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "93779ba",
+      "full": "93779bac13c83c5fd54811742d4a5bed094d041c",
+      "date": "2026-11-08",
+      "time": "16:47",
+      "subject": "fix(changelog): flow carets, day caret trails text",
+      "plan": "2026-11-02_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "ea52145",
       "full": "ea52145fa565dd16cd2507196481d94d0f9b6908",
@@ -4307,5 +4316,10 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
