@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T15:25:40.866Z",
+  "generated": "2026-11-08T16:02:39.189Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,24 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "1299daf",
+      "full": "1299daf6afc40a1f390d7f1bd69e879ce4bf9550",
+      "date": "2026-11-08",
+      "time": "21:19",
+      "subject": "chore(gem): keep gem-shader.js inside the 100-line budget",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "round-18-eval-issues"
+    },
+    {
+      "sha": "93d221d",
+      "full": "93d221d60a91623f258cec2e3e2cb60c1fa0d20e",
+      "date": "2026-11-08",
+      "time": "21:07",
+      "subject": "fix(gem): smooth pavilion fill — removes the stitched striations on the lower half",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-16"
+    },
     {
       "sha": "32fb850",
       "full": "32fb8505842ea234c1e9b44d404d07fb318e1760",
@@ -4353,9 +4371,7 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js"
+    "M src/components/GemReward/gem-optics.js",
+    "M src/components/GemReward/gem-shader.js"
   ]
 }
