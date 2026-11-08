@@ -36,13 +36,24 @@ export const orphans = (file, sprints) => {
 };
 export const badges = (list, title) => {
   if (!list.length) return '';
-  let html = title ? `<p class="ds-sub">${esc(title)} · ${list.length}</p><div class="ds-timeline">` : '<div class="ds-timeline">';
-  let last = null;
+  // Day groups are collapsible <details> with their own caret — same language
+  // as the Evals panel day groups, flush left, no timeline indent.
+  const caret = `<span class="ds-caret" aria-hidden="true">▸</span>`;
+  const byDate = new Map();
   for (const c of list) {
-    if (c.date !== last) { html += `<div class="ds-timeline-date">${esc(fmtTimelineDate(c.date))}</div>`; last = c.date; }
-    html += badgeItem(c);
+    const d = c.date || '';
+    if (!byDate.has(d)) byDate.set(d, []);
+    byDate.get(d).push(c);
   }
-  return html + '</div>';
+  const dates = [...byDate.keys()].sort().reverse();
+  const total = dates.length;
+  const groups = dates.map((d, di) => {
+    const rows = byDate.get(d);
+    const label = d ? esc(fmtTimelineDate(d)) : 'Undated';
+    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${caret}<span class="ds-day-num">Day ${total - di}</span> · ${label} · ${rows.length}</summary><div class="ds-timeline-items">${rows.map((c) => badgeItem(c)).join('')}</div></details>`;
+  }).join('');
+  const inner = `<div class="ds-timeline">${groups}</div>`;
+  return title ? `<p class="ds-sub">${esc(title)} · ${list.length}</p>${inner}` : inner;
 };
 // Commits with no matching plan file (c.plan empty, or unknown to texts).
 // Plan-scoped queries (hits/orphans) require c.plan === file, so these never

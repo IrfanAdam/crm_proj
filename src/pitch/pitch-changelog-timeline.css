@@ -69,14 +69,27 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-tl-pop__date{display:block;font-family:var(--font-mono);font-size:var(--font-size-xs);line-height:var(--leading-mono);color:var(--color-ink-dim);margin:var(--cl-2) 0 0}
 .ds-tl-chip{margin-left:auto}
 .ds-tl-chip.on{background:var(--color-surface);color:var(--color-ink);border-color:var(--color-border)}
-/* Detail-pane panels (evals/commits) · single-span caret + body inset.
-   The summaries now carry their own .ds-caret span (reference footer), so the
-   drawer ::before/::after glyphs are suppressed here — one caret per row that
-   rotates on open via the existing .ds-caret rules. Panel bodies get the same
-   horizontal inset as the padded summary label. */
+/* Detail-pane panels (evals/commits) · flat flush-left sections, single-span
+   caret per row that rotates on open via the existing .ds-caret rules.
+   The summaries carry their own .ds-caret span (reference footer), so the
+   drawer ::before/::after glyphs are suppressed here. Labels, day carets
+   and rows all start at the container edge — no tile, no spine, no indent. */
 .ds-panel > .ds-panel-title::before{content:none}
 .ds-panel .ds-timeline-group > .ds-timeline-date::after{content:none}
 .ds-panel .ds-caret{transition:transform .15s}
 .ds-day-num{color:var(--color-accent);font-weight:var(--font-weight-bold)}
-.ds-panel > .ds-sub{margin-left:var(--cl-12);margin-right:var(--cl-12)}
-.ds-panel > .ds-timeline{margin:var(--cl-4) var(--cl-12) var(--cl-12)}
+.ds-panel > .ds-sub{margin-left:0;margin-right:0;padding-left:0}
+.ds-panel > .ds-timeline{margin:var(--cl-4) 0 var(--cl-12);padding-left:0;border-left:none}
+/* Flush-left panels: no tile chrome, no hanging markers, no branch indent. */
+details.ds-panel{border:none}
+.ds-panel > .ds-panel-title{padding-left:0}
+.ds-panel .ds-timeline-date::before{content:none}
+.ds-panel .ds-timeline-group > summary{list-style:none;cursor:pointer}
+.ds-panel .ds-timeline-group > summary::-webkit-details-marker{display:none}
+.ds-panel .ds-timeline-group > summary::marker{content:""}
+.ds-panel .ds-timeline-item--eval::before{content:none}
+.ds-panel .ds-timeline-item--iter{margin-left:0;border-left:none;padding-left:0}
+/* Explicit closed-state hiding: never depend on UA details internals alone —
+   any author display rule (or quirky embed) can silently break native collapse. */
+.ds-timeline-group:not([open]) > .ds-timeline-items{display:none}
+.ds-panel:not([open]) > .ds-timeline{display:none}

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07T16:19:12.480Z",
+  "generated": "2026-11-08T10:01:46.535Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "d5be855",
+      "full": "d5be85573a5b471c164c0ac55b30a40e2add444a",
+      "date": "2026-11-07",
+      "time": "21:49",
+      "subject": "chore(ds): retro-link eb80acb plan-history sync to round2 phase-14",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-14"
+    },
     {
       "sha": "e9f6e23",
       "full": "e9f6e2316b845efa84b4a812a05641dc75461162",
@@ -4226,5 +4235,13 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/pitch/changelog-links.js",
+    "M src/pitch/pitch-changelog-drawer.css",
+    "M src/pitch/pitch-changelog-timeline.css"
+  ]
 }
