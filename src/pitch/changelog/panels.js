@@ -34,7 +34,7 @@ const dayGroup = (dayN, d, rows) => {
   const items = rows.map((r) => r.kind === 'eval'
     ? `<div class="ds-timeline-item ds-timeline-item--eval"><span>${r.text}</span></div>`
     : `<div class="ds-timeline-item ds-timeline-item--iter"><span>${r.text}</span><small>${esc(d)}</small></div>`).join('');
-  return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${caret}<span class="ds-day-num">Day ${dayN}</span><span class="ds-sub"> · ${esc(fmtDate(d) || d)} · ${rows.length}</span></summary><div class="ds-timeline-items">${items}</div></details>`;
+  return `<details class="ds-timeline-group" open><summary class="ds-timeline-date"><span class="ds-day-num">Day ${dayN}</span><span class="ds-sub"> · ${esc(fmtDate(d) || d)} · ${rows.length}</span>${caret}</summary><div class="ds-timeline-items">${items}</div></details>`;
 };
 export const renderEvals = (planFile, planDate, head, body) => {
   const g = parseGates(head, body);

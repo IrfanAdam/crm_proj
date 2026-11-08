@@ -80,15 +80,15 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
 .ds-day-num{color:var(--color-accent);font-weight:var(--font-weight-bold)}
 .ds-panel > .ds-sub{margin-left:0;margin-right:0;padding-left:var(--cl-16)}
 .ds-panel > .ds-timeline{margin:var(--cl-4) 0 var(--cl-12);padding-left:var(--cl-16);border-left:var(--cl-1) solid var(--color-border)}
-/* One text column: carets corner-on-the-spine (absolute, rotation untouched),
-   every label/row/item starts at the same edge; dots straddle the line. */
+/* One text column: label caret flows at the edge on the spine, day caret
+   trails the text; every label/row/item starts at the same edge. */
 details.ds-panel{border:none}
-.ds-panel > .ds-panel-title{position:relative;display:flex;align-items:center;padding-left:calc(var(--cl-16) + var(--cl-1))}
-.ds-panel > .ds-panel-title .ds-caret{position:absolute;left:0;top:auto;margin:0}
+.ds-panel > .ds-panel-title{display:flex;align-items:center;padding-left:0}
+.ds-panel > .ds-panel-title .ds-caret{margin-right:var(--cl-8)}
 .ds-panel .ds-timeline-group > summary{position:relative;display:flex;align-items:center;list-style:none;cursor:pointer}
 .ds-panel .ds-timeline-group > summary::-webkit-details-marker{display:none}
 .ds-panel .ds-timeline-group > summary::marker{content:""}
-.ds-panel .ds-timeline-group > summary .ds-caret{position:absolute;left:calc(-1 * var(--cl-16));top:auto;margin:0}
+.ds-panel .ds-timeline-group > summary .ds-caret{margin-left:var(--cl-8)}
 .ds-panel .ds-timeline-date .ds-sub{margin-top:0;margin-bottom:0}
 .ds-panel .ds-timeline-date::before{left:calc(-1 * var(--cl-16) - var(--cl-4));background:var(--color-ink-muted);border-color:var(--color-ink-muted);box-shadow:0 0 0 var(--cl-2) var(--color-bg)}
 .ds-panel .ds-timeline-item:not(.ds-timeline-item--eval):not(.ds-timeline-item--iter)::before{content:"";position:absolute;left:calc(-1 * var(--cl-16) - var(--cl-4));top:var(--cl-8);width:var(--cl-7);height:var(--cl-7);background:var(--color-bg);border:var(--cl-1) solid var(--color-ink-muted);border-radius:50%;box-sizing:border-box}
