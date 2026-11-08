@@ -1,97 +1,99 @@
 /* ADAM/SHARED — src/components/GemReward/gem-bare.js · stageless hero dressing */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · backdrop plane + light-cast floors.
-// — Light: the floors are defined by the scene's key directional (3,5,4), not pinned under the — 
-// —        culet — the contact shadow lies opposite the light, stretched on its ground azimuth, — 
-// —        and gem3d re-aims both pools per frame from the stone's height, yaw and pitch. — 
-// — Hero: the bare stone's pool is spread wider and carries less weight than the staged card's — 
-// —        (HERO_SPREAD/HERO_SOFT) — softer and blurrier, so it never competes with the facets. — 
-// — Card: the staged rig aims too (yaw turns the pool, pitch throws it forward) but keeps today's — 
-// —        contact pose at rest (h0) — its pool is the cut's own shape (GEM_CAUSTIC) at 1:1 on the — 
-// —        footprint, and its umbra is lighter and wider (CARD_SOFT/CARD_SPREAD) for a light stage — 
-// Export map: GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy, cut) → { shadow, caustic, ground, rest, k, so, base }.
+// — Light: both floors derive from the scene's key (3,5,4); gem3d re-aims them per frame from the stone's height, yaw
+// —        and pitch, so the light reads as the thing deciding where they land.
+// — Shadow (Task 41): a wide umbra wash plus a contact core pinned to the culet's own pixel — cast along the eye ray
+// —        through that pixel, because the floor under the stone is cropped (straight down lands off-frame) and a fixed
+// —        z-offset detaches as the tilt lifts the culet. Both sit under the additive caustic (−2 < −1.4 < −1), so E2's lift is untouched.
+// Export map: GEM_BARE.dress(T, scene, geo, bb, h, rad, color, bare, gscale, cy, cut) → { shadow, contact, caustic, ground, rest, k, so, base }.
 (function () {
 const KEY = { x: 3, y: 5, z: 4 };              // gem-scene's key directional — the floors are derived from it
 const GROUND = { x: -KEY.x / KEY.y, z: -KEY.z / KEY.y };   // ground shift the key throws per unit of height
 const PULL = 0.5;                              // how far the caustic travels for a lift of the stone's own height
-const UMBRA = 0.28;                            // the dark pool barely leaves the contact point — see aim()
-const HERO_SOFT = 0.48;                        // bare hero: the pool carries less weight → softer penumbra (Task 5)
-const HERO_SPREAD = 1.55;                      // bare hero: wider quad → blurred edge, matches caustic ring softness
-const CARD_SOFT = 0.48;                        // staged card: softened to relax tight penumbra (Task 5)
-const CARD_SPREAD = 1.48;                      // staged card: wider quad → penumbra softness vs caustic ring
+const UMBRA = 0.28;                            // the dark wash barely leaves the contact point — see aim()
+const HERO_SOFT = 0.48, CARD_SOFT = 0.48;      // pool weight per stage: bare hero vs staged card (Task 5)
+const HERO_SPREAD = 1.55, CARD_SPREAD = 1.48;  // wash quad spread: bare hero vs card, against the caustic ring's softness
+const CORE = { w: 1.6, d: 0.8, op: 0.2 };      // contact core: world size · weight (aim re-pins it to the culet's pixel)
 const CARD_AZ = Math.atan2(KEY.z, KEY.x);      // long-axis aligns with key ground azimuth (3,4) → 53.13° (±5° probe)
 function floor(T, tex, y, scale, order) {
   const m = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: tex, transparent: true, blending: order === -1 ? T.AdditiveBlending : T.NormalBlending, depthWrite: false }));
   m.rotation.x = -Math.PI / 2;
-  m.position.y = y;
+  m.position.y = y; m.renderOrder = order;
   m.scale.setScalar(scale);
-  m.renderOrder = order;
   return m;
 }
-// — aim(): the per-frame half — the pools are re-placed from the stone's live height, yaw and pitch, —
-// — so the light reads as the thing deciding where they land (and they keep up while it is dragged). —
-// — Staged rigs share the same law: h0 keeps the neutral pose on today's contact composition, so only —
-// — yaw, pitch and the stone's float move them off it.
+// — coreTex(): the core's own map — a dense umbra (α .62 at the contact, half its weight inside ~5 css px) falling
+// — monotonically to zero at the quad edge. The shared wash map's 0.22r shoulder is too broad: sized for a 60-90 px
+// — tail it also gives a 20 px dark plateau, which reads as a blob.
+let coreMap;
+function coreTex(T) {
+  if (coreMap) return coreMap;
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+  const c = cv.getContext('2d'), g = c.createRadialGradient(64, 64, 0, 64, 64, 63);
+  [[0, .62], [.06, .50], [.14, .34], [.28, .21], [.45, .13], [.65, .07], [.84, .03], [1, 0]].forEach(function (p) {
+    g.addColorStop(p[0], 'rgba(' + (p[0] < .3 ? '48,34,22' : '84,97,120') + ',' + p[1] + ')');   // warm umbra → cool tail
+  });
+  c.fillStyle = g; c.fillRect(0, 0, 128, 128);
+  // — both in-plane axes project to screen-right (the floor is nearly edge-on), so tapering the +u and +v ends
+  // — shortens the key-facing side and leaves the penumbra to run down-left, away from the light.
+  c.globalCompositeOperation = 'destination-in';
+  [[0, 0, 128, 0, [1, 1, .32]], [0, 0, 0, 128, [.36, 1, 1]]].forEach(function (q) {
+    const m = c.createLinearGradient(q[0], q[1], q[2], q[3]);
+    q[4].forEach(function (a, i) { m.addColorStop([0, .55, 1][i], 'rgba(0,0,0,' + a + ')'); });
+    c.fillStyle = m; c.fillRect(0, 0, 128, 128);
+  });
+  coreMap = new T.CanvasTexture(cv); coreMap.colorSpace = T.SRGBColorSpace;
+  return coreMap;
+}
+// — aim(): the per-frame half — the pools are re-placed from the stone's live height, yaw and pitch, so the light reads
+// — as the thing deciding where they land. Staged rigs keep the neutral pose at rest (h0): only yaw, pitch, float move them.
 const aim = function (rig) {
-  const fl = rig.floors;
-  if (!fl || !fl.base) return;
-  const g = rig.group;
-  const hgt = fl.rest + g.position.y;                  // stone-centre height above the contact plane
-  const k = hgt / fl.rest;                             // 1 at rest, >1 lifted, <1 dipped
-  const h0 = rig.stageBg ? fl.rest : 0;                // staged: rest height is the neutral pose (no jump at rest)
-  const gx = fl.ground.x * (hgt - h0) * fl.k;
-  const gz = fl.ground.z * (hgt - h0) * fl.k;          // no 0.6 damping — keeps shadow vector collinear with key (±5°)
-  // — the cast pool is NOT an ornament hung under the stone: gem-caustic publishes the quad's own
-  // — screen motion (off.x/off.z, world units on the floor) pinned to the camera ray through the stone's
-  // — projected vertex centroid, so the pool slides exactly as far as the stone does (Task 26's 1:1), and
-  // — off.s, the traced landing-points' RMS spread, drives its magnification. ±12 % is a stability guard
-  // — on the spread ratio, not a target.
+  const fl = rig.floors; if (!fl || !fl.base) return;   // no floors dressed yet
+  const g = rig.group, hgt = fl.rest + g.position.y;   // stone-centre height above the contact plane
+  const k = hgt / fl.rest, h0 = rig.stageBg ? fl.rest : 0;   // k: 1 at rest, >1 lifted, <1 dipped; staged h0 = neutral
+  const gx = fl.ground.x * (hgt - h0) * fl.k, gz = fl.ground.z * (hgt - h0) * fl.k;   // no 0.6 damping: collinear with key
+  // — the cast pool is NOT an ornament hung under the stone: gem-caustic publishes the quad's own screen motion
+  // — (off.x/off.z) pinned to the ray through the stone's centroid, so it slides as far as the stone does (Task 26's 1:1).
   const mp = fl.caustic.material.map, traced = !!(mp && mp.userData && mp.userData.gemCaustic);
-  const off = traced && window.GEM_CAUSTIC ? window.GEM_CAUSTIC.off : null;
-  const ox = off ? off.x : 0, oz = off ? off.z : 0;
-  const fs = off && off.s > 0 ? Math.max(0.88, Math.min(1.12, off.s)) : 1;
-  fl.shadow.position.x = gx * UMBRA;                   // the stone is a lens: almost no umbra, so the dark pool stays
-  fl.shadow.position.z = gz * UMBRA;                   // on the contact point while the cast light lands off-axis below
-  fl.shadow.scale.set(fl.base.sx * (0.94 + 0.1 * k), fl.base.sy * (0.94 + 0.1 * k), 1);
-  fl.shadow.material.opacity = (fl.so * 0.62) / (0.45 + 0.55 * k);
-  fl.caustic.position.x = gx + ox;
-  fl.caustic.position.z = fl.base.cz + gz + oz;
-  fl.caustic.scale.setScalar(fl.base.cs * (1 + 0.3 * (k - 1)) * fs);
-  fl.caustic.material.opacity = 0.72 - g.position.y * 2.2;
+  const off = traced && window.GEM_CAUSTIC ? window.GEM_CAUSTIC.off : null;   // the pool's published 1:1 motion
+  const ox = off ? off.x : 0, oz = off ? off.z : 0, fs = off && off.s > 0 ? Math.max(0.88, Math.min(1.12, off.s)) : 1;   // ±12 %
+  fl.shadow.position.set(gx * UMBRA, fl.shadow.position.y, gz * UMBRA);   // the stone is a lens: almost no umbra, so
+  fl.shadow.scale.set(fl.base.sx * (0.94 + 0.1 * k), fl.base.sy * (0.94 + 0.1 * k), 1);   // the wash stays on the contact
+  fl.shadow.material.opacity = (fl.so * 0.62) / (0.45 + 0.55 * k);                        // point, light lands off-axis
+  fl.contact.visible = fl.shadow.visible;               // the panel's Floor toggle owns the core too
+  const cam = rig.camera, vp = fl.vp || (fl.vp = new window.THREE.Vector3());
+  vp.set(0, fl.cu, 0).applyMatrix4(g.matrixWorld).project(cam); vp.set(vp.x, vp.y, 0.5).unproject(cam).sub(cam.position).normalize();  // culet pixel → eye ray
+  const tp = (fl.contact.position.y - cam.position.y) / (vp.y || -1e-6);  // cast onto the floor plane by that ray
+  fl.contact.position.set(cam.position.x + vp.x * tp, fl.contact.position.y, cam.position.z + vp.z * tp);
+  fl.contact.scale.set(fl.base.qx * (0.9 + 0.22 * k), fl.base.qy * (0.9 + 0.22 * k), 1); fl.contact.material.opacity = CORE.op / (0.55 + 0.45 * k);
+  fl.caustic.position.x = gx + ox; fl.caustic.position.z = fl.base.cz + gz + oz;
+  fl.caustic.scale.setScalar(fl.base.cs * (1 + 0.3 * (k - 1)) * fs); fl.caustic.material.opacity = 0.72 - g.position.y * 2.2;
 };
 window.GEM_BARE = {
   aim: aim,
   dress: function (T, scene, geo, bb, h, rad, color, bare, gscale, cy, cut) {
     if (!window.GEM_TEXTURES || !window.GEM_TEXTURES.caustic) return null;
-    const GX = window.GEM_TEXTURES;
-    const s = gscale || 1;
+    const GX = window.GEM_TEXTURES, stx = GX.shadow(), s = gscale || 1;
     const rest = cy - (bb.min.y - h * 0.12) * s;   // stone-centre height above the contact plane at rest
-    if (bare) {
+    if (bare) {   // the bare stage sits on the page itself: an 80-unit backdrop plane in the body's own colour
       const bp = new T.Mesh(new T.PlaneGeometry(80, 80), new T.MeshBasicMaterial({ color: new T.Color(getComputedStyle(document.body).backgroundColor) }));
-      bp.material.toneMapped = false;
-      bp.position.z = -12;
-      scene.add(bp);
+      bp.material.toneMapped = false; bp.position.z = -12; scene.add(bp);
     }
-    // the card's pool is the cut's own silhouette (gem-caustic.js) at the plane's existing scale (1:1 on the
-    // footprint); the bare hero keeps the texture pool — GEM_CAUSTIC absent → both fall back to it
+    // the card's pool is the cut's own silhouette (gem-caustic.js) at the plane's existing scale (1:1 on the footprint)
     const pool = !bare && cut && window.GEM_CAUSTIC ? (function () { try { return window.GEM_CAUSTIC.pool(color, cut); } catch (e) { return null; } })() : null;
-    const shadow = floor(T, GX.shadow(), (bb.min.y - h * 0.12) * s, rad * 1.45 * s, -2);
+    const shadow = floor(T, stx, (bb.min.y - h * 0.12) * s, rad * 1.45 * s, -2);
+    const contact = floor(T, coreTex(T), (bb.min.y - h * 0.12) * s + 0.004, 1, bare ? 0 : -1.4);   // over the wash, under the pool
     const caustic = floor(T, pool || GX.caustic(color), (bb.min.y - h * 0.1) * s, rad * 1.5 * s, -1);
-    if (!bare) {
-      shadow.position.y = bb.min.y - h * 0.26;
-      caustic.position.y = bb.min.y - h * 0.2;
-      caustic.scale.setScalar(rad * 2.4);
-      shadow.rotation.z = -CARD_AZ;   // plane is rotated -90° about X first: +CARD_AZ would mirror the axis
-      shadow.scale.set(rad * 2.6 * CARD_SPREAD * 1.16, rad * 2.6 * CARD_SPREAD * 0.88, 1);
-    } else {
-      // — the umbra leans away from the key and stretches on its azimuth, but only a little: the stone —
-      shadow.rotation.z = -CARD_AZ;   // same mirror fix as the card — long axis on the key's ground azimuth
-      shadow.scale.set(shadow.scale.x * 1.16 * HERO_SPREAD, shadow.scale.y * 0.88 * HERO_SPREAD, 1);
-    }
-    scene.add(shadow);
-    scene.add(caustic);
-    return { shadow: shadow, caustic: caustic, ground: GROUND, rest: rest, k: PULL, so: bare ? HERO_SOFT : CARD_SOFT, gs: s,
-      poolArgs: { color: color, cut: cut },
-      base: { sx: shadow.scale.x, sy: shadow.scale.y, cs: caustic.scale.x, cz: caustic.position.z, cy: caustic.position.y } };
+    const card = !bare;
+    if (card) { shadow.position.y = bb.min.y - h * 0.26; caustic.position.y = bb.min.y - h * 0.2; caustic.scale.setScalar(rad * 2.4); }   // card floor sits lower
+    shadow.rotation.z = -CARD_AZ;    // plane is rotated -90° about X first: +CARD_AZ would mirror the axis
+    shadow.scale.set(card ? rad * 2.6 * CARD_SPREAD * 1.16 : shadow.scale.x * 1.16 * HERO_SPREAD,
+      card ? rad * 2.6 * CARD_SPREAD * 0.88 : shadow.scale.y * 0.88 * HERO_SPREAD, 1);
+    contact.rotation.z = -CARD_AZ;   // the core's long axis rides the same azimuth as the wash
+    contact.position.set(0, shadow.position.y + 0.004, 0);   // aim() re-pins x/z to the culet's pixel
+    contact.scale.set(CORE.w * rad * s * 1.16, CORE.d * rad * s * 0.88, 1); scene.add(shadow, contact, caustic);
+    return { shadow: shadow, contact: contact, caustic: caustic, ground: GROUND, rest: rest, k: PULL, so: bare ? HERO_SOFT : CARD_SOFT, gs: s, cu: bb.min.y, poolArgs: { color: color, cut: cut },
+      base: { sx: shadow.scale.x, sy: shadow.scale.y, cs: caustic.scale.x, cz: caustic.position.z, cy: caustic.position.y, qx: contact.scale.x, qy: contact.scale.y } };
   }
 };
 })();

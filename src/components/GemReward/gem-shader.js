@@ -13,38 +13,42 @@ const T = window.THREE;
 const OD = (window.GEM_OPTICS && window.GEM_OPTICS.of('sapphire')) || { n: { trace: 2.4 }, reflect: { crisp: 0.05, broad: 0.30, luma: 0.55, lumaB: 0.85, shK: 0.9, bounce: 3, mirror: 2.2, win: 1.8 }, absorb: { scale: 1 }, light: { exp: 1, gam: 1, amb: 0.1 } };
 api.FIT = { sapphire: { e: 6.2, g: 0.74, k: 0.55 }, citrine: { e: 3.8, g: 0.74, k: 0.55 }, amethyst: { e: 5.0, g: 0.74, k: 0.62 }, redberyl: { e: 7.0, g: 0.74, k: 0.60 } }; api.AMB = 0.10;
 const VS = 'varying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\nvoid main() {\n\tvec4 wp = modelMatrix * vec4( position, 1.0 );\n\tvW = wp.xyz;\n\tvO = position;\n\tvN = normalize( mat3( modelMatrix ) * normal );\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}';
-const HEAD = 'uniform vec4 uPl[PLMAX];\nuniform sampler2D uPlTex;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform int uCount;\nuniform float ior, uKS, uExp, uGam, uAmb, winGain, stageOn, gain, dbg, uCr, uBr, uLu, uLuB, uSh, uBounce, uSpread, uTaps;\nuniform vec3 uK, tint;\nuniform vec4 uKey;\nuniform mat4 uM;\nuniform vec3 rampDeep, rampMid, rampLite, rampPink;\nvarying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\n#include <cube_uv_reflection_fragment>\n' +
+const HEAD = 'uniform vec4 uPl[PLMAX];\nuniform sampler2D uPlTex;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform int uCount;\nuniform float ior, uKS, uExp, uGam, uAmb, winGain, stageOn, gain, dbg, uCr, uBr, uLu, uLuB, uSh, uBounce, uSpread, uTaps, uSw, uBk, uRf;\nuniform vec3 uK, tint;\nuniform vec4 uKey;\nuniform mat4 uM;\nuniform vec3 rampDeep, rampMid, rampLite, rampPink;\nvarying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\n#include <cube_uv_reflection_fragment>\n' +
 'vec4 PL( int i ) {\n#ifdef PLTEX\n\treturn texture2D( uPlTex, vec2( ( float( i ) + 0.5 ) / float( PLMAX ), 0.5 ) );\n#else\n\treturn uPl[ i ];\n#endif\n}\n' +
 'float lum( vec3 c ) { return dot( c, vec3( 0.2126, 0.7152, 0.0722 ) ); }\nvec3 aces( vec3 x ) { return clamp( ( x * ( 2.51 * x + 0.03 ) ) / ( x * ( 2.43 * x + 0.59 ) + 0.14 ), 0.0, 1.0 ); }\n' +
 // env: crisp tap = facet image (the structure), broad tap = fill; both pulled toward their own luma so the studio's blue tent cannot repaint an amber stone.
 'vec3 sh( vec3 s, float k ) { return s * k / ( k + s ); }\nvec3 keyT( vec3 d ) {\n\tvec3 e = normalize( d ), k = normalize( uKey.xyz );\n\treturn vec3( ( pow( max( dot( e, k ), 0.0 ), 90.0 ) + 0.10 * pow( max( dot( e, normalize( vec3( -k.x, 0.30 * k.y, -k.z ) ) ), 0.0 ), 5.0 ) ) * uKey.w );\n}\n' +
-'vec3 envR( vec3 d, mat3 R ) {\n\tvec3 e = normalize( R * d );\n#ifdef ENVMAP_TYPE_CUBE_UV\n\tvec3 s0 = textureCubeUV( envMap, e, uCr ).rgb;\n\tvec3 s1 = textureCubeUV( envMap, e, uBr ).rgb;\n' +
-'\treturn keyT( e ) + sh( mix( s0, vec3( lum( s0 ) ), uLu ), uSh ) + sh( mix( s1, vec3( lum( s1 ) ), uLuB ), uSh ) * gain;\n#else\n\treturn vec3( 0.05 ) + 0.02 * lum( e );\n#endif\n}\n';
+    'vec3 studio( vec3 e ) {\n\tfloat fl = smoothstep( 0.05, 0.30, -e.y ) * ( 1.0 - smoothstep( 0.80, 0.97, -e.y ) );\n\tvec3 hz = normalize( vec3( e.x, 0.0, e.z ) + vec3( 1e-4, 0.0, 1e-4 ) );\n\tvec3 kz = normalize( vec3( uKey.x, 0.0, uKey.z ) + vec3( 1e-4, 0.0, 1e-4 ) );\n\tfloat sh = mix( 0.35, 1.0, smoothstep( -0.35, 0.85, dot( hz, kz ) ) );\n\tfloat bk = smoothstep( 0.55, 0.08, abs( e.y ) ) * ( 0.45 + 0.55 * smoothstep( 0.25, -0.45, e.z ) );\n\treturn vec3( 1.0, 0.985, 0.96 ) * ( uSw * fl * sh ) + vec3( 0.94, 0.95, 0.96 ) * ( uBk * bk );\n}\n' +
+    'vec3 envR( vec3 d, mat3 R ) {\n\tvec3 e = normalize( R * d );\n#ifdef ENVMAP_TYPE_CUBE_UV\n\tvec3 s0 = textureCubeUV( envMap, e, uCr ).rgb;\n\tvec3 s1 = textureCubeUV( envMap, e, uBr ).rgb;\n' +
+'\treturn keyT( e ) + studio( e ) + sh( mix( s0, vec3( lum( s0 ) ), uLu ), uSh ) + sh( mix( s1, vec3( lum( s1 ) ), uLuB ), uSh ) * gain;\n#else\n\treturn vec3( 0.05 ) + 0.02 * lum( e );\n#endif\n}\n';
 // the spectrum is a property of the PATH, not of the exit: tr() is the whole interior trace at one index, and main
 // runs it once per wavelength (R lo, G n, B hi; 5 taps adds yellow/cyan). Fresnel, TIR and Beer-Lambert are per hit.
 const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
-    'vec3 tr( vec3 ro, vec3 rd, float n, mat3 R ) {\n\tgTot = 0.0;\n\tgNb = 0.0;\n\tfloat tin = -1.0;\n\tint ei = 0;\n\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\tif ( i >= uCount ) break;\n\t\tvec4 P = PL( i );\n\t\tfloat s = dot( P.xyz, ro ) + P.w, den = dot( P.xyz, rd );\n\t\tif ( s > 1e-5 && den < -1e-6 ) { float t = -s / den; if ( t > tin ) { tin = t; ei = i; } }\n\t}\n' +
-    '\tif ( tin < 0.0 ) {\n#ifdef CORE\n\t\tdiscard;\n#endif\n\t\treturn vec3( 0.0 ); }\n' +
-    '\tvec3 ne = PL( ei ).xyz;\n\tgNe = ne;\n\tvec3 dl = refract( rd, ne, 1.0 / n );\n\tif ( dot( dl, dl ) < 1e-6 ) dl = rd;\n\tvec3 p = ro + rd * tin;\n\tvec3 acc = vec3( 0.0 ), ab = vec3( 1.0 );\n' +
-    '\tfloat F0 = pow( ( n - 1.0 ) / ( n + 1.0 ), 2.0 );\n\tint skip = ei;\n\tfloat esc = 0.0;\n' +
-    '\tfor ( int b = 0; b < 6; b++ ) {\n\t\tif ( float( b ) >= uBounce ) break;\n\t\tfloat t = 1e9;\n\t\tint hi = -1;\n' +
-    '\t\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\t\tif ( i >= uCount || i == skip ) continue;\n\t\t\tvec4 P = PL( i );\n\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\tif ( abs( den ) < 1e-6 ) continue;\n\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = i; }\n\t\t}\n' +
+    // entry = one plane per ray: the last plane the ray is still outside of (s > 0, heading at it, max t), object space.
+    // r18/f: it also keeps the runner-up plane. The girdle is 48 walls 7.5 deg apart, so near the silhouette two of them
+    // land within one pixel of each other and winning is a coin toss: that toss is the collar static. tau is the ray's
+    // per-pixel footprint (computed once in main), so the blend below is exactly one pixel wide at any DPR or distance.
+    'vec4 ent( vec3 ro, vec3 rd, float tau ) {\n\tfloat t1 = -1.0, t2 = -1.0;\n\tint e1 = -1, e2 = -1;\n\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\tif ( i >= uCount ) break;\n\t\tvec4 P = PL( i );\n\t\tfloat s = dot( P.xyz, ro ) + P.w, den = dot( P.xyz, rd );\n\t\tif ( s > 1e-5 && den < -1e-6 ) { float t = -s / den; if ( t > t1 ) { t2 = t1; e2 = e1; t1 = t; e1 = i; } else if ( t > t2 ) { t2 = t; e2 = i; } }\n\t}\n' +
+    '\tvec3 n1 = PL( max( e1, 0 ) ).xyz, n2 = n1;\n\tfloat h = 1.0;\n\tif ( e2 >= 0 ) {\n\t\tn2 = PL( e2 ).xyz;\n' +
+    // near-parallel only (cos 13 deg): a real crease keeps its hard edge, so crown/pavilion structure cannot be softened.
+    '\t\tif ( dot( n1, n2 ) > 0.974 ) h = clamp( 0.5 + ( t1 - t2 ) / ( 2.0 * tau * max( t1, 1e-3 ) ), 0.0, 1.0 );\n\t}\n' +
+    '\tif ( e1 < 0 ) { gNe = vec3( 0.0, 0.0, 1.0 );\n\t\treturn vec4( -1.0, 0.0, -1.0, 0.0 ); }\n' +
+    '\tgNe = normalize( mix( n2, n1, h ) );\n\treturn vec4( mix( t2, t1, h ), float( e1 ), h < 1.0 ? float( e2 ) : -1.0, 1.0 );\n}\n' +
+    'vec3 tr( vec3 ro, vec3 rd, float n, mat3 R, vec4 E ) {\n\tgTot = 0.0;\n\tgNb = 0.0;\n\tfloat tin = E.x;\n\tif ( tin < 0.0 ) {\n#ifdef CORE\n\t\tdiscard;\n#endif\n\t\treturn vec3( 0.0 ); }\n' +
+    '\tvec3 ne = gNe;\n\tint ei = int( E.y );\n\tvec3 dl = refract( rd, ne, 1.0 / n );\n\tif ( dot( dl, dl ) < 1e-6 ) dl = rd;\n\tvec3 p = ro + rd * tin;\n\tvec3 acc = vec3( 0.0 ), ab = vec3( 1.0 );\n' +
+    '\tfloat F0 = pow( ( n - 1.0 ) / ( n + 1.0 ), 2.0 );\n\tint skip = ei, sk2 = int( E.z );\n\tfloat esc = 0.0;\n\tfor ( int b = 0; b < 6; b++ ) {\n\t\tif ( float( b ) >= uBounce ) break;\n\t\tfloat t = 1e9;\n\t\tint hi = -1;\n\t\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\t\tif ( i >= uCount || i == skip || i == sk2 ) continue;\n\t\t\tvec4 P = PL( i );\n\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\tif ( abs( den ) < 1e-6 ) continue;\n\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = i; }\n\t\t}\n' +
     '\t\tif ( hi < 0 ) break;\n\t\tp += dl * t;\n\t\tgTot += t;\n\t\tgNb += 1.0;\n\t\tab *= exp( -uK * ( t * uKS ) );\n\t\tvec3 nh = PL( hi ).xyz;\n\t\tfloat c = clamp( dot( dl, nh ), 0.0, 1.0 );\n' +
     '\t\tif ( n * n * ( 1.0 - c * c ) < 1.0 ) {\n\t\t\tfloat F = F0 + ( 1.0 - F0 ) * pow( 1.0 - c, 5.0 );\n\t\t\tacc += ( 1.0 - F ) * envR( refract( dl, -nh, n ), R ) * ab;\n\t\t\tesc = 1.0;\n\t\t\tbreak;\n\t\t}\n' +
     '\t\tdl = reflect( dl, nh );\n\t\tskip = hi;\n\t}\n' +
     '\tif ( esc < 0.5 ) acc += ab * envR( dl, R ) * 0.55;\n\tgAb = ab;\n\treturn acc;\n}\n' +
-    'void main() {\n' +
-    'vec3 w = normalize( vW - cameraPosition );\n' +
+    'void main() {\nvec3 w = normalize( vW - cameraPosition );\n' +
     // the plane set is object space, so one transform in and one out — no inverse matrix (and no ES-3 `inverse`).
-    'float sc = length( uM[ 0 ].xyz );\n\tmat3 R = mat3( uM ) / sc;\n\tvec3 rel = cameraPosition - uM[ 3 ].xyz;\n' +
-    '\tvec3 ro = vec3( dot( R[ 0 ], rel ), dot( R[ 1 ], rel ), dot( R[ 2 ], rel ) ) / sc;\n' +
-    '\tvec3 rd = vec3( dot( R[ 0 ], w ), dot( R[ 1 ], w ), dot( R[ 2 ], w ) );\n' +
-    // one path per wavelength: R at n(1-s), B at n(1+s); G last so gAb/gTot describe the base index.
-    '\tvec3 acc; if ( uTaps < 2.0 ) acc = tr( ro, rd, ior, R );\n\telse {\n' +
-    '\t\tvec3 c0 = tr( ro, rd, ior * ( 1.0 - uSpread ), R ), c4 = tr( ro, rd, ior * ( 1.0 + uSpread ), R ), c2 = tr( ro, rd, ior, R );\n' +
-    '\t\tif ( uTaps > 4.0 ) {\n\t\t\tc0 = mix( c0, tr( ro, rd, ior * ( 1.0 - 0.45 * uSpread ), R ), 0.5 );\n\t\t\tc4 = mix( c4, tr( ro, rd, ior * ( 1.0 + 0.45 * uSpread ), R ), 0.5 );\n\t\t}\n\t\tacc = vec3( c0.r, c2.g, c4.b );\n\t}\n' +
-    '\tif ( dbg > 0.5 ) { gl_FragColor = vec4( gTot / 3.0, gNb / 3.0, 1.0 - gAb.g, 1.0 ); return; }\n' +
-    '\tvec3 lin = acc * uExp + uAmb * ( 1.0 - gAb ) * tint;\n#ifdef CORE\n\tfloat cf = clamp( -dot( rd, gNe ), 0.0, 1.0 );\n\tfloat Ff = pow( ( ior - 1.0 ) / ( ior + 1.0 ), 2.0 );\n\tFf = Ff + ( 1.0 - Ff ) * pow( 1.0 - cf, 5.0 );\n\tlin = Ff * envR( reflect( rd, gNe ), R ) + ( 1.0 - Ff ) * lin;\n#endif\n' +
+    'float sc = length( uM[ 0 ].xyz );\n\tmat3 R = mat3( uM ) / sc;\n\tvec3 rel = cameraPosition - uM[ 3 ].xyz;\n\tvec3 ro = vec3( dot( R[ 0 ], rel ), dot( R[ 1 ], rel ), dot( R[ 2 ], rel ) ) / sc;\n\tvec3 rd = vec3( dot( R[ 0 ], w ), dot( R[ 1 ], w ), dot( R[ 2 ], w ) );\n' +
+    // tau = how far rd moves per pixel (0.9 of a pixel); the entry is resolved once and shared by every wavelength.
+    '\tfloat tau = 0.9 * ( length( dFdx( rd ) ) + length( dFdy( rd ) ) );\n\tvec4 E = ent( ro, rd, tau );\n\tvec3 acc; if ( uTaps < 2.0 ) acc = tr( ro, rd, ior, R, E );\n\telse {\n' +
+    '\t\tvec3 c0 = tr( ro, rd, ior * ( 1.0 - uSpread ), R, E ), c4 = tr( ro, rd, ior * ( 1.0 + uSpread ), R, E ), c2 = tr( ro, rd, ior, R, E );\n' +
+    '\t\tif ( uTaps > 4.0 ) {\n\t\t\tc0 = mix( c0, tr( ro, rd, ior * ( 1.0 - 0.45 * uSpread ), R, E ), 0.5 );\n\t\t\tc4 = mix( c4, tr( ro, rd, ior * ( 1.0 + 0.45 * uSpread ), R, E ), 0.5 );\n\t\t}\n\t\tacc = vec3( c0.r, c2.g, c4.b );\n\t}\n' +
+    '\tif ( dbg > 0.5 ) { gl_FragColor = vec4( gTot / 3.0, gNb / 3.0, 1.0 - gAb.g, 1.0 ); return; }\n\tvec3 lin = acc * uExp + uAmb * ( 1.0 - gAb ) * tint;\n#ifdef CORE\n\tfloat cf = clamp( -dot( rd, gNe ), 0.0, 1.0 );\n\tfloat Ff = pow( ( ior - 1.0 ) / ( ior + 1.0 ), 2.0 );\n\tFf = Ff + ( 1.0 - Ff ) * pow( 1.0 - cf, 5.0 );\n\tlin = Ff * envR( reflect( rd, gNe ), R ) * ( 1.0 - uRf * Ff ) + ( 1.0 - Ff ) * lin;\n#endif\n' +
     '\tgl_FragColor = vec4( clamp( pow( aces( lin ), vec3( 1.0 / uGam ) ), 0.0, 1.0 ), 1.0 );\n}';
 api.setup = function () {   // build the plane set once from the shared cut — same 136 vertices / 268 triangles
 const C = window.GEM_CUT;
@@ -69,7 +73,7 @@ tint: { value: (o.tint && o.tint.isColor) ? o.tint : new T.Color(0.11, 0.29, 0.8
 rampDeep: { value: rc('deep', [0.031, 0.09, 0.345]) }, rampMid: { value: rc('mid', [0.11, 0.29, 0.83]) },
 rampLite: { value: rc('lite', [0.42, 0.47, 0.62]) }, rampPink: { value: rc('pink', [0.85, 0.48, 0.78]) },
 uPl: { value: null }, uPlTex: { value: null }, uCount: { value: defines.PLMAX },
-uK: { value: new T.Vector3(1, 1, 1) }, uM: { value: new T.Matrix4() }, uKS: { value: OD.absorb.scale }, uExp: { value: OD.light.exp }, uGam: { value: OD.light.gam }, uAmb: { value: OD.light.amb },
+uK: { value: new T.Vector3(1, 1, 1) }, uM: { value: new T.Matrix4() }, uKS: { value: OD.absorb.scale }, uExp: { value: OD.light.exp }, uGam: { value: OD.light.gam }, uAmb: { value: OD.light.amb }, uSw: { value: 0.35 }, uBk: { value: 0.0 }, uRf: { value: 0 },
 uCr: { value: OD.reflect.crisp }, uBr: { value: OD.reflect.broad }, uLu: { value: OD.reflect.luma }, uLuB: { value: OD.reflect.lumaB }, uSh: { value: OD.reflect.shK }, uBounce: { value: OD.reflect.bounce }, uSpread: { value: OD.fire ? OD.fire.spread : 0 }, uTaps: { value: OD.fire ? OD.fire.taps : 3 },
 uKey: { value: o.key || new T.Vector4(3, 5, 4, 0.55) },
 }, vertexShader: VS, fragmentShader: HEAD + BODY });

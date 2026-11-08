@@ -11,7 +11,7 @@
 (function () {
 const api = {};
 window.GEM_OPTICS = api;
-const FIT = { sapphire: { e: 9.0, k: 0.55 }, citrine: { e: 3.8, k: 0.55 }, amethyst: { e: 5.0, k: 0.62 }, redberyl: { e: 7.0, k: 0.60 } };
+const FIT = { sapphire: { e: 6.6, k: 0.90, g: 0.74, a: 0.10, sw: 0.35, bk: 0 }, citrine: { e: 3.8, k: 0.55 }, amethyst: { e: 5.0, k: 0.62 }, redberyl: { e: 7.0, k: 0.60 } };
 api.FIT = FIT; api.AMB = 0.10;
 const NAMES = ['sapphire', 'citrine', 'amethyst', 'redberyl'];
 const hsv = function (h, s) {
