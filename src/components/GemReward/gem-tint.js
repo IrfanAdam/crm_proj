@@ -21,30 +21,7 @@ function token(name) {
   if (window.GEM_APPEARANCE && window.GEM_APPEARANCE.stones && window.GEM_APPEARANCE.stones[name]) paint = paintHue(paint, window.GEM_APPEARANCE.stones[name].hue);   // the measured record owns the hue
   return { cat: cat, paint: paint };
 }
-function rigOf(canvas) {
-  const list = (window.GEM3D && window.GEM3D.rigs) || [];
-  for (let i = 0; i < list.length; i++) if (list[i].canvas === canvas) return list[i];
-  return null;
-}
-function cutOf() {
-  const G = window.GEM_CUT;
-  return G && G.gemCut && G.CUT ? G.gemCut(G.CUT) : null;
-}
-function pool(rig, color) {
-  const fl = rig.floors;
-  if (!fl || !fl.caustic || !window.THREE) return;
-  const cut = cutOf();
-  const g = rig.group;
-  const pose = g ? { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y } : null;
-  let tex = null;
-  try { tex = (window.GEM_CAUSTIC && window.GEM_CAUSTIC.pool && cut) ? window.GEM_CAUSTIC.pool(color, cut, pose) : null; } catch (e) { tex = null; }
-  const next = tex || (window.GEM_TEXTURES && window.GEM_TEXTURES.caustic ? window.GEM_TEXTURES.caustic(color) : null);
-  if (!next) return;
-  if (fl.caustic.material.map) fl.caustic.material.map.dispose();
-  fl.caustic.material.map = next;
-  fl.caustic.material.needsUpdate = true;
-  if (pose && fl.livePose) { fl.livePose.yaw = pose.yaw; fl.livePose.pitch = pose.pitch; }   // driver picks up from here
-}
+const { rigOf, pool } = window.GEM_TINT_EXT;
 api.apply = function (canvas, name) {
   const pick = token(name);
   if (!pick) return false;

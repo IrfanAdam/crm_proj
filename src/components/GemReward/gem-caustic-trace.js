@@ -5,19 +5,10 @@
 // — field(G,P,stone) also returns the chief ray's floor point (cx,cz) and the landing spread sp.
 (function () {
 if (!window.THREE) return;
-const FALL = { n: 2.4, disp: 0.06, sig: 5.2, streak: 0.42, gain: 1 }, S = 160, FD = 0.5, SPAN = 2.4, ENV = 0.86, CSX = 0.52, CSZ = 0.44, RAD = (S / 2) / SPAN, CH = [0, 0, 0], LAND = [0, 0, 0];
+const FALL = { n: 2.4, disp: 0.06, sig: 5.2, streak: 0.42, gain: 1 }, S = 160, SPAN = 2.4, ENV = 0.86, CSX = 0.52, CSZ = 0.44, RAD = (S / 2) / SPAN, CH = [0, 0, 0], LAND = [0, 0, 0];
 const recOf = function (name) { const o = window.GEM_OPTICS, r = o && o.of(name); return (r && r.caus) || FALL; };
 const LN = Math.hypot(3, 5, 4), LX = 3 / LN, LY = 5 / LN, LZ = 4 / LN, DX0 = -LX, DY0 = -LY, DZ0 = -LZ;
-const yminOf = function (G) { let y = 1e9; for (let i = 0; i < G.positions.length; i++) { const q = G.positions[i]; if (q[1] < y) y = q[1]; } return y; };
-const yawPitchMat = function (yaw, pitch) { const cp = Math.cos(pitch), sp = Math.sin(pitch), cy = Math.cos(yaw), sy = Math.sin(yaw); return [cy, 0, sy, sp * sy, cp, -sp * cy, -cp * sy, sp, cp * cy]; };
-const quatMat = function (q) { const x = q.x, y = q.y, z = q.z, w = q.w, x2 = x + x, y2 = y + y, z2 = z + z, xx = x * x2, xy = x * y2, xz = x * z2, yy = y * y2, yz = y * z2, zz = z * z2, wx = w * x2, wy = w * y2, wz = w * z2; return [1 - (yy + zz), xy - wz, xz + wy, xy + wz, 1 - (xx + zz), yz - wx, xz - wy, yz + wx, 1 - (xx + yy)]; };
-const poseOf = function (p, G) {   // {yaw,pitch,lift,floorY} | quaternion → {R,yaw,pitch,floorY}
-let yaw = 0, pitch = 0, R = null, lift = 0, fy = null;
-if (p) { lift = p.lift || 0; if (p.floorY != null) fy = p.floorY;
-if (p.yaw !== undefined || p.pitch !== undefined) { yaw = p.yaw || 0; pitch = p.pitch || 0; R = yawPitchMat(yaw, pitch); }
-else if (p.w !== undefined) { R = quatMat(p); pitch = Math.asin(Math.max(-1, Math.min(1, R[7]))); yaw = Math.atan2(R[2], R[0]); } }
-if (!R) R = yawPitchMat(yaw, pitch);
-return { R: R, yaw: yaw, pitch: pitch, floorY: (fy != null ? fy : yminOf(G) - FD) - lift }; };
+const { poseOf, smoothstep } = window.GEM_CAUSTIC_TRACE_EXT;
 const geomKey = function (G) { return G.cells.length + ':' + G.positions.length + ':' + G.positions[0].join(','); };
 const FACETS = {};
 const facetsOf = function (G) {   // cached cut facets: centroid / outward normal / area, pavilion only
@@ -30,7 +21,6 @@ const l = Math.hypot(nx, ny, nz) || 1; nx /= l; ny /= l; nz /= l; if (ny > -0.04
 out.push([(a[0] + b[0] + e[0]) / 3, (a[1] + b[1] + e[1]) / 3, (a[2] + b[2] + e[2]) / 3, nx, ny, nz, l / 2]);
 } FACETS[k] = out; return out;
 };
-const smoothstep = function (a, b, x) { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 let KER = null; const kernel = function (sig) {   // Gaussian splat taps — rebuilt only when the record's sig changes
 if (KER && KER.sig === sig) return KER;
 const KX = [], KY = [], KW = [], KR = Math.ceil(sig * 2); for (let a = -KR; a <= KR; a++) for (let b = -KR; b <= KR; b++) { const d2 = a * a + b * b; if (d2 <= KR * KR) { KX.push(a); KY.push(b); KW.push(Math.exp(-d2 / (2 * sig * sig))); } }

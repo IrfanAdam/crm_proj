@@ -17,25 +17,7 @@ const FOV = 32;
 window.GEM_SCENE = api;
 if (!window.THREE) return;
 const T = window.THREE;
-api.geometry = function (cut) {
-const p = cut.positions;
-const v = [];
-cut.cells.forEach(function (c) {
-const a = p[c[0]], b = p[c[1]], d = p[c[2]];
-if (!a || !b || !d) return;
-const nx = (b[1] - a[1]) * (d[2] - a[2]) - (b[2] - a[2]) * (d[1] - a[1]);
-const ny = (b[2] - a[2]) * (d[0] - a[0]) - (b[0] - a[0]) * (d[2] - a[2]);
-const nz = (b[0] - a[0]) * (d[1] - a[1]) - (b[1] - a[1]) * (d[0] - a[0]);
-const ox = (a[0] + b[0] + d[0]) / 3, oy = (a[1] + b[1] + d[1]) / 3, oz = (a[2] + b[2] + d[2]) / 3;
-const s = nx * ox + ny * oy + nz * oz < 0 ? -1 : 1, f = s < 0 ? [a, d, b] : [a, b, d];
-f.forEach(function (q) { v.push(q[0], q[1], q[2]); });
-});
-const geo = new T.BufferGeometry();
-geo.setAttribute('position', new T.BufferAttribute(new Float32Array(v), 3));
-geo.computeVertexNormals();
-geo.computeBoundingBox();
-return geo;
-};
+api.geometry = window.GEM_SCENE_EXT.geometry;
 api.surface = function (color, soft, ior, cat) {
 const white = new T.Color(1, 1, 1), G = window.GEM_OPTICS, O = G ? G.of(cat) : null;
 const m = new T.MeshPhysicalMaterial({ color: color.clone().lerp(white, 0.45), metalness: 0, roughness: O ? O.reflect.rough : 0.06, ior: ior || (O ? O.n.trace : 2.4), flatShading: true, envMapIntensity: O ? O.reflect.env : 0.35, dithering: true });
