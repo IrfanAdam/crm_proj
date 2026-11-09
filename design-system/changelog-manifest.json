@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T12:45:47.231Z",
+  "generated": "2026-11-09T12:48:49.661Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "3f5d512",
+      "full": "3f5d5123b5b51e7191b1ca46ef58929d707e41ad",
+      "date": "2026-11-09",
+      "time": "18:15",
+      "subject": "fix(changelog): fold selected-row ink into .on rules — file back in budget",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "34b6ee1",
       "full": "34b6ee1f50a559d3a7a212e6cc72e4bb10d3e088",
