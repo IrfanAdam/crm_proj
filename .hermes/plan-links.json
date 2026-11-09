@@ -398,5 +398,55 @@
   "plan": "2026-10-03_144222-gem-realism-round2.md",
   "anchor": "phase-14",
   "note": "chore(ds): plan-history sync for 0b99eb1 (round-14 close)"
+ },
+ "4d3de6a": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: task-45 sync - baseline serves phase 16"
+ },
+ "458ea85": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: r19 task-45 baseline instruments - serves phase 16"
+ },
+ "0e73954": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: r19 task-47 sat anchor - current-round owner"
+ },
+ "8dd168c": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: 100-line module split - round-19 session"
+ },
+ "c76fa2d": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-14",
+  "note": "retro-link: round-19 gate table freeze - eval artifact"
+ },
+ "7799c05": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-14",
+  "note": "retro-link: E18.1 silver pavilion fix - round-18 eval backlog"
+ },
+ "1299daf": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-14",
+  "note": "retro-link: gem-shader budget keep - round-18 session"
+ },
+ "40b9967": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: task-47 manifest sync - same owner as task-47 work"
+ },
+ "5ee46f6": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: task-53 Fresnel-share tint - saturation work serves 16"
+ },
+ "df5d8d8": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "phase-16",
+  "note": "retro-link: task-53 composite hue lock - saturation work serves 16"
  }
 }

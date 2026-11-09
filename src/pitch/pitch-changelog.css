@@ -11,8 +11,8 @@ a.masthead-brand{text-decoration:none}
 .ds-md .ds-status.ds-is-cancelled{color:var(--color-danger)}
 .ds-md .ds-status.ds-is-gate{color:var(--color-ink-muted)}
 .ds-md code{font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-accent)}
-.ds-md .ds-field{margin:var(--cl-4) 0}
-.ds-md .ds-f-t{font-weight:700}
+.ds-md .ds-acc-body p.ds-field{margin:var(--cl-8) 0 var(--cl-6)}
+.ds-md .ds-f-t{font-weight:600;color:var(--color-ink)}
 #cl-root{padding-top:var(--cl-22);padding-bottom:var(--cl-32)}
 #cl-root .ds-hero h1{font-size:clamp(2rem,4.5vw,2.9rem)}
 .ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:min(var(--type-hero-clamp),12vw);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
@@ -31,13 +31,14 @@ a.masthead-brand{text-decoration:none}
 .ds-md .ds-acc-head h3{margin:0;font-size:var(--text-ds-body);font-weight:700;flex:0 1 auto;min-width:0}
 .ds-md .ds-task-fold > .ds-acc-head .ds-caret{flex:none;transform:rotate(0deg)}
 .ds-md .ds-task-fold[open] > .ds-acc-head .ds-caret{transform:rotate(90deg)}
-.ds-md .ds-acc-body{padding:var(--cl-2) 0 var(--cl-1) 0;font-size:var(--text-ds-body)}
+.ds-md .ds-acc-body{padding:var(--cl-2) 0 var(--cl-1) 0;font-size:var(--text-ds-table);color:var(--text-secondary);line-height:var(--leading-prose)}
 .ds-md .ds-acc-body p{margin:var(--cl-1) 0}
 .ds-md .ds-acc-body ul,.ds-md .ds-acc-body ol{padding-left:var(--cl-16);margin:var(--cl-2) 0}
 .ds-md .ds-acc-body li{margin-bottom:var(--cl-1)}
 .ds-md h1{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--cl-8)}
 .ds-md h2{font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:var(--cl-22) 0 var(--cl-8)}
 .ds-md h3{font-size:var(--text-h3);font-weight:600;margin:var(--cl-16) 0 var(--cl-6)}
+.ds-md h2.ds-phase-title{font-size:var(--font-size-lg)}
 .ds-md ul{padding-left:var(--cl-18);margin:var(--cl-8) 0}
 .ds-md li{margin-bottom:var(--cl-4)}
 .ds-md code{font-family:var(--font-mono);font-size:var(--text-micro);background:var(--color-panel);border:var(--border-hairline);padding:var(--cl-1) var(--cl-5)}
@@ -66,3 +67,7 @@ a.masthead-brand{text-decoration:none}
 .ds-plan-grid .ds-pick.is-cancelled.on{background:var(--color-surface);box-shadow:inset var(--cl-2) 0 0 var(--color-danger)}
 .ds-tags-more{color:inherit;cursor:pointer}
 .ds-tags-more:focus-visible{outline:var(--focus-ring)}
+.ds-md .ds-tick{flex:none;align-self:center;width:var(--cl-14);height:var(--cl-14);border:var(--cl-1) solid var(--border-strong);border-radius:var(--radius-none);background:var(--color-surface);display:inline-grid;place-items:center;box-sizing:border-box}
+.ds-md .ds-tick[data-s="done"]{background:var(--color-ink);border-color:var(--color-ink)}
+.ds-md .ds-tick[data-s="done"]::after{content:"✓";color:var(--color-bg);font-family:var(--font-mono);font-size:var(--text-micro);font-weight:700;line-height:1}
+.ds-md .ds-tick[data-s="cancelled"]::after{content:"✗";color:var(--color-ink-muted);font-family:var(--font-mono);font-size:var(--text-micro);line-height:1}
