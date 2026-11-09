@@ -2,7 +2,7 @@
    Continuation 20260909_145218_9888b1 — all future plans branch from here. */
 import manifest from '../../design-system/changelog-manifest.json';
 import { fmtDate, fmtTime } from './changelog-format.js';
-import { split } from './changelog-parse.js';
+import { split, chunks, norm as normTasks } from './changelog-parse.js';
 import { esc as escAll } from './changelog/esc.js';
 const fmtTimelineDate = (iso) => { if(!iso) return ''; const d=fmtDate(iso); return d ? d.replace(' ', ' ').replace(/^([0-9]{2}) ([A-Za-z]{3}) ([0-9]{4})$/, (_,dd,mmm,yyyy)=> `${Number(dd)} ${mmm}, ${yyyy}`) : iso; };
 const GH = 'https://github.com/IrfanAdam/crm_proj/commit/';
@@ -29,7 +29,8 @@ export const anchorHit = (body, anchor) => {
   const nb = norm(body);
   if (nb.includes('#' + a)) return true;
   const tm = a.match(/^task-(\d+)$/);
-  if (tm && nb.includes(`**${tm[1]} `)) return true;
+  // norm() turns '**N ' into '**N-'; match the raw body too or task items never hit.
+  if (tm && (nb.includes(`**${tm[1]} `) || String(body).includes(`**${tm[1]} `))) return true;
   return false;
 };
 // anchor-less commits attach to their plan's first phase; anchored ones to the first phase whose text contains the
@@ -75,7 +76,11 @@ export const badges = (list, title) => {
 export const planless = (texts) => commits.filter((c) => !c.plan || (texts && !texts[c.plan]));
 export const unlinked = (texts) => {
   const secsCache = {};
-  const secsOf = (file) => (secsCache[file] = secsCache[file] || split(texts[file] || ''));
+  // Triage over EVERY ## section — Round/eval sections carry Task anchors split() drops.
+  const splitAll = (md) => chunks(md).slice(1).map((s) => {
+    const nl = s.indexOf('\n'); return { head: s.slice(0, nl).trim(), body: normTasks('## ' + s) };
+  });
+  const secsOf = (file) => (secsCache[file] = secsCache[file] || splitAll(texts[file] || ''));
   const gone = new Set(planless(texts).map((c) => c.sha));
   const xs = commits.filter((c) => {
     if (gone.has(c.sha)) return true;

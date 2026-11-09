@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T12:28:46.223Z",
+  "generated": "2026-11-09T12:37:37.814Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "d664d0f",
+      "full": "d664d0f5db42e69b73637911d3cf1825584aedb3",
+      "date": "2026-11-09",
+      "time": "17:59",
+      "subject": "chore(workflow): commit-tracked githooks — pre-commit rides manifest, no manual sync",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-54"
+    },
     {
       "sha": "7ff09a2",
       "full": "7ff09a2ce7bcd6400a65e138c0dfbe19ed9ce2d1",
@@ -4471,5 +4480,11 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M  src/js/mechanics/graphData.decisions.js",
+    "M  src/js/mechanics/graphData.js",
+    "M  src/js/mechanics/graphData.logic.js",
+    "M  src/js/mechanics/graphData.schema.js",
+    "M  src/pitch/changelog-links.js"
+  ]
 }
