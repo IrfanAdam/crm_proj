@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T09:07:01.748Z",
+  "generated": "2026-11-09T09:33:05.343Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -25,13 +25,22 @@
   ],
   "commits": [
     {
+      "sha": "5ee46f6",
+      "full": "5ee46f67883971ae096d9b935612ee74837efa23",
+      "date": "2026-11-09",
+      "time": "14:37",
+      "subject": "fix(gem): tint the Fresnel share by uFt — pavilion reads as the same material",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-16"
+    },
+    {
       "sha": "40b9967",
       "full": "40b99675792e9dbe7b8a270012ce6101bcf1777f",
       "date": "2026-11-09",
       "time": "14:09",
       "subject": "chore(ds): sync manifest and task 47 shipped sha",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "task-47"
+      "anchor": "phase-16"
     },
     {
       "sha": "0e73954",
@@ -40,7 +49,7 @@
       "time": "14:08",
       "subject": "fix(gem): r19 task 47 — sat anchor (exp 5.0/3.8/2.85/1.8), L50 re-scoped to task 53",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "task-47"
+      "anchor": "phase-16"
     },
     {
       "sha": "8dd168c",
@@ -49,7 +58,7 @@
       "time": "12:23",
       "subject": "refactor(gem): split 100-line modules into *-ext siblings — render byte-identical",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "round-19"
+      "anchor": "phase-16"
     },
     {
       "sha": "4d3de6a",
@@ -58,7 +67,7 @@
       "time": "12:01",
       "subject": "chore(ds): sync manifest and task 45 shipped sha",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "task-45"
+      "anchor": "phase-16"
     },
     {
       "sha": "458ea85",
@@ -67,7 +76,7 @@
       "time": "12:00",
       "subject": "feat(gem): r19 task 45 — baseline instruments, 7799c05 baseline, exposure finding",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "task-45"
+      "anchor": "phase-16"
     },
     {
       "sha": "c76fa2d",
@@ -76,7 +85,7 @@
       "time": "11:33",
       "subject": "docs(gem): freeze round-19 gate table and true task states",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "round-19"
+      "anchor": "phase-14"
     },
     {
       "sha": "7799c05",
@@ -85,7 +94,7 @@
       "time": "21:32",
       "subject": "fix(gem): E18.1 silver pavilion — radiance-preserving tint1 exits, fill.path 1.0, redberyl exp 4.0",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "round-18-eval-issues"
+      "anchor": "phase-14"
     },
     {
       "sha": "1299daf",
@@ -94,7 +103,7 @@
       "time": "21:19",
       "subject": "chore(gem): keep gem-shader.js inside the 100-line budget",
       "plan": "2026-10-03_144222-gem-realism-round2.md",
-      "anchor": "round-18-eval-issues"
+      "anchor": "phase-14"
     },
     {
       "sha": "93d221d",
@@ -4435,6 +4444,12 @@
   ],
   "wip": [
     "M src/components/GemReward/gem-shader-ext.js",
-    "M src/components/GemReward/gem-shader.js"
+    "M src/pitch/changelog-links.js",
+    "M src/pitch/changelog/markdown.js",
+    "M src/pitch/changelog/paint-drawer.js",
+    "M src/pitch/pitch-changelog-cards.css",
+    "M src/pitch/pitch-changelog-drawer.css",
+    "M src/pitch/pitch-changelog-timeline.css",
+    "M src/pitch/pitch-changelog.css"
   ]
 }
