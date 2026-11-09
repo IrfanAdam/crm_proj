@@ -1,0 +1,3 @@
+#!/bin/sh
+# auto-tag every commit with its plan (plan-auto-link — no ask)
+node "$(git rev-parse --show-toplevel 2>/dev/null)/scripts/plan-auto-link.mjs" "$1" || true

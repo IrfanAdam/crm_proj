@@ -1,0 +1,8 @@
+#!/bin/sh
+# pre-commit: refresh changelog manifest + history and fold them into THIS
+# commit, so the tree is clean after commit and no manual ride-commit is
+# needed (ds-pattern-loop M.O. — no ask). Fail-open: never block a commit.
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+node "$REPO_ROOT/scripts/ds-track.mjs" >/dev/null 2>&1 || exit 0
+git add -- "$REPO_ROOT/design-system/changelog-manifest.json" "$REPO_ROOT/design-system/plan-history.json" 2>/dev/null || true
+exit 0

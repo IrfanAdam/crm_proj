@@ -1,0 +1,7 @@
+#!/bin/sh
+# backstop: refresh changelog manifest after every commit (covers commits
+# made with --no-verify). The pre-commit hook already staged a fresh copy,
+# so on the normal path this regenerates byte-identical output and the
+# tree stays clean.
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+node "$REPO_ROOT/scripts/ds-track.mjs" >/dev/null 2>&1 || true
