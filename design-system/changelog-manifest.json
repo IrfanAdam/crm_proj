@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T11:29:06.920Z",
+  "generated": "2026-11-09T12:09:27.240Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "c24fb60",
+      "full": "c24fb6004a89e50c2791f9b8a245115c72ab3b48",
+      "date": "2026-11-09",
+      "time": "16:59",
+      "subject": "docs(gem): F54.1 — belt is the horizon wedge; global tone compression rejected",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-54"
+    },
     {
       "sha": "a69b0a0",
       "full": "a69b0a0c4a764191c9779d80c1f82fc2facafbb5",
@@ -2776,14 +2785,6 @@
       "subject": "fix(ds): button lab tertiary ink, concentric tune, brand radius 32, full-width",
       "plan": "2026-09-21_000000-lump-sum-builds.md",
       "anchor": "phase-1"
-    },
-    {
-      "sha": "d50cd58",
-      "full": "d50cd587b68d581fb8a6e2aa22a9a5755c641664",
-      "date": "2026-09-24",
-      "subject": "feat(ds): per-component intro·lab·spec for all components — scannable gallery",
-      "plan": "2026-09-21_000000-lump-sum-builds.md",
-      "anchor": "phase-3"
     },
     {
       "sha": "8e04731",
