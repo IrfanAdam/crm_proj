@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T06:29:27.822Z",
+  "generated": "2026-11-09T06:31:06.573Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "458ea85",
+      "full": "458ea85820e9724423de2139f185d9d4be1aee13",
+      "date": "2026-11-09",
+      "time": "12:00",
+      "subject": "feat(gem): r19 task 45 — baseline instruments, 7799c05 baseline, exposure finding",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-45"
+    },
     {
       "sha": "c76fa2d",
       "full": "c76fa2d303b273c176ec7d0c668c49d30d4a57f0",
@@ -4388,9 +4397,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "?? prototype/gems/baselines/",
-    "?? prototype/gems/black_probe.py",
-    "?? prototype/gems/collar_probe.py"
-  ]
+  "wip": []
 }
