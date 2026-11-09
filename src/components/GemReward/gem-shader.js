@@ -11,7 +11,7 @@ api.dispersion = window.GEM_SHADER_BODY && window.GEM_SHADER_BODY.dispersion;
 if (!window.THREE) return;
 const T = window.THREE;
 const OD = (window.GEM_OPTICS && window.GEM_OPTICS.of('sapphire')) || { n: { trace: 2.4 }, reflect: { crisp: 0.05, broad: 0.30, luma: 0.55, lumaB: 0.85, shK: 0.9, bounce: 3, mirror: 2.2, win: 1.8 }, absorb: { scale: 1 }, light: { exp: 1, gam: 1, amb: 0.1 } };
-api.FIT = { sapphire: { e: 6.2, g: 0.74, k: 1.00 }, citrine: { e: 3.8, g: 0.74, k: 0.55 }, amethyst: { e: 3.8, g: 0.74, k: 1.10 }, redberyl: { e: 4.0, g: 0.74, k: 0.60 } }; api.AMB = 0.10;
+api.FIT = { sapphire: { e: 5.00, g: 0.74, k: 1.00 }, citrine: { e: 3.80, g: 0.74, k: 0.55 }, amethyst: { e: 2.30, g: 0.74, k: 1.10 }, redberyl: { e: 1.20, g: 0.74, k: 0.60 } }; api.AMB = 0.10;
 const { VS, HEAD, BODY } = window.GEM_SHADER_EXT;
 api.setup = function () {   // build the plane set once from the shared cut — same 136 vertices / 268 triangles
 const C = window.GEM_CUT;
