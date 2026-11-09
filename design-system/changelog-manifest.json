@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T12:43:19.827Z",
+  "generated": "2026-11-09T12:44:29.868Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "960ed9f",
+      "full": "960ed9f3c6be4a1ed0bdca0d8d6f554194cd4145",
+      "date": "2026-11-09",
+      "time": "18:13",
+      "subject": "fix(changelog): rail background re-normalized — transparent like task pane",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "e769953",
       "full": "e769953f22ad916eb16382af81a1395f454fc404",
