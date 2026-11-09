@@ -4,6 +4,7 @@ import { planStatus, statusLabel, state, isDone, buildState } from '../changelog
 import { dueOf } from './due-core.js';
 import { esc } from './esc.js';
 import { syncTlEdges } from './tl-edges.js';
+import { scrollToday } from './timeline-scroll.js';
 import { spanText, laneMeta, noq } from './tl-meta.js';
 const DAY = 864e5;
 const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -89,26 +90,6 @@ export function paintTimeline(root, ctx) {
   const collapsed = host.dataset.collapsed === '1';
   host.innerHTML = `<div class="ds-tl-head"><b>Timeline</b><small>${bounds[0]} → ${bounds[bounds.length - 1]}</small><button data-tl-close aria-label="Close timeline">✕</button></div>` +
     `<div class="ds-tl-scroll"><div class="ds-tl-body${collapsed ? ' is-collapsed' : ''}" style="--tl-days:${days}"><div class="ds-tl-axis"><button class="ds-tl-clabel" data-tl-collapse aria-expanded="${collapsed ? 'false' : 'true'}" aria-label="${collapsed ? 'Expand' : 'Collapse'} plan labels" title="${collapsed ? 'Expand' : 'Collapse'} plan labels">Plan<span class="ds-tl-clabel-caret" aria-hidden="true">«</span></button><span class="ds-tl-curmonth" data-tl-curmonth hidden></span><div class="ds-tl-ticks">${mo.join('')}</div><span class="ds-tl-todaydot" style="${atX(todayFrac.toFixed(4))}"></span></div>${rows}${todayCol}</div></div>`;
-  try {
-    const sc0 = host.querySelector('.ds-tl-scroll');
-    if (sc0) { sc0.onscroll = () => { try { syncTlEdges(host); } catch {} }; try { syncTlEdges(host); } catch {} }
-    requestAnimationFrame(() => {
-      try {
-        const sc = host.querySelector('.ds-tl-scroll'), lane = host.querySelector('.ds-tl-lane');
-        if (!sc || !lane) return;
-        const dayPx = lane.getBoundingClientRect().width / days;
-        if (!dayPx) return;
-        // The sticky label column covers the lane's left edge — measure into
-        // view past it (reference scrollToday).
-        const lab = host.querySelector('.ds-tl-label');
-        const pad = lab ? lab.getBoundingClientRect().width : 0;
-        const x = pad + todayFrac * dayPx;
-        if (x >= sc.scrollLeft + pad && x <= sc.scrollLeft + sc.clientWidth - 24) return;
-        const pane = Math.max(sc.clientWidth - pad, 1);
-        sc.scrollLeft = Math.max(0, x - pad - pane * 0.5);
-        try { syncTlEdges(host); } catch {}
-      } catch {}
-    });
-  } catch {}
+  try { scrollToday(host, days, todayFrac); } catch {}
   return list.length;
 }

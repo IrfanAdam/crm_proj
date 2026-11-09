@@ -4,7 +4,8 @@
 // a view-toggle element carrying a filter class from the generic branch.
 import { dueUi, onDueChange } from './changelog/due.js';
 import { scrollRowIntoView, syncTlEdges } from './changelog/tl-edges.js';
-import { hoverTlPop, hideTlPop } from './changelog/tl-pop.js';
+import { hideTlPop } from './changelog/tl-pop.js';
+import { cursorTip } from './changelog/cursor-tip.js';
 export function bindChangelogEvents(root, st, helpers) {
   const { cur, doPaint } = helpers;
   const onDocClick = (e) => { if (!st.filterOpen || root.contains(e.target)) return;
@@ -78,20 +79,7 @@ export function bindChangelogEvents(root, st, helpers) {
     if (st.open) { st.open = false; st.openFile = ''; if (st.returnTimeline) { st.timeline = true; st.returnTimeline = false; } doPaint(root); }
     else if (st.timeline) { st.timeline = false; doPaint(root); }
     else if (st.filterOpen) { st.filterOpen = false; doPaint(root); } };
-  const move = (e) => {
-    const el = e.target.closest('[data-tip]'), tip = root.querySelector('.ds-cursor-tip');
-    if (!tip) return;
-    if (el && hoverTlPop(root, el, e.clientX, e.clientY)) { tip.hidden = true; return; }
-    hideTlPop(root);
-    if (!el) { tip.hidden = true; return; }
-    tip.textContent = el.dataset.tip; tip.hidden = false;
-    const pad = 14; let x = e.clientX + pad, y = e.clientY + pad;
-    const r = tip.getBoundingClientRect();
-    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - pad;
-    if (y + r.height > innerHeight - 8) y = e.clientY - r.height - pad;
-    tip.style.left = x + 'px'; tip.style.top = y + 'px';
-  };
-  const hideTip = () => { const t = root.querySelector('.ds-cursor-tip'); if (t) t.hidden = true; };
+  const { move, hideTip } = cursorTip(root);
   const dueChange = onDueChange(root, doPaint, cur);
   root.addEventListener('click', onClick); document.addEventListener('keydown', onKey);
   document.addEventListener('click', onDocClick); root.addEventListener('mousemove', move);
