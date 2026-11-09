@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T12:44:29.868Z",
+  "generated": "2026-11-09T12:45:47.231Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "34b6ee1",
+      "full": "34b6ee1f50a559d3a7a212e6cc72e4bb10d3e088",
+      "date": "2026-11-09",
+      "time": "18:14",
+      "subject": "fix(changelog): rail rows rest muted, selected reads full ink",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "960ed9f",
       "full": "960ed9f3c6be4a1ed0bdca0d8d6f554194cd4145",
