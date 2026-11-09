@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T06:31:06.573Z",
+  "generated": "2026-11-09T06:53:09.144Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,24 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "8dd168c",
+      "full": "8dd168ca4a36f0250d557dd1005bb1fda87c7c70",
+      "date": "2026-11-09",
+      "time": "12:23",
+      "subject": "refactor(gem): split 100-line modules into *-ext siblings — render byte-identical",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "round-19"
+    },
+    {
+      "sha": "4d3de6a",
+      "full": "4d3de6a62cb7ee956c8be3caac61acf443293ddd",
+      "date": "2026-11-09",
+      "time": "12:01",
+      "subject": "chore(ds): sync manifest and task 45 shipped sha",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-45"
+    },
     {
       "sha": "458ea85",
       "full": "458ea85820e9724423de2139f185d9d4be1aee13",
@@ -4397,5 +4415,10 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
