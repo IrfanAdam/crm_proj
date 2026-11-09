@@ -74,8 +74,7 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
    The summaries carry their own .ds-caret span (reference footer), so the
    drawer ::before/::after glyphs are suppressed here. Labels start at the
    container edge — no tile; day + commit dots ride the timeline spine. */
-.ds-panel > .ds-panel-title::before{content:none}
-.ds-panel .ds-timeline-group > .ds-timeline-date::after{content:none}
+.ds-panel > .ds-panel-title::before,.ds-timeline-group > summary::marker{content:none}.ds-panel .ds-timeline-group > .ds-timeline-date::after,.ds-timeline-group > .ds-timeline-date::after{content:none}
 .ds-panel .ds-caret{transition:transform .15s}
 .ds-day-num{color:var(--color-accent);font-weight:var(--font-weight-bold)}
 .ds-panel > .ds-sub{margin-left:0;margin-right:0;padding-left:var(--cl-16)}
@@ -84,11 +83,11 @@ aside.ds-timeline:not([hidden]){animation:ds-tl-in var(--dur-glide) var(--ease-s
    trails the text; every label/row/item starts at the same edge. */
 details.ds-panel{border:none}
 .ds-panel > .ds-panel-title{display:flex;align-items:center;padding-left:0}
-.ds-panel > .ds-panel-title .ds-caret{margin-right:var(--cl-8)}
+.ds-panel > .ds-panel-title .ds-caret{margin-right:var(--cl-8);margin-left:calc(-1 * var(--cl-4))}
 .ds-panel .ds-timeline-group > summary{position:relative;display:flex;align-items:center;list-style:none;cursor:pointer}
 .ds-panel .ds-timeline-group > summary::-webkit-details-marker{display:none}
 .ds-panel .ds-timeline-group > summary::marker{content:""}
-.ds-panel .ds-timeline-group > summary .ds-caret{margin-left:var(--cl-8)}
+.ds-panel .ds-timeline-group > summary .ds-caret{margin-left:var(--cl-8);color:var(--color-ink-muted)}
 .ds-panel .ds-timeline-date .ds-sub{margin-top:0;margin-bottom:0}
 .ds-panel .ds-timeline-date::before{left:calc(-1 * var(--cl-16) - var(--cl-4));background:var(--color-ink-muted);border-color:var(--color-ink-muted);box-shadow:0 0 0 var(--cl-2) var(--color-bg)}
 .ds-panel .ds-timeline-item:not(.ds-timeline-item--eval):not(.ds-timeline-item--iter)::before{content:"";position:absolute;left:calc(-1 * var(--cl-16) - var(--cl-4));top:var(--cl-8);width:var(--cl-7);height:var(--cl-7);background:var(--color-bg);border:var(--cl-1) solid var(--color-ink-muted);border-radius:50%;box-sizing:border-box}

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T09:33:05.343Z",
+  "generated": "2026-11-09T09:40:25.892Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,33 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "91101d9",
+      "full": "91101d9a680558031739e56627941e9249f9081e",
+      "date": "2026-11-09",
+      "time": "15:09",
+      "subject": "polish(changelog): drawer + task-pane pass — zero orphans, single-caret system, DS checkboxes, toned task type, rail/task distinction",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
+    {
+      "sha": "630cd36",
+      "full": "630cd360d8074129f38293ae514ad0a100c1dd32",
+      "date": "2026-11-09",
+      "time": "15:09",
+      "subject": "polish(changelog): drawer + task-pane pass — zero orphans, single-caret system, DS checkboxes, toned task type, rail/task distinction",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-53"
+    },
+    {
+      "sha": "df5d8d8",
+      "full": "df5d8d82652116fc667af295f3362f0368b2ed9e",
+      "date": "2026-11-09",
+      "time": "15:03",
+      "subject": "fix(gem): lock the composite hue to the stone — one material crown to culet",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-16"
+    },
     {
       "sha": "5ee46f6",
       "full": "5ee46f67883971ae096d9b935612ee74837efa23",
@@ -4442,14 +4469,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/components/GemReward/gem-shader-ext.js",
-    "M src/pitch/changelog-links.js",
-    "M src/pitch/changelog/markdown.js",
-    "M src/pitch/changelog/paint-drawer.js",
-    "M src/pitch/pitch-changelog-cards.css",
-    "M src/pitch/pitch-changelog-drawer.css",
-    "M src/pitch/pitch-changelog-timeline.css",
-    "M src/pitch/pitch-changelog.css"
-  ]
+  "wip": []
 }

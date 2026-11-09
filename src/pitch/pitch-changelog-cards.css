@@ -70,3 +70,8 @@
 .ds-md li:has(.ds-cancelled) { opacity: .6; }
 /* cl-* compat */
 .cl-card, .cl-seq, .cl-sub, .cl-meta, .cl-triage-list { display: none; }
+/* rail rows: title stays ink - only the phase number carries done/pending */
+.ds-rail .ds-pick.is-pending { color: var(--color-ink); }
+/* rail rows: compact table size for number + title (ink title, state-colored number) */
+.ds-rail .ds-row { font-size: var(--text-ds-table); }
+.ds-rail .ds-num { font-size: inherit; }

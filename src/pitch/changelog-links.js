@@ -11,12 +11,26 @@ export const commits = manifest.commits || [];
 export const wip = manifest.wip || [];
 export const continuation = manifest.continuation || '20260909_145218_9888b1';
 const badgeItem = (c) => `<div class="ds-timeline-item"><a href="${GH}${c.full}">${c.sha}</a> <span>${esc(c.subject)}</span>${c.time ? `<small>${esc(fmtTime(c.time))}</small>` : ''}</div>`;
-// Shared anchor matcher: anchor hits a split() section body. Both hits() and
-// unlinked() test through here so triage matches the way hits() matches.
+// Anchor matcher: phase anchors match exactly (phase-1 != phase-10); task/round
+// anchors bridge variants (Task 47 == task-47) but only structural claims
+// attach - orphans are retro-linked in plan-links.json, never loose-matched.
 export const anchorHit = (body, anchor) => {
-  const a = String(anchor).replace(/^.*?(phase-\d+).*$/i, '$1');
-  const escA = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(escA + '(?!\\d)').test(body);
+  const pm = String(anchor).match(/phase\s*[-_ ]?(\d+)/i);
+  if (pm) {
+    const a = String(anchor).replace(/^.*?(phase-\d+).*$/i, '$1');
+    const escA = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(escA + '(?!\\d)').test(body);
+  }
+  const norm = (s) => String(s).toLowerCase().replace(/[\s_]+/g, '-').replace(/-{2,}/g, '-');
+  const a = norm(anchor);
+  if (!a) return false;
+  const firstLine = norm(String(body).split('\n')[0] || '');
+  if (firstLine.includes(a)) return true;
+  const nb = norm(body);
+  if (nb.includes('#' + a)) return true;
+  const tm = a.match(/^task-(\d+)$/);
+  if (tm && nb.includes(`**${tm[1]} `)) return true;
+  return false;
 };
 // anchor-less commits attach to their plan's first phase; anchored ones to the first phase whose text contains the
 // anchor. Anchor normalized via .replace to bare phase-N; exact match ensures phase-1 doesn't hit phase-10.
