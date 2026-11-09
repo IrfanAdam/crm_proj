@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T16:02:39.189Z",
+  "generated": "2026-11-09T06:02:57.018Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "7799c05",
+      "full": "7799c0514cfc540a7aeaba81d4cd82b431fe9188",
+      "date": "2026-11-08",
+      "time": "21:32",
+      "subject": "fix(gem): E18.1 silver pavilion — radiance-preserving tint1 exits, fill.path 1.0, redberyl exp 4.0",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "round-18-eval-issues"
+    },
     {
       "sha": "1299daf",
       "full": "1299daf6afc40a1f390d7f1bd69e879ce4bf9550",
@@ -4370,8 +4379,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/components/GemReward/gem-optics.js",
-    "M src/components/GemReward/gem-shader.js"
-  ]
+  "wip": []
 }
