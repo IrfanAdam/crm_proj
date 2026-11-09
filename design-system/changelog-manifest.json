@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T10:31:34.130Z",
+  "generated": "2026-11-09T10:33:09.824Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "0153579",
+      "full": "0153579cc00ed64bfa62824cf58dd1e43bdcc2dd",
+      "date": "2026-11-09",
+      "time": "16:01",
+      "subject": "fix(gem): hue lock 0.92 — saturation on record, rest-pose hue spread under 1.1deg",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-53"
+    },
     {
       "sha": "91101d9",
       "full": "91101d9a680558031739e56627941e9249f9081e",
@@ -4469,12 +4478,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M src/components/GemReward/gem-shader-ext.js",
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M src/pitch/pitch-changelog-drawer.css"
-  ]
+  "wip": []
 }
