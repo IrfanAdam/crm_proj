@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T12:42:18.611Z",
+  "generated": "2026-11-09T12:43:19.827Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "e769953",
+      "full": "e769953f22ad916eb16382af81a1395f454fc404",
+      "date": "2026-11-09",
+      "time": "18:12",
+      "subject": "fix(plan): Phase 16 tasks 38-44 as sections — pane lists 0/7",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "task-54"
+    },
     {
       "sha": "0825cfd",
       "full": "0825cfd11badce4b8800c2c8617543eaf7cbfeea",
@@ -4490,9 +4499,6 @@
     }
   ],
   "wip": [
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
+    "M  src/pitch/pitch-changelog-drawer.css"
   ]
 }
