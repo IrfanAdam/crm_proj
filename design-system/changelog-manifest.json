@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T11:57:12.260Z",
+  "generated": "2026-11-10T11:57:21.205Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "c738192",
+      "full": "c7381929779d27a400d456f42618d98a432cb0ff",
+      "date": "2026-11-10",
+      "time": "17:27",
+      "subject": "fix(changelog): drawer one-column alignment, header divider, flush lede bullets",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "ce58aa5",
       "full": "ce58aa5941526369d645f840686b13f060196de5",
@@ -4544,22 +4553,9 @@
     }
   ],
   "wip": [
-    "M  changelog.html",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js",
-    "M  src/pitch/changelog-links.js",
-    "A  src/pitch/changelog/caret.js",
-    "M  src/pitch/changelog/markdown.js",
-    "M  src/pitch/changelog/paint-drawer.js",
-    "M  src/pitch/changelog/panels.js",
-    "A  src/pitch/changelog/prose.js",
-    "M  src/pitch/pitch-changelog-cards.css",
-    "A  src/pitch/pitch-changelog-caret.css",
-    "M  src/pitch/pitch-changelog-drawer.css",
-    "A  src/pitch/pitch-changelog-prose.css",
-    "M  src/pitch/pitch-changelog-timeline.css",
-    "M  src/pitch/pitch-changelog.css"
+    "M src/js/mechanics/graphData.schema.js"
   ]
 }
