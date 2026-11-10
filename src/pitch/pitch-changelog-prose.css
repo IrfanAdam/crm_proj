@@ -1,0 +1,17 @@
+/* ADAM/PAGE — pitch-changelog-prose.css · drawer prose as scannable bullets.
+   One rule per point, hanging indent, dot marker in the gutter. */
+.ds-md .ds-bullets{list-style:none;display:flex;flex-direction:column;gap:var(--cl-4);margin:var(--cl-6) 0 var(--cl-8);padding:0}
+.ds-md .ds-bullets li{position:relative;margin:0;padding-left:var(--cl-14);line-height:var(--leading-prose);overflow-wrap:anywhere}
+.ds-md .ds-bullets li::before{content:"";position:absolute;left:0;top:0.55em;width:var(--cl-5);height:var(--cl-5);background:var(--color-ink);border-radius:50%}
+.ds-md .ds-bullets code{white-space:nowrap}
+.ds-md .ds-b-t{font-weight:600;color:var(--color-ink)}
+/* Task body: quieter + tighter than the phase description. */
+.ds-md .ds-task-fold:not(.ds-lede-fold) .ds-acc-body .ds-bullets{font-size:var(--text-ds-table);gap:var(--cl-2);margin:var(--cl-4) 0 var(--cl-2);padding-left:0}
+.ds-md .ds-task-fold:not(.ds-lede-fold) .ds-acc-body .ds-bullets li{margin-bottom:0}
+.ds-md .ds-task-fold:not(.ds-lede-fold) .ds-acc-body .ds-bullets li::before{background:var(--color-ink-muted);top:0.57em;width:var(--cl-5);height:var(--cl-5);border-radius:50%}
+/* Description fold body: bullets are the structure — no second left rule. */
+.ds-task .ds-lede{border-left:none;padding:0;margin:0 0 var(--cl-12);color:var(--text-secondary);font-size:var(--text-ds-table)}
+.ds-task .ds-lede .ds-bullets{margin:0;gap:var(--cl-6)}
+/* Description fold: bullet text flush with the column edge — hanging dot in the gutter. */
+.ds-md .ds-task-fold.ds-lede-fold .ds-acc-body .ds-lede .ds-bullets li{padding-left:0}
+.ds-md .ds-task-fold.ds-lede-fold .ds-acc-body .ds-lede .ds-bullets li::before{left:calc(var(--cl-8) * -1)}

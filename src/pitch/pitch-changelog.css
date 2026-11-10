@@ -11,8 +11,6 @@ a.masthead-brand{text-decoration:none}
 .ds-md .ds-status.ds-is-cancelled{color:var(--color-danger)}
 .ds-md .ds-status.ds-is-gate{color:var(--color-ink-muted)}
 .ds-md code{font-family:var(--font-mono);font-size:var(--text-micro);color:var(--color-accent)}
-.ds-md .ds-acc-body p.ds-field{margin:var(--cl-8) 0 var(--cl-6)}
-.ds-md .ds-f-t{font-weight:600;color:var(--color-ink)}
 #cl-root{padding-top:var(--cl-22);padding-bottom:var(--cl-32)}
 #cl-root .ds-hero h1{font-size:clamp(2rem,4.5vw,2.9rem)}
 .ds-hero h1{font-family:var(--font-display);font-weight:800;font-size:min(var(--type-hero-clamp),12vw);letter-spacing:var(--tracking-heading);line-height:0.95;color:var(--color-ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
@@ -29,8 +27,6 @@ a.masthead-brand{text-decoration:none}
 .ds-md .ds-acc-head::-webkit-details-marker{display:none}
 .ds-md .ds-acc-head::marker{content:""}
 .ds-md .ds-acc-head h3{margin:0;font-size:var(--text-ds-body);font-weight:700;flex:0 1 auto;min-width:0}
-.ds-md .ds-task-fold > .ds-acc-head .ds-caret{flex:none;transform:rotate(0deg)}
-.ds-md .ds-task-fold[open] > .ds-acc-head .ds-caret{transform:rotate(90deg)}
 .ds-md .ds-acc-body{padding:var(--cl-2) 0 var(--cl-1) 0;font-size:var(--text-ds-table);color:var(--text-secondary);line-height:var(--leading-prose)}
 .ds-md .ds-acc-body p{margin:var(--cl-1) 0}
 .ds-md .ds-acc-body ul,.ds-md .ds-acc-body ol{padding-left:var(--cl-16);margin:var(--cl-2) 0}
@@ -45,6 +41,7 @@ a.masthead-brand{text-decoration:none}
 .ds-md pre{background:var(--color-surface);border:var(--border-hairline);padding:var(--cl-10) var(--cl-12);overflow-x:auto}
 .ds-md pre code{background:none;border:none;padding:0}
 .ds-md a{color:inherit}
+/* Phase lede — description fold before the task list; bullets come from prose.css. */
 .cl-count{display:none}
 .cl-dayrow{display:none}
 .masthead-close[href]{display:grid;place-items:center;text-decoration:none}

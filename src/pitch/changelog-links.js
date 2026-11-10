@@ -4,6 +4,7 @@ import manifest from '../../design-system/changelog-manifest.json';
 import { fmtDate, fmtTime } from './changelog-format.js';
 import { split, chunks, norm as normTasks } from './changelog-parse.js';
 import { esc as escAll } from './changelog/esc.js';
+import { dayCaret } from './changelog/caret.js';
 const fmtTimelineDate = (iso) => { if(!iso) return ''; const d=fmtDate(iso); return d ? d.replace(' ', ' ').replace(/^([0-9]{2}) ([A-Za-z]{3}) ([0-9]{4})$/, (_,dd,mmm,yyyy)=> `${Number(dd)} ${mmm}, ${yyyy}`) : iso; };
 const GH = 'https://github.com/IrfanAdam/crm_proj/commit/';
 const esc = escAll;
@@ -53,7 +54,7 @@ export const badges = (list, title) => {
   if (!list.length) return '';
   // Day groups are collapsible <details> with their own caret — same language
   // as the Evals panel day groups, flush left, no timeline indent.
-  const caret = `<span class="ds-caret" aria-hidden="true">▸</span>`;
+  const caret = dayCaret;
   const byDate = new Map();
   for (const c of list) {
     const d = c.date || '';
@@ -65,7 +66,7 @@ export const badges = (list, title) => {
   const groups = dates.map((d, di) => {
     const rows = byDate.get(d);
     const label = d ? esc(fmtTimelineDate(d)) : 'Undated';
-    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date"><span class="ds-day-num">Day ${total - di}</span><span class="ds-sub"> · ${label} · ${rows.length}</span>${caret}</summary><div class="ds-timeline-items">${rows.map((c) => badgeItem(c)).join('')}</div></details>`;
+    return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${caret}<span class="ds-day-num">Day ${total - di}</span><span class="ds-sub"> · ${label} · ${rows.length}</span></summary><div class="ds-timeline-items">${rows.map((c) => badgeItem(c)).join('')}</div></details>`;
   }).join('');
   const inner = `<div class="ds-timeline">${groups}</div>`;
   return title ? `<p class="ds-sub">${esc(title)} · ${list.length}</p>${inner}` : inner;

@@ -1,0 +1,21 @@
+/* ADAM/PAGE — pitch-changelog-caret.css · collapse glyphs (drawer).
+   tri ▸ = tasks / descriptions / panels (rotates). dual = day rows only. */
+:root{--ds-caret:calc(var(--text-micro) + var(--cl-2))}
+/* Triangle: same box as dual so the spine stays put; SVG ink spins on its own
+   centre (transform-box) so open/close never wobbles off-anchor. */
+.ds-caret{flex:none;display:inline-grid;place-items:center;width:var(--ds-caret);height:var(--ds-caret);color:var(--color-ink-muted);line-height:0;transition:transform var(--dur-soft) var(--ease-standard);transform:rotate(90deg)}
+.ds-caret svg{display:block;width:100%;height:100%;fill:currentColor;transform-box:fill-box;transform-origin:center}
+.ds-panel:not([open]) > .ds-panel-title .ds-caret{transform:rotate(0deg)}
+.ds-panel > .ds-panel-title .ds-caret{margin-left:calc(var(--cl-1) / 2 - var(--ds-caret) / 2);margin-right:calc(var(--cl-9) - var(--ds-caret) / 2 + var(--cl-1) / 2);width:var(--ds-caret);height:var(--ds-caret);text-align:center}
+.ds-md .ds-acc-head .ds-caret{align-self:center;margin-left:var(--cl-4)}
+.ds-md .ds-task-fold > .ds-acc-head .ds-caret{transform:rotate(0deg)}
+.ds-md .ds-task-fold[open] > .ds-acc-head .ds-caret{transform:rotate(90deg)}
+.ds-caret--dual{flex:none;display:inline-grid;place-items:center;width:calc(var(--ds-caret) - var(--cl-4));height:calc(var(--ds-caret) - var(--cl-4));color:var(--color-ink-muted);background:var(--color-bg)}
+.ds-caret--dual svg{grid-area:1/1;display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ds-caret--dual .ds-caret-less{opacity:0}
+details:not([open]) > summary .ds-caret--dual .ds-caret-more{opacity:0}
+details:not([open]) > summary .ds-caret--dual .ds-caret-less{opacity:1}
+/* Day row: caret leads, centred on the spine; text lands on the item column. */
+.ds-panel .ds-timeline-group > summary .ds-caret--dual{margin-left:0;margin-right:calc(var(--cl-9) - (var(--ds-caret) - var(--cl-4)) / 2 + var(--cl-1) / 2)}
+/* Task / description fold: trailing caret after the title. */
+.ds-md .ds-acc-head .ds-caret--dual{align-self:center;margin-left:var(--cl-4)}

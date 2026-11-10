@@ -5,13 +5,13 @@ import { stripGateThread, renderEvals, renderCommitsPanel, gateVerdictTag } from
 import { marked } from './markdown.js';
 import { esc } from './esc.js';
 import { isDone, state } from '../changelog-parse.js';
+import { triCaret } from './caret.js';
 // Rail ("Phase 01") and drawer ("Phase 1 — …") share one number format.
 const padPhase = (head) => String(head || '').replace(/^Phase\s*(\d+)/i, (_, n) => `Phase ${String(n).padStart(2, '0')}`);
 // Titled bucket as a real panel (caret + accent count), never a bare label.
 export const badgesPanel = (list, title) => {
   if (!list.length) return '';
-  const caret = `<span class="ds-caret" aria-hidden="true">▸</span>`;
-  return `<details class="ds-panel" open><summary class="ds-panel-title">${caret}${esc(title)} · <span class="ds-panel-num">${list.length}</span></summary>${badges(list)}</details>`;
+  return `<details class="ds-panel" open><summary class="ds-panel-title">${triCaret}${esc(title)} · <span class="ds-panel-num">${list.length}</span></summary>${badges(list)}</details>`;
 };
 export function paintDrawer({ plan, sprint }) {
   const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
@@ -30,11 +30,16 @@ export function paintDrawer({ plan, sprint }) {
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
   const orphanHtml = badgesPanel(orph, 'Further commits');
+  const bodyHtml = marked.parse(stripGateThread(sprint.body));
+  // Phase lede as a task-style collapsible (caret fold, no checkbox): long intros
+  // collapse like tasks, reusing the fold's caret language.
+  const ledeHtml = bodyHtml.replace(/^\s*((?:<ul class="ds-bullets">[\s\S]*?<\/ul>\s*|<pre>[\s\S]*?<\/pre>\s*)+)/, (m, ps) => `<details class="ds-task-fold ds-lede-fold" open><summary class="ds-acc-head"><h3>Description</h3>${triCaret}</summary><div class="ds-acc-body"><div class="ds-lede">${ps.trim()}</div></div></details>`);
   return [
     `<div class="ds-drawer-head">`,
     `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
     crumb + `<h2 class="ds-phase-title">${title}</h2>` + status + dueHtml,
-    marked.parse(stripGateThread(sprint.body)) + evalsHtml + commitsHtml + orphanHtml,
+    `<hr class="ds-hr">`,
+    ledeHtml + evalsHtml + commitsHtml + orphanHtml,
     `</div>`,
   ].join('');
 }

@@ -72,6 +72,9 @@
 .cl-card, .cl-seq, .cl-sub, .cl-meta, .cl-triage-list { display: none; }
 /* rail rows: title stays ink - only the phase number carries done/pending */
 .ds-rail .ds-pick.is-pending { color: var(--color-ink); }
-/* rail rows: compact table size for number + title (ink title, state-colored number) */
+/* rail rows: title carries the row, number stays subordinate + tabular */
 .ds-rail .ds-row { font-size: var(--text-ds-table); }
 .ds-rail .ds-num { font-size: inherit; }
+/* Rail phase name: quiet title voice — 12px medium; number drops to micro. */
+.ds-rail .ds-pick .ds-row b { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); }
+.ds-rail .ds-pick .ds-row .ds-num { font-size: var(--text-micro); }

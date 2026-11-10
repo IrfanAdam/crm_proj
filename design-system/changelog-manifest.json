@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T12:51:48.426Z",
+  "generated": "2026-11-10T11:57:12.260Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "ce58aa5",
+      "full": "ce58aa5941526369d645f840686b13f060196de5",
+      "date": "2026-11-09",
+      "time": "18:21",
+      "subject": "fix(changelog): rail wash lightened to 30% panel tint",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "eb11eeb",
       "full": "eb11eeb4d540accf24f64e26eaaeb5e9027319b8",
@@ -4535,6 +4544,22 @@
     }
   ],
   "wip": [
-    "M  src/pitch/pitch-changelog-drawer.css"
+    "M  changelog.html",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M  src/pitch/changelog-links.js",
+    "A  src/pitch/changelog/caret.js",
+    "M  src/pitch/changelog/markdown.js",
+    "M  src/pitch/changelog/paint-drawer.js",
+    "M  src/pitch/changelog/panels.js",
+    "A  src/pitch/changelog/prose.js",
+    "M  src/pitch/pitch-changelog-cards.css",
+    "A  src/pitch/pitch-changelog-caret.css",
+    "M  src/pitch/pitch-changelog-drawer.css",
+    "A  src/pitch/pitch-changelog-prose.css",
+    "M  src/pitch/pitch-changelog-timeline.css",
+    "M  src/pitch/pitch-changelog.css"
   ]
 }

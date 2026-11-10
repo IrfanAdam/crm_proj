@@ -1,5 +1,7 @@
 /* ADAM/DS — ds/changelog/markdown · mini markdown renderer (safepipe-detail contract) */
 import { esc } from './esc.js';
+import { bullets } from './prose.js';
+import { triCaret } from './caret.js';
 export const marked = {
   parse(s){
     let src = String(s || '');
@@ -24,13 +26,13 @@ export const marked = {
     html = html.replace(/\*Tags:[^*]*\*/g, '');
     html = html.replace(/\*Shipped in [^*]*\*/g, ''); // commits panel owns SHAs
     function inline(t){
+      // Code spans are masked first so **bold** can wrap them without leaving stray asterisks.
+      const codes = [];
+      const masked = String(t).replace(/`([^`]+)`/g, (m, c) => { codes.push(c); return `\u0001${codes.length - 1}\u0001`; });
       const tx = (r) => r.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
-      return String(t).split(/`([^`]+)`/g).map((p, i) => i % 2 ? `<code>${p}</code>` : tx(p)).join('');
+      return tx(masked).replace(/\u0001(\d+)\u0001/g, (m, i) => `<code>${codes[+i]}</code>`);
     }
-    const prose = (l)=>{ // labeled **Field:** lines read as field rows
-      const f = l.match(/^\*\*([^*]+:)\*\*\s?(.*)$/);
-      return f ? `<p class="ds-field"><span class="ds-f-t">${f[1]}</span> ${inline(f[2])}</p>` : '<p>'+inline(l)+'</p>';
-    };
+    const prose = (l)=> bullets([l], inline); // one bullet row per point
     let lines = html.split('\n');
     lines = lines.map((l)=>{
       if (/^- \[x\] /i.test(l)) return l.replace(/^- \[x\] /i, '<li><input type="checkbox" checked disabled> ');
@@ -39,7 +41,7 @@ export const marked = {
       return l;
     });
     lines = lines.map((l)=> l.startsWith('<li>') ? l + '</li>' : l);
-    const foldOpen = (tick, headHtml) => `<section class="ds-subtask"><details class="ds-task-fold"><summary class="ds-acc-head"><span class="ds-tick" data-s="${tick}"></span>${headHtml}<span class="ds-caret">▸</span></summary><div class="ds-acc-body">`;
+    const foldOpen = (tick, headHtml) => `<section class="ds-subtask"><details class="ds-task-fold"><summary class="ds-acc-head"><span class="ds-tick" data-s="${tick}"></span>${headHtml}${triCaret}</summary><div class="ds-acc-body">`;
     const bareRow = (tick, headHtml) => `<section class="ds-subtask"><div class="ds-task-bare"><span class="ds-tick" data-s="${tick}"></span>${headHtml}</div></section>`;
     const cleanName = (raw) => inline(raw.replace(/✓[ \t]*done[ \t]*[—–-]?/gi, '').replace(/✗[ \t]*cancelled[ \t]*[—–-]?/gi, '').replace(/[✓✗]/g, '').replace(/<[^>]+>/g, '').trim());
     const taskItem = (li) => { // norm-shaped "- [x] **N name** flag tail"
@@ -58,8 +60,10 @@ export const marked = {
       return false; };
     let out = [];
     let ulBuf = [];
+    let pBuf = [];
     let subOpen = false;
     const flushUl = ()=>{ if (!ulBuf.length) return; out.push('<ul>'+ulBuf.join('')+'</ul>'); ulBuf = []; };
+    const flushProse = ()=>{ if (!pBuf.length) return; out.push(bullets(pBuf, inline)); pBuf = []; };
     const closeSub = ()=>{ if (subOpen) { out.push('</div></details></section>'); subOpen = false; } };
     for (let i = 0; i < lines.length; i++){
       const line = lines[i];
@@ -68,19 +72,19 @@ export const marked = {
       const isBlock = isH3 || /^<h[12]>/.test(line);
       const isEmpty = line.trim() === '';
       const ti = isLi ? taskItem(line) : null;
-      if (isEmpty) flushUl();
-      else if (ti){ flushUl(); closeSub();
+      if (isEmpty) { flushUl(); flushProse(); }
+      else if (ti){ flushUl(); flushProse(); closeSub();
         const body = ti.tail || hasBody(i);
         if (!body) out.push(bareRow(ti.tick, ti.name));
         else { out.push(foldOpen(ti.tick, ti.name)); subOpen = true; if (ti.tail) out.push(prose(ti.tail)); } }
-      else if (isLi) ulBuf.push(inline(line));
+      else if (isLi) { flushProse(); ulBuf.push(inline(line)); }
       else if (isBlock){
-        flushUl();
+        flushUl(); flushProse();
         if (isH3){ closeSub(); const raw = line.replace(/^<h3[^>]*>|<\/h3>$/g, ''); const tick = (line.match(/data-s="(\w+)"/) || [])[1] || 'todo'; out.push(foldOpen(tick, `<h3>${cleanName(raw)}</h3>`)); subOpen = true; }
         else { closeSub(); out.push(inline(line)); }
-      } else { flushUl(); out.push(prose(line)); }
+      } else { pBuf.push(line); }
     }
-    flushUl(); closeSub();
+    flushUl(); flushProse(); closeSub();
     return out.join('');
   }
 };

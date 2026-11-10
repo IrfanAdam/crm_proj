@@ -4,6 +4,7 @@
 import { parseGates } from './gates.js';
 import { hash, fmtDate } from '../changelog-parse.js';
 import { esc } from './esc.js';
+import { dayCaret, triCaret } from './caret.js';
 import history from '../../../design-system/plan-history.json';
 export function isEdited(planFile, head, body){
   const hist = history[planFile] || [];
@@ -27,14 +28,11 @@ const GATE_THREAD = /^- .*REF GATE\s+0*\d+\b/;
 export const stripGateThread = (body) => String(body).split('\n').filter((l) => !GATE_THREAD.test(l)).join('\n');
 const cleanEval = (line) => esc(line.replace(/^- /, '').replace(/^\[[ xX]\] /, '').replace(/\*\*/g, '').replace(/\s*\{#.*$/, '').trim());
 const firstGateDate = (s) => ((s || '').match(/(20\d{2}-\d{2}-\d{2})/) || [])[1] || '';
-// Single-span caret (the ::before/::after glyphs are suppressed in CSS) +
-// day items nested in .ds-timeline-items — reference footer structure.
-const caret = `<span class="ds-caret" aria-hidden="true">▸</span>`;
 const dayGroup = (dayN, d, rows) => {
   const items = rows.map((r) => r.kind === 'eval'
     ? `<div class="ds-timeline-item ds-timeline-item--eval"><span>${r.text}</span></div>`
     : `<div class="ds-timeline-item ds-timeline-item--iter"><span>${r.text}</span><small>${esc(d)}</small></div>`).join('');
-  return `<details class="ds-timeline-group" open><summary class="ds-timeline-date"><span class="ds-day-num">Day ${dayN}</span><span class="ds-sub"> · ${esc(fmtDate(d) || d)} · ${rows.length}</span>${caret}</summary><div class="ds-timeline-items">${items}</div></details>`;
+  return `<details class="ds-timeline-group" open><summary class="ds-timeline-date">${dayCaret}<span class="ds-day-num">Day ${dayN}</span><span class="ds-sub"> · ${esc(fmtDate(d) || d)} · ${rows.length}</span></summary><div class="ds-timeline-items">${items}</div></details>`;
 };
 export const renderEvals = (planFile, planDate, head, body) => {
   const g = parseGates(head, body);
@@ -47,11 +45,11 @@ export const renderEvals = (planFile, planDate, head, body) => {
   const dates = Object.keys(byDate).sort().reverse();
   const total = dates.length;
   const groups = dates.map((d, di) => dayGroup(total - di, d, byDate[d])).join('');
-  return `<details class="ds-panel" open><summary class="ds-panel-title">${caret}Evals · <span class="ds-panel-num">${entries.length}</span></summary><div class="ds-timeline">${groups}</div></details>`;
+  return `<details class="ds-panel" open><summary class="ds-panel-title">${triCaret}Evals · <span class="ds-panel-num">${entries.length}</span></summary><div class="ds-timeline">${groups}</div></details>`;
 };
 export const renderCommitsPanel = (hs, badgesHtml) => {
   if (!hs.length) return '';
-  return `<details class="ds-panel" open><summary class="ds-panel-title">${caret}Commits · <span class="ds-panel-num">${hs.length}</span></summary>${badgesHtml}</details>`;
+  return `<details class="ds-panel" open><summary class="ds-panel-title">${triCaret}Commits · <span class="ds-panel-num">${hs.length}</span></summary>${badgesHtml}</details>`;
 };
 export const gateVerdictTag = (head, body) => {
   const g = parseGates(head, body);
