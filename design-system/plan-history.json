@@ -11071,6 +11071,63 @@
           "state": "3/11"
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-11",
+      "hash": "dfe27bcf",
+      "sections": [
+        {
+          "head": "Phase 1 — Baseline re-score before touching anything {#phase-1}",
+          "hash": "16450ae5",
+          "state": "1/1"
+        },
+        {
+          "head": "Phase 2 — Superseded early directions (Phases 2–6, all cancelled) {#phase-2} {#phase-3} {#phase-4} {#phase-5} {#phase-6} ✗ CANCELLED",
+          "hash": "0430e1f5",
+          "state": "0/9"
+        },
+        {
+          "head": "Phase 3 — Real optics rework (round 3, user-authorized escalation) {#phase-7}",
+          "hash": "332f3757",
+          "state": "3/4"
+        },
+        {
+          "head": "Phase 4 — Internal-pattern aberration (round 7, owner re-opened) {#phase-9}",
+          "hash": "74f7c989",
+          "state": "2/3"
+        },
+        {
+          "head": "Phase 5 — Material accuracy (round 10) {#phase-10}",
+          "hash": "5f0c4b72",
+          "state": "3/10"
+        },
+        {
+          "head": "Phase 6 — Optical parameter surface {#phase-11}",
+          "hash": "218e36bc",
+          "state": "3/3"
+        },
+        {
+          "head": "Phase 7 — Parked trace-optics + verification (former Phases 12–14) {#phase-12} {#phase-13} {#phase-14} ⌛ PARKED",
+          "hash": "9fd862d1",
+          "state": "0/5"
+        },
+        {
+          "head": "Phase 8 — The trace becomes the stone (owner re-anchor: \"realism, and we are not close\") {#phase-15}",
+          "hash": "487978ed",
+          "state": "2/3"
+        },
+        {
+          "head": "Phase 9 — Material and realism (round 16, owner re-anchor: black internal reflection) {#phase-16}",
+          "hash": "9cb2d7a2",
+          "state": "1/7"
+        },
+        {
+          "head": "Phase 10 — Round 19: frozen gates, dynamic range, tonal continuity {#phase-17} {#round-19}",
+          "hash": "bbb1348d",
+          "state": "3/12"
+        }
+      ]
     }
   ],
   "2026-10-05_000000-lump-sum-builds.md": [

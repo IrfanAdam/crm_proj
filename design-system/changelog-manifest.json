@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T11:57:21.205Z",
+  "generated": "2026-11-11T11:11:06.001Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "47a179d",
+      "full": "47a179d77f8349b17123fb05f78547d2441f81b0",
+      "date": "2026-11-10",
+      "time": "17:30",
+      "subject": "docs(gem): realism round 2 plan update",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "c738192",
       "full": "c7381929779d27a400d456f42618d98a432cb0ff",
@@ -4553,9 +4562,10 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js"
+    "A  prototype/gems/pav_probe.py",
+    "M  src/js/mechanics/graphData.decisions.js",
+    "M  src/js/mechanics/graphData.js",
+    "M  src/js/mechanics/graphData.logic.js",
+    "M  src/js/mechanics/graphData.schema.js"
   ]
 }
