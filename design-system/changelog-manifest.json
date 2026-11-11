@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T11:11:06.001Z",
+  "generated": "2026-11-11T11:11:16.556Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "865d5bd",
+      "full": "865d5bd1f2b20fe413d81ced434cb0b1188b8872",
+      "date": "2026-11-11",
+      "time": "16:40",
+      "subject": "docs(gem): realism round 2 rev 3 — D1 blocking focus, convergence task",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-2"
+    },
     {
       "sha": "47a179d",
       "full": "47a179d77f8349b17123fb05f78547d2441f81b0",
@@ -4561,11 +4570,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "A  prototype/gems/pav_probe.py",
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
