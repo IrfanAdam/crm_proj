@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15T16:19:13.791Z",
+  "generated": "2026-11-15T16:19:24.122Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "ad1611c",
+      "full": "ad1611ca8eb9c4f94266a437f35f0ba06bae6945",
+      "date": "2026-11-15",
+      "time": "21:49",
+      "subject": "docs(gem): round 21 assembled-build audit — colour lock verified, fill rejected",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "round-19"
+    },
     {
       "sha": "f6a4de6",
       "full": "f6a4de68fc0de9021b8c0f692c3480289e8ba8aa",
@@ -4579,10 +4588,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
