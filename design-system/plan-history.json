@@ -13496,5 +13496,19 @@
         }
       ]
     }
+  ],
+  "2026-11-16_000000-lump-sum-builds.md": [
+    {
+      "sha": null,
+      "date": "2026-11-16",
+      "hash": "dd1ce6a4",
+      "sections": [
+        {
+          "head": "Phase 1 — Gem cut fidelity {#phase-1}",
+          "hash": "a7fdc888",
+          "state": "0/1"
+        }
+      ]
+    }
   ]
 }

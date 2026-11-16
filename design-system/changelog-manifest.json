@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T18:00:54.556Z",
+  "generated": "2026-11-16T18:23:05.149Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -22,9 +22,19 @@
     "2026-10-31_131759-changelog-parity.md",
     "2026-10-31_135705-changelog-safepipe-parity.md",
     "2026-11-02_000000-lump-sum-builds.md",
+    "2026-11-16_000000-lump-sum-builds.md",
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "cb1eee9",
+      "full": "cb1eee944308478aacb55ddf70aaa0c2f7012852",
+      "date": "2026-11-16",
+      "time": "23:29",
+      "subject": "docs(perf): open mobile perf parity eval — baseline recon, lane roster, resume protocol",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "phase-6"
+    },
     {
       "sha": "07f9e37",
       "full": "07f9e378b9621174d78675268fe7fce623f2334a",
@@ -4674,6 +4684,7 @@
     "M index.html",
     "M src/components/GemReward/gem-drag.js",
     "M src/components/GemReward/gem-rig.js",
+    "M  src/components/GemReward/gem-shader-ext.js",
     "M src/components/GemReward/gem3d.js",
     "M src/components/GlassDeck/deck3d.js",
     "M src/components/IllusionCube/illusion3d.js",

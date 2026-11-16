@@ -19,8 +19,13 @@ const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
     // tau is the per-pixel footprint (from main), so the blend is exactly one pixel wide at any DPR or distance.
     'vec4 ent( vec3 ro, vec3 rd, float tau ) {\n\tfloat t1 = -1.0, t2 = -1.0;\n\tint e1 = -1, e2 = -1;\n\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\tif ( i >= uCount ) break;\n\t\tvec4 P = PL( i );\n\t\tfloat s = dot( P.xyz, ro ) + P.w, den = dot( P.xyz, rd );\n\t\tif ( s > 1e-5 && den < -1e-6 ) { float t = -s / den; if ( t > t1 ) { t2 = t1; e2 = e1; t1 = t; e1 = i; } else if ( t > t2 ) { t2 = t; e2 = i; } }\n\t}\n' +
     '\tvec3 n1 = PL( max( e1, 0 ) ).xyz, n2 = n1;\n\tfloat h = 1.0;\n\tif ( e2 >= 0 ) {\n\t\tn2 = PL( e2 ).xyz;\n' +
-    // near-parallel only (cos 13 deg): a real crease keeps its hard edge, so crown/pavilion structure cannot be softened.
-    '\t\tif ( dot( n1, n2 ) > 0.974 ) h = clamp( 0.5 + ( t1 - t2 ) / ( 2.0 * tau * max( t1, 1e-3 ) ), 0.0, 1.0 );\n\t}\n' +
+    // Blend the entry normal ONLY where two planes are near-parallel enough that one pixel can toggle between them:
+    // the girdle walls (1.19 deg) and the band's collar transitions (5.42-5.64 deg). Every real facet crease on this
+    // cut measures >= 7.53 deg (pavilion main/lower-girdle) and the crown creases run 9.96-15.52 deg; blending those
+    // averaged two genuinely different facet images and the owner read it as ROUNDED crown edges on the left and
+    // right shoulders. 0.9935 = 6.5 deg sits between the two populations (measured over all 360 adjacent plane pairs
+    // of the 170-plane set). Do not raise it back toward 0.974 without re-running the crease probe.
+    '\t\tif ( dot( n1, n2 ) > 0.9935 ) h = clamp( 0.5 + ( t1 - t2 ) / ( 2.0 * tau * max( t1, 1e-3 ) ), 0.0, 1.0 );\n\t}\n' +
     '\tif ( e1 < 0 ) { gNe = vec3( 0.0, 0.0, 1.0 );\n\t\treturn vec4( -1.0, 0.0, -1.0, 0.0 ); }\n' +
     '\tgNe = normalize( mix( n2, n1, h ) );\n\treturn vec4( mix( t2, t1, h ), float( e1 ), h < 1.0 ? float( e2 ) : -1.0, 1.0 );\n}\n' +
     'vec3 tr( vec3 ro, vec3 rd, float n, mat3 R, vec4 E ) {\n\tgTot = 0.0;\n\tgNb = 0.0;\n\tfloat tin = E.x;\n\tif ( tin < 0.0 ) {\n#ifdef CORE\n\t\tdiscard;\n#endif\n\t\treturn vec3( 0.0 ); }\n' +

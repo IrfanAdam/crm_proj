@@ -82,5 +82,9 @@
   "2026-11-16_225300-mobile-perf-parity.md": {
     "title": "Mobile perf parity — desktop smoothness, zero visual change",
     "purpose": "mobile performance parity"
+  },
+  "2026-11-16_000000-lump-sum-builds.md": {
+    "title": "Lump-sum builds — week of Nov 16 (gem crease sharpness)",
+    "purpose": "weekly catch-all + gem creases"
   }
 }
