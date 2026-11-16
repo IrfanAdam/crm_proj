@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T14:02:20.902Z",
+  "generated": "2026-11-16T14:05:06.591Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "4eb7b01",
+      "full": "4eb7b013a54de5de0a265e825b951c15dafab74c",
+      "date": "2026-11-16",
+      "time": "19:34",
+      "subject": "docs(gem): retro-link round-23 code commits to Phase 10 — changelog mapping fix",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "round-19"
+    },
     {
       "sha": "78fc6b2",
       "full": "78fc6b28c2455e27c921039297f8834d63cb5544",
