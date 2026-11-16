@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T15:13:55.913Z",
+  "generated": "2026-11-16T15:14:16.585Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,15 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "1323448",
+      "full": "13234481a92ec24235987ff1fbff08ed493700fd",
+      "date": "2026-11-16",
+      "time": "20:43",
+      "subject": "perf(gem): cache the studio PMREM + repaint the traced pool in place",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "round-19"
+    },
     {
       "sha": "5301f3d",
       "full": "5301f3d1355889f8b968c2ff22802751698069ac",
@@ -4651,9 +4660,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-env.js",
-    "M  src/components/GemReward/gem-tint-ext.js"
-  ]
+  "wip": []
 }
