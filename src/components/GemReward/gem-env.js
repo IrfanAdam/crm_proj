@@ -12,6 +12,7 @@
 if (!window.THREE) return;
 const T = window.THREE;
 const api = {};
+const CACHE = new WeakMap();   // renderer → PMREM texture
 api.lastMs = 0;
 api.soft = function (renderer) {
 try {
@@ -21,7 +22,10 @@ const name = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '';
 return /swiftshader|llvmpipe|software|basic render/i.test(String(name));
 } catch (e) { return true; }
 };
+let STUDIO = null;   // — built ONCE: the tent is deterministic and PMREM only reads it, so every mount
+                     // — used to rebuild 51 meshes/materials/geometries for an identical input scene.
 function studio() {
+if (STUDIO) return STUDIO;
 const s = new T.Scene();
 const shell = new T.MeshBasicMaterial({ color: new T.Color(0.003, 0.004, 0.007), side: T.BackSide });
 s.add(new T.Mesh(new T.BoxGeometry(40, 40, 40), shell));
@@ -68,13 +72,16 @@ const kx = k.x*inv*12, ky = k.y*inv*12, kz = k.z*inv*12;
 // primary sun sphere
 glow(kx, ky, kz, 1.45 * SCALE, 22, 1.08);
 })();
-return s;
+return (STUDIO = s);
 }
 api.texture = function (renderer) {
+const hit = CACHE.get(renderer);
+if (hit) { api.lastMs = 0; return hit; }   // same renderer, same stone: the PMREM is a property of the context, not the mount
 const t0 = performance.now();
 const pmrem = new T.PMREMGenerator(renderer);
 const rt = pmrem.fromScene(studio(), 0.02);
 pmrem.dispose();
+CACHE.set(renderer, rt.texture);
 api.lastMs = Math.round(performance.now() - t0);
 return rt.texture;
 };

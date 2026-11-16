@@ -17,13 +17,18 @@ function pool(rig, color) {
   const cut = cutOf();
   const g = rig.group;
   const pose = g ? { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y } : null;
+  const cur = fl.caustic.material.map;
   let tex = null;
-  try { tex = (window.GEM_CAUSTIC && window.GEM_CAUSTIC.pool && cut) ? window.GEM_CAUSTIC.pool(color, cut, pose) : null; } catch (e) { tex = null; }
+  // — Repaint the traced pool IN PLACE when one is already mounted: the field build and the blit are the
+  // — same code path as pool(), so the bytes are identical — but no canvas/CanvasTexture is allocated and
+  // — no GPU texture is created and disposed on every other frame of a 1 s tint tween.
+  if (cut && pose && cur && cur.userData && cur.userData.gemCaustic && window.GEM_CAUSTIC && window.GEM_CAUSTIC.live && window.GEM_CAUSTIC.live(cur, color, cut, pose, rig)) tex = cur;
+  if (!tex) { try { tex = (window.GEM_CAUSTIC && window.GEM_CAUSTIC.pool && cut) ? window.GEM_CAUSTIC.pool(color, cut, pose) : null; } catch (e) { tex = null; } }
   const next = tex || (window.GEM_TEXTURES && window.GEM_TEXTURES.caustic ? window.GEM_TEXTURES.caustic(color) : null);
   if (!next) return;
-  if (fl.caustic.material.map) fl.caustic.material.map.dispose();
+  if (fl.caustic.material.map && fl.caustic.material.map !== next) fl.caustic.material.map.dispose();
   fl.caustic.material.map = next;
-  fl.caustic.material.needsUpdate = true;
+  next.needsUpdate = true;
   if (pose && fl.livePose) { fl.livePose.yaw = pose.yaw; fl.livePose.pitch = pose.pitch; }   // driver picks up from here
 }
 window.GEM_TINT_EXT = { rigOf: rigOf, pool: pool };
