@@ -11,7 +11,13 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 JS = "src/components/GemReward/gem-cut.js"
-DUMP = ("const fs=require('fs');global.window={};eval(fs.readFileSync('" + JS + "','utf8'));"
+EXT = "src/components/GemReward/gem-cut-ext.js"
+# — The cut calls window.GEM_CUT_EXT.solve8 (split out for the line budget), and index.html loads
+# — gem-cut-ext.js BEFORE gem-cut.js. Eval in that same order, or the gate dies on `solve8 undefined`.
+DUMP = ("const fs=require('fs');global.window={};"
+        "eval(fs.readFileSync('" + EXT + "','utf8'));"
+        "if(!window.GEM_CUT_EXT)throw new Error('GEM_CUT_EXT missing after ext eval');"
+        "eval(fs.readFileSync('" + JS + "','utf8'));"
         "const G=window.GEM_CUT;console.log(JSON.stringify({cut:G.gemCut(G.CUT),"
         "cats:G.CATEGORIES,alias:G.CATEGORIES['red-beryl']===G.CATEGORIES.redberyl}))")
 TOL = 1e-9
