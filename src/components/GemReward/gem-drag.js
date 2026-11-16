@@ -30,6 +30,7 @@ api.at = e;
 const list = rigs();
 if (!list) return;
 list.forEach(function (r) {
+r.boxT = 0;                                   // fresh rect for the next frame's hover tilt
 const d = r.drag;
 if (!d || !d.held) return;
 d.moved += Math.abs(e.clientX - d.px) + Math.abs(e.clientY - d.py);

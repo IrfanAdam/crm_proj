@@ -5,16 +5,27 @@
 // — actual backdrop; winGain keeps the window's lens-lift (1.8 on the stage) from blowing out a photographic —
 // — demo image (1.0 = faithful). The body's bg uniforms (bgTex/bgOn) ride the same law, demo-only, so the —
 // — stage look stays untouched. —
+// — Size: read on a ResizeObserver/resize epoch, never polled — the box only changes when layout says so; the —
+// — reads and setSize/camera maths below are exactly the ones the per-frame poll used. —
 // — Pool: when the floor carries the traced pool (GEM_CAUSTIC), re-trace it from the stone's live yaw/pitch —
 // — once the pose moves past a threshold; the traced pattern is world-oriented, so the quad never rigid-spins. —
 // Export map: GEM_RIG.size(rig) · GEM_RIG.backdrop(rig) · GEM_RIG.pool(rig) · GEM_RIG.tick(rig) · GEM_RIG.bg(url, rigs) · GEM_RIG.restage(rigs).
 (function () {
 const api = {};
-let demoBg = null;
+let demoBg = null, epoch = 0;
+if (window.addEventListener) window.addEventListener('resize', function () { epoch++; }, { passive: true });
 api.size = function (rig) {
 const canvas = rig.canvas, renderer = rig.renderer;
 if (!canvas || !renderer) return;
-const w = Math.max(canvas.clientWidth, 16), h = Math.max(canvas.clientHeight, 16);
+if (!rig.ro && window.ResizeObserver) {              // the box changes only on a layout/zoom/reflow event:
+rig.ro = new window.ResizeObserver(function () { rig.epoch = -1; });   // invalidate on observation, read on demand
+rig.ro.observe(canvas);
+}
+if (rig.ro && rig.epoch === epoch) return;
+rig.epoch = epoch;
+const cw = canvas.clientWidth, ch = canvas.clientHeight;
+rig.dead = !cw || !ch;                               // same gate offsetParent gave the loop: a display:none/0-box canvas has nothing to draw
+const w = Math.max(cw, 16), h = Math.max(ch, 16);
 if (rig.w === w && rig.h === h) return;
 rig.w = w, rig.h = h;
 renderer.setSize(w, h, false);

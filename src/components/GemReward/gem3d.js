@@ -36,7 +36,7 @@ const now = performance.now();
 const dt = Math.min((now - rig.last) / 1000 || 0, 0.05);
 rig.last = now;
 window.GEM_RIG.size(rig);
-if (!rig.vis || document.hidden || !canvas.offsetParent) return;
+if (!rig.vis || document.hidden || rig.dead) return;
 window.GEM_RIG.tick(rig);   // backdrop + pool law — idempotent, cheap, true even across first compile
 if (window.GEM_TINT) window.GEM_TINT.step(rig, dt);
 if (window.GEM_DRAG && window.GEM_DRAG.apply(rig, now, dt)) {
@@ -45,8 +45,8 @@ renderer.render(rig.scene, rig.camera);
 return;
 }
 const at = window.GEM_DRAG && window.GEM_DRAG.at;
-const box = canvas.getBoundingClientRect();
-if (at && box.width > 1) rig.tiltT = Math.max(-1, Math.min(1, ((at.clientX - box.left) / box.width - 0.5) * 2)) * 0.14;
+if (at && rig.boxT + 250 < now) { rig.box = canvas.getBoundingClientRect(); rig.boxT = now; }   // hover tilt: one layout read per 250 ms, not one per frame
+if (at && rig.box && rig.box.width > 1) rig.tiltT = Math.max(-1, Math.min(1, ((at.clientX - rig.box.left) / rig.box.width - 0.5) * 2)) * 0.14;
 rig.t += dt;
 rig.tilt += (rig.tiltT - rig.tilt) * (1 - Math.pow(0.0005, dt));
 rig.group.rotation.y = rig.cat.spin * rig.t * 0.9;
@@ -68,7 +68,7 @@ canvas.dataset.gemDone = '1';
 const raw = css(cat.token) || css('--primitive-sapphire-ui-500');
 const ap = window.GEM_APPEARANCE && window.GEM_APPEARANCE.stones && window.GEM_APPEARANCE.stones[canvas.dataset.gem];
 const paint = (ap && THREE_) ? huePaint(raw, ap.hue) : raw;   // the measured record owns the hue, the UI token owns lightness/sat
-const rig = { canvas: canvas, cat: cat, paint: paint, renderer: null, vis: false, t: 0, last: 0, tilt: 0, tiltT: 0, w: 0, h: 0, gone: false };
+const rig = { canvas: canvas, cat: cat, paint: paint, renderer: null, vis: false, t: 0, last: 0, tilt: 0, tiltT: 0, w: 0, h: 0, boxT: 0, gone: false };
 rigs.push(rig);
 if (!THREE_ || !window.GEM_SCENE || !window.GEM_SCENE.stage || !GEM.gemCut) {
 if (window.GEM_FALLBACK) window.GEM_FALLBACK.paint(canvas, paint || css('--text-secondary'));
@@ -85,6 +85,7 @@ if (rig.vis && !rig.renderer) start(rig);
 }, { rootMargin: '160px' }).observe(canvas);
 }
 const boot = function () { document.querySelectorAll('canvas[data-gem]').forEach(mount); };
+window.addEventListener('scroll', function () { for (let i = 0; i < rigs.length; i++) rigs[i].boxT = 0; }, { passive: true, capture: true });   // rect moved under a still pointer
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 document.addEventListener('ds:doc', boot);
 if (window.MutationObserver) new MutationObserver(function (list) {
