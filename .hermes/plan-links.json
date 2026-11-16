@@ -448,5 +448,20 @@
   "plan": "2026-10-03_144222-gem-realism-round2.md",
   "anchor": "phase-16",
   "note": "retro-link: task-53 composite hue lock - saturation work serves 16"
+ },
+ "d28fbba": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "{#round-19}",
+  "note": "retro-link: round-23 Task 53 code - convex girdle + single tint + tone floor"
+ },
+ "9e483fd": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "{#round-19}",
+  "note": "retro-link: round-23 Task 53 code - clip-free highlights, per-material aim guard"
+ },
+ "cef214e": {
+  "plan": "2026-10-03_144222-gem-realism-round2.md",
+  "anchor": "{#round-19}",
+  "note": "retro-link: round-23 Task 53 code - tone contrast after highlight bleach, variant B"
  }
 }
