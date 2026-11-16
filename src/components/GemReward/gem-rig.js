@@ -18,7 +18,7 @@ api.size = function (rig) {
 const canvas = rig.canvas, renderer = rig.renderer;
 if (!canvas || !renderer) return;
 if (!rig.ro && window.ResizeObserver) {              // the box changes only on a layout/zoom/reflow event:
-rig.ro = new window.ResizeObserver(function () { rig.epoch = -1; });   // invalidate on observation, read on demand
+rig.ro = new window.ResizeObserver(function () { rig.epoch = -1; api.size(rig); });   // measure here, never inside a frame
 rig.ro.observe(canvas);
 }
 if (rig.ro && rig.epoch === epoch) return;

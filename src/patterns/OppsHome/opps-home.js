@@ -28,14 +28,24 @@ const measure = () => { if (!large || !small || !compact || !feed) return;
   RANGE = Math.max(8, large.offsetTop - padTop - small.offsetTop); S = small.offsetHeight / lh;
   const smallCx = compact.offsetLeft + small.offsetLeft + small.offsetWidth / 2;
   TX = smallCx - (large.offsetLeft + lw / 2) + (lw * (1 - S)) / 2;
-  TY = -(lh * (1 - S)) / 2; };
+  TY = -(lh * (1 - S)) / 2;
+  painted = -1; };   /* new geometry: the next frame rewrites even an unchanged progress */
 const smooth = (a, b, p) => { const t = Math.min(Math.max((p - a) / (b - a), 0), 1); return t * t * (3 - 2 * t); };
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-let tick = false;
-const frame = () => { tick = false; const y = feed?.scrollTop || 0;
-  device?.classList.toggle("device--scrolled", y > 8);
+/* one rAF driver for every geometry-dependent pass: a scroll frame, a resize burst and a
+   font/content change all collapse into ONE batched pass per frame. `geo` marks the cached
+   geometry stale — measure() only runs when it is, never in the event tick. */
+let queued = false, geo = true, painted = -1, scrolled = null;
+const pass = () => { queued = false; if (geo) { geo = false; measure(); } frame(); };
+const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(pass); } };
+const invalidate = () => { geo = true; schedule(); };
+const frame = () => { const y = feed?.scrollTop || 0;
+  const sc = y > 8;
+  if (sc !== scrolled) { scrolled = sc; device?.classList.toggle("device--scrolled", sc); }
   if (!large || !small) return; /* empty tab: no large-title morph */
   let p = Math.min(Math.max(y / RANGE, 0), 1); if (reduced) p = y > 8 ? 1 : 0;
+  if (p === painted) return;   // same progress: the title already sits there — no writes, no recalc
+  painted = p;
   const q = smooth(0.55, 1, p);
   large.style.transform = `translate(${p * TX}px, ${p * TY}px) scale(${1 - p * (1 - S)})`;
   large.style.opacity = 1 - smooth(0.45, 0.95, p);
@@ -68,10 +78,14 @@ function mount(page) {
   compact = root.querySelector(".opps__compact");
   largeAv = root.querySelector(".opps__avatar"); smallAv = root.querySelector(".opps__compact-avatar");
   if (feed) feed.scrollTop = 0;
+  geo = false; painted = -1; scrolled = null;   // new nodes: measured and painted before the first frame shows
   measure(); frame();
 }
-feed?.addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(frame); } }, { passive: true });
-addEventListener("resize", () => { measure(); frame(); });
-document.fonts?.ready.then(() => { measure(); frame(); }).catch(() => {});
+feed?.addEventListener("scroll", schedule, { passive: true });
+/* a resize/orientationchange burst and a late font swap only mark the cached geometry stale:
+   the batched pass re-measures once per frame instead of in the event tick */
+addEventListener("resize", invalidate, { passive: true });
+addEventListener("orientationchange", invalidate, { passive: true });
+document.fonts?.ready.then(invalidate).catch(() => {});
 window.addEventListener("app-tab", (e) => mount(e.detail));
 mount("Opps");

@@ -6,7 +6,7 @@
   padding: var(--spacing-4);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3); }
+  gap: var(--spacing-3); contain: layout; }
 .opp-card__head, .opp-card__contact, .opp-card__stage, .opp-card__segs, .opp-card__actions, .opp-card__foot {
   display: flex;
   align-items: center;

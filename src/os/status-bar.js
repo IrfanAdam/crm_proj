@@ -6,11 +6,16 @@ const time=()=>{const d=new Date(),h=d.getHours()%12||12;return h+':'+String(d.g
 export function mountStatus(root){
  root.innerHTML=`<div class="status" aria-hidden="true"><span class="status__time"></span><span class="status__island" title="Dynamic Island"></span><span class="status__right">${SIGNAL}<span class="status__battery"><span class="status__battery-fill"></span></span></span></div>`;
  const t=$('.status__time',root),fill=$('.status__battery-fill',root);
- const tick=()=>{t.textContent=time();};tick();const clock=setInterval(tick,15000);
+ /* the clock polls 4× a minute but the minute changes once: compare before writing, and hold
+    the interval while the document is hidden — one catch-up tick on reveal keeps it exact */
+ const tick=()=>{const s=time();if(t.textContent!==s) t.textContent=s;};tick();
+ let clock=setInterval(tick,15000);
+ const onVis=()=>{ if(document.hidden){clearInterval(clock);clock=0;} else if(!clock){tick();clock=setInterval(tick,15000);} };
+ document.addEventListener('visibilitychange',onVis,{passive:true});
  const setLvl=l=>{fill.style.width=Math.round(l*100)+'%';};
  if(navigator.getBattery) navigator.getBattery().then(b=>{const u=()=>setLvl(b.level);u();b.addEventListener('levelchange',u);}).catch(()=>setLvl(.68));
  else setLvl(.68);
- return ()=>clearInterval(clock);
+ return ()=>{clearInterval(clock);document.removeEventListener('visibilitychange',onVis);};
 }
 export function setNotch(mode='island'){const n=$('.status__island');if(n) n.dataset.notch=mode;}
 if($('#os-status')) mountStatus($('#os-status'));setNotch('island');

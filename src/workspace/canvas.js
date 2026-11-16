@@ -59,17 +59,24 @@ function bind(){
  viewport?.addEventListener('wheel',e=>{
   if(e.ctrlKey||e.metaKey){e.preventDefault();applyZoom(zoom-Math.sign(e.deltaY)*0.05);}
  },{passive:false});
- let dragging=false,sx=0,sy=0,sl=0,st=0;
+ let dragging=false,sx=0,sy=0,sl=0,st=0,px=0,py=0,panRaf=0,fitRaf=0;
+ const pan=()=>{panRaf=0;if(!dragging) return;viewport.scrollLeft=sl-(px-sx);viewport.scrollTop=st-(py-sy);};
+ const flushPan=()=>{if(!panRaf) return;cancelAnimationFrame(panRaf);panRaf=0;viewport.scrollLeft=sl-(px-sx);viewport.scrollTop=st-(py-sy);};
+ /* a drag writes the viewport scroll at most once a frame, latest pointer wins — a 1000 Hz
+    mouse no longer costs 8 lay-flushing writes per frame */
  viewport?.addEventListener('mousedown',e=>{
   if(e.button!==0||e.target.closest('.device')) return;
   dragging=true;viewport.classList.add('ws-canvas--dragging');
-  sx=e.clientX;sy=e.clientY;sl=viewport.scrollLeft;st=viewport.scrollTop;e.preventDefault();
+  sx=px=e.clientX;sy=py=e.clientY;sl=viewport.scrollLeft;st=viewport.scrollTop;e.preventDefault();
  });
  window.addEventListener('mousemove',e=>{
   if(!dragging) return;
-  viewport.scrollLeft=sl-(e.clientX-sx);viewport.scrollTop=st-(e.clientY-sy);
+  px=e.clientX;py=e.clientY;
+  if(!panRaf) panRaf=requestAnimationFrame(pan);
+ },{passive:true});
+ window.addEventListener('mouseup',()=>{
+  flushPan();dragging=false;viewport?.classList.remove('ws-canvas--dragging');
  });
- window.addEventListener('mouseup',()=>{dragging=false;viewport?.classList.remove('ws-canvas--dragging');});
  window.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT') return;
   if(e.key==='+'||e.key==='=') applyZoom(zoom+0.1);
@@ -77,7 +84,7 @@ function bind(){
   if(e.key==='0') applyZoom(1);
   if(e.key==='f'||e.key==='F') fitZoom();
  });
- window.addEventListener('resize',fitZoom);
+ window.addEventListener('resize',()=>{ if(!fitRaf) fitRaf=requestAnimationFrame(()=>{fitRaf=0;fitZoom();}); },{passive:true});
 }
 buildSelect();
 buildFrame();applyDevice(current);applyZoom(0.8,{animate:false});bind();

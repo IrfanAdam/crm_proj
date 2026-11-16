@@ -5,7 +5,7 @@
 .empty-state{
   background:var(--bg-surface);border:1px solid var(--border-thin);
   border-radius:var(--radius-lg);padding:var(--spacing-8) var(--spacing-4);
-  text-align:center
+  text-align:center;contain:layout paint
 }
 .empty-state__title{
   font-size:var(--type-card);font-weight:var(--font-weight-bold);

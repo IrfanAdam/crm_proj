@@ -51,11 +51,12 @@ export async function initMap(onTap) {
   });
   // — pressed state: the whole widget dents uniformly while held; the morph snaps it off
   // pre-measure (see fromState) so the window never starts smaller than the widget —
+  // — none of these call preventDefault: passive keeps the press path off the blocking queue —
   const release = () => box.removeAttribute("data-pressed");
-  box.addEventListener("pointerdown", () => box.setAttribute("data-pressed", "true"));
-  box.addEventListener("pointerup", release);
-  box.addEventListener("pointercancel", release);
-  box.addEventListener("pointerleave", release);
+  box.addEventListener("pointerdown", () => box.setAttribute("data-pressed", "true"), { passive: true });
+  box.addEventListener("pointerup", release, { passive: true });
+  box.addEventListener("pointercancel", release, { passive: true });
+  box.addEventListener("pointerleave", release, { passive: true });
   return api;
 }
 // — rect of el in screen-local layout px (scroll + canvas-zoom safe) —

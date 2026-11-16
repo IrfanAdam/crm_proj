@@ -44,8 +44,8 @@ window.addEventListener('touchmove', (e) => {
   }
 }, { passive: true });
 const cancelHold = () => { clearTimeout(holdTimer); holdTimer = 0; };
-window.addEventListener('touchend', cancelHold);
-window.addEventListener('touchcancel', cancelHold);
+window.addEventListener('touchend', cancelHold, { passive: true });
+window.addEventListener('touchcancel', cancelHold, { passive: true });
 openBtn?.addEventListener('click', enter);
 exitBtn?.addEventListener('click', exit);
 window.addEventListener('keydown', (e) => {

@@ -4,12 +4,14 @@
 // — pauses so the stone freezes for inspection. Release: hold the pose HOLD ms, then a damped — 
 // — SPRING (underdamped → it overshoots and settles, never a dead fade) returns it to the grab — 
 // — pose and resumes the spin from the same angle (never a jump). —
-// — Pointer tracking also feeds the resting tilt (GEM_DRAG.at). Reduced motion has no loop, so no drag. —
+// — Pointer tracking also feeds the resting tilt (GEM_DRAG.at); track() caches the box on input/scroll so — 
+// — no frame ever reads a layout rect. —
 // — Click guard: a release after >6px of travel swallows the click (capture phase) so a drag-to-inspect —
 // — never triggers the card's fullscreen overlay; a clean tap still opens it. —
 // Export map: GEM_DRAG.at · GEM_DRAG.apply(rig, now, dt) → true when it posed the rig this frame
 (function () {
 const api = { at: null, hold: 1200, k: 0.011, spring: { w: 8, z: 0.58 } };
+let lastTracked = 0;
 const rigs = function () { return (window.GEM3D && window.GEM3D.rigs) || null; };
 const rigOf = function (canvas) {
 const list = rigs();
@@ -25,12 +27,23 @@ if (!rig || !rig.group) return;
 rig.drag = { y0: rig.group.rotation.y, x0: rig.group.rotation.x, dx: 0, dy: 0, px: e.clientX, py: e.clientY, moved: 0, held: true, released: 0, settle: false };
 try { cv.setPointerCapture(e.pointerId); } catch (err) { /* synthetic or lost pointer — drag still tracks */ }
 };
+const track = function (e, force) {
+const list = rigs();
+if (!list) return;
+const now = performance.now(), pt = e || api.at;
+if (force) { if (now - lastTracked < 60) return; lastTracked = now; }   // scroll storm: one read per settle, not per event
+list.forEach(function (r) {
+if (!r.renderer || !r.canvas || !r.canvas.isConnected) return;
+if (force || r.boxT + 250 <= now) { r.box = r.canvas.getBoundingClientRect(); r.boxT = now; }   // ≤4 reads/s, none inside a frame
+if (pt && r.box && r.box.width > 1) r.tiltT = Math.max(-1, Math.min(1, ((pt.clientX - r.box.left) / r.box.width - 0.5) * 2)) * 0.14;
+});
+};
 const moveDrag = function (e) {
 api.at = e;
 const list = rigs();
 if (!list) return;
+track(e, false);                              // cached rect for the resting tilt — the loop only reads the cache
 list.forEach(function (r) {
-r.boxT = 0;                                   // fresh rect for the next frame's hover tilt
 const d = r.drag;
 if (!d || !d.held) return;
 d.moved += Math.abs(e.clientX - d.px) + Math.abs(e.clientY - d.py);
@@ -77,4 +90,5 @@ e.preventDefault();
 }
 }, true);
 window.GEM_DRAG = api;
+api.track = track;
 })();

@@ -9,9 +9,18 @@ export const MARGIN = 18;   // tile-layer bleed past the screen — covers the s
 export const OPEN_MS = 460;
 export const CLOSE_MS = 320;
 // — the layer is wider than the screen on all sides, so an overshoot never shows bare background —
+/* one measurement per screen size, not one per call site: open() sizes the layer before the
+   map invalidates (so the view lands centred) and morph() would re-read and re-write the
+   same box a beat later. The cache makes the second call free. */
+const fit = new WeakMap();
 export function fitLayer(screen, layer) {
-  layer.style.width = `${screen.clientWidth + MARGIN * 2}px`;
-  layer.style.height = `${screen.clientHeight + MARGIN * 2}px`;
+  const w = screen.clientWidth + MARGIN * 2;
+  const h = screen.clientHeight + MARGIN * 2;
+  const c = fit.get(layer);
+  if (c && c.w === w && c.h === h) return;
+  fit.set(layer, { w, h });
+  layer.style.width = `${w}px`;
+  layer.style.height = `${h}px`;
 }
 // — drive one morph; `rect` is the widget's inner box in screen px, `dir` +1 open / −1 close —
 export function morph(parts, rect, dir, done, instant) {
@@ -51,13 +60,17 @@ export function morph(parts, rect, dir, done, instant) {
     //    at 0 — the drawer never pushes down; it only fades in at its final seat —
     const ce = rawC >= 1 ? 1 : rawC <= 0 ? 0 : 1 - Math.pow(1 - rawC, 3);
     const bx = alpha("x", p);
-    layer.style.opacity = lf ? clamp01((p - lf[0]) / (lf[1] - lf[0])).toFixed(3) : "1";
+    // — constant targets are compared, not re-written: an inline write dirties style even
+    // — when the value is the same, and these two stay put for the whole flight —
+    const lo = lf ? clamp01((p - lf[0]) / (lf[1] - lf[0])).toFixed(3) : "1";
+    if (layer.style.opacity !== lo) layer.style.opacity = lo;
     scrim.style.opacity = alpha("scrim", p).toFixed(3);
     card.style.opacity = ce.toFixed(3);
-    card.style.transform = "none";
+    if (card.style.transform !== "none") card.style.transform = "none";
     if (header) header.style.opacity = bx.toFixed(3);   // header blur trails the avatar landing
     x.style.opacity = bx.toFixed(3);
-    x.style.pointerEvents = bx > 0.2 ? "" : "none";
+    const pe = bx > 0.2 ? "" : "none";
+    if (x.style.pointerEvents !== pe) x.style.pointerEvents = pe;
   };
   paint(0);
   if (instant) {

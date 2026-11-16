@@ -1,11 +1,9 @@
 /* ADAM/MOTION — src/motion/gooey.js · the gooey effect as a function — attachGooey(any element). */
 // Resisted pull, strain stretch, press squish, wobble home — springs integrated per frame; no keyframes.
-// Feel constants are live CSS vars the caller sets:
-//   --gooey-elasticity · stiffness (1/s²)   --gooey-damping · release ζ   --gooey-give · max travel px (0 = anchored)
-//   --gooey-stretch · strain at 95px of pull   --gooey-squish · press compression
-// While held: data-gooey="press|drag" (style it). After a drag, data-gooey-moved survives one tick
-// so a trailing click can be swallowed: if (!el.dataset.gooeyMoved) act();
-// Reduced motion: no drive — style :active yourself. Rides time-scale slow-mo. window.Gooey alias.
+// Feel constants are live CSS vars the caller sets: --gooey-elasticity · --gooey-damping · --gooey-give · --gooey-stretch · --gooey-squish.
+// While held: data-gooey="press|drag" (style it). After a drag, data-gooey-moved survives one tick so a trailing click can be
+// swallowed: if (!el.dataset.gooeyMoved) act();
+// Reduced motion: no drive — style :active yourself. Rides time-scale slow-mo, and the loop only lives while a spring is in flight — it parks on a hidden tab and visibilitychange re-arms it from the same clock. window.Gooey alias.
 import { getScale } from "../logic/time-scale.js";
 
 const VARS = { k: ["--gooey-elasticity", 800], z: ["--gooey-damping", 0.5], st: ["--gooey-stretch", 0.26], sq: ["--gooey-squish", 0.08], gv: ["--gooey-give", 14] };
@@ -19,7 +17,7 @@ const visScale = (el) => { const r = el.getBoundingClientRect(); return (r.width
 export function attachGooey(el) {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return { refresh() {}, detach() {} };
   let V = read();
-  let raf = 0, last = 0, pid = null, down = false, drag = false, vs = 1;
+  let raf = 0, last = 0, pid = null, down = false, drag = false, vs = 1, live = false;
   let x = 0, y = 0, vx = 0, vy = 0, e = 0, ve = 0, p = 0, vp = 0, tx = 0, ty = 0, dx = 0, dy = 0, px = 0, py = 0, th = 0, sx = 0, sy = 0, lo = [0, 0], hi = [0, 0];
   function read() { const o = {}; for (const [k, [name, d]] of Object.entries(VARS)) o[k] = num(el, name, d); return o; }
   /* bounds in layout px, relative to home — from live rects (scale-corrected) so any parent chain or
@@ -34,9 +32,10 @@ export function attachGooey(el) {
     lo = [half + m - hcx, half + m - hcy];
     hi = [b.width / vs - half - m - hcx, b.height / vs - half - m - hcy];
   }
-  const kick = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); } };
+  const kick = () => { live = true; if (!raf && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(tick); } };
   const tick = () => {
     raf = 0;
+    if (document.hidden) return; // parked — visibilitychange re-arms a live spring
     const now = performance.now();
     const dt = Math.min(Math.max((now - last) / 1000, 0.001), 1 / 30) * getScale(); // rides the workspace slow-mo
     last = now;
@@ -52,7 +51,7 @@ export function attachGooey(el) {
     y = Math.min(hi[1], Math.max(lo[1], y));
     el.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0) scale(${(1 + p * V.sq * 0.55).toFixed(4)},${(1 - p * V.sq).toFixed(4)}) rotate(${th.toFixed(5)}rad) scale(${(1 + e).toFixed(4)},${(1 - e * 0.5).toFixed(4)}) rotate(${(-th).toFixed(5)}rad)`;
     if (!down && Math.abs(x) < 0.3 && Math.abs(y) < 0.3 && Math.hypot(vx, vy) < 1 && Math.abs(e) < 0.004 && Math.abs(p) < 0.01) {
-      el.style.transform = "";
+      el.style.transform = ""; live = false;
       return;
     }
     raf = requestAnimationFrame(tick);
@@ -87,10 +86,11 @@ export function attachGooey(el) {
   el.addEventListener("pointermove", onMove, opt);
   el.addEventListener("pointerup", onUp, opt);
   el.addEventListener("pointercancel", onUp, opt);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && live && !raf) kick(); }, opt); // re-arm off the same clock
   return {
     refresh() { V = read(); },
     detach() {
-      ac.abort(); cancelAnimationFrame(raf);
+      ac.abort(); cancelAnimationFrame(raf); live = false;
       delete el.dataset.gooey; delete el.dataset.gooeyMoved;
       el.style.transform = "";
     },

@@ -2,7 +2,7 @@
 /* bottom edge material — native progressive blur: stacked backdrop layers, radius rises toward the edge.
    height = dock top (frame bottom − 30 − 56) → frame bottom; layers only paint from their fade-in stop down. */
 .device__edge{position:absolute;left:0;right:0;bottom:0;height:78px;z-index:4;pointer-events:none;isolation:isolate;contain:layout paint;border-radius:0 0 var(--display-r) var(--display-r);corner-shape:squircle;-webkit-corner-shape:squircle;overflow:hidden}
-.device__edge>span{position:absolute;inset:0;display:block;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:backdrop-filter;-webkit-backdrop-filter:blur(var(--b));backdrop-filter:blur(var(--b));-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z))}
+.device__edge>span{position:absolute;inset:0;display:block;transform:translateZ(0);-webkit-transform:translateZ(0);-webkit-backdrop-filter:blur(var(--b));backdrop-filter:blur(var(--b));-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z))}
 /* top edge material — native nav behavior on large-title screens (.device--large):
    no blur at rest (content starts on safe-area margin, untouched); the material
    fades in once scrolled and is then the ONLY backdrop — patterns add no own blur.
