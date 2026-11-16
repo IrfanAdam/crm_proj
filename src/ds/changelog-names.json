@@ -78,5 +78,9 @@
   "2026-11-02_000000-lump-sum-builds.md": {
     "title": "Lump-sum builds — week of Nov 2 (Alphas brand rename)",
     "purpose": "weekly catch-all + brand rename"
+  },
+  "2026-11-16_225300-mobile-perf-parity.md": {
+    "title": "Mobile perf parity — desktop smoothness, zero visual change",
+    "purpose": "mobile performance parity"
   }
 }

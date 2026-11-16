@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T15:54:11.129Z",
+  "generated": "2026-11-16T18:00:54.556Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -21,7 +21,8 @@
     "2026-10-05_000000-lump-sum-builds.md",
     "2026-10-31_131759-changelog-parity.md",
     "2026-10-31_135705-changelog-safepipe-parity.md",
-    "2026-11-02_000000-lump-sum-builds.md"
+    "2026-11-02_000000-lump-sum-builds.md",
+    "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
     {
@@ -4669,5 +4670,30 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M index.html",
+    "M src/components/GemReward/gem-drag.js",
+    "M src/components/GemReward/gem-rig.js",
+    "M src/components/GemReward/gem3d.js",
+    "M src/components/GlassDeck/deck3d.js",
+    "M src/components/IllusionCube/illusion3d.js",
+    "M src/components/IntelCube/cube3d.js",
+    "M src/components/OpportunityCard/opportunity-card.css",
+    "M  src/ds/changelog-names.json",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js",
+    "M src/motion/gooey.js",
+    "M src/os/status-bar.js",
+    "M src/patterns/ActivityStrip/activity-strip.css",
+    "M src/patterns/EmptyState/empty-state.css",
+    "M src/patterns/OppsHome/live-map-breath.js",
+    "M src/patterns/OppsHome/nearby-map.js",
+    "M src/patterns/OppsHome/opps-home.js",
+    "M src/patterns/OppsHome/sheet-morph.js",
+    "M src/workspace/canvas.js",
+    "M src/workspace/mobile-fullscreen.js",
+    "M vite.config.js"
+  ]
 }

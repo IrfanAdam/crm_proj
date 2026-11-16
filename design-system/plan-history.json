@@ -13457,5 +13457,44 @@
         }
       ]
     }
+  ],
+  "2026-11-16_225300-mobile-perf-parity.md": [
+    {
+      "sha": null,
+      "date": "2026-11-16",
+      "hash": "93a8a70f",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "0673cf89",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "51310232",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "ad5bab72",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "5fadd640",
+          "state": ""
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "8ef922c4",
+          "state": ""
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "7ab8ba51",
+          "state": ""
+        }
+      ]
+    }
   ]
 }
