@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T10:40:19.543Z",
+  "generated": "2026-11-16T13:50:04.048Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -24,6 +24,33 @@
     "2026-11-02_000000-lump-sum-builds.md"
   ],
   "commits": [
+    {
+      "sha": "cef214e",
+      "full": "cef214ea17f788e407c9ea54bb88ef1218eb832b",
+      "date": "2026-11-16",
+      "time": "19:08",
+      "subject": "feat(gem): tone contrast after the highlight bleach — variant B, owner-selected",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "9e483fd",
+      "full": "9e483fdf3012deb0a034044e8ef68810a2135932",
+      "date": "2026-11-16",
+      "time": "18:46",
+      "subject": "wip(gem): clip-free highlights, per-material aim guard, revived parity + convexity gates",
+      "plan": null,
+      "anchor": null
+    },
+    {
+      "sha": "d28fbba",
+      "full": "d28fbba9695ae374ba83368a692cd08edd0ee37f",
+      "date": "2026-11-16",
+      "time": "18:09",
+      "subject": "wip(gem): convex girdle + single tint + tone floor",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "d8e868b",
       "full": "d8e868b03c04cb28bb96e6e7d6d73027e7b41ba7",
@@ -4597,5 +4624,11 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M src/arch/atlas.json",
+    "M src/js/mechanics/graphData.decisions.js",
+    "M src/js/mechanics/graphData.js",
+    "M src/js/mechanics/graphData.logic.js",
+    "M src/js/mechanics/graphData.schema.js"
+  ]
 }
