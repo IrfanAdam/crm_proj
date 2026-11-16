@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T18:23:05.149Z",
+  "generated": "2026-11-16T18:23:33.135Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "047febc",
+      "full": "047febca60edc4d89dd493448ed31c507c8eb911",
+      "date": "2026-11-16",
+      "time": "23:52",
+      "subject": "fix(gem): crown facet creases read sharp — entry-normal blend narrowed to the girdle populations",
+      "plan": "2026-11-16_000000-lump-sum-builds.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "cb1eee9",
       "full": "cb1eee944308478aacb55ddf70aaa0c2f7012852",
@@ -4684,13 +4693,11 @@
     "M index.html",
     "M src/components/GemReward/gem-drag.js",
     "M src/components/GemReward/gem-rig.js",
-    "M  src/components/GemReward/gem-shader-ext.js",
     "M src/components/GemReward/gem3d.js",
     "M src/components/GlassDeck/deck3d.js",
     "M src/components/IllusionCube/illusion3d.js",
     "M src/components/IntelCube/cube3d.js",
     "M src/components/OpportunityCard/opportunity-card.css",
-    "M  src/ds/changelog-names.json",
     "M src/js/mechanics/graphData.decisions.js",
     "M src/js/mechanics/graphData.js",
     "M src/js/mechanics/graphData.logic.js",
