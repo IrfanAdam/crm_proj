@@ -47,14 +47,16 @@ return sm;
 };
 api.core = function (opts) { return api.farside(Object.assign({}, opts || {}, { core: 1 })); };
 // aim(mesh) is gem-scene's onBeforeRender hook: push κ, fit and every optical uniform when the category changed.
+// The guard is per MATERIAL, not module-global: a second canvas of the same stone (fullscreen ceremony) used to
+// return early and keep the constructor defaults (uK/uFt = white), i.e. a grey, white-locked stone.
 api.aim = function (mesh) {
 const m = mesh && mesh.material, u = m && m.uniforms; if (!u || !u.uK) return;
 u.uM.value.copy(mesh.matrixWorld);
 const cat = (m.userData.can && m.userData.can.dataset.gem) || 'sapphire';
 const O = window.GEM_OPTICS ? window.GEM_OPTICS.of(cat) : null;
 if (O) { u.uSpread.value = O.fire.spread; u.uTaps.value = O.fire.taps; }
-if (api._cat === cat) return;
-api._cat = cat;
+if (m.userData._cat === cat) return;
+m.userData._cat = cat;
 const F = O ? { e: O.light.exp, g: O.light.gam, k: O.absorb.scale } : (api.FIT[cat] || api.FIT.sapphire);
 if (window.GEM_FACETS) { const k = window.GEM_FACETS.k3(cat); u.uK.value.set(k[0], k[1], k[2]); }
 u.uExp.value = F.e; u.uGam.value = F.g; u.uKS.value = F.k;
