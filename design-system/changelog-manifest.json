@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T15:44:00.802Z",
+  "generated": "2026-11-17T17:09:53.452Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4770,5 +4770,14 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M  gallery.html",
+    "M  index.html",
+    "M  pitch.html",
+    "M  src/arch/atlas.json",
+    "M  src/components/GemReward/gem-facets.js",
+    "D  src/components/GemReward/gem-fold.js",
+    "M  src/components/GemReward/gem-shader-ext.js",
+    "M  src/components/GemReward/gem-shader.js"
+  ]
 }

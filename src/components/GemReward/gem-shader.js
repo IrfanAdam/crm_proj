@@ -27,8 +27,7 @@ defines.CUBEUV_TEXEL_WIDTH = 1 / (3 * Math.max(Math.pow(2, maxMip), 7 * 16));
 defines.CUBEUV_TEXEL_HEIGHT = 1 / h;
 defines.CUBEUV_MAX_MIP = maxMip + '.0';
 }
-defines.PLMAX = api.setup() || 8; const FP = window.GEM_FOLD_PLANES, FC = (FP && FP.shader && window.GEM_FACETS && window.GEM_FACETS.folded) ? window.GEM_FACETS.folded.count : 0;
-if (FC) { defines.FOLD = 1; defines.PLMAX = FC; } const ramp = o.ramp || {};
+defines.PLMAX = api.setup() || 8; const ramp = o.ramp || {};
 const rc = function (k, d) { return ramp[k] && ramp[k].isColor ? ramp[k] : new T.Color(d[0], d[1], d[2]); };
 const sm = new T.ShaderMaterial({ side: o.core ? T.FrontSide : T.BackSide, defines: defines, uniforms: {
 envMap: { value: env }, stageTex: { value: o.stageTex || null }, stageOn: { value: o.stageTex ? 1 : 0 },
