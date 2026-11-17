@@ -26,9 +26,10 @@ rig.ro.observe(canvas);
 }
 if (rig.ro && rig.epoch === epoch) return;
 rig.epoch = epoch;
-const cw = canvas.clientWidth, ch = canvas.clientHeight;
+const rc = canvas.getBoundingClientRect();           // the DISPLAYED box: the workspace canvas scales the phone frame with --zoom
+const cw = rc.width || canvas.clientWidth, ch = rc.height || canvas.clientHeight;
 rig.dead = !cw || !ch;                               // same gate offsetParent gave the loop: a display:none/0-box canvas has nothing to draw
-const w = Math.max(cw, 16), h = Math.max(ch, 16);
+const w = Math.max(Math.round(cw), 16), h = Math.max(Math.round(ch), 16);
 if (rig.w === w && rig.h === h) return;
 rig.w = w, rig.h = h;
 renderer.setSize(w, h, false);

@@ -38,6 +38,7 @@ function applyDevice(id){
 function applyZoom(v,{animate=true}={}){
  zoom=Math.min(2,Math.max(0.5,Math.round(v*100)/100));
  scaler.style.setProperty('--zoom',zoom);
+ window.dispatchEvent(new Event('resize'));   // a CSS-scaled canvas must re-size its drawing buffer, not just its box
  if(zoomSlider) zoomSlider.value=Math.round(zoom*100);
  if(zoomValue) zoomValue.textContent=Math.round(zoom*100)+'%';
  if(!animate) scaler.style.transition='none'; else scaler.style.transition='';
