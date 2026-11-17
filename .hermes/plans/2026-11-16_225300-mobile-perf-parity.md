@@ -103,8 +103,8 @@ Drop it → mobile gets ~⅓ of its frame time back for a change confined to the
 
 Third pass, before the batch-2 commit. Five lanes with reports (`lane-C2.md`, `lane-H.md`, `lane-I.md`,
 `lane-J.md`, `lane-K.md`) plus the gate lane finished by the parent (`lane-A.md`) after three attempts died
-mid-run — every row below has a report behind it. Everything is uncommitted when this was written:
-**sha pending**.
+mid-run — every row below has a report behind it. **Shipped in `70367e7`** (one commit, generated
+artifacts and plan-history included — no satellite `chore(ds)` commit).
 
 | What | Result |
 |---|---|
@@ -142,4 +142,10 @@ mid-run — every row below has a report behind it. Everything is uncommitted wh
 
 **Closure state:** the load path the plan set out to fix is closed (25 parser-blocking scripts → 0, and the
 6.2 MB icon dependency is gone from both the graph and the manifest). The eval's parity target is still open
-on the dock material decision — see eval README §5d and §7. **sha pending.**
+on the dock material decision — see eval README §5d and §7. Landed in **`70367e7`**.
+
+**One tooling defect found while closing** and fixed here: `scripts/plan-auto-link.mjs` only looked for an
+existing `[plan:…]` tag on the *subject* line, so a commit whose trailer sat in the body got a second tag
+appended — and `resolvePlan()` returns the heading's braced id (`{#phase-6}`), which the plugin then
+prefixed with `#`, producing the malformed `#{#phase-6}` now visible on `70367e7`. Both are fixed and
+falsified: a body-cited message is left untouched, an untrailed one gets a clean `#phase-6`.

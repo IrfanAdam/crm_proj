@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:41:51.734Z",
+  "generated": "2026-11-17T06:43:45.317Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "70367e7",
+      "full": "70367e7641baa3856d8cff8aa397b6ee93b37859",
+      "date": "2026-11-17",
+      "time": "12:11",
+      "subject": "perf(mobile): icon dependency out of the graph, dead focus rings restored, pixel gate certified",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "phase-6"
+    },
     {
       "sha": "b97b1de",
       "full": "b97b1dedf472ab868d976341f6811d49bf04ec4e",
@@ -4708,42 +4717,6 @@
     }
   ],
   "wip": [
-    "M  scripts/lint-tokens.mjs",
-    "M  src/arch/atlas.json",
-    "M  src/components/Avatar/avatar.css",
-    "M  src/components/Button/button-base.css",
-    "M  src/components/Checkbox/checkbox.css",
-    "M  src/components/Chip/chip.css",
-    "M  src/components/GemReward/gem-rig.js",
-    "M  src/components/Icon/Icon.jsx",
-    "D  src/components/Icon/gem-icons.js",
-    "M  src/components/ListRow/list-row.css",
-    "M  src/components/Overlay/overlay-base.css",
-    "M  src/components/Overlay/overlay-dialog.css",
-    "M  src/components/Overlay/overlay-drawer.css",
-    "M  src/components/Overlay/overlay-menu.css",
-    "M  src/components/Overlay/overlay-toast.css",
-    "M  src/components/Overlay/overlay-tooltip.css",
-    "M  src/components/Radio/radio.css",
-    "M  src/components/Search/search.css",
-    "M  src/components/Select/select.css",
-    "M  src/components/Slider/slider.css",
-    "M  src/components/StatusPill/status-pill.css",
-    "M  src/components/Switch/switch.css",
-    "M  src/components/TextInput/text-input.css",
-    "M  src/glass/band-mirror.js",
-    "M  src/glass/dock-band.css",
-    "M  src/glass/lens-copy.jsx",
-    "M  src/glass/rect-zoom.js",
-    "M  src/glass/slice-bands.jsx",
-    "M  src/glass/slices-spec.js",
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js",
-    "M  src/patterns/OppsHome/live-map.js",
-    "M  src/patterns/OppsHome/reward-sheet.css",
-    "M  src/pitch/pitch-changelog.css",
-    "A  src/shell/icons.jsx"
+    "M  scripts/plan-auto-link.mjs"
   ]
 }

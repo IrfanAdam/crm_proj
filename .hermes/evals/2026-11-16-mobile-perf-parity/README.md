@@ -344,7 +344,8 @@ defect fixes are in, and lane I hardened `lint:tokens` (a green run now prints i
 
 **4. The standard close.** Gates are `npm run test` and `npm run build`. **Both were re-run green on the
 final tree after batch 3** (`gen:atlas`/`gen:mechanics` fresh, lint 0 leaks, `npm test` 197 assertions,
-`vite build` exit 0) — re-run them anyway rather than trusting this paragraph. Then mark plan tasks `✓ done`,
+`vite build` exit 0) and the whole batch landed as **`70367e7`** — re-run them anyway rather than trusting
+this paragraph. Then mark plan tasks `✓ done`,
 `npm run ds:track`, and commit plan + generated files with the same `[plan:…]` trailer.
 
 **5. Known loose ends in the tree**, all reported and deliberately not patched — none is a regression:

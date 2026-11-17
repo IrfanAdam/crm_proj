@@ -24,11 +24,14 @@ function main() {
   const idx = lines.findIndex((l) => l.trim() !== '' && !l.startsWith('#'));
   if (idx === -1) return;
   const subject = lines[idx];
-  if (/\[plan:/.test(subject) || /^Merge\s/.test(subject)) return;
+  if (/\[plan:/.test(msg) || /^Merge\s/.test(subject)) return;
   const hit = resolvePlan();
   if (!hit) return;
-  lines[idx] = `${subject.trim()} [plan:${hit.plan}#${hit.anchor}]`;
+  // resolvePlan returns headings' braced ids ({#phase-6}); the tag format is #phase-6. Prefixing
+  // unconditionally produced a malformed `#{#phase-6}` on every commit that cited rev-only anchors.
+  const anchor = String(hit.anchor).replace(/^\{#|^#|\}$/g, '');
+  lines[idx] = `${subject.trim()} [plan:${hit.plan}#${anchor}]`;
   fs.writeFileSync(arg, lines.join('\n'));
-  console.log(`auto-link: [plan:${hit.plan}#${hit.anchor}]`);
+  console.log(`auto-link: [plan:${hit.plan}#${anchor}]`);
 }
 main();
