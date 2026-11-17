@@ -58,8 +58,9 @@ return { x: f1[0], z: f1[1] - fl.base.cz };   // delta from the plane's rest cen
 const DIT = new Int8Array([-2, 0, 2, -1, 1, -2, 0, 2, 2, -1, -2, 0, 0, 2, -1, 1]);   // 4x4 ordered dither
 const cl = function (v) { return v < 0 ? 0 : v > 255 ? 255 : v; };
 const tone = function (v) { const u = v < 0 ? 0 : v > 1 ? 1 : v; return 0.15 + 0.85 * u * u * (3 - 2 * u); };
+const ID = new WeakMap(), idOf = function (c2d) { let id = ID.get(c2d); if (!id) ID.set(c2d, id = c2d.createImageData(S, S)); return id; };   // one ImageData per context
 const blit = function (ctx, fld, color) {   // per-channel paint: the fringe is the trace's own R−B separation
-const id = ctx.createImageData(S, S), D = id.data, pk = fld.pk || 1, ch0 = fld.r, ch1 = fld.g, ch2 = fld.b;
+const id = idOf(ctx), D = id.data, pk = fld.pk || 1, ch0 = fld.r, ch1 = fld.g, ch2 = fld.b;
 const tn = color && color.isColor ? color : null, cr = tn ? tn.r : 1, cg = tn ? tn.g : 1, cb = tn ? tn.b : 1;
 const gain = fld.gain || 1;
 for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {

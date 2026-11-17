@@ -78,11 +78,11 @@ rig.vis = true;
 start(rig);
 return;
 }
-new IntersectionObserver(function (es) {
-rig.vis = es[0].isIntersecting;
-if (!rig.vis) return park(rig);
-if (rig.renderer) arm(rig); else start(rig);
-}, { rootMargin: '160px' }).observe(canvas);
+// — two margins: 160 px pre-warms the mount (compile, first frame), 0 px is the only thing that renders — a rig
+// — 160 px outside the viewport used to keep drawing on every scroll. near/vis are separate flags for that reason.
+const near = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; rig.near = true; if (!rig.renderer) start(rig); else if (rig.vis) arm(rig); }, { rootMargin: '160px' });
+const seen = new IntersectionObserver(function (es) { rig.vis = es[0].isIntersecting; if (!rig.vis) return park(rig); if (rig.renderer) arm(rig); else if (rig.near) start(rig); }, { rootMargin: '0px' });
+near.observe(canvas); seen.observe(canvas);
 }
 const boot = function () { document.querySelectorAll('canvas[data-gem]').forEach(mount); };
 const rearm = function () { for (let i = 0; i < rigs.length; i++) { if (rigs[i].vis && !document.hidden) arm(rigs[i]); else park(rigs[i]); } };

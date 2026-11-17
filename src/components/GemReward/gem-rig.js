@@ -56,6 +56,7 @@ const fl = rig.floors, g = rig.group;
 if (!fl || !fl.caustic || !g) return;
 const mp = fl.caustic.material.map;
 const live = mp && mp.userData && mp.userData.gemCaustic && window.GEM_CAUSTIC && window.GEM_CAUSTIC.live && fl.poolArgs && fl.poolArgs.cut;
+if (!fl.caustic.visible) return;                        // an invisible floor buys no field and no upload
 if (live) {
 // — 1:1: rebuild the field from THIS frame's pose — no pose gate, no hold-last-texture, no trace on
 // — the render path, so the pool can never lag behind, jump, or read as a rigid sticker.
