@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:44:56.136Z",
+  "generated": "2026-11-17T06:45:07.030Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "2e12b30",
+      "full": "2e12b30d70a8e8a173aa0b8b7f2b24fc6c0d75f7",
+      "date": "2026-11-17",
+      "time": "12:14",
+      "subject": "fix(ds): promote a body plan trailer onto the subject so ds-track links it",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "rev-3"
+    },
     {
       "sha": "7b0ddcd",
       "full": "7b0ddcdf14ba1916f4c98b0f2abdbd14b76f54a2",
@@ -4725,7 +4734,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  scripts/plan-auto-link.mjs"
-  ]
+  "wip": []
 }
