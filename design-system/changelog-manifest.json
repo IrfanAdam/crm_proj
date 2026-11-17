@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T17:16:08.150Z",
+  "generated": "2026-11-17T17:16:18.864Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "e81ae14",
+      "full": "e81ae1444c78b4ecaf1d0c42f3e6a8dee76c35a6",
+      "date": "2026-11-17",
+      "time": "22:45",
+      "subject": "fix(gem): size the drawing buffer from the displayed box, not the layout box",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "aabea3d",
       "full": "aabea3db22ec6370275c71109dfa2dd44d47b47f",
@@ -4779,9 +4788,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-rig.js",
-    "M  src/workspace/canvas.js"
-  ]
+  "wip": []
 }
