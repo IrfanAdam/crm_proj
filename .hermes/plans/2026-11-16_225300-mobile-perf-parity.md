@@ -149,3 +149,9 @@ existing `[plan:…]` tag on the *subject* line, so a commit whose trailer sat i
 appended — and `resolvePlan()` returns the heading's braced id (`{#phase-6}`), which the plugin then
 prefixed with `#`, producing the malformed `#{#phase-6}` now visible on `70367e7`. Both are fixed and
 falsified: a body-cited message is left untouched, an untrailed one gets a clean `#phase-6`.
+
+**Correction to that correction:** `ds-track` links on `%s`, so "body already cites the plan → leave the
+subject alone" left `7b0ddcd` **unlinked** (522 commits, 521 linked). The hook now **promotes** a body
+trailer onto the subject instead of skipping. `7b0ddcd` stays the one unlinked commit — fixing it would
+mean rewriting published history, which this repo does not do. Verified after the fix: promotion, clean
+auto-link, and merge pass-through all behave, and `ds-track` returns to full linkage.

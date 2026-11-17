@@ -24,7 +24,16 @@ function main() {
   const idx = lines.findIndex((l) => l.trim() !== '' && !l.startsWith('#'));
   if (idx === -1) return;
   const subject = lines[idx];
-  if (/\[plan:/.test(msg) || /^Merge\s/.test(subject)) return;
+  if (/^Merge\s/.test(subject)) return;
+  // A tag anywhere in the message counts, but ds-track links on %s — so a body trailer must be
+  // PROMOTED to the subject, not treated as "already tagged" (that left the commit unlinked).
+  const bodyTag = msg.match(/\[plan:[^\]\n]+\]/);
+  if (bodyTag) {
+    lines[idx] = `${subject.trim()} ${bodyTag[0]}`;
+    fs.writeFileSync(arg, lines.join('\n'));
+    console.log(`promoted: ${bodyTag[0]}`);
+    return;
+  }
   const hit = resolvePlan();
   if (!hit) return;
   // resolvePlan returns headings' braced ids ({#phase-6}); the tag format is #phase-6. Prefixing

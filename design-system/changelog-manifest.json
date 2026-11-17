@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:43:45.317Z",
+  "generated": "2026-11-17T06:44:56.136Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "7b0ddcd",
+      "full": "7b0ddcdf14ba1916f4c98b0f2abdbd14b76f54a2",
+      "date": "2026-11-17",
+      "time": "12:13",
+      "subject": "fix(ds): plan auto-link stops double-bracing the anchor and re-tagging body-cited commits",
+      "plan": null,
+      "anchor": null
+    },
     {
       "sha": "70367e7",
       "full": "70367e7641baa3856d8cff8aa397b6ee93b37859",
