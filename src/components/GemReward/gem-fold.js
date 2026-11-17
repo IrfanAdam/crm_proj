@@ -9,7 +9,7 @@
 (function () {
 const api = {};
 const T22 = 0.41421356, C45 = 0.70710678;
-api.shader = !!(window.GEM_FACETS_FOLD === undefined) && !/[?&]gemfold=0/.test(window.location.search);
+api.shader = window.GEM_FACETS_FOLD === true || /[?&]gemfold=1/.test(window.location.search);   // opt-in: see Phase 11 Task 58
 api.foldXZ = function (x, z) {
 if (x < 0) x = -x;
 if (z < 0) z = -z;

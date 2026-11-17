@@ -1,10 +1,8 @@
 /* ADAM/SHARED — src/components/GemReward/gem-caustic.js · floor pool paint driver */
 // [plan:2026-10-03_144222-gem-realism-round2.md#phase-13 Task 33] — the pool is painted from the TRACE's three
-// — spectral channels, not from a luminance-gradient tint hack: each channel carries its own landing energy, so
-// — the R−B fringe at the streak edges is the stone's dispersion (its width follows caus.disp) and it vanishes
-// — when disp is 0. Alpha is a continuous tone curve of the summed field (no contour ladder, no blobs) and the
-// — streak core is achromatic, so the pool stays ONE glow. live() takes the stone from the rig (dataset.gem) and
-// — re-reads GEM_OPTICS per frame, so stone and floor share one optics record. Export: {gain,pool,live,lastMs,off}.
+// — spectral channels: each carries its own landing energy, so the R−B fringe at the streak edges is the stone's
+// — dispersion and it vanishes when disp is 0. Alpha is a continuous tone curve of the summed field and the streak
+// — core is achromatic, so the pool stays ONE glow. Export: {gain,pool,live,lastMs,off}.
 (function () {
 if (!window.THREE || !window.GEM_CAUSTIC_TRACE) return;
 const T = window.THREE, K = window.GEM_CAUSTIC_TRACE, S = K.S, PEAK = 242, GAM = 0.82;
@@ -84,14 +82,14 @@ tex.colorSpace = T.SRGBColorSpace; tex.userData.gemCaustic = true;
 return tex;
 } catch (err) { return null; }
 };
-api.live = function (map, color, cut, poseIn, rig) {
+api.live = function (map, color, cut, poseIn, rig, place) {   // place: anchor only — the paint is pose-gated by the rig
 try {
 if (!map || !map.userData || !map.userData.gemCaustic || !map.image || !map.image.getContext) return false;
 const G = cutOf(cut); if (!G || !G.positions || !G.cells || !G.cells.length) return false;
-blit(map.image.getContext('2d'), fieldOf(G, K.pose(poseIn, G), stoneOf(rig, cut)), color);
+if (!place) blit(map.image.getContext('2d'), fieldOf(G, K.pose(poseIn, G), stoneOf(rig, cut)), color);
 const an = rig ? anchorOf(rig, cut) : null;   // the quad's own screen motion, world units on the plane
 if (an) api.off = { x: an.x, z: an.z, s: api.off ? api.off.s : 1 };
-map.needsUpdate = true;
+if (!place) map.needsUpdate = true;
 return true;
 } catch (err) { return false; }
 };

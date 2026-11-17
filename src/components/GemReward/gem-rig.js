@@ -58,9 +58,15 @@ const mp = fl.caustic.material.map;
 const live = mp && mp.userData && mp.userData.gemCaustic && window.GEM_CAUSTIC && window.GEM_CAUSTIC.live && fl.poolArgs && fl.poolArgs.cut;
 if (!fl.caustic.visible) return;                        // an invisible floor buys no field and no upload
 if (live) {
-// — 1:1: rebuild the field from THIS frame's pose — no pose gate, no hold-last-texture, no trace on
-// — the render path, so the pool can never lag behind, jump, or read as a rigid sticker.
-window.GEM_CAUSTIC.live(mp, fl.poolArgs.color, fl.poolArgs.cut, { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y }, rig);
+// — 1:1, pose-gated: the anchor (where the pool sits) is rewritten every frame, the traced field only when the stone
+// — has actually turned. Measured at the shipped spin (0.315 rad/s) the field moves 0.27 % of peak per 33 ms and no
+// — texel by more than 1 % — so 0.02 rad of yaw (<1.3 levels) is the threshold, and a drag or a tint still repaints at
+// — once. The pool therefore cannot lag, jump, or read as a rigid sticker; it just stops repainting a still image.
+const pose = { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y };
+const pp = rig.poolPose, key = (rig.canvas.dataset.gem || '') + (fl.poolArgs.color && fl.poolArgs.color.getHexString ? fl.poolArgs.color.getHexString() : '');
+const far = !pp || rig.poolKey !== key || Math.abs(pose.yaw - pp.y) > 0.02 || Math.abs(pose.pitch - pp.x) > 0.01 || Math.abs(pose.lift - pp.l) > 0.01;
+if (far) { rig.poolPose = { y: pose.yaw, x: pose.pitch, l: pose.lift }; rig.poolKey = key; window.GEM_CAUSTIC.live(mp, fl.poolArgs.color, fl.poolArgs.cut, pose, rig); }
+else window.GEM_CAUSTIC.live(mp, fl.poolArgs.color, fl.poolArgs.cut, pose, rig, 1);   // anchor only
 fl.caustic.rotation.z = 0;                             // traced pattern is already world-oriented — never rigid-spin it
 } else {
 fl.caustic.rotation.z = g.rotation.y;                  // fallback pool: rigid turn is all we have
