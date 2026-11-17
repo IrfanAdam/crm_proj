@@ -46,6 +46,7 @@ if (hit) hit.k++; else acc.push({ n: n, d: d, k: 1 });
 const data = new Float32Array(4 * acc.length);
 acc.forEach(function (p, i) { data[4 * i] = p.n[0]; data[4 * i + 1] = p.n[1]; data[4 * i + 2] = p.n[2]; data[4 * i + 3] = p.d; });
 api.planes = { count: acc.length, data: data, bbox: { min: bb[0], max: bb[1] } };
+api.folded = window.GEM_FOLD_PLANES ? window.GEM_FOLD_PLANES.foldSet(acc) : null;
 api._vecs = null;
 return api.planes;
 };
@@ -57,14 +58,23 @@ const out = [], d = api.planes.data;
 for (let i = 0; i < n; i++) out.push(new T.Vector4(d[4 * i], d[4 * i + 1], d[4 * i + 2], d[4 * i + 3]));
 return (api._vecs = out);
 };
+api.fvecs = function () {
+const T = window.THREE, n = api.folded ? api.folded.count : 0;
+if (!T || !n) return null;
+if (api._fvecs && api._fvecs.length === n) return api._fvecs;
+const out = [], d = api.folded.data;
+for (let i = 0; i < n; i++) out.push(new T.Vector4(d[4 * i], d[4 * i + 1], d[4 * i + 2], d[4 * i + 3]));
+return (api._fvecs = out);
+};
 api.set = function (material, canvas) {
-const T = window.THREE, u = material && material.uniforms, n = api.planes.count;
+const T = window.THREE, u = material && material.uniforms, fold = !!(material && material.defines && material.defines.FOLD) && api.folded && api.folded.count;
+const n = fold ? api.folded.count : api.planes.count;
 if (!T || !u || !n) return '';
 let lim = 256;
 try { const gl = canvas && (canvas.getContext('webgl2') || canvas.getContext('webgl')); if (gl) lim = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS) || lim; } catch (e) { lim = 256; }
-if (u.uPl && n + 72 <= lim) { u.uPl.value = api.vecs(); u.uCount.value = n; api.choice = 'uniform'; return 'uniform'; }
+if (u.uPl && n + 72 <= lim) { u.uPl.value = fold ? api.fvecs() : api.vecs(); u.uCount.value = n; api.choice = 'uniform'; return 'uniform'; }
 if (!u.uPlTex) return '';
-const tex = new T.DataTexture(api.planes.data, n, 1, T.RGBAFormat, T.FloatType);
+const tex = new T.DataTexture(fold ? api.folded.data : api.planes.data, n, 1, T.RGBAFormat, T.FloatType);
 tex.minFilter = T.NearestFilter; tex.magFilter = T.NearestFilter; tex.needsUpdate = true;
 u.uPlTex.value = tex; u.uCount.value = n;
 material.defines.PLTEX = 1; material.needsUpdate = true;

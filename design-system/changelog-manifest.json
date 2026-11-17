@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:49:28.605Z",
+  "generated": "2026-11-17T15:12:51.714Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4744,6 +4744,15 @@
     }
   ],
   "wip": [
+    "M  gallery.html",
+    "M  index.html",
+    "M  pitch.html",
+    "A  prototype/gems/mobile-cost.mjs",
+    "M  src/arch/atlas.json",
+    "M  src/components/GemReward/gem-facets.js",
+    "A  src/components/GemReward/gem-fold.js",
+    "M  src/components/GemReward/gem-shader-ext.js",
+    "M  src/components/GemReward/gem-shader.js",
     "M  src/js/mechanics/graphData.decisions.js",
     "M  src/js/mechanics/graphData.js",
     "M  src/js/mechanics/graphData.logic.js",
