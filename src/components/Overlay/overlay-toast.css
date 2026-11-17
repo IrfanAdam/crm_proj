@@ -41,7 +41,7 @@
   box-shadow: var(--shadow-md);
   opacity: 0;
   transform: translateY(var(--spacing-4));
-  transition: var(--transition-spring);
+  transition: opacity var(--transition-spring), transform var(--transition-spring);
 }
 .toast--visible {
   opacity: 1;

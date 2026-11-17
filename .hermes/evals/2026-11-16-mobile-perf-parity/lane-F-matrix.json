@@ -1,0 +1,170 @@
+{
+ "cells": {
+  "default@0": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "default@300": {
+   "byteIdentical": false,
+   "repeat_max": 2,
+   "repeat_diffPct": 2.742
+  },
+  "default@600": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "default@760": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "lean@0": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "lean@300": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "lean@600": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "lean@760": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "zero@0": {
+   "byteIdentical": false,
+   "repeat_max": 3,
+   "repeat_diffPct": 3.133
+  },
+  "zero@300": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  },
+  "zero@600": {
+   "byteIdentical": false,
+   "repeat_max": 3,
+   "repeat_diffPct": 3.983
+  },
+  "zero@760": {
+   "byteIdentical": false,
+   "repeat_max": 3,
+   "repeat_diffPct": 3.117
+  },
+  "noBase@0": {
+   "byteIdentical": false,
+   "repeat_max": 2,
+   "repeat_diffPct": 2.836
+  },
+  "noBase@300": {
+   "byteIdentical": false,
+   "repeat_max": 3,
+   "repeat_diffPct": 3.878
+  },
+  "noBase@600": {
+   "byteIdentical": false,
+   "repeat_max": 2,
+   "repeat_diffPct": 4.776
+  },
+  "noBase@760": {
+   "byteIdentical": true,
+   "repeat_max": 0,
+   "repeat_diffPct": 0.0
+  }
+ },
+ "pairs": {
+  "default_vs_lean@0": {
+   "diffPct": 10.441,
+   "max": 68,
+   "over8Pct": 2.379,
+   "meanOnDiff": 7.57,
+   "cellNoiseMax": 0
+  },
+  "default_vs_lean@300": {
+   "diffPct": 28.724,
+   "max": 76,
+   "over8Pct": 9.547,
+   "meanOnDiff": 9.59,
+   "cellNoiseMax": 2
+  },
+  "default_vs_lean@600": {
+   "diffPct": 35.528,
+   "max": 81,
+   "over8Pct": 17.581,
+   "meanOnDiff": 14.19,
+   "cellNoiseMax": 0
+  },
+  "default_vs_lean@760": {
+   "diffPct": 0.4,
+   "max": 1,
+   "over8Pct": 0.0,
+   "meanOnDiff": 1.0,
+   "cellNoiseMax": 0
+  },
+  "default_vs_zero@0": {
+   "diffPct": 27.535,
+   "max": 72,
+   "over8Pct": 3.128,
+   "meanOnDiff": 4.26,
+   "cellNoiseMax": 0
+  },
+  "default_vs_zero@300": {
+   "diffPct": 51.962,
+   "max": 84,
+   "over8Pct": 16.927,
+   "meanOnDiff": 9.43,
+   "cellNoiseMax": 2
+  },
+  "default_vs_zero@600": {
+   "diffPct": 65.318,
+   "max": 95,
+   "over8Pct": 24.828,
+   "meanOnDiff": 13.06,
+   "cellNoiseMax": 0
+  },
+  "default_vs_zero@760": {
+   "diffPct": 3.766,
+   "max": 6,
+   "over8Pct": 0.0,
+   "meanOnDiff": 1.16,
+   "cellNoiseMax": 0
+  },
+  "default_vs_noBase@0": {
+   "diffPct": 12.415,
+   "max": 7,
+   "over8Pct": 0.0,
+   "meanOnDiff": 1.16,
+   "cellNoiseMax": 0
+  },
+  "default_vs_noBase@300": {
+   "diffPct": 30.097,
+   "max": 39,
+   "over8Pct": 4.927,
+   "meanOnDiff": 4.67,
+   "cellNoiseMax": 2
+  },
+  "default_vs_noBase@600": {
+   "diffPct": 32.17,
+   "max": 62,
+   "over8Pct": 3.042,
+   "meanOnDiff": 4.42,
+   "cellNoiseMax": 0
+  },
+  "default_vs_noBase@760": {
+   "diffPct": 2.631,
+   "max": 3,
+   "over8Pct": 0.0,
+   "meanOnDiff": 1.01,
+   "cellNoiseMax": 0
+  }
+ }
+}

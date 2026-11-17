@@ -13,7 +13,7 @@ padding: var(--spacing-3);
 background: var(--bg-surface);
 border: var(--border-width-thin) solid var(--border-thin);
 border-radius: var(--radius-md);
-transition: var(--transition-fast);
+transition: background-color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast), outline var(--transition-fast);
 }
 .list-row:hover{background: var(--bg-interactive-hover);}
 .list-row--selected{

@@ -16,6 +16,7 @@ graph TD
     glass_BottomDock[BottomDock.jsx]
     glass_DockLens[DockLens.jsx]
     glass_DockSlices[DockSlices.jsx]
+    glass_FabGem[FabGem.jsx]
     glass_band-mirror[band-mirror.js]
     glass_dock-track[dock-track.jsx]
     glass_engine[engine.js]
@@ -35,6 +36,8 @@ graph TD
     patterns_OperateScreen_operate-screen[operate-screen.js]
     patterns_OppsHome_face-handoff[face-handoff.js]
     patterns_OppsHome_leaflet-lazy[leaflet-lazy.js]
+    patterns_OppsHome_live-map-breath[live-map-breath.js]
+    patterns_OppsHome_live-map-config[live-map-config.js]
     patterns_OppsHome_live-map[live-map.js]
     patterns_OppsHome_map-flights[map-flights.js]
     patterns_OppsHome_morph-timing[morph-timing.js]
@@ -42,7 +45,10 @@ graph TD
     patterns_OppsHome_nearby-sheet[nearby-sheet.js]
     patterns_OppsHome_opps-home[opps-home.js]
     patterns_OppsHome_pill-expand[pill-expand.js]
+    patterns_OppsHome_pill-ghost[pill-ghost.js]
     patterns_OppsHome_reward-sheet[reward-sheet.js]
+    patterns_OppsHome_sheet-geometry[sheet-geometry.js]
+    patterns_OppsHome_sheet-html[sheet-html.js]
     patterns_OppsHome_sheet-morph[sheet-morph.js]
     patterns_ReportsMatrix_reports-matrix[reports-matrix.js]
   end
@@ -54,24 +60,46 @@ graph TD
   end
   subgraph components
     components_Button_button[button.js]
+    components_GemReward_gem-appearance[gem-appearance.js]
+    components_GemReward_gem-bare-ext[gem-bare-ext.js]
     components_GemReward_gem-bare[gem-bare.js]
+    components_GemReward_gem-bloom-ext[gem-bloom-ext.js]
     components_GemReward_gem-bloom[gem-bloom.js]
+    components_GemReward_gem-caustic-trace-ext[gem-caustic-trace-ext.js]
+    components_GemReward_gem-caustic-trace[gem-caustic-trace.js]
     components_GemReward_gem-caustic[gem-caustic.js]
     components_GemReward_gem-cshape[gem-cshape.js]
+    components_GemReward_gem-cut-ext[gem-cut-ext.js]
     components_GemReward_gem-cut[gem-cut.js]
     components_GemReward_gem-drag[gem-drag.js]
     components_GemReward_gem-env[gem-env.js]
+    components_GemReward_gem-facets[gem-facets.js]
     components_GemReward_gem-fallback[gem-fallback.js]
+    components_GemReward_gem-optics[gem-optics.js]
     components_GemReward_gem-reward[gem-reward.js]
+    components_GemReward_gem-rig[gem-rig.js]
+    components_GemReward_gem-scene-ext[gem-scene-ext.js]
     components_GemReward_gem-scene[gem-scene.js]
+    components_GemReward_gem-shader-body[gem-shader-body.js]
+    components_GemReward_gem-shader-ext[gem-shader-ext.js]
     components_GemReward_gem-shader[gem-shader.js]
+    components_GemReward_gem-textures-ext[gem-textures-ext.js]
     components_GemReward_gem-textures[gem-textures.js]
+    components_GemReward_gem-tint-ext[gem-tint-ext.js]
     components_GemReward_gem-tint[gem-tint.js]
     components_GemReward_gem3d[gem3d.js]
+    components_GlassDeck_deck-bloom[deck-bloom.js]
+    components_GlassDeck_deck-dress[deck-dress.js]
+    components_GlassDeck_deck-fallback[deck-fallback.js]
+    components_GlassDeck_deck-form[deck-form.js]
+    components_GlassDeck_deck-scene[deck-scene.js]
+    components_GlassDeck_deck-text[deck-text.js]
+    components_GlassDeck_deck3d[deck3d.js]
     components_Icon_GemFriendly[GemFriendly.jsx]
     components_Icon_GemLite[GemLite.jsx]
+    components_Icon_GemMinimal[GemMinimal.jsx]
     components_Icon_Icon[Icon.jsx]
-    components_Icon_gem-icons[gem-icons.js]
+    components_IllusionCube_illusion-audio-engine-buffers[illusion-audio-engine-buffers.js]
     components_IllusionCube_illusion-audio-engine[illusion-audio-engine.js]
     components_IllusionCube_illusion-audio[illusion-audio.js]
     components_IllusionCube_illusion-base[illusion-base.js]
@@ -109,19 +137,23 @@ graph TD
   end
   subgraph motion
     motion_elastic-scroll[elastic-scroll.js]
+    motion_gooey[gooey.js]
     motion_tilt-card[tilt-card.js]
   end
   arch_atlas --> arch_atlas-state
   arch_atlas --> arch_lens-truth
   arch_atlas --> js_mechanics_graph
   components_Icon_GemLite --> components_Icon_GemFriendly
-  components_Icon_Icon --> components_Icon_gem-icons
+  components_Icon_GemMinimal --> components_Icon_GemFriendly
+  components_Icon_Icon --> shell_icons
   components_Icon_Icon --> components_Icon_GemFriendly
   components_Icon_Icon --> components_Icon_GemLite
+  components_Icon_Icon --> components_Icon_GemMinimal
   components_Overlay_overlay --> components_Overlay_overlay-exit
   components_Overlay_overlay --> components_Overlay_overlay-behavior
   device_frame --> os_status-bar
   device_frame --> device_edge-stops
+  ds_fab-lab --> motion_gooey
   ds_labs --> ds_chip-lab
   ds_labs --> ds_badge-lab
   ds_labs --> ds_statuspill-lab
@@ -164,8 +196,8 @@ graph TD
   glass_BottomDock --> glass_DockLens
   glass_BottomDock --> glass_DockSlices
   glass_BottomDock --> glass_dock-track
+  glass_BottomDock --> glass_FabGem
   glass_BottomDock --> glass_engine
-  glass_BottomDock --> components_Icon_Icon
   glass_DockLens --> glass_lens-map
   glass_DockLens --> glass_lens-filter
   glass_DockLens --> glass_lens-copy
@@ -175,6 +207,8 @@ graph TD
   glass_DockSlices --> glass_slice-bands
   glass_DockSlices --> glass_band-mirror
   glass_DockSlices --> glass_rect-zoom
+  glass_FabGem --> motion_gooey
+  glass_FabGem --> components_Icon_Icon
   glass_band-mirror --> glass_rect-zoom
   glass_band-mirror --> device_edge-stops
   glass_dock-track --> glass_rect-zoom
@@ -207,10 +241,15 @@ graph TD
   js_mechanics_render --> js_mechanics_tokens
   js_mechanics_route --> js_mechanics_graph
   js_mechanics_route --> js_mechanics_corridor
+  motion_gooey --> logic_time-scale
   patterns_OppsHome_face-handoff --> patterns_OppsHome_nearby-map
   patterns_OppsHome_face-handoff --> patterns_OppsHome_morph-timing
+  patterns_OppsHome_live-map-breath --> patterns_OppsHome_live-map-config
+  patterns_OppsHome_live-map-breath --> logic_time-scale
   patterns_OppsHome_live-map --> patterns_OppsHome_leaflet-lazy
-  patterns_OppsHome_live-map --> logic_time-scale
+  patterns_OppsHome_live-map --> patterns_OppsHome_live-map-config
+  patterns_OppsHome_live-map --> patterns_OppsHome_live-map-breath
+  patterns_OppsHome_live-map --> patterns_OppsHome_live-map-config
   patterns_OppsHome_map-flights --> patterns_OppsHome_sheet-morph
   patterns_OppsHome_map-flights --> patterns_OppsHome_pill-expand
   patterns_OppsHome_nearby-map --> patterns_OppsHome_live-map
@@ -218,37 +257,88 @@ graph TD
   patterns_OppsHome_nearby-sheet --> patterns_OppsHome_sheet-morph
   patterns_OppsHome_nearby-sheet --> patterns_OppsHome_map-flights
   patterns_OppsHome_nearby-sheet --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_nearby-sheet --> patterns_OppsHome_sheet-geometry
+  patterns_OppsHome_nearby-sheet --> patterns_OppsHome_sheet-html
   patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-map
   patterns_OppsHome_opps-home --> patterns_OppsHome_nearby-sheet
   patterns_OppsHome_opps-home --> patterns_ActivityStrip_activity-strip
   patterns_OppsHome_opps-home --> patterns_OppsHome_reward-sheet
   patterns_OppsHome_opps-home --> patterns_EmptyState_empty-state
-  patterns_OppsHome_pill-expand --> patterns_OppsHome_nearby-map
   patterns_OppsHome_pill-expand --> patterns_OppsHome_morph-timing
-  patterns_OppsHome_pill-expand --> patterns_OppsHome_face-handoff
+  patterns_OppsHome_pill-expand --> patterns_OppsHome_pill-ghost
   patterns_OppsHome_pill-expand --> logic_time-scale
+  patterns_OppsHome_pill-ghost --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_pill-ghost --> patterns_OppsHome_face-handoff
   patterns_OppsHome_reward-sheet --> patterns_ActivityStrip_activity-strip
   patterns_OppsHome_reward-sheet --> patterns_OppsHome_nearby-map
   patterns_OppsHome_reward-sheet --> patterns_OppsHome_sheet-morph
+  patterns_OppsHome_sheet-geometry --> patterns_OppsHome_nearby-map
+  patterns_OppsHome_sheet-html --> patterns_OppsHome_nearby-map
   patterns_OppsHome_sheet-morph --> patterns_OppsHome_morph-timing
   patterns_OppsHome_sheet-morph --> logic_time-scale
+  pitch_changelog_cursor-tip --> pitch_changelog_tl-pop
+  pitch_changelog_due-cells --> pitch_changelog-parse
+  pitch_changelog_due --> pitch_changelog_due-core
+  pitch_changelog_due --> pitch_changelog-parse
   pitch_changelog_graph --> pitch_changelog-links
   pitch_changelog_graph --> pitch_changelog-parse
+  pitch_changelog_graph --> pitch_changelog_due-core
+  pitch_changelog_graph --> pitch_changelog_due-cells
+  pitch_changelog_markdown --> pitch_changelog_esc
+  pitch_changelog_markdown --> pitch_changelog_prose
+  pitch_changelog_markdown --> pitch_changelog_caret
   pitch_changelog_paint-chips --> pitch_changelog-parse
   pitch_changelog_paint-chips --> pitch_changelog_graph
+  pitch_changelog_paint-chips --> pitch_changelog_timeline
+  pitch_changelog_paint-chips --> pitch_changelog_filter-menu
   pitch_changelog_paint-detail --> pitch_changelog-links
-  pitch_changelog_paint-detail --> pitch_changelog-titles
-  pitch_changelog_paint-detail --> pitch_changelog-parse
-  pitch_changelog_paint-detail --> pitch_changelog_esc
+  pitch_changelog_paint-detail --> pitch_changelog_paint-rail
+  pitch_changelog_paint-detail --> pitch_changelog_paint-drawer
+  pitch_changelog_paint-drawer --> pitch_changelog-links
+  pitch_changelog_paint-drawer --> pitch_changelog_due
+  pitch_changelog_paint-drawer --> pitch_changelog_panels
+  pitch_changelog_paint-drawer --> pitch_changelog_markdown
+  pitch_changelog_paint-drawer --> pitch_changelog_esc
+  pitch_changelog_paint-drawer --> pitch_changelog-parse
+  pitch_changelog_paint-drawer --> pitch_changelog_caret
   pitch_changelog_paint-plan --> pitch_changelog-parse
   pitch_changelog_paint-plan --> pitch_changelog-links
   pitch_changelog_paint-plan --> pitch_changelog-titles
   pitch_changelog_paint-plan --> pitch_changelog_esc
+  pitch_changelog_paint-plan --> design-system_plan-history.json
+  pitch_changelog_paint-rail --> pitch_changelog-links
+  pitch_changelog_paint-rail --> pitch_changelog-titles
+  pitch_changelog_paint-rail --> pitch_changelog-parse
+  pitch_changelog_paint-rail --> pitch_changelog_panels
+  pitch_changelog_paint-rail --> pitch_changelog_esc
+  pitch_changelog_panels --> pitch_changelog_gates
+  pitch_changelog_panels --> pitch_changelog-parse
+  pitch_changelog_panels --> pitch_changelog_esc
+  pitch_changelog_panels --> pitch_changelog_caret
+  pitch_changelog_panels --> design-system_plan-history.json
+  pitch_changelog_timeline-scroll --> pitch_changelog_tl-edges
+  pitch_changelog_timeline --> pitch_changelog-links
+  pitch_changelog_timeline --> pitch_changelog-parse
+  pitch_changelog_timeline --> pitch_changelog_due-core
+  pitch_changelog_timeline --> pitch_changelog_esc
+  pitch_changelog_timeline --> pitch_changelog_tl-edges
+  pitch_changelog_timeline --> pitch_changelog_timeline-scroll
+  pitch_changelog_timeline --> pitch_changelog_tl-meta
+  pitch_changelog_tl-meta --> pitch_changelog-parse
+  pitch_changelog_tl-meta --> design-system_plan-history.json
+  pitch_changelog-events --> pitch_changelog_due
+  pitch_changelog-events --> pitch_changelog_tl-edges
+  pitch_changelog-events --> pitch_changelog_tl-pop
+  pitch_changelog-events --> pitch_changelog_cursor-tip
   pitch_changelog-links --> design-system_changelog-manifest.json
   pitch_changelog-links --> pitch_changelog-format
+  pitch_changelog-links --> pitch_changelog-parse
+  pitch_changelog-links --> pitch_changelog_esc
+  pitch_changelog-links --> pitch_changelog_caret
   pitch_changelog-paint --> pitch_changelog_paint-chips
   pitch_changelog-paint --> pitch_changelog_paint-plan
   pitch_changelog-paint --> pitch_changelog_paint-detail
+  pitch_changelog-paint --> pitch_changelog_timeline
   pitch_changelog-parse --> pitch_changelog-format
   pitch_pages-changelog --> pitch_changelog-links
   pitch_pages-changelog --> pitch_changelog-links
@@ -258,9 +348,12 @@ graph TD
   pitch_pages-changelog --> pitch_changelog-parse
   pitch_pages-changelog --> pitch_changelog-paint
   pitch_pages-changelog --> pitch_changelog-events
+  pitch_pages-changelog --> pitch_changelog_due
+  pitch_pages-changelog --> pitch_changelog_due-core
   pitch_pitch-changelog-cal --> pitch_pitch-changelog-data
   pitch_pitch-changelog-data --> design-system_changelog-manifest.json
   pitch_pitch-changelog-data --> ds_changelog-names.json
+  pitch_pitch-changelog-data --> pitch_changelog_esc
   pitch_pitch-changelog-drawer --> pitch_pitch-changelog-data
   pitch_pitch-changelog-list --> pitch_pitch-changelog-data
   pitch_pitch-changelog --> pitch_pages-changelog

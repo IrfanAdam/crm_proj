@@ -63,7 +63,7 @@ a.masthead-brand{text-decoration:none}
 .ds-pick.is-cancelled .ds-num{color:var(--color-danger)}
 .ds-plan-grid .ds-pick.is-cancelled.on{background:var(--color-surface);box-shadow:inset var(--cl-2) 0 0 var(--color-danger)}
 .ds-tags-more{color:inherit;cursor:pointer}
-.ds-tags-more:focus-visible{outline:var(--focus-ring)}
+.ds-tags-more:focus-visible{outline:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);outline-offset:2px}/* --focus-ring is a box-shadow: as an outline it computed to none and this control focused with no ring (same bug as reward-sheet.css:37) */
 .ds-md .ds-tick{flex:none;align-self:center;width:var(--cl-14);height:var(--cl-14);border:var(--cl-1) solid var(--border-strong);border-radius:var(--radius-none);background:var(--color-surface);display:inline-grid;place-items:center;box-sizing:border-box}
 .ds-md .ds-tick[data-s="done"]{background:var(--color-ink);border-color:var(--color-ink)}
 .ds-md .ds-tick[data-s="done"]::after{content:"✓";color:var(--color-bg);font-family:var(--font-mono);font-size:var(--text-micro);font-weight:700;line-height:1}

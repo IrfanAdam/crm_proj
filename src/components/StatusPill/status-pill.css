@@ -61,7 +61,7 @@
 }
 .status-pill--clickable {
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast), outline var(--transition-fast);
 }
 .status-pill--clickable:hover {
   opacity: var(--opacity-subtle);

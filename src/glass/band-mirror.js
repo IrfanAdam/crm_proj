@@ -1,6 +1,6 @@
 /* ADAM/GLASS — src/glass/band-mirror.js · live progressive-blur mirror shared by both dock engines */
 // Exports: cloneFeed (inert feed clone) · buildBand (stop-ladder mirror) · placeBand (box + copy geometry + scroll)
-import { getZoom, toLayout } from "./rect-zoom.js";
+import { dockRects } from "./rect-zoom.js";
 import { BOT, stopsHTML } from "../device/edge-stops.js";
 
 // — Section — Feed clone —
@@ -31,32 +31,29 @@ export function buildBand(src) {
 // — Section — Mirror placement —
 // The band box tracks the real .device__edge rect; each copy shows the feed pixels the
 // real band sees (base offset relative to the band box) and slides 1:1 with scroll.
-// Runs on every scroll frame — this is what keeps the mirror live instead of frozen.
-export function placeBand(band, lens, src) {
+// This runs on every scroll frame, so it takes the shared measure record (`g`) and the
+// frame's scroll slide (`y`) when the caller has them — one measure and one scroll read
+// serve all ~15 copies instead of a rect per copy. Falls back to measuring on its own.
+export function placeBand(band, lens, src, g, y) {
   if (!band || !lens || !src) return;
   const copies = band.querySelectorAll(".docklens__band-copy");
   if (!copies.length) return;
-  const c = src.getBoundingClientRect();
-  const l = lens.getBoundingClientRect();
-  const q = getZoom();
-  const base = toLayout({ l: c.left - l.left, t: c.top - l.top, w: c.width }, q);
-  const real = document.querySelector(".device__edge:not(.device__edge--top)");
-  if (real) {
-    const r = real.getBoundingClientRect();
-    const bl = (r.left - l.left) / q;
-    const bt = (r.top - l.top) / q;
-    band.style.left = `${bl}px`;
-    band.style.top = `${bt}px`;
-    band.style.width = `${r.width / q}px`;
-    band.style.height = `${r.height / q}px`;
-    copies.forEach((copy) => {
-      copy.style.left = `${base.l - bl}px`;
-      copy.style.top = `${base.t - bt}px`;
-      copy.style.width = `${base.w}px`;
-    });
+  const m = g || dockRects(lens, src);
+  if (!m) return;
+  const b = m.band;
+  if (b) {
+    band.style.left = `${b.l}px`;
+    band.style.top = `${b.t}px`;
+    band.style.width = `${b.w}px`;
+    band.style.height = `${b.h}px`;
   }
-  const y = -src.scrollTop;
+  const slide = y === undefined ? -src.scrollTop : y;
   copies.forEach((copy) => {
-    copy.style.transform = `translateY(${y}px)`;
+    if (b) {
+      copy.style.left = `${m.base.l - b.l}px`;
+      copy.style.top = `${m.base.t - b.t}px`;
+      copy.style.width = `${m.base.w}px`;
+    }
+    copy.style.transform = `translateY(${slide}px)`;
   });
 }

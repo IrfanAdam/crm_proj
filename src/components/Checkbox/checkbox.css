@@ -28,7 +28,7 @@
   border: var(--border-width-thin) solid var(--border-strong);
   border-radius: var(--radius-sm);
   color: var(--primitive-gray-white);
-  transition: var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
   forced-color-adjust: auto;
 }
 .check:hover input:not(:disabled) + .check__box {
@@ -60,7 +60,7 @@
   height: var(--icon-size-xs);
   opacity: 0;
   transform: scale(0.6);
-  transition: var(--transition-fast);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 .check input:checked + .check__box .check__icon {
   opacity: 1;

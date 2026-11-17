@@ -25,7 +25,7 @@
   background: var(--bg-interactive);
   border: var(--border-width-thin) solid var(--border-strong);
   border-radius: var(--radius-full);
-  transition: var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
   forced-color-adjust: auto;
 }
 .switch__thumb {
@@ -42,13 +42,13 @@
   box-shadow: var(--shadow-sm);
   color: var(--role-action-strong);
   transform: translateX(0);
-  transition: var(--transition-spring);
+  transition: transform var(--transition-spring);
 }
 .switch__icon {
   width: var(--icon-size-xs);
   height: var(--icon-size-xs);
   opacity: 0;
-  transition: var(--transition-fast);
+  transition: opacity var(--transition-fast);
 }
 .switch:hover input:not(:disabled) + .switch__track { border-color: var(--role-action-strong); }
 .switch input:checked + .switch__track {

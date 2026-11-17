@@ -10,7 +10,7 @@
   z-index: var(--z-index-modal);
   pointer-events: none;
   opacity: 0;
-  transition: var(--transition-fast);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 .tooltip--visible {
   opacity: 1;

@@ -82,7 +82,7 @@
 }
 .avatar--clickable {
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast), outline var(--transition-fast);
 }
 .avatar--clickable:hover {
   border-color: var(--border-accent);

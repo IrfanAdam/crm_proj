@@ -13,3 +13,8 @@
    deepens toward the screen edge exactly as the real band's does. */
 .device .docklens__band>span{position:absolute;inset:0;display:block;transform:translateZ(0);-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--z))}
 .device .docklens__band>span>.docklens__band-copy{position:absolute;left:0;top:0;will-change:transform;-webkit-filter:blur(var(--b));filter:blur(var(--b))}
+/* ?dock=lean — one surface instead of the 5-stop ladder. The band's own gradient (the
+   --bg-surface tint) stays; the 5 blurred feed clones stop rendering. The nodes are still
+   constructed by band-mirror.js (another lane's file) — they are skipped, not removed.
+   Judge it from the measured delta in .hermes/evals/2026-11-16-mobile-perf-parity/lane-F.md. */
+:root[data-dock="lean"] .device .docklens__band>span{display:none}

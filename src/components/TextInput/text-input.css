@@ -23,7 +23,7 @@
   border: var(--border-width-thin) solid var(--border-thin);
   border-radius: var(--radius-md);
   appearance: none;
-  transition: var(--transition-fast); }
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), border-style var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), outline var(--transition-fast); }
 .field__input--sm {
   height: var(--spacing-8);
   font-size: var(--font-size-xs); }

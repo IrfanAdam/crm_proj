@@ -12,7 +12,7 @@
   background-color: var(--bg-surface);
   border: var(--border-width-thin) solid var(--border-thin);
   border-radius: var(--radius-full);
-  transition: var(--transition-fast); }
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), border-style var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), outline var(--transition-fast); }
 .search__input:hover {
   border-color: var(--border-medium); }
 .search__input:focus {
@@ -57,7 +57,7 @@
   border: var(--border-width-thin) solid var(--color-transparent);
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: var(--transition-fast); }
+  transition: color var(--transition-fast), background-color var(--transition-fast); }
 .search__clear:hover {
   color: var(--text-primary);
   background-color: var(--bg-interactive-active); }

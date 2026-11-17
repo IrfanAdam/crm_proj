@@ -15,7 +15,7 @@ height:44px;
 min-width:var(--spacing-16);
 border:var(--border-width-thin) solid var(--color-transparent);
 cursor:pointer;
-transition:var(--transition-fast);
+transition:background-color var(--transition-fast),border-color var(--transition-fast),color var(--transition-fast),box-shadow var(--transition-fast),opacity var(--transition-fast),outline var(--transition-fast);
 user-select:none;
 white-space:nowrap;
 }

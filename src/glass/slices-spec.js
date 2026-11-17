@@ -23,12 +23,31 @@ const FR = {
   COOL: "saturate(1.45) hue-rotate(14deg)",
 };
 
-export const SLICES = [
+const DEFAULT = [
   Y("top", 0.10, 9, FR.WARM), Y("top", 0.30, 10), Y("top", 0.55, 11), Y("top", 0.85, 12, FR.COOL),
   Y("bottom", 0.10, 9, FR.WARM), Y("bottom", 0.30, 10), Y("bottom", 0.55, 11), Y("bottom", 0.85, 12, FR.COOL),
   X("left", 0.25, 16, FR.WARM), X("left", 0.60, 20), X("left", 0.85, 24, FR.COOL),
   X("right", 0.25, 16, FR.WARM), X("right", 0.60, 20), X("right", 0.85, 24, FR.COOL),
 ];
+
+/* `?dock=lean` — opt-in cheap material, measured in
+   .hermes/evals/2026-11-16-mobile-perf-parity/lane-F.md. DEFAULT IS UNCHANGED: the
+   ladder is the material, so lean only exists when the flag is on. Lean keeps the ONE
+   aligned copy (the live content the glass refracts) and drops this ladder — no per-slice
+   displacement and no per-slice parallax at the rim — while the capsule, rim, press states
+   and geometry stay exactly as they are. The flag also raises `data-dock="lean"` so the CSS
+   can drop the 5-stop band mirror (dock-band.css) and swap it for the band's own gradient. */
+export const LEAN = (() => {
+  try {
+    const on = new URLSearchParams(location.search).get("dock") === "lean";
+    if (on && typeof document !== "undefined") document.documentElement.dataset.dock = "lean";
+    return on;
+  } catch {
+    return false;
+  }
+})();
+
+export const SLICES = LEAN ? [] : DEFAULT;
 
 // PULL (direct-px pull, decoupled from OPTICS.strength) lives in ./optics.js.
 export const offsetFor = (s) => {

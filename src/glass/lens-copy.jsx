@@ -1,6 +1,6 @@
 /* ADAM/GLASS — src/glass/lens-copy.jsx · backdrop-world construction + placement for the lens engine */
 // Exports: buildWorld (content layer + progressive edge mirror inside the lens) · placeWorld (geometry)
-import { getZoom, toLayout } from "./rect-zoom.js";
+import { dockRects } from "./rect-zoom.js";
 import { buildBand, cloneFeed, placeBand } from "./band-mirror.js";
 
 // — Section — Backdrop world —
@@ -22,18 +22,21 @@ export function buildWorld(lens, src) {
 
 // — Section — World placement —
 // Feed slides 1:1 with the scroll (layout px stay raw: outer zoom is not part of the
-// translate). The band mirror re-places every frame so it never freezes mid-scroll.
+// translate). Base offsets come from the measure cache: this runs on every scroll
+// frame against a tree the dock has already mirrored ~15 times, so a rect read here
+// forces layout for all of it. Only the scroll offset is read per frame, once, and
+// the record is shared with the band mirror.
 export function placeWorld(lens, src) {
-  const world = lens.querySelector(".docklens__world");
+  const world = lens && lens.querySelector(".docklens__world");
   if (!world || !src) return;
   const copy = world.querySelector(".docklens__copy");
   if (!copy) return;
-  const c = src.getBoundingClientRect();
-  const l = lens.getBoundingClientRect();
-  const base = toLayout({ l: c.left - l.left, t: c.top - l.top, w: c.width }, getZoom());
-  copy.style.left = `${base.l}px`;
-  copy.style.top = `${base.t}px`;
-  copy.style.width = `${base.w}px`;
-  copy.style.transform = `translateY(${-src.scrollTop}px)`;
-  placeBand(world.querySelector(".docklens__band"), lens, src);
+  const g = dockRects(lens, src);
+  if (!g) return;
+  const y = -src.scrollTop;
+  copy.style.left = `${g.base.l}px`;
+  copy.style.top = `${g.base.t}px`;
+  copy.style.width = `${g.base.w}px`;
+  copy.style.transform = `translateY(${y}px)`;
+  placeBand(world.querySelector(".docklens__band"), lens, src, g, y);
 }

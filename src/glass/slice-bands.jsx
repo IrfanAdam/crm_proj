@@ -6,6 +6,8 @@ import { SLICES, maskFor } from "./slices-spec.js";
 // One masked clone per SLICES entry plus the aligned base copy: each band copy
 // is slid outward by the displacement the SDF would apply at that depth and
 // feathered into the next. Callers clear the lens first; this only constructs.
+// ?dock=lean empties SLICES (slices-spec.js), so lean builds exactly ONE copy — the
+// aligned base — and the ladder never enters the DOM. Nothing else here changes.
 export function buildCopies(lens, src) {
   const build = (slice) => {
     const node = src.cloneNode(true);

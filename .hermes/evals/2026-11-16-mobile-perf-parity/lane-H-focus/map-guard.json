@@ -1,0 +1,20 @@
+{
+  "guard": {
+    "ready": true,
+    "bearing": 145,
+    "before": "function",
+    "after": "undefined",
+    "oldCall": "TypeError: m.setBearing is not a function",
+    "newCall": "no throw",
+    "markersAfter": 1,
+    "restored": "function"
+  },
+  "liveAfterRestore": {
+    "tiles": 6,
+    "markers": 4,
+    "hotspot": true,
+    "rotatePaneTf": "matrix(-0.819152, 0.573576, -0.573576, -0.819152, 419.844, 75.6237)",
+    "errs": []
+  },
+  "capturedAt": "2026-11-17T04:44:22.681Z"
+}

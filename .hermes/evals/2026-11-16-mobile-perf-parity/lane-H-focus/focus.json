@@ -1,0 +1,142 @@
+{
+  "capturedAt": "2026-11-17T04:39:12.240Z",
+  "viewport": {
+    "w": 430,
+    "h": 932
+  },
+  "dpr": 1,
+  "surfaces": {
+    "app": {
+      "hydrated": true,
+      "peakBar": {
+        "label": "app-peak-bar",
+        "sel": ".activity-strip__bar[role=\"button\"]",
+        "geo": {
+          "x": 116,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "computed": {
+          "old": {
+            "focusVisible": true,
+            "outline": "none 3px rgb(34, 34, 34)",
+            "outlineOffset": "2px",
+            "boxShadow": "none"
+          },
+          "new": {
+            "focusVisible": true,
+            "outline": "solid 2px rgb(33, 138, 234)",
+            "outlineOffset": "2px",
+            "boxShadow": "none"
+          }
+        },
+        "files": {
+          "old-rest": "app-peak-bar--old-rest.png",
+          "old-focus": "app-peak-bar--old-focus.png",
+          "new-rest": "app-peak-bar--new-rest.png",
+          "new-focus": "app-peak-bar--new-focus.png"
+        },
+        "diff": {
+          "rest old vs new": {
+            "differing": 0,
+            "pct": 0,
+            "maxDelta": 0
+          },
+          "focus old vs new": {
+            "differing": 486,
+            "pct": 11.0254,
+            "maxDelta": 217
+          }
+        }
+      }
+    },
+    "gallery": {
+      "hydrated": true,
+      "menuItem": {
+        "label": "gallery-menu-item",
+        "sel": ".menu.overlay--open .menu__item",
+        "geo": {
+          "x": 165,
+          "y": 450,
+          "w": 190,
+          "h": 32
+        },
+        "computed": {
+          "old": {
+            "focusVisible": true,
+            "outline": "none 3px rgb(34, 34, 34)",
+            "outlineOffset": "-2px",
+            "boxShadow": "none"
+          },
+          "new": {
+            "focusVisible": true,
+            "outline": "solid 2px rgb(33, 138, 234)",
+            "outlineOffset": "-2px",
+            "boxShadow": "none"
+          }
+        },
+        "files": {
+          "old-rest": "gallery-menu-item--old-rest.png",
+          "old-focus": "gallery-menu-item--old-focus.png",
+          "new-rest": "gallery-menu-item--new-rest.png",
+          "new-focus": "gallery-menu-item--new-focus.png"
+        },
+        "diff": {
+          "rest old vs new": {
+            "differing": 0,
+            "pct": 0,
+            "maxDelta": 0
+          },
+          "focus old vs new": {
+            "differing": 872,
+            "pct": 7.2764,
+            "maxDelta": 222
+          }
+        }
+      },
+      "overlayClose": {
+        "label": "gallery-overlay-close",
+        "sel": ".overlay.overlay--open .overlay__close",
+        "geo": {
+          "x": 365,
+          "y": 102,
+          "w": 24,
+          "h": 32
+        },
+        "computed": {
+          "old": {
+            "focusVisible": true,
+            "outline": "none 3px rgb(115, 115, 115)",
+            "outlineOffset": "2px",
+            "boxShadow": "none"
+          },
+          "new": {
+            "focusVisible": true,
+            "outline": "solid 2px rgb(33, 138, 234)",
+            "outlineOffset": "2px",
+            "boxShadow": "none"
+          }
+        },
+        "files": {
+          "old-rest": "gallery-overlay-close--old-rest.png",
+          "old-focus": "gallery-overlay-close--old-focus.png",
+          "new-rest": "gallery-overlay-close--new-rest.png",
+          "new-focus": "gallery-overlay-close--new-focus.png"
+        },
+        "diff": {
+          "rest old vs new": {
+            "differing": 0,
+            "pct": 0,
+            "maxDelta": 0
+          },
+          "focus old vs new": {
+            "differing": 318,
+            "pct": 11.8304,
+            "maxDelta": 222
+          }
+        }
+      }
+    }
+  }
+}

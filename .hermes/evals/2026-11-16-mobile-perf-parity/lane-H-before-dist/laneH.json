@@ -1,0 +1,147 @@
+{
+  "phase": "before-dist",
+  "url": "http://127.0.0.1:5242",
+  "startedAt": "2026-11-17T04:15:02.314Z",
+  "surfaces": {
+    "app": {
+      "hydrated": true,
+      "settle": "settled",
+      "census": {
+        "leaflet": true,
+        "pluginMethod": true,
+        "rotatePane": true,
+        "mapInited": false,
+        "hostFound": true,
+        "tiles": 4,
+        "tilesLoaded": 4,
+        "markers": 4,
+        "pins": 3,
+        "me": 1,
+        "hotspot": true,
+        "mapPaneTf": "matrix(1, 0, 0, 1, 0, 0)",
+        "rotatePaneTf": "matrix(-0.819152, 0.573576, -0.573576, -0.819152, 386.19, 86.2348)",
+        "rotatePaneStyle": "transform: translate3d(386.19px, 86.2348px, 0px) rotate(2.53073rad);",
+        "containerClass": "opps__tiles leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag",
+        "box": {
+          "x": 17,
+          "y": 271,
+          "w": 359,
+          "h": 208
+        },
+        "errs": []
+      },
+      "strip": {
+        "sel": ".activity-strip__bar",
+        "found": true,
+        "active": false,
+        "focusVisible": false,
+        "focus": false,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 16,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "text": ""
+      },
+      "stripRoleBtn": {
+        "selectorMatches": 7,
+        "stripRole": "img",
+        "bars": 392,
+        "focusable": 7
+      },
+      "mapShot": {
+        "name": "app-map-rest.png",
+        "bytes": 672136,
+        "stable": true,
+        "drift": null
+      },
+      "stripShot": {
+        "name": "app-strip-rest.png",
+        "bytes": 5806,
+        "stable": true,
+        "drift": null
+      },
+      "peakBar": {
+        "sel": ".activity-strip__bar[role=\"button\"]",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 116,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "text": "",
+        "focusedShot": "app-strip-focused.png"
+      },
+      "peakBarFocus": {
+        "sel": ".activity-strip__bar[role=\"button\"]",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 116,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "text": ""
+      }
+    }
+  },
+  "toolchain": {
+    "chromeFlags": [
+      "--headless=new",
+      "--disable-gpu-rasterization",
+      "--use-angle=metal",
+      "--enable-gpu",
+      "--ignore-gpu-blocklist"
+    ]
+  }
+}

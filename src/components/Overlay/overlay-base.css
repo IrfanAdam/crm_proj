@@ -10,7 +10,7 @@
   z-index: var(--z-index-overlay);
   opacity: 0;
   visibility: hidden;
-  transition: var(--transition-fast);
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
 }
 .overlay--open {
   opacity: 1;
@@ -35,8 +35,12 @@
 .overlay--screen {
   padding: 0;
 }
-.overlay :focus-visible {
-  outline: var(--focus-ring);
+/* --focus-ring is a box-shadow: as an outline value it computed to none, so anything in an overlay
+   that does not draw its own ring (e.g. .overlay__close) focused invisibly. Give those a real
+   outline; .btn is excluded because it already paints --focus-ring as a box-shadow plus its own
+   outline, and a second ring here would double it. */
+.overlay :focus-visible:not(.btn) {
+  outline: var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
   outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {

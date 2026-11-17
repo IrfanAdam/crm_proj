@@ -9,16 +9,19 @@
 // — reads and setSize/camera maths below are exactly the ones the per-frame poll used. —
 // — Pool: when the floor carries the traced pool (GEM_CAUSTIC), re-trace it from the stone's live yaw/pitch —
 // — once the pose moves past a threshold; the traced pattern is world-oriented, so the quad never rigid-spins. —
-// Export map: GEM_RIG.size(rig) · GEM_RIG.backdrop(rig) · GEM_RIG.pool(rig) · GEM_RIG.tick(rig) · GEM_RIG.bg(url, rigs) · GEM_RIG.restage(rigs).
+// — Re-arm: a box that regains area arms the loop itself, the contract deck3d/cube3d/illusion3d keep in their own
+// — ResizeObserver (`size(); arm(rig)`) — intersection is never the only way back from a dead box. —
+// Export map: GEM_RIG.arm(rig) · GEM_RIG.size(rig) · GEM_RIG.backdrop(rig) · GEM_RIG.pool(rig) · GEM_RIG.tick(rig) · GEM_RIG.bg(url, rigs) · GEM_RIG.restage(rigs).
 (function () {
 const api = {};
 let demoBg = null, epoch = 0;
 if (window.addEventListener) window.addEventListener('resize', function () { epoch++; }, { passive: true });
+api.arm = function (rig) { if (rig.raf || rig.gone || !rig.vis || document.hidden || rig.dead || !rig.frame) return; rig.last = performance.now(); rig.raf = requestAnimationFrame(rig.frame); };
 api.size = function (rig) {
 const canvas = rig.canvas, renderer = rig.renderer;
 if (!canvas || !renderer) return;
 if (!rig.ro && window.ResizeObserver) {              // the box changes only on a layout/zoom/reflow event:
-rig.ro = new window.ResizeObserver(function () { rig.epoch = -1; api.size(rig); });   // measure here, never inside a frame
+rig.ro = new window.ResizeObserver(function () { rig.epoch = -1; api.size(rig); api.arm(rig); });   // measure here, never inside a frame
 rig.ro.observe(canvas);
 }
 if (rig.ro && rig.epoch === epoch) return;

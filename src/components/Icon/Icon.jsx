@@ -1,53 +1,22 @@
-import {
-  House,
-  ChartBar,
-  Users,
-  Handshake,
-  Buildings,
-  MagnifyingGlass,
-  Check,
-  X,
-  Plus,
-  Envelope,
-  Phone,
-  CalendarBlank,
-  MapPin,
-  User,
-  CaretDown,
-  CaretRight,
-  DotsThree,
-  Bell,
-  Target,
-  TrendUp,
-  Briefcase,
-  Kanban,
-  SquaresFour,
-  Diamond,
-  Sparkle,
-  SketchLogo, Flame,
-} from "@phosphor-icons/react";
-import { GEM_MAP } from "./gem-icons.js";
+/* ADAM/DS — src/components/Icon/Icon.jsx · single icon registry for the DS.
+   The Phosphor runtime is gone from the boot graph: the glyphs the app renders
+   are inlined in src/shell/icons.jsx (see that file for provenance). Names that
+   no longer exist locally fall back to House, exactly as unknown names always did. */
+import { House, Users, Handshake } from "../../shell/icons.jsx";
 import GemFriendly from "./GemFriendly.jsx";
 import GemLite from "./GemLite.jsx";
 import GemMinimal from "./GemMinimal.jsx";
 
-/* Phosphor icon registry — single source for the DS.
-   Weight "regular" = 1.5px stroke (matches DS iconography spec).
-   Fill is reserved for active states only if needed; default stays regular. */
+/* Registry — Phosphor geometry (256 viewBox, regular/fill weights).
+   Dock = 3 primary destinations; gem family = the reward/library role. */
 const MAP = {
-  // Dock — 3 primary destinations (icon-only, learned over time) — slot 2 generic (SquaresFour) until spec lands
   House,
-  SquaresFour,
+  "house": House,
   Users,
+  "users": Users,
   Handshake,
-  Buildings,
-  Diamond,
-  Sparkle,
-  // Library gem — Phosphor's own sketch-logo, wired for the reward/gem role
-  SketchLogo,
-  "sketch-logo": SketchLogo,
-  "sketchLogo": SketchLogo,
-  "gem": SketchLogo,
+  "handshake": Handshake,
+  // Gem family — local components, Phosphor sketch-logo derivatives
   GemFriendly,
   "gem-friendly": GemFriendly,
   "gemFriendly": GemFriendly,
@@ -57,42 +26,11 @@ const MAP = {
   GemMinimal,
   "gem-minimal": GemMinimal,
   "gemMinimal": GemMinimal,
-  ...GEM_MAP,
-  // Legacy sprite IDs → Phosphor (keeps old gallery code working)
-  "i-search": MagnifyingGlass,
-  "i-check": Check,
-  "i-x": X,
-  "i-chevron": CaretDown,
-  "i-plus": Plus,
-  "i-mail": Envelope,
-  "i-phone": Phone,
-  "i-calendar": CalendarBlank,
-  "i-map": MapPin,
-  "i-user": User,
-  // Direct names
-  MagnifyingGlass,
-  Check,
-  X,
-  Plus,
-  Envelope,
-  Phone,
-  CalendarBlank,
-  MapPin,
-  User,
-  CaretDown,
-  CaretRight,
-  DotsThree,
-  Bell,
-  Target,
-  TrendUp,
-  Briefcase,
-  Kanban,
-  Flame, "flame": Flame,
 };
 
 export default function Icon({ name, size = 20, weight = "regular", color, className = "", ...props }) {
   const Cmp = MAP[name] || MAP[name?.replace?.(/-/g, "")] || House;
-  // Phosphor fills via color prop; regular uses currentColor stroke
+  // weight selects the inlined path variant; fill draws the solid form
   return <Cmp size={size} weight={weight} color={color} className={className} {...props} />;
 }
 

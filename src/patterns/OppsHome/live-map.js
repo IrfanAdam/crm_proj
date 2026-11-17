@@ -28,8 +28,11 @@ export async function createLiveMap(el, pins, opts = {}) {
     scrollWheelZoom: opts.scrollWheelZoom ?? true,
   });
   // the rotation pivot is the container centre, so re-apply on resize — a map built while
-  // hidden (0×0, e.g. the sheet) would otherwise stay rotated about its corner
-  const applyBearing = () => map.setBearing(BEARING);
+  // hidden (0×0, e.g. the sheet) would otherwise stay rotated about its corner.
+  // setBearing is leaflet-rotate's (it patches L.Map from a global-script module), so a bundle that
+  // drops the plugin leaves a stock north-up Leaflet map. An unguarded call threw on every mount and
+  // skipped the tile layer below; keep the bearing where the capability exists, degrade silently if not.
+  const applyBearing = () => { if (typeof map.setBearing === "function") map.setBearing(BEARING); };
   applyBearing();
   new ResizeObserver(applyBearing).observe(el);
   // the blip's ring rides the wall clock (negative delay = its phase, not its start time),

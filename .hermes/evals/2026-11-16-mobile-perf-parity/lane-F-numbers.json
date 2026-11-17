@@ -1,0 +1,916 @@
+{
+ "primary": {
+  "protocol": {
+   "port": 5235,
+   "dpr": 3,
+   "w": 393,
+   "h": 852,
+   "throttle": 4,
+   "ua": "iOS Safari 18",
+   "chrome": "Chrome/157.0.8103.52",
+   "when": "2026-11-16T20:24:05.448Z",
+   "order": "default lean lean default default lean"
+  },
+  "sessions": 2,
+  "cellsPerVariant": 6,
+  "variants": {
+   "default": {
+    "n": 6,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 79.53,
+    "p50_range": [
+     50.4,
+     143.9
+    ],
+    "p95": 171.07,
+    "p95_range": [
+     110.3,
+     338.9
+    ],
+    "mean": 84.18,
+    "mean_range": [
+     55.3,
+     158.4
+    ],
+    "max": 197.7,
+    "max_range": [
+     116.7,
+     370.7
+    ],
+    "over33": 34.17,
+    "over33_range": [
+     29,
+     38
+    ],
+    "pctOver33": 87.62,
+    "pctOver33_range": [
+     74.4,
+     97.4
+    ],
+    "ltCount": 17.5,
+    "ltCount_range": [
+     10,
+     33
+    ],
+    "ltTotal": 1940.67,
+    "ltTotal_range": [
+     795,
+     5147
+    ],
+    "ltMax": 191.33,
+    "ltMax_range": [
+     115,
+     368
+    ],
+    "TaskDuration": 2.63,
+    "TaskDuration_range": [
+     1.55,
+     5.54
+    ],
+    "ScriptDuration": 0.18,
+    "ScriptDuration_range": [
+     0.1,
+     0.43
+    ],
+    "TaskOtherDuration": 2.23,
+    "TaskOtherDuration_range": [
+     1.27,
+     4.75
+    ],
+    "LayoutCount": 18.5,
+    "LayoutCount_range": [
+     1,
+     28
+    ],
+    "RecalcStyleCount": 108,
+    "RecalcStyleCount_range": [
+     82,
+     121
+    ],
+    "d_p50": 0.0,
+    "d_p95": 0.0,
+    "d_mean": 0.0,
+    "d_lt": 0.0,
+    "d_task": 0.0,
+    "d_layout": 0.0,
+    "d_over33": 0.0
+   },
+   "lean": {
+    "n": 6,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 51.52,
+    "p50_range": [
+     42,
+     59.8
+    ],
+    "p95": 124.68,
+    "p95_range": [
+     78.1,
+     193.6
+    ],
+    "mean": 53.55,
+    "mean_range": [
+     42.1,
+     67.5
+    ],
+    "max": 139.45,
+    "max_range": [
+     81.9,
+     259.7
+    ],
+    "over33": 27.33,
+    "over33_range": [
+     24,
+     31
+    ],
+    "pctOver33": 70.1,
+    "pctOver33_range": [
+     61.5,
+     79.5
+    ],
+    "ltCount": 4.17,
+    "ltCount_range": [
+     0,
+     12
+    ],
+    "ltTotal": 400.33,
+    "ltTotal_range": [
+     0,
+     1049
+    ],
+    "ltMax": 101.17,
+    "ltMax_range": [
+     0,
+     243
+    ],
+    "TaskDuration": 0.97,
+    "TaskDuration_range": [
+     0.62,
+     1.65
+    ],
+    "ScriptDuration": 0.13,
+    "ScriptDuration_range": [
+     0.07,
+     0.2
+    ],
+    "TaskOtherDuration": 0.73,
+    "TaskOtherDuration_range": [
+     0.41,
+     1.36
+    ],
+    "LayoutCount": 27.17,
+    "LayoutCount_range": [
+     27,
+     28
+    ],
+    "RecalcStyleCount": 95.33,
+    "RecalcStyleCount_range": [
+     82,
+     121
+    ],
+    "d_p50": -35.2,
+    "d_p95": -27.1,
+    "d_mean": -36.4,
+    "d_lt": -79.4,
+    "d_task": -63.1,
+    "d_layout": 46.9,
+    "d_over33": -20.0,
+    "d_recalc": -11.7
+   }
+  },
+  "census": {
+   "default": {
+    "engine": "slices",
+    "dockFlag": null,
+    "pageNodes": 9754,
+    "dockNodes": 8917,
+    "dockRenderedNodes": 8917,
+    "copies": 15,
+    "slices": 14,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 14,
+    "bandRendered": 5,
+    "willChange": 60,
+    "blurFilters": 6
+   },
+   "lean": {
+    "engine": "slices",
+    "dockFlag": "lean",
+    "pageNodes": 3531,
+    "dockNodes": 2673,
+    "dockRenderedNodes": 448,
+    "copies": 1,
+    "slices": 0,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 0,
+    "bandRendered": 0,
+    "willChange": 18,
+    "blurFilters": 6
+   }
+  }
+ },
+ "secondary_single_session": {
+  "variants": {
+   "default": {
+    "n": 2,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 193.8,
+    "p50_range": [
+     137.4,
+     250.2
+    ],
+    "p95": 492.45,
+    "p95_range": [
+     489.6,
+     495.3
+    ],
+    "mean": 217.05,
+    "mean_range": [
+     170.3,
+     263.8
+    ],
+    "max": 670.95,
+    "max_range": [
+     634.6,
+     707.3
+    ],
+    "over33": 37,
+    "over33_range": [
+     36,
+     38
+    ],
+    "pctOver33": 94.85,
+    "pctOver33_range": [
+     92.3,
+     97.4
+    ],
+    "ltCount": 33,
+    "ltCount_range": [
+     31,
+     35
+    ],
+    "ltTotal": 6924,
+    "ltTotal_range": [
+     5809,
+     8039
+    ],
+    "ltMax": 671.5,
+    "ltMax_range": [
+     634,
+     709
+    ],
+    "TaskDuration": 7.43,
+    "TaskDuration_range": [
+     6.38,
+     8.49
+    ],
+    "ScriptDuration": 0.44,
+    "ScriptDuration_range": [
+     0.31,
+     0.57
+    ],
+    "TaskOtherDuration": 6.27,
+    "TaskOtherDuration_range": [
+     5.43,
+     7.1
+    ],
+    "LayoutCount": 28.5,
+    "LayoutCount_range": [
+     28,
+     29
+    ],
+    "RecalcStyleCount": 121.5,
+    "RecalcStyleCount_range": [
+     121,
+     122
+    ],
+    "d_p50": 41.0,
+    "d_p95": -0.6,
+    "d_mean": 27.5,
+    "d_lt": 19.2,
+    "d_task": 16.5,
+    "d_layout": -1.7,
+    "d_over33": 2.8
+   },
+   "slicesOnly": {
+    "n": 2,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 107.1,
+    "p50_range": [
+     78.8,
+     135.4
+    ],
+    "p95": 242.4,
+    "p95_range": [
+     186.1,
+     298.7
+    ],
+    "mean": 113.5,
+    "mean_range": [
+     94.9,
+     132.1
+    ],
+    "max": 509.15,
+    "max_range": [
+     451.2,
+     567.1
+    ],
+    "over33": 31.5,
+    "over33_range": [
+     30,
+     33
+    ],
+    "pctOver33": 80.75,
+    "pctOver33_range": [
+     76.9,
+     84.6
+    ],
+    "ltCount": 17.5,
+    "ltCount_range": [
+     15,
+     20
+    ],
+    "ltTotal": 2484.5,
+    "ltTotal_range": [
+     2358,
+     2611
+    ],
+    "ltMax": 311.5,
+    "ltMax_range": [
+     293,
+     330
+    ],
+    "TaskDuration": 3.19,
+    "TaskDuration_range": [
+     3.07,
+     3.31
+    ],
+    "ScriptDuration": 0.39,
+    "ScriptDuration_range": [
+     0.27,
+     0.5
+    ],
+    "TaskOtherDuration": 2.28,
+    "TaskOtherDuration_range": [
+     2.06,
+     2.5
+    ],
+    "LayoutCount": 27,
+    "LayoutCount_range": [
+     27,
+     27
+    ],
+    "RecalcStyleCount": 149,
+    "RecalcStyleCount_range": [
+     149,
+     149
+    ],
+    "d_p50": -22.1,
+    "d_p95": -51.1,
+    "d_mean": -33.4,
+    "d_lt": -57.2,
+    "d_task": -50.0,
+    "d_layout": -6.9,
+    "d_over33": -12.5
+   },
+   "zeroCopy": {
+    "n": 2,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 100.0,
+    "p50_range": [
+     73.5,
+     126.5
+    ],
+    "p95": 237.35,
+    "p95_range": [
+     169.2,
+     305.5
+    ],
+    "mean": 107.15,
+    "mean_range": [
+     73.7,
+     140.6
+    ],
+    "max": 275.6,
+    "max_range": [
+     186.2,
+     365
+    ],
+    "over33": 28.5,
+    "over33_range": [
+     28,
+     29
+    ],
+    "pctOver33": 73.1,
+    "pctOver33_range": [
+     71.8,
+     74.4
+    ],
+    "ltCount": 11.5,
+    "ltCount_range": [
+     11,
+     12
+    ],
+    "ltTotal": 1448.5,
+    "ltTotal_range": [
+     1291,
+     1606
+    ],
+    "ltMax": 230.5,
+    "ltMax_range": [
+     158,
+     303
+    ],
+    "TaskDuration": 2.13,
+    "TaskDuration_range": [
+     1.75,
+     2.51
+    ],
+    "ScriptDuration": 0.47,
+    "ScriptDuration_range": [
+     0.29,
+     0.65
+    ],
+    "TaskOtherDuration": 1.24,
+    "TaskOtherDuration_range": [
+     1.14,
+     1.34
+    ],
+    "LayoutCount": 27.5,
+    "LayoutCount_range": [
+     27,
+     28
+    ],
+    "RecalcStyleCount": 149.5,
+    "RecalcStyleCount_range": [
+     149,
+     150
+    ],
+    "d_p50": -27.2,
+    "d_p95": -52.1,
+    "d_mean": -37.1,
+    "d_lt": -75.1,
+    "d_task": -66.6,
+    "d_layout": -5.2,
+    "d_over33": -20.8
+   },
+   "noDock": {
+    "n": 2,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 63.75,
+    "p50_range": [
+     39.1,
+     88.4
+    ],
+    "p95": 309.65,
+    "p95_range": [
+     284.6,
+     334.7
+    ],
+    "mean": 95.1,
+    "mean_range": [
+     80,
+     110.2
+    ],
+    "max": 445.3,
+    "max_range": [
+     426.9,
+     463.7
+    ],
+    "over33": 24.5,
+    "over33_range": [
+     22,
+     27
+    ],
+    "pctOver33": 62.8,
+    "pctOver33_range": [
+     56.4,
+     69.2
+    ],
+    "ltCount": 10.5,
+    "ltCount_range": [
+     8,
+     13
+    ],
+    "ltTotal": 1732,
+    "ltTotal_range": [
+     1090,
+     2374
+    ],
+    "ltMax": 356,
+    "ltMax_range": [
+     285,
+     427
+    ],
+    "TaskDuration": 2.03,
+    "TaskDuration_range": [
+     1.48,
+     2.58
+    ],
+    "ScriptDuration": 0.28,
+    "ScriptDuration_range": [
+     0.08,
+     0.47
+    ],
+    "TaskOtherDuration": 1.6,
+    "TaskOtherDuration_range": [
+     1.24,
+     1.97
+    ],
+    "LayoutCount": 27,
+    "LayoutCount_range": [
+     27,
+     27
+    ],
+    "RecalcStyleCount": 70.5,
+    "RecalcStyleCount_range": [
+     70,
+     71
+    ],
+    "d_p50": -53.6,
+    "d_p95": -37.5,
+    "d_mean": -44.2,
+    "d_lt": -70.2,
+    "d_task": -68.2,
+    "d_layout": -6.9,
+    "d_over33": -32.0
+   },
+   "lean": {
+    "n": 2,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 72.75,
+    "p50_range": [
+     64.7,
+     80.8
+    ],
+    "p95": 175.7,
+    "p95_range": [
+     150.6,
+     200.8
+    ],
+    "mean": 74.5,
+    "mean_range": [
+     65.4,
+     83.6
+    ],
+    "max": 201.15,
+    "max_range": [
+     154.7,
+     247.6
+    ],
+    "over33": 27,
+    "over33_range": [
+     25,
+     29
+    ],
+    "pctOver33": 69.25,
+    "pctOver33_range": [
+     64.1,
+     74.4
+    ],
+    "ltCount": 11,
+    "ltCount_range": [
+     9,
+     13
+    ],
+    "ltTotal": 1136,
+    "ltTotal_range": [
+     904,
+     1368
+    ],
+    "ltMax": 171.5,
+    "ltMax_range": [
+     150,
+     193
+    ],
+    "TaskDuration": 1.7,
+    "TaskDuration_range": [
+     1.37,
+     2.03
+    ],
+    "ScriptDuration": 0.26,
+    "ScriptDuration_range": [
+     0.24,
+     0.28
+    ],
+    "TaskOtherDuration": 1.32,
+    "TaskOtherDuration_range": [
+     0.96,
+     1.68
+    ],
+    "LayoutCount": 27.5,
+    "LayoutCount_range": [
+     27,
+     28
+    ],
+    "RecalcStyleCount": 134.5,
+    "RecalcStyleCount_range": [
+     121,
+     148
+    ],
+    "d_p50": -47.1,
+    "d_p95": -64.5,
+    "d_mean": -56.3,
+    "d_lt": -80.4,
+    "d_task": -73.3,
+    "d_layout": -5.2,
+    "d_over33": -25.0
+   },
+   "lensDefault": {
+    "n": 1,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 154.1,
+    "p50_range": [
+     154.1,
+     154.1
+    ],
+    "p95": 385.7,
+    "p95_range": [
+     385.7,
+     385.7
+    ],
+    "mean": 151.7,
+    "mean_range": [
+     151.7,
+     151.7
+    ],
+    "max": 493.6,
+    "max_range": [
+     493.6,
+     493.6
+    ],
+    "over33": 34,
+    "over33_range": [
+     34,
+     34
+    ],
+    "pctOver33": 87.2,
+    "pctOver33_range": [
+     87.2,
+     87.2
+    ],
+    "ltCount": 17,
+    "ltCount_range": [
+     17,
+     17
+    ],
+    "ltTotal": 2799,
+    "ltTotal_range": [
+     2799,
+     2799
+    ],
+    "ltMax": 328,
+    "ltMax_range": [
+     328,
+     328
+    ],
+    "TaskDuration": 4.49,
+    "TaskDuration_range": [
+     4.49,
+     4.49
+    ],
+    "ScriptDuration": 0.33,
+    "ScriptDuration_range": [
+     0.33,
+     0.33
+    ],
+    "TaskOtherDuration": 3.3,
+    "TaskOtherDuration_range": [
+     3.3,
+     3.3
+    ],
+    "LayoutCount": 1,
+    "LayoutCount_range": [
+     1,
+     1
+    ],
+    "RecalcStyleCount": 41,
+    "RecalcStyleCount_range": [
+     41,
+     41
+    ],
+    "d_p50": 12.2,
+    "d_p95": -22.1,
+    "d_mean": -10.9,
+    "d_lt": -51.8,
+    "d_task": -29.6,
+    "d_layout": -96.6,
+    "d_over33": -5.5
+   },
+   "lensLean": {
+    "n": 1,
+    "frames": 39,
+    "frames_range": [
+     39,
+     39
+    ],
+    "p50": 107.1,
+    "p50_range": [
+     107.1,
+     107.1
+    ],
+    "p95": 262.4,
+    "p95_range": [
+     262.4,
+     262.4
+    ],
+    "mean": 103.5,
+    "mean_range": [
+     103.5,
+     103.5
+    ],
+    "max": 296.5,
+    "max_range": [
+     296.5,
+     296.5
+    ],
+    "over33": 26,
+    "over33_range": [
+     26,
+     26
+    ],
+    "pctOver33": 66.7,
+    "pctOver33_range": [
+     66.7,
+     66.7
+    ],
+    "ltCount": 4,
+    "ltCount_range": [
+     4,
+     4
+    ],
+    "ltTotal": 628,
+    "ltTotal_range": [
+     628,
+     628
+    ],
+    "ltMax": 202,
+    "ltMax_range": [
+     202,
+     202
+    ],
+    "TaskDuration": 1.19,
+    "TaskDuration_range": [
+     1.19,
+     1.19
+    ],
+    "ScriptDuration": 0.09,
+    "ScriptDuration_range": [
+     0.09,
+     0.09
+    ],
+    "TaskOtherDuration": 0.91,
+    "TaskOtherDuration_range": [
+     0.91,
+     0.91
+    ],
+    "LayoutCount": 1,
+    "LayoutCount_range": [
+     1,
+     1
+    ],
+    "RecalcStyleCount": 41,
+    "RecalcStyleCount_range": [
+     41,
+     41
+    ],
+    "d_p50": -22.1,
+    "d_p95": -47.0,
+    "d_mean": -39.2,
+    "d_lt": -89.2,
+    "d_task": -81.3,
+    "d_layout": -96.6,
+    "d_over33": -27.7
+   }
+  },
+  "census": {
+   "default": {
+    "engine": "slices",
+    "dockFlag": null,
+    "pageNodes": 9775,
+    "dockNodes": 8917,
+    "dockRenderedNodes": 8917,
+    "copies": 15,
+    "slices": 14,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 14,
+    "bandRendered": 5,
+    "willChange": 60,
+    "blurFilters": 6
+   },
+   "slicesOnly": {
+    "engine": "slices",
+    "dockFlag": null,
+    "pageNodes": 9776,
+    "dockNodes": 8917,
+    "dockRenderedNodes": 2673,
+    "copies": 15,
+    "slices": 14,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 0,
+    "bandRendered": 5,
+    "willChange": 60,
+    "blurFilters": 6,
+    "probeCss": ".docklens__slice{display:none!important}"
+   },
+   "zeroCopy": {
+    "engine": "slices",
+    "dockFlag": null,
+    "pageNodes": 9776,
+    "dockNodes": 8917,
+    "dockRenderedNodes": 22,
+    "copies": 15,
+    "slices": 14,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 14,
+    "bandRendered": 0,
+    "willChange": 60,
+    "blurFilters": 6,
+    "probeCss": ".docklens__copy{display:none!important}.docklens__band-copy{display:none!important}"
+   },
+   "lean": {
+    "engine": "slices",
+    "dockFlag": "lean",
+    "pageNodes": 3531,
+    "dockNodes": 2673,
+    "dockRenderedNodes": 448,
+    "copies": 1,
+    "slices": 0,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 0,
+    "bandRendered": 0,
+    "willChange": 18,
+    "blurFilters": 6
+   },
+   "lensDefault": {
+    "engine": "lens",
+    "dockFlag": null,
+    "pageNodes": 3605,
+    "dockNodes": 2768,
+    "dockRenderedNodes": 2765,
+    "copies": 1,
+    "slices": 0,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 0,
+    "bandRendered": 5,
+    "willChange": 18,
+    "blurFilters": 5
+   },
+   "lensLean": {
+    "engine": "lens",
+    "dockFlag": "lean",
+    "pageNodes": 3605,
+    "dockNodes": 2768,
+    "dockRenderedNodes": 475,
+    "copies": 1,
+    "slices": 0,
+    "bandCopies": 5,
+    "bandSpans": 5,
+    "slicesRendered": 0,
+    "bandRendered": 0,
+    "willChange": 18,
+    "blurFilters": 5
+   }
+  },
+  "note": "one session, machine shared with sibling lanes; ratios move with contention \u2014 see report"
+ }
+}

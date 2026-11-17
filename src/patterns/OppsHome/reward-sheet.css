@@ -34,4 +34,4 @@
 .activity-strip__bar[role="button"]{cursor:pointer;transition:transform 120ms ease}
 .activity-strip__bar[role="button"]:hover{transform:translateY(-1px)}
 .activity-strip__bar[role="button"]:active{transform:scale(0.96)}
-.activity-strip__bar[role="button"]:focus-visible{outline:var(--focus-ring);outline-offset:2px;border-radius:var(--radius-full)}
+.activity-strip__bar[role="button"]:focus-visible{outline:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);outline-offset:2px;border-radius:var(--radius-full)} /* same 2px sapphire as --focus-ring: that token is a box-shadow and as an outline value it computed to none, so the peak bar (reward-sheet.js gives it role=button + tabindex) focused with no ring */

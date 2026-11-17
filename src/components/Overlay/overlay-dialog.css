@@ -11,7 +11,7 @@
   overflow: auto;
   padding: var(--spacing-6);
   transform: translateY(var(--spacing-2)) scale(0.98);
-  transition: var(--transition-fast);
+  transition: transform var(--transition-fast);
 }
 .overlay--open .overlay__content {
   transform: none;

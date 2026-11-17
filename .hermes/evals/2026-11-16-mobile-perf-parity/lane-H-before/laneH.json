@@ -1,0 +1,315 @@
+{
+  "phase": "before",
+  "url": "http://127.0.0.1:5242",
+  "startedAt": "2026-11-17T04:10:59.562Z",
+  "surfaces": {
+    "app": {
+      "hydrated": true,
+      "settle": "settled",
+      "census": {
+        "leaflet": true,
+        "pluginMethod": true,
+        "rotatePane": true,
+        "mapInited": false,
+        "hostFound": true,
+        "tiles": 4,
+        "tilesLoaded": 4,
+        "markers": 4,
+        "pins": 3,
+        "me": 1,
+        "hotspot": true,
+        "mapPaneTf": "matrix(1, 0, 0, 1, 0, 0)",
+        "rotatePaneTf": "matrix(-0.819152, 0.573576, -0.573576, -0.819152, 386.19, 86.2348)",
+        "rotatePaneStyle": "transform: translate3d(386.19px, 86.2348px, 0px) rotate(2.53073rad);",
+        "containerClass": "opps__tiles leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag",
+        "box": {
+          "x": 17,
+          "y": 271,
+          "w": 359,
+          "h": 208
+        },
+        "errs": []
+      },
+      "strip": {
+        "sel": ".activity-strip__bar",
+        "found": true,
+        "active": false,
+        "focusVisible": false,
+        "focus": false,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 16,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "text": ""
+      },
+      "stripRoleBtn": {
+        "selectorMatches": 7,
+        "stripRole": "img",
+        "bars": 392,
+        "focusable": 7
+      },
+      "mapShot": {
+        "name": "app-map-rest.png",
+        "bytes": 672136,
+        "stable": true,
+        "drift": null
+      },
+      "stripShot": {
+        "name": "app-strip-rest.png",
+        "bytes": 5806,
+        "stable": true,
+        "drift": null
+      },
+      "peakBar": {
+        "sel": ".activity-strip__bar[role=\"button\"]",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 116,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "text": "",
+        "focusedShot": "app-strip-focused.png"
+      },
+      "peakBarFocus": {
+        "sel": ".activity-strip__bar[role=\"button\"]",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 116,
+          "y": 137,
+          "w": 14,
+          "h": 92
+        },
+        "text": ""
+      }
+    },
+    "gallery": {
+      "hydrated": true,
+      "inventory": {
+        "menuItems": 3,
+        "openMenus": 0,
+        "menus": 1,
+        "menusHidden": 1,
+        "overlays": 3,
+        "openOverlays": 0,
+        "triggers": 7,
+        "stages": 6
+      },
+      "openAttempt": {
+        "after": {
+          "menuItems": 3,
+          "openMenus": 1,
+          "menus": 1,
+          "menusHidden": 0,
+          "overlays": 3,
+          "openOverlays": 1,
+          "triggers": 7,
+          "stages": 6
+        },
+        "result": {
+          "menuOpen": true,
+          "overlayOpen": true,
+          "overlayCount": 3,
+          "closeBox": {
+            "x": 329,
+            "y": 96,
+            "w": 23,
+            "h": 32
+          },
+          "itemBox": {
+            "x": 149,
+            "y": 378,
+            "w": 190,
+            "h": 32
+          }
+        }
+      },
+      "menuItem": {
+        "sel": ".menu.overlay--open .menu__item",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "-2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 147,
+          "y": 9817,
+          "w": 190,
+          "h": 32
+        },
+        "text": "Rename",
+        "focusedShot": "gallery-menu-focused.png"
+      },
+      "overlayControl": {
+        "sel": ".overlay.overlay--open button, .overlay.overlay--open .overlay__close",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(115, 115, 115)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(115, 115, 115)",
+          "outlineOffset": "2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 329,
+          "y": 9503,
+          "w": 23,
+          "h": 32
+        },
+        "text": "✕",
+        "focusedShot": "gallery-overlay-focused.png"
+      },
+      "menuShot": {
+        "name": "gallery-menu-rest.png",
+        "bytes": 9498,
+        "stable": true,
+        "drift": null
+      },
+      "overlayShot": {
+        "name": "gallery-overlay-rest.png",
+        "bytes": 1459,
+        "stable": true,
+        "drift": null
+      },
+      "menuItemFocused": {
+        "sel": ".menu.overlay--open .menu__item",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(34, 34, 34)",
+          "outlineOffset": "-2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 147,
+          "y": 9817,
+          "w": 190,
+          "h": 32
+        },
+        "text": "Rename"
+      },
+      "overlayControlFocused": {
+        "sel": ".overlay.overlay--open button, .overlay.overlay--open .overlay__close",
+        "found": true,
+        "active": true,
+        "focusVisible": true,
+        "focus": true,
+        "rest": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(115, 115, 115)",
+          "outlineOffset": "0px",
+          "boxShadow": "none"
+        },
+        "focused": {
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "outlineColor": "rgb(115, 115, 115)",
+          "outlineOffset": "2px",
+          "boxShadow": "none"
+        },
+        "box": {
+          "x": 329,
+          "y": 9503,
+          "w": 23,
+          "h": 32
+        },
+        "text": "✕"
+      }
+    }
+  },
+  "toolchain": {
+    "chromeFlags": [
+      "--headless=new",
+      "--disable-gpu-rasterization",
+      "--use-angle=metal",
+      "--enable-gpu",
+      "--ignore-gpu-blocklist"
+    ]
+  }
+}

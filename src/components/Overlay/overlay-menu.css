@@ -11,7 +11,7 @@
   opacity: 0;
   transform: translateY(calc(var(--spacing-1) * -1)) scale(0.98);
   transform-origin: top left;
-  transition: var(--transition-fast);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 .menu--in-dialog {
   z-index: var(--z-index-modal);
@@ -34,7 +34,8 @@
   background: var(--bg-interactive);
 }
 .menu__item:focus-visible {
-  outline: var(--focus-ring);
+  /* --focus-ring is a box-shadow: `outline: var(--focus-ring)` computed to none and the item focused with no ring. Flat row, no shadow of its own → real outline, same 2px sapphire. */
+  outline: var(--border-width-medium) solid var(--primitive-sapphire-ui-400);
   outline-offset: -2px;
 }
 .menu__item:disabled {
@@ -58,7 +59,7 @@
   opacity: 0;
   transform: translateY(calc(var(--spacing-1) * -1)) scale(0.98);
   transform-origin: top left;
-  transition: var(--transition-fast);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 .menu[data-placement="top"],
 .popover[data-placement="top"] {
