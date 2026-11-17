@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:45:07.030Z",
+  "generated": "2026-11-17T06:47:59.085Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4734,5 +4734,7 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M  scripts/plan-auto-link.mjs"
+  ]
 }

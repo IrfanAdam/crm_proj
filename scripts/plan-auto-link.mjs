@@ -25,6 +25,7 @@ function main() {
   if (idx === -1) return;
   const subject = lines[idx];
   if (/^Merge\s/.test(subject)) return;
+  if (/\[plan:[^\]\n]+\]/.test(subject)) return;
   // A tag anywhere in the message counts, but ds-track links on %s — so a body trailer must be
   // PROMOTED to the subject, not treated as "already tagged" (that left the commit unlinked).
   const bodyTag = msg.match(/\[plan:[^\]\n]+\]/);
