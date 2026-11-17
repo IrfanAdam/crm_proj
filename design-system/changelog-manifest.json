@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T15:26:54.037Z",
+  "generated": "2026-11-17T15:27:04.145Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "411fe93",
+      "full": "411fe93697981345fb9e582a6d21d2870a1ec598",
+      "date": "2026-11-17",
+      "time": "20:56",
+      "subject": "perf(gem): park a rig outside the viewport, skip an invisible pool",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "b19e046",
       "full": "b19e0462eb77afc6231fa2feba0c6969a43f48b7",
@@ -4752,10 +4761,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-caustic.js",
-    "M  src/components/GemReward/gem-rig.js",
-    "M  src/components/GemReward/gem3d.js"
-  ]
+  "wip": []
 }
