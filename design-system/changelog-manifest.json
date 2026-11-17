@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:47:59.085Z",
+  "generated": "2026-11-17T06:49:28.605Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "b7af71e",
+      "full": "b7af71ed44dd4674ffc60498d1a47131d22d5654",
+      "date": "2026-11-17",
+      "time": "12:17",
+      "subject": "fix(ds): do not duplicate a tag the subject already carries",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "rev-3"
+    },
     {
       "sha": "2e12b30",
       "full": "2e12b30d70a8e8a173aa0b8b7f2b24fc6c0d75f7",
@@ -4735,6 +4744,9 @@
     }
   ],
   "wip": [
-    "M  scripts/plan-auto-link.mjs"
+    "M  src/js/mechanics/graphData.decisions.js",
+    "M  src/js/mechanics/graphData.js",
+    "M  src/js/mechanics/graphData.logic.js",
+    "M  src/js/mechanics/graphData.schema.js"
   ]
 }
