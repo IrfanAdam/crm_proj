@@ -1,16 +1,32 @@
 /* ADAM/SHARED — src/components/GemReward/gem-shader-ext.js · GLSL sources for the interior trace */
 // [plan:2026-10-03_144222-gem-realism-round2.md#round-19] · moved verbatim out of gem-shader.js (line-budget split).
-// Export map: GEM_SHADER_EXT { VS, HEAD, BODY } — the trace shader, consumed by gem-shader.js
+// Export map: GEM_SHADER_EXT { VS, HEAD, BODY, bake(src,data,n), BK{rt,decl} } — the trace shader, consumed by gem-shader.js
+// — HEAD declares uPl[PLMAX] only #ifndef BAKED; bake() swaps it for a const array when the program is ES 3.00.
 (function () {
 const VS = 'varying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\nvoid main() {\n\tvec4 wp = modelMatrix * vec4( position, 1.0 );\n\tvW = wp.xyz;\n\tvO = position;\n\tvN = normalize( mat3( modelMatrix ) * normal );\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}';
-const HEAD = 'uniform vec4 uPl[PLMAX];\nuniform sampler2D uPlTex;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform int uCount;\nuniform float ior, uKS, uExp, uGam, uAmb, winGain, stageOn, gain, dbg, uCr, uBr, uLu, uLuB, uSh, uBounce, uSpread, uTaps, uSw, uBk, uRf, uFg;\nuniform vec3 uK, tint, uFt;\nuniform vec4 uKey;\nuniform mat4 uM;\nuniform vec3 rampDeep, rampMid, rampLite, rampPink;\nvarying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\n#include <cube_uv_reflection_fragment>\n' +
-'vec4 PL( int i ) {\n#ifdef PLTEX\n\treturn texture2D( uPlTex, vec2( ( float( i ) + 0.5 ) / float( PLMAX ), 0.5 ) );\n#else\n\treturn uPl[ i ];\n#endif\n}\n' +
+const DECL = '#ifndef BAKED\nuniform vec4 uPl[PLMAX];\n#endif\n';
+const HEAD = DECL + 'uniform sampler2D uPlTex;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform int uCount;\nuniform float ior, uKS, uExp, uGam, uAmb, winGain, stageOn, gain, dbg, uCr, uBr, uLu, uLuB, uSh, uBounce, uSpread, uTaps, uSw, uRf, uFg;\nuniform vec3 uK, tint, uFt;\nuniform vec4 uKey;\nuniform mat4 uM;\nuniform vec3 rampDeep, rampMid, rampLite, rampPink;\nvarying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\n#include <cube_uv_reflection_fragment>\n' +
+'vec4 PL( int i ) {\n#ifdef PLTEX\n\treturn texture2D( uPlTex, vec2( ( float( i ) + 0.5 ) / float( PLMAX ), 0.5 ) );\n#elif defined( BAKED )\n\treturn PLB[ i ];\n#else\n\treturn uPl[ i ];\n#endif\n}\n' +
 'float lum( vec3 c ) { return dot( c, vec3( 0.2126, 0.7152, 0.0722 ) ); }\nvec3 aces( vec3 x ) { return clamp( ( x * ( 2.51 * x + 0.03 ) ) / ( x * ( 2.43 * x + 0.59 ) + 0.14 ), 0.0, 1.0 ); }\n' +
 // env: crisp tap = facet image (the structure), broad tap = fill; both pulled toward their own luma so the studio's blue tent cannot repaint an amber stone. r18/k: TWO hard-edged panels (gnomonic rect = real straight edges and corners, ~1 deg falloff) sit on the -z meridian, where the black's exit directions actually cluster: A at -10 deg elevation lights the pavilion wedge, B at +28 deg the upper-crown band. A smooth fill killed the black by wiping the facet contrast hp measures; a panel lights only its own directions, so its edge is an edge in the reflection. A ring on that axis does nothing - its hole IS the wedge.' +// — r18/k: panels FINITE + HARD-EDGED (gnomonic rect: straight edges, corners; ring = annulus). A smooth fill killed the black by wiping the facet contrast hp measures; a panel lights only its own directions, so its edge is an edge in the reflection. Sweep: uP1 (dir, strength), uP2 (hs.x, hs.y|ringR, round, w).
 'vec3 sh( vec3 s, float k ) { return s * k / ( k + s ); }\nvec3 keyT( vec3 d ) {\n\tvec3 e = normalize( d ), k = normalize( uKey.xyz );\n\treturn vec3( ( pow( max( dot( e, k ), 0.0 ), 90.0 ) + 0.10 * pow( max( dot( e, normalize( vec3( -k.x, 0.30 * k.y, -k.z ) ) ), 0.0 ), 5.0 ) * mix( vec3( 1.0 ), uFt, 0.75 ) ) * uKey.w );\n}\n' +
-'float pan( vec3 e, vec3 c, vec2 hs ) {\n\tfloat d = dot( e, c );\n\tif ( d < 0.08 ) return 0.0;\n\tvec3 hz = normalize( cross( vec3( 0.0, 1.0, 0.0 ), c ) + vec3( 1e-5, 0.0, 0.0 ) );\n\tvec3 vt = cross( c, hz );\n\tvec2 q = vec2( dot( e, hz ), dot( e, vt ) ) / d;\n\treturn 1.0 - smoothstep( -0.055, 0.055, max( abs( q.x ) - hs.x, abs( q.y ) - hs.y ) );\n}\nvec3 studio( vec3 e ) {\n\tfloat fl = smoothstep( 0.05, 0.30, -e.y ) * ( 1.0 - smoothstep( 0.80, 0.97, -e.y ) );\n\tvec3 hz = normalize( vec3( e.x, 0.0, e.z ) + vec3( 1e-4, 0.0, 1e-4 ) );\n\tvec3 kz = normalize( vec3( uKey.x, 0.0, uKey.z ) + vec3( 1e-4, 0.0, 1e-4 ) );\n\tfloat sh = mix( 0.35, 1.0, smoothstep( -0.35, 0.85, dot( hz, kz ) ) );\n\tfloat bk = smoothstep( 0.55, 0.08, abs( e.y ) ) * ( 0.45 + 0.55 * smoothstep( 0.25, -0.45, e.z ) );\n\tvec3 ac = vec3( 1.0, 0.985, 0.96 ) * ( uSw * fl * sh ) + vec3( 0.94, 0.95, 0.96 ) * ( uBk * bk );\n\tvec3 pc = mix( vec3( 1.0 ), uFt, 0.65 );\n\tac += pc * 0.55 * smoothstep( 0.16, 0.98, dot( e, normalize( vec3( 0.0, -0.174, -0.985 ) ) ) ) * smoothstep( 0.02, 0.30, -e.y );\n\tac += pc * 0.32 * pan( e, vec3( 0.0, 0.470, -0.883 ), vec2( 0.14, 0.12 ) );\n\tac += vec3( 1.0, 0.99, 0.97 ) * 0.12 * pan( e, normalize( vec3( 0.62, 0.03, 0.78 ) ), vec2( 0.445, 0.445 ) );\n\treturn ac;\n}\n' +
+'float pan( vec3 e, vec3 c, vec2 hs ) {\n\tfloat d = dot( e, c );\n\tif ( d < 0.08 ) return 0.0;\n\tvec3 hz = normalize( cross( vec3( 0.0, 1.0, 0.0 ), c ) + vec3( 1e-5, 0.0, 0.0 ) );\n\tvec3 vt = cross( c, hz );\n\tvec2 q = vec2( dot( e, hz ), dot( e, vt ) ) / d;\n\treturn 1.0 - smoothstep( -0.055, 0.055, max( abs( q.x ) - hs.x, abs( q.y ) - hs.y ) );\n}\nvec3 studio( vec3 e ) {\n\tfloat fl = smoothstep( 0.05, 0.30, -e.y ) * ( 1.0 - smoothstep( 0.80, 0.97, -e.y ) );\n\tvec3 hz = normalize( vec3( e.x, 0.0, e.z ) + vec3( 1e-4, 0.0, 1e-4 ) );\n\tvec3 kz = normalize( vec3( uKey.x, 0.0, uKey.z ) + vec3( 1e-4, 0.0, 1e-4 ) );\n\tfloat sh = mix( 0.35, 1.0, smoothstep( -0.35, 0.85, dot( hz, kz ) ) );\n\tvec3 ac = vec3( 1.0, 0.985, 0.96 ) * ( uSw * fl * sh );\n\tvec3 pc = mix( vec3( 1.0 ), uFt, 0.65 );\n\tac += pc * 0.55 * smoothstep( 0.16, 0.98, dot( e, normalize( vec3( 0.0, -0.174, -0.985 ) ) ) ) * smoothstep( 0.02, 0.30, -e.y );\n\tac += pc * 0.32 * pan( e, vec3( 0.0, 0.470, -0.883 ), vec2( 0.14, 0.12 ) );\n\tac += vec3( 1.0, 0.99, 0.97 ) * 0.12 * pan( e, normalize( vec3( 0.62, 0.03, 0.78 ) ), vec2( 0.445, 0.445 ) );\n\treturn ac;\n}\n' +
     'vec3 tint1( vec3 c ) { vec3 d = c * uFt; return d * ( lum( c ) / max( lum( d ), 1e-3 ) ); }\nfloat chr( vec3 c ) { float mx = max( max( c.r, c.g ), c.b ), mn = min( min( c.r, c.g ), c.b ); return mx > 1e-4 ? ( mx - mn ) / mx : 0.0; }\nvec3 envR( vec3 d, mat3 R ) {\n\tvec3 e = normalize( R * d );\n#ifdef ENVMAP_TYPE_CUBE_UV\n\tvec3 s0 = textureCubeUV( envMap, e, uCr ).rgb;\n\tvec3 s1 = textureCubeUV( envMap, e, uBr ).rgb;\n' +
 '\treturn tint1( keyT( e ) + studio( e ) + sh( mix( s0, vec3( lum( s0 ) ), uLu ), uSh ) + sh( mix( s1, vec3( lum( s1 ) ), uLuB ), uSh ) * gain );\n#else\n\treturn tint1( vec3( 0.05 ) + 0.02 * lum( e ) );\n#endif\n}\n';
+// F2 — the plane set as a const array in the program itself (WebGL2 only: three upgrades a ShaderMaterial to
+// #version 300 es there, and an array constructor is ES 3.00). 9 significant decimal digits round-trips every
+// float32; ONE value that fails the assertion emits nothing and the uniform declaration stays. BK.rt is the
+// assertion's pass count (680 for the 170-plane cut), read back by the caller.
+const BK = { rt: 0, decl: '' };
+const bake = function (src, data, n) {
+const v = [], rows = [];
+if (!data || !n || src.indexOf(DECL) < 0) return null;
+for (let i = 0; i < 4 * n; i++) { const t = data[i].toPrecision(9); if (Math.fround(parseFloat(t)) !== Math.fround(data[i])) return null; v.push(t); }
+BK.rt = v.length;
+for (let i = 0; i < n; i++) rows.push('vec4( ' + v[4 * i] + ', ' + v[4 * i + 1] + ', ' + v[4 * i + 2] + ', ' + v[4 * i + 3] + ' )');
+BK.decl = 'const vec4 PLB[PLMAX] = vec4[PLMAX](\n' + rows.join(',\n') + '\n);\n';
+return src.replace(DECL, '#ifdef BAKED\n' + BK.decl + '#endif\n');
+};
 // the spectrum is a property of the PATH, not of the exit: tr() is the whole interior trace at one index, and main
 // runs it once per wavelength (R lo, G n, B hi; 5 taps adds yellow/cyan). Fresnel, TIR and Beer-Lambert are per hit.
 const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
@@ -44,5 +60,21 @@ const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
     '\t\tif ( uTaps > 4.0 ) {\n\t\t\tc0 = mix( c0, tr( ro, rd, ior * ( 1.0 - 0.45 * uSpread ), R, E ), 0.5 );\n\t\t\tc4 = mix( c4, tr( ro, rd, ior * ( 1.0 + 0.45 * uSpread ), R, E ), 0.5 );\n\t\t}\n\t\tacc = vec3( c0.r, c2.g, c4.b );\n\t}\n' +
     '\tif ( dbg > 0.5 ) { gl_FragColor = vec4( gTot / 3.0, gNb / 3.0, 1.0 - gAb.g, 1.0 ); return; }\n\tvec3 lin = acc * uExp + uAmb * ( 1.0 - gAb ) * tint;\n#ifdef CORE\n\tfloat cf = clamp( -dot( rd, gNe ), 0.0, 1.0 );\n\tfloat Ff = pow( ( ior - 1.0 ) / ( ior + 1.0 ), 2.0 );\n\tFf = Ff + ( 1.0 - Ff ) * pow( 1.0 - cf, 5.0 );\n\tlin = Ff * envR( reflect( rd, gNe ), R ) * ( 1.0 - uRf * Ff ) + ( 1.0 - Ff ) * lin;\n\tlin += uFg * uFt * ( 1.0 - Ff );\n\tif ( dbg > 0.5 ) {\n\t\tif ( dbg < 1.5 ) { vec3 t = acc * uExp; gl_FragColor = vec4( t / ( 1.0 + t ), 1.0 ); return; }\n\t\tif ( dbg < 2.5 ) { vec3 t = Ff * envR( reflect( rd, gNe ), R ); gl_FragColor = vec4( t / ( 1.0 + t ), 1.0 ); return; }\n\t\tif ( dbg < 3.5 ) { gl_FragColor = vec4( Ff, Ff, Ff, 1.0 ); return; }\n\t\tgl_FragColor = vec4( gAb, 1.0 ); return;\n\t}\n#endif\n' +
     'vec3 o = pow( aces( lin ), vec3( 1.0 / uGam ) );\n\tfloat wh = smoothstep( 0.80, 1.0, max( max( o.r, o.g ), o.b ) );\n\to = mix( o, vec3( lum( o ) ), 0.65 * wh );\n\to = clamp( 0.46 + ( o - 0.46 ) * 1.16, 0.0, 1.0 );   // B: the photo is bimodal; this build was one mid mass\n\tvec3 tgt = uFt * ( lum( o ) / max( lum( uFt ), 1e-3 ) );\n\tfloat kl = 0.25 * ( 1.0 - 0.92 * smoothstep( 0.30, 0.88, lum( o ) ) );\n\tgl_FragColor = vec4( clamp( mix( o, tgt, kl ), 0.0, 1.0 ), 1.0 );\n}';
-window.GEM_SHADER_EXT = { VS: VS, HEAD: HEAD, BODY: BODY };
+// F2 guard — compile the EXACT emitted declaration as ES 3.00 on this driver before any material uses it: the
+// array constructor plus the dynamic index the trace does are the two things a baked plane set can fail on.
+const probe = function (gl, decl, n) {
+if (!gl || !decl) return false;
+const vs = gl.createShader(gl.VERTEX_SHADER), fs = gl.createShader(gl.FRAGMENT_SHADER), pr = gl.createProgram();
+if (!vs || !fs || !pr) return false;
+gl.shaderSource(vs, '#version 300 es\nin vec4 p;\nvoid main() { gl_Position = p; }');
+gl.shaderSource(fs, '#version 300 es\nprecision highp float;\n#define PLMAX ' + n + '\n' + decl +
+'uniform int uC;\nlayout(location = 0) out highp vec4 o;\nvoid main() {\n\tvec4 s = vec4( 0.0 );\n' +
+'\tfor ( int i = 0; i < ' + n + '; i++ ) { if ( i >= uC ) break; s += PLB[ i ]; }\n\to = s;\n}');
+gl.compileShader(vs); gl.compileShader(fs);
+gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
+const ok = gl.getShaderParameter(fs, gl.COMPILE_STATUS) && gl.getProgramParameter(pr, gl.LINK_STATUS);
+gl.deleteProgram(pr); gl.deleteShader(vs); gl.deleteShader(fs);
+return !!ok;
+};
+window.GEM_SHADER_EXT = { VS: VS, HEAD: HEAD, BODY: BODY, bake: bake, probe: probe, BK: BK };
 })();

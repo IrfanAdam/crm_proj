@@ -46,9 +46,11 @@ window.GEM_BARE = {
     if (!window.GEM_TEXTURES || !window.GEM_TEXTURES.caustic) return null;
     const GX = window.GEM_TEXTURES, stx = GX.shadow(), s = gscale || 1;
     const rest = cy - (bb.min.y - h * 0.12) * s;   // stone-centre height above the contact plane at rest
-    if (bare) {   // the bare stage sits on the page itself: an 80-unit backdrop plane in the body's own colour
+    if (bare) {   // the bare stage sits on the page itself: an 80-unit backdrop plane in the body's own colour.
+      // It covers the whole buffer and is the farthest opaque surface: renderOrder 1 puts it after the stone in the
+      // opaque list, so the ~40 % the stone covers is depth-rejected before its fragment shader runs (F5, pixel-identical).
       const bp = new T.Mesh(new T.PlaneGeometry(80, 80), new T.MeshBasicMaterial({ color: new T.Color(getComputedStyle(document.body).backgroundColor) }));
-      bp.material.toneMapped = false; bp.position.z = -12; scene.add(bp);
+      bp.material.toneMapped = false; bp.position.z = -12; bp.renderOrder = 1; scene.add(bp);
     }
     // the card's pool is the cut's own silhouette (gem-caustic.js) at the plane's existing scale (1:1 on the footprint)
     const pool = !bare && cut && window.GEM_CAUSTIC ? (function () { try { return window.GEM_CAUSTIC.pool(color, cut); } catch (e) { return null; } })() : null;

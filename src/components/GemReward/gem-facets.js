@@ -1,17 +1,12 @@
 /* ADAM/SHARED — src/components/GemReward/gem-facets.js · the cut as a plane set (analytic interior) */
 // [plan:2026-11-01_000000-gem-analytic-facets.md#facets] · exact far-facet geometry, no render target.
-// — build(cut | BufferGeometry): every triangle → a plane (nx,ny,nz,d). The origin is inside the stone, so an
-// —   outward normal is the one with d < 0 (flip when d > 0). Triangles whose normals agree within 1° and whose
-// —   d agrees within 4e-3 are one facet: 268 triangles → 202 planes, 136 vertices, bbox y −0.860..0.348.
-// —   Measured (probe: 500 interior points × 16 dirs): the nearest plane with t > 0 is a real boundary point of
-// —   the solid 100% of the time (0/8000 spurious), so the trace needs no per-triangle containment test even
-// —   though the cut is not convex (536 vertex/plane violations, max 0.197).
-// — set(material, canvas): pushes the set as `vec4 uPl[N]` when the fragment program can take it — checked
-// —   against MAX_FRAGMENT_UNIFORM_VECTORS at runtime — else as an RGBA32F 1×N DataTexture (api.choice says which).
-// — k3(cat): per-channel Beer–Lambert absorption from GEM_APPEARANCE's measured hue/sat, κ = −ln(hsv(H,S,1)):
-// —   a path of one stone radius reproduces the measured stone colour exactly and a longer path only deepens it,
-// —   so hue is path-invariant and saturation is a readout of path length — not a ramp.
-// Export map: api.build · api.planes{count,data,bbox} · api.set · api.choice · api.k3 · api.kAt · api.stones
+// — build(): triangle → plane; origin inside so outward has d < 0 (flip when d > 0); normals within 1° and d
+// —   within 4e-3 merge: 444 tris → 170 planes. Probe (500 pts × 16 dirs): nearest plane with t > 0 is a real
+// —   boundary point 100% of the time (0/8000), so the trace needs no per-triangle containment test.
+// — set(): WebGL2 bakes the planes as `const vec4 PLB[PLMAX]` in the source (9-digit bit-exact, driver-probed)
+// —   and frees the uniform vectors; else `vec4 uPl[N]` if it fits, else an RGBA32F 1×N DataTexture.
+// — k3(): Beer–Lambert from measured hue/sat — hue path-invariant, saturation reads out path length.
+// Export map: build · planes · vecs · set · bake · choice · k3 · kAt · stones
 (function () {
 const api = {};
 window.GEM_FACETS = api;
@@ -49,26 +44,42 @@ api.planes = { count: acc.length, data: data, bbox: { min: bb[0], max: bb[1] } }
 api._vecs = null;
 return api.planes;
 };
-api.vecs = function () {
-const T = window.THREE, n = api.planes.count;
-if (!T) return null;
-if (api._vecs && api._vecs.length === n) return api._vecs;
-const out = [], d = api.planes.data;
-for (let i = 0; i < n; i++) out.push(new T.Vector4(d[4 * i], d[4 * i + 1], d[4 * i + 2], d[4 * i + 3]));
+api.vecs = function () {                          // the uniform fallback's 170 Vector4s, built once
+const T = window.THREE, n = api.planes.count, d = api.planes.data;
+if (!T || (api._vecs && api._vecs.length === n)) return api._vecs || null;
+const out = []; for (let i = 0; i < n; i++) out.push(new T.Vector4(d[4 * i], d[4 * i + 1], d[4 * i + 2], d[4 * i + 3]));
 return (api._vecs = out);
 };
+api.bake = 'uniform';
 api.set = function (material, canvas) {
-const T = window.THREE, u = material && material.uniforms, n = api.planes.count;
+const T = window.THREE, u = material && material.uniforms, n = api.planes.count, X = window.GEM_SHADER_EXT;
 if (!T || !u || !n) return '';
-let lim = 256;
-try { const gl = canvas && (canvas.getContext('webgl2') || canvas.getContext('webgl')); if (gl) lim = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS) || lim; } catch (e) { lim = 256; }
-if (u.uPl && n + 72 <= lim) { u.uPl.value = api.vecs(); u.uCount.value = n; api.choice = 'uniform'; return 'uniform'; }
+let lim = 256, gl = null, w2 = false;
+try {
+gl = canvas && (canvas.getContext('webgl2') || canvas.getContext('webgl'));
+if (gl) { lim = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS) || lim; w2 = !!(window.WebGL2RenderingContext && gl instanceof window.WebGL2RenderingContext); }
+} catch (e) { gl = null; w2 = false; }
+// F2: on WebGL2 three compiles this material as #version 300 es, so the 170 planes can sit in the program as a
+// const array and 170 fragment uniform vectors go back to the pool. Probed on the real context first; a driver
+// that refuses it keeps uPl (or PLTEX) and the program still compiles.
+if (w2 && u.uPl && X && X.bake && material.fragmentShader && !(material.defines && material.defines.PLTEX)) {
+if (!api._probe) api._probe = {};
+const src = X.bake(material.fragmentShader, api.planes.data, n);   // emits BK.decl before it returns
+const key = n + ':' + (X.BK.decl || '').length;                    // key the cache on the EMITTED text, not the last one
+const ok = src && (key in api._probe ? api._probe[key] : (api._probe[key] = X.probe(gl, X.BK.decl, n)));
+if (ok) {
+material.fragmentShader = src; material.defines.BAKED = 1; u.uCount.value = n;
+api.bake = api.choice = 'const';
+return 'const';
+}
+}
+if (u.uPl && n + 72 <= lim) { u.uPl.value = api.vecs(); u.uCount.value = n; api.bake = api.choice = 'uniform'; return 'uniform'; }
 if (!u.uPlTex) return '';
 const tex = new T.DataTexture(api.planes.data, n, 1, T.RGBAFormat, T.FloatType);
 tex.minFilter = T.NearestFilter; tex.magFilter = T.NearestFilter; tex.needsUpdate = true;
 u.uPlTex.value = tex; u.uCount.value = n;
 material.defines.PLTEX = 1; material.needsUpdate = true;
-api.choice = 'texture';
+api.bake = 'uniform'; api.choice = 'texture';
 return 'texture';
 };
 const hsv = function (h, s) {
@@ -81,9 +92,5 @@ if (A) return [A.hue, A.sat];
 return api.stones[cat] || api.stones.sapphire;
 };
 api.k3 = function (cat) { if (window.GEM_OPTICS && window.GEM_OPTICS.k3) return window.GEM_OPTICS.k3(cat); const s = stone(cat), v = hsv(s[0], s[1]); return v.map(function (q) { return -Math.log(Math.max(q, 1e-4)); }); };
-api.kAt = function (cat, nm) {
-const A = window.GEM_APPEARANCE;
-if (A && A.kAt) return A.kAt(cat, nm);
-return 0;
-};
+api.kAt = function (cat, nm) { const A = window.GEM_APPEARANCE; return (A && A.kAt) ? A.kAt(cat, nm) : 0; };
 })();

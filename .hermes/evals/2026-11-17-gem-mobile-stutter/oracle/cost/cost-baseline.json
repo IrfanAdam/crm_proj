@@ -1,0 +1,151 @@
+{
+ "tool": "prototype/gems/pixel-oracle.mjs --cost",
+ "sha": "a406cf3",
+ "url": "http://127.0.0.1:5321/gallery.html",
+ "method": "mobile-cost.mjs (ANGLE/Metal, 4x CPU throttle, 40-frame batches between two readPixels syncs) then the same-page read-back of GEM_FACETS.choice / uCount",
+ "measured": {
+  "url": "http://127.0.0.1:5321/gallery.html",
+  "cpu": 4,
+  "frames": 40,
+  "rows": {
+   "full": {
+    "bloom": true,
+    "fold": false,
+    "planes": 170,
+    "out": [
+     {
+      "size": "812x356",
+      "ms": 4.972,
+      "runs": [
+       4.783,
+       4.972,
+       5.165
+      ]
+     },
+     {
+      "size": "786x1000",
+      "ms": 9.863,
+      "runs": [
+       9.827,
+       9.863,
+       9.895
+      ]
+     },
+     {
+      "size": "1179x1500",
+      "ms": 18.262,
+      "runs": [
+       16.84,
+       18.262,
+       18.587
+      ]
+     }
+    ]
+   },
+   "no-bloom": {
+    "bloom": false,
+    "fold": false,
+    "planes": 170,
+    "out": [
+     {
+      "size": "812x356",
+      "ms": 7.03,
+      "runs": [
+       6.228,
+       7.03,
+       8.232
+      ]
+     },
+     {
+      "size": "786x1000",
+      "ms": 10.99,
+      "runs": [
+       8.787,
+       10.99,
+       11.623
+      ]
+     },
+     {
+      "size": "1179x1500",
+      "ms": 17.25,
+      "runs": [
+       17.082,
+       17.25,
+       19.16
+      ]
+     }
+    ]
+   },
+   "no-fold": {
+    "bloom": false,
+    "fold": false,
+    "planes": 170,
+    "out": [
+     {
+      "size": "812x356",
+      "ms": 6.878,
+      "runs": [
+       6.493,
+       6.878,
+       10.192
+      ]
+     },
+     {
+      "size": "786x1000",
+      "ms": 13.335,
+      "runs": [
+       12.123,
+       13.335,
+       14.1
+      ]
+     },
+     {
+      "size": "1179x1500",
+      "ms": 18.745,
+      "runs": [
+       16.002,
+       18.745,
+       19.057
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "readback": {
+  "card": {
+   "gem": "sapphire",
+   "choice": "uniform",
+   "uCount": 170,
+   "planeCount": 170,
+   "PLTEX": false,
+   "maxFragUniformVectors": 1024,
+   "glRenderer": "WebKit WebGL",
+   "uBounce": 5,
+   "uTaps": 3,
+   "bloom": true,
+   "programs": 8,
+   "canvas": [
+    558,
+    244
+   ]
+  },
+  "ceremony": {
+   "gem": "sapphire",
+   "choice": "uniform",
+   "uCount": 170,
+   "planeCount": 170,
+   "PLTEX": false,
+   "maxFragUniformVectors": 1024,
+   "glRenderer": "WebKit WebGL",
+   "uBounce": 5,
+   "uTaps": 3,
+   "bloom": false,
+   "programs": 6,
+   "canvas": [
+    598,
+    564
+   ]
+  }
+ }
+}

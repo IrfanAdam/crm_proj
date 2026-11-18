@@ -36,7 +36,7 @@ tint: { value: (o.tint && o.tint.isColor) ? o.tint : new T.Color(0.11, 0.29, 0.8
 rampDeep: { value: rc('deep', [0.031, 0.09, 0.345]) }, rampMid: { value: rc('mid', [0.11, 0.29, 0.83]) },
 rampLite: { value: rc('lite', [0.42, 0.47, 0.62]) }, rampPink: { value: rc('pink', [0.85, 0.48, 0.78]) },
 uPl: { value: null }, uPlTex: { value: null }, uCount: { value: defines.PLMAX },
-uK: { value: new T.Vector3(1, 1, 1) }, uM: { value: new T.Matrix4() }, uKS: { value: OD.absorb.scale }, uExp: { value: OD.light.exp }, uGam: { value: OD.light.gam }, uAmb: { value: OD.light.amb }, uSw: { value: 0.35 }, uBk: { value: 0.0 }, uRf: { value: 0 }, uFg: { value: 0 }, uFt: { value: new T.Vector3(1, 1, 1) },
+uK: { value: new T.Vector3(1, 1, 1) }, uM: { value: new T.Matrix4() }, uKS: { value: OD.absorb.scale }, uExp: { value: OD.light.exp }, uGam: { value: OD.light.gam }, uAmb: { value: OD.light.amb }, uSw: { value: 0.35 }, uRf: { value: 0 }, uFg: { value: 0 }, uFt: { value: new T.Vector3(1, 1, 1) },
 uCr: { value: OD.reflect.crisp }, uBr: { value: OD.reflect.broad }, uLu: { value: OD.reflect.luma }, uLuB: { value: OD.reflect.lumaB }, uSh: { value: OD.reflect.shK }, uBounce: { value: OD.reflect.bounce }, uSpread: { value: OD.fire ? OD.fire.spread : 0 }, uTaps: { value: OD.fire ? OD.fire.taps : 3 },
 uKey: { value: o.key || new T.Vector4(3, 5, 4, 0.55) },
 }, vertexShader: VS, fragmentShader: HEAD + BODY });

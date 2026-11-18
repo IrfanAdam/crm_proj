@@ -9,7 +9,8 @@ const FALL = { n: 2.4, disp: 0.06, sig: 5.2, streak: 0.42, gain: 1 }, S = 160, S
 const recOf = function (name) { const o = window.GEM_OPTICS, r = o && o.of(name); return (r && r.caus) || FALL; };
 const LN = Math.hypot(3, 5, 4), LX = 3 / LN, LY = 5 / LN, LZ = 4 / LN, DX0 = -LX, DY0 = -LY, DZ0 = -LZ;
 const { poseOf, smoothstep } = window.GEM_CAUSTIC_TRACE_EXT;
-const geomKey = function (G) { return G.cells.length + ':' + G.positions.length + ':' + G.positions[0].join(','); };
+const geomKey = function (G) { if (G === gkG) return gkK; gkG = G; gkK = G.cells.length + ':' + G.positions.length + ':' + G.positions[0].join(','); return gkK; };   // one cut on screen: built once, never per frame
+let gkG = null, gkK = '';   // geomKey memo: the live cut object and the key string built from it
 const FACETS = {};
 const facetsOf = function (G) {   // cached cut facets: centroid / outward normal / area, pavilion only
 const k = geomKey(G); if (FACETS[k]) return FACETS[k];
@@ -32,12 +33,17 @@ const dx = (x - S / 2) / RAD, dz = (y - S / 2) / RAD, j = y * S + x; ENVV[j] = M
 }
 const BUF = [0, 1, 2].map(function () { return new Float32Array(S * S); });   // per-channel accumulators
 const OUT = [0, 1, 2].map(function () { return new Float32Array(S * S); });
+// — Per-call scratch, allocated once. CAP ≥ every cell in the cut (444), so no accepted facet can ever clip, and a
+// — repeated pose rewrites the same slots instead of growing arrays. FLD is returned by reference: every consumer
+// — (blit, refOf) reads it inside its own call, and OUT was already shared, so it carries no more state than before.
+const CAP = 448, PX = new Float64Array(CAP * 3), PZ = new Float64Array(CAP * 3), PW = new Float64Array(CAP), PXc = new Float64Array(3), PZc = new Float64Array(3);
+const FLD = { r: OUT[0], g: OUT[1], b: OUT[2], pk: 1, cx: 0, cz: 0, sp: 0, gain: 1 };
 const field = function (G, P, stone) {   // per-frame: refract each pavilion facet per channel, splat each channel
 const F_ = facetsOf(G), M = P.R, fy = P.floorY, RC = recOf(stone), IOR = RC.n;
 CH[0] = IOR * (1 - RC.disp); CH[1] = IOR; CH[2] = IOR * (1 + RC.disp);
 const KX = kernel(RC.sig), kx = KX.kx, ky = KX.ky, kw = KX.kw, KN = KX.n;
 const tnx = M[1], tny = M[4], tnz = M[7], dn = DX0 * tnx + DY0 * tny + DZ0 * tnz;   // table normal, posed
-const PX = [], PZ = [], PW = [], PXc = [0, 0, 0], PZc = [0, 0, 0]; let mx = 0, mz = 0, ws = 0, m2 = 0, ax = 0, ay = 0, az = 0, aw = 0, hx = 0, hy = 0, hz = 0;
+let mx = 0, mz = 0, ws = 0, m2 = 0, ax = 0, ay = 0, az = 0, aw = 0, hx = 0, hy = 0, hz = 0, nP = 0;   // PX/PZ/PW are the module scratch above
 for (let i = 0; i < F_.length; i++) {
 const f = F_[i], nx = M[0] * f[3] + M[1] * f[4] + M[2] * f[5], ny = M[3] * f[3] + M[4] * f[4] + M[5] * f[5], nz = M[6] * f[3] + M[7] * f[4] + M[8] * f[5];
 const cx = M[0] * f[0] + M[1] * f[1] + M[2] * f[2], cy = M[3] * f[0] + M[4] * f[1] + M[5] * f[2], cz = M[6] * f[0] + M[7] * f[1] + M[8] * f[2];
@@ -62,12 +68,12 @@ ax += cx * a3; ay += cy * a3; az += cz * a3; aw += a3; hx += rx / l3 * a3; hy +=
 if (!ok || w <= 0) continue;
 const px = sx / ok, pz = sz / ok;   // shared centre: channels that missed the floor fall back to it
 if (px * px + pz * pz > 1.9) continue;   // no far-flung satellites — the pool stays one glow
-for (let c = 0; c < 3; c++) { if (!LAND[c]) { PXc[c] = px; PZc[c] = pz; } PX.push(PXc[c]); PZ.push(PZc[c]); }
-PW.push(w); mx += px * w; mz += pz * w; m2 += (px * px + pz * pz) * w; ws += w;
+for (let c = 0; c < 3; c++) { if (!LAND[c]) { PXc[c] = px; PZc[c] = pz; } PX[nP * 3 + c] = PXc[c]; PZ[nP * 3 + c] = PZc[c]; }
+PW[nP] = w; nP++; mx += px * w; mz += pz * w; m2 += (px * px + pz * pz) * w; ws += w;
 }
 BUF[0].fill(0); BUF[1].fill(0); BUF[2].fill(0); if (ws) { mx /= ws; mz /= ws; }
 const hl = Math.hypot(hx, hy, hz) || 1; let chx = 0, chz = 0; if (aw > 1e-6 && hy / hl < -1e-3) { const tc = (fy - ay / aw) / (hy / hl); chx = ax / aw + hx / hl * tc; chz = az / aw + hz / hl * tc; }
-for (let i = 0; i < PW.length; i++) {   // one splat per facet PER CHANNEL — the three stay separate
+for (let i = 0; i < nP; i++) {   // one splat per facet PER CHANNEL — the three stay separate
 const w = PW[i] * RC.gain / 3;
 for (let c = 0; c < 3; c++) {
 const x0 = Math.round(S / 2 + (PX[i * 3 + c] - mx) * RAD), y0 = Math.round(S / 2 + (PZ[i * 3 + c] - mz) * RAD), B = BUF[c];
@@ -82,7 +88,7 @@ const sc = smax > 0 ? RC.streak / smax : 0; let fmax = 0; for (let i = 0; i < S 
 const a = O0[i] * sc + CORE[i], b = O1[i] * sc + CORE[i], c = O2[i] * sc + CORE[i];
 O0[i] = a; O1[i] = b; O2[i] = c; const j = (a + b + c) / 3; if (j > fmax) fmax = j;
 }
-return { r: O0, g: O1, b: O2, pk: 3 * (fmax || 1), cx: chx, cz: chz, sp: ws ? Math.sqrt(Math.max(0, m2 / ws - mx * mx - mz * mz)) : 0, gain: RC.gain };
+FLD.pk = 3 * (fmax || 1); FLD.cx = chx; FLD.cz = chz; FLD.gain = RC.gain; FLD.sp = ws ? Math.sqrt(Math.max(0, m2 / ws - mx * mx - mz * mz)) : 0; return FLD;
 }; const REFS = {};
 const refOf = function (G, stone) { const k = geomKey(G) + '|' + (stone || ''); if (!REFS[k]) { const f = field(G, poseOf({ yaw: 0, pitch: 0, lift: 0 }, G), stone); REFS[k] = { cx: f.cx, cz: f.cz, sp: f.sp }; } return REFS[k]; };
 window.GEM_CAUSTIC_TRACE = { S: S, pose: poseOf, geomKey: geomKey, field: field, refOf: refOf };

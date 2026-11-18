@@ -4,3 +4,7 @@ dist/
 .hermes/tmp/
 docs/assets/illusioncube/illusioncube.splinecode
 __pycache__/
+# gem exit-facet bake output — derived from prototype/gems/gem_cut.py; regenerate with:
+#   python3 prototype/gems/exitmap_bake.py --grid 32x16 --k 46 --out prototype/gems
+prototype/gems/exitmap.bin
+prototype/gems/exitmap.json

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T17:16:18.864Z",
+  "generated": "2026-11-18T15:41:35.011Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4788,5 +4788,28 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "A  prototype/gems/exitmap_bake.py",
+    "A  prototype/gems/exitmap_gate.py",
+    "A  prototype/gems/oracle-args.mjs",
+    "A  prototype/gems/oracle-browser.mjs",
+    "A  prototype/gems/oracle-cdp.mjs",
+    "A  prototype/gems/oracle-cost.mjs",
+    "A  prototype/gems/oracle-diff.mjs",
+    "A  prototype/gems/oracle-page.mjs",
+    "A  prototype/gems/oracle-png.mjs",
+    "A  prototype/gems/oracle-shot.mjs",
+    "A  prototype/gems/pixel-oracle.mjs",
+    "M  src/arch/atlas.json",
+    "M  src/components/GemReward/gem-bare.js",
+    "M  src/components/GemReward/gem-caustic-trace-ext.js",
+    "M  src/components/GemReward/gem-caustic-trace.js",
+    "M  src/components/GemReward/gem-caustic.js",
+    "M  src/components/GemReward/gem-facets.js",
+    "M  src/components/GemReward/gem-rig.js",
+    "M  src/components/GemReward/gem-shader-ext.js",
+    "M  src/components/GemReward/gem-shader.js",
+    "M  src/components/GemReward/gem-tint-ext.js",
+    "M  src/components/GemReward/gem3d.js"
+  ]
 }

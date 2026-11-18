@@ -7,16 +7,21 @@ function rigOf(canvas) {
   for (let i = 0; i < list.length; i++) if (list[i].canvas === canvas) return list[i];
   return null;
 }
+let CUTR = null, CUTV = null;   // gemCut(CUT) is pure over a constant object — build it once, not once per tint frame
 function cutOf() {
   const G = window.GEM_CUT;
-  return G && G.gemCut && G.CUT ? G.gemCut(G.CUT) : null;
+  if (!G || !G.gemCut || !G.CUT) return null;
+  if (CUTR !== G.CUT) { CUTR = G.CUT; CUTV = G.gemCut(G.CUT); }
+  return CUTV;
 }
+const TP = { yaw: 0, pitch: 0, lift: 0 };   // one pose record for the module — pool() is the only writer, live() reads it at once
 function pool(rig, color) {
   const fl = rig.floors;
   if (!fl || !fl.caustic || !window.THREE) return;
   const cut = cutOf();
   const g = rig.group;
-  const pose = g ? { yaw: g.rotation.y, pitch: g.rotation.x, lift: g.position.y } : null;
+  if (g) { TP.yaw = g.rotation.y; TP.pitch = g.rotation.x; TP.lift = g.position.y; }
+  const pose = g ? TP : null;
   const cur = fl.caustic.material.map;
   let tex = null;
   // — Repaint the traced pool IN PLACE when one is already mounted: the field build and the blit are the
