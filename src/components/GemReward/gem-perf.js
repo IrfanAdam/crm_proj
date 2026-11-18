@@ -14,12 +14,12 @@
 // — budget means the MACHINE changed (compile over, tab closed), not the ratio, so climbing is safe again; without it one hitch
 // — ratchets a rig down for the life of the page. Climb needs 2 agreeing windows: no pulse. Every step is cooldown-spaced.
 // — Priority: ?gemdpr=N (fixed, adaptation off) > localStorage gemDpr (N = fixed, {json} = settings) > GEM_PERF_CONFIG > defaults.
-// — ?gemperf=1 paints a read-only HUD (ratio · median ms · fps · steps); absent it costs one string test at boot.
+// — ?gemperf=1 is read by gem-perf-hud.js (loaded right after this file); absent it costs one property test per tick.
 (function () {
 const D = { min: 1, max: 0, target: 15.5, downStep: 0.2, upStep: 0.2, window: 30, cooldownMs: 1200 };
 const LS = 'gemDpr', live = [], qs = String((window.location && window.location.search) || '');
-const param = function (k) { const m = qs.match(new RegExp('[?&]' + k + '=([^&]*)')); return m ? m[1] : ''; }, HUDON = param('gemperf') === '1';
-let cfg = {}, fixed = 0, QF = 0, hudEl = 0, hudAt = 0;
+const param = function (k) { const m = qs.match(new RegExp('[?&]' + k + '=([^&]*)')); return m ? m[1] : ''; };
+let cfg = {}, fixed = 0, QF = 0;
 function number(v) { const n = parseFloat(v); return isFinite(n) && n > 0 ? n : 0; }
 function merge(o) { for (const k in D) if (o && typeof o[k] === 'number' && isFinite(o[k])) cfg[k] = o[k]; return cfg; }
 function boot() {
@@ -62,10 +62,6 @@ const yes = m <= est * 1.03 && est <= t * 1.10 && st.ratio < c - 0.001 && (head 
 st.ok = yes ? st.ok + 1 : 0;                         // 2 windows must agree: one lucky window cannot climb
 return yes && st.ok > 1 ? apply(st, Math.min(c, up), 1) : 0;
 }
-function hud(st, m) {
-if (!hudEl) { hudEl = document.createElement('div'); hudEl.style.cssText = 'position:fixed;left:8px;top:8px;z-index:2147483000;pointer-events:none;font:11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre;background:rgba(0,0,0,.55);color:rgba(255,255,255,.95);padding:6px 8px;border-radius:6px'; document.body.appendChild(hudEl); }
-hudEl.textContent = 'GEM PERF\nratio ' + st.ratio.toFixed(2) + '\nmedian ' + m.toFixed(1) + ' ms\nfps ~' + (m > 0 ? Math.round(1000 / m) : 0) + '\nsteps ' + st.steps + (fixed > 0 ? ' (fixed)' : '');
-}
 function tick(rig, dt) {
 if (!rig || !rig.renderer || rig.dead) return;
 let st = rig.gp;
@@ -74,6 +70,7 @@ st = rig.gp = { r: rig, buf: 0, srt: 0, n: 0, i: 0, f: 0, skip: 12, t0: -1e9, at
 live.push(st); st.ratio = fixed > 0 ? fixed : ceiling();
 if (fixed > 0 || cfg.max > 0) apply(st, st.ratio, 0);   // explicit config lands once; the AUTO path calls nothing at all
 }
+st.tIn = performance.now(); if (window.GEM_PERF_HUD) window.GEM_PERF_HUD.frame(rig, st, st.m);   // HUD start clock; the panel self-throttles
 st.f++; if (st.f <= st.skip || !rig.w || !rig.h) return;   // 12 frames at start, 8 after a step: the realloc is not a signal
 if (!st.buf) { const n = cfg.window > 1 ? Math.round(cfg.window) : 30; st.buf = new Float32Array(n); st.srt = new Float32Array(n); }
 st.buf[st.i] = Math.min(Math.max(dt || 0, 0) * 1000, 50);
@@ -83,7 +80,6 @@ if (fixed > 0 || st.n < st.buf.length || st.f - st.at < 6) return;   // a FULL w
 st.at = st.f;
 const now = performance.now();
 stats(st, st.buf.length > 7 ? 3 : 0);
-if (HUDON && now - hudAt >= 250) { hudAt = now; hud(st, st.m); }
 if (now - st.t0 < cfg.cooldownMs) return;
 decide(st);
 }

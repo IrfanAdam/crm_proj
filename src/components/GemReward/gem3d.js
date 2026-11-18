@@ -1,6 +1,5 @@
 /* ADAM/SHARED — src/components/GemReward/gem3d.js · THREE gem mounts */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards. Color: category token → getComputedStyle.
-// — Motion: dt spin + float + pointer tilt, no per-frame allocation; the loop parks offscreen/hidden and IO + visibilitychange re-arm it from the same clock; no frame reads a layout rect · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK — Export map: mounts canvas[data-gem] · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) · GEM3D.restage().
+// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards. Color: category token → getComputedStyle. — Motion: dt spin + float + pointer tilt, no per-frame allocation; the loop parks offscreen/hidden and IO + visibilitychange re-arm it from the same clock; no frame reads a layout rect · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK — Export map: mounts canvas[data-gem] · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) · GEM3D.restage().
 (function () {
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -55,6 +54,7 @@ rig.group.position.y = Math.sin(rig.t * 0.8) * 0.03;
 }
 if (window.GEM_BARE && window.GEM_BARE.aim) window.GEM_BARE.aim(rig);
 renderer.render(rig.scene, rig.camera);
+if (window.GEM_PERF_HUD) window.GEM_PERF_HUD.rendered(rig);   // HUD: main-thread js = now − st.tIn (tick stamped it)
 rig.raf = requestAnimationFrame(loop);
 };
 rig.frame = loop;
