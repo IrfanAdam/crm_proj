@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T17:24:48.905Z",
+  "generated": "2026-11-18T19:47:07.647Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -4816,6 +4816,9 @@
     }
   ],
   "wip": [
-    "M  src/arch/atlas.json"
+    "M  prototype/gems/oracle-diff.mjs",
+    "M  prototype/gems/oracle-shot.mjs",
+    "M src/arch/atlas.json",
+    "M src/components/GemReward/gem-perf.js"
   ]
 }
