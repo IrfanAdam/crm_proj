@@ -1,7 +1,6 @@
 /* ADAM/SHARED — src/components/GemReward/gem3d.js · THREE gem mounts */
 // [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards. Color: category token → getComputedStyle.
-// — Motion: dt spin + float + pointer tilt, no per-frame allocation; the loop parks offscreen/hidden and IO + visibilitychange re-arm it
-// — from the same clock; no frame reads a layout rect · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK — Export map: mounts canvas[data-gem] · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) · GEM3D.restage().
+// — Motion: dt spin + float + pointer tilt, no per-frame allocation; the loop parks offscreen/hidden and IO + visibilitychange re-arm it from the same clock; no frame reads a layout rect · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK — Export map: mounts canvas[data-gem] · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) · GEM3D.restage().
 (function () {
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -40,6 +39,7 @@ return;
 }
 const now = performance.now();
 const dt = Math.min((now - rig.last) / 1000 || 0, 0.05) * scale();
+if (window.GEM_PERF) window.GEM_PERF.tick(rig, Math.min((now - rig.last) / 1000, 0.05));   // raw interval — not the slow-mo dt
 rig.last = now;
 if (!rig.vis || document.hidden || rig.dead) return;   // parked — no reschedule; the observers re-arm
 window.GEM_RIG.tick(rig);   // backdrop + pool law — idempotent, cheap, true even across first compile
