@@ -48,7 +48,7 @@ export function paintDrawer({ plan, sprint }) {
   for (const [n, cs] of Object.entries(byTask)) extra[n] = { commits: cs };
   // Evals are per-phase, cumulative across tasks — one panel below Commits.
   const groups = Object.entries(split.evals).map(([n, list]) => ({ n, list })).sort((a, b) => (+a.n || 0) - (+b.n || 0));
-  const evalsHtml = phaseEvalsPanel(groups, (t) => marked.parse(t, null));
+  const evalsHtml = phaseEvalsPanel(groups, (t) => marked.parse(t, null, true));
   const bodyHtml = marked.parse(split.body, extra);
   // Phase lede as a task-style collapsible (caret fold, no checkbox): long intros
   // collapse like tasks, reusing the fold's caret language.

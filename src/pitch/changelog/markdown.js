@@ -1,10 +1,10 @@
 /* ADAM/DS — ds/changelog/markdown · mini markdown renderer (safepipe-detail contract) */
 import { esc } from './esc.js';
-import { bullets } from './prose.js';
+import { bullets, evalParas } from './prose.js';
 import { taskExtras } from './task-panels.js';
 import { triCaret } from './caret.js';
 export const marked = {
-  parse(s, extra){
+  parse(s, extra, evalMode){
     let src = String(s || '');
     src = src.replace(/\s*\{#[^}]*\}/g, ''); // machine anchors never render
     src = src.replace(/^## [^\n]*\n?/m, ''); // drawer head owns the phase title
@@ -64,7 +64,7 @@ export const marked = {
     let out = [], ulBuf = [], pBuf = [], subOpen = false, pendingBare = null; // held bare task joins its fold — never lands between folds
     const emit = (h) => { if (pendingBare) { out.push(foldOpen(pendingBare.tick, pendingBare.name)); subOpen = true; pendingBare = null; } out.push(h); };
     const flushUl = ()=>{ if (!ulBuf.length) return; const h = '<ul>'+ulBuf.join('')+'</ul>'; ulBuf = []; emit(h); };
-    const flushProse = ()=>{ if (!pBuf.length) return; const h = bullets(pBuf, inline); pBuf = []; emit(h); };
+    const flushProse = ()=>{ if (!pBuf.length) return; const h = evalMode ? evalParas(pBuf, inline) : bullets(pBuf, inline); pBuf = []; emit(h); };
     const closeSub = ()=>{ if (subOpen) { out.push('</div></details></section>'); subOpen = false; } };
     const flushBare = ()=>{ if (pendingBare) { out.push(bareRow(pendingBare.tick, pendingBare.name)); pendingBare = null; } };
     for (let i = 0; i < lines.length; i++){

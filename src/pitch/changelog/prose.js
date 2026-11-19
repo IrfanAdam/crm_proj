@@ -4,7 +4,7 @@
 const LABEL = /^\*\*([^*]+:)\*\*\s*/;
 const QUOTE = /^&gt;\s?/;
 const FENCE = /^```/;
-const blocks = (lines) => {
+export const blocks = (lines) => {
   const out = [];
   let code = null;
   for (const raw of lines) {
@@ -30,4 +30,18 @@ export const bullets = (lines, inline) => {
   }
   flush();
   return out.join('');
+};
+// Eval bodies read as prose: wrapped lines rejoin into paragraphs, numbered
+// runs become real ordered lists — never one lonely bullet per paragraph.
+export const evalParas = (lines, inline) => {
+  let html = '', buf = [], ol = [];
+  const words = (ls) => blocks(ls).map((b) => b.code !== undefined ? `<pre><code>${b.code}</code></pre>` : b.text).join(' ');
+  const flushP = () => { if (buf.length) { html += `<p>${inline(words(buf))}</p>`; buf = []; } };
+  const flushOl = () => { if (ol.length) { html += `<ol>${ol.map((ls) => `<li>${inline(words(ls))}</li>`).join('')}</ol>`; ol = []; } };
+  for (const ln of lines) {
+    if (/^\d+[.)]\s/.test(ln)) { flushP(); ol.push([ln.replace(/^\d+[.)]\s/, '')]); }
+    else if (ol.length && !LABEL.test(ln)) ol[ol.length - 1].push(ln);
+    else { flushOl(); buf.push(ln); }
+  }
+  flushP(); flushOl(); return html;
 };

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T16:59:40.785Z",
+  "generated": "2026-11-19T18:13:47.024Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "2e41423",
+      "full": "2e41423110c6dca38ce95b25020a9d2cb6fa60c5",
+      "date": "2026-11-19",
+      "time": "22:29",
+      "subject": "fix(changelog): one eval surface per phase, phase-11 evals back to standard shape",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "af4519f",
       "full": "af4519f9684fcb55d3cf86cf8f46ba023f1acc1e",
@@ -4933,7 +4942,10 @@
     }
   ],
   "wip": [
+    "M  src/pitch/changelog/markdown.js",
     "M  src/pitch/changelog/paint-drawer.js",
-    "M  src/pitch/changelog/panels.js"
+    "M  src/pitch/changelog/prose.js",
+    "M  src/pitch/changelog/task-panels.js",
+    "M  src/pitch/pitch-changelog.css"
   ]
 }
