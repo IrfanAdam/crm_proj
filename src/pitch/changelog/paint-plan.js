@@ -1,5 +1,6 @@
 /* ADAM/DS — ds/changelog/paint-plan · build cards · [plan:2026-09-13_193000-refactor-manageability.md#phase-3] */
 import { fmtDate, fmtTime, buildState, planStatus } from '../changelog-parse.js';
+import { cancelled, cxTag } from './cancelled.js';
 import { hits, commits, unlinked } from '../changelog-links.js';
 import { clip } from '../changelog-titles.js';
 import { esc } from './esc.js';
@@ -31,9 +32,12 @@ export function paintPlan(root, ctx){
   root.querySelector('[data-col="plan"]').innerHTML = list.map((p, i) => {
     const seq = String(list.length - i).padStart(2, '0'), num = p.id || seq, frac = buildState(p.sprints);
     const pst = planStatus(p.sprints);
+    // Withdrawn tasks: excluded from the plan fraction, surfaced as a count instead.
+    const cx = cxTag(p.sprints.reduce((n, s) => n + cancelled(s.body), 0));
     const hcs = p.sprints.flatMap((s) => hits(p.file, s.body, p.sprints.indexOf(s) === 0));
     const valid = hcs.concat(commits.filter((c) => c.plan === p.file && !hcs.includes(c)));
-    const tagged = valid.filter((c) => c.date === p.date || (c.time && c.date >= p.date));
+    const start = p.id.length >= 4 ? `${p.id.slice(0, 2)}:${p.id.slice(2, 4)}` : '';
+    const tagged = valid.filter((c) => c.date > p.date || (c.date === p.date && (!c.time || !start || c.time >= start)));
     const last = tagged.length ? tagged.reduce((a,
         b) => (b.date + (b.time || '') > a.date + (a.time || '') ? b : a)) : null;
     const sd = fmtDate(p.date),
@@ -55,6 +59,8 @@ export function paintPlan(root, ctx){
     const stateTxt = [
       [p.sprints.length, ` phases`].join(''),
       frac,
+      cx,
+      pst === 'done' ? 'done' : pst === 'cancelled' ? 'cancelled' : '',
       revTxt,
     ].filter(Boolean).join(' \u00b7 ');
     const tagFull = p.tags.join(' · ');

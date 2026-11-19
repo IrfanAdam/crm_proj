@@ -1,6 +1,7 @@
 /* ADAM/DS — changelog-parse · parse helpers · [plan:2026-09-13_193000-refactor-manageability.md#phase-2] */
 // Exports: chunks, goal, norm, split, state, isDone, buildState, parseMeta, hash
 // Re-exports MONTHS, fmtDate, fmtTime, pDay, isoDay via changelog-format.js
+import { liveState, phaseCancelled } from './changelog/cancelled.js';
 export const chunks = (md) => {
   const out = ['']; let at = 0, fence = false;
   for (const ln of md.split('\n')) {
@@ -43,7 +44,7 @@ export const isDone = (frac) => {
   const m = String(frac || '').match(/(\d+)\/(\d+)/); return !!m && Number(m[2]) > 0 && Number(m[1]) === Number(m[2]);
 };
 export const buildState = (ss) => {
-  let d = 0, t = 0; ss.forEach((s) => { const m = state(s.body).match(/(\d+)\/(\d+)/); if (m) { d += Number(m[1]); t += Number(m[2]); } });
+  let d = 0, t = 0; ss.forEach((s) => { const m = liveState(s.body).match(/(\d+)\/(\d+)/); if (m) { d += Number(m[1]); t += Number(m[2]); } });
   return t ? `${d}/${t}` : '';
 };
 export const hash = (str) => {
@@ -61,11 +62,14 @@ export const parseMeta = (file) => {
 export { MONTHS, fmtDate, fmtTime, pDay, isoDay } from './changelog-format.js';
 // — Plan status (cancelled > done > incomplete). View-layer only: never feeds
 // state()/isDone()/hash, so section hashes are untouched by this helper.
+// A phase with cancelled tasks AND live tasks is judged on its live tasks only,
+// so one withdrawn task cannot drop a finished phase — or flip its plan — to
+// 'cancelled'. Only a phase left with no live task is cancelled.
 export const secStatus = (head, body) => {
-  if (/✗/.test(head)) return 'cancelled';
-  const m = String(state(body)).match(/(\d+)\/(\d+)/);
+  if (phaseCancelled(head, body)) return 'cancelled';
+  const m = String(liveState(body)).match(/(\d+)\/(\d+)/);
   if (!m) return /✓/.test(head) ? 'done' : 'open';
-  return isDone(state(body)) ? 'done' : 'open';
+  return isDone(liveState(body)) ? 'done' : 'open';
 };
 export const planStatus = (sprints) => {
   if (!sprints.length) return 'incomplete';

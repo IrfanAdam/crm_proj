@@ -1,9 +1,10 @@
 /* ADAM/DS — ds/changelog/markdown · mini markdown renderer (safepipe-detail contract) */
 import { esc } from './esc.js';
 import { bullets } from './prose.js';
+import { taskExtras } from './task-panels.js';
 import { triCaret } from './caret.js';
 export const marked = {
-  parse(s){
+  parse(s, extra){
     let src = String(s || '');
     src = src.replace(/\s*\{#[^}]*\}/g, ''); // machine anchors never render
     src = src.replace(/^## [^\n]*\n?/m, ''); // drawer head owns the phase title
@@ -19,6 +20,7 @@ export const marked = {
     }).join('\n');
     let html = esc(src);
     html = html.replace(/^### (.+)$/gm, (m, t) => `<h3 data-s="${/✗/.test(t) ? 'cancelled' : /✓/.test(t) ? 'done' : 'todo'}">${t}</h3>`);
+    html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
     html = html.replace(/✓[ \t]*done([ \t]*[—–-][ \t]*)?/gi, '').replace(/✗[ \t]*cancelled([ \t]*[—–-][ \t]*)?/gi, '').replace(/[✓✗][ \t]*/g, (m)=> m.trim()==='✓' || m.trim()==='✗' ? '' : m);
     html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
     html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
@@ -50,7 +52,7 @@ export const marked = {
       const rest = m[4] || '';
       const tick = /✗|ds-cancelled/.test(rest) ? 'cancelled' : m[1] ? 'done' : 'todo';
       const tail = (/ds-cancelled/.test(rest) ? rest.replace(/^.*?&lt;\/span&gt;\s*[—–-]\s*/, '') : rest.replace(/^✓ done — /, '')).replace(/^(done|cancelled)$/i, '').trim();
-      return { tick, tail, name: `<h3>${m[2]} ${cleanName(m[3])}</h3>` };
+      return { tick, tail, num: m[2], name: `<h3>${m[2]} ${cleanName(m[3])}</h3>` };
     };
     const isTaskLine = (l) => l.startsWith('<li>') && taskItem(l);
     const hasBody = (i) => {
@@ -69,14 +71,17 @@ export const marked = {
       const line = lines[i];
       const isLi = line.startsWith('<li>');
       const isH3 = /^<h3[\s>]/.test(line);
-      const isBlock = isH3 || /^<h[12]>/.test(line);
+      const isBlock = isH3 || /^<h[1-4]>/.test(line);
       const isEmpty = line.trim() === '';
       const ti = isLi ? taskItem(line) : null;
       if (isEmpty) { flushUl(); flushProse(); }
       else if (ti){ flushUl(); flushProse(); closeSub();
-        const body = ti.tail || hasBody(i);
+        const body = ti.tail || hasBody(i) || (ti.num && extra && extra[ti.num]);
         if (!body) out.push(bareRow(ti.tick, ti.name));
-        else { out.push(foldOpen(ti.tick, ti.name)); subOpen = true; if (ti.tail) out.push(prose(ti.tail)); } }
+        else { out.push(foldOpen(ti.tick, ti.name)); subOpen = true;
+          const ex = ti.num && extra && extra[ti.num] ? taskExtras(extra[ti.num], (t) => marked.parse(t, null)) : '';
+          if (ex) out.push(ex);
+          if (ti.tail) out.push(prose(ti.tail)); } }
       else if (isLi) { flushProse(); ulBuf.push(inline(line)); }
       else if (isBlock){
         flushUl(); flushProse();

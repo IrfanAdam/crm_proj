@@ -1,10 +1,13 @@
 /* ADAM/DS — ds/changelog/paint-drawer · task pane content (extracted from paint-detail.js, budget) */
 import { hits, badges, orphans } from '../changelog-links.js';
+import { taskHits, shas } from './task-commits.js';
+import { splitEvals } from './task-evals.js';
 import { dueFor, dueErr } from './due.js';
 import { stripGateThread, renderEvals, renderCommitsPanel, gateVerdictTag } from './panels.js';
 import { marked } from './markdown.js';
 import { esc } from './esc.js';
 import { isDone, state } from '../changelog-parse.js';
+import { cancelled, liveState, phaseCancelled, cxTag } from './cancelled.js';
 import { triCaret } from './caret.js';
 // Rail ("Phase 01") and drawer ("Phase 1 — …") share one number format.
 const padPhase = (head) => String(head || '').replace(/^Phase\s*(\d+)/i, (_, n) => `Phase ${String(n).padStart(2, '0')}`);
@@ -14,23 +17,37 @@ export const badgesPanel = (list, title) => {
   return `<details class="ds-panel" open><summary class="ds-panel-title">${triCaret}${esc(title)} · <span class="ds-panel-num">${list.length}</span></summary>${badges(list)}</details>`;
 };
 export function paintDrawer({ plan, sprint }) {
-  const hs = hits(plan.file, sprint.body, plan.sprints.indexOf(sprint) === 0);
+  const first = plan.sprints.indexOf(sprint) === 0;
+  // Trailer `task-N` commits belong to that task's fold, never the phase panel —
+  // hits() keeps counting them, so triage still reads them as linked.
+  const byTask = taskHits(plan.file, sprint.body, first);
+  const claimed = shas(byTask);
+  const hs = hits(plan.file, sprint.body, first).filter((c) => !claimed.has(c.sha));
   const headGate = gateVerdictTag(sprint.head, sprint.body);
   const due = dueFor(plan.file, sprint.head, sprint.body);
   const derr = dueErr(plan.file, sprint.head);
-  const frac = state(sprint.body), done = isDone(frac), cancelled = /✗/.test(sprint.head);
-  const sealed = done || cancelled;
+  const live = liveState(sprint.body);
+  const frac = live || state(sprint.body), done = isDone(live);
+  // Whole-phase cancellation wins; a per-task cancellation is a subtext, never a ✗ CANCELLED.
+  const whole = phaseCancelled(sprint.head, sprint.body), cx = cxTag(cancelled(sprint.body));
+  const sealed = done || whole;
   const dueHtml = sealed ? '' : `<label class="ds-due"><span data-due-label${derr ? ' data-due-retry=""' : ''}>${derr ? `Deadline · ${esc(due)} (${esc(derr)} — kept locally, click to retry)` : due ? `Deadline · ${esc(due)}` : 'Add deadline'}</span><input type="date" data-due-input value="${esc(due)}" aria-label="Deadline"></label>`;
   const tags = plan.tags || [];
   const crumb = tags.length ? `<p class="ds-crumb">${esc(tags.slice(0, 2).join(' · '))}${tags.length > 2 ? ` · +${tags.length - 2}` : ''}</p>` : '';
   const title = esc(padPhase(sprint.head.replace(/<!--[\s\S]*?-->/g, '').replace(/\s*\{#.*$/, '').trim()));
-  const stTxt = [cancelled ? '✗ CANCELLED' : done ? '✓ DONE' : frac, headGate].filter(Boolean).join(' · ');
-  const status = stTxt ? `<p class="ds-status ${cancelled || headGate === 'GATE FAILED' ? 'ds-is-cancelled' : done ? 'ds-is-done' : 'ds-is-gate'}">${esc(stTxt)}</p>` : '';
+  const main = whole ? '✗ CANCELLED' : done ? '✓ DONE' : frac;
+  const cxTxt = cx && !whole ? `<span class="ds-cxl">${esc(cx)}</span>` : '';
+  const stTxt = [esc(main), cxTxt, headGate ? esc(headGate) : ''].filter(Boolean).join(' · ');
+  const status = stTxt ? `<p class="ds-status ${whole || headGate === 'GATE FAILED' ? 'ds-is-cancelled' : done ? 'ds-is-done' : 'ds-is-gate'}">${stTxt}</p>` : '';
   const evalsHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body);
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
-  const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c));
+  const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c) && !claimed.has(c.sha));
   const orphanHtml = badgesPanel(orph, 'Further commits');
-  const bodyHtml = marked.parse(stripGateThread(sprint.body));
+  const split = splitEvals(stripGateThread(sprint.body));
+  const extra = {};
+  for (const [n, cs] of Object.entries(byTask)) extra[n] = { commits: cs, evals: split.evals[n] || [] };
+  for (const [n, ev] of Object.entries(split.evals)) extra[n] = extra[n] || { commits: [], evals: ev };
+  const bodyHtml = marked.parse(split.body, extra);
   // Phase lede as a task-style collapsible (caret fold, no checkbox): long intros
   // collapse like tasks, reusing the fold's caret language.
   const ledeHtml = bodyHtml.replace(/^\s*((?:<ul class="ds-bullets">[\s\S]*?<\/ul>\s*|<pre>[\s\S]*?<\/pre>\s*)+)/, (m, ps) => `<details class="ds-task-fold ds-lede-fold" open><summary class="ds-acc-head"><h3>Description</h3>${triCaret}</summary><div class="ds-acc-body"><div class="ds-lede">${ps.trim()}</div></div></details>`);
