@@ -38,13 +38,17 @@ rig back on for the pair measurement:
 
 | state | card rig | ceremony rig | manual 40-frame batch |
 |---|---|---|---|
-| pair (card forced live) | 276×121 CSS, 441×193 buf, `raf 1` | 340×480 CSS, 544×768 buf, `raf 1` | **11.183 ms** |
+| pair (card forced live, same A/B) | 276×121 CSS, 552×242 buf, `raf 1` | 340×480 CSS, 612×864 buf, `raf 1` | **11.183 ms** |
 | after (occlusion active) | 276×121 CSS, 552×242 buf, **`occl 1, raf 0`** | 340×480 CSS, 610–612×864 buf, `raf 1` | **6.252 ms** (independent lane; 4.042 ms in the A/B run) |
 
 Card alone: 2.820 ms. Host load 9.16 / 11.54 / 11.73 (A/B), 11.91 / 13.17 / 11.73 (independent). The pair costs
 **~1.8–2.8×** the ceremony alone on this host; the card's marginal cost is 5–7 ms, because it carries its own WebGL
 context, trace, caustic repaint and three-pass bloom chain. Parking it is **0 px** (the opacity fade is untouched: park
-after `transitionend`, resume on the close event). Raw: `cost/before-overdraw.json`, `cost/after-occlusion.json`,
+after `transitionend`, resume on the close event).
+
+An earlier pre-change probe at the controller's 1.60 state measured 7.21 ms for the pair at 441×193 / 544×768; it is
+**not** the comparison row — different buffers, different load — and is kept only as a direction. The A/B above is the
+same page load, same pose, same buffers. Raw: `cost/before-overdraw.json`, `cost/after-occlusion.json`,
 `reports/lane-e-result.json`.
 
 ## Tuning sheet (Task 62) — functional gate

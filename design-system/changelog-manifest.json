@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T10:43:50.164Z",
+  "generated": "2026-11-19T10:47:08.341Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "11b5cc9",
+      "full": "11b5cc91862a804aa04fb4aa3ef1a13f185eca53",
+      "date": "2026-11-19",
+      "time": "16:13",
+      "subject": "feat(gem): park the hidden card and give the phone its quality knobs",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "7827565",
       "full": "7827565fe40c07f13bafc24afb650fb0f8422b06",
@@ -4860,20 +4869,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  gallery.html",
-    "M  index.html",
-    "M  prototype/gems/oracle-shot.mjs",
-    "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-bloom.js",
-    "A  src/components/GemReward/gem-occlusion.js",
-    "A  src/components/GemReward/gem-perf-tune-ext.js",
-    "A  src/components/GemReward/gem-perf-tune.js",
-    "M  src/components/GemReward/gem-rig.js",
-    "M  src/components/GemReward/gem3d.js",
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
