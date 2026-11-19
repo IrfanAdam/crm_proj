@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T16:41:38.082Z",
+  "generated": "2026-11-19T16:49:47.697Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "e897cf1",
+      "full": "e897cf1a6f6e793a7793faa9b5ab9fb572ce4390",
+      "date": "2026-11-19",
+      "time": "22:11",
+      "subject": "fix(changelog): nest evals in task folds, truncate labels, demote gate thread",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "ef46847",
       "full": "ef46847a3bf479eb5685c458340de7074f87f572",
@@ -4915,9 +4924,8 @@
     }
   ],
   "wip": [
-    "M  src/pitch/changelog/markdown.js",
     "M  src/pitch/changelog/paint-drawer.js",
-    "M  src/pitch/changelog/panels.js",
+    "M  src/pitch/changelog/task-panels.js",
     "M  src/pitch/pitch-changelog.css"
   ]
 }

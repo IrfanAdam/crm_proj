@@ -28,7 +28,7 @@ a.masthead-brand{text-decoration:none}
 .ds-md .ds-acc-head{display:flex;align-items:baseline;gap:var(--cl-4);cursor:pointer;list-style:none;min-width:0}
 .ds-md .ds-acc-head::-webkit-details-marker{display:none}
 .ds-md .ds-acc-head::marker{content:""}
-.ds-md .ds-acc-head h3{margin:0;font-size:var(--text-ds-body);font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ds-md .ds-acc-head h3{margin:0;font-size:var(--text-ds-body);font-weight:700;flex:0 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ds-md .ds-acc-body{padding:var(--cl-2) 0 var(--cl-1) 0;font-size:var(--text-ds-table);color:var(--text-secondary);line-height:var(--leading-prose)}
 .ds-md .ds-acc-body p{margin:var(--cl-1) 0}
 .ds-md .ds-acc-body ul,.ds-md .ds-acc-body ol{padding-left:var(--cl-16);margin:var(--cl-2) 0}

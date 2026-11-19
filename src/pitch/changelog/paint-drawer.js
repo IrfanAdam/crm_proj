@@ -4,6 +4,7 @@ import { taskHits, shas } from './task-commits.js';
 import { splitEvals } from './task-evals.js';
 import { dueFor, dueErr } from './due.js';
 import { stripGateThread, renderEvals, renderCommitsPanel, gateVerdictTag } from './panels.js';
+import { phaseEvalsPanel } from './task-panels.js';
 import { marked } from './markdown.js';
 import { esc } from './esc.js';
 import { isDone, state } from '../changelog-parse.js';
@@ -39,14 +40,16 @@ export function paintDrawer({ plan, sprint }) {
   const cxTxt = cx && !whole ? `<span class="ds-cxl">${esc(cx)}</span>` : '';
   const stTxt = [esc(main), cxTxt, headGate ? esc(headGate) : ''].filter(Boolean).join(' · ');
   const status = stTxt ? `<p class="ds-status ${whole || headGate === 'GATE FAILED' ? 'ds-is-cancelled' : done ? 'ds-is-done' : 'ds-is-gate'}">${stTxt}</p>` : '';
-  const gateHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body); // gate/REF thread only — task evals render via taskExtras inside their task fold
+  const gateHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body); // gate/REF thread only, trailing — task evals roll up into the phase Evals panel
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c) && !claimed.has(c.sha));
   const orphanHtml = badgesPanel(orph, 'Further commits');
   const split = splitEvals(stripGateThread(sprint.body));
   const extra = {};
-  for (const [n, cs] of Object.entries(byTask)) extra[n] = { commits: cs, evals: split.evals[n] || [] };
-  for (const [n, ev] of Object.entries(split.evals)) extra[n] = extra[n] || { commits: [], evals: ev };
+  for (const [n, cs] of Object.entries(byTask)) extra[n] = { commits: cs };
+  // Evals are per-phase, cumulative across tasks — one panel below Commits.
+  const groups = Object.entries(split.evals).map(([n, list]) => ({ n, list })).sort((a, b) => (+a.n || 0) - (+b.n || 0));
+  const evalsHtml = phaseEvalsPanel(groups, (t) => marked.parse(t, null));
   const bodyHtml = marked.parse(split.body, extra);
   // Phase lede as a task-style collapsible (caret fold, no checkbox): long intros
   // collapse like tasks, reusing the fold's caret language.
@@ -56,7 +59,7 @@ export function paintDrawer({ plan, sprint }) {
     `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
     crumb + `<h2 class="ds-phase-title">${title}</h2>` + status + dueHtml,
     `<hr class="ds-hr">`,
-    ledeHtml + commitsHtml + orphanHtml + gateHtml,
+    ledeHtml + commitsHtml + orphanHtml + evalsHtml + gateHtml,
     `</div>`,
   ].join('');
 }
