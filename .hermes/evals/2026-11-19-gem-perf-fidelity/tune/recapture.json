@@ -1,0 +1,26 @@
+{
+ "root": "/Users/irfan/Documents/Portfolio Redo/crm_proj",
+ "port": 60803,
+ "load": [
+  13.26,
+  13.69,
+  12.69
+ ],
+ "opened": true,
+ "pill": true,
+ "sheet": true,
+ "geo": {
+  "rect": [
+   0,
+   1254,
+   780,
+   434
+  ],
+  "bg": "rgba(8, 10, 16, 0.97)",
+  "filter": "blur(14px) saturate(1.2)"
+ },
+ "shot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-19-gem-perf-fidelity/shots/tune-sheet.png",
+ "bytes": 302275,
+ "consoleErrors": [],
+ "errCount": 0
+}

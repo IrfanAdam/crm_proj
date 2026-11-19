@@ -19,7 +19,7 @@
 const api = {};
 let demoBg = null, epoch = 0;
 if (window.addEventListener) window.addEventListener('resize', function () { epoch++; }, { passive: true });
-api.arm = function (rig) { if (rig.raf || rig.gone || !rig.vis || document.hidden || rig.dead || !rig.frame) return; rig.last = performance.now(); rig.raf = requestAnimationFrame(rig.frame); };
+api.arm = function (rig) { if (rig.raf || rig.gone || !rig.vis || rig.occl || document.hidden || rig.dead || !rig.frame) return; rig.last = performance.now(); rig.raf = requestAnimationFrame(rig.frame); };
 api.size = function (rig) {
 const canvas = rig.canvas, renderer = rig.renderer;
 if (!canvas || !renderer) return;

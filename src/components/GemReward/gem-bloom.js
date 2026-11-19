@@ -6,13 +6,13 @@
 // — toneMapped:false, so no single composite transform matches both it and the stone.
 // — Highlight-only: A carries a depth texture; bloom samples are gated to geometry (depth < far), so the bright white stage
 // — background never blooms — only the stone's own flash islands glow. Toggle [data-gem-bloom] pill (default on); off → untouched render.
-// Export map: window.GEM_BLOOM { intensity, spread, threshold, on() } · polls GEM3D.rigs every 400ms · wraps once.
+// Export map: window.GEM_BLOOM { intensity, spread, threshold, on(), set(v) } · polls GEM3D.rigs every 400ms · wraps once.
 (function () {
 const T = window.THREE;
 if (!T || !T.WebGLRenderTarget || !T.ShaderMaterial) return;
 const POLL = 400, MSAA = 4;
 let on = true;
-const api = { intensity: 0.32, spread: 4, threshold: 0.78, on: function () { return on; } };
+const api = { intensity: 0.32, spread: 4, threshold: 0.78, on: function () { return on; }, set: function (v) { on = !!v; sync(); return on; } };
 const cam = new T.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 const geo = new T.PlaneGeometry(2, 2);
 const mkScene = function (m) {

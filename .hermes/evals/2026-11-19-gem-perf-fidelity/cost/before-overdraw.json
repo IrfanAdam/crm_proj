@@ -1,0 +1,91 @@
+{
+ "root": "/Users/irfan/.hermes/cache/scratch/gem-perf/base-7827565",
+ "port": 5347,
+ "load": [
+  15.37,
+  8.65,
+  6.82
+ ],
+ "state": [
+  {
+   "gem": "sapphire",
+   "occl": 0,
+   "raf": 1,
+   "vis": 1,
+   "dead": 0,
+   "renderer": true,
+   "css": [
+    276,
+    121
+   ],
+   "buf": [
+    441,
+    193
+   ],
+   "ratio": 1.6,
+   "med": 18.4,
+   "inScreen": false
+  },
+  {
+   "gem": "sapphire",
+   "occl": 0,
+   "raf": 0,
+   "vis": 0,
+   "dead": 0,
+   "renderer": false,
+   "css": [
+    0,
+    0
+   ],
+   "buf": [
+    0,
+    0
+   ],
+   "ratio": 0,
+   "med": 0,
+   "inScreen": false
+  },
+  {
+   "gem": "sapphire",
+   "occl": 0,
+   "raf": 1,
+   "vis": 1,
+   "dead": 0,
+   "renderer": true,
+   "css": [
+    340,
+    480
+   ],
+   "buf": [
+    544,
+    768
+   ],
+   "ratio": 1.6,
+   "med": 23.4,
+   "inScreen": true
+  }
+ ],
+ "cost": {
+  "rigs": 2,
+  "live": 2,
+  "alone": {
+   "sapphire:0": [
+    3.367,
+    2.68
+   ],
+   "sapphire:1": [
+    1.325,
+    5.23
+   ]
+  },
+  "liveBatch": 7.21,
+  "runs": [
+   5.633,
+   7.21,
+   9.3
+  ],
+  "shader": "const",
+  "bloom": true
+ },
+ "console": []
+}

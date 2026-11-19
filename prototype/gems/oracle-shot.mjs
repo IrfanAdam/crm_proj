@@ -1,14 +1,12 @@
 /* ADAM/GEMS — prototype/gems/oracle-shot.mjs · shootStone: one stone on one surface, every tilt, gated per capture.
- * [plan:2026-10-03_144222-gem-realism-round2.md#phase-18] · Self-certifying: pose → read → re-apply pose → read; both
- * streams must md5-match. Mismatch retried 3× with an extra settle, then written marked `unstable` (both md5s, pair diff px).
+ * [plan:2026-10-03_144222-gem-realism-round2.md#phase-18] · Self-certifying: pose → read → re-apply pose → read; both streams must md5-match. Mismatch retried 3× with an extra settle, then written marked `unstable` (both md5s, pair diff px).
  */
 import fs from 'node:fs'; import path from 'node:path';
 import { SIZE, TILTS, MASK_MIN, sleep } from './oracle-args.mjs';
 import { PAGE } from './oracle-page.mjs';
 import { png, md5 } from './oracle-png.mjs';
 
-// The intermittent flake (384,016 px at delta 46 on card-citrine; 61,261 px at 42 on card-citrine-xn030 — each 0 px on
-// recapture) was a one-shot settle artefact in exactly ONE read: two reads per pose catch it before it masquerades as a diff.
+// The intermittent flake (384,016 px at delta 46 on card-citrine; 61,261 px at 42 on card-citrine-xn030 — each 0 px on recapture) was a one-shot settle artefact in exactly ONE read: two reads per pose catch it before it masquerades as a diff.
 const PAIRS = 4;                          // 1 pair + 3 retries, each with an extra settle
 const INJ = Number(process.env.ORA_INJECT_UNSTABLE || 0);   // TEMP proof hook: shifts render 2 by one pose step
 const settle = (n) => `new Promise((res) => { let i = 0, done = false;
@@ -49,9 +47,11 @@ export async function shootStone(B, surf, stone, out, caps) {
   if (!ready || !ready.ready) return tries;
   const prep = await ev(`window.__ORA.prep(${JSON.stringify(surf.sel)}, ${SIZE[surf.id][0]}, ${SIZE[surf.id][1]})`);
   const want = [SIZE[surf.id][0] * 2, SIZE[surf.id][1] * 2];   // drawing buffer must be the declared one, or the capture is not a reference
-  // Primer: the first pose after a mount lands in a one-shot state (first capture of a page only). Burn a full
-  // pose+render+read cycle at the first tilt and discard it, so every quoted capture is drawn from the settled state.
+  // Primer: the first pose after a mount lands in a one-shot state (first capture of a page only). Burn TWO full pose+render+read cycles at the first tilt and discard them.
   await ev(`window.__ORA.pose(${JSON.stringify(surf.sel)}, ${TILTS[0]})`);
+  await ev(`window.__ORA.warm(${JSON.stringify(surf.sel)})`);
+  await ev(`window.__ORA.shot(${JSON.stringify(surf.sel)})`);
+  await ev(`window.__ORA.pose(${JSON.stringify(surf.sel)}, ${TILTS[0]})`); await ev(settle(4));
   await ev(`window.__ORA.warm(${JSON.stringify(surf.sel)})`);
   await ev(`window.__ORA.shot(${JSON.stringify(surf.sel)})`);
   let unstableN = 0, pairWorst = 0, retried = 0;

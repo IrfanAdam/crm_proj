@@ -1,0 +1,395 @@
+{
+ "steps": {
+  "coarse": true,
+  "innerWidth": 390,
+  "extGlobal": "object",
+  "tuneGlobal": "object",
+  "scripts": [
+   "gem-perf-tune-ext.js",
+   "gem-perf-tune.js"
+  ],
+  "pill": {
+   "text": "tune",
+   "rect": [
+    245,
+    10,
+    53,
+    29
+   ]
+  },
+  "sheetOpened": true,
+  "sheet": {
+   "rows": [
+    "taps",
+    "bounce",
+    "bloom",
+    "amt",
+    "dpr"
+   ],
+   "values": [
+    "3",
+    "5",
+    "1",
+    "0.32",
+    "1"
+   ],
+   "buttons": [
+    "dpr auto",
+    "copy json",
+    "close"
+   ],
+   "z": "2147483647",
+   "pe": "auto",
+   "bg": "rgba(8, 10, 16, 0.93)",
+   "maxH": "506.4px",
+   "box": [
+    390,
+    217,
+    627
+   ]
+  },
+  "header": "med — · — · 2.00x",
+  "cellReadouts": [
+   "— —",
+   "— —",
+   "— —",
+   "— —",
+   "— —"
+  ],
+  "consoleErrsSoFar": 0,
+  "rig": {
+   "ratio": 2,
+   "buf": [
+    678,
+    960
+   ],
+   "css": [
+    339,
+    480
+   ],
+   "stone": "sapphire"
+  },
+  "mask": {
+   "px": 144389,
+   "w": 678,
+   "h": 960,
+   "rearmed": true
+  },
+  "shaderErrsAfterMask": [],
+  "setDpr1": "1",
+  "cfgPinned": {
+   "min": 1,
+   "max": 1,
+   "target": 15.5,
+   "downStep": 0.2,
+   "upStep": 0.2,
+   "window": 30,
+   "cooldownMs": 1200
+  },
+  "medBefore": {
+   "med": 16.9,
+   "fps": 59,
+   "ratio": 1,
+   "f": 108,
+   "n": 30,
+   "buf": [
+    339,
+    480
+   ],
+   "css": [
+    339,
+    480
+   ],
+   "advanced": true,
+   "ms": 1013
+  },
+  "setTaps1": "1",
+  "tapsRecord": {
+   "sapphire": 1,
+   "citrine": 1,
+   "amethyst": 1,
+   "redberyl": 1
+  },
+  "tapsNoReset": 30,
+  "medAfterTaps": {
+   "med": 33.2,
+   "fps": 30,
+   "ratio": 1,
+   "f": 144,
+   "n": 30,
+   "buf": [
+    339,
+    480
+   ],
+   "css": [
+    339,
+    480
+   ],
+   "advanced": true,
+   "ms": 1268
+  },
+  "setBounce2": "2",
+  "bounceRecord": {
+   "sapphire": 2,
+   "citrine": 2,
+   "amethyst": 2,
+   "redberyl": 2
+  },
+  "medAfterBounce": {
+   "med": 33.3,
+   "fps": 30,
+   "ratio": 1,
+   "f": 175,
+   "n": 30,
+   "buf": [
+    339,
+    480
+   ],
+   "css": [
+    339,
+    480
+   ],
+   "advanced": true,
+   "ms": 1262
+  },
+  "setBloomOff": "0",
+  "bloom": {
+   "on": false,
+   "pill": "Bloom: off",
+   "isOn": false,
+   "intensity": 0.32
+  },
+  "medAfterBloom": {
+   "med": 34.5,
+   "fps": 29,
+   "ratio": 1,
+   "f": 214,
+   "n": 30,
+   "buf": [
+    339,
+    480
+   ],
+   "css": [
+    339,
+    480
+   ],
+   "advanced": true,
+   "ms": 1272
+  },
+  "setDpr12": "1.2",
+  "dpr12": {
+   "pr": 1.2,
+   "width": 405,
+   "height": 576,
+   "cssW": 338,
+   "want": 405,
+   "cfg": {
+    "min": 1.2,
+    "max": 1.2,
+    "target": 15.5,
+    "downStep": 0.2,
+    "upStep": 0.2,
+    "window": 30,
+    "cooldownMs": 1200
+   }
+  },
+  "store": "{\"taps\":1,\"bounce\":2,\"bloomOn\":false,\"bloomIntensity\":0.32,\"dpr\":1.2}",
+  "gemDpr": "{\"min\":1.2,\"max\":1.2,\"target\":15.5,\"downStep\":0.2,\"upStep\":0.2,\"window\":30,\"cooldownMs\":1200}",
+  "cellReadoutsAfter": [
+   "34.5ms 29fps",
+   "34.5ms 29fps",
+   "34.5ms 29fps",
+   "34.5ms 29fps",
+   "34.5ms 29fps"
+  ],
+  "headerAfter": "med 34.5ms · 29fps · 1.20x",
+  "ivs": {
+   "created": [
+    2,
+    3,
+    4,
+    5,
+    2467,
+    2484,
+    2485
+   ],
+   "cleared": []
+  },
+  "errs": [],
+  "consoleErrors": [
+   {
+    "k": "log:error",
+    "t": "Failed to load resource: the server responded with a status of 404 (Not Found) http://127.0.0.1:5197/favicon.ico"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   },
+   {
+    "k": "exception",
+    "t": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5197/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5197/src/ds/deck-lab.js:72:1"
+   }
+  ]
+ },
+ "t": {
+  "totalMs": 10703
+ },
+ "med_before": 16.9,
+ "med_after_taps": 33.2
+}

@@ -1,0 +1,18 @@
+{
+ "sha": "7827565",
+ "generated": "2026-11-19T10:32:10.718Z",
+ "captures": 40,
+ "invalid": 0,
+ "unstable": 0,
+ "mask_px": [
+  127308,
+  241400
+ ],
+ "shader": [
+  "const"
+ ],
+ "planes": [
+  170
+ ],
+ "manifest_md5": "b8375075c07e754d483c8e6e4ca76b2b"
+}

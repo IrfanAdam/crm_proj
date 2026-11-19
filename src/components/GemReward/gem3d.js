@@ -8,7 +8,7 @@ const css = function (name) { return getComputedStyle(document.documentElement).
 const huePaint = function (hex, h) { const c = new THREE_.Color(hex), o = {}; c.getHSL(o); c.setHSL(h / 360, o.s, o.l); return '#' + c.getHexString(); };
 const scale = function () { const s = window.__slowmo && window.__slowmo.getScale; return s ? s() : 1; };   // one clock: the slow-mo contract
 const park = function (rig) { if (rig.raf) cancelAnimationFrame(rig.raf); rig.raf = 0; };
-const arm = function (rig) { if (rig.raf || rig.gone || !rig.vis || document.hidden) return; rig.last = performance.now(); rig.raf = requestAnimationFrame(rig.frame); };
+const arm = function (rig) { if (rig.raf || rig.gone || !rig.vis || rig.occl || document.hidden) return; rig.last = performance.now(); rig.raf = requestAnimationFrame(rig.frame); };
 // — The warm only SCHEDULES: renderer + scene + the 170-plane program compile as one long task, so it lands in an
 // — idle slice (setTimeout 200 ms fallback) instead of mid-scroll, and never on a hidden or zero-box canvas.
 const idle = window.requestIdleCallback || function (f) { return setTimeout(f, 200); };

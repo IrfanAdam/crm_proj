@@ -1,0 +1,2532 @@
+{
+ "tool": "prototype/gems/pixel-oracle.mjs",
+ "generated": "2026-11-19T10:32:10.718Z",
+ "sha": "7827565",
+ "root": "/Users/irfan/.hermes/cache/scratch/gem-perf/base-7827565",
+ "base": "http://127.0.0.1:5320",
+ "mode": "capture",
+ "render": "headless=new --disable-gpu --enable-unsafe-swiftshader --disable-accelerated-2d-canvas",
+ "mask": {
+  "rule": "abs(L(head)-L(no-gem))>6",
+  "min_px": 20000
+ },
+ "tilts": [
+  -0.3,
+  -0.15,
+  0,
+  0.15,
+  0.3
+ ],
+ "stones": [
+  "sapphire",
+  "citrine",
+  "amethyst",
+  "redberyl"
+ ],
+ "surfaces": [
+  "card",
+  "ceremony"
+ ],
+ "captures": [
+  {
+   "id": "card-sapphire-xn030",
+   "surface": "card",
+   "stone": "sapphire",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-sapphire-xn030.png",
+   "mask_png": "card-sapphire-xn030-mask.png",
+   "md5": "0346ffefca36523007a4e41e37c33cb9",
+   "mask_md5": "03fff29016bf61e781e3fdaf9c071713",
+   "mask_px": 152650,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "4e5eef96557c54d00388cf7c4673dcd5",
+   "render_md5_b": "4e5eef96557c54d00388cf7c4673dcd5",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 152650,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 10,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1860
+  },
+  {
+   "id": "card-sapphire-xn015",
+   "surface": "card",
+   "stone": "sapphire",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-sapphire-xn015.png",
+   "mask_png": "card-sapphire-xn015-mask.png",
+   "md5": "785e45160cea2482191d27e83e1a3f5c",
+   "mask_md5": "83a17c903ca360a566ab42b81fe9e565",
+   "mask_px": 141528,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "3650b36e728fe38192c918202d1d89f7",
+   "render_md5_b": "3650b36e728fe38192c918202d1d89f7",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 141528,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 13,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2220
+  },
+  {
+   "id": "card-sapphire-x000",
+   "surface": "card",
+   "stone": "sapphire",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-sapphire-x000.png",
+   "mask_png": "card-sapphire-x000-mask.png",
+   "md5": "619357c84921294d8987991cb34e097a",
+   "mask_md5": "24885e38a103cd2093ca734b5205c701",
+   "mask_px": 132367,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "e53d930c3e4c7cc0eb912c3d4eb61492",
+   "render_md5_b": "e53d930c3e4c7cc0eb912c3d4eb61492",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 132367,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 16,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2183
+  },
+  {
+   "id": "card-sapphire-x015",
+   "surface": "card",
+   "stone": "sapphire",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-sapphire-x015.png",
+   "mask_png": "card-sapphire-x015-mask.png",
+   "md5": "00ca40850d47da37ad392a7d7d3380e4",
+   "mask_md5": "8361f90624be8f1655ac9a4730c1fe0e",
+   "mask_px": 127371,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "7453f2ad55976e189bac75ed2d147713",
+   "render_md5_b": "7453f2ad55976e189bac75ed2d147713",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 127371,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 20,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2243
+  },
+  {
+   "id": "card-sapphire-x030",
+   "surface": "card",
+   "stone": "sapphire",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-sapphire-x030.png",
+   "mask_png": "card-sapphire-x030-mask.png",
+   "md5": "732d79c5427b0de4b403cab9ef1c6c12",
+   "mask_md5": "165e5343229dff7402eb6a2d44b81750",
+   "mask_px": 133980,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "093c3cf877775cb09d5ed4fb34aa1a43",
+   "render_md5_b": "093c3cf877775cb09d5ed4fb34aa1a43",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 133980,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 22,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2691
+  },
+  {
+   "id": "card-citrine-xn030",
+   "surface": "card",
+   "stone": "citrine",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-citrine-xn030.png",
+   "mask_png": "card-citrine-xn030-mask.png",
+   "md5": "f02ec820afa3b7a20a7cf69e61ad5f3e",
+   "mask_md5": "4a734c46afafea606b2c0d773912d110",
+   "mask_px": 150913,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "fedbacf207959e29a764931e017a1c53",
+   "render_md5_b": "fedbacf207959e29a764931e017a1c53",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 150913,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 9,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1886
+  },
+  {
+   "id": "card-citrine-xn015",
+   "surface": "card",
+   "stone": "citrine",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-citrine-xn015.png",
+   "mask_png": "card-citrine-xn015-mask.png",
+   "md5": "3a5809ba89251c29cf8bb22e97905944",
+   "mask_md5": "23efb47d4bc68d04548e9b0ed692eba4",
+   "mask_px": 139502,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "996293b9b86d49f837717ac5933fa60d",
+   "render_md5_b": "996293b9b86d49f837717ac5933fa60d",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 139502,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 12,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1744
+  },
+  {
+   "id": "card-citrine-x000",
+   "surface": "card",
+   "stone": "citrine",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-citrine-x000.png",
+   "mask_png": "card-citrine-x000-mask.png",
+   "md5": "c8c0655c2337877295cc32967ab2da0f",
+   "mask_md5": "69fcb5796a42618c5e8701b1cb327870",
+   "mask_px": 132594,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "9bb899f74458bf906fbe8e232cffa466",
+   "render_md5_b": "9bb899f74458bf906fbe8e232cffa466",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 132594,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 15,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1620
+  },
+  {
+   "id": "card-citrine-x015",
+   "surface": "card",
+   "stone": "citrine",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-citrine-x015.png",
+   "mask_png": "card-citrine-x015-mask.png",
+   "md5": "1129386b33f9469cb70f5d1b9203775b",
+   "mask_md5": "177eb44d7752c488a47a56d2850922bf",
+   "mask_px": 128031,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "4cf55c21f03aea790e8847e7a1057324",
+   "render_md5_b": "4cf55c21f03aea790e8847e7a1057324",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 128031,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 18,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1567
+  },
+  {
+   "id": "card-citrine-x030",
+   "surface": "card",
+   "stone": "citrine",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-citrine-x030.png",
+   "mask_png": "card-citrine-x030-mask.png",
+   "md5": "060401ad9de7917892b343f008d3c5e9",
+   "mask_md5": "c8985f9496dadc8fe0c7c380b49a2a61",
+   "mask_px": 134498,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "69605ee5c4473f4a77a4e4fac111137b",
+   "render_md5_b": "69605ee5c4473f4a77a4e4fac111137b",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 134498,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 22,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1548
+  },
+  {
+   "id": "card-amethyst-xn030",
+   "surface": "card",
+   "stone": "amethyst",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-amethyst-xn030.png",
+   "mask_png": "card-amethyst-xn030-mask.png",
+   "md5": "1e86f82d58f4988df529dab350cce606",
+   "mask_md5": "de5ca8c22406d928efe824eebb45cb2a",
+   "mask_px": 151405,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "0effad735ea8b7845685965ea5e8c324",
+   "render_md5_b": "0effad735ea8b7845685965ea5e8c324",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 151405,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 10,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1955
+  },
+  {
+   "id": "card-amethyst-xn015",
+   "surface": "card",
+   "stone": "amethyst",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-amethyst-xn015.png",
+   "mask_png": "card-amethyst-xn015-mask.png",
+   "md5": "444d47cd1295b0dee0ef612c7f8f8de7",
+   "mask_md5": "069f8bbc97c0770cbd609c38bc308a3d",
+   "mask_px": 140825,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "08608c2177f08700eacc8e5d21f80c03",
+   "render_md5_b": "08608c2177f08700eacc8e5d21f80c03",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 140825,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 13,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1904
+  },
+  {
+   "id": "card-amethyst-x000",
+   "surface": "card",
+   "stone": "amethyst",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-amethyst-x000.png",
+   "mask_png": "card-amethyst-x000-mask.png",
+   "md5": "832082c08e096ab0f428b01cd71ec47b",
+   "mask_md5": "acb03823a3813dc18906008f081ba758",
+   "mask_px": 132516,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "978bec7d3e71ae3f39d647fc8db0db87",
+   "render_md5_b": "978bec7d3e71ae3f39d647fc8db0db87",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 132516,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 17,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1759
+  },
+  {
+   "id": "card-amethyst-x015",
+   "surface": "card",
+   "stone": "amethyst",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-amethyst-x015.png",
+   "mask_png": "card-amethyst-x015-mask.png",
+   "md5": "8c597e477ee8fc9e08dca1de0031d984",
+   "mask_md5": "05589e6cd8b5b1974f117bfb02e62691",
+   "mask_px": 127308,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "98b0da25acc09ec016ddac1d32464044",
+   "render_md5_b": "98b0da25acc09ec016ddac1d32464044",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 127308,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 20,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1506
+  },
+  {
+   "id": "card-amethyst-x030",
+   "surface": "card",
+   "stone": "amethyst",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-amethyst-x030.png",
+   "mask_png": "card-amethyst-x030-mask.png",
+   "md5": "bd8b83f79d235248f2ee0aeb7504177b",
+   "mask_md5": "a862ea45984f2ebea606d245a1632910",
+   "mask_px": 133736,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "328295b5c24e061bb002aa7ef3f9175f",
+   "render_md5_b": "328295b5c24e061bb002aa7ef3f9175f",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 133736,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 25,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 3540
+  },
+  {
+   "id": "card-redberyl-xn030",
+   "surface": "card",
+   "stone": "redberyl",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-redberyl-xn030.png",
+   "mask_png": "card-redberyl-xn030-mask.png",
+   "md5": "8732417ba28298a4cc9f3cb45bfbb679",
+   "mask_md5": "2dcf915615d8c2ce292f55ae1e3ccbe0",
+   "mask_px": 152651,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "d89e4c1d8156a32b7ed2c980fe63fbbe",
+   "render_md5_b": "d89e4c1d8156a32b7ed2c980fe63fbbe",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 152651,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 8,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1917
+  },
+  {
+   "id": "card-redberyl-xn015",
+   "surface": "card",
+   "stone": "redberyl",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-redberyl-xn015.png",
+   "mask_png": "card-redberyl-xn015-mask.png",
+   "md5": "64aa172fd4d9b715931eaef616af9f37",
+   "mask_md5": "80590b2020cd0ce8179e7a5f0b4c9fb9",
+   "mask_px": 141483,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "5a212c8921d400f84d01e78640ba2d46",
+   "render_md5_b": "5a212c8921d400f84d01e78640ba2d46",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 141483,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 11,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 1556
+  },
+  {
+   "id": "card-redberyl-x000",
+   "surface": "card",
+   "stone": "redberyl",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-redberyl-x000.png",
+   "mask_png": "card-redberyl-x000-mask.png",
+   "md5": "6fd7ba5df29aa3ffdfdbcd5d7150130e",
+   "mask_md5": "1c51b68d4eac7ea51fbbd11fae358580",
+   "mask_px": 132366,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "feed03605280ababb17510b72e3c6e5e",
+   "render_md5_b": "feed03605280ababb17510b72e3c6e5e",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 132366,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 14,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2139
+  },
+  {
+   "id": "card-redberyl-x015",
+   "surface": "card",
+   "stone": "redberyl",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-redberyl-x015.png",
+   "mask_png": "card-redberyl-x015-mask.png",
+   "md5": "b93278caf912fda070fa2274e3f02c65",
+   "mask_md5": "81ed95bae986cb017bf192a07a2b65e6",
+   "mask_px": 128531,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "0c00f38a94d982f24069a807e657822b",
+   "render_md5_b": "0c00f38a94d982f24069a807e657822b",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 128531,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 18,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2255
+  },
+  {
+   "id": "card-redberyl-x030",
+   "surface": "card",
+   "stone": "redberyl",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/gallery.html",
+   "buffer": [
+    640,
+    640
+   ],
+   "png": "card-redberyl-x030.png",
+   "mask_png": "card-redberyl-x030-mask.png",
+   "md5": "9a6f32d89f4ce9e99fd375b5afc9de6d",
+   "mask_md5": "40fcf9ebb899aaeea10bbb939f355d82",
+   "mask_px": 134332,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "b1667bc02e6c572782db0137f0238839",
+   "render_md5_b": "b1667bc02e6c572782db0137f0238839",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 134332,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     640,
+     640
+    ],
+    "buffer_got": [
+     640,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 21,
+    "console": [
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     },
+     {
+      "t": "exception",
+      "d": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5320/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5320/src/ds/deck-lab.js:72:1"
+     }
+    ]
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": true,
+   "mats": 1,
+   "floors": true,
+   "ms": 2317
+  },
+  {
+   "id": "ceremony-sapphire-xn030",
+   "surface": "ceremony",
+   "stone": "sapphire",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-sapphire-xn030.png",
+   "mask_png": "ceremony-sapphire-xn030-mask.png",
+   "md5": "5dac1ab515530d07ecbb25b5bd34a591",
+   "mask_md5": "642b2f614c60b5dcb06266f7cb26330d",
+   "mask_px": 238801,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "78d79a7cea40e8722389d9346debdf02",
+   "render_md5_b": "78d79a7cea40e8722389d9346debdf02",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 238801,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 4055
+  },
+  {
+   "id": "ceremony-sapphire-xn015",
+   "surface": "ceremony",
+   "stone": "sapphire",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-sapphire-xn015.png",
+   "mask_png": "ceremony-sapphire-xn015-mask.png",
+   "md5": "07127367462a1041f000ea2daca22a16",
+   "mask_md5": "34d10c2a8401c4327245b0848c82bf29",
+   "mask_px": 216666,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "83a7c01e906b21e07a51a4eb8e214b1f",
+   "render_md5_b": "83a7c01e906b21e07a51a4eb8e214b1f",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 216666,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 3648
+  },
+  {
+   "id": "ceremony-sapphire-x000",
+   "surface": "ceremony",
+   "stone": "sapphire",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-sapphire-x000.png",
+   "mask_png": "ceremony-sapphire-x000-mask.png",
+   "md5": "40477986f3bd599ffba70c787e3be2dc",
+   "mask_md5": "f75f4e9d6bf5a6ff3cf21e3eb90b5d9a",
+   "mask_px": 206660,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "fb27cc8d4f08072daa5a47a97fcf9d2c",
+   "render_md5_b": "fb27cc8d4f08072daa5a47a97fcf9d2c",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 206660,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 3558
+  },
+  {
+   "id": "ceremony-sapphire-x015",
+   "surface": "ceremony",
+   "stone": "sapphire",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-sapphire-x015.png",
+   "mask_png": "ceremony-sapphire-x015-mask.png",
+   "md5": "e3256475c7e2e1253ca5c82fdee013a3",
+   "mask_md5": "002f97b55a53b3633c1a41aadec8c292",
+   "mask_px": 194879,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "e4115dbc311caa504cd9bfc21416c91e",
+   "render_md5_b": "e4115dbc311caa504cd9bfc21416c91e",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 194879,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 3678
+  },
+  {
+   "id": "ceremony-sapphire-x030",
+   "surface": "ceremony",
+   "stone": "sapphire",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-sapphire-x030.png",
+   "mask_png": "ceremony-sapphire-x030-mask.png",
+   "md5": "5ecfcb178fc4e91ea75e08a9199ebfd9",
+   "mask_md5": "d13c72d46af6da6c632edf15d243a41e",
+   "mask_px": 199719,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "1b4a68c1eeca3af147dc7d626df84aaf",
+   "render_md5_b": "1b4a68c1eeca3af147dc7d626df84aaf",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 199719,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 3604
+  },
+  {
+   "id": "ceremony-citrine-xn030",
+   "surface": "ceremony",
+   "stone": "citrine",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-citrine-xn030.png",
+   "mask_png": "ceremony-citrine-xn030-mask.png",
+   "md5": "47b3b60215282835e3b1b6f5f358013c",
+   "mask_md5": "5bb02146d4109ae2c200ed22c223671b",
+   "mask_px": 239465,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "b42c89b7555518cbbe15134887e08a8e",
+   "render_md5_b": "b42c89b7555518cbbe15134887e08a8e",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 239465,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2493
+  },
+  {
+   "id": "ceremony-citrine-xn015",
+   "surface": "ceremony",
+   "stone": "citrine",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-citrine-xn015.png",
+   "mask_png": "ceremony-citrine-xn015-mask.png",
+   "md5": "43215767ba7f014b6c9b2cf00a962335",
+   "mask_md5": "788e7124c2c780e10edf293f0cdf79ff",
+   "mask_px": 218658,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "7831dc13250e677011cc733ffeef87c8",
+   "render_md5_b": "7831dc13250e677011cc733ffeef87c8",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 218658,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2317
+  },
+  {
+   "id": "ceremony-citrine-x000",
+   "surface": "ceremony",
+   "stone": "citrine",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-citrine-x000.png",
+   "mask_png": "ceremony-citrine-x000-mask.png",
+   "md5": "1766e7563b7d22c60ef9956f88bfed8e",
+   "mask_md5": "ba2a07133f0786aca5d3c27756d9c94f",
+   "mask_px": 204582,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "621513b9eb2e9f39f87178bd9d07837e",
+   "render_md5_b": "621513b9eb2e9f39f87178bd9d07837e",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 204582,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2523
+  },
+  {
+   "id": "ceremony-citrine-x015",
+   "surface": "ceremony",
+   "stone": "citrine",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-citrine-x015.png",
+   "mask_png": "ceremony-citrine-x015-mask.png",
+   "md5": "45ef574f44463a3be3e156f8fe1e43dd",
+   "mask_md5": "57f4f5e290532d334efd064d5c3b3b9c",
+   "mask_px": 186164,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "e3bdbf837057e1722a56a1868c3ad6f4",
+   "render_md5_b": "e3bdbf837057e1722a56a1868c3ad6f4",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 186164,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2531
+  },
+  {
+   "id": "ceremony-citrine-x030",
+   "surface": "ceremony",
+   "stone": "citrine",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-citrine-x030.png",
+   "mask_png": "ceremony-citrine-x030-mask.png",
+   "md5": "ebc60a97396672ec75cc49e3d74a0c9a",
+   "mask_md5": "cc842992250818726bc96b02ffabca17",
+   "mask_px": 198735,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "02871b47a4fbbc023f5736648076be14",
+   "render_md5_b": "02871b47a4fbbc023f5736648076be14",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 198735,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2535
+  },
+  {
+   "id": "ceremony-amethyst-xn030",
+   "surface": "ceremony",
+   "stone": "amethyst",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-amethyst-xn030.png",
+   "mask_png": "ceremony-amethyst-xn030-mask.png",
+   "md5": "d8f9229f5f3dd0a816902c92c14f5f5e",
+   "mask_md5": "2a09ea8cf8340600fea83bc5bfdba702",
+   "mask_px": 239170,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "c90e228cdef2ff2f417545b9a86fd5c0",
+   "render_md5_b": "c90e228cdef2ff2f417545b9a86fd5c0",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 239170,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2693
+  },
+  {
+   "id": "ceremony-amethyst-xn015",
+   "surface": "ceremony",
+   "stone": "amethyst",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-amethyst-xn015.png",
+   "mask_png": "ceremony-amethyst-xn015-mask.png",
+   "md5": "76b1a3b9b5557bf40c40baa83d2eb476",
+   "mask_md5": "22a2b7b4305112145b36127bd113843e",
+   "mask_px": 219014,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "958d83d0037e8fc0db86ad6ee306c66a",
+   "render_md5_b": "958d83d0037e8fc0db86ad6ee306c66a",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 219014,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2453
+  },
+  {
+   "id": "ceremony-amethyst-x000",
+   "surface": "ceremony",
+   "stone": "amethyst",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-amethyst-x000.png",
+   "mask_png": "ceremony-amethyst-x000-mask.png",
+   "md5": "80092ef0df51ddf38f73730a37df9153",
+   "mask_md5": "4a6014573a69399c4a86c6335b5a9cf5",
+   "mask_px": 205742,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "58e266d401a7e0e5e0a01d0f7a0b70fc",
+   "render_md5_b": "58e266d401a7e0e5e0a01d0f7a0b70fc",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 205742,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2201
+  },
+  {
+   "id": "ceremony-amethyst-x015",
+   "surface": "ceremony",
+   "stone": "amethyst",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-amethyst-x015.png",
+   "mask_png": "ceremony-amethyst-x015-mask.png",
+   "md5": "8b106c42b583c299382f8fb916654d82",
+   "mask_md5": "7a1f8f24b5756f646c4f598fdddce862",
+   "mask_px": 190555,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "2a963b6ad1c4a76b994b231c61fbe70e",
+   "render_md5_b": "2a963b6ad1c4a76b994b231c61fbe70e",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 190555,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2266
+  },
+  {
+   "id": "ceremony-amethyst-x030",
+   "surface": "ceremony",
+   "stone": "amethyst",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-amethyst-x030.png",
+   "mask_png": "ceremony-amethyst-x030-mask.png",
+   "md5": "70af08c265fdc028cfe44b0ffddd183e",
+   "mask_md5": "1d7739940e9c2c2b8caeb5df89fae1ce",
+   "mask_px": 200362,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "8fb9c379e50490aa5e9bbdc43290842b",
+   "render_md5_b": "8fb9c379e50490aa5e9bbdc43290842b",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 200362,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2308
+  },
+  {
+   "id": "ceremony-redberyl-xn030",
+   "surface": "ceremony",
+   "stone": "redberyl",
+   "tilt": -0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-redberyl-xn030.png",
+   "mask_png": "ceremony-redberyl-xn030-mask.png",
+   "md5": "8b3a3ef94c383b75fbdb22e0b2ab9bb8",
+   "mask_md5": "330490114ff8e36ac1055f72ee86a7b8",
+   "mask_px": 241400,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "557b505ca0136d7b2e115fde70ad897d",
+   "render_md5_b": "557b505ca0136d7b2e115fde70ad897d",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 241400,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2456
+  },
+  {
+   "id": "ceremony-redberyl-xn015",
+   "surface": "ceremony",
+   "stone": "redberyl",
+   "tilt": -0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-redberyl-xn015.png",
+   "mask_png": "ceremony-redberyl-xn015-mask.png",
+   "md5": "de6aebc13d18d7f28e434613eaab5047",
+   "mask_md5": "c72539e12397b0306d4a0f5149db31b8",
+   "mask_px": 219834,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "962553d5ed3f6abfd078c013542115a9",
+   "render_md5_b": "962553d5ed3f6abfd078c013542115a9",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 219834,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2411
+  },
+  {
+   "id": "ceremony-redberyl-x000",
+   "surface": "ceremony",
+   "stone": "redberyl",
+   "tilt": 0,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-redberyl-x000.png",
+   "mask_png": "ceremony-redberyl-x000-mask.png",
+   "md5": "747931b0e0e607c7df70f2b7fe598b31",
+   "mask_md5": "75f7080c7fe598a20d1696f1fb090f99",
+   "mask_px": 206229,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "2ab38829b7391c24b728d0bf63acd9d2",
+   "render_md5_b": "2ab38829b7391c24b728d0bf63acd9d2",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 206229,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2336
+  },
+  {
+   "id": "ceremony-redberyl-x015",
+   "surface": "ceremony",
+   "stone": "redberyl",
+   "tilt": 0.15,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-redberyl-x015.png",
+   "mask_png": "ceremony-redberyl-x015-mask.png",
+   "md5": "8af8053c12de39459c2947483c3515a0",
+   "mask_md5": "de4c00310fd5af3360c0bb1956149065",
+   "mask_px": 193798,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "2d684517732b21196bcb751023a8ac2b",
+   "render_md5_b": "2d684517732b21196bcb751023a8ac2b",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 193798,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2354
+  },
+  {
+   "id": "ceremony-redberyl-x030",
+   "surface": "ceremony",
+   "stone": "redberyl",
+   "tilt": 0.3,
+   "spin": 0,
+   "t": 0,
+   "url": "http://127.0.0.1:5320/index.html?app=fullscreen",
+   "buffer": [
+    786,
+    640
+   ],
+   "png": "ceremony-redberyl-x030.png",
+   "mask_png": "ceremony-redberyl-x030-mask.png",
+   "md5": "55cbd9bf98235458101988a2b46b1e8c",
+   "mask_md5": "419d3424543c529424f81f0a82f0e984",
+   "mask_px": 199294,
+   "valid": true,
+   "stable": true,
+   "unstable": false,
+   "render_md5_a": "6cc6d454cdd43840cd371b68dfa3b97f",
+   "render_md5_b": "6cc6d454cdd43840cd371b68dfa3b97f",
+   "render_diff_px": 0,
+   "render_pairs": 1,
+   "invalid_reason": null,
+   "checks": {
+    "program_errors": 0,
+    "link_fail": 0,
+    "lost": false,
+    "mask_px": 199294,
+    "mask_min": 20000,
+    "mask_ok": true,
+    "buffer_ok": true,
+    "buffer_want": [
+     786,
+     640
+    ],
+    "buffer_got": [
+     786,
+     640
+    ],
+    "stable": true,
+    "render_pairs": 1,
+    "render_diff_px": 0,
+    "console_total": 0,
+    "console": []
+   },
+   "choice": "const",
+   "planes": 170,
+   "bloom": false,
+   "mats": 1,
+   "floors": true,
+   "ms": 2415
+  }
+ ]
+}
