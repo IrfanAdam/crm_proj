@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T16:22:45.306Z",
+  "generated": "2026-11-19T16:41:38.082Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "ef46847",
+      "full": "ef46847a3bf479eb5685c458340de7074f87f572",
+      "date": "2026-11-19",
+      "time": "21:52",
+      "subject": "feat(gem): restore the pre-R24 brilliance and wrap the plan",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-17"
+    },
     {
       "sha": "a4d36d7",
       "full": "a4d36d737b6a66bc47c145a650ba641642bc55f7",
@@ -4906,25 +4915,9 @@
     }
   ],
   "wip": [
-    "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-optics.js",
-    "M  src/components/GemReward/gem-shader-ext.js",
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js",
-    "M  src/pitch/changelog-links.js",
-    "M  src/pitch/changelog-parse.js",
-    "A  src/pitch/changelog/anchor.js",
-    "A  src/pitch/changelog/cancelled.js",
     "M  src/pitch/changelog/markdown.js",
     "M  src/pitch/changelog/paint-drawer.js",
-    "M  src/pitch/changelog/paint-plan.js",
-    "M  src/pitch/changelog/paint-rail.js",
-    "A  src/pitch/changelog/task-commits.js",
-    "A  src/pitch/changelog/task-evals.js",
-    "A  src/pitch/changelog/task-panels.js",
-    "M  src/pitch/pitch-changelog.css",
-    "A  tests/changelog-cancelled.test.mjs"
+    "M  src/pitch/changelog/panels.js",
+    "M  src/pitch/pitch-changelog.css"
   ]
 }

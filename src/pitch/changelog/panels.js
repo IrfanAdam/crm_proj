@@ -23,7 +23,7 @@ export function isEdited(planFile, head, body){
   if(!hashes.has(liveHash)) return true;
   return false;
 }
-// Gate thread lines are dropped from the markdown body and rendered in Evals instead.
+// Gate thread lines are dropped from the markdown body and rendered in the gate-thread panel instead. Task evals never render here — they belong to taskExtras inside their parent task fold.
 const GATE_THREAD = /^- .*REF GATE\s+0*\d+\b/;
 export const stripGateThread = (body) => String(body).split('\n').filter((l) => !GATE_THREAD.test(l)).join('\n');
 const cleanEval = (line) => esc(line.replace(/^- /, '').replace(/^\[[ xX]\] /, '').replace(/\*\*/g, '').replace(/\s*\{#.*$/, '').trim());
@@ -45,7 +45,7 @@ export const renderEvals = (planFile, planDate, head, body) => {
   const dates = Object.keys(byDate).sort().reverse();
   const total = dates.length;
   const groups = dates.map((d, di) => dayGroup(total - di, d, byDate[d])).join('');
-  return `<details class="ds-panel" open><summary class="ds-panel-title">${triCaret}Evals · <span class="ds-panel-num">${entries.length}</span></summary><div class="ds-timeline">${groups}</div></details>`;
+  return `<details class="ds-panel"><summary class="ds-panel-title">${triCaret}Gate thread · <span class="ds-panel-num">${entries.length}</span></summary><div class="ds-timeline">${groups}</div></details>`;
 };
 export const renderCommitsPanel = (hs, badgesHtml) => {
   if (!hs.length) return '';

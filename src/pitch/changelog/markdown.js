@@ -52,7 +52,8 @@ export const marked = {
       const rest = m[4] || '';
       const tick = /✗|ds-cancelled/.test(rest) ? 'cancelled' : m[1] ? 'done' : 'todo';
       const tail = (/ds-cancelled/.test(rest) ? rest.replace(/^.*?&lt;\/span&gt;\s*[—–-]\s*/, '') : rest.replace(/^✓ done — /, '')).replace(/^(done|cancelled)$/i, '').trim();
-      return { tick, tail, num: m[2], name: `<h3>${m[2]} ${cleanName(m[3])}</h3>` };
+      const inner = `${m[2]} ${cleanName(m[3])}`, tip = inner.replace(/<[^>]+>/g, '');
+      return { tick, tail, num: m[2], name: `<h3 title="${tip}">${inner}</h3>` };
     };
     const isTaskLine = (l) => l.startsWith('<li>') && taskItem(l);
     const hasBody = (i) => {
@@ -60,13 +61,12 @@ export const marked = {
         if (!l.trim()) continue;
         return !(isTaskLine(l) || /^<h3[\s>]/.test(l) || /^<h[12]>/.test(l)); }
       return false; };
-    let out = [];
-    let ulBuf = [];
-    let pBuf = [];
-    let subOpen = false;
-    const flushUl = ()=>{ if (!ulBuf.length) return; out.push('<ul>'+ulBuf.join('')+'</ul>'); ulBuf = []; };
-    const flushProse = ()=>{ if (!pBuf.length) return; out.push(bullets(pBuf, inline)); pBuf = []; };
+    let out = [], ulBuf = [], pBuf = [], subOpen = false, pendingBare = null; // held bare task joins its fold — never lands between folds
+    const emit = (h) => { if (pendingBare) { out.push(foldOpen(pendingBare.tick, pendingBare.name)); subOpen = true; pendingBare = null; } out.push(h); };
+    const flushUl = ()=>{ if (!ulBuf.length) return; const h = '<ul>'+ulBuf.join('')+'</ul>'; ulBuf = []; emit(h); };
+    const flushProse = ()=>{ if (!pBuf.length) return; const h = bullets(pBuf, inline); pBuf = []; emit(h); };
     const closeSub = ()=>{ if (subOpen) { out.push('</div></details></section>'); subOpen = false; } };
+    const flushBare = ()=>{ if (pendingBare) { out.push(bareRow(pendingBare.tick, pendingBare.name)); pendingBare = null; } };
     for (let i = 0; i < lines.length; i++){
       const line = lines[i];
       const isLi = line.startsWith('<li>');
@@ -75,9 +75,9 @@ export const marked = {
       const isEmpty = line.trim() === '';
       const ti = isLi ? taskItem(line) : null;
       if (isEmpty) { flushUl(); flushProse(); }
-      else if (ti){ flushUl(); flushProse(); closeSub();
+      else if (ti){ flushUl(); flushProse(); closeSub(); flushBare();
         const body = ti.tail || hasBody(i) || (ti.num && extra && extra[ti.num]);
-        if (!body) out.push(bareRow(ti.tick, ti.name));
+        if (!body) pendingBare = { tick: ti.tick, name: ti.name };
         else { out.push(foldOpen(ti.tick, ti.name)); subOpen = true;
           const ex = ti.num && extra && extra[ti.num] ? taskExtras(extra[ti.num], (t) => marked.parse(t, null)) : '';
           if (ex) out.push(ex);
@@ -85,11 +85,11 @@ export const marked = {
       else if (isLi) { flushProse(); ulBuf.push(inline(line)); }
       else if (isBlock){
         flushUl(); flushProse();
-        if (isH3){ closeSub(); const raw = line.replace(/^<h3[^>]*>|<\/h3>$/g, ''); const tick = (line.match(/data-s="(\w+)"/) || [])[1] || 'todo'; out.push(foldOpen(tick, `<h3>${cleanName(raw)}</h3>`)); subOpen = true; }
-        else { closeSub(); out.push(inline(line)); }
+        if (isH3){ closeSub(); flushBare(); const raw = line.replace(/^<h3[^>]*>|<\/h3>$/g, ''); const tick = (line.match(/data-s="(\w+)"/) || [])[1] || 'todo'; const inner = cleanName(raw); const tip = inner.replace(/<[^>]+>/g, ''); out.push(foldOpen(tick, `<h3 title="${tip}">${inner}</h3>`)); subOpen = true; }
+        else emit(inline(line)); // non-fold headings stay inside the open task fold — never bare between folds
       } else { pBuf.push(line); }
     }
-    flushUl(); flushProse(); closeSub();
+    flushUl(); flushProse(); flushBare(); closeSub();
     return out.join('');
   }
 };

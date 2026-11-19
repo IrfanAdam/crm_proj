@@ -39,7 +39,7 @@ export function paintDrawer({ plan, sprint }) {
   const cxTxt = cx && !whole ? `<span class="ds-cxl">${esc(cx)}</span>` : '';
   const stTxt = [esc(main), cxTxt, headGate ? esc(headGate) : ''].filter(Boolean).join(' · ');
   const status = stTxt ? `<p class="ds-status ${whole || headGate === 'GATE FAILED' ? 'ds-is-cancelled' : done ? 'ds-is-done' : 'ds-is-gate'}">${stTxt}</p>` : '';
-  const evalsHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body);
+  const gateHtml = renderEvals(plan.file, plan.date, sprint.head, sprint.body); // gate/REF thread only — task evals render via taskExtras inside their task fold
   const commitsHtml = renderCommitsPanel(hs, badges(hs));
   const orph = orphans(plan.file, plan.sprints).filter((c) => !hs.includes(c) && !claimed.has(c.sha));
   const orphanHtml = badgesPanel(orph, 'Further commits');
@@ -56,7 +56,7 @@ export function paintDrawer({ plan, sprint }) {
     `<button data-close aria-label="Close detail">✕</button></div><div class="ds-md">`,
     crumb + `<h2 class="ds-phase-title">${title}</h2>` + status + dueHtml,
     `<hr class="ds-hr">`,
-    ledeHtml + evalsHtml + commitsHtml + orphanHtml,
+    ledeHtml + commitsHtml + orphanHtml + gateHtml,
     `</div>`,
   ].join('');
 }
