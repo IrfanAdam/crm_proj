@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T10:47:08.341Z",
+  "generated": "2026-11-19T10:54:28.855Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "8c1c803",
+      "full": "8c1c8032491751a7f18ba6d8463baa2e441e4a6a",
+      "date": "2026-11-19",
+      "time": "16:16",
+      "subject": "docs(eval): correct the occlusion A/B buffers",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "11b5cc9",
       "full": "11b5cc91862a804aa04fb4aa3ef1a13f185eca53",
@@ -4869,5 +4878,12 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": []
+  "wip": [
+    "M  src/arch/atlas.json",
+    "M  src/components/GemReward/gem-perf-hud.js",
+    "M  src/js/mechanics/graphData.decisions.js",
+    "M  src/js/mechanics/graphData.js",
+    "M  src/js/mechanics/graphData.logic.js",
+    "M  src/js/mechanics/graphData.schema.js"
+  ]
 }

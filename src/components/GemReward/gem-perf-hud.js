@@ -1,4 +1,4 @@
-/* ADAM/SHARED — src/components/GemReward/gem-perf-hud.js · diagnostic panel behind ?gemperf=1 · #perf · a stored key · the METRICS button in the fullscreen gem */
+/* ADAM/SHARED — src/components/GemReward/gem-perf-hud.js · diagnostic panel behind ?gemperf=1 · fullscreen gem only · #perf · a stored key · the METRICS button in the fullscreen gem */
 // — Why: a phone screenshot must say WHERE a frame goes — device/GPU/DPR, per-rig buffer@ratio+band, frame med/p95/hitch, main-thread js ms (tIn→rendered, measured) against gpu~ = med − js (INFERRED, never measured), the shader path that compiled, and the controller's state. Fixed bottom-left: the gem is centred, so it never covers its subject.
 // — Contract: window.GEM_PERF_HUD = { frame(rig, st, m), rendered(rig) } · gem-perf.js calls frame() on entry to every tick, gem3d.js calls rendered() right after render().
 // — Sources: ?gemperf=1 (persisted to localStorage 'gemperf'), #perf, a stored key, or the metrics button inside #gem-screen. ?gemperf=0 clears the key. Inert when off: one key read and one capture click listener — no DOM, no rAF, no arrays, no global.
@@ -29,7 +29,8 @@ if (r) for (let i = 0; i < r.length && !g; i++) try { if (r[i].renderer && r[i].
 try { const x = g.getExtension('WEBGL_debug_renderer_info'); gpu = String((x && g.getParameter(x.UNMASKED_RENDERER_WEBGL)) || g.getParameter(g.RENDERER) || '?').replace(/\s+/g, ' ').slice(0, 44);
 maxv = g.getParameter(g.MAX_FRAGMENT_UNIFORM_VECTORS) || 0, ver = (W.WebGL2RenderingContext && g instanceof W.WebGL2RenderingContext) ? 'webgl2' : 'webgl1'; } catch (e) { gpu = 'n/a'; }
 return 1; }
-// — mount: into the FULLSCREEN element when one exists — a real Fullscreen API surface paints above body-level nodes, z-index or not.
+// — mount: panel lives only while a fullscreen gem covers the viewport (#gem-screen.overlay--open, #reward-sheet.is-gem-in); no surface = no gate.
+function sf() { try { const g = D.getElementById('gem-screen'), r = D.getElementById('reward-sheet'); if (!g && !r) return 1; if (g && !g.hidden && g.classList.contains('overlay--open')) return g; if (r && !r.hidden && r.classList.contains('is-gem-in')) return r; return 0; } catch (e) { return 0; } }
 function fsc() { try { const p = D.fullscreenElement || D.body; if (box && p && box.parentNode !== p) p.appendChild(box); } catch (e) { } }
 function mk() { if (box || !D || !D.body || !D.createElement) return box; const p = D.fullscreenElement || D.body;
 box = D.createElement('div');
@@ -45,7 +46,7 @@ function jsn() { const r = RS, out = [];
 for (let i = 0; i < r.length; i++) out.push({ stone: r[i].stone, css: r[i].css, buf: r[i].buf, ratio: r[i].ratio, band: r[i].band });
 return JSON.stringify({ at: new Date().toISOString(), ua: ua, url: String(LO.href || ''), vw: num(W.innerWidth, 0), vh: num(W.innerHeight, 0), dpr: dpr, screen: [sw0, sh0], cores: num(NA.hardwareConcurrency, 0), mem: num(NA.deviceMemory, 0), gpu: gpu, vec4: maxv, gl: ver, frame: { med: sm, p95: sp, worst: sw, fps: sm > 0 ? Math.round(1000 / sm) : 0, hitch: sk, n: nF }, js: sj, gpuInferred: sg, longtask: { n: lgN, s: lgT / 1000 }, bloom: bl(), planes: npl(), shader: md(), prog: pg(), min: cmin, ceil: cmax, steps: cur ? cur.steps | 0 : 0, est: cur ? num(cur.est, 0) : 0, fail: cur && cur.failAt < 1e8 ? cur.failAt : null, rigs: out }); }
 function draw() { try {
-if (!box && !mk()) return;
+if (!box && !mk()) return; const sfx = sf(); if (!sfx) { box.style.display = 'none'; return; } box.style.display = ''; if (sfx !== 1 && box.parentNode !== sfx) sfx.appendChild(box); else fsc();
 const c = cfgo(), qf = q(FR, nF), r = rigs(), cf = c || {}; cmin = num(cf.min, 1); cmax = cf.max > 0 ? cf.max : Math.min(dpr, 2);
 sm = nF ? pq(qf, 0.5) : num(ml, 0), sp = pq(qf, 0.95), sw = pq(qf, 1), sk = hit(FR, nF); const qj = q(JS, nJ); sj = pq(qj, 0.5), sg = sm > sj ? sm - sj : 0;   // frame stats land BEFORE the js sort reuses SR
 let s = 'GEM PERF ' + dev + ' dpr' + dpr + ' ' + sw0 + 'x' + sh0 + '\n' + (gpu || 'gpu ?') + ' vec4 ' + (maxv || '-') + ' ' + (ver || '-') + '\n', k = 0;
@@ -85,8 +86,7 @@ if (loopId) { try { W.cancelAnimationFrame(loopId); } catch (e) { } loopId = 0; 
 if (fsk) { try { D.removeEventListener('fullscreenchange', fsc); } catch (e) { } fsk = 0; }
 try { if (box && box.parentNode) box.parentNode.removeChild(box); } catch (e) { } box = 0; txt = ''; FR = 0, JS = 0, SR = 0, RS = []; W.GEM_PERF_HUD = null; }
 // — button: the fullscreen gem is where the number actually matters, so it carries its own toggle — no query string to type, no hidden gesture to learn.
-function btn() { try {
-const ov = D.getElementById('gem-screen');
+function btn() { try { const ov = D.getElementById('gem-screen');
 if (!ov || !ov.classList.contains('overlay--open') || ov.querySelector('.gem-perf-btn')) return;
 const b = D.createElement('button'); b.type = 'button', b.className = 'gem-perf-btn', b.textContent = 'metrics';
 b.style.cssText = 'position:absolute;top:10px;right:10px;z-index:2147483647;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;padding:8px 11px;border-radius:99px;border:1px solid rgba(255,255,255,.42);background:rgba(0,0,0,.58);color:white;cursor:pointer;-webkit-tap-highlight-color:transparent';
@@ -94,5 +94,6 @@ b.addEventListener('click', function (e) { if (e && e.stopPropagation) e.stopPro
 ov.appendChild(b);
 } catch (e) { } }
 D.addEventListener('click', function (e) { const t = e && e.target; if (t && t.closest && t.closest('[data-overlay-target="gem-screen"]')) setTimeout(btn, 60); }, true);
-if (ON) start();                                     // URL, hash, or a stored key — the button covers the phone
+if (W.MutationObserver && D.documentElement) new W.MutationObserver(function (m) { for (let i = 0; i < m.length; i++) { const t = m[i].target; if (t && (t.id === 'gem-screen' || t.id === 'reward-sheet')) { if (ON) draw(); else btn(); return; } } }).observe(D.documentElement, { attributes: true, attributeFilter: ['class', 'hidden', 'style'], subtree: true });
+if (ON) { start(); btn(); }                                     // URL, hash, or a stored key — the button covers the phone
 })();
