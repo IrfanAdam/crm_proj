@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T08:13:50.463Z",
+  "generated": "2026-11-19T08:38:07.186Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "04c8794",
+      "full": "04c8794bda00e83337ef9ef80d31f45cc074a743",
+      "date": "2026-11-19",
+      "time": "13:43",
+      "subject": "feat(gem): put the metrics toggle in the fullscreen gem, where it belongs",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "dac07a9",
       "full": "dac07a9c728aed061b8db78649d312863372ef34",
@@ -4842,8 +4851,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-perf-hud.js"
-  ]
+  "wip": []
 }
