@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T21:39:08.606Z",
+  "generated": "2026-11-19T08:13:50.463Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "dac07a9",
+      "full": "dac07a9c728aed061b8db78649d312863372ef34",
+      "date": "2026-11-19",
+      "time": "03:08",
+      "subject": "feat(gem): add a phone-readable diagnostic panel behind ?gemperf=1",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "9b9fd73",
       "full": "9b9fd735cb729f941ec61ee8dc05f57d4e02f944",
@@ -4834,11 +4843,7 @@
     }
   ],
   "wip": [
-    "M  gallery.html",
-    "M  index.html",
     "M  src/arch/atlas.json",
-    "A  src/components/GemReward/gem-perf-hud.js",
-    "M  src/components/GemReward/gem-perf.js",
-    "M  src/components/GemReward/gem3d.js"
+    "M  src/components/GemReward/gem-perf-hud.js"
   ]
 }
