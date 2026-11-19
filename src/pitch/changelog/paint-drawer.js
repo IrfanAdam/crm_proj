@@ -3,8 +3,7 @@ import { hits, badges, orphans } from '../changelog-links.js';
 import { taskHits, shas } from './task-commits.js';
 import { splitEvals } from './task-evals.js';
 import { dueFor, dueErr } from './due.js';
-import { renderCommitsPanel, gateVerdictTag } from './panels.js';
-import { phaseEvalsPanel } from './task-panels.js';
+import { stripGateThread, renderEvalsPanel, renderCommitsPanel, gateVerdictTag } from './panels.js';
 import { marked } from './markdown.js';
 import { esc } from './esc.js';
 import { isDone, state } from '../changelog-parse.js';
@@ -48,8 +47,8 @@ export function paintDrawer({ plan, sprint }) {
   for (const [n, cs] of Object.entries(byTask)) extra[n] = { commits: cs };
   // Evals are per-phase, cumulative across tasks — one panel below Commits.
   const groups = Object.entries(split.evals).map(([n, list]) => ({ n, list })).sort((a, b) => (+a.n || 0) - (+b.n || 0));
-  const evalsHtml = phaseEvalsPanel(groups, (t) => marked.parse(t, null, true));
-  const bodyHtml = marked.parse(split.body, extra);
+  const evalsHtml = renderEvalsPanel(plan.file, plan.date, sprint.head, sprint.body, groups, (t) => marked.parse(t, null, true));
+  const bodyHtml = marked.parse(stripGateThread(split.body), extra);
   // Phase lede as a task-style collapsible (caret fold, no checkbox): long intros
   // collapse like tasks, reusing the fold's caret language.
   const ledeHtml = bodyHtml.replace(/^\s*((?:<ul class="ds-bullets">[\s\S]*?<\/ul>\s*|<pre>[\s\S]*?<\/pre>\s*)+)/, (m, ps) => `<details class="ds-task-fold ds-lede-fold" open><summary class="ds-acc-head"><h3>Description</h3>${triCaret}</summary><div class="ds-acc-body"><div class="ds-lede">${ps.trim()}</div></div></details>`);

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T18:13:47.024Z",
+  "generated": "2026-11-19T18:21:31.123Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "b366574",
+      "full": "b366574869fe76e009e36faf1e1771c1a97465cb",
+      "date": "2026-11-19",
+      "time": "23:43",
+      "subject": "fix(changelog): evals read as prose with date chips, not bullet soup",
+      "plan": "2026-10-31_135705-changelog-safepipe-parity.md",
+      "anchor": "phase-4"
+    },
     {
       "sha": "2e41423",
       "full": "2e41423110c6dca38ce95b25020a9d2cb6fa60c5",
@@ -4942,9 +4951,8 @@
     }
   ],
   "wip": [
-    "M  src/pitch/changelog/markdown.js",
     "M  src/pitch/changelog/paint-drawer.js",
-    "M  src/pitch/changelog/prose.js",
+    "M  src/pitch/changelog/panels.js",
     "M  src/pitch/changelog/task-panels.js",
     "M  src/pitch/pitch-changelog.css"
   ]
