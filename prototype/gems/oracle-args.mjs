@@ -9,6 +9,7 @@ export const CHROME = process.env.CHROME_BIN || '/Applications/Google Chrome.app
 export const STONES = String(flag('stones', 'sapphire,citrine,amethyst,redberyl')).split(',').filter(Boolean);
 export const TILTS = String(flag('tilts', '-0.30,-0.15,0.00,0.15,0.30')).split(',').map(Number);
 export const BUFFERS = String(flag('buffers', 'card,ceremony')).split(',').filter(Boolean);
-export const SIZE = { card: [320, 320], ceremony: [393, 320] };   // forced CSS box per surface (sheet caps the ceremony canvas at 340 px); buffer = box * min(dpr,2)
+const box = (v, d) => String(flag(v, d)).split('x').map(Number);
+export const SIZE = { card: box('cardsize', '320x320'), ceremony: box('ceremonsize', '393x320') };   // forced CSS box per surface (sheet caps the ceremony canvas at 340 px); buffer = box * min(dpr,2)
 export const MASK_MIN = 20000, MASK_EPS = 6;
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

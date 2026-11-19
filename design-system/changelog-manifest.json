@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T10:54:28.855Z",
+  "generated": "2026-11-19T13:37:45.465Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "dedfc58",
+      "full": "dedfc58699362e0df6304ee9b3f5e27e75d9bb29",
+      "date": "2026-11-19",
+      "time": "16:24",
+      "subject": "feat(gem): show perf HUD on fullscreen gem only",
+      "plan": "2026-10-03_144222-gem-realism-round2.md",
+      "anchor": "phase-18"
+    },
     {
       "sha": "8c1c803",
       "full": "8c1c8032491751a7f18ba6d8463baa2e441e4a6a",
@@ -4879,8 +4888,10 @@
     }
   ],
   "wip": [
+    "M  prototype/gems/oracle-args.mjs",
     "M  src/arch/atlas.json",
-    "M  src/components/GemReward/gem-perf-hud.js",
+    "M  src/components/GemReward/gem-optics.js",
+    "M  src/components/GemReward/gem-shader-ext.js",
     "M  src/js/mechanics/graphData.decisions.js",
     "M  src/js/mechanics/graphData.js",
     "M  src/js/mechanics/graphData.logic.js",
