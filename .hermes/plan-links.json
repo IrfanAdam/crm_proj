@@ -463,5 +463,10 @@
   "plan": "2026-10-03_144222-gem-realism-round2.md",
   "anchor": "{#round-19}",
   "note": "retro-link: round-23 Task 53 code - tone contrast after highlight bleach, variant B"
+ },
+ "7b0ddcd": {
+  "plan": "2026-11-16_225300-mobile-perf-parity.md",
+  "anchor": "{#rev-3}",
+  "note": "fix(ds): auto-link hook — trailer in body only, subject untrailed"
  }
 }
