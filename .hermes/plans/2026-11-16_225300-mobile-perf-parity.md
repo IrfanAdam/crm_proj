@@ -30,7 +30,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 4 | Right-size the edge-material layer stack; drop `will-change` on permanently-animating spans | layer count and per-layer blur radius measured before/after; pixels identical | shipped |
-| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending |
+| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged |
 | 6 | Contain every glass island (`contain: paint` / `isolation`) so a blur cannot force a full-page repaint | trace shows no full-page paint during scroll | shipped |
 
 ## Phase 3 — Runtime: WebGL and motion loops {#phase-3}
@@ -42,7 +42,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 7 | Hoist per-frame rect/layout reads out of the gem loop | zero `getBoundingClientRect`/`clientWidth` reads inside `requestAnimationFrame` callbacks | shipped |
-| 8 | Gate rig quality on device capability, not just `prefers-reduced-motion` | mobile trace frame time at parity with desktop; no visible softening at 1× | pending |
+| 8 | Gate rig quality on device capability, not just `prefers-reduced-motion` | mobile trace frame time at parity with desktop; no visible softening at 1× | ✗ cancelled (rev 4) · **reopened (rev 5)** — rev 4's reasoning fails the brute-force check: the adaptive controller moves DPR only (linear in pixels, worth 2.75× at 1.8→1.0) but the 14.9× the phone needs includes a 6.0× taps/bounce term (510 vs 3060 plane iterations/px) that nothing gates. Device-tiered taps/bounce defaults are the only non-structural lever left |
 | 9 | One shared rAF clock; offscreen and hidden-tab rigs fully parked | no more than one rAF loop alive per visible surface | shipped · rev 3: the gem rig now arms from its own `ResizeObserver` like the other three, so the park contract is symmetric (lane I) |
 
 ## Phase 4 — Interaction: scroll and pointer handlers {#phase-4}
@@ -54,7 +54,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 10 | Cache geometry per scroll frame instead of per event | scroll trace shows 0 forced reflow events | shipped · rev 3: dock-mirror reads measured at **4.92 → 0.00 `getBoundingClientRect`/frame** (lane B) |
-| 11 | Mark every non-cancelling listener passive; move work off the event tick | no long task over 50 ms during a scripted scroll | shipped · rev 3: **done-when not met** — 33 → 16 long tasks (§4c of the eval record), 17 per pass even under `?dock=lean`. The listener work landed; the bar did not |
+| 11 | Mark every non-cancelling listener passive; move work off the event tick | no long task over 50 ms during a scripted scroll | shipped · rev 3: **done-when not met** — 33 → 16 long tasks (§4c of the eval record), 17 per pass even under `?dock=lean`. The listener work landed; the bar did not · rev 4: done-when withdrawn — the floor holds at 16–17 tasks on both sides, so the zero-task bar is dropped; scroll perf is judged via the M2 rungs instead |
 
 ## Phase 5 — CSS paint budget {#phase-5}
 
@@ -64,7 +64,7 @@
 
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
-| 12 | `content-visibility: auto` + `contain-intrinsic-size` on offscreen feed/sheet lists | paint count during scroll drops; layout height unchanged | ✗ reopened (rev 3) — `grep -r content-visibility src/` and `git log -S content-visibility -- src/` are both empty. What did land is `contain:` (10 declarations in `src/`), audited rule by rule by lane E — a different property |
+| 12 | `content-visibility: auto` + `contain-intrinsic-size` on offscreen feed/sheet lists | paint count during scroll drops; layout height unchanged | ✗ reopened (rev 3) — `grep -r content-visibility src/` and `git log -S content-visibility -- src/` are both empty. What did land is `contain:` (10 declarations in `src/`), audited rule by rule by lane E — a different property · rev 4: re-verified 2026-11-20, still absent from `src/`; still unlanded |
 | 13 | Collapse shadow stacks that paint the same pixels | computed shadow values unchanged or visually identical in the pixel gate | ✗ cancelled — lane E measured every stack; none collapses without weakening the shadow |
 
 ## Phase 6 — Gate: measure and prove no visual change {#phase-6}
@@ -155,3 +155,86 @@ subject alone" left `7b0ddcd` **unlinked** (522 commits, 521 linked). The hook n
 trailer onto the subject instead of skipping. `7b0ddcd` stays the one unlinked commit — fixing it would
 mean rewriting published history, which this repo does not do. Verified after the fix: promotion, clean
 auto-link, and merge pass-through all behave, and `ds-track` returns to full linkage.
+
+---
+
+## Gate · rev 4 — verification pass (2026-11-20) {#rev-4}
+
+No new lanes — tree-verified against the wrapped head. Question: is this plan still relevant after the Phase 11 wrap?
+
+| Check | Result |
+|---|---|
+| `content-visibility` in `src/` | still absent — Task 12 stays open, correctly reopened |
+| `?dock=lean` flag | present (`src/glass/slices-spec.js:42`) — Task 5 awaiting the owner call |
+| Adaptive DPR controller | shipped (`gem-perf.js`: `?gemdpr`, auto step, `?gemperf` HUD) + tune sheet (Task 62) — covers Task 8's intent |
+| Eval M2 rungs 1–4 | all `med`/`fps` cells empty; baseline only (`med 248.2 / fps 4` on Mali-G52) |
+| F1b exitmap / caustic→Worker | stay parked — main thread idle (3.2 ms vs gpu ~245 ms); fill is the bottleneck |
+
+**Reframe:** "parity with zero visual change" is over on this GPU — M1 proved the residual is fill. The plan survives as a look-cost picker (M2), not a parity chase.
+
+**Task status after rev 4**
+- **8 — ✗ cancelled (superseded).** Static capability gating never started; the runtime controller does its job.
+- **11 — shipped; done-when withdrawn.** Work landed (33 → 16 long tasks); the zero-task bar is dropped, scroll perf judged via M2 rungs.
+- **5 — still pending**, the live owner decision. **12 — still open (reopened)**, cheap and unlanded.
+- **14, 15 — done**, unchanged. **13 — confirmed cancelled**, unchanged.
+
+**Closure state:** the load path the plan set out to fix is closed. The remaining work is M2's four rungs + the dock call. Nothing else in this plan can move the phone frame.
+
+---
+
+## Gate · rev 5 — brute-force knob sweep (2026-11-20) {#rev-5}
+
+Method: headless Chrome on the running dev server, ceremony rig at the phone box (310×479 CSS), 24 combos — taps {1,3} × bounce {2,5} × bloom {on,off} × dpr {1.0,1.3,1.8} — 3×40 `render()` frames with a `readPixels` sync per batch. Fill slope fitted across each combo's three dpr sizes so the per-`render()` fixed overhead drops out; headless rAF cadence discarded as quantization noise (media 16.8/33.3/66.6 ms steps, p95 pinned). Raw rows: `.hermes/cache/scratch/gem-sweep/out/` (scratch, regenerable).
+
+| taps | bounce | bloom | fill slope (ns/px, M1) | fixed (ms) |
+|---|---|---|---|---|
+| 1 | 2 | on | 2.17 | 0.58 |
+| 1 | 5 | on | 2.83 | 0.81 |
+| 3 | 2 | on | 4.25 | 0.93 |
+| 3 | 5 | on | 5.77 | 1.69 |
+| 3 | 5 | off | 9.47 | 1.11 |
+
+**1. Knob ceiling on the M1 is 2.7× (5.77 → 2.17 ns/px); the phone needs 14.9×** to hold 16.7 ms at the measured 610 ns/px (407k px). The M1 is not ALU-bound, so 2.7× is a floor, not the transferable number.
+
+**2. The transferable number is shader iteration count.** Per pixel the program runs one 170-plane entry search plus `bounce`×170 in the trace loop — ~1020 iterations at bounce 5 — multiplied by `taps` (3× above taps 2) → ~3060 at the shipped default. On an ALU-bound Mali, taps 1 + bounce 2 = 510/px = **6.0×**, twice what the Mac slope shows.
+
+**3. Bloom off is not a lever.** Turning it off *raised* the fitted slope in both pairs (2.17→2.78, 4.25→3.65, 5.77→9.47 ns/px). Rung 3 of Eval M2 currently spends look quality on bloom-off at dpr 1.2 — that step is mis-specified. Reorder: rung 3 becomes taps 1 / bounce 2 / bloom **on** / dpr 1.0; bloom-off is not a rung at all. · **Superseded by rev 5b §C:** those rows predate bloom-state verification; the conclusion survives, the reason changes.
+
+**4. dpr is the largest single lever** — it is linear in pixels, so 1.8 → 1.0 removes 2.75× of fragments with no shader change.
+
+**5. Only the most aggressive rung reaches 60 fps.** 6.0 (iterations) × 2.75 (dpr) = 16.5× ≥ 14.9× required — exactly rung 4 (taps 1, bounce 1, bloom off, dpr 1.0, ~14 ms), consistent with Eval M2's derived 79/35/19/14 ms table. Rungs 1–3 miss.
+
+**Structural item (new).** The only way to keep look at 60 fps is to cut plane iterations per pixel — the exitmap narrowing (170 → ~42 candidates, F1b). Its desktop rejection does not transfer: on Mali the ALU loop is the bottleneck, so trading iterations for texture fetches is the favourable trade. It stays deferred because of the 6.70 MB table, not because the win vanished.
+
+**Unchanged:** rung 4 still needs the owner's handset read to close (Eval M2). Nothing here is device-measured; it is a Mac-side cost model plus the one measured phone baseline.
+
+**rev 5 addendum — Task 8 reopened.** Rev 4 cancelled this on the claim that the adaptive DPR controller covers it. Measured: dpr is linear in pixels and worth 2.75× (1.8→1.0), while the required 14.9× does not close without the 6.0× that taps 1 / bounce 2 buys (510 vs 3060 plane iterations per pixel). The controller never touches taps or bounce, so a capability tier is live work again — a per-device-class default, not a runtime step, and it must not change a single desktop pixel.
+
+---
+
+## Gate · rev 5b — desktop column and corrections (2026-11-20) {#rev-5b}
+
+Re-ran both profiles with the corrected harness: two-size slope (own box + 2.25× area, A,B,B,A order, min of medians), bloom state forced through the sheet API and recorded per row (`bloom`, `tune`, `applied`). 24 mobile rows, 16 desktop rows, every row applied. Raw: `.hermes/cache/scratch/gem-sweep/out/{mobile,desktop}.jsonl`.
+
+| profile | taps | bounce | bloom | dpr | box | slope (ns/px) | frame (ms) |
+|---|---|---|---|---|---|---|---|
+| desktop | 1 | 2 | on | 2 | 1440×960 | 4.50 | 7.63 |
+| desktop | 3 | 5 | on | 2 | 1424×950 | 11.54 | **18.87** |
+| desktop | 3 | 5 | off | 2 | 1440×960 | 9.51 | 17.06 |
+| desktop | 1 | 5 | on | 2 | 1436×958 | 4.52 | 8.59 |
+| mobile | 1 | 2 | on | 1.0 | 310×479 | 2.51–3.23 | 1.0–1.1 |
+| mobile | 3 | 2 | on | 1.0 | 309×478 | 4.54–6.24 | 2.1–2.4 |
+
+**A. The shipped default is over budget on desktop too.** taps 3 / bounce 5 at dpr 2 on the ceremony box costs **18.87 ms** (53 fps) on an M1 — the adaptive controller was already stepping the ratio down on it (est 23.0 ms at that row). "Desktop is smooth, mobile is not" was the wrong frame: it is one configuration that overspends everywhere, and the phone has ~136× less per-pixel headroom (610 vs 4.50 ns/px), so the 14.9× it needs is 9 % of the gap.
+
+**B. Measured lever sizes.** taps 3→1 at bounce 2 = **1.9×** (8.85–9.03 → 4.50–5.14 ns/px desktop; 4.54–6.24 → 2.51–3.23 mobile). bounce 2→5 at taps 1 = ~1.3× (5.14 → 5.82). Together they produce the 6.0× iteration law in rev 5 §2 — taps carries most of it.
+
+**C. Bloom is a non-lever, not a cost.** With the flag verified applied the direction is inconsistent: off is 17 % slower at t1/b2 dpr 1 (6.02 vs 5.14), 6 % slower at dpr 2 (4.79 vs 4.50), and **faster** at the heaviest row (17.06 vs 18.87 ms). So bloom-off changes frame time by ≲ 10 % either way. Rung 3's reorder stands on "bloom buys nothing", not on "bloom off is slower".
+
+**D. dpr remains the largest single lever** (linear in pixels; 1.8 → 1.0 removes 2.75×) and it is the only lever the runtime already pulls by itself.
+
+**E. Correction logged — tuning-sheet bloom flag can be lost at boot.** `gem-perf-tune.js:92` restores a stored tune with `setTimeout(push, 0)`, but `push()` applies bloom only when `window.GEM_BLOOM` already exists, which it does not at that moment; a stored `bloomOn: 0` silently reverts to the default and the sheet's bloom row then agrees with the wrong state (it re-reads from `GEM_BLOOM` on open, line 69). Fix is a re-apply when bloom reports ready, not a longer timeout. Defect, not a rung.
+
+**Status:** the parity question is answerable now and the answer is not "tune harder". At the shipped default the Mac itself is at 53 fps; the phone needs 14.9×, taps+bounce supply 6.0×, dpr supplies 2.75×, and the product of the two just clears it (16.5×) at rung 4's look. Anything that preserves the current look at 60 fps requires cutting plane iterations per pixel — the exitmap item — not another rung.
+
+**rev 5b · number reconciliation.** Slope ranges re-derived from the final row files (`out/summary.json`): mobile t1/b2 = 2.51–3.23, mobile t3/b2 = 4.54–6.24, desktop t1/b2 = 4.50–5.14, desktop t3/b2 = 8.85–9.03 ns/px; taps 3→1 at bounce 2 = 1.9× mobile / 1.9× desktop. Earlier rev 5b figures (2.45–2.98, 2.1×) came from the pre-final probe pass and are superseded.

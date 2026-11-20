@@ -14721,6 +14721,191 @@
           "state": ""
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "96a1fbd3",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "04808e55",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "ec8be679",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "58c87084",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "68d1b773",
+          "state": ""
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "a6e39832",
+          "state": ""
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "99995784",
+          "state": ""
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "141e7b51",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "04808e55",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "ec8be679",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "58c87084",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "68d1b773",
+          "state": ""
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "a6e39832",
+          "state": ""
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "99995784",
+          "state": ""
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "c8ef1768",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "04808e55",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "ec8be679",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "7f11356e",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "68d1b773",
+          "state": ""
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "a6e39832",
+          "state": ""
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "99995784",
+          "state": ""
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "9a1349ce",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "04808e55",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "ec8be679",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "7f11356e",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "68d1b773",
+          "state": ""
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "a6e39832",
+          "state": ""
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "99995784",
+          "state": ""
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "6c795127",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "04808e55",
+          "state": ""
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "ec8be679",
+          "state": ""
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "7f11356e",
+          "state": ""
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "68d1b773",
+          "state": ""
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "a6e39832",
+          "state": ""
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "99995784",
+          "state": ""
+        }
+      ]
     }
   ],
   "2026-11-16_000000-lump-sum-builds.md": [
@@ -14745,6 +14930,30 @@
           "head": "Phase 1 — Gem cut fidelity {#phase-1}",
           "hash": "c44d09aa",
           "state": "0/1"
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "361037e2",
+      "sections": [
+        {
+          "head": "Phase 1 — Gem cut fidelity {#phase-1}",
+          "hash": "d6e49282",
+          "state": "0/1"
+        }
+      ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-20",
+      "hash": "d07e8339",
+      "sections": [
+        {
+          "head": "Phase 1 — Gem cut fidelity {#phase-1}",
+          "hash": "9727f69d",
+          "state": "1/1"
         }
       ]
     }
