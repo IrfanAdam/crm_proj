@@ -468,5 +468,10 @@
   "plan": "2026-11-16_225300-mobile-perf-parity.md",
   "anchor": "{#rev-3}",
   "note": "fix(ds): auto-link hook — trailer in body only, subject untrailed"
+ },
+ "e437203": {
+  "plan": "2026-11-16_225300-mobile-perf-parity.md",
+  "anchor": "{#rev-6}",
+  "note": "retro-link: gem mobile-perf mesh-entry opt-in, CAND scaffolding, eval E1-E5"
  }
 }

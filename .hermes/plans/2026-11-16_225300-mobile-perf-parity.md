@@ -30,7 +30,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 4 | Right-size the edge-material layer stack; drop `will-change` on permanently-animating spans | layer count and per-layer blur radius measured before/after; pixels identical | shipped |
-| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged |
+| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged · rev 6: unchanged, still the owner's call. |
 | 6 | Contain every glass island (`contain: paint` / `isolation`) so a blur cannot force a full-page repaint | trace shows no full-page paint during scroll | shipped |
 
 ## Phase 3 — Runtime: WebGL and motion loops {#phase-3}
@@ -42,7 +42,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 7 | Hoist per-frame rect/layout reads out of the gem loop | zero `getBoundingClientRect`/`clientWidth` reads inside `requestAnimationFrame` callbacks | shipped |
-| 8 | Gate rig quality on device capability, not just `prefers-reduced-motion` | mobile trace frame time at parity with desktop; no visible softening at 1× | ✗ cancelled (rev 4) · **reopened (rev 5)** — rev 4's reasoning fails the brute-force check: the adaptive controller moves DPR only (linear in pixels, worth 2.75× at 1.8→1.0) but the 14.9× the phone needs includes a 6.0× taps/bounce term (510 vs 3060 plane iterations/px) that nothing gates. Device-tiered taps/bounce defaults are the only non-structural lever left |
+| 8 | Gate rig quality on device capability, not just `prefers-reduced-motion` | mobile trace frame time at parity with desktop; no visible softening at 1× | ✗ cancelled (rev 4) · **reopened (rev 5)** — rev 4's reasoning fails the brute-force check: the adaptive controller moves DPR only (linear in pixels, worth 2.75× at 1.8→1.0) but the 14.9× the phone needs includes a 6.0× taps/bounce term (510 vs 3060 plane iterations/px) that nothing gates. Device-tiered taps/bounce defaults are the only non-structural lever left · rev 6: superseded — the structural lever (candidate scan) replaces the capability tier; folds into E3 of the eval record. |
 | 9 | One shared rAF clock; offscreen and hidden-tab rigs fully parked | no more than one rAF loop alive per visible surface | shipped · rev 3: the gem rig now arms from its own `ResizeObserver` like the other three, so the park contract is symmetric (lane I) |
 
 ## Phase 4 — Interaction: scroll and pointer handlers {#phase-4}
@@ -64,7 +64,7 @@
 
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
-| 12 | `content-visibility: auto` + `contain-intrinsic-size` on offscreen feed/sheet lists | paint count during scroll drops; layout height unchanged | ✗ reopened (rev 3) — `grep -r content-visibility src/` and `git log -S content-visibility -- src/` are both empty. What did land is `contain:` (10 declarations in `src/`), audited rule by rule by lane E — a different property · rev 4: re-verified 2026-11-20, still absent from `src/`; still unlanded |
+| 12 | `content-visibility: auto` + `contain-intrinsic-size` on offscreen feed/sheet lists | paint count during scroll drops; layout height unchanged | ✗ reopened (rev 3) — `grep -r content-visibility src/` and `git log -S content-visibility -- src/` are both empty. What did land is `contain:` (10 declarations in `src/`), audited rule by rule by lane E — a different property · rev 4: re-verified 2026-11-20, still absent from `src/`; still unlanded · rev 6: still unlanded, carried forward, nothing blocks it. |
 | 13 | Collapse shadow stacks that paint the same pixels | computed shadow values unchanged or visually identical in the pixel gate | ✗ cancelled — lane E measured every stack; none collapses without weakening the shadow |
 
 ## Phase 6 — Gate: measure and prove no visual change {#phase-6}
@@ -238,3 +238,30 @@ Re-ran both profiles with the corrected harness: two-size slope (own box + 2.25�
 **Status:** the parity question is answerable now and the answer is not "tune harder". At the shipped default the Mac itself is at 53 fps; the phone needs 14.9×, taps+bounce supply 6.0×, dpr supplies 2.75×, and the product of the two just clears it (16.5×) at rung 4's look. Anything that preserves the current look at 60 fps requires cutting plane iterations per pixel — the exitmap item — not another rung.
 
 **rev 5b · number reconciliation.** Slope ranges re-derived from the final row files (`out/summary.json`): mobile t1/b2 = 2.51–3.23, mobile t3/b2 = 4.54–6.24, desktop t1/b2 = 4.50–5.14, desktop t3/b2 = 8.85–9.03 ns/px; taps 3→1 at bounce 2 = 1.9× mobile / 1.9× desktop. Earlier rev 5b figures (2.45–2.98, 2.1×) came from the pre-final probe pass and are superseded.
+
+---
+
+## Gate · rev 6 — wrap (2026-11-21) {#rev-6}
+
+Closes the plan. The gem-renderer thread this build opened in Phase 3 was carried to its own record; what is left here is dispositioned below rather than left open. Measured evidence, dead ends, the cost model and the follow-on work now live in `.hermes/evals/2026-11-20-gem-mobile-perf/README.md`.
+
+| What | Result |
+|---|---|
+| Dead guard in the bounce loop | `abs(den) < 1e-6` deleted from `gem-shader-ext.js` — **9.215 → 8.625 ms (−6.4 %)**, 4/4 clean paired randomized rounds, **pixel-identical** (bbox 0.000 % >2/255, maxΔ 0, dpr 2 and 3). The only change in the tree that is both invisible and verified |
+| Mesh-entry path | measured **−9.5 %** (8.73 → 7.90 ms, 5/5 rounds) but **rejected as default**: it splits creases differently — bbox 2.40 % >8/255, maxΔ 243, girdle **19.26 %** >8 (mean 7.8) vs crown 3.56 % / pavilion 1.59 %, 99 % of the delta within 6 px of a facet boundary; control 0.000 %. Now **opt-in `?gemmesh=1`**; default is byte-identical to the raymarch again (0 of 1 468 800 px differ) |
+| Candidate-scan runtime | built (new `gem-cand.js` + CAND block, default off): identity table is **bitwise identical**, poisoned table moves 13 % of pixels, 404 falls back with no defines, overhead +75 % at k=170. Waiting on a table, not on code |
+| Four cuts falsified | MSAA4 off (−5.8 % but 22 % of rim px >8/255, max∆ 127); GL background → CSS (**+0.24 %**, noise — the '15–22 % background' claim is dead); back-face prepass (**+6.1 % slower**, view-ray vs refracted-ray agree on 0.01 % of rays); exact chain table (**40.9 % exact** — the exit facet depends on the start point, so no grid fixes it) |
+| Phone cost model | 11.2 ms @ 1.46 MP on M1 with ~2 890 plane tests/px. ESTIMATE at ×7: Mali-G52 MC2 ~332 ms (dpr 3) / ~148 (dpr 2) / ~83 (dpr 1.5); Adreno 610 ~136/60/34; Adreno 619 ~80/35/20. Bloom moves ~138 MB/frame at dpr 3 (8.3 GB/s at 60 fps) — a dpr cap is mandatory on G52/P22-class parts regardless of shader work |
+| Adversarial suite | first grade **0/100 is void** — every failure was harness: `readPixels` in a later CDP task on a non-preserved buffer, `deck-lab.js:16` throwing every 250 ms, the hidden-tab case freezing rAF, and a baseline re-armed against itself. Repair is carried as E4 |
+
+**Task status after rev 6 — final**
+
+- **5 — pending, owner decision.** `?dock=lean` is live (`slices-spec.js:42`); the rim-vs-frame-time call is unchanged and is a design decision, not a fix.
+- **8 — superseded.** Device-tiered taps/bounce defaults were the only non-structural lever in rev 5; the structural lever now exists (candidate scan, E1), so this folds into E3 (phone render policy: dpr cap + bloom scale) rather than a capability tier.
+- **12 — open, unlanded, carried forward.** `content-visibility` is still absent from `src/`; cheap, unblocked, not started. Nothing in the gem work supersedes it.
+- **11 — shipped, done-when withdrawn** (rev 4). **13 — confirmed cancelled.** **14, 15 — done, unchanged.** **1–4, 6, 7, 9, 10 — shipped.**
+- **Eval M2 rungs 1–4 — replaced.** The rungs assumed knob-tuning was the path; rev 5/5b showed the knob ceiling is 1.9–2.7× against the 14.9× the phone needs, and rev 6 adds the structural option. Rung-level phone readings are now falsification tests E5 in the eval record, not a ladder.
+
+**Remaining work lives in one place:** `.hermes/evals/2026-11-20-gem-mobile-perf/README.md` — E1 candidate-set bake + `ei` wiring (the only change with an 8× in it), E2 ruled (mesh crease), E3 phone render policy (needs an owner look call on dpr), E4 adversarial suite repair, E5 on-device falsification.
+
+**Closure state:** closed as a plan. The load path is shipped (`70367e7`); the dock call and `content-visibility` are the only items still open here, both owner-gated or unstarted rather than blocked; the gem frame-time question moved to the eval record with two measured changes, four falsified cuts and one built-and-waiting runtime.

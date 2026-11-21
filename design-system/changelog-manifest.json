@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T01:00:25.599Z",
+  "generated": "2026-11-21T10:14:59.952Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "e437203",
+      "full": "e437203ab7243a8a24425494c04fa58deca46928",
+      "date": "2026-11-21",
+      "time": "06:25",
+      "subject": "feat(gem): mesh-entry opt-in and CAND scaffolding, line-budget splits",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "rev-6"
+    },
     {
       "sha": "e2a0b9f",
       "full": "e2a0b9f13dd730fdbe31fda105851769321a782d",
@@ -4969,15 +4978,6 @@
     }
   ],
   "wip": [
-    "M  gallery.html",
-    "M  index.html",
-    "M  pitch.html",
-    "M  src/arch/atlas.json",
-    "A  src/components/GemReward/gem-cand.js",
-    "A  src/components/GemReward/gem-mesh-entry.js",
-    "A  src/components/GemReward/gem-mesh.js",
-    "M  src/components/GemReward/gem-shader-ext.js",
-    "A  src/components/GemReward/gem-shader-probe.js",
-    "M  src/components/GemReward/gem-shader.js"
+    "M src/components/GemReward/gem-perf.js"
   ]
 }
