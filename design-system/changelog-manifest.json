@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T14:21:42.996Z",
+  "generated": "2026-11-21T14:28:44.256Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "d23d9ed",
+      "full": "d23d9ed89687e821c8cbe2b4d9582458d4786787",
+      "date": "2026-11-21",
+      "time": "19:51",
+      "subject": "fix(atlas): content-hash source freshness so verify:atlas survives fresh checkouts",
+      "plan": "2026-09-22_082844-arch-atlas.md",
+      "anchor": "phase-1"
+    },
     {
       "sha": "1f4f2f2",
       "full": "1f4f2f2356d79e5060a8515af311d10010ac0359",
@@ -4996,8 +5005,10 @@
     }
   ],
   "wip": [
-    "M  scripts/generate-arch-atlas.mjs",
-    "M  src/arch/atlas.json",
-    "M  tests/arch-atlas.test.mjs"
+    "M  scripts/generate-mechanics-graph.js",
+    "M  src/js/mechanics/graphData.decisions.js",
+    "M  src/js/mechanics/graphData.js",
+    "M  src/js/mechanics/graphData.logic.js",
+    "M  src/js/mechanics/graphData.schema.js"
   ]
 }

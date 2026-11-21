@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Source: scripts/generate-mechanics-graph.js [plan:2026-09-22_155000-architecture-mechanics.md#phase-2]
 import fs from 'fs';
+import crypto from 'crypto';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -196,9 +197,33 @@ applyManual(LOGIC.nodes, LOGIC.groups);
 applyManual(SCHEMA.nodes, SCHEMA.groups);
 applyManual(DECISIONS.nodes, DECISIONS.groups);
 
-// ── staleness: sources mtimes same as atlas.json ──
-function mtimeOf(rel){
-  try { return Math.floor(fs.statSync(join(root, rel)).mtimeMs); } catch { return 0; }
+// ── staleness: content digests, not mtimes (same rule as atlas.json) ──
+// git does not preserve mtimes, so a timestamp makes --check unsatisfiable on any fresh
+// clone: every stamped source looks newer than the manifest. sources{} holds a sha256
+// content digest (16 hex chars, cached per path, 'missing' sentinel) instead of epoch ms.
+// Directories — src/patterns/{Operate,Monitor}Screen are directory nodes — hash their
+// sorted, dotfile-skipped content tree, because readFileSync on a directory throws EISDIR
+// and would silently turn the check into a no-op.
+const digestCache = new Map();
+function digestOf(rel){
+  if(digestCache.has(rel)) return digestCache.get(rel);
+  let digest = 'missing';
+  try {
+    const hash = crypto.createHash('sha256');
+    const feed = (abs) => {
+      if(fs.statSync(abs).isDirectory()){
+        for(const name of fs.readdirSync(abs).sort()){
+          if(name.startsWith('.')) continue;
+          hash.update(name+'\0');
+          feed(join(abs,name));
+        }
+      } else hash.update(fs.readFileSync(abs));
+    };
+    feed(join(root, rel));
+    digest = hash.digest('hex').slice(0,16);
+  } catch { digest = 'missing'; }
+  digestCache.set(rel, digest);
+  return digest;
 }
 const allNodesForSources = [...LOGIC.nodes, ...SCHEMA.nodes, ...DECISIONS.nodes];
 let prevMeta = null;
@@ -209,11 +234,17 @@ try {
 } catch {}
 const meta = { generatedAt: new Date().toISOString(), sources: {} };
 for(const n of allNodesForSources){
-  if(n.file) meta.sources[n.file] = mtimeOf(n.file);
+  if(n.file) meta.sources[n.file] = digestOf(n.file);
 }
+// a node is stale when its source content differs from the digest recorded the last time
+// the graph was generated. Legacy numeric (mtime) entries carry no comparable content
+// identity, so they are treated as "unknown" rather than forcing a badge on every node.
 function attachStale(nodes){
-  const threshold = prevMeta ? Date.parse(prevMeta.generatedAt) : Date.parse(meta.generatedAt);
-  return nodes.map(n => ({ ...n, stale: (meta.sources[n.file]||0) > threshold }));
+  const prevSources = (prevMeta && prevMeta.sources) || {};
+  return nodes.map(n => {
+    const prev = prevSources[n.file];
+    return { ...n, stale: typeof prev === 'string' && prev !== meta.sources[n.file] };
+  });
 }
 const LOGIC_NODES_STALE = attachStale(LOGIC.nodes);
 const SCHEMA_NODES_STALE = attachStale(SCHEMA.nodes);
@@ -264,11 +295,10 @@ if(check){
       console.error(`✗ verify:mechanics — drift: ${path.replace(root+'/','')} — run \`npm run gen:mechanics\``);
       hasError=true;
     }
-    // staleness check: sources mtimes vs stored meta.sources (same as atlas.json)
+    // staleness check: source content digests vs stored meta.sources (same as atlas.json)
     if(curMeta && curMeta.sources){
       for(const [rel, stored] of Object.entries(curMeta.sources)){
-        const curMtime = mtimeOf(rel);
-        if(curMtime !== stored){
+        if(digestOf(rel) !== stored){
           console.error(`✗ verify:mechanics — stale: ${rel} changed since manifest; run \`npm run gen:mechanics\``);
           hasError=true;
           break;
@@ -277,6 +307,24 @@ if(check){
     } else {
       console.error(`✗ verify:mechanics — stale: missing META in ${path.replace(root+'/','')}`);
       hasError=true;
+    }
+  }
+  // source-set coverage: a module dropped into a directory the graph claims to own must
+  // become a node, or the map silently stops describing the code
+  const canonPath = join(root,'src/js/mechanics/graphData.js');
+  let canonMeta = null;
+  try{ canonMeta = parseExport(fs.readFileSync(canonPath,'utf8'),'META'); } catch{}
+  if(canonMeta && canonMeta.sources){
+    for(const dir of ['src/logic']){
+      let names=[];
+      try{ names = fs.readdirSync(join(root,dir)).filter(f=>!f.startsWith('.') && /\.(m|c)?jsx?$/.test(f)); }catch{}
+      for(const name of names.sort()){
+        const rel = `${dir}/${name}`;
+        if(!(rel in canonMeta.sources)){
+          console.error(`✗ verify:mechanics — drift: ${rel} is not a graph source — add a node in scripts/generate-mechanics-graph.js, run \`npm run gen:mechanics\``);
+          hasError=true;
+        }
+      }
     }
   }
   // ensure no stale ia/components/truth files linger
