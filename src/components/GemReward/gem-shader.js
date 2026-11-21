@@ -42,6 +42,8 @@ uKey: { value: o.key || new T.Vector4(3, 5, 4, 0.55) },
 }, vertexShader: VS, fragmentShader: HEAD + BODY });
 sm.userData = { can: o.can };
 if (window.GEM_FACETS) window.GEM_FACETS.set(sm, o.can);
+if (window.GEM_MESH) window.GEM_MESH.claim(sm, o);   // OPT-IN · mesh entry normal replaces ent()'s plane scan only with ?gemmesh=1
+if (window.GEM_CAND) window.GEM_CAND.claim(sm);      // OPT-IN · ?gemcand=1 swaps the 170-plane bounce scan for the baked candidate set (creation-time only)
 api.aim(sm);
 return sm;
 };
@@ -51,6 +53,7 @@ api.core = function (opts) { return api.farside(Object.assign({}, opts || {}, { 
 // return early and keep the constructor defaults (uK/uFt = white), i.e. a grey, white-locked stone.
 api.aim = function (mesh) {
 const m = mesh && mesh.material, u = m && m.uniforms; if (!u || !u.uK) return;
+if (window.GEM_MESH) window.GEM_MESH.attach(mesh);   // OPT-IN · grafts the neighbour planes once, then no-ops
 u.uM.value.copy(mesh.matrixWorld);
 const cat = (m.userData.can && m.userData.can.dataset.gem) || 'sapphire';
 const O = window.GEM_OPTICS ? window.GEM_OPTICS.of(cat) : null;

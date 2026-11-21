@@ -1,11 +1,15 @@
 /* ADAM/SHARED — src/components/GemReward/gem-shader-ext.js · GLSL sources for the interior trace */
 // [plan:2026-10-03_144222-gem-realism-round2.md#round-19] · moved verbatim out of gem-shader.js (line-budget split).
-// Export map: GEM_SHADER_EXT { VS, HEAD, BODY, bake(src,data,n), BK{rt,decl} } — the trace shader, consumed by gem-shader.js
+// Export map: GEM_SHADER_EXT { VS, HEAD, BODY, bake(src,data,n), probe(gl,decl,n), BK{rt,decl}, parity(), STRIP } — the trace shader, consumed by gem-shader.js
 // — HEAD declares uPl[PLMAX] only #ifndef BAKED; bake() swaps it for a const array when the program is ES 3.00.
+// — CAND (?gemcand=1, gem-cand.js): the bounce scan reads k candidate plane indices from R8 uCandTex at
+// —   [ei][az][el][slot] and runs the SAME test / strict '<' rule on them, then falls back to the full 170-plane
+// —   scan when nothing wins. Both paths are one string; CAND undefined → the emitted GLSL is the plain scan, and
+// —   parity() proves it (strip the two CAND snippets and you get the pre-CAND HEAD/BODY back, byte for byte).
 (function () {
 const VS = 'varying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\nvoid main() {\n\tvec4 wp = modelMatrix * vec4( position, 1.0 );\n\tvW = wp.xyz;\n\tvO = position;\n\tvN = normalize( mat3( modelMatrix ) * normal );\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}';
 const DECL = '#ifndef BAKED\nuniform vec4 uPl[PLMAX];\n#endif\n';
-const HEAD = DECL + 'uniform sampler2D uPlTex;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform int uCount;\nuniform float ior, uKS, uExp, uGam, uAmb, winGain, stageOn, gain, dbg, uCr, uBr, uLu, uLuB, uSh, uBounce, uSpread, uTaps, uSw, uRf, uFg;\nuniform vec3 uK, tint, uFt;\nuniform vec4 uKey;\nuniform mat4 uM;\nuniform vec3 rampDeep, rampMid, rampLite, rampPink;\nvarying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\n#include <cube_uv_reflection_fragment>\n' +
+const HEAD0 = DECL + 'uniform sampler2D uPlTex;\nuniform sampler2D envMap;\nuniform sampler2D stageTex;\nuniform int uCount;\nuniform float ior, uKS, uExp, uGam, uAmb, winGain, stageOn, gain, dbg, uCr, uBr, uLu, uLuB, uSh, uBounce, uSpread, uTaps, uSw, uRf, uFg;\nuniform vec3 uK, tint, uFt;\nuniform vec4 uKey;\nuniform mat4 uM;\nuniform vec3 rampDeep, rampMid, rampLite, rampPink;\nvarying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\n#include <cube_uv_reflection_fragment>\n' +
 'vec4 PL( int i ) {\n#ifdef PLTEX\n\treturn texture2D( uPlTex, vec2( ( float( i ) + 0.5 ) / float( PLMAX ), 0.5 ) );\n#elif defined( BAKED )\n\treturn PLB[ i ];\n#else\n\treturn uPl[ i ];\n#endif\n}\n' +
 'float lum( vec3 c ) { return dot( c, vec3( 0.2126, 0.7152, 0.0722 ) ); }\nvec3 aces( vec3 x ) { return clamp( ( x * ( 2.51 * x + 0.03 ) ) / ( x * ( 2.43 * x + 0.59 ) + 0.14 ), 0.0, 1.0 ); }\n' +
 // env: crisp tap = facet image (the structure), broad tap = fill; both pulled toward their own luma so the studio's blue tent cannot repaint an amber stone. r18/k: TWO hard-edged panels (gnomonic rect = real straight edges and corners, ~1 deg falloff) sit on the -z meridian, where the black's exit directions actually cluster: A at -10 deg elevation lights the pavilion wedge, B at +28 deg the upper-crown band. A smooth fill killed the black by wiping the facet contrast hp measures; a panel lights only its own directions, so its edge is an edge in the reflection. A ring on that axis does nothing - its hole IS the wedge.' +// — r18/k: panels FINITE + HARD-EDGED (gnomonic rect: straight edges, corners; ring = annulus). A smooth fill killed the black by wiping the facet contrast hp measures; a panel lights only its own directions, so its edge is an edge in the reflection. Sweep: uP1 (dir, strength), uP2 (hs.x, hs.y|ringR, round, w).
@@ -29,7 +33,7 @@ return src.replace(DECL, '#ifdef BAKED\n' + BK.decl + '#endif\n');
 };
 // the spectrum is a property of the PATH, not of the exit: tr() is the whole interior trace at one index, and main
 // runs it once per wavelength (R lo, G n, B hi; 5 taps adds yellow/cyan). Fresnel, TIR and Beer-Lambert are per hit.
-const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
+const BODY0 = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
     // entry = the last plane the ray is still outside of (max t, object space); it also keeps the runner-up. The girdle is
     // 48 walls 7.5 deg apart, so near the silhouette two land in one pixel and winning is a coin toss = the collar static.
     // tau is the per-pixel footprint (from main), so the blend is exactly one pixel wide at any DPR or distance.
@@ -46,7 +50,7 @@ const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
     '\tgNe = normalize( mix( n2, n1, h ) );\n\treturn vec4( mix( t2, t1, h ), float( e1 ), h < 1.0 ? float( e2 ) : -1.0, 1.0 );\n}\n' +
     'vec3 tr( vec3 ro, vec3 rd, float n, mat3 R, vec4 E ) {\n\tgTot = 0.0;\n\tgNb = 0.0;\n\tfloat tin = E.x;\n\tif ( tin < 0.0 ) {\n#ifdef CORE\n\t\tdiscard;\n#endif\n\t\treturn vec3( 0.0 ); }\n' +
     '\tvec3 ne = gNe;\n\tint ei = int( E.y );\n\tvec3 dl = refract( rd, ne, 1.0 / n );\n\tif ( dot( dl, dl ) < 1e-6 ) dl = rd;\n\tvec3 p = ro + rd * tin;\n\tvec3 acc = vec3( 0.0 ), ab = vec3( 1.0 );\n' +
-    '\tfloat F0 = pow( ( n - 1.0 ) / ( n + 1.0 ), 2.0 );\n\tint skip = ei, sk2 = int( E.z );\n\tfloat esc = 0.0;\n\tfor ( int b = 0; b < 6; b++ ) {\n\t\tif ( float( b ) >= uBounce ) break;\n\t\tfloat t = 1e9;\n\t\tint hi = -1;\n\t\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\t\tif ( i >= uCount || i == skip || i == sk2 ) continue;\n\t\t\tvec4 P = PL( i );\n\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\tif ( abs( den ) < 1e-6 ) continue;\n\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = i; }\n\t\t}\n' +
+    '\tfloat F0 = pow( ( n - 1.0 ) / ( n + 1.0 ), 2.0 );\n\tint skip = ei, sk2 = int( E.z );\n\tfloat esc = 0.0;\n\tfor ( int b = 0; b < 6; b++ ) {\n\t\tif ( float( b ) >= uBounce ) break;\n\t\tfloat t = 1e9;\n\t\tint hi = -1;\n\t\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\t\tif ( i >= uCount || i == skip || i == sk2 ) continue;\n\t\t\tvec4 P = PL( i );\n\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = i; }\n\t\t}\n' +
     '\t\tif ( hi < 0 ) break;\n\t\tp += dl * t;\n\t\tgTot += t;\n\t\tgNb += 1.0;\n\t\tab *= exp( -uK * ( t * uKS ) );\n\t\tvec3 nh = PL( hi ).xyz;\n\t\tfloat c = clamp( dot( dl, nh ), 0.0, 1.0 );\n' +
     '\t\tif ( n * n * ( 1.0 - c * c ) < 1.0 ) {\n\t\t\tfloat F = F0 + ( 1.0 - F0 ) * pow( 1.0 - c, 5.0 );\n\t\t\tacc += ( 1.0 - F ) * envR( refract( dl, -nh, n ), R ) * ab;\n\t\t\tesc = 1.0;\n\t\t\tbreak;\n\t\t}\n' +
     '\t\tdl = reflect( dl, nh );\n\t\tskip = hi;\n\t}\n' +
@@ -60,21 +64,26 @@ const BODY = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
     '\t\tif ( uTaps > 4.0 ) {\n\t\t\tc0 = mix( c0, tr( ro, rd, ior * ( 1.0 - 0.45 * uSpread ), R, E ), 0.5 );\n\t\t\tc4 = mix( c4, tr( ro, rd, ior * ( 1.0 + 0.45 * uSpread ), R, E ), 0.5 );\n\t\t}\n\t\tacc = vec3( c0.r, c2.g, c4.b );\n\t}\n' +
     '\tif ( dbg > 0.5 ) { gl_FragColor = vec4( gTot / 3.0, gNb / 3.0, 1.0 - gAb.g, 1.0 ); return; }\n\tvec3 lin = acc * uExp + uAmb * ( 1.0 - gAb ) * tint;\n#ifdef CORE\n\tfloat cf = clamp( -dot( rd, gNe ), 0.0, 1.0 );\n\tfloat Ff = pow( ( ior - 1.0 ) / ( ior + 1.0 ), 2.0 );\n\tFf = Ff + ( 1.0 - Ff ) * pow( 1.0 - cf, 5.0 );\n\tlin = Ff * envR( reflect( rd, gNe ), R ) * ( 1.0 - uRf * Ff ) + ( 1.0 - Ff ) * lin;\n\tlin += uFg * uFt * ( 1.0 - Ff );\n\tif ( dbg > 0.5 ) {\n\t\tif ( dbg < 1.5 ) { vec3 t = acc * uExp; gl_FragColor = vec4( t / ( 1.0 + t ), 1.0 ); return; }\n\t\tif ( dbg < 2.5 ) { vec3 t = Ff * envR( reflect( rd, gNe ), R ); gl_FragColor = vec4( t / ( 1.0 + t ), 1.0 ); return; }\n\t\tif ( dbg < 3.5 ) { gl_FragColor = vec4( Ff, Ff, Ff, 1.0 ); return; }\n\t\tgl_FragColor = vec4( gAb, 1.0 ); return;\n\t}\n#endif\n' +
     'vec3 o = pow( aces( lin ), vec3( 1.0 / uGam ) );\n\tfloat wh = smoothstep( 0.80, 1.0, max( max( o.r, o.g ), o.b ) );\n\to = mix( o, vec3( lum( o ) ), 0.65 * wh );\n\to = clamp( 0.46 + ( o - 0.46 ) * 1.16, 0.0, 1.0 );   // B: the photo is bimodal; this build was one mid mass\n\tvec3 tgt = uFt * ( lum( o ) / max( lum( uFt ), 1e-3 ) );\n\tfloat kl = 0.20 * ( 1.0 - 0.92 * smoothstep( 0.30, 0.88, lum( o ) ) );\n\tvec3 n = clamp( mix( o, tgt, kl ), 0.0, 1.0 );\n\tfloat Ln = lum( n ), Sn = chr( uFt );\n\tvec3 dn = n - Ln;\n\tfloat up = max( max( dn.r, dn.g ), dn.b ), lo = min( min( dn.r, dn.g ), dn.b );\n\tfloat den = up - lo - Sn * up;\n\tfloat kn = den > 1e-4 ? Sn * Ln / den : 9.0;\n\tif ( kn > 1.0 ) kn = min( kn, min( up > 1e-5 ? ( 1.0 - Ln ) / up : 9.0, lo < -1e-5 ? Ln / -lo : 9.0 ) );\n\tgl_FragColor = vec4( clamp( Ln + dn * kn, 0.0, 1.0 ), 1.0 );\n}';
-// F2 guard — compile the EXACT emitted declaration as ES 3.00 on this driver before any material uses it: the
-// array constructor plus the dynamic index the trace does are the two things a baked plane set can fail on.
-const probe = function (gl, decl, n) {
-if (!gl || !decl) return false;
-const vs = gl.createShader(gl.VERTEX_SHADER), fs = gl.createShader(gl.FRAGMENT_SHADER), pr = gl.createProgram();
-if (!vs || !fs || !pr) return false;
-gl.shaderSource(vs, '#version 300 es\nin vec4 p;\nvoid main() { gl_Position = p; }');
-gl.shaderSource(fs, '#version 300 es\nprecision highp float;\n#define PLMAX ' + n + '\n' + decl +
-'uniform int uC;\nlayout(location = 0) out highp vec4 o;\nvoid main() {\n\tvec4 s = vec4( 0.0 );\n' +
-'\tfor ( int i = 0; i < ' + n + '; i++ ) { if ( i >= uC ) break; s += PLB[ i ]; }\n\to = s;\n}');
-gl.compileShader(vs); gl.compileShader(fs);
-gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
-const ok = gl.getShaderParameter(fs, gl.COMPILE_STATUS) && gl.getProgramParameter(pr, gl.LINK_STATUS);
-gl.deleteProgram(pr); gl.deleteShader(vs); gl.deleteShader(fs);
-return !!ok;
-};
-window.GEM_SHADER_EXT = { VS: VS, HEAD: HEAD, BODY: BODY, bake: bake, probe: probe, BK: BK };
+// — CAND (?gemcand=1, gem-cand.js): the table sampler + the two lookups. One snippet, so STRIP removes it exactly and
+// — the pre-CAND HEAD comes back byte for byte. Cell mapping is the bake's, in object space: ia over az = atan2(d.z,d.x)
+// — mapped into [0,2pi), je over el = asin(clamp(d.y,-1,1)) in [-pi/2,pi/2]; 128/(2pi) === 64/pi === 20.371832715762603.
+const CANDD = '#ifdef CAND\nuniform sampler2D uCandTex;\n' +
+'int candBase( vec3 d, int ei ) {\n\tfloat az = atan( d.z, d.x ), el = asin( clamp( d.y, -1.0, 1.0 ) );\n\tif ( az < 0.0 ) az += 6.283185307179586;\n\tint ia = int( clamp( floor( az * 20.371832715762603 ), 0.0, 127.0 ) );\n\tint je = int( clamp( floor( ( el + 1.5707963267948966 ) * 20.371832715762603 ), 0.0, 63.0 ) );\n\treturn ( ( ei * 128 + ia ) * 64 + je ) * CANDK;\n}\n' +
+'int candAt( int idx ) {\n\tint cy = idx / CANDW;\n\tint cx = idx - cy * CANDW;\n\treturn int( texture2D( uCandTex, ( vec2( float( cx ), float( cy ) ) + 0.5 ) / vec2( float( CANDW ), float( CANDH ) ) ).r * 255.0 + 0.5 );\n}\n' +
+'#endif\n';
+const HEAD = HEAD0 + CANDD;
+// — the scan itself: the emitted full-scan text is the shipped one, untouched. CAND splices a candidate pass in FRONT of
+// — it (ei >= 0 only — the mesh-entry patch hands tr() ei = -1 and there is no facet to key on, so it scans in full) and
+// — re-enters the SAME scan when no candidate won, so `t`/`hi` start exactly where the plain pass would. Same test, same
+// — strict '<' tie rule (first winner in slot order), same skip/sk2/ti > 2e-3 conditions.
+const SCAN0 = '\t\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\t\tif ( i >= uCount || i == skip || i == sk2 ) continue;\n\t\t\tvec4 P = PL( i );\n\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = i; }\n\t\t}\n';
+const CANDO = '#ifdef CAND\n\t\tif ( ei >= 0 ) {\n\t\t\tint cb = candBase( dl, ei );\n\t\t\tfor ( int s = 0; s < CANDK; s++ ) {\n\t\t\t\tint ci = candAt( cb + s );\n\t\t\t\tif ( ci >= 255 ) break;\n\t\t\t\tif ( ci >= uCount || ci == skip || ci == sk2 ) continue;\n\t\t\t\tvec4 P = PL( ci );\n\t\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = ci; }\n\t\t\t}\n\t\t}\n\t\tif ( hi < 0 ) {\n#endif\n';
+const CANDC = '#ifdef CAND\n\t\t}\n#endif\n';
+const BODY = BODY0.indexOf( SCAN0 ) < 0 ? BODY0 : BODY0.replace( SCAN0, CANDO + SCAN0 + CANDC );
+// parity(): strip the three snippets and the pre-CAND sources must come back identical.
+const STRIP = [CANDD, CANDO, CANDC];
+const strip = function (src) { let s = src; for (let i = 0; i < STRIP.length; i++) s = s.split(STRIP[i]).join(''); return s; };
+const parity = function () { return { head: strip(HEAD) === HEAD0, body: strip(BODY) === BODY0, spliced: BODY !== BODY0, headLen: HEAD.length, bodyLen: BODY.length }; };
+// — probe() lives in gem-shader-probe.js (line-budget split; loaded before this file).
+window.GEM_SHADER_EXT = { VS: VS, HEAD: HEAD, BODY: BODY, bake: bake, probe: window.GEM_SHADER_PROBE, BK: BK, parity: parity, STRIP: STRIP };
 })();
