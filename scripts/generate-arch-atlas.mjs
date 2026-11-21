@@ -1,6 +1,7 @@
 /* ADAM/TOOL — scripts/generate-arch-atlas.mjs · essence manifest [plan:2026-09-22_082844-arch-atlas.md#phase-1] */
 // — Exports: buildAtlas() + CLI (write | --check) —
 import fs from 'fs';
+import crypto from 'crypto';
 import { join, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -8,11 +9,33 @@ const check = process.argv.includes('--check');
 const manual = JSON.parse(fs.readFileSync(join(root, 'scripts/arch-atlas.manual.json'), 'utf8'));
 const TOK = { 'opp-card': 'OpportunityCard', avatar: 'Avatar', chip: 'Chip', kpi: 'KpiStat', tabbar: 'TabBar', funnel: 'FunnelCard', 'goal-bar': 'GoalBar', gem: 'GemReward', timeline: 'Timeline', sparkline: 'Sparkline' };
 const pretty = (s) => s.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+// content digest, not mtime: git does not preserve mtimes, so a timestamp makes --check
+// unsatisfiable on any fresh clone. Directories hash their sorted content tree.
+const digestCache = new Map();
+const digestOf = (rel) => {
+  if (digestCache.has(rel)) return digestCache.get(rel);
+  let digest = 'missing';
+  try {
+    const hash = crypto.createHash('sha256');
+    const feed = (abs) => {
+      if (fs.statSync(abs).isDirectory()) {
+        for (const name of fs.readdirSync(abs).sort()) {
+          if (name.startsWith('.')) continue;
+          hash.update(name + '\0');
+          feed(join(abs, name));
+        }
+      } else hash.update(fs.readFileSync(abs));
+    };
+    feed(join(root, rel));
+    digest = hash.digest('hex').slice(0, 16);
+  } catch { digest = 'missing'; }
+  digestCache.set(rel, digest);
+  return digest;
+};
 export function buildAtlas(res) {
   const level = res || manual.resolution || 'L1';
-  const mtimeOf = (rel) => { try { return Math.floor(fs.statSync(join(root, rel)).mtimeMs); } catch { return 0; } };
   const sources = {};
-  const stamp = (rel) => { sources[rel] = mtimeOf(rel); return rel; };
+  const stamp = (rel) => { sources[rel] = digestOf(rel); return rel; };
   const nodes = [], edges = [];
   const addN = (id, lens, title, source, detail) => nodes.push({ id, lens, title, source: stamp(source), detail: detail || '' });
   const addE = (from, to, kind, label) => edges.push({ from, to, kind, label: label || kind });
@@ -62,7 +85,7 @@ if (!isCLI) {} else if (check) {
   const prev = JSON.parse(fs.readFileSync(out, 'utf8'));
   const norm = (a) => JSON.stringify({ ...a, meta: { ...a.meta, generatedAt: 'x', sources: 'x' } });
   if (norm(prev) !== norm(atlas)) { console.error('✗ verify:atlas — drift: run `npm run gen:atlas`'); process.exit(1); }
-  const stale = Object.entries(prev.meta.sources || {}).filter(([rel, t]) => { try { return Math.floor(fs.statSync(join(root, rel)).mtimeMs) !== t; } catch { return true; } }).map(([rel]) => rel);
+  const stale = Object.entries(prev.meta.sources || {}).filter(([rel, digest]) => digestOf(rel) !== digest).map(([rel]) => rel);
   if (stale.length) { console.error(`✗ verify:atlas — stale: ${stale.join(', ')} changed since manifest; run \`npm run gen:atlas\``); process.exit(1); }
   console.log('✓ verify:atlas — manifest fresh');
 } else {

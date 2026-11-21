@@ -47,7 +47,7 @@ const l2 = buildAtlas('L2');
 ok('atlas L2 enriches every node with a contract', l2.nodes.length > 0 && l2.nodes.every((n) => n.detail.includes('contract:')));
 const l3 = buildAtlas('L3');
 ok('atlas L3 appends file:line impl links', l3.nodes.every((n) => /impl: \S+:\d+/.test(n.detail)));
-ok('atlas meta records source mtimes', !!a && !!a.meta.sources && typeof a.meta.sources['src/logic/funnel-machine.js'] === 'number');
+ok('atlas meta records source digests', !!a && !!a.meta.sources && typeof a.meta.sources['src/logic/funnel-machine.js'] === 'string' && a.meta.sources['src/logic/funnel-machine.js'].length === 16);
 ok('atlas stale nodes carry a visible badge (mechanics canvas)', true);
 for (const comp of ['Avatar', 'Chip', 'Button']) {
   let truth = 0;
