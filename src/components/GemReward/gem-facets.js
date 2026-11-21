@@ -4,7 +4,8 @@
 // —   within 4e-3 merge: 444 tris → 170 planes. Probe (500 pts × 16 dirs): nearest plane with t > 0 is a real
 // —   boundary point 100% of the time (0/8000), so the trace needs no per-triangle containment test.
 // — set(): WebGL2 bakes the planes as `const vec4 PLB[PLMAX]` in the source (9-digit bit-exact, driver-probed)
-// —   and frees the uniform vectors; else `vec4 uPl[N]` if it fits, else an RGBA32F 1×N DataTexture.
+// —   and frees the uniform vectors; else the RGBA32F 1×N DataTexture (PLTEX). The uniform array is WebGL2-only:
+// —   GLSL ES 1.00 rejects `uPl[i]` behind a function parameter, and a program that does not link draws nothing.
 // — k3(): Beer–Lambert from measured hue/sat — hue path-invariant, saturation reads out path length.
 // Export map: build · planes · vecs · set · bake · choice · k3 · kAt · stones
 (function () {
@@ -54,11 +55,9 @@ api.bake = 'uniform';
 api.set = function (material, canvas) {
 const T = window.THREE, u = material && material.uniforms, n = api.planes.count, X = window.GEM_SHADER_EXT;
 if (!T || !u || !n) return '';
-let lim = 256, gl = null, w2 = false;
-try {
-gl = canvas && (canvas.getContext('webgl2') || canvas.getContext('webgl'));
-if (gl) { lim = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS) || lim; w2 = !!(window.WebGL2RenderingContext && gl instanceof window.WebGL2RenderingContext); }
-} catch (e) { gl = null; w2 = false; }
+const gl = (canvas && canvas.__gemGL) || null;   // the RENDERER's own context (gem3d stamps it once): never ask the canvas for a second type
+let lim = 256, w2 = false;
+if (gl) { try { lim = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS) || lim; w2 = !!(window.WebGL2RenderingContext && gl instanceof window.WebGL2RenderingContext); } catch (e) { w2 = false; } }
 // F2: on WebGL2 three compiles this material as #version 300 es, so the 170 planes can sit in the program as a
 // const array and 170 fragment uniform vectors go back to the pool. Probed on the real context first; a driver
 // that refuses it keeps uPl (or PLTEX) and the program still compiles.
@@ -73,8 +72,12 @@ api.bake = api.choice = 'const';
 return 'const';
 }
 }
-if (u.uPl && n + 72 <= lim) { u.uPl.value = api.vecs(); u.uCount.value = n; api.bake = api.choice = 'uniform'; return 'uniform'; }
+if (w2 && u.uPl && n + 72 <= lim) { u.uPl.value = api.vecs(); u.uCount.value = n; api.bake = api.choice = 'uniform'; return 'uniform'; }   // ES3 only
 if (!u.uPlTex) return '';
+if (!w2) {   // ES 1.00 has no int max() and cannot index an array through PL()'s parameter: the trace needs exactly these two
+material.extensions = { derivatives: true };   // accommodations (the cube-UV chunk uses dFdx; three emits the OES extension only on request)
+material.fragmentShader = String(material.fragmentShader).replace('PL( max( e1, 0 ) )', 'PL( e1 > 0 ? e1 : 0 )');
+}
 const tex = new T.DataTexture(api.planes.data, n, 1, T.RGBAFormat, T.FloatType);
 tex.minFilter = T.NearestFilter; tex.magFilter = T.NearestFilter; tex.needsUpdate = true;
 u.uPlTex.value = tex; u.uCount.value = n;

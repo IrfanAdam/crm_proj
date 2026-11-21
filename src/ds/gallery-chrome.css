@@ -46,7 +46,8 @@ code[data-lang]::before{content:attr(data-lang)}
 .ig-search:focus{outline:none;box-shadow:var(--focus-ring)}
 .ig-seg{display:flex;gap:4px;flex-wrap:wrap}
 .ig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:var(--spacing-2);margin-top:var(--spacing-2)}
-.ig-cell{display:flex;flex-direction:column;align-items:center;gap:4px;padding:var(--spacing-2) 0;border:1px solid var(--border-thin);border-radius:var(--radius-md);background:var(--bg-surface);color:var(--text-secondary);cursor:pointer;font:inherit;min-height:44px}
+/* [plan:2026-11-16_225300-mobile-perf-parity.md#phase-5] offscreen icon cells skip layout+paint; 40px intrinsic = 58px cell − 18px padding/border */
+.ig-cell{display:flex;flex-direction:column;align-items:center;gap:4px;padding:var(--spacing-2) 0;border:1px solid var(--border-thin);border-radius:var(--radius-md);background:var(--bg-surface);color:var(--text-secondary);cursor:pointer;font:inherit;min-height:44px;content-visibility:auto;contain-intrinsic-size:auto 40px}
 .ig-cell:hover{color:var(--text-primary);border-color:var(--border-strong)}
 .ig-cell:focus-visible{outline:none;box-shadow:var(--focus-ring)}
 .ig-cell small{font-size:10px;color:var(--text-muted);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}

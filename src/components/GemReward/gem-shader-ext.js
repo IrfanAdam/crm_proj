@@ -1,11 +1,13 @@
 /* ADAM/SHARED — src/components/GemReward/gem-shader-ext.js · GLSL sources for the interior trace */
 // [plan:2026-10-03_144222-gem-realism-round2.md#round-19] · moved verbatim out of gem-shader.js (line-budget split).
-// Export map: GEM_SHADER_EXT { VS, HEAD, BODY, bake(src,data,n), probe(gl,decl,n), BK{rt,decl}, parity(), STRIP } — the trace shader, consumed by gem-shader.js
+// Export map: GEM_SHADER_EXT { VS, HEAD, BODY, bake(src,data,n), probe(gl,decl,n), BK{rt,decl} } — the trace shader, consumed by gem-shader.js
 // — HEAD declares uPl[PLMAX] only #ifndef BAKED; bake() swaps it for a const array when the program is ES 3.00.
-// — CAND (?gemcand=1, gem-cand.js): the bounce scan reads k candidate plane indices from R8 uCandTex at
-// —   [ei][az][el][slot] and runs the SAME test / strict '<' rule on them, then falls back to the full 170-plane
-// —   scan when nothing wins. Both paths are one string; CAND undefined → the emitted GLSL is the plain scan, and
-// —   parity() proves it (strip the two CAND snippets and you get the pre-CAND HEAD/BODY back, byte for byte).
+// — The bounce scan is the plain 170-plane loop (BODY0), emitted exactly once. A candidate-scan experiment (?gemcand)
+// — spliced a table-driven pre-pass in front of it and shipped a parity() claiming the non-CAND GLSL was byte for
+// — byte the pre-CAND text; that only ever compared the stripped string with itself, so it proved nothing about the
+// — program the GPU compiled, and the emitted shader had in fact changed. The experiment and the claim are both gone.
+// — The dead `abs(den) < 1e-6` guard in the bounce loop was deleted (measured -6.4% frame time, pixel-identical);
+// — that deletion is the only part of this file's history kept from that work.
 (function () {
 const VS = 'varying vec3 vW;\nvarying vec3 vN;\nvarying vec3 vO;\nvoid main() {\n\tvec4 wp = modelMatrix * vec4( position, 1.0 );\n\tvW = wp.xyz;\n\tvO = position;\n\tvN = normalize( mat3( modelMatrix ) * normal );\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}';
 const DECL = '#ifndef BAKED\nuniform vec4 uPl[PLMAX];\n#endif\n';
@@ -64,26 +66,11 @@ const BODY0 = 'float gTot, gNb;\nvec3 gAb, gNe;\n' +
     '\t\tif ( uTaps > 4.0 ) {\n\t\t\tc0 = mix( c0, tr( ro, rd, ior * ( 1.0 - 0.45 * uSpread ), R, E ), 0.5 );\n\t\t\tc4 = mix( c4, tr( ro, rd, ior * ( 1.0 + 0.45 * uSpread ), R, E ), 0.5 );\n\t\t}\n\t\tacc = vec3( c0.r, c2.g, c4.b );\n\t}\n' +
     '\tif ( dbg > 0.5 ) { gl_FragColor = vec4( gTot / 3.0, gNb / 3.0, 1.0 - gAb.g, 1.0 ); return; }\n\tvec3 lin = acc * uExp + uAmb * ( 1.0 - gAb ) * tint;\n#ifdef CORE\n\tfloat cf = clamp( -dot( rd, gNe ), 0.0, 1.0 );\n\tfloat Ff = pow( ( ior - 1.0 ) / ( ior + 1.0 ), 2.0 );\n\tFf = Ff + ( 1.0 - Ff ) * pow( 1.0 - cf, 5.0 );\n\tlin = Ff * envR( reflect( rd, gNe ), R ) * ( 1.0 - uRf * Ff ) + ( 1.0 - Ff ) * lin;\n\tlin += uFg * uFt * ( 1.0 - Ff );\n\tif ( dbg > 0.5 ) {\n\t\tif ( dbg < 1.5 ) { vec3 t = acc * uExp; gl_FragColor = vec4( t / ( 1.0 + t ), 1.0 ); return; }\n\t\tif ( dbg < 2.5 ) { vec3 t = Ff * envR( reflect( rd, gNe ), R ); gl_FragColor = vec4( t / ( 1.0 + t ), 1.0 ); return; }\n\t\tif ( dbg < 3.5 ) { gl_FragColor = vec4( Ff, Ff, Ff, 1.0 ); return; }\n\t\tgl_FragColor = vec4( gAb, 1.0 ); return;\n\t}\n#endif\n' +
     'vec3 o = pow( aces( lin ), vec3( 1.0 / uGam ) );\n\tfloat wh = smoothstep( 0.80, 1.0, max( max( o.r, o.g ), o.b ) );\n\to = mix( o, vec3( lum( o ) ), 0.65 * wh );\n\to = clamp( 0.46 + ( o - 0.46 ) * 1.16, 0.0, 1.0 );   // B: the photo is bimodal; this build was one mid mass\n\tvec3 tgt = uFt * ( lum( o ) / max( lum( uFt ), 1e-3 ) );\n\tfloat kl = 0.20 * ( 1.0 - 0.92 * smoothstep( 0.30, 0.88, lum( o ) ) );\n\tvec3 n = clamp( mix( o, tgt, kl ), 0.0, 1.0 );\n\tfloat Ln = lum( n ), Sn = chr( uFt );\n\tvec3 dn = n - Ln;\n\tfloat up = max( max( dn.r, dn.g ), dn.b ), lo = min( min( dn.r, dn.g ), dn.b );\n\tfloat den = up - lo - Sn * up;\n\tfloat kn = den > 1e-4 ? Sn * Ln / den : 9.0;\n\tif ( kn > 1.0 ) kn = min( kn, min( up > 1e-5 ? ( 1.0 - Ln ) / up : 9.0, lo < -1e-5 ? Ln / -lo : 9.0 ) );\n\tgl_FragColor = vec4( clamp( Ln + dn * kn, 0.0, 1.0 ), 1.0 );\n}';
-// — CAND (?gemcand=1, gem-cand.js): the table sampler + the two lookups. One snippet, so STRIP removes it exactly and
-// — the pre-CAND HEAD comes back byte for byte. Cell mapping is the bake's, in object space: ia over az = atan2(d.z,d.x)
-// — mapped into [0,2pi), je over el = asin(clamp(d.y,-1,1)) in [-pi/2,pi/2]; 128/(2pi) === 64/pi === 20.371832715762603.
-const CANDD = '#ifdef CAND\nuniform sampler2D uCandTex;\n' +
-'int candBase( vec3 d, int ei ) {\n\tfloat az = atan( d.z, d.x ), el = asin( clamp( d.y, -1.0, 1.0 ) );\n\tif ( az < 0.0 ) az += 6.283185307179586;\n\tint ia = int( clamp( floor( az * 20.371832715762603 ), 0.0, 127.0 ) );\n\tint je = int( clamp( floor( ( el + 1.5707963267948966 ) * 20.371832715762603 ), 0.0, 63.0 ) );\n\treturn ( ( ei * 128 + ia ) * 64 + je ) * CANDK;\n}\n' +
-'int candAt( int idx ) {\n\tint cy = idx / CANDW;\n\tint cx = idx - cy * CANDW;\n\treturn int( texture2D( uCandTex, ( vec2( float( cx ), float( cy ) ) + 0.5 ) / vec2( float( CANDW ), float( CANDH ) ) ).r * 255.0 + 0.5 );\n}\n' +
-'#endif\n';
-const HEAD = HEAD0 + CANDD;
-// — the scan itself: the emitted full-scan text is the shipped one, untouched. CAND splices a candidate pass in FRONT of
-// — it (ei >= 0 only — the mesh-entry patch hands tr() ei = -1 and there is no facet to key on, so it scans in full) and
-// — re-enters the SAME scan when no candidate won, so `t`/`hi` start exactly where the plain pass would. Same test, same
-// — strict '<' tie rule (first winner in slot order), same skip/sk2/ti > 2e-3 conditions.
-const SCAN0 = '\t\tfor ( int i = 0; i < PLMAX; i++ ) {\n\t\t\tif ( i >= uCount || i == skip || i == sk2 ) continue;\n\t\t\tvec4 P = PL( i );\n\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = i; }\n\t\t}\n';
-const CANDO = '#ifdef CAND\n\t\tif ( ei >= 0 ) {\n\t\t\tint cb = candBase( dl, ei );\n\t\t\tfor ( int s = 0; s < CANDK; s++ ) {\n\t\t\t\tint ci = candAt( cb + s );\n\t\t\t\tif ( ci >= 255 ) break;\n\t\t\t\tif ( ci >= uCount || ci == skip || ci == sk2 ) continue;\n\t\t\t\tvec4 P = PL( ci );\n\t\t\t\tfloat den = dot( P.xyz, dl );\n\t\t\t\tfloat ti = -( dot( P.xyz, p ) + P.w ) / den;\n\t\t\t\tif ( ti > 2e-3 && ti < t ) { t = ti; hi = ci; }\n\t\t\t}\n\t\t}\n\t\tif ( hi < 0 ) {\n#endif\n';
-const CANDC = '#ifdef CAND\n\t\t}\n#endif\n';
-const BODY = BODY0.indexOf( SCAN0 ) < 0 ? BODY0 : BODY0.replace( SCAN0, CANDO + SCAN0 + CANDC );
-// parity(): strip the three snippets and the pre-CAND sources must come back identical.
-const STRIP = [CANDD, CANDO, CANDC];
-const strip = function (src) { let s = src; for (let i = 0; i < STRIP.length; i++) s = s.split(STRIP[i]).join(''); return s; };
-const parity = function () { return { head: strip(HEAD) === HEAD0, body: strip(BODY) === BODY0, spliced: BODY !== BODY0, headLen: HEAD.length, bodyLen: BODY.length }; };
+const HEAD = HEAD0;
+// — the scan itself: the plain 170-plane loop, emitted exactly as written in BODY0 — no pre-pass, no fallback branch,
+// — one string. `skip` is the entry plane on hop 1 and the previous hit afterwards; skip/sk2/ti > 2e-3 are the shipped
+// — conditions. Nothing here is conditional on a URL param or a texture.
+const BODY = BODY0;
 // — probe() lives in gem-shader-probe.js (line-budget split; loaded before this file).
-window.GEM_SHADER_EXT = { VS: VS, HEAD: HEAD, BODY: BODY, bake: bake, probe: window.GEM_SHADER_PROBE, BK: BK, parity: parity, STRIP: STRIP };
+window.GEM_SHADER_EXT = { VS: VS, HEAD: HEAD, BODY: BODY, bake: bake, probe: window.GEM_SHADER_PROBE, BK: BK };
 })();

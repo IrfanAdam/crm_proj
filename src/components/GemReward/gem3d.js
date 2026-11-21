@@ -1,5 +1,5 @@
 /* ADAM/SHARED — src/components/GemReward/gem3d.js · THREE gem mounts */
-// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards. Color: category token → getComputedStyle. — Motion: dt spin + float + pointer tilt, no per-frame allocation; the loop parks offscreen/hidden and IO + visibilitychange re-arm it from the same clock; no frame reads a layout rect · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK — Export map: mounts canvas[data-gem] · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) · GEM3D.restage().
+// [plan:2026-09-21_000000-lump-sum-builds.md#phase-7] · canvas mount + motion (Task 22) + bare-stage guards. Color: category token → getComputedStyle. — Hits: ONE WebGL context per canvas is created here and handed to three (three would probe webgl2, log the creation failure, then webgl; it must never ask twice). — Motion: dt spin + float + pointer tilt, no per-frame allocation; the loop parks offscreen/hidden and IO + visibilitychange re-arm it from the same clock; no frame reads a layout rect · Drag: gem-drag.js owns the pointer · no THREE → GEM_FALLBACK — Export map: mounts canvas[data-gem] · ds:doc · DOM insert · frees removed canvases · GEM3D.bg(url) · GEM3D.restage().
 (function () {
 const THREE_ = window.THREE, GEM = window.GEM_CUT;
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -9,13 +9,14 @@ const huePaint = function (hex, h) { const c = new THREE_.Color(hex), o = {}; c.
 const scale = function () { const s = window.__slowmo && window.__slowmo.getScale; return s ? s() : 1; };   // one clock: the slow-mo contract
 const park = function (rig) { if (rig.raf) cancelAnimationFrame(rig.raf); rig.raf = 0; };
 const arm = function (rig) { if (rig.raf || rig.gone || !rig.vis || rig.occl || document.hidden) return; rig.last = performance.now(); rig.raf = requestAnimationFrame(rig.frame); };
-// — The warm only SCHEDULES: renderer + scene + the 170-plane program compile as one long task, so it lands in an
-// — idle slice (setTimeout 200 ms fallback) instead of mid-scroll, and never on a hidden or zero-box canvas.
+// — The warm only SCHEDULES: renderer + scene + the 170-plane program compile is one long task, so it lands in an idle slice (setTimeout 200 ms fallback), never on a hidden or zero-box canvas.
 const idle = window.requestIdleCallback || function (f) { return setTimeout(f, 200); };
 const warm = function (rig) { if (rig.warm || rig.renderer || rig.gone) return; rig.warm = 1; idle(function () { rig.warm = 0; if (!rig.renderer && !rig.gone && !document.hidden && rig.canvas.isConnected && rig.canvas.clientWidth && rig.canvas.clientHeight) start(rig); }); };
 function start(rig) {
 const canvas = rig.canvas;
-const renderer = new THREE_.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+const ATTR = { alpha: true, depth: true, stencil: false, antialias: true, premultipliedAlpha: true, preserveDrawingBuffer: false, powerPreference: 'high-performance' };
+const ctx = (function () { try { return canvas.__gemGL = canvas.getContext('webgl2', ATTR) || canvas.getContext('webgl', ATTR) || canvas.getContext('experimental-webgl', ATTR); } catch (e) { return null; } })();   // the ONE context this canvas will ever have — gem-facets validates on it
+const renderer = new THREE_.WebGLRenderer(Object.assign({ canvas: canvas }, ATTR, ctx ? { context: ctx } : {}));
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.toneMapping = THREE_.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.95;
@@ -78,8 +79,7 @@ if (window.GEM_FALLBACK) window.GEM_FALLBACK.paint(canvas, paint || css('--text-
 return;
 }
 if (!window.IntersectionObserver) { rig.vis = true; rig.near = true; warm(rig); return; }
-// — two margins: 160 px pre-warms the mount, 0 px is the only thing that renders — a rig 160 px outside the
-// — viewport used to keep drawing on every scroll. near/vis are separate flags for that reason; seen never compiles.
+// — two margins: 160 px pre-warms the mount, 0 px is the only thing that renders (a rig 160 px outside the viewport used to keep drawing on every scroll); near/vis are separate flags for that reason, seen never compiles.
 const near = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; rig.near = true; if (!rig.renderer) warm(rig); else if (rig.vis) arm(rig); }, { rootMargin: '160px' });
 const seen = new IntersectionObserver(function (es) { rig.vis = es[0].isIntersecting; if (!rig.vis) return park(rig); if (rig.renderer) arm(rig); }, { rootMargin: '0px' });
 near.observe(canvas); seen.observe(canvas);

@@ -6,13 +6,18 @@
 // — toneMapped:false, so no single composite transform matches both it and the stone.
 // — Highlight-only: A carries a depth texture; bloom samples are gated to geometry (depth < far), so the bright white stage
 // — background never blooms — only the stone's own flash islands glow. Toggle [data-gem-bloom] pill (default on); off → untouched render.
-// Export map: window.GEM_BLOOM { intensity, spread, threshold, on(), set(v) } · polls GEM3D.rigs every 400ms · wraps once.
+// — ?gemphone=1|1.5|2 (the phone render policy) also thins the bloom: B drops from 0.5× to 0.25× of the (already capped) buffer,
+// — i.e. a quarter of the gaussian pixels, and the composite is paid back at GAIN so the glow reads the same or stronger. Off → GAIN 1, RES .5.
+// Export map: window.GEM_BLOOM { intensity, spread, threshold, res, gain, on(), set(v) } · polls GEM3D.rigs every 400ms · wraps once.
 (function () {
 const T = window.THREE;
 if (!T || !T.WebGLRenderTarget || !T.ShaderMaterial) return;
 const POLL = 400, MSAA = 4;
+const QS = String((window.location && window.location.search) || '');
+const PH = parseFloat((QS.match(/[?&]gemphone=([^&]*)/) || [])[1]);   // 0/NaN = off
+const PHONE = PH > 0, RES = PHONE ? 0.25 : 0.5, GAIN = PHONE ? 1.6 : 1;   // B: 0.5× buffer by default, 0.25× on the phone policy
 let on = true;
-const api = { intensity: 0.32, spread: 4, threshold: 0.78, on: function () { return on; }, set: function (v) { on = !!v; sync(); return on; } };
+const api = { intensity: 0.32, spread: 4, threshold: 0.78, res: RES, gain: GAIN, on: function () { return on; }, set: function (v) { on = !!v; sync(); return on; } };
 const cam = new T.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 const geo = new T.PlaneGeometry(2, 2);
 const mkScene = function (m) {
@@ -28,17 +33,17 @@ return new T.ShaderMaterial({ vertexShader: VS, fragmentShader: fs, uniforms: u,
 const bloomMat = mk(BLOOM), compMat = mk(COMP);
 const bloomScene = mkScene(bloomMat), compScene = mkScene(compMat);
 const texel = new T.Vector2(1, 1);
-const half = function (n) { return Math.max(1, Math.floor(n / 2)); };
 const targets = function (rig, w, h) {
 const st = rig.__bloom || (rig.__bloom = {});
-if (st.a && st.w === w && st.h === h) return st;
+const bw = Math.max(1, Math.floor(w * api.res)), bh = Math.max(1, Math.floor(h * api.res));   // B: api.res of the buffer (0.5 default)
+if (st.a && st.w === w && st.h === h && st.bw === bw && st.bh === bh) return st;
 if (st.a) { st.a.dispose(); st.b.dispose(); }
 st.a = new T.WebGLRenderTarget(w, h, { stencilBuffer: false, type: T.HalfFloatType, samples: MSAA });
 st.a.depthTexture = new T.DepthTexture(w, h);
 st.a.isXRRenderTarget = true;
 st.a.texture.colorSpace = T.SRGBColorSpace;
-st.b = new T.WebGLRenderTarget(half(w), half(h), { depthBuffer: false, stencilBuffer: false });
-st.w = w, st.h = h;
+st.b = new T.WebGLRenderTarget(bw, bh, { depthBuffer: false, stencilBuffer: false });
+st.w = w, st.h = h, st.bw = bw, st.bh = bh;
 return st;
 };
 const pass = function (r, s, t) { r.setRenderTarget(t); r.__gemOrig.call(r, s, cam); };
@@ -56,7 +61,7 @@ bloomMat.uniforms.thresh.value = api.threshold;
 pass(r, bloomScene, st.b);
 compMat.uniforms.tScene.value = st.a.texture;
 compMat.uniforms.tBloom.value = st.b.texture;
-compMat.uniforms.intensity.value = api.intensity;
+compMat.uniforms.intensity.value = api.intensity * api.gain;
 pass(r, compScene, null);
 };
 const wrap = function (rig) {
