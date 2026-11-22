@@ -1,0 +1,97 @@
+{
+  "suite": "smoke",
+  "provisional": true,
+  "note": "PROVISIONAL — single light page load, not a measurement",
+  "steps": [
+    {
+      "step": "browser",
+      "ok": true,
+      "ms": 541
+    },
+    {
+      "step": "mountCeremony",
+      "ok": true,
+      "url": "http://127.0.0.1:5410/gallery.html?gemdpr=3&gemperf=1",
+      "ms": 5097
+    },
+    {
+      "step": "pin",
+      "ok": true,
+      "info": {
+        "buf": [
+          1020,
+          1440
+        ],
+        "css": [
+          340,
+          480
+        ],
+        "ratio": 3,
+        "bloom": true,
+        "tune": {
+          "taps": 3,
+          "bounce": 5,
+          "bloomOn": true,
+          "bloomIntensity": 0.32,
+          "dpr": 1
+        }
+      },
+      "ms": 5100
+    }
+  ],
+  "capture": {
+    "w": 255,
+    "h": 360,
+    "stride": 4,
+    "bytes": 367200,
+    "glErr": 0,
+    "mask": "luma-fallback",
+    "coverage": 37.35
+  },
+  "rig": {
+    "buf": [
+      1020,
+      1440
+    ],
+    "css": [
+      340,
+      480
+    ],
+    "ratio": 3,
+    "bloom": true,
+    "tune": {
+      "taps": 3,
+      "bounce": 5,
+      "bloomOn": true,
+      "bloomIntensity": 0.32,
+      "dpr": 1
+    },
+    "lost": false,
+    "rigs": 3,
+    "withRenderer": 2
+  },
+  "errors": [
+    {
+      "kind": "http.404",
+      "text": "404 /favicon.ico"
+    },
+    {
+      "kind": "exception",
+      "text": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5410/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5410/src/ds/deck-lab.js:72:1"
+    },
+    {
+      "kind": "http.404",
+      "text": "404 /favicon.ico"
+    },
+    {
+      "kind": "exception",
+      "text": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5410/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5410/src/ds/deck-lab.js:72:1"
+    },
+    {
+      "kind": "exception",
+      "text": "TypeError: Cannot read properties of undefined (reading 'el')\n    at readout (http://127.0.0.1:5410/src/ds/deck-lab.js:16:32)\n    at http://127.0.0.1:5410/src/ds/deck-lab.js:72:1"
+    }
+  ],
+  "reached": true,
+  "elapsedMs": 5169
+}

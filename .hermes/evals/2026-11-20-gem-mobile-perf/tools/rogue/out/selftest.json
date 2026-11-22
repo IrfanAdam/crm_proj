@@ -1,0 +1,632 @@
+{
+  "suite": "selftest",
+  "provisional": false,
+  "checks": [
+    {
+      "name": "identical capture passes",
+      "ok": true,
+      "got": true
+    },
+    {
+      "name": "identical capture is clean",
+      "ok": true,
+      "got": {
+        "px": 4096,
+        "pct2": 0,
+        "pct8": 0,
+        "meanAbs": 0,
+        "maxDelta": 0,
+        "hist": [
+          4096,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "silhouette found by alpha",
+      "ok": true,
+      "got": "alpha"
+    },
+    {
+      "name": "bbox tight on 20x20 + pad2",
+      "ok": true,
+      "got": {
+        "x": 18,
+        "y": 18,
+        "w": 24,
+        "h": 24
+      }
+    },
+    {
+      "name": "uniform +3 passes",
+      "ok": true,
+      "got": {
+        "pass": true,
+        "f": []
+      }
+    },
+    {
+      "name": "uniform +3 pct2 = 100, pct8 = 0",
+      "ok": true,
+      "got": {
+        "px": 576,
+        "pct2": 100,
+        "pct8": 0,
+        "meanAbs": 3,
+        "maxDelta": 3,
+        "hist": [
+          0,
+          0,
+          0,
+          576,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "single +9 edge pixel fails",
+      "ok": true,
+      "got": false
+    },
+    {
+      "name": "single +9 reported as maxDelta 9",
+      "ok": true,
+      "got": 9
+    },
+    {
+      "name": "single +9 caught by bbox pct8",
+      "ok": true,
+      "got": 0.173611
+    },
+    {
+      "name": "single pixel stays under the rim budget",
+      "ok": true,
+      "got": 0.3125
+    },
+    {
+      "name": "edge band trips the rim gate",
+      "ok": true,
+      "got": 6.25
+    },
+    {
+      "name": "dilate2 area 24x24",
+      "ok": true,
+      "got": 576
+    },
+    {
+      "name": "erode2 area 16x16",
+      "ok": true,
+      "got": 256
+    },
+    {
+      "name": "rim = dilate - erode",
+      "ok": true,
+      "got": 320
+    },
+    {
+      "name": "erode2 keeps the hollow centre out",
+      "ok": true,
+      "got": 0
+    },
+    {
+      "name": "luma fallback engages on flat alpha",
+      "ok": true,
+      "got": "luma-fallback"
+    },
+    {
+      "name": "luma fallback coverage ~ bbox area",
+      "ok": true,
+      "got": 0.09765625
+    },
+    {
+      "name": "bgdiff silhouette finds the gem",
+      "ok": true,
+      "got": {
+        "src": "bgdiff",
+        "cov": 0.09765625
+      }
+    },
+    {
+      "name": "bgdiff-masked identical capture PASSES",
+      "ok": true,
+      "got": {
+        "pass": true,
+        "m": {
+          "source": "bgdiff",
+          "coverage": 9.766,
+          "rimPx": 320,
+          "bbox": {
+            "x": 18,
+            "y": 18,
+            "w": 24,
+            "h": 24
+          }
+        }
+      }
+    },
+    {
+      "name": "bgdiff mask coverage is the gem, not the frame",
+      "ok": true,
+      "got": {
+        "source": "bgdiff",
+        "coverage": 9.766,
+        "rimPx": 320,
+        "bbox": {
+          "x": 18,
+          "y": 18,
+          "w": 24,
+          "h": 24
+        }
+      }
+    },
+    {
+      "name": "bgdiff-masked facet change FAILS",
+      "ok": true,
+      "got": [
+        "bbox >8/255 0.173611% > 0.05%",
+        "bbox max delta 40 > 8"
+      ]
+    },
+    {
+      "name": "mask-source assertion FAILS a degraded mask",
+      "ok": true,
+      "got": {
+        "pass": false,
+        "assert": {
+          "required": "bgdiff",
+          "got": "luma-fallback",
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "a whole-frame mask is not reliable",
+      "ok": true,
+      "got": [
+        "mask coverage 100.000% > 60% — mask is not a silhouette"
+      ]
+    },
+    {
+      "name": "same error, different column -> same signature",
+      "ok": true,
+      "got": [
+        "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+        "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16"
+      ]
+    },
+    {
+      "name": "different source line -> different signature",
+      "ok": true,
+      "got": [
+        "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+        "exception|TypeError: Cannot read properties of undefined (reading 'cand')|/src/components/GemReward/gem-shader.js:46"
+      ]
+    },
+    {
+      "name": "signature carries file:line, not a port",
+      "ok": true,
+      "got": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16"
+    },
+    {
+      "name": "allowlisted-only console is clean",
+      "ok": true,
+      "got": {
+        "ok": true,
+        "offending": [],
+        "allowlisted": [
+          {
+            "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+            "count": 3
+          }
+        ],
+        "totalErrors": 3
+      }
+    },
+    {
+      "name": "one new signature fails the console gate",
+      "ok": true,
+      "got": {
+        "ok": false,
+        "offending": [
+          {
+            "sig": "exception|TypeError: Cannot read properties of undefined (reading 'cand')|/src/components/GemReward/gem-shader.js:46",
+            "count": 1
+          }
+        ],
+        "allowlisted": [
+          {
+            "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+            "count": 1
+          }
+        ],
+        "totalErrors": 2
+      }
+    },
+    {
+      "name": "same head+digest is the same build",
+      "ok": true,
+      "got": null
+    },
+    {
+      "name": "different head is a different build",
+      "ok": true,
+      "got": null
+    },
+    {
+      "name": "dirty digest splits the same head",
+      "ok": true,
+      "got": null
+    },
+    {
+      "name": "outlier round discarded",
+      "ok": true,
+      "got": [
+        {
+          "round": 4,
+          "tA": 15,
+          "devPct": 48.51
+        }
+      ]
+    },
+    {
+      "name": "4 rounds kept",
+      "ok": true,
+      "got": 4
+    },
+    {
+      "name": "median-of-medians ~10ms",
+      "ok": true,
+      "got": {
+        "A": 10.05,
+        "B": 15.05
+      }
+    },
+    {
+      "name": "projected = ms x 7 and marked estimate",
+      "ok": true,
+      "got": {
+        "ms": 70.35,
+        "multiplier": 7,
+        "estimate": true,
+        "fits60": false,
+        "headroomMs": -53.68,
+        "usedPctOfFrame": 422
+      }
+    },
+    {
+      "name": "fixed ms = 2A - B",
+      "ok": true,
+      "got": 5.05
+    },
+    {
+      "name": "pruning to <2 rounds throws",
+      "ok": true,
+      "got": true
+    },
+    {
+      "name": "median even count",
+      "ok": true,
+      "got": 2.5
+    },
+    {
+      "name": "median odd count",
+      "ok": true,
+      "got": 3
+    },
+    {
+      "name": "monotonic growth fails",
+      "ok": true,
+      "got": 20
+    },
+    {
+      "name": "flat memory passes",
+      "ok": true,
+      "got": {
+        "ok": true,
+        "tol": 2,
+        "growthTextures": 0,
+        "growthGeometries": 0,
+        "monotonic": true,
+        "strictlyGrowing": false,
+        "strictlyUp": false,
+        "tailSpreadTextures": 0,
+        "tailSpreadGeometries": 0,
+        "textures": {
+          "before": 12,
+          "after": 12
+        },
+        "geometries": {
+          "before": 6,
+          "after": 6
+        }
+      }
+    },
+    {
+      "name": "one-time warm bump passes",
+      "ok": true,
+      "got": 2
+    },
+    {
+      "name": "resize schedule has 20 entries",
+      "ok": true,
+      "got": 20
+    },
+    {
+      "name": "resize schedule hits both extremes",
+      "ok": true,
+      "got": [
+        320,
+        430
+      ]
+    },
+    {
+      "name": "resize waits are bounded",
+      "ok": true,
+      "got": 120
+    },
+    {
+      "name": "merge keeps unrun cases on the same build",
+      "ok": true,
+      "got": [
+        {
+          "id": "a",
+          "ok": true,
+          "kind": "pass"
+        },
+        {
+          "id": "b",
+          "ok": true,
+          "kind": "pass"
+        }
+      ]
+    },
+    {
+      "name": "merge refuses a different build",
+      "ok": true,
+      "got": [
+        {
+          "id": "b",
+          "ok": true,
+          "kind": "pass"
+        }
+      ]
+    },
+    {
+      "name": "perfect run = 100 / A",
+      "ok": true,
+      "got": {
+        "perf_points": 40,
+        "parity_points": 30,
+        "stress_points": 30,
+        "total_0_100": 100,
+        "grade": "A",
+        "capped": false,
+        "hardFail": false,
+        "raw_total": 100,
+        "formula": "perf 40*clamp((50-p)/(50-16.67),0,1) + parity 30/10/0 + stress 30*(passed+0.35*skipped)/total; cap 40 on any stress failure or parity != PASS"
+      }
+    },
+    {
+      "name": "score shape has required keys",
+      "ok": true,
+      "got": [
+        "perf_points",
+        "parity_points",
+        "stress_points",
+        "total_0_100",
+        "grade",
+        "capped",
+        "hardFail",
+        "raw_total",
+        "formula"
+      ]
+    },
+    {
+      "name": "stress block has passed/failed/failures",
+      "ok": true,
+      "got": [
+        "passed",
+        "failed",
+        "failures",
+        "skipped",
+        "total",
+        "points",
+        "max",
+        "passIds",
+        "failIds",
+        "skipIds",
+        "allowlistSize"
+      ]
+    },
+    {
+      "name": "stress failure caps total at 40",
+      "ok": true,
+      "got": {
+        "perf_points": 40,
+        "parity_points": 30,
+        "stress_points": 27,
+        "total_0_100": 40,
+        "grade": "D",
+        "capped": true,
+        "hardFail": true,
+        "raw_total": 97,
+        "formula": "perf 40*clamp((50-p)/(50-16.67),0,1) + parity 30/10/0 + stress 30*(passed+0.35*skipped)/total; cap 40 on any stress failure or parity != PASS"
+      }
+    },
+    {
+      "name": "capped run cannot grade above D",
+      "ok": true,
+      "got": "D"
+    },
+    {
+      "name": "parity FAIL caps total at 40",
+      "ok": true,
+      "got": 40
+    },
+    {
+      "name": "two failed parity criteria = 0 parity points",
+      "ok": true,
+      "got": 0
+    },
+    {
+      "name": "near miss = 10 parity points",
+      "ok": true,
+      "got": 10
+    },
+    {
+      "name": "near miss still capped at 40",
+      "ok": true,
+      "got": 40
+    },
+    {
+      "name": "unlabelled phone projection = 0 perf points",
+      "ok": true,
+      "got": 0
+    },
+    {
+      "name": "one skip = 28.1 stress points",
+      "ok": true,
+      "got": 28.1
+    },
+    {
+      "name": "self-referential parity PASS = 10 points",
+      "ok": true,
+      "got": 10
+    },
+    {
+      "name": "self-referential parity is not certified",
+      "ok": true,
+      "got": false
+    },
+    {
+      "name": "arm-expect splits on the first = only",
+      "ok": true,
+      "got": {
+        "a": "default",
+        "b": "?gemmesh=0",
+        "ok": true,
+        "bboxPct8": 0,
+        "bboxMaxDelta": 0,
+        "rimPct8": 0,
+        "failures": []
+      }
+    },
+    {
+      "name": "arm-expect reports a differing required pair as a failure",
+      "ok": true,
+      "got": {
+        "a": "default",
+        "b": "?gemmesh=0",
+        "ok": false,
+        "bboxPct8": 1,
+        "bboxMaxDelta": 9,
+        "rimPct8": 3,
+        "failures": []
+      }
+    },
+    {
+      "name": "arm-expect on an uncaptured pair is not a pass",
+      "ok": true,
+      "got": {
+        "a": "default",
+        "b": "?gemmesh=9",
+        "ok": null,
+        "why": "pair not captured"
+      }
+    },
+    {
+      "name": "arm invariant failure = 0 parity points",
+      "ok": true,
+      "got": 0
+    },
+    {
+      "name": "arm invariant failure caps the run",
+      "ok": true,
+      "got": {
+        "perf_points": 40,
+        "parity_points": 0,
+        "stress_points": 30,
+        "total_0_100": 40,
+        "grade": "D",
+        "capped": true,
+        "hardFail": true,
+        "raw_total": 70,
+        "formula": "perf 40*clamp((50-p)/(50-16.67),0,1) + parity 30/10/0 + stress 30*(passed+0.35*skipped)/total; cap 40 on any stress failure or parity != PASS"
+      }
+    },
+    {
+      "name": "band entirely over the floor is resolvable",
+      "ok": true,
+      "got": {
+        "bandProjectedMs": [
+          59.5,
+          64.4
+        ],
+        "floorMs": 50,
+        "budgetMs": 16.67,
+        "straddlesFloor": false,
+        "straddlesBudget": false,
+        "floorResolvable": true,
+        "budgetResolvable": true,
+        "why": "projected band 59.5–64.4 ms is entirely over the 50 ms floor"
+      }
+    },
+    {
+      "name": "band straddling the floor is NOT resolvable",
+      "ok": true,
+      "got": {
+        "bandProjectedMs": [
+          48.3,
+          53.2
+        ],
+        "floorMs": 50,
+        "budgetMs": 16.67,
+        "straddlesFloor": true,
+        "straddlesBudget": false,
+        "floorResolvable": false,
+        "budgetResolvable": true,
+        "why": "projected band 48.3–53.2 ms straddles the 50 ms floor: run-to-run noise flips 0 points vs >0"
+      }
+    },
+    {
+      "name": "empty reports -> 0 / F, no throw",
+      "ok": true,
+      "got": {
+        "perf_points": 0,
+        "parity_points": 0,
+        "stress_points": 0,
+        "total_0_100": 0,
+        "grade": "F",
+        "capped": false,
+        "hardFail": true,
+        "raw_total": 0,
+        "formula": "perf 40*clamp((50-p)/(50-16.67),0,1) + parity 30/10/0 + stress 30*(passed+0.35*skipped)/total; cap 40 on any stress failure or parity != PASS"
+      }
+    },
+    {
+      "name": "grade ladder",
+      "ok": true,
+      "got": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "passed": 69,
+  "failed": 0,
+  "at": "2026-11-22T15:36:09.410Z"
+}

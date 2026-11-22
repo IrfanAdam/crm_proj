@@ -1,0 +1,389 @@
+{
+  "requested": [
+    "default",
+    "?gemmesh=0",
+    "?gemmesh=1"
+  ],
+  "captured": [
+    {
+      "id": "default",
+      "query": "",
+      "ok": true,
+      "error": null,
+      "buffer": [
+        1020,
+        1440
+      ],
+      "hiddenFloors": [
+        "shadow",
+        "contact",
+        "caustic"
+      ],
+      "mesh": "raymarch",
+      "bloom": true,
+      "renderHash": "6f0b54079c2e1e7f",
+      "mask": {
+        "source": "bgdiff",
+        "coverage": 23.593
+      }
+    },
+    {
+      "id": "?gemmesh=0",
+      "query": "gemmesh=0",
+      "ok": true,
+      "error": null,
+      "buffer": [
+        1020,
+        1440
+      ],
+      "hiddenFloors": [
+        "shadow",
+        "contact",
+        "caustic"
+      ],
+      "mesh": "raymarch",
+      "bloom": true,
+      "renderHash": "6f0b54079c2e1e7f",
+      "mask": {
+        "source": "bgdiff",
+        "coverage": 23.593
+      }
+    },
+    {
+      "id": "?gemmesh=1",
+      "query": "gemmesh=1",
+      "ok": true,
+      "error": null,
+      "buffer": [
+        1020,
+        1440
+      ],
+      "hiddenFloors": [
+        "shadow",
+        "contact",
+        "caustic"
+      ],
+      "mesh": "mesh",
+      "bloom": true,
+      "renderHash": "6f0b54079c2e1e7f",
+      "mask": {
+        "source": "bgdiff",
+        "coverage": 23.595
+      }
+    }
+  ],
+  "selfNoise": {
+    "bbox": {
+      "px": 592832,
+      "pct2": 0,
+      "pct8": 0,
+      "meanAbs": 0,
+      "maxDelta": 0,
+      "hist": [
+        592832,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "rim": {
+      "px": 12545,
+      "pct2": 0,
+      "pct8": 0,
+      "meanAbs": 0,
+      "maxDelta": 0,
+      "hist": [
+        12545,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "whole": {
+      "px": 1468800,
+      "pct2": 0,
+      "pct8": 0,
+      "meanAbs": 0,
+      "maxDelta": 0,
+      "hist": [
+        1468800,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "mask": {
+      "source": "bgdiff",
+      "coverage": 23.593,
+      "rimPx": 12545,
+      "bbox": {
+        "x": 38,
+        "y": 446,
+        "w": 944,
+        "h": 628
+      }
+    },
+    "pass": true,
+    "failures": []
+  },
+  "pairs": [
+    {
+      "a": "default",
+      "b": "?gemmesh=0",
+      "mask": {
+        "source": "bgdiff",
+        "coverage": 23.593,
+        "rimPx": 12545,
+        "bbox": {
+          "x": 38,
+          "y": 446,
+          "w": 944,
+          "h": 628
+        }
+      },
+      "bbox": {
+        "px": 592832,
+        "pct2": 0,
+        "pct8": 0,
+        "meanAbs": 0,
+        "maxDelta": 0,
+        "hist": [
+          592832,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "rim": {
+        "px": 12545,
+        "pct2": 0,
+        "pct8": 0,
+        "meanAbs": 0,
+        "maxDelta": 0,
+        "hist": [
+          12545,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "whole": {
+        "px": 1468800,
+        "pct2": 0,
+        "pct8": 0,
+        "meanAbs": 0,
+        "maxDelta": 0,
+        "hist": [
+          1468800,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pass": true,
+      "failures": [],
+      "unreliable": []
+    },
+    {
+      "a": "default",
+      "b": "?gemmesh=1",
+      "mask": {
+        "source": "bgdiff",
+        "coverage": 23.597,
+        "rimPx": 12561,
+        "bbox": {
+          "x": 38,
+          "y": 446,
+          "w": 944,
+          "h": 628
+        }
+      },
+      "bbox": {
+        "px": 592832,
+        "pct2": 3.568296,
+        "pct8": 2.355811,
+        "meanAbs": 0.7261,
+        "maxDelta": 243,
+        "hist": [
+          559544,
+          9156,
+          2978,
+          1964,
+          1390,
+          1333,
+          991,
+          786,
+          14690
+        ]
+      },
+      "rim": {
+        "px": 12561,
+        "pct2": 8.510469,
+        "pct8": 5.111058,
+        "meanAbs": 1.8223,
+        "maxDelta": 205,
+        "hist": [
+          10750,
+          544,
+          198,
+          146,
+          97,
+          69,
+          82,
+          24,
+          651
+        ]
+      },
+      "whole": {
+        "px": 1468800,
+        "pct2": 1.440223,
+        "pct8": 0.950844,
+        "meanAbs": 0.2931,
+        "maxDelta": 243,
+        "hist": [
+          1435512,
+          9156,
+          2978,
+          1964,
+          1390,
+          1333,
+          991,
+          786,
+          14690
+        ]
+      },
+      "pass": false,
+      "failures": [
+        "bbox >8/255 2.355811% > 0.05%",
+        "bbox max delta 243 > 8",
+        "rim >8/255 5.111058% > 2%"
+      ],
+      "unreliable": []
+    },
+    {
+      "a": "?gemmesh=0",
+      "b": "?gemmesh=1",
+      "mask": {
+        "source": "bgdiff",
+        "coverage": 23.597,
+        "rimPx": 12561,
+        "bbox": {
+          "x": 38,
+          "y": 446,
+          "w": 944,
+          "h": 628
+        }
+      },
+      "bbox": {
+        "px": 592832,
+        "pct2": 3.568296,
+        "pct8": 2.355811,
+        "meanAbs": 0.7261,
+        "maxDelta": 243,
+        "hist": [
+          559544,
+          9156,
+          2978,
+          1964,
+          1390,
+          1333,
+          991,
+          786,
+          14690
+        ]
+      },
+      "rim": {
+        "px": 12561,
+        "pct2": 8.510469,
+        "pct8": 5.111058,
+        "meanAbs": 1.8223,
+        "maxDelta": 205,
+        "hist": [
+          10750,
+          544,
+          198,
+          146,
+          97,
+          69,
+          82,
+          24,
+          651
+        ]
+      },
+      "whole": {
+        "px": 1468800,
+        "pct2": 1.440223,
+        "pct8": 0.950844,
+        "meanAbs": 0.2931,
+        "maxDelta": 243,
+        "hist": [
+          1435512,
+          9156,
+          2978,
+          1964,
+          1390,
+          1333,
+          991,
+          786,
+          14690
+        ]
+      },
+      "pass": false,
+      "failures": [
+        "bbox >8/255 2.355811% > 0.05%",
+        "bbox max delta 243 > 8",
+        "rim >8/255 5.111058% > 2%"
+      ],
+      "unreliable": []
+    }
+  ],
+  "expectations": [
+    {
+      "a": "default",
+      "b": "?gemmesh=0",
+      "ok": true,
+      "bboxPct8": 0,
+      "bboxMaxDelta": 0,
+      "rimPct8": 0,
+      "failures": []
+    }
+  ],
+  "requiredMatch": {
+    "specs": [
+      "default=?gemmesh=0"
+    ],
+    "ok": true,
+    "failed": [],
+    "notEvaluated": []
+  }
+}

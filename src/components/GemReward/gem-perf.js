@@ -1,7 +1,6 @@
 /* ADAM/SHARED — src/components/GemReward/gem-perf.js · adaptive gem pixel ratio (option A) */
 // — Why: the phone surfaces (card 680x640, ceremony 786x640) run 1.6-2x over a 60 fps budget and no exact lever closes that,
-// — so the phone steps its own canvas resolution down until 60 fps holds. Desktop holds target AT the ceiling — same ratio,
-// — same pixels, byte-identical frames, zero calls: that is the hard law here, not a nicety.
+// — so the phone steps its own canvas resolution down until 60 fps holds. Desktop holds target AT the ceiling — same ratio, same pixels, byte-identical frames, zero calls: that is the hard law here, not a nicety.
 // — Contract (classic script, before gem3d.js): GEM_PERF.tick(rig, dtSeconds) · config() · set(partial) · pr(rig) · cap().
 // — Settings: min 1 · max 0 = AUTO min(dpr,2) · target 15.5 ms · down/upStep .2 (kept EQUAL: a 60 Hz rAF floor of 16.7 ms puts
 // — an up band under it out of reach, and a bigger downStep walks a rig down for the life of the page) · window 30 · cooldownMs 1200.
@@ -14,8 +13,7 @@
 // — ?gemphone=1|1.5|2 is a PHONE CEILING over BOTH the auto ceiling and a fixed ?gemdpr=N (a URL ratio is capped, never raised):
 // — ceiling() = min(its own ceiling, gemphone), so the controller still steps DOWN from it and still climbs back to it. Absent →
 // — PHONE = 0 → ceiling() is byte-for-byte the old expression and no extra call lands (invisible when off; AUTO still calls nothing).
-// — 2 is the default ceiling already (base is min(dpr,2)): on a default config it only thins bloom (gem-bloom.js) and never lowers a ratio.
-// — ?gemperf=1 is read by gem-perf-hud.js (loaded right after this file); absent it costs one property test per tick.
+// — 2 is the default ceiling already (base is min(dpr,2)): on a default config it only thins bloom (gem-bloom.js) and never lowers a ratio. ?gemperf=1 is read by gem-perf-hud.js (loaded right after this file); absent it costs one property test per tick.
 (function () {
 const D = { min: 1, max: 0, target: 15.5, downStep: 0.2, upStep: 0.2, window: 30, cooldownMs: 1200 };
 const LS = 'gemDpr', live = [], qs = String((window.location && window.location.search) || '');
@@ -96,4 +94,6 @@ return config();
 }
 window.GEM_PERF = { tick: tick, config: config, set: set, pr: pr, cap: ceiling, phone: function () { return PHONE; } };
 boot();
+// — ?gemtimer=1 (E5 device probe) is gem-perf-timer-ext.js, loaded before this file; absent the param this is one string test, nothing else.
+if (param('gemtimer') === '1' && window.GEM_PERF_TIMER_EXT) window.GEM_PERF_TIMER_EXT.arm(window.GEM_PERF);
 })();

@@ -1,0 +1,858 @@
+{
+  "suite": "stress",
+  "provisional": false,
+  "viewport": {
+    "w": 390,
+    "h": 844,
+    "dpr": 3,
+    "cpu": 6
+  },
+  "build": {
+    "head": "dee15c3a7ce2a74158d81806541d7b983faf81a6",
+    "short": "dee15c3",
+    "dirtyFiles": 0,
+    "digest": "e3b0c44298fc1c14",
+    "label": "dee15c3-clean",
+    "files": [],
+    "excludedFromDigest": 3,
+    "error": null
+  },
+  "buildEnd": {
+    "head": "dee15c3a7ce2a74158d81806541d7b983faf81a6",
+    "short": "dee15c3",
+    "dirtyFiles": 0,
+    "digest": "e3b0c44298fc1c14",
+    "label": "dee15c3-clean",
+    "files": [],
+    "excludedFromDigest": 4,
+    "error": null
+  },
+  "buildStable": true,
+  "merged": false,
+  "mountSkips": [],
+  "allowlist": {
+    "derivedFrom": "control load (bare gallery + mounted ceremony, same query as cases)",
+    "rule": "a case fails only on an error signature ABSENT from the control",
+    "signatures": [
+      {
+        "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+        "count": 29
+      },
+      {
+        "sig": "http|# /favicon.ico|?:?",
+        "count": 1
+      }
+    ],
+    "controlLoads": [
+      {
+        "label": "gallery (no ceremony)",
+        "total": 11,
+        "signatures": [
+          {
+            "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+            "count": 10
+          },
+          {
+            "sig": "http|# /favicon.ico|?:?",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "label": "ceremony rig mounted",
+        "total": 19,
+        "signatures": [
+          {
+            "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+            "count": 19
+          }
+        ]
+      }
+    ],
+    "controlErrors": 30
+  },
+  "cases": [
+    {
+      "id": "a",
+      "name": "resize storm 320x568 <-> 430x932 x20",
+      "ok": true,
+      "kind": "pass",
+      "detail": "20 resizes, buffer restored to 1020x1440, coverage 100%",
+      "metrics": {
+        "badFrames": 0,
+        "last": {
+          "w": 1020,
+          "h": 1440,
+          "wait": 69,
+          "css": [
+            340,
+            480
+          ],
+          "lost": false,
+          "dead": false
+        },
+        "cov": {
+          "ok": true,
+          "alphaPct": 100,
+          "meanRGB": 205.78,
+          "buf": [
+            1020,
+            1440
+          ],
+          "ratio": 3,
+          "contextLost": false
+        },
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 25
+            }
+          ],
+          "totalErrors": 25
+        }
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-a.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-a-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-a.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-a-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 9.2
+    },
+    {
+      "id": "b",
+      "name": "dpr switch 1 -> 2.5 -> 1 x10",
+      "ok": true,
+      "kind": "pass",
+      "detail": "10 switches, ended ratio 1 buffer 340x480",
+      "metrics": {
+        "css": [
+          340,
+          480
+        ],
+        "end": {
+          "ratio": 1,
+          "buf": [
+            340,
+            480
+          ]
+        },
+        "cov": {
+          "ok": true,
+          "alphaPct": 100,
+          "meanRGB": 205.92,
+          "buf": [
+            340,
+            480
+          ],
+          "ratio": 1,
+          "contextLost": false
+        },
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 13
+            }
+          ],
+          "totalErrors": 13
+        },
+        "switches": 20
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-b.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-b-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-b.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-b-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 5.9
+    },
+    {
+      "id": "c",
+      "name": "hidden/shown x5 + cadence recovery (30s cap -> SKIP)",
+      "ok": true,
+      "kind": "pass",
+      "detail": "pre 33ms -> post 17ms (63 frames), raf alive, override=own-property",
+      "metrics": {
+        "cycles": 5,
+        "capTripped": false,
+        "visMethod": "own-property",
+        "pre": {
+          "n": 32,
+          "med": 33.30000000000018,
+          "p95": 66.69999999999982,
+          "worst": 83.39999999999964
+        },
+        "post": {
+          "n": 63,
+          "med": 16.700000000000728,
+          "p95": 50,
+          "worst": 66.70000000000073
+        },
+        "preRaf": {
+          "raf": 245,
+          "vis": true
+        },
+        "postRaf": {
+          "raf": 568,
+          "vis": true
+        },
+        "recovered": true,
+        "rafAlive": true,
+        "cov": {
+          "ok": true,
+          "alphaPct": 100,
+          "meanRGB": 201.02,
+          "buf": [
+            1020,
+            1440
+          ],
+          "ratio": 3,
+          "contextLost": false
+        },
+        "appSawHidden": true,
+        "hiddenSamples": [
+          {
+            "hidden": true,
+            "state": "hidden",
+            "raf": 0,
+            "vis": true
+          },
+          {
+            "hidden": true,
+            "state": "hidden",
+            "raf": 0,
+            "vis": true
+          },
+          {
+            "hidden": true,
+            "state": "hidden",
+            "raf": 0,
+            "vis": true
+          },
+          {
+            "hidden": true,
+            "state": "hidden",
+            "raf": 0,
+            "vis": true
+          },
+          {
+            "hidden": true,
+            "state": "hidden",
+            "raf": 0,
+            "vis": true
+          }
+        ],
+        "stuckRaf": true,
+        "overrides": [
+          {
+            "method": "own-property",
+            "hidden": true,
+            "state": "hidden"
+          },
+          {
+            "method": "own-property",
+            "hidden": true,
+            "state": "hidden"
+          },
+          {
+            "method": "own-property",
+            "hidden": true,
+            "state": "hidden"
+          },
+          {
+            "method": "own-property",
+            "hidden": true,
+            "state": "hidden"
+          },
+          {
+            "method": "own-property",
+            "hidden": true,
+            "state": "hidden"
+          }
+        ],
+        "cappedState": null,
+        "elapsedMs": 3842,
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 31
+            }
+          ],
+          "totalErrors": 31
+        },
+        "allowlisted": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16 x31"
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-c.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-c-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-c.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-c-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 10.1
+    },
+    {
+      "id": "d",
+      "name": "prefers-reduced-motion",
+      "ok": true,
+      "kind": "pass",
+      "detail": "static frame, raf=0, coverage 100%",
+      "metrics": {
+        "st": {
+          "raf": 0,
+          "still": true,
+          "t": 0
+        },
+        "cov": {
+          "ok": true,
+          "alphaPct": 100,
+          "meanRGB": 198.13,
+          "buf": [
+            680,
+            960
+          ],
+          "ratio": 2,
+          "contextLost": false
+        },
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 13
+            }
+          ],
+          "totalErrors": 13
+        }
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-d.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-d-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-d.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-d-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 5.7
+    },
+    {
+      "id": "e",
+      "name": "?gemdpr=1 | 2 | absent",
+      "ok": true,
+      "kind": "pass",
+      "detail": "ratios 1:1 2:2 absent:1",
+      "metrics": {
+        "runs": [
+          {
+            "q": "gemdpr=1",
+            "ratio": 1,
+            "buf": [
+              340,
+              480
+            ],
+            "css": [
+              340,
+              480
+            ],
+            "newErrors": 0
+          },
+          {
+            "q": "gemdpr=2",
+            "ratio": 2,
+            "buf": [
+              680,
+              960
+            ],
+            "css": [
+              340,
+              480
+            ],
+            "newErrors": 0
+          },
+          {
+            "q": "(absent)",
+            "ratio": 1,
+            "buf": [
+              340,
+              480
+            ],
+            "css": [
+              340,
+              480
+            ],
+            "newErrors": 0
+          }
+        ]
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-e.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-e-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-e.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-e-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 15.7
+    },
+    {
+      "id": "f",
+      "name": "?gemquality=full | tuned | absent",
+      "ok": true,
+      "kind": "pass",
+      "detail": "full hides pill, tuned/absent show it, all render",
+      "metrics": {
+        "runs": [
+          {
+            "q": "gemquality=full",
+            "pill": false,
+            "alphaPct": 100,
+            "value": {
+              "taps": 3,
+              "bounce": 5,
+              "bloomOn": true,
+              "bloomIntensity": 0.32,
+              "dpr": 1
+            }
+          },
+          {
+            "q": "gemquality=tuned",
+            "pill": true,
+            "alphaPct": 100,
+            "value": {
+              "taps": 3,
+              "bounce": 5,
+              "bloomOn": true,
+              "bloomIntensity": 0.32,
+              "dpr": 1
+            }
+          },
+          {
+            "q": "(absent)",
+            "pill": true,
+            "alphaPct": 100,
+            "value": {
+              "taps": 3,
+              "bounce": 5,
+              "bloomOn": true,
+              "bloomIntensity": 0.32,
+              "dpr": 1
+            }
+          }
+        ]
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-f.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-f-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-f.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-f-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 16.3
+    },
+    {
+      "id": "g",
+      "name": "bloom toggled 20x then renders",
+      "ok": true,
+      "kind": "pass",
+      "detail": "20 toggles, on/off differ (330618914 vs 327552229), final on",
+      "metrics": {
+        "on0": {
+          "sum": 330618914,
+          "alpha": 100
+        },
+        "off": {
+          "sum": 327552229,
+          "alpha": 100
+        },
+        "on1": {
+          "sum": 330618914,
+          "alpha": 100
+        },
+        "finalOn": true,
+        "cov": {
+          "ok": true,
+          "alphaPct": 100,
+          "meanRGB": 205.71,
+          "buf": [
+            1020,
+            1440
+          ],
+          "ratio": 3,
+          "contextLost": false
+        },
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 12
+            }
+          ],
+          "totalErrors": 12
+        }
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-g.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-g-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-g.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-g-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 6.1
+    },
+    {
+      "id": "h",
+      "name": "3 stones + card rig + ceremony rig in one page",
+      "ok": true,
+      "kind": "pass",
+      "detail": "4 renderers, 4 distinct stones, all non-blank",
+      "metrics": {
+        "n": 4,
+        "out": [
+          {
+            "gem": "sapphire",
+            "buf": [
+              828,
+              363
+            ],
+            "lost": false,
+            "alphaPct": 100,
+            "ceremony": false
+          },
+          {
+            "gem": "ceremony",
+            "buf": [
+              1020,
+              1440
+            ],
+            "lost": false,
+            "alphaPct": 100,
+            "ceremony": true
+          },
+          {
+            "gem": "citrine",
+            "buf": [
+              300,
+              240
+            ],
+            "lost": false,
+            "alphaPct": 100,
+            "ceremony": false
+          },
+          {
+            "gem": "amethyst",
+            "buf": [
+              300,
+              240
+            ],
+            "lost": false,
+            "alphaPct": 100,
+            "ceremony": false
+          }
+        ],
+        "total": 5,
+        "load": [
+          5.890625,
+          6.49755859375,
+          5.56787109375
+        ],
+        "cpus": 10,
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 16
+            }
+          ],
+          "totalErrors": 16
+        }
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-h.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-h-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-h.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-h-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 6.8
+    },
+    {
+      "id": "i",
+      "name": "WebGL1 forced (--disable-webgl2)",
+      "ok": true,
+      "kind": "pass",
+      "detail": "webgl2 absent, 2 renderer(s) on WebGL 1.0 (OpenGL ES 2.0 Chromium), 1020x1440 meanRGB 203.27 vs WebGL2 202.83 (Δ 0.44)",
+      "metrics": {
+        "pre": {
+          "webgl2": false,
+          "webgl1": true
+        },
+        "st": {
+          "rigs": 3,
+          "renderers": 2,
+          "glVersion": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+          "shot": {
+            "buf": [
+              1020,
+              1440
+            ],
+            "alphaPct": 100,
+            "meanRGB": 203.27,
+            "lost": false,
+            "programs": 8
+          },
+          "fallback": "object",
+          "fallbackKeys": [
+            "paint"
+          ],
+          "three": "object",
+          "bodyText": 1093
+        },
+        "ref": {
+          "ver": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "meanRGB": 202.83,
+          "alphaPct": 100,
+          "buf": [
+            1020,
+            1440
+          ]
+        },
+        "meanDelta": 0.44,
+        "mountErr": "",
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 10
+            },
+            {
+              "sig": "http|# /favicon.ico|?:?",
+              "count": 1
+            }
+          ],
+          "totalErrors": 11
+        }
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-i.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-i-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-i.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-i-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 11.3
+    },
+    {
+      "id": "j",
+      "name": "memory: 200 pose changes, no monotonic growth",
+      "ok": true,
+      "kind": "pass",
+      "detail": "textures 8->8, geometries 57->57, tail spread 0/0",
+      "metrics": {
+        "verdict": {
+          "ok": true,
+          "tol": 2,
+          "growthTextures": 0,
+          "growthGeometries": 0,
+          "monotonic": true,
+          "strictlyGrowing": false,
+          "strictlyUp": false,
+          "tailSpreadTextures": 0,
+          "tailSpreadGeometries": 0,
+          "textures": {
+            "before": 8,
+            "after": 8
+          },
+          "geometries": {
+            "before": 57,
+            "after": 57
+          }
+        },
+        "samples": [
+          {
+            "i": 0,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 10,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 20,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 30,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 40,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 50,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 60,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 70,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 80,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 90,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 100,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 110,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 120,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 130,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 140,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 150,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 160,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 170,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 180,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 190,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          },
+          {
+            "i": 200,
+            "textures": 8,
+            "geometries": 57,
+            "programs": 8
+          }
+        ],
+        "drawCalls": 1,
+        "triangles": 2,
+        "console": {
+          "ok": true,
+          "offending": [],
+          "allowlisted": [
+            {
+              "sig": "exception|TypeError: Cannot read properties of undefined (reading 'el')|/src/ds/deck-lab.js:16",
+              "count": 10
+            }
+          ],
+          "totalErrors": 10
+        }
+      },
+      "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-j.png",
+      "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-j-canvas.png",
+      "evidence": {
+        "screenshot": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-j.png",
+        "canvas": "/Users/irfan/Documents/Portfolio Redo/crm_proj/.hermes/evals/2026-11-20-gem-mobile-perf/tools/rogue/out/failures/stress-j-canvas.png"
+      },
+      "attempts": 1,
+      "sec": 7.2
+    }
+  ],
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "skipped": 0,
+  "failures": [],
+  "passedIds": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j"
+  ],
+  "failedIds": [],
+  "skippedIds": [],
+  "at": "2026-11-22T15:31:20.908Z"
+}

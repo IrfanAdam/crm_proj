@@ -1,0 +1,269 @@
+{
+  "suite": "perf",
+  "provisional": false,
+  "build": {
+    "head": "dee15c3a7ce2a74158d81806541d7b983faf81a6",
+    "short": "dee15c3",
+    "dirtyFiles": 0,
+    "digest": "e3b0c44298fc1c14",
+    "label": "dee15c3-clean",
+    "files": [],
+    "excludedFromDigest": 3,
+    "error": null
+  },
+  "buildEnd": {
+    "head": "dee15c3a7ce2a74158d81806541d7b983faf81a6",
+    "short": "dee15c3",
+    "dirtyFiles": 0,
+    "digest": "e3b0c44298fc1c14",
+    "label": "dee15c3-clean",
+    "files": [],
+    "excludedFromDigest": 3,
+    "error": null
+  },
+  "buildStable": true,
+  "protocol": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 3,
+      "cpu": 6
+    },
+    "pose": {
+      "rotX": -0.15,
+      "rotY": 0,
+      "posY": 0
+    },
+    "bufferMode": "own buffer (A) vs 1.5x CSS (B)",
+    "order": "A/B/B/A per round, order randomised per round",
+    "seed": 65007678,
+    "roundBlocks": "40 frames x 3 runs per size",
+    "roundsRequested": 4,
+    "sync": "gl.readPixels(1px) in the SAME task as the render block (gl.finish() is a no-op under ANGLE/Metal)",
+    "prune": "discard round if |tA - roundMedian| / roundMedian > 20%",
+    "dpr": "the rig boots at gemdpr=3, so A is the real phone buffer"
+  },
+  "rig": {
+    "css": [
+      340,
+      480
+    ],
+    "buffer": [
+      1020,
+      1440
+    ],
+    "ratio": 3,
+    "bloom": true,
+    "tune": {
+      "taps": 3,
+      "bounce": 5,
+      "bloomOn": true,
+      "bloomIntensity": 0.32,
+      "dpr": 1
+    }
+  },
+  "reloads": 0,
+  "rounds": [
+    {
+      "round": 1,
+      "order": "BAAB",
+      "tA": 10.145,
+      "tB": 18.2725,
+      "runsA": [
+        10.0525,
+        10.13,
+        10.755,
+        10.105,
+        10.16,
+        10.27
+      ],
+      "runsB": [
+        18.2575,
+        18.3,
+        18.4475,
+        18.2075,
+        18.245,
+        18.3275
+      ],
+      "areaA": 163200,
+      "areaB": 367200,
+      "bufA": [
+        1020,
+        1440
+      ],
+      "css": [
+        340,
+        480
+      ],
+      "ratio": 3
+    },
+    {
+      "round": 2,
+      "order": "BAAB",
+      "tA": 10.76375,
+      "tB": 19.37875,
+      "runsA": [
+        10.305,
+        10.4875,
+        11.4825,
+        10.7675,
+        11.04,
+        11.2125
+      ],
+      "runsB": [
+        18.2675,
+        18.28,
+        18.4625,
+        20.2275,
+        20.4775,
+        20.7075
+      ],
+      "areaA": 163200,
+      "areaB": 367200,
+      "bufA": [
+        1020,
+        1440
+      ],
+      "css": [
+        340,
+        480
+      ],
+      "ratio": 3
+    },
+    {
+      "round": 3,
+      "order": "ABBA",
+      "tA": 9.575,
+      "tB": 20.228749999999998,
+      "runsA": [
+        10.545,
+        10.565,
+        10.875,
+        8.515,
+        8.585,
+        8.8775
+      ],
+      "runsB": [
+        21.17,
+        21.5425,
+        22.315,
+        17.745,
+        18.915,
+        19.9325
+      ],
+      "areaA": 163200,
+      "areaB": 367200,
+      "bufA": [
+        1020,
+        1440
+      ],
+      "css": [
+        340,
+        480
+      ],
+      "ratio": 3
+    },
+    {
+      "round": 4,
+      "order": "BAAB",
+      "tA": 12.77375,
+      "tB": 18.40375,
+      "runsA": [
+        10.6075,
+        13.3275,
+        13.5025,
+        11.8975,
+        12.22,
+        12.9275
+      ],
+      "runsB": [
+        16.8975,
+        17.775,
+        18.1275,
+        18.98,
+        19.0325,
+        19.7725
+      ],
+      "areaA": 163200,
+      "areaB": 367200,
+      "bufA": [
+        1020,
+        1440
+      ],
+      "css": [
+        340,
+        480
+      ],
+      "ratio": 3
+    }
+  ],
+  "roundsMeasured": 4,
+  "roundsKept": 3,
+  "discarded": [
+    {
+      "round": 4,
+      "tA": 12.77375,
+      "devPct": 22.19
+    }
+  ],
+  "baseMedian": 10.454,
+  "medianOfMediansMs": {
+    "A": 10.145,
+    "B": 19.379
+  },
+  "realBufferMs": 10.145,
+  "realBuffer": [
+    1020,
+    1440
+  ],
+  "bufferPx": 163200,
+  "fixedMs": 0.911,
+  "marginalNsPx": 45.263,
+  "stability": {
+    "spreadPct": 11.37,
+    "minA": 9.575,
+    "maxA": 10.764
+  },
+  "projectedPhone": {
+    "ms": 71.02,
+    "multiplier": 7,
+    "estimate": true,
+    "fits60": false,
+    "headroomMs": -54.35,
+    "usedPctOfFrame": 426
+  },
+  "resolution": {
+    "bandProjectedMs": [
+      67.02,
+      75.35
+    ],
+    "floorMs": 50,
+    "budgetMs": 16.67,
+    "straddlesFloor": false,
+    "straddlesBudget": false,
+    "floorResolvable": true,
+    "budgetResolvable": true,
+    "why": "projected band 67.02–75.35 ms is entirely over the 50 ms floor"
+  },
+  "bestRound": {
+    "ms": 9.575,
+    "projectedMs": 67.02,
+    "note": "fastest kept round — the least-contaminated sample on a shared machine (median is the headline)"
+  },
+  "host": {
+    "cpus": 10,
+    "loadStart": [
+      9.0185546875,
+      6.58203125,
+      5.42919921875
+    ],
+    "loadEnd": [
+      7.49169921875,
+      6.46826171875,
+      5.43212890625
+    ],
+    "contended": true
+  },
+  "estimateNotice": "projectedPhone.ms = realBufferMs x 7 — ESTIMATE (M1 proxy), not a phone measurement",
+  "at": "2026-11-22T15:29:33.611Z"
+}

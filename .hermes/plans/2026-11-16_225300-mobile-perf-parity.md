@@ -30,7 +30,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 4 | Right-size the edge-material layer stack; drop `will-change` on permanently-animating spans | layer count and per-layer blur radius measured before/after; pixels identical | shipped |
-| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged · rev 6: unchanged, still the owner's call. |
+| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged · rev 6: unchanged, still the owner's call · rev 8: decision evidence produced (lane-F-recheck.md, lane-F-dock-recheck.png); still the owner's call. |
 | 6 | Contain every glass island (`contain: paint` / `isolation`) so a blur cannot force a full-page repaint | trace shows no full-page paint during scroll | shipped |
 
 ## Phase 3 — Runtime: WebGL and motion loops {#phase-3}
@@ -331,3 +331,33 @@ On a clean, pinned tree with perf deferred the suite scores **37/100 (F)**, with
 - **E1 — closed (disproved, removed). E2 — ruled, opt-in. E3 — shipped as `?gemphone`, default off. E4 — 37/100 baseline. E5 — still needs hardware.**
 
 **Ship state:** one commit on `main`. Nothing in this rev amends rev 6's closure — it records what was ordered after it, and every number above is a measurement on this tree.
+
+---
+
+## Gate · rev 8 — owner-decision evidence + suite repair (2026-11-22) {#rev-8}
+
+Four lanes ran on `dee15c3` (+ this tree's `?gemtimer` probe). **No default moved**: the dock flag is still a URL flag, the phone caps are still opt-in, and the only source change is an instrument that is inert without its param.
+
+| lane | subject | headline numbers |
+|---|---|---|
+| F recheck | Task 5 dock material (`?dock=lean`) | **35.53 %** of pixels differ, **17.58 % >8/255**, maxΔ **81**, mean **14.19** (393×852 dpr 3); **88.8 %** of the >8 px inside the panel sit within **12 css px** of its edge, mid strip maxΔ **1/255**; `.docklens` nodes **8,917 → 2,673**, lens copies **15 → 1**, band mirrors **5 → 0**. Desktop 1440×900 dpr 2: **7.93 %** differ / **1.96 % >8** / maxΔ 62. Rim sharpness 1:1 on the phone is **not separable** at these captures |
+| E3 caps | `?gemphone=2 \| 1.5 \| 1` | cap 2 = stone **byte-identical on index**, **0.93 % >8** / maxΔ 43 on gallery, halo **+17 %** area / **+76 %** peak, **1.6×** spill → **no ratio win** on a 3× phone; cap 1.5 = **3.46 % >8** at 1×, maxΔ **201**, detail **79–80 %**, **70 %** of rim px aliased, spill **3.90×**, **1.78×** fewer fragments; cap 1 = **5.57 % >8**, detail **58 %**, rim **81 %** aliased, **4.0×** fewer fragments |
+| E4 suite | repaired rogue suite | **60/100 (D)** — perf **0/40**, parity **30/30**, stress **30/30**. Parity cross-build (`10390c2`-clean `4a7ebce1` vs `dee15c3`-clean `6f0b5407`): **0.000 % >2/255**, maxΔ **0** over **592,832** bbox px, control **0**; default vs `?gemmesh=0` **MATCH**, `?gemmesh=1` **DIFFER** 2.356 % / 243 / 5.11 %. Stress **10/10**, incl. the WebGL1 arm at meanRGB **203.27** vs WebGL2 **202.83**. Perf **10.145 ms** at 1020×1440 → **71.02 ms** ×7 estimate, band **67.0–75.4**, runs 60/84/71 |
+| E5 probe | `?gemtimer=1` | shipped in `gem-perf-timer-ext.js` + a 2-line hook in `gem-perf.js`; **inert** on gallery dpr 3 (`d518d65c452ffc6b…b9332b67`, **0 of 1,468,800** px >2/255, maxΔ 0, programs 8→8) and dpr 2 (`8e562714…6b8e6789`, 0 of 652,800). Headless `GL_RENDERER` **`ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Max, Unspecified Version)`**. **Still not device-measured** |
+
+**Task status**
+- **5 — still pending the owner decision, unchanged.** The evidence that was missing now exists: `lane-F-recheck.md` and `lane-F-dock-recheck.png` (per-arm sheet plus the measured trade). This rev records it; it does not pick the default.
+- **E3 — evidence produced, default-off unchanged.** The caps are measured on a 3× phone grid and on index; no cap became a default, and `?gemphone=2` is still recorded as ratio-wise a no-op.
+- **E4 — repaired, 60/100.** Perf still scores **0/40**: 71 ms against a 16.7 ms budget is not a pass, and the score is recorded as a baseline, not a ship gate.
+- **E5 — probe shipped, still no hardware.** Every number in `lane-E5.md` is headless plumbing evidence; the phone run is open (`tools/device-probe/README.md` §4).
+
+**index.html gate (blocking, this rev).** `?gemtimer` was previously proven inert on gallery only; index had never been gated (no renderer in the earlier mount). Gated now: HEAD (`dee15c3`, `git archive` snapshot, :5415) vs this tree (:5416), `index.html?app=fullscreen`, pose pinned (`rig.t = 0`, `group.position.y = 0`, `rotation(-0.15,0,0)`), floor pools hidden, raw drawing buffer `readPixels` in the same CDP task as the render, rAF frozen.
+
+| viewport | buffer | px >2/255 | maxΔ | control | programs | sha256 (both arms) |
+|---|---|---|---|---|---|---|
+| 393×852 dpr 3 | 1020×960 | **0 of 979,200 (0.000 %)**, meanΔ 0 | **0** | **0** | **6 = 6** | `5988da286bacba60…` equal |
+| 1440×900 dpr 2 | 680×640 | **0 of 435,200 (0.000 %)**, meanΔ 0 | **0** | **0** | **6 = 6** | `96e0ccea5b98c99a…` equal |
+
+Stone present on both arms (subject silhouette 37.01 % / 37.05 % of the buffer, meanRGB 184.77), and the harness is not blind: moving the pinned rotation by 0.1 rad in the same launch moves **37.44 %** of pixels at maxΔ 250. Evidence: `lane-L.md`, harness `tools/index-gate.mjs`.
+
+**Coverage gap found:** `pitch.html` loads neither `gem-perf.js` nor `gem-bloom.js` — its 27 gem scripts are byte-identical over HTTP between the two servers, so the page cannot carry any part of this policy. `index.html` has no `gem-bloom.js`: bloom is absent there, which is why `?gemphone=2` reads byte-identical on index. Net: **the phone policy is gallery-only today** — index gets the dpr ceiling (`gem-perf.js`) and the timer probe, pitch gets nothing, and the bloom half of the policy has exactly one surface.

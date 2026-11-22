@@ -1,0 +1,132 @@
+{
+  "perf": {
+    "projectedPhoneMs": 71.02,
+    "budgetMs": 16.67,
+    "floorMs": 50,
+    "realBufferMs": 10.145,
+    "multiplier": 7,
+    "roundsKept": 3,
+    "roundsMeasured": 4,
+    "spreadPct": 11.37,
+    "fits60": false,
+    "build": "dee15c3-clean",
+    "resolution": {
+      "bandProjectedMs": [
+        67.02,
+        75.35
+      ],
+      "floorMs": 50,
+      "budgetMs": 16.67,
+      "straddlesFloor": false,
+      "straddlesBudget": false,
+      "floorResolvable": true,
+      "budgetResolvable": true,
+      "why": "projected band 67.02–75.35 ms is entirely over the 50 ms floor"
+    },
+    "points": 0,
+    "max": 40,
+    "report": "perf.json"
+  },
+  "parity": {
+    "pass": true,
+    "selfReferential": false,
+    "identity": "different",
+    "role": "reference",
+    "certified": true,
+    "armsInvariant": {
+      "ok": true,
+      "failed": [],
+      "specs": [
+        "default=?gemmesh=0"
+      ]
+    },
+    "bboxPct8": 0,
+    "bboxMaxDelta": 0,
+    "rimPct8": 0,
+    "maskSource": "bgdiff",
+    "armPairs": [
+      {
+        "a": "default",
+        "b": "?gemmesh=0",
+        "pass": true,
+        "bboxPct8": 0,
+        "bboxMaxDelta": 0,
+        "rimPct8": 0
+      },
+      {
+        "a": "default",
+        "b": "?gemmesh=1",
+        "pass": false,
+        "bboxPct8": 2.355811,
+        "bboxMaxDelta": 243,
+        "rimPct8": 5.111058
+      },
+      {
+        "a": "?gemmesh=0",
+        "b": "?gemmesh=1",
+        "pass": false,
+        "bboxPct8": 2.355811,
+        "bboxMaxDelta": 243,
+        "rimPct8": 5.111058
+      }
+    ],
+    "armsDiffering": 2,
+    "control": {
+      "bboxPct8": 0,
+      "bboxMaxDelta": 0,
+      "rimPct8": 0,
+      "noisy": false
+    },
+    "points": 30,
+    "max": 30,
+    "report": "parity.json"
+  },
+  "stress": {
+    "passed": 10,
+    "failed": 0,
+    "failures": [],
+    "skipped": 0,
+    "total": 10,
+    "points": 30,
+    "max": 30,
+    "passIds": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j"
+    ],
+    "failIds": [],
+    "skipIds": [],
+    "allowlistSize": 2
+  },
+  "build": {
+    "perf": "dee15c3-clean",
+    "parity": "dee15c3-clean",
+    "stress": "dee15c3-clean",
+    "labels": [
+      "dee15c3-clean"
+    ],
+    "consistent": true
+  },
+  "score": {
+    "perf_points": 0,
+    "parity_points": 30,
+    "stress_points": 30,
+    "total_0_100": 60,
+    "grade": "D",
+    "capped": false,
+    "hardFail": false,
+    "raw_total": 60,
+    "formula": "perf 40*clamp((50-p)/(50-16.67),0,1) + parity 30/10/0 + stress 30*(passed+0.35*skipped)/total; cap 40 on any stress failure or parity != PASS"
+  },
+  "notes": [
+    "parity: arm matrix has 2 DIFFERING pair(s) (default vs ?gemmesh=1; ?gemmesh=0 vs ?gemmesh=1) — 2 of them are documented, non-required differences (mesh-entry crease)"
+  ],
+  "at": "2026-11-22T15:34:52.980Z"
+}

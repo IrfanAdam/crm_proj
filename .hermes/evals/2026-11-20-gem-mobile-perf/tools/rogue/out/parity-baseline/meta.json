@@ -1,0 +1,83 @@
+{
+  "role": "reference",
+  "url": "http://127.0.0.1:5411/gallery.html",
+  "armQuery": "gemdpr=3&gemperf=1",
+  "view": {
+    "w": 390,
+    "h": 844,
+    "dpr": 3,
+    "cpu": 6
+  },
+  "pose": {
+    "rotX": -0.15,
+    "rotY": 0,
+    "posY": 0
+  },
+  "stride": 1,
+  "buffer": [
+    1020,
+    1440
+  ],
+  "ratio": 3,
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "hideFloors": true,
+  "hiddenFloors": [
+    "shadow",
+    "contact",
+    "caustic"
+  ],
+  "floorsPresent": [
+    "shadow",
+    "contact",
+    "caustic",
+    "ground",
+    "rest",
+    "k",
+    "so",
+    "gs",
+    "cu",
+    "poolArgs",
+    "base",
+    "vp"
+  ],
+  "canonicalBox": {
+    "w": 340,
+    "h": 480
+  },
+  "maskSource": "bgdiff",
+  "captureTask": "pin + render + gl.readPixels in ONE CDP task",
+  "render": {
+    "hash": "4a7ebce172f04a81",
+    "origin": "http://127.0.0.1:5411",
+    "files": [
+      "gallery.html:200:8b0de5e7907230bd",
+      "src/components/GemReward/gem-shader.js:200:88a917316229d3d7",
+      "src/components/GemReward/gem-shader-ext.js:200:5121c91ff6f8a3bd",
+      "src/components/GemReward/gem-mesh.js:200:95909a95f0c46806",
+      "src/components/GemReward/gem-mesh-entry.js:200:b136f5585d2d29a7",
+      "src/components/GemReward/gem-bloom.js:200:c78a0bdc5b803f20",
+      "src/components/GemReward/gem-perf.js:200:981eb7d30d7cabb0"
+    ]
+  },
+  "build": {
+    "head": "10390c2ff43353cd6dc4d7ac521df5d48f9d35d6",
+    "short": "10390c2",
+    "dirtyFiles": 0,
+    "digest": "e3b0c44298fc1c14",
+    "label": "10390c2-clean",
+    "files": [],
+    "excludedFromDigest": 0,
+    "error": null
+  },
+  "buildOfRun": {
+    "head": "dee15c3a7ce2a74158d81806541d7b983faf81a6",
+    "short": "dee15c3",
+    "dirtyFiles": 0,
+    "digest": "e3b0c44298fc1c14",
+    "label": "dee15c3-clean",
+    "files": [],
+    "excludedFromDigest": 3,
+    "error": null
+  },
+  "createdAt": "2026-11-22T15:28:05.284Z"
+}
