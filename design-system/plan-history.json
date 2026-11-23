@@ -15091,6 +15091,43 @@
           "state": ""
         }
       ]
+    },
+    {
+      "sha": null,
+      "date": "2026-11-23",
+      "hash": "80d60794",
+      "sections": [
+        {
+          "head": "Phase 1 — Load path: stop blocking the parser {#phase-1}",
+          "hash": "f93d8d03",
+          "state": "3/3"
+        },
+        {
+          "head": "Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}",
+          "hash": "21ef8efa",
+          "state": "2/3"
+        },
+        {
+          "head": "Phase 3 — Runtime: WebGL and motion loops {#phase-3}",
+          "hash": "046f9235",
+          "state": "2/3"
+        },
+        {
+          "head": "Phase 4 — Interaction: scroll and pointer handlers {#phase-4}",
+          "hash": "ca9e950f",
+          "state": "2/2"
+        },
+        {
+          "head": "Phase 5 — CSS paint budget {#phase-5}",
+          "hash": "ee8bf016",
+          "state": "1/2"
+        },
+        {
+          "head": "Phase 6 — Gate: measure and prove no visual change {#phase-6}",
+          "hash": "2f9b0691",
+          "state": "2/2"
+        }
+      ]
     }
   ],
   "2026-11-16_000000-lump-sum-builds.md": [

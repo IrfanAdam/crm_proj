@@ -21,6 +21,18 @@
 | 2 | Collapse the 22 classic GemReward scripts into one deferred asset with order preserved | one request, deferred, `window.GEM_CUT`/`GEM_RIG`/`GEM3D` globals identical at run time | shipped |
 | 3 | Preload the module entry + font `display=swap` + preconnect cleanup | no `document.write`-class blocking; LCP not gated on CSS/JS | shipped |
 
+### Task 1: Vendor three.min.js out of cdnjs into public/vendor/ and load it deferred ✓ done
+
+Shipped — `dist/` carries zero `https://cdnjs.` references; three.js is same-origin and non-blocking.
+
+### Task 2: Collapse the 22 classic GemReward scripts into one deferred asset with order preserved ✓ done
+
+Shipped — one deferred request; `window.GEM_CUT`/`GEM_RIG`/`GEM3D` globals identical at run time.
+
+### Task 3: Preload the module entry + font display=swap + preconnect cleanup ✓ done
+
+Shipped — no `document.write`-class blocking; LCP not gated on CSS/JS.
+
 ## Phase 2 — Glass compositing: fewer, cheaper backdrop layers {#phase-2}
 
 *Tags: Performance, Glass*
@@ -32,6 +44,18 @@
 | 4 | Right-size the edge-material layer stack; drop `will-change` on permanently-animating spans | layer count and per-layer blur radius measured before/after; pixels identical | shipped |
 | 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged · rev 6: unchanged, still the owner's call · rev 8: decision evidence produced (lane-F-recheck.md, lane-F-dock-recheck.png); still the owner's call · rev 9: ✗ cancelled — owner moved on (user override 2026-11-23); no default change; `?dock=lean` stays as opt-in flag. |
 | 6 | Contain every glass island (`contain: paint` / `isolation`) so a blur cannot force a full-page repaint | trace shows no full-page paint during scroll | shipped |
+
+### Task 4: Right-size the edge-material layer stack; drop will-change on permanently-animating spans ✓ done
+
+Shipped — layer count and per-layer blur radius measured before/after (lane E: glass regions 0.000 %); pixels identical.
+
+### Task 5: De-duplicate dock lens / band / fab glass into one backdrop surface each ✗ cancelled
+
+Cancelled — owner moved on (user override 2026-11-23); no default changed and `?dock=lean` stays as the opt-in flag (`src/glass/slices-spec.js:42`).
+
+### Task 6: Contain every glass island so a blur cannot force a full-page repaint ✓ done
+
+Shipped — trace shows no full-page paint during scroll.
 
 ## Phase 3 — Runtime: WebGL and motion loops {#phase-3}
 
@@ -45,6 +69,18 @@
 | 8 | Gate rig quality on device capability, not just `prefers-reduced-motion` | mobile trace frame time at parity with desktop; no visible softening at 1× | ✗ cancelled (rev 4) · **reopened (rev 5)** — rev 4's reasoning fails the brute-force check: the adaptive controller moves DPR only (linear in pixels, worth 2.75× at 1.8→1.0) but the 14.9× the phone needs includes a 6.0× taps/bounce term (510 vs 3060 plane iterations/px) that nothing gates. Device-tiered taps/bounce defaults are the only non-structural lever left · rev 6: superseded — the structural lever (candidate scan) replaces the capability tier; folds into E3 of the eval record · **rev 7: closed the other way.** The structural lever was **disproved by measurement** (candidate sets fall back on 99.6 % of lookups — E1, closed) and no capability tier was built: the shipped substitute is the **phone dpr ceiling** (`?gemphone=1|1.5|2` in `gem-perf.js`, −64/−70 % frame time at cap 1.5). It is a policy surface, not a device probe. |
 | 9 | One shared rAF clock; offscreen and hidden-tab rigs fully parked | no more than one rAF loop alive per visible surface | shipped · rev 3: the gem rig now arms from its own `ResizeObserver` like the other three, so the park contract is symmetric (lane I) |
 
+### Task 7: Hoist per-frame rect/layout reads out of the gem loop ✓ done
+
+Shipped — zero `getBoundingClientRect`/`clientWidth` reads inside `requestAnimationFrame` callbacks.
+
+### Task 8: Gate rig quality on device capability, not just prefers-reduced-motion ✗ cancelled
+
+Cancelled — closed by disproof (rev 7): the candidate-scan structural lever falls back to the full 170-plane scan on 99.6 % of lookups at k=12, so no capability tier is built; the shipped substitute is the phone dpr ceiling (`?gemphone=1|1.5|2` in `gem-perf.js`), a policy surface rather than a device probe.
+
+### Task 9: One shared rAF clock; offscreen and hidden-tab rigs fully parked ✓ done
+
+Shipped — the park contract is symmetric across all four rigs (lane I).
+
 ## Phase 4 — Interaction: scroll and pointer handlers {#phase-4}
 
 *Tags: Performance, Interaction*
@@ -55,6 +91,14 @@
 |---|------|-----------|---------|
 | 10 | Cache geometry per scroll frame instead of per event | scroll trace shows 0 forced reflow events | shipped · rev 3: dock-mirror reads measured at **4.92 → 0.00 `getBoundingClientRect`/frame** (lane B) |
 | 11 | Mark every non-cancelling listener passive; move work off the event tick | no long task over 50 ms during a scripted scroll | shipped · rev 3: **done-when not met** — 33 → 16 long tasks (§4c of the eval record), 17 per pass even under `?dock=lean`. The listener work landed; the bar did not · rev 4: done-when withdrawn — the floor holds at 16–17 tasks on both sides, so the zero-task bar is dropped; scroll perf is judged via the M2 rungs instead |
+
+### Task 10: Cache geometry per scroll frame instead of per event ✓ done
+
+Shipped and measured — dock-mirror reads 4.92 → 0.00 `getBoundingClientRect`/frame (lane B).
+
+### Task 11: Mark every non-cancelling listener passive; move work off the event tick ✓ done
+
+Shipped with the done-when bar withdrawn (rev 4) — the listener work landed (33 → 16 long tasks) but the zero-task bar was never reached, so scroll perf is judged via the M2 rungs instead.
 
 ## Phase 5 — CSS paint budget {#phase-5}
 
@@ -67,6 +111,14 @@
 | 12 | `content-visibility: auto` + `contain-intrinsic-size` on offscreen feed/sheet lists | paint count during scroll drops; layout height unchanged | **✓ shipped (rev 7)** — `.ig-cell` in `src/ds/gallery-chrome.css` carries `content-visibility:auto; contain-intrinsic-size:auto 40px`. Was ✗ reopened rev 3–6 because `grep -r content-visibility src/` was empty (what had landed was `contain:`, a different property). rev 7: landed and measured — document height Δ **0.0000 %**, 114 of 5.9 M pixels at ≤1/255, LayoutDuration −7.8/−5.8 ms **inside a ±40 % noise floor** → provably harmless, not a win (see rev 7). |
 | 13 | Collapse shadow stacks that paint the same pixels | computed shadow values unchanged or visually identical in the pixel gate | ✗ cancelled — lane E measured every stack; none collapses without weakening the shadow |
 
+### Task 12: content-visibility auto + contain-intrinsic-size on offscreen feed/sheet lists ✓ done
+
+Shipped (rev 7) — `.ig-cell` carries `content-visibility:auto; contain-intrinsic-size:auto 40px`; provably harmless at zero layout cost (document height Δ 0.0000 %, LayoutDuration inside the noise floor).
+
+### Task 13: Collapse shadow stacks that paint the same pixels ✗ cancelled
+
+Cancelled — lane E measured every stack; none collapses without weakening the shadow.
+
 ## Phase 6 — Gate: measure and prove no visual change {#phase-6}
 
 *Tags: Performance, Verification*
@@ -77,6 +129,14 @@
 |---|------|-----------|---------|
 | 14 | Frozen mobile + desktop still set from HEAD serves as the pixel oracle | every post-change still diffs ≤0.05 % of pixels at ≤1/255 | shipped |
 | 15 | Throttled mobile trace (4× CPU, 393×852 DPR 3) recorded before and after | long tasks, frame time and TBT reported as before → after numbers | shipped |
+
+### Task 14: Frozen mobile + desktop still set from HEAD serves as pixel oracle ✓ done
+
+Shipped — every post-change still diffs ≤0.05 % of pixels at ≤1/255 (rev 3: gate hardened, 15/16 rows byte-identical at --strict).
+
+### Task 15: Throttled mobile trace recorded before and after ✓ done
+
+Shipped — throttled 4× CPU, 393×852 DPR 3 traces recorded before and after; frame time, long tasks and TBT reported as before → after numbers (eval README §5c).
 
 ---
 
@@ -272,7 +332,7 @@ Closes the plan. The gem-renderer thread this build opened in Phase 3 was carrie
 
 Rev 6 closed this plan; rev 7 records what the owner ordered **afterwards**. Nothing here reopens a rev 6 decision — it is one ship of the tree rev 6 left uncommitted plus four later instructions (the phone policy, the WebGL1 repair, the CAND removal and Task 12). A ship of that kind carries one obligation: the **default** stone must not move. That is measured first, and it is the only claim here that is byte-exact.
 
-### 1 · The default path is byte-identical to `10390c2`
+#### 1 · The default path is byte-identical to `10390c2`
 
 The `gem3d.js` / `gem-facets.js` change is not cosmetic: one WebGL context per canvas is now created in `gem3d` and handed to three via `context:` (three must never probe `webgl2`, fail, then probe `webgl`), and `gem-facets` validates the 170-plane bake on the renderer's own context (`canvas.__gemGL`) instead of asking the canvas for a second type. Both paths run on the default WebGL2 stone, so "it should be inert" was not accepted as evidence.
 
@@ -291,11 +351,11 @@ Six of six pairs are the **same bytes**, not merely the same within tolerance; `
 
 **The WebGL1 side is a repair, not a wash.** With `--disable-webgl2`, `10390c2` logs three distinct failures — `A WebGL context could not be created … disabled by enterprise policy or commandline switch`, `… Canvas has an existing context of a different type`, and `Shader Error … 'i' : Index expression…` — and draws no stone. Re-shot today on the same page: this tree logs **0** of the three (only three.js's own r160 deprecation/resize warnings), takes the PLTEX path (the `'i'` compile failure gone: 170 planes as an RGBA32F 1×N texture, `PL( e1 > 0 ? e1 : 0 )`, `derivatives` requested), keeps all 8 programs, and renders a non-blank stone. The stress case's arm comparison reads canvas mean **187.19** against the WebGL2 control **187.21**, and stress case i (the WebGL1 arm) is **PASS**.
 
-### 2 · Task 12 landed — harmless, not a win
+#### 2 · Task 12 landed — harmless, not a win
 
 `.ig-cell` (`src/ds/gallery-chrome.css`) now carries `content-visibility:auto; contain-intrinsic-size:auto 40px` (40 = the 58 px cell minus 18 px of padding/border). Measured on `gallery.html` at 390×844 dpr 3 and 1440×900 dpr 2: document height Δ **0.0000 %**, **114 of 5.9 M** pixels differ and every one of them by **≤1/255**, LayoutDuration **−7.8 / −5.8 ms**. That LayoutDuration figure is **below the ±40 % noise floor** measured on a page where the change cannot apply, so it is not a result. Task 12 is shipped because it is **provably harmless at zero layout cost** — the paint-count win it was written for is unmeasured, and this record does not claim it.
 
-### 3 · The phone policy surface (E3, shipped opt-in)
+#### 3 · The phone policy surface (E3, shipped opt-in)
 
 `?gemphone=1|1.5|2` now caps the dpr **ceiling** in `gem-perf.js` — over the AUTO ceiling **and** over a fixed `?gemdpr` (a URL ratio is capped, never raised; `ceiling() = min(base(), gemphone)`, the controller still steps down from it and climbs back to it) — and thins bloom in `gem-bloom.js` (B target 0.5× → **0.25×** of the buffer, composite paid back at gain **1.6**). Absent, `PHONE = 0` and the ceiling expression is the old one verbatim: the policy is invisible when off, which is why the default-path table above is unchanged by it.
 
@@ -307,15 +367,15 @@ Six of six pairs are the **same bytes**, not merely the same within tolerance; `
 
 Bloom traffic at dpr 3 falls **138 → 35 MB/frame** with the 0.25× B target; the halo reads **+45 %** area and **+70 %** peak at gain 1.6. This is E3's policy, shipped as a URL surface because the owner's look call is still the gate on making any of it a default.
 
-### 4 · CAND removed — and its premise disproved, not merely deferred
+#### 4 · CAND removed — and its premise disproved, not merely deferred
 
 `gem-cand.js`, `public/cand.bin` (16.7 MB), the CANDD/CANDO/CANDC splices, `parity()`/`STRIP`, the `GEM_CAND.claim()` hook and the script tags on all three pages are gone. The removal is justified by measurement, not by tidiness: over the **125,237** (facet,cell) pairs the real bounce chain reaches the union of winning planes is **p50 22** and **43 % of cells need more than 32**; the winner varies **~20 ways** across one facet's start points. So k=12 (16.7 MB) still falls back to the full 170-plane scan on **99.62 %** of lookups and k=32 (44.6 MB) on **64.9 %**, and neither is exact — **10 wrong facets in 1.55 M** lookups. A candidate set cannot deliver the 8×; the scaffolding was also its own parity claim (it compared the stripped source string with itself, while the emitted shader had in fact changed). Default render after removal: **identical** (table above).
 
-### 5 · The adversarial suite, honestly scored
+#### 5 · The adversarial suite, honestly scored
 
 On a clean, pinned tree with perf deferred the suite scores **37/100 (F)**, with **9/10** stress cases and parity **PASS at 0.000 % / maxΔ 0**. Both earlier scores — the 0/100 and the 100/100 before it — were **harness rot**, not the build: `readPixels` in a later CDP task on a non-preserved buffer reads blank, `deck-lab.js:16` throws every 250 ms so every clean-console gate fails, the hidden-tab case freezes rAF permanently, and parity re-armed its own baseline so it passed by construction. 37 is the number this build has actually earned; it is not a ship gate and is recorded as the suite's baseline, not as a pass.
 
-### Gates at ship
+#### Gates at ship
 
 | gate | exit | note |
 |---|---|---|
@@ -323,7 +383,7 @@ On a clean, pinned tree with perf deferred the suite scores **37/100 (F)**, with
 | `npx vite build --mode production` | **0** | built in 2.91 s; only the pre-existing >500 kB chunk warning |
 | `npm test` | **1** | `✗ verify:atlas — stale: src/components/GemReward, index.html changed since manifest; run \`npm run gen:atlas\`` — the **only** failing assertion, and it is **pre-existing and mtime-based**: the same check fails in a pristine `10390c2` worktree for **45** paths (including `index.html` and `src/components/GemReward`, which no lane touched), and its content-drift half passes here. It is unsatisfiable on any fresh checkout because git does not preserve mtimes. Not regenerated: that would stamp 45 unrelated mtimes into a ship commit and pass only until the next edit |
 
-### Task status after rev 7
+#### Task status after rev 7
 
 - **12 — ✓ shipped.** Landed, measured, provably harmless; the paint-count win is unmeasured and unclaimed.
 - **8 — closed by disproof.** The structural lever (candidate scan) is dead by measurement; the shipped substitute is the **phone dpr ceiling** (`?gemphone`), a policy surface rather than a capability gate.
