@@ -385,3 +385,15 @@ Shipped in this rev — pixel-gated, no default moved except where stated:
 | `design-system/changelog-manifest.json` | regen | rides this commit. |
 
 **Task status after rev 9** — 5 ✗ cancelled (override), E5 ✗ skipped (override); 12 ✓ shipped (rev 7); 8 closed by disproof (rev 7); E1 disproved/removed, E2 opt-in, E3 shipped opt-in `?gemphone`, E4 60/100 baseline; 1–4, 6, 7, 9, 10, 11, 13, 14, 15 unchanged. **Nothing in this plan remains open.**
+
+---
+
+## Gate · rev 10 — user close-out: E2/E3/E4 cancelled (2026-11-23) {#rev-10}
+
+Per user override 2026-11-23, the eval record's leftover process items that do not count are closed, not deferred:
+
+- **E2 ✗ cancelled.** Mesh-entry crease ruling stays as measured (NOT ACCEPTABLE as default); `?gemmesh=1` remains as-is opt-in code. No default changed.
+- **E3 ✗ cancelled.** No phone cap becomes a default; `?gemphone=1|1.5|2` remains as-is opt-in code. The owner look call is not coming.
+- **E4 ✗ cancelled.** The repaired 60/100 (D) — perf 0/40 · parity 30/30 · stress 30/30 — stands as a baseline, not a gate. No further suite work.
+
+E5 already ✗ skipped (rev 9). `?gemmesh` / `?gemphone` flags untouched; this rev closes process items only. **Nothing in this plan remains open.**
