@@ -8,3 +8,5 @@ __pycache__/
 #   python3 prototype/gems/exitmap_bake.py --grid 32x16 --k 46 --out prototype/gems
 prototype/gems/exitmap.bin
 prototype/gems/exitmap.json
+.vercel
+.env*
