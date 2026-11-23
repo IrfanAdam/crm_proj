@@ -19,7 +19,7 @@ const ctx = (function () { try { return canvas.__gemGL = canvas.getContext('webg
 const renderer = new THREE_.WebGLRenderer(Object.assign({ canvas: canvas }, ATTR, ctx ? { context: ctx } : {}));
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.toneMapping = THREE_.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.95;
+renderer.toneMappingExposure = 0.95; renderer.autoClearColor = false;   // C0: the stage backdrop (scene.background plane / bare 80-unit quad) is opaque and full-screen, so the colour clear of the full-res MSAA target is redundant — depth still clears.
 Object.assign(rig, window.GEM_SCENE.stage(renderer, new THREE_.Color(rig.paint), GEM.gemCut(GEM.CUT), canvas.clientWidth / Math.max(canvas.clientHeight, 16), rig.cat.ior), { renderer: renderer });
 window.GEM_RIG.backdrop(rig);
 window.GEM_RIG.size(rig);                          // first measure; the ResizeObserver in gem-rig keeps it fresh — never the frame

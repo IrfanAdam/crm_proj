@@ -10,5 +10,10 @@
 .device__edge--top{top:0;bottom:auto;height:104px;border-radius:var(--display-r) var(--display-r) 0 0;corner-shape:squircle;-webkit-corner-shape:squircle;overflow:hidden;background:linear-gradient(to bottom,color-mix(in srgb, var(--bg-surface) 48%, transparent) 0%,color-mix(in srgb, var(--bg-surface) 40%, transparent) 48%,transparent 100%)}
 #device.device--large .device__edge--top{opacity:0;transition:opacity var(--transition-normal)}
 #device.device--large.device--scrolled .device__edge--top{opacity:1}
+/* the 5 stops are backdrop-filter surfaces: while .device--large is at rest the edge is
+   opacity:0, so none of them can contribute a pixel — keep them out of the layer tree
+   instead of compositing 5 × 393×104 of backdrop against the feed. They mount on the same
+   class flip that starts the fade, so the fade itself is unchanged. */
+#device.device--large:not(.device--scrolled) .device__edge--top>span{display:none}
 @media (prefers-reduced-motion:reduce){#device.device--large .device__edge--top{transition:none}}
 .device__edge--top>span{-webkit-mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z));mask-image:linear-gradient(to top,transparent var(--a),#000 var(--z))}

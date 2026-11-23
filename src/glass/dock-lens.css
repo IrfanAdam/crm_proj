@@ -75,7 +75,7 @@
   backdrop-filter:blur(6px) saturate(132%) brightness(1.015);
 }
 .device .docklens__slice{position:absolute;inset:0;pointer-events:none;transform:translateZ(0)}
-.device .docklens__slice>.docklens__copy{will-change:transform}
+.device .docklens__slice>.docklens__copy{/* no will-change: the blur() on the slice already promotes it; a second hint just pins the layer */}
 .device .tabbar[data-engine="slices"] .docklens__lens{
   -webkit-filter:blur(1.2px) saturate(1.12) brightness(1.015) contrast(1.01);
   filter:blur(1.2px) saturate(1.12) brightness(1.015) contrast(1.01);

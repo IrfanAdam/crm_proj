@@ -30,7 +30,7 @@
 | # | Task | Done when | Overall |
 |---|------|-----------|---------|
 | 4 | Right-size the edge-material layer stack; drop `will-change` on permanently-animating spans | layer count and per-layer blur radius measured before/after; pixels identical | shipped |
-| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged · rev 6: unchanged, still the owner's call · rev 8: decision evidence produced (lane-F-recheck.md, lane-F-dock-recheck.png); still the owner's call. |
+| 5 | De-duplicate dock lens / band / fab glass into one backdrop surface each | no nested `backdrop-filter` inside a filtered ancestor | pending · rev 4: flag verified present (`src/glass/slices-spec.js:42`); awaiting the owner's rim-vs-frame-time call — the live decision, unchanged · rev 6: unchanged, still the owner's call · rev 8: decision evidence produced (lane-F-recheck.md, lane-F-dock-recheck.png); still the owner's call · rev 9: ✗ cancelled — owner moved on (user override 2026-11-23); no default change; `?dock=lean` stays as opt-in flag. |
 | 6 | Contain every glass island (`contain: paint` / `isolation`) so a blur cannot force a full-page repaint | trace shows no full-page paint during scroll | shipped |
 
 ## Phase 3 — Runtime: WebGL and motion loops {#phase-3}
@@ -361,3 +361,27 @@ Four lanes ran on `dee15c3` (+ this tree's `?gemtimer` probe). **No default move
 Stone present on both arms (subject silhouette 37.01 % / 37.05 % of the buffer, meanRGB 184.77), and the harness is not blind: moving the pinned rotation by 0.1 rad in the same launch moves **37.44 %** of pixels at maxΔ 250. Evidence: `lane-L.md`, harness `tools/index-gate.mjs`.
 
 **Coverage gap found:** `pitch.html` loads neither `gem-perf.js` nor `gem-bloom.js` — its 27 gem scripts are byte-identical over HTTP between the two servers, so the page cannot carry any part of this policy. `index.html` has no `gem-bloom.js`: bloom is absent there, which is why `?gemphone=2` reads byte-identical on index. Net: **the phone policy is gallery-only today** — index gets the dpr ceiling (`gem-perf.js`) and the timer probe, pitch gets nothing, and the bloom half of the policy has exactly one surface.
+
+---
+
+## Gate · rev 9 — owner close-out + exact-waste ship (2026-11-23) {#rev-9}
+
+Two owner overrides close the last open items; nothing else in this plan reopens. Base `f350e75`, probe evidence `e322d3a`.
+
+- **5 — ✗ cancelled (owner moved on, user override 2026-11-23).** The rim-vs-frame-time call is not coming. No default changed: `?dock=lean` stays exactly as it was — an opt-in flag (`src/glass/slices-spec.js:42`), never a default.
+- **E5 — ✗ SKIPPED per owner (user override 2026-11-23): ship with the computer test.** The `?gemtimer=1` probe (`e322d3a`) stands as the measurement surface; the phone run in `tools/device-probe/README.md` §4 is closed, not deferred. Eval record `.hermes/evals/2026-11-20-gem-mobile-perf/README.md` updated to match.
+
+Shipped in this rev — pixel-gated, no default moved except where stated:
+
+| file | owning plan · phase | result |
+|---|---|---|
+| `src/components/GemReward/gem3d.js` — C0 `autoClearColor=false` | mobile-perf · #phase-3 | **✓ shipped.** 0.000 % >0/255, sha-identical on all 4 shots (lane-F-c0c5). C5 (`antialias:false`) **reverted** — failed its blocking gate on the reward sheet (0.30 %, maxΔ 115). |
+| `src/glass/dock-band.css`, `src/glass/dock-lens.css` — drop `will-change` on band stops / slice copies | mobile-perf · #phase-2 (Task 4 clause) | **✓ shipped.** Glass regions 0.000 % (lane-E). |
+| `src/os/edge-material.css` — top-edge stop spans `display:none` while `.device--large` is at rest | mobile-perf · #phase-2 (Task 4 clause) | **✓ shipped.** Glass regions 0.000 % (lane-E). |
+| `src/patterns/OppsHome/opps-home.css` + `opps-home.js` + **new** `opps-home-intersect.js` — marker pulse parks via `IntersectionObserver` when the map card leaves the viewport | mobile-perf · #phase-2 (lane-E §6.8; extracted to sibling module per lane-E2 line-budget fix) | **✓ shipped.** Glass regions 0.000 % pre/post; parked pulse contributes no sampled pixel (lane-E2). |
+| `src/js/mechanics/graphData*.js` (4 files) — regen, `generatedAt` stamp only | 2026-09-22_155000-architecture-mechanics.md · #phase-2 | **✓ done (carried).** Content-hashes unchanged; `verify:mechanics` green. |
+| `.hermes/evals/2026-11-23-gem-render-audit/` (lanes A, B, C, D, E, E2, F, F2 + raw) | mobile-perf · #rev-9 | evidence for this rev, committed. |
+| `.hermes/process-audit-2026-11-22.md` | — (host context, read-only inspection) | filed, no task attached. |
+| `design-system/changelog-manifest.json` | regen | rides this commit. |
+
+**Task status after rev 9** — 5 ✗ cancelled (override), E5 ✗ skipped (override); 12 ✓ shipped (rev 7); 8 closed by disproof (rev 7); E1 disproved/removed, E2 opt-in, E3 shipped opt-in `?gemphone`, E4 60/100 baseline; 1–4, 6, 7, 9, 10, 11, 13, 14, 15 unchanged. **Nothing in this plan remains open.**

@@ -2,6 +2,7 @@ import { mapViewHTML, initMap } from "./nearby-map.js";
 import { sheetHTML, initSheet, openSheet } from "./nearby-sheet.js";
 import { activityStripHTML } from "../ActivityStrip/activity-strip.js";
 import { initRewardSheet } from "./reward-sheet.js";
+import { observeMapPulse } from "./opps-home-intersect.js";
 import { emptyStateHTML } from "../EmptyState/empty-state.js";
 const bars = activityStripHTML();
 const OPPS = [
@@ -59,6 +60,7 @@ function mount(page) {
   device?.classList.toggle("device--large", true);
   large = small = compact = largeAv = smallAv = null;
   if (isOpps) {
+    observeMapPulse(root);
     initRewardSheet(root);
     // — maps resolve after Leaflet's first load; the feed renders first, tiles fade in —
     initMap(() => openSheet()).then((api) => {

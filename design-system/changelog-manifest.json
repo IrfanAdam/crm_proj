@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T08:28:42.133Z",
+  "generated": "2026-11-23T10:44:04.177Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "f350e75",
+      "full": "f350e75f4f87bbf19d80db78416714f9865832fb",
+      "date": "2026-11-23",
+      "time": "13:58",
+      "subject": "chore(repo): ignore .vercel/ and .env.local",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "rev-8"
+    },
     {
       "sha": "e322d3a",
       "full": "e322d3a5f250b8fb99e887999dcee2237c902f2d",
@@ -5023,9 +5032,16 @@
     }
   ],
   "wip": [
-    "M src/js/mechanics/graphData.decisions.js",
-    "M src/js/mechanics/graphData.js",
-    "M src/js/mechanics/graphData.logic.js",
-    "M src/js/mechanics/graphData.schema.js"
+    "M  src/components/GemReward/gem3d.js",
+    "M  src/glass/dock-band.css",
+    "M  src/glass/dock-lens.css",
+    "M  src/js/mechanics/graphData.decisions.js",
+    "M  src/js/mechanics/graphData.js",
+    "M  src/js/mechanics/graphData.logic.js",
+    "M  src/js/mechanics/graphData.schema.js",
+    "M  src/os/edge-material.css",
+    "A  src/patterns/OppsHome/opps-home-intersect.js",
+    "M  src/patterns/OppsHome/opps-home.css",
+    "M  src/patterns/OppsHome/opps-home.js"
   ]
 }

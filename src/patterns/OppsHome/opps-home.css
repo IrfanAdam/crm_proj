@@ -34,6 +34,9 @@
 .opps__me{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px}
 .opps__me-arrow{display:block;width:26px;height:26px;fill:var(--primitive-sapphire-ui-500);stroke:var(--primitive-gray-white);stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(var(--shadow-mark))}
 .opps__me::after{content:"";position:absolute;inset:0;border-radius:var(--radius-full);border:var(--border-width-medium) solid var(--primitive-sapphire-ui-400);animation:opps-me 1.8s ease-out infinite;animation-delay:var(--me-delay,0ms)}
+/* the map marker is the app's only infinite animation: it costs compositor work even when
+   the map has been scrolled out of view. opps-home.js flags that state on the root. */
+.opps--map-off .opps__me::after{animation-play-state:paused}
 @keyframes opps-me{from{transform:scale(.7);opacity:.9}to{transform:scale(1.6);opacity:0}}
 /* hotspot radius around my position (Leaflet circle, overlay pane sits under the pins) */
 .opps__hotspot{fill:color-mix(in srgb, var(--primitive-sapphire-ui-300) 30%, transparent);stroke:color-mix(in srgb, var(--primitive-sapphire-ui-400) 55%, transparent);stroke-width:1}
