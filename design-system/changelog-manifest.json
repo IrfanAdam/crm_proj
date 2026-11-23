@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T11:03:03.711Z",
+  "generated": "2026-11-23T11:03:13.560Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "d378a17",
+      "full": "d378a17419b8372613563bb4be84700226d32947",
+      "date": "2026-11-23",
+      "time": "16:32",
+      "subject": "docs(plan): add Task 1-15 done/cancelled headers so board tags render",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "rev-11"
+    },
     {
       "sha": "d0c9313",
       "full": "d0c93130ebd397af0faa3dc61cb82e8019f9fcf9",
@@ -5049,10 +5058,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
