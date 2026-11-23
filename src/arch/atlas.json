@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-11-22T17:02:23.666Z",
+    "generatedAt": "2026-11-23T12:12:06.693Z",
     "resolution": "L1",
     "lenses": [
       "logic",
@@ -21,7 +21,7 @@
       "src/components/Chip": "0508ddaa08f2a7e6",
       "src/components/FunnelCard": "d3d4c7ac911fbcd1",
       "src/components/FunnelGlyph": "3a06ea1dff470dd3",
-      "src/components/GemReward": "948bdfaebab141af",
+      "src/components/GemReward": "d926ffb10277c468",
       "src/components/GoalBar": "36a4bf21fffd643d",
       "src/components/Icon": "a422d894761f70c6",
       "src/components/KpiStat": "cc13da74205e6805",
@@ -50,7 +50,7 @@
       "src/patterns/EmptyState": "1b931bca1c115983",
       "src/patterns/MonitorScreen": "52f574fd368a2b01",
       "src/patterns/OperateScreen": "609f3d04a3a9207b",
-      "src/patterns/OppsHome": "4c8c925a7f89388d",
+      "src/patterns/OppsHome": "eda67a00a073df4b",
       "src/patterns/ReportsMatrix": "a0cc257aedab1420"
     }
   },

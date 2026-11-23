@@ -457,3 +457,12 @@ Per user override 2026-11-23, the eval record's leftover process items that do n
 - **E4 ✗ cancelled.** The repaired 60/100 (D) — perf 0/40 · parity 30/30 · stress 30/30 — stands as a baseline, not a gate. No further suite work.
 
 E5 already ✗ skipped (rev 9). `?gemmesh` / `?gemphone` flags untouched; this rev closes process items only. **Nothing in this plan remains open.**
+
+---
+
+## Gate · rev 11 — board-tag headers + atlas regen (2026-11-23) {#rev-11}
+
+Follow-up housekeeping; no task reopened, no default changed.
+
+- **Task 1–15 done/cancelled headers.** Each phase table now carries per-task `### Task N … ✓ done / ✗ cancelled` headers so the board's tag renderer picks them up. Text-only plan edit.
+- **Atlas regen.** `src/arch/atlas.json` regenerated (`npm run gen:atlas`): `generatedAt` stamp plus refreshed source digests for `src/components/GemReward` and `src/patterns/OppsHome`, which changed after the previous atlas bake. `verify:atlas` green.
