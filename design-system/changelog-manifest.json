@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T10:56:53.401Z",
+  "generated": "2026-11-23T10:57:02.874Z",
   "continuation": "20260909_145218_9888b1",
   "plans": [
     "2026-09-16_180000-crm-design-system.md",
@@ -26,6 +26,15 @@
     "2026-11-16_225300-mobile-perf-parity.md"
   ],
   "commits": [
+    {
+      "sha": "d0c9313",
+      "full": "d0c93130ebd397af0faa3dc61cb82e8019f9fcf9",
+      "date": "2026-11-23",
+      "time": "16:26",
+      "subject": "Cancel leftover E2/E3/E4 per user override; no default change",
+      "plan": "2026-11-16_225300-mobile-perf-parity.md",
+      "anchor": "rev-10"
+    },
     {
       "sha": "71a38a7",
       "full": "71a38a744a2a1b9e3058e5aaa76765fdd6a07a22",
@@ -5040,10 +5049,5 @@
       "anchor": "phase-1"
     }
   ],
-  "wip": [
-    "M  src/js/mechanics/graphData.decisions.js",
-    "M  src/js/mechanics/graphData.js",
-    "M  src/js/mechanics/graphData.logic.js",
-    "M  src/js/mechanics/graphData.schema.js"
-  ]
+  "wip": []
 }
